@@ -23,9 +23,9 @@ for audio_recording, figure_number in zip(load_audio(sys.argv[1]), itertools.cou
     plt.plot(audio_recording)
     plt.title('Time Domain')
     # Run a Fourier transform on the sample and graph that in the plot below
-    audio_sample_frequency = fft(audio_recording)
+    audio_recording_frequency = fft(audio_recording)
     plt.subplot(2, 1, 2)
-    plt.plot(audio_sample_frequency)
+    plt.plot(audio_recording_frequency)
     plt.title('Frequency Domain')
 
 # Display the graph on screen

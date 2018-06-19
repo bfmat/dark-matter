@@ -4,8 +4,15 @@
 
 import os
 import sys
-import numpy as np
+
+from numpy.fft import fft
+
+from load_audio import load_audio
 from verify_arguments import verify_arguments
 
 # A folder containing the real audio samples in WAV format is expected
 verify_arguments('WAV audio sample folder')
+
+# Load each of the audio files from the provided folder and run Fourier transforms on them
+audio_recordings_frequency = [fft(audio_recording)
+                              for audio_recording in load_audio(sys.argv[1])]
