@@ -4,8 +4,10 @@
 
 import os
 import sys
+import itertools
 
 import numpy as np
+from scipy.io.wavfile import write
 
 from load_audio import load_audio
 from verify_arguments import verify_arguments
@@ -20,10 +22,10 @@ num_outputs_per_input = int(sys.argv[3])
 average_volume_offset, volume_offset_std_dev, individual_sample_offset_std_dev = \
     (float(argument) for argument in sys.argv[4:])
 
-# Create a list to add the modified audio recordings to
+# Create a list to add the modified audio recordings to, in the format of tuples with a sample rate followed by a data array
 modified_recordings = []
-# Load each of the audio files from the provided folder and iterate over them
-for audio_recording in load_audio(wav_audio_folder):
+# Load each of the audio files from the provided folder and iterate over the sample rates and data recordings
+for sample_rate, audio_recording in load_audio(wav_audio_folder):
     # Run a Fourier transform on the recording to get it in the frequency domain
     audio_recording_frequency = np.fft.fft(audio_recording)
     # Iterate over the number of outputs per input, creating a modified recording on each iteration
@@ -40,5 +42,15 @@ for audio_recording in load_audio(wav_audio_folder):
             scale=individual_sample_offset_std_dev,
             size=len(modified_recording)
         )
-        # Add the resulting recording to the list
-        modified_recordings.append(modified_recording)
+        # Add the resulting recording alongside the sample rate to the list
+        modified_recordings.append((sample_rate, modified_recording))
+
+# Iterate over the modified recordings to save them, with corresponding numbers for file names
+for (sample_rate, recording), file_number in zip(modified_recordings, itertools.count()):
+    # Run a reverse Fourier transform to get it back in the time domain
+    recording_time = np.fft.ifft(recording)
+    # Convert it from complex to real so it can be saved as audio
+    recording_time_real = np.real(recording_time)
+    # Save it as an audio file with a numbered name in the output folder
+    output_file_path = os.path.join(output_folder, f'{file_number}.wav')
+    write(output_file_path, sample_rate, recording_time_real)

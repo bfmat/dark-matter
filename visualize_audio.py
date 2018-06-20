@@ -15,7 +15,8 @@ from verify_arguments import verify_arguments
 verify_arguments('WAV audio folder')
 
 # Iterate over the audio loaded from the provided folder, and corresponding figure indices
-for audio_recording, figure_number in zip(load_audio(sys.argv[1]), itertools.count()):
+# Ignore the sample rate; only take the data array
+for (_, audio_recording), figure_number in zip(load_audio(sys.argv[1]), itertools.count()):
     # Create a new window to graph in
     plt.figure(figure_number)
     # Select the first plot in the window with 2 plots and graph the time domain
