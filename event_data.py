@@ -13,5 +13,8 @@ class EventDataSet:
     def __init__(self) -> None:
         """Initializer that takes parameters that determine which data is loaded"""
         # Open the event file and get the main tree
-        tree = ROOT.TFile(EVENT_FILE_PATH).Get("T").GetEntries()
-        # TODO: Load the events
+        # These cannot be in the same line or a segmentation fault will occur
+        event_file = ROOT.TFile(EVENT_FILE_PATH)
+        tree = event_file.Get('T')
+        # Iterate over the tree and get a list of the events
+        events = [event for event in tree]
