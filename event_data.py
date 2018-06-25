@@ -14,7 +14,7 @@ import ROOT
 EVENT_FILE_PATH = "/opt/merged_all_all.root"
 
 # A threshold for the logarithmic acoustic parameter, which approximately discriminates between neutrons (below) and alpha particles (above)
-ACOUSTIC_PARAMETER_THRESHOLD = 1.5
+ACOUSTIC_PARAMETER_THRESHOLD = 1.2
 
 
 class RunType(Enum):
@@ -68,7 +68,15 @@ class EventDataSet:
             and not (event.run_type == RunType.LOW_BACKGROUND and event.logarithmic_acoustic_parameter > ACOUSTIC_PARAMETER_THRESHOLD)
             # Exclude events in the calibration runs with an acoustic parameter below that same threshold
             and not (event.run_type != RunType.LOW_BACKGROUND and event.logarithmic_acoustic_parameter < ACOUSTIC_PARAMETER_THRESHOLD)
+            # Exclude all events with a significantly negative acoustic parameter
+            and event.logarithmic_acoustic_parameter > 0.4
         ]
+        a = [e.logarithmic_acoustic_parameter for e in events_data if e.run_type ==
+             RunType.LOW_BACKGROUND]
+        b = [e.logarithmic_acoustic_parameter for e in events_data if e.run_type !=
+             RunType.LOW_BACKGROUND]
+        print(sum(a)/len(a))
+        print(sum(b)/len(b))
         # Keep only events containing one bubble if the filter is enabled
         if filter_multiple_bubbles:
             events_data = [

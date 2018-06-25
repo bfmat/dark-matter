@@ -26,10 +26,6 @@ activation = 'tanh'
 model = Sequential([
     InputLayer(input_shape=(input_dimension,)),
     BatchNormalization(),
-    Dense(72, activation=activation),
-    Dropout(0.5),
-    Dense(72, activation=activation),
-    Dropout(0.5),
     Dense(24, activation=activation),
     Dropout(0.5),
     Dense(6, activation=activation),
@@ -38,10 +34,10 @@ model = Sequential([
 ])
 # Output a summary of the model's architecture
 print(model.summary())
-# Use a binary classification loss function and an Adam optimizer, and print the accuracy while training
+# Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
 model.compile(
     optimizer='adam',
-    loss='binary_crossentropy',
+    loss='mse',
     metrics=['accuracy']
 )
 
