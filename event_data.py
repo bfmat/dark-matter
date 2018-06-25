@@ -20,7 +20,9 @@ class EventDataSet:
                  # Remove timeout, manual, and auto-relaunch triggers
                  filter_abnormal_triggers: bool = True,
                  # Remove data with the acoustic information blinded
-                 filter_acoustics_blinded: bool = True
+                 filter_acoustics_blinded: bool = True,
+                 # Remove events containing multiple bubbles
+                 filter_multiple_bubbles: bool = True
                  ) -> None:
         """Initializer that takes parameters that determine which data is loaded"""
         # Open the event file and get the main tree
@@ -45,6 +47,12 @@ class EventDataSet:
             events_data = [
                 event for event in events_data
                 if event.run_type != RunType.ACOUSTICS_BLINDED
+            ]
+        # Keep only events containing one bubble if the filter is enabled
+        if filter_multiple_bubbles:
+            events_data = [
+                event for event in events_data
+                if event.num_bubbles == 1
             ]
         # Transfer the filtered list to a global variable so it can be converted to training data elsewhere
         self.events_data = events_data
