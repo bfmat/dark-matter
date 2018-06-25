@@ -4,7 +4,7 @@
 import datetime
 import itertools
 from enum import Enum
-from typing import Tuple
+from typing import Set, Tuple
 
 import numpy as np
 import ROOT
@@ -13,14 +13,31 @@ import ROOT
 EVENT_FILE_PATH = "/opt/merged_all_all.root"
 
 
+class RunType(Enum):
+    """An enumeration of the possible run types, including various distinct radiation sources; numbers correspond to the numeric representations in the data table"""
+    LOW_BACKGROUND = 0  # Run with normal background radiation
+    AMERICIUM_BERYLLIUM = 2  # Calibration with AmBe source at the end of the source tube
+    ACOUSTICS_BLINDED = 10  # Run with acoustic information blinded
+    CALIFORNIUM_40CM = 14  # Cf source at 40cm from the bottom of the source tube
+    CALIFORNIUM_60CM = 15  # Cf source at 60cm from the bottom of the source tube
+    BARIUM_100CM = 21  # Ba source at 100cm from the bottom of the source tube
+    BARIUM_40CM = 22  # Ba source at 45cm from the bottom of the source tube
+    GARBAGE = 99  # Invalid data or unknown run type
+
+
+class TriggerCause(Enum):
+    """An enumeration of the possible causes of the recording trigger"""
+    CAMERA_TRIGGER = 0  # The normal optical trigger when bubbles are observed
+    TIMEOUT = 2  # The maximum time permitted for an event was reached
+    MANUAL_OR_RELAUNCH = 3  # Either a manual trigger, or an auto-relaunch due to a problem
+
+
 class EventDataSet:
     """A bubble event data set class that is loaded from CERN ROOT data as well as audio recordings and images, and is convertible to many different formats, containing varying data types, that can be used to train neural networks"""
 
     def __init__(self,
-                 # Remove timeout, manual, and auto-relaunch triggers
-                 filter_abnormal_triggers: bool = True,
-                 # Remove data with the acoustic information blinded
-                 filter_acoustics_blinded: bool = True,
+                 # Keep only a certain set of run types in the data set
+                 keep_run_types: Set[RunType],
                  # Remove events containing multiple bubbles
                  filter_multiple_bubbles: bool = True
                  ) -> None:
@@ -31,23 +48,22 @@ class EventDataSet:
         tree = event_file.Get('T')
         # Iterate over the tree and convert the events to a custom data class
         events_data = [EventDataPoint(event) for event in tree]
-        # Always filter out the garbage data
+        # Run a series of filters on the data
         events_data = [
             event for event in events_data
+            # Always filter out the garbage data
             if event.run_type != RunType.GARBAGE
+            # Keep only events with the specified set of run types
+            and event.run_type in keep_run_types
+            # Keep only events captured due to the camera trigger and not timeouts, manual triggers, or auto-relaunches
+            and event.trigger_cause == TriggerCause.CAMERA_TRIGGER
+            # Keep only events more than 1 centimeter away from the wall in both axes
+            and event.depth_wise_distance_to_wall < 10
+            and event.horizontal_distance_to_wall < 10
+            # Keep only events within a certain vertical range
+            and event.z_position >= 0
+            and event.z_position <= 523
         ]
-        # Keep only events captured due to the camera trigger if the filter is enabled
-        if filter_abnormal_triggers:
-            events_data = [
-                event for event in events_data
-                if event.trigger_cause == TriggerCause.CAMERA_TRIGGER
-            ]
-        # Remove data with the acoustic information blinded if the filter is enabled
-        if filter_acoustics_blinded:
-            events_data = [
-                event for event in events_data
-                if event.run_type != RunType.ACOUSTICS_BLINDED
-            ]
         # Keep only events containing one bubble if the filter is enabled
         if filter_multiple_bubbles:
             events_data = [
@@ -112,22 +128,10 @@ class EventDataPoint:
         self.banded_frequency_domain = np.reshape(banded_array, (3, 8, 3))
         # Get the number of bubbles present in the bubble, calculated through image matching
         self.num_bubbles = event.nbub
-
-
-class RunType(Enum):
-    """An enumeration of the possible run types, including various distinct radiation sources; numbers correspond to the numeric representations in the data table"""
-    LOW_BACKGROUND = 0  # Run with normal background radiation
-    AMERICIUM_BERYLLIUM = 2  # Calibration with AmBe source at the end of the source tube
-    ACOUSTICS_BLINDED = 10  # Run with acoustic information blinded
-    CALIFORNIUM_40CM = 14  # Cf source at 40cm from the bottom of the source tube
-    CALIFORNIUM_60CM = 15  # Cf source at 60cm from the bottom of the source tube
-    BARIUM_100CM = 21  # Ba source at 100cm from the bottom of the source tube
-    BARIUM_40CM = 22  # Ba source at 45cm from the bottom of the source tube
-    GARBAGE = 99  # Invalid data or unknown run type
-
-
-class TriggerCause(Enum):
-    """An enumeration of the possible causes of the recording trigger"""
-    CAMERA_TRIGGER = 0  # The normal optical trigger when bubbles are observed
-    TIMEOUT = 2  # The maximum time permitted for an event was reached
-    MANUAL_OR_RELAUNCH = 3  # Either a manual trigger, or an auto-relaunch due to a problem
+        # Get the approximated position of the bubble in 3 dimensions
+        self.x_position = event.X
+        self.y_position = event.Y
+        self.z_position = event.Z
+        # Get the horizontal and depth-wise distances from the bubble to the wall
+        self.horizontal_distance_to_wall = event.Dwall
+        self.depth_wise_distance_to_wall = event.Dwall_horiz
