@@ -4,7 +4,9 @@
 import datetime
 import itertools
 from enum import Enum
+from typing import Tuple
 
+import numpy as np
 import ROOT
 
 # The path to the main data file which contains processed attributes of bubble events
@@ -14,15 +16,53 @@ EVENT_FILE_PATH = "/opt/merged_all_all.root"
 class EventDataSet:
     """A bubble event data set class that is loaded from CERN ROOT data as well as audio recordings and images, and is convertible to many different formats, containing varying data types, that can be used to train neural networks"""
 
-    def __init__(self) -> None:
+    def __init__(self,
+                 # Remove timeout, manual, and auto-relaunch triggers
+                 filter_abnormal_triggers: bool = True,
+                 # Remove data with the acoustic information blinded
+                 filter_acoustics_blinded: bool = True
+                 ) -> None:
         """Initializer that takes parameters that determine which data is loaded"""
         # Open the event file and get the main tree
         # These cannot be in the same line or a segmentation fault will occur
         event_file = ROOT.TFile(EVENT_FILE_PATH)
         tree = event_file.Get('T')
         # Iterate over the tree and convert the events to a custom data class
-        # For now, set the global list directly (filtering will be added)
-        self.events = [EventDataPoint(event) for event in tree]
+        events_data = [EventDataPoint(event) for event in tree]
+        # Always filter out the garbage data
+        events_data = [
+            event for event in events_data
+            if event.run_type != RunType.GARBAGE
+        ]
+        # Keep only events captured due to the camera trigger if the filter is enabled
+        if filter_abnormal_triggers:
+            events_data = [
+                event for event in events_data
+                if event.trigger_cause == TriggerCause.CAMERA_TRIGGER
+            ]
+        # Remove data with the acoustic information blinded if the filter is enabled
+        if filter_acoustics_blinded:
+            events_data = [
+                event for event in events_data
+                if event.run_type != RunType.ACOUSTICS_BLINDED
+            ]
+        # Transfer the filtered list to a global variable so it can be converted to training data elsewhere
+        self.events_data = events_data
+
+    def banded_frequency_alpha_classification(self) -> Tuple[np.ndarray, np.ndarray]:
+        """Return the banded frequency domain data, with corresponding binary classification ground truths into neutrons and alpha particles"""
+        # Flatten the banded frequency domain information into single-dimensional arrays, and stack all of the examples into an array
+        flat_banded_data = np.stack([
+            event.banded_frequency_domain.flatten()
+            for event in self.events_data
+        ])
+        # Normal background radiation data represents alpha particles in the ground truth array, and everything else represents neutrons
+        alpha_ground_truths = np.array([
+            event.run_type == RunType.LOW_BACKGROUND
+            for event in self.events_data
+        ])
+        # Return the banded frequency domain data and the ground truths together
+        return flat_banded_data, alpha_ground_truths
 
 
 class EventDataPoint:
@@ -57,8 +97,11 @@ class EventDataPoint:
         self.trigger_cause = TriggerCause(raw_trigger_cause) \
             if raw_trigger_cause in set(possible_trigger_cause.value for possible_trigger_cause in TriggerCause) \
             else TriggerCause.MANUAL_OR_RELAUNCH
-        # Get the position-corrected banded frequency domain representation of the audio as a list of strength values
-        self.banded_frequency_domain = list(event.piezo_E_PosCor)
+        # Get the position-corrected banded frequency domain representation of the audio as an array of strength values
+        # It has to be converted to a list first; NumPy reads the length incorrectly
+        banded_array = np.array(list(event.piezo_E_PosCor))
+        # Reshape it into the format (time bin, frequency bin, piezo channel) where there are 3 time bins, 8 frequency bins, and 3 piezo channels
+        self.banded_frequency_domain = np.reshape(banded_array, (3, 8, 3))
         # Get the number of bubbles present in the bubble, calculated through image matching
         self.num_bubbles = event.nbub
 
