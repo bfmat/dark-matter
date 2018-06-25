@@ -3,6 +3,7 @@
 
 import datetime
 import itertools
+import math
 from enum import Enum
 from typing import Set, Tuple
 
@@ -11,6 +12,9 @@ import ROOT
 
 # The path to the main data file which contains processed attributes of bubble events
 EVENT_FILE_PATH = "/opt/merged_all_all.root"
+
+# A threshold for the logarithmic acoustic parameter, which approximately discriminates between neutrons (below) and alpha particles (above)
+ACOUSTIC_PARAMETER_THRESHOLD = 1.5
 
 
 class RunType(Enum):
@@ -57,12 +61,13 @@ class EventDataSet:
             and event.run_type in keep_run_types
             # Keep only events captured due to the camera trigger and not timeouts, manual triggers, or auto-relaunches
             and event.trigger_cause == TriggerCause.CAMERA_TRIGGER
-            # Keep only events more than 1 centimeter away from the wall in both axes
-            and event.depth_wise_distance_to_wall < 10
-            and event.horizontal_distance_to_wall < 10
             # Keep only events within a certain vertical range
             and event.z_position >= 0
             and event.z_position <= 523
+            # Exclude events in the low background runs with an acoustic parameter above a threshold
+            and not (event.run_type == RunType.LOW_BACKGROUND and event.logarithmic_acoustic_parameter > ACOUSTIC_PARAMETER_THRESHOLD)
+            # Exclude events in the calibration runs with an acoustic parameter below that same threshold
+            and not (event.run_type != RunType.LOW_BACKGROUND and event.logarithmic_acoustic_parameter < ACOUSTIC_PARAMETER_THRESHOLD)
         ]
         # Keep only events containing one bubble if the filter is enabled
         if filter_multiple_bubbles:
@@ -135,3 +140,8 @@ class EventDataPoint:
         # Get the horizontal and depth-wise distances from the bubble to the wall
         self.horizontal_distance_to_wall = event.Dwall
         self.depth_wise_distance_to_wall = event.Dwall_horiz
+        # Compute the logarithmic acoustic parameter, which is used to sort background events out of the calibration runs
+        # Substitute a large negative number if the raw value is zero or negative
+        self.logarithmic_acoustic_parameter = \
+            math.log(event.acoustic_bubnum, 10) if event.acoustic_bubnum > 0 \
+            else -10_000
