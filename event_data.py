@@ -43,7 +43,9 @@ class EventDataSet:
                  # Keep only a certain set of run types in the data set
                  keep_run_types: Set[RunType],
                  # Remove events containing multiple bubbles
-                 filter_multiple_bubbles: bool = True
+                 filter_multiple_bubbles: bool,
+                 # Run cuts based on acoustic parameter
+                 filter_acoustic_parameter: bool,
                  ) -> None:
         """Initializer that takes parameters that determine which data is loaded"""
         # Open the event file and get the main tree
@@ -64,19 +66,22 @@ class EventDataSet:
             # Keep only events within a certain vertical range
             and event.z_position >= 0
             and event.z_position <= 523
-            # Exclude events in the low background runs with an acoustic parameter above a threshold
-            and not (event.run_type == RunType.LOW_BACKGROUND and event.logarithmic_acoustic_parameter > ACOUSTIC_PARAMETER_THRESHOLD)
-            # Exclude events in the calibration runs with an acoustic parameter below that same threshold
-            and not (event.run_type != RunType.LOW_BACKGROUND and event.logarithmic_acoustic_parameter < ACOUSTIC_PARAMETER_THRESHOLD)
-            # Exclude all events with a significantly negative acoustic parameter
-            and event.logarithmic_acoustic_parameter > 0.4
         ]
-        a = [e.logarithmic_acoustic_parameter for e in events_data if e.run_type ==
-             RunType.LOW_BACKGROUND]
-        b = [e.logarithmic_acoustic_parameter for e in events_data if e.run_type !=
-             RunType.LOW_BACKGROUND]
-        print(sum(a)/len(a))
-        print(sum(b)/len(b))
+        # Run some acoustic parameter cuts if the filter is enabled
+        if filter_acoustic_parameter:
+            events_data = [
+                event for event in events_data
+                # Exclude events in the low background runs with an acoustic parameter above a threshold
+                if not (event.run_type == RunType.LOW_BACKGROUND and event.logarithmic_acoustic_parameter > ACOUSTIC_PARAMETER_THRESHOLD)
+                # Exclude events in the calibration runs with an acoustic parameter below that same threshold
+                and not (event.run_type != RunType.LOW_BACKGROUND and event.logarithmic_acoustic_parameter < ACOUSTIC_PARAMETER_THRESHOLD)
+                # Exclude all events with a significantly negative acoustic parameter
+                and event.logarithmic_acoustic_parameter > 0.4
+            ]
+        a = [e for e in events_data if e.run_type == RunType.LOW_BACKGROUND]
+        print(len(a))
+        b = [e for e in events_data if e.run_type != RunType.LOW_BACKGROUND]
+        print(len(b))
         # Keep only events containing one bubble if the filter is enabled
         if filter_multiple_bubbles:
             events_data = [
