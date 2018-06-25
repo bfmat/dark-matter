@@ -78,10 +78,6 @@ class EventDataSet:
                 # Exclude all events with a significantly negative acoustic parameter
                 and event.logarithmic_acoustic_parameter > 0.4
             ]
-        a = [e for e in events_data if e.run_type == RunType.LOW_BACKGROUND]
-        print(len(a))
-        b = [e for e in events_data if e.run_type != RunType.LOW_BACKGROUND]
-        print(len(b))
         # Keep only events containing one bubble if the filter is enabled
         if filter_multiple_bubbles:
             events_data = [
