@@ -5,7 +5,7 @@ import datetime
 import itertools
 import math
 import random
-from enum import Enum
+from enum import IntEnum
 from typing import Set, Tuple
 
 import numpy as np
@@ -21,7 +21,7 @@ ACOUSTIC_PARAMETER_THRESHOLD = 1.2
 VALIDATION_SPLIT = 0.2
 
 
-class RunType(Enum):
+class RunType(IntEnum):
     """An enumeration of the possible run types, including various distinct radiation sources; numbers correspond to the numeric representations in the data table"""
     LOW_BACKGROUND = 0  # Run with normal background radiation
     AMERICIUM_BERYLLIUM = 2  # Calibration with AmBe source at the end of the source tube
@@ -33,7 +33,7 @@ class RunType(Enum):
     GARBAGE = 99  # Invalid data or unknown run type
 
 
-class TriggerCause(Enum):
+class TriggerCause(IntEnum):
     """An enumeration of the possible causes of the recording trigger"""
     CAMERA_TRIGGER = 0  # The normal optical trigger when bubbles are observed
     TIMEOUT = 2  # The maximum time permitted for an event was reached

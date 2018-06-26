@@ -6,6 +6,7 @@ from keras.layers import Dense, Dropout, BatchNormalization, InputLayer
 from keras.models import Sequential
 
 from event_data import EventDataSet, RunType
+from experiment_serialization import save_test
 
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
 event_data_set = EventDataSet(
@@ -50,5 +51,8 @@ model.fit(
     x=training_input,
     y=training_ground_truths,
     validation_data=(validation_input, validation_ground_truths),
-    epochs=20
+    epochs=1
 )
+# Run predictions on the validation data set, and save the experimental run
+validation_network_outputs = model.predict(validation_input)
+save_test(event_data_set, validation_ground_truths, validation_network_outputs)
