@@ -9,9 +9,6 @@ import numpy as np
 
 from event_data import EventDataSet
 
-# A formatting string for putting dates into ISO 8601 format
-DATE_FORMAT = '%Y-%m-%d'
-
 
 def save_test(event_data_set: EventDataSet, validation_ground_truths: np.ndarray, validation_network_outputs: np.ndarray) -> None:
     """Save a validation data set, with corresponding experimental network outputs, in a file"""
@@ -26,7 +23,7 @@ def save_test(event_data_set: EventDataSet, validation_ground_truths: np.ndarray
             value = attributes[name]
             # If the value is a date, format it into an ISO 8601 string
             if isinstance(value, datetime.date):
-                attributes[name] = value.strftime(DATE_FORMAT)
+                attributes[name] = value.strftime('%Y-%m-%d')
             # If it is a NumPy array, convert it to a list
             if isinstance(value, np.ndarray):
                 attributes[name] = value.tolist()
