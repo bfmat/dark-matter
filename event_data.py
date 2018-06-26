@@ -4,6 +4,7 @@
 import datetime
 import itertools
 import math
+import random
 from enum import Enum
 from typing import Set, Tuple
 
@@ -87,40 +88,29 @@ class EventDataSet:
                 event for event in events_data
                 if event.num_bubbles == 1
             ]
-        # Transfer the filtered list to a global variable so it can be converted to training data elsewhere
-        self.events_data = events_data
-
-    @staticmethod
-    def randomize_and_split_validation(input_data: np.ndarray, ground_truths: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-        """Given a training data set, randomize its order and split it into training and validation components"""
-        # Generation a random permutation with the number of training examples to shuffle the inputs and ground truths together
-        num_examples = input_data.shape[0]
-        random_order = np.random.permutation(num_examples)
-        input_data_random = input_data[random_order]
-        ground_truths_random = ground_truths[random_order]
-        # Split the randomized data set into training and validation according to the predefined proportion
+        # Randomize the order of the events and divide them into global training and validation sets according to the predefined proportion
+        random.shuffle(events_data)
         training_split = 1 - VALIDATION_SPLIT
-        validation_start_index = int(num_examples * training_split)
-        (training_input, validation_input), (training_ground_truths, validation_ground_truths) = [
-            (array[:validation_start_index], array[validation_start_index:])
-            for array in [input_data_random, ground_truths_random]
-        ]
-        return training_input, training_ground_truths, validation_input, validation_ground_truths
+        validation_start_index = int(len(events_data) * training_split)
+        self.training_events = events_data[:validation_start_index]
+        self.validation_events = events_data[validation_start_index:]
 
     def banded_frequency_alpha_classification(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Return the banded frequency domain data, with corresponding binary classification ground truths into neutrons and alpha particles"""
-        # Flatten the banded frequency domain information into single-dimensional arrays, and stack all of the examples into an array
-        flat_banded_data = np.stack([
-            event.banded_frequency_domain.flatten()
-            for event in self.events_data
-        ])
-        # Normal background radiation data represents alpha particles in the ground truth array, and everything else represents neutrons
-        alpha_ground_truths = np.array([
-            event.run_type == RunType.LOW_BACKGROUND
-            for event in self.events_data
-        ])
-        # Split the data into training and validation sets before returning
-        return self.randomize_and_split_validation(flat_banded_data, alpha_ground_truths)
+        # Create flattened training arrays and binary ground truth arrays for both training and validation
+        (training_input, training_ground_truths), (validation_input, validation_ground_truths) = [
+            (
+                # Flatten the banded frequency domain information into single-dimensional arrays, and stack all of the examples into an array
+                np.stack([event.banded_frequency_domain.flatten()
+                          for event in events]),
+                # Normal background radiation data represents alpha particles in the ground truth array, and everything else represents neutrons
+                np.array([event.run_type == RunType.LOW_BACKGROUND
+                          for event in events])
+            )
+            for events in [self.training_events, self.validation_events]
+        ]
+        # Return both components of both datasets
+        return training_input, training_ground_truths, validation_input, validation_ground_truths
 
 
 class EventDataPoint:
