@@ -21,10 +21,10 @@ event_data_set = EventDataSet(
     ])
 )
 # Get the banded frequency domain data and crresponding binary ground truths
-banded_data, alpha_ground_truths = event_data_set.banded_frequency_alpha_classification()
+training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()
 
 # The input dimension to the network should be the number of values per banded data point
-input_dimension = banded_data.shape[1]
+input_dimension = training_input.shape[1]
 # Create a neural network model that includes several dense layers with hyperbolic tangent activations, dropout, and batch normalization
 activation = 'tanh'
 model = Sequential([
@@ -47,8 +47,8 @@ model.compile(
 
 # Train the model on the loaded data set
 model.fit(
-    x=banded_data,
-    y=alpha_ground_truths,
-    epochs=100,
-    validation_split=0.2
+    x=training_input,
+    y=training_ground_truths,
+    validation_data=(validation_input, validation_ground_truths),
+    epochs=20
 )

@@ -16,6 +16,9 @@ EVENT_FILE_PATH = "/opt/merged_all_all.root"
 # A threshold for the logarithmic acoustic parameter, which approximately discriminates between neutrons (below) and alpha particles (above)
 ACOUSTIC_PARAMETER_THRESHOLD = 1.2
 
+# The amount of data (out of 1) to remove for validation
+VALIDATION_SPLIT = 0.2
+
 
 class RunType(Enum):
     """An enumeration of the possible run types, including various distinct radiation sources; numbers correspond to the numeric representations in the data table"""
@@ -87,7 +90,24 @@ class EventDataSet:
         # Transfer the filtered list to a global variable so it can be converted to training data elsewhere
         self.events_data = events_data
 
-    def banded_frequency_alpha_classification(self) -> Tuple[np.ndarray, np.ndarray]:
+    @staticmethod
+    def randomize_and_split_validation(input_data: np.ndarray, ground_truths: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        """Given a training data set, randomize its order and split it into training and validation components"""
+        # Generation a random permutation with the number of training examples to shuffle the inputs and ground truths together
+        num_examples = input_data.shape[0]
+        random_order = np.random.permutation(num_examples)
+        input_data_random = input_data[random_order]
+        ground_truths_random = ground_truths[random_order]
+        # Split the randomized data set into training and validation according to the predefined proportion
+        training_split = 1 - VALIDATION_SPLIT
+        validation_start_index = int(num_examples * training_split)
+        (training_input, validation_input), (training_ground_truths, validation_ground_truths) = [
+            (array[:validation_start_index], array[validation_start_index:])
+            for array in [input_data_random, ground_truths_random]
+        ]
+        return training_input, training_ground_truths, validation_input, validation_ground_truths
+
+    def banded_frequency_alpha_classification(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Return the banded frequency domain data, with corresponding binary classification ground truths into neutrons and alpha particles"""
         # Flatten the banded frequency domain information into single-dimensional arrays, and stack all of the examples into an array
         flat_banded_data = np.stack([
@@ -99,8 +119,8 @@ class EventDataSet:
             event.run_type == RunType.LOW_BACKGROUND
             for event in self.events_data
         ])
-        # Return the banded frequency domain data and the ground truths together
-        return flat_banded_data, alpha_ground_truths
+        # Split the data into training and validation sets before returning
+        return self.randomize_and_split_validation(flat_banded_data, alpha_ground_truths)
 
 
 class EventDataPoint:
@@ -151,6 +171,5 @@ class EventDataPoint:
         self.depth_wise_distance_to_wall = event.Dwall_horiz
         # Compute the logarithmic acoustic parameter, which is used to sort background events out of the calibration runs
         # Substitute a large negative number if the raw value is zero or negative
-        self.logarithmic_acoustic_parameter = \
-            math.log(event.acoustic_bubnum, 10) if event.acoustic_bubnum > 0 \
+        self.logarithmic_acoustic_parameter = math.log(event.acoustic_bubnum, 10) if event.acoustic_bubnum > 0 \
             else -10_000
