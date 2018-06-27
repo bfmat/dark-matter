@@ -21,7 +21,7 @@ event_data_set = EventDataSet(
         RunType.BARIUM_100CM
     ])
 )
-# Get the banded frequency domain data and crresponding binary ground truths
+# Get the banded frequency domain data and corresponding binary ground truths
 training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()
 
 # The input dimension to the network should be the number of values per banded data point

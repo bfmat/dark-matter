@@ -1,9 +1,10 @@
 """Functions for serializing and loading information about experimental tests which can be used to create graphs"""
 # Created by Brendon Matusch, June 2018
 
-import datetime
 import json
+import os
 import time
+from typing import List, Tuple
 
 import numpy as np
 
@@ -14,25 +15,40 @@ def save_test(event_data_set: EventDataSet, validation_ground_truths: np.ndarray
     """Save a validation data set, with corresponding experimental network outputs, in a file"""
     # Iterate over tuples of validation event classes alongside ground truths and network outputs, processing them and adding them to a list
     output_list = []
-    for event, ground_truth, network_output in zip(event_data_set.validation_events, validation_ground_truths, validation_network_outputs):
-        # Get the dictionary of attributes of the event class
-        attributes = event.__dict__
-        # Iterate over the attribute names, converting certain non-serializable data types
-        for name in attributes:
-            # Get the value corresponding to the name; other methods of iterating are unsafe for modification
-            value = attributes[name]
-            # If the value is a date, format it into an ISO 8601 string
-            if isinstance(value, datetime.date):
-                attributes[name] = value.strftime('%Y-%m-%d')
-            # If it is a NumPy array, convert it to a list
-            if isinstance(value, np.ndarray):
-                attributes[name] = value.tolist()
-        # Add entries to the dictionary for the corresponding ground truth and network output
-        # Convert NumPy types (which cannot be serialized) to native Python types
-        attributes['ground_truth'] = bool(ground_truth)
-        attributes['network_output'] = float(network_output[0])
+    for event, ground_truth, network_output in zip(event_data_set.validation_events, validation_ground_truths.tolist(), validation_network_outputs.tolist()):
+        # Combine the date with the unique index, ground truth value, and network output for this bubble in a dictionary
+        bubble_information = {
+            # A unique index for this bubble that is constant each time the data set is loaded
+            'unique_bubble_index': event.unique_bubble_index,
+            # The ground truth for the validation set; may be binary or numeric
+            'ground_truth': ground_truth,
+            # The network's actual prediction; this is a single-element list
+            'network_output': network_output[0]
+        }
         # Add the processed dictionary to the list
-        output_list.append(attributes)
-    # Create a JSON file in the temporary folder, named with the current Unix time, and save the data in it
-    with open(f'/tmp/{int(time.time())}.json', 'w') as output_file:
+        output_list.append(bubble_information)
+    # Create a JSON file in the temporary folder, named with the current Unix time, save the data in it, and notify the user
+    json_file_path = f'/tmp/{int(time.time())}.json'
+    with open(json_file_path, 'w') as output_file:
         json.dump(output_list, output_file)
+    print('Data saved at', json_file_path)
+
+
+def load_test(json_file_path: str) -> Tuple[EventDataSet, np.ndarray, np.ndarray]:
+    """Load a validation data set from a JSON file encoded by the save function; returns the event data set, the validation ground truths, followed by the validation network outputs"""
+    # Load the contents of the JSON file from the provided path
+    with open(os.path.expanduser(json_file_path)) as input_file:
+        input_list = json.load(input_file)
+    # Iterate over the list of dictionaries describing the bubbles, adding information to lists
+    unique_bubble_indices = []
+    ground_truths = []
+    network_outputs = []
+    for bubble_information in input_list:
+        # Get the bubble index, ground truth, and network output, and add them each to the corresponding list
+        unique_bubble_indices.append(bubble_information['unique_bubble_index'])
+        ground_truths.append(bubble_information['ground_truth'])
+        network_outputs.append(bubble_information['network_output'])
+    # Load from disk only the bubbles with the provided set of indices
+    event_data_set = EventDataSet.load_specific_indices(unique_bubble_indices)
+    # Return the event data set, and the ground truths and network outputs as NumPy arrays
+    return event_data_set, np.array(ground_truths), np.array(network_outputs)
