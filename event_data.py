@@ -129,6 +129,8 @@ class EventDataSet:
             # Keep only events within a certain vertical range
             and event.z_position >= 0
             and event.z_position <= 523
+            # Always exclude events with a very large negative acoustic parameter (this is completely invalid)
+            and event.logarithmic_acoustic_parameter > -100
         ]
         # If there are run types provided, filter out data points that are not in the set
         if keep_run_types is not None:

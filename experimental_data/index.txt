@@ -1,0 +1,2 @@
+2018_06_26_0_meaningless_predictions.json: I tried to use the banded Fourier transform to distinguish between the background runs and the calibration runs. I found it to perform poorly, and also that the AP as it is is useless. Some further cuts are almost certainly required.
+2018_06_26_1_perfect_ap_simulation.json: I added a bad attempt at an AP cut. The network just ended up simulating the AP function (quite well, in fact) but since the AP was determined in the last experiment to be useless at the moment, there is nothing meaningful here.
