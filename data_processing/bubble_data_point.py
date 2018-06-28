@@ -5,8 +5,17 @@ from enum import IntEnum
 import datetime
 import itertools
 import math
+import os
+from typing import List
 
 import numpy as np
+from scipy.ndimage import imread
+
+# The path in which all of the raw images and audio data are stored
+RAW_DATA_PATH = os.path.expanduser('~/projects/rrg-kenclark/pico/30l-16-data')
+
+# The side length in pixels of the square windows to crop out of the bubble chamber images
+WINDOW_SIDE_LENGTH = 50
 
 
 class RunType(IntEnum):
@@ -82,3 +91,50 @@ class BubbleDataPoint:
         # Substitute a large negative number if the raw value is zero or negative
         self.logarithmic_acoustic_parameter = math.log(root_event.acoustic_bubnum, 10) if root_event.acoustic_bubnum > 0 \
             else -10_000
+        # Get the X and Y positions of the bubble on each of the four cameras
+        self.camera_positions = [
+            (root_event.hori0, root_event.vert0),
+            (root_event.hori1, root_event.vert1),
+            (root_event.hori2, root_event.vert2),
+            (root_event.hori3, root_event.vert3)
+        ]
+
+
+def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
+    """Given a bubble data point, load, crop, and return a list of windows which contain that bubble"""
+    # Format the date and run number to get the folder name, padding one-digit month and day numbers with zeroes
+    date_run_folder_name = f'{bubble.date.year}{bubble.date.month:0>2d}{bubble.date.day:0>2d}_{bubble.run_number}'
+    # Combine this with the event number to get the full path to the image folder
+    image_folder_path = os.path.join(
+        RAW_DATA_PATH,
+        date_run_folder_name,
+        date_run_folder_name,
+        str(bubble.event_number),
+        'Images'
+    )
+    # Create a list to hold the images of this bubble
+    bubble_images = []
+    # Iterate over the number of each of the four cameras and the position of the bubble in this camera
+    for camera_number, (bubble_x, bubble_y) in enumerate(bubble.camera_positions):
+        # If either axis is less than zero, the bubble could not be found; skip to the next iteration
+        if bubble_x < 0 or bubble_y < 0:
+            continue
+        # Otherwise, iterate over the image numbers 50 to 70 inclusive, which are recorded after the bubble is detected
+        for image_number in range(50, 71):
+            # Format the full path of this image and load it as a NumPy array
+            image_path = os.path.join(
+                image_folder_path,
+                f'cam{camera_number}_image{image_number}.png'
+            )
+            full_image = imread(image_path)
+            # Round the bubble X and Y positions to integers so they can be used to index the image
+            bubble_x_integer, bubble_y_integer = (
+                int(round(position)) for position in [bubble_x, bubble_y]
+            )
+            # Crop a square out, centered at the integer position
+            window = full_image[(bubble_x_integer-WINDOW_SIDE_LENGTH):(bubble_y_integer+WINDOW_SIDE_LENGTH),
+                                (bubble_y_integer-WINDOW_SIDE_LENGTH):(bubble_y_integer+WINDOW_SIDE_LENGTH)]
+            # Add the cropped window to the list of images
+            bubble_images.append(window)
+    # Return the list of cropped images
+    return bubble_images

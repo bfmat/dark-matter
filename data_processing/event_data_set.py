@@ -6,7 +6,7 @@ import pickle
 import random
 from typing import List, Optional, Set, Tuple
 
-from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerCause
+from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerCause, load_bubble_images
 
 import numpy as np
 
@@ -129,3 +129,29 @@ class EventDataSet:
         ]
         # Return both components of both datasets
         return training_input, training_ground_truths, validation_input, validation_ground_truths
+
+    def image_alpha_classification(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        """Return images for each bubble, with corresponding binary classification ground truths into neutrons and alpha particles"""
+        # Create lists to add the images and ground truths to, for training and validation
+        training_images = []
+        training_ground_truths = []
+        validation_images = []
+        validation_ground_truths = []
+        # Iterate over the training and validation bubble lists, and corresponding image and ground truth lists
+        for bubbles, images, ground_truths in zip(
+            [self.training_events, self.validation_events],
+            [training_images, validation_images],
+            [training_ground_truths, validation_ground_truths]
+        ):
+            # Iterate over the list of bubbles, converting them to images
+            for bubble in bubbles:
+                # Get the images of this bubble and add them to the list for training or validation, whichever we are currently on
+                bubble_images = load_bubble_images(bubble)
+                images += bubble_images
+                # Add an equivalent number of binary values to the ground truth list, saying whether these images represent alpha particles or neutrons
+                ground_truths.append(
+                    [(bubble.run_type == RunType.LOW_BACKGROUND)]
+                    * len(bubble_images)
+                )
+        # Return both components of both datasets, converted to NumPy arrays
+        return np.array(training_images), np.array(training_ground_truths), np.array(validation_images), np.array(validation_ground_truths)
