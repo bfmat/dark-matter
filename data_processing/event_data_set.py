@@ -4,7 +4,7 @@
 import os
 import pickle
 import random
-from typing import List, Optional, Set, Tuple
+from typing import Callable, List, Optional, Set, Tuple, Generator
 
 from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerCause, load_bubble_images
 
@@ -18,6 +18,13 @@ ACOUSTIC_PARAMETER_THRESHOLD = 1.2
 
 # The amount of data (out of 1) to remove for validation
 VALIDATION_SPLIT = 0.2
+
+# The number of images that are returned in each batch from the generator
+IMAGE_BATCH_SIZE = 32
+# The number of images that are held in memory within the image generator
+IMAGE_STORAGE_SIZE = 256
+# The number of images that are replaced in the storage list every batch
+IMAGES_REPLACED_PER_BATCH = 2
 
 
 class EventDataSet:
@@ -136,31 +143,34 @@ class EventDataSet:
         # Return both components of both datasets
         return training_input, training_ground_truths, validation_input, validation_ground_truths
 
-    def image_alpha_classification(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-        """Return images for each bubble, with corresponding binary classification ground truths into neutrons and alpha particles"""
-        # Create lists to add the images and ground truths to, for training and validation
-        training_images = []
-        training_ground_truths = []
-        validation_images = []
-        validation_ground_truths = []
-        # Create an index to count how many images we have loaded and compare it to the total
-        images_loaded = 0
-        total_images = len(self.training_events) + len(self.validation_events)
-        # Iterate over the training and validation bubble lists, and corresponding image and ground truth lists
-        for bubbles, images, ground_truths in zip(
-            [self.training_events, self.validation_events],
-            [training_images, validation_images],
-            [training_ground_truths, validation_ground_truths]
-        ):
-            # Iterate over the list of bubbles, converting them to images
-            for bubble in bubbles:
-                # Get the images of this bubble and add them to the list for training or validation, whichever we are currently on
+    def image_alpha_classification_generator(self, validation: bool) -> Generator[Tuple[np.ndarray, np.ndarray], None, None]:
+        """Return a generator which, for training or validation, produces images for each bubble, with corresponding binary classification ground truths into neutrons and alpha particles"""
+        # Based on the validation parameter, select a list of bubbles which the generator will read from
+        bubbles = (self.validation_events if validation else self.training_events)
+        # Create lists to store a changing set of images and ground truths in, so that they don't have to be reloaded for every batch
+        images = []
+        ground_truths = []
+        # Iterate forever, loading and returning images and ground truth values
+        while True:
+            # If there are fewer images than expected in the list, load some more
+            while len(images) < IMAGE_STORAGE_SIZE:
+                # Choose one of the bubbles randomly
+                bubble = random.choice(bubbles)
+                # Get images for this bubble and add it to the list
                 bubble_images = load_bubble_images(bubble)
                 images += bubble_images
                 # Add an equivalent number of binary values to the ground truth list, saying whether these images represent alpha particles or neutrons
-                ground_truths += [(bubble.run_type == RunType.LOW_BACKGROUND)] * len(bubble_images)
-                # Add to the counting index and notify the user what image we are at
-                images_loaded += 1
-                print(f'Loaded {images_loaded} bubbles of {total_images}')
-        # Return both components of both datasets, converted to NumPy arrays
-        return np.array(training_images), np.array(training_ground_truths), np.array(validation_images), np.array(validation_ground_truths)
+                ground_truths += [(bubble.run_type ==
+                                   RunType.LOW_BACKGROUND)] * len(bubble_images)
+            # Choose some random indices from the length of the image and ground truth lists to return as a batch
+            batch_indices = random.sample(
+                range(len(images)), IMAGE_BATCH_SIZE)
+            # Select lists of images and ground truths with these indices and convert them to NumPy arrays
+            batch_images = np.array(images[batch_indices])
+            batch_ground_truths = np.array(ground_truths[batch_indices])
+            # Yield both components of the data
+            yield batch_images, batch_ground_truths
+            # Remove some random indices from both lists (they will be added back on the next iteration)
+            for index in random.sample(range(len(images)), IMAGES_REPLACED_PER_BATCH):
+                images.pop(index)
+                ground_truths.pop(index)

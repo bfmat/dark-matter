@@ -19,8 +19,13 @@ event_data_set = EventDataSet(
     ]),
     filter_proportion_randomly=0.8
 )
-# Get the bubble images and corresponding ground truths
-training_images, training_ground_truths, validation_images, validation_ground_truths = event_data_set.image_alpha_classification()
+# Get data generators for both training and validation
+training_generator = event_data_set.image_alpha_classification_generator(
+    validation=False
+)
+validation_generator = event_data_set.image_alpha_classification_generator(
+    validation=True
+)
 
 # Create a convolutional neural network model with hyperbolic tangent activations
 activation = 'tanh'
@@ -46,12 +51,10 @@ model.compile(
 )
 
 # Train the model on the loaded data set
-model.fit(
-    x=training_images,
-    y=training_ground_truths,
-    validation_data=(validation_images, validation_ground_truths),
+model.fit_generator(
+    training_generator,
+    steps_per_epoch=128,
+    validation_data=validation_generator,
+    validation_steps=8,
     epochs=20
 )
-# Run predictions on the validation data set, and save the experimental run
-validation_network_outputs = model.predict(validation_images)
-save_test(event_data_set, validation_ground_truths, validation_network_outputs)

@@ -139,10 +139,12 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
             try:
                 full_image = imread(image_path)
             except (PermissionError, FileNotFoundError):
+                print(f'File {image_path} could not be loaded')
                 continue
             # Round the bubble X and Y positions to integers and cap them at the edges of the image, so they can be used to index the image
             bubble_x_integer, bubble_y_integer = (
-                min(max(int(round(position)), WINDOW_SIDE_LENGTH), shape_dimension - (WINDOW_SIDE_LENGTH + 1))
+                min(max(int(round(position)), WINDOW_SIDE_LENGTH),
+                    shape_dimension - (WINDOW_SIDE_LENGTH + 1))
                 for position, shape_dimension in zip([bubble_x, bubble_y], reversed(full_image.shape))
             )
             # Crop a square out, centered at the integer position (the image is indexed Y, X)
