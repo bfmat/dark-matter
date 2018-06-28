@@ -166,11 +166,11 @@ class EventDataSet:
             batch_indices = random.sample(
                 range(len(images)), IMAGE_BATCH_SIZE)
             # Select lists of images and ground truths with these indices and convert them to NumPy arrays
-            batch_images = np.array(images[batch_indices])
-            batch_ground_truths = np.array(ground_truths[batch_indices])
+            batch_images = np.array(images)[batch_indices]
+            batch_ground_truths = np.array(ground_truths)[batch_indices]
             # Yield both components of the data
             yield batch_images, batch_ground_truths
             # Remove some random indices from both lists (they will be added back on the next iteration)
-            for index in random.sample(range(len(images)), IMAGES_REPLACED_PER_BATCH):
+            for index in reversed(sorted(random.sample((range(len(images))), IMAGES_REPLACED_PER_BATCH))):
                 images.pop(index)
                 ground_truths.pop(index)
