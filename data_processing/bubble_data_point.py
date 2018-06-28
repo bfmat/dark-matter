@@ -130,12 +130,16 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
             continue
         # Otherwise, iterate over randomly chosen samples from the image numbers 50 to 70 inclusive, which are recorded after the bubble is detected
         for image_number in random.sample(range(50, 71), IMAGES_PER_BUBBLE):
-            # Format the full path of this image and load it as a NumPy array
+            # Format the full path of this image
             image_path = os.path.join(
                 image_folder_path,
                 f'cam{camera_number}_image{image_number}.png'
             )
-            full_image = imread(image_path)
+            # Attempt to load it as a NumPy array, skipping to the next iteration if it we are not permitted
+            try:
+                full_image = imread(image_path)
+            except PermissionError:
+                continue
             # Round the bubble X and Y positions to integers so they can be used to index the image
             bubble_x_integer, bubble_y_integer = (
                 int(round(position)) for position in [bubble_x, bubble_y]
