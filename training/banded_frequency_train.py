@@ -19,7 +19,8 @@ event_data_set = EventDataSet(
         RunType.CALIFORNIUM_60CM,
         RunType.BARIUM_40CM,
         RunType.BARIUM_100CM
-    ])
+    ]),
+    filter_proportion_randomly=0
 )
 # Get the banded frequency domain data and corresponding binary ground truths
 training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()

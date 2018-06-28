@@ -16,7 +16,8 @@ event_data_set = EventDataSet(
     keep_run_types=set([
         RunType.LOW_BACKGROUND,
         RunType.AMERICIUM_BERYLLIUM,
-    ])
+    ]),
+    filter_proportion_randomly=0.7
 )
 # Get the bubble images and corresponding ground truths
 training_images, training_ground_truths, validation_images, validation_ground_truths = event_data_set.image_alpha_classification()

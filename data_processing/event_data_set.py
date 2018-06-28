@@ -38,6 +38,8 @@ class EventDataSet:
                  filter_multiple_bubbles: bool,
                  # Run cuts based on acoustic parameter
                  filter_acoustic_parameter: bool,
+                 # Filter out a certain proportion of the remaining data set randomly
+                 filter_proportion_randomly: float,
                  ) -> None:
         """Initializer that takes parameters that determine which data is loaded; None for the set of run types represents no filtering"""
         # Load the data and run a series of filters on it
@@ -77,8 +79,11 @@ class EventDataSet:
                 event for event in events_data
                 if event.num_bubbles == 1
             ]
-        # Randomize the order of the events and divide them into global training and validation sets according to the predefined proportion
+        # Randomize the order of the events and remove a certain proportion
         random.shuffle(events_data)
+        number_to_remove = int(filter_proportion_randomly * len(events_data))
+        events_data = events_data[number_to_remove:]
+        # Divide the events into global training and validation sets according to the predefined proportion
         training_split = 1 - VALIDATION_SPLIT
         validation_start_index = int(len(events_data) * training_split)
         self.training_events = events_data[:validation_start_index]
@@ -92,7 +97,8 @@ class EventDataSet:
         event_data_set = EventDataSet(
             keep_run_types=None,
             filter_multiple_bubbles=False,
-            filter_acoustic_parameter=False
+            filter_acoustic_parameter=False,
+            filter_proportion_randomly=0
         )
         # Combine its training and validation data into one array
         all_data = event_data_set.training_events + event_data_set.validation_events
