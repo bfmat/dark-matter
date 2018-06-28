@@ -16,10 +16,6 @@ event_data_set = EventDataSet(
     keep_run_types=set([
         RunType.LOW_BACKGROUND,
         RunType.AMERICIUM_BERYLLIUM,
-        RunType.CALIFORNIUM_40CM,
-        RunType.CALIFORNIUM_60CM,
-        RunType.BARIUM_40CM,
-        RunType.BARIUM_100CM
     ])
 )
 # Get the bubble images and corresponding ground truths
