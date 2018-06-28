@@ -34,7 +34,9 @@ model = Sequential([
     Conv2D(filters=64, kernel_size=2, strides=1, activation=activation),
     Flatten(),
     Dense(64, activation=activation),
+    Dropout(0.5),
     Dense(16, activation=activation),
+    Dropout(0.5),
     Dense(1)
 ])
 # Output a summary of the model's architecture
