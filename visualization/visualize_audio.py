@@ -8,8 +8,8 @@ import itertools
 import matplotlib.pyplot as plt
 from numpy.fft import fft
 
-from load_audio import load_audio
-from verify_arguments import verify_arguments
+from data_processing.load_audio import load_audio
+from utilities.verify_arguments import verify_arguments
 
 # A folder containing the audio files in WAV format is expected
 verify_arguments('WAV audio folder')

@@ -9,8 +9,8 @@ import itertools
 import numpy as np
 from scipy.io.wavfile import write
 
-from load_audio import load_audio
-from verify_arguments import verify_arguments
+from data_processing.load_audio import load_audio
+from utilities.verify_arguments import verify_arguments
 
 # A folder containing the audio files in WAV format is expected, along with various parameters for disturbances to the audio
 verify_arguments('WAV audio folder', 'output folder', 'number of outputs per input', 'average volume offset',

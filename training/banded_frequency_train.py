@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Training script for a neural network that is trained on a recording in frequency domain split into discrete bands"""
-# Created by brendon-ai, June 2018
+# Created by Brendon Matusch, June 2018
 
 from keras.layers import Dense, Dropout, BatchNormalization, InputLayer
 from keras.models import Sequential
 
-from event_data import EventDataSet, RunType
-from experiment_serialization import save_test
+from data_processing.event_data_set import EventDataSet, RunType
+from data_processing.experiment_serialization import save_test
 
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
 event_data_set = EventDataSet(

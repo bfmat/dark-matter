@@ -8,7 +8,7 @@ from typing import List, Tuple
 
 import numpy as np
 
-from event_data import EventDataSet
+from data_processing.event_data_set import EventDataSet
 
 
 def save_test(event_data_set: EventDataSet, validation_ground_truths: np.ndarray, validation_network_outputs: np.ndarray) -> None:

@@ -2,11 +2,10 @@
 """A script for converting ROOT data to a smaller, quicker to load, and more portable Pickle format"""
 # Created by Brendon Matusch, June 2018
 
-import os
 import pickle
 
-from bubble_data_point import BubbleDataPoint
-from event_data import EVENT_FILE_PATH
+from data_processing.bubble_data_point import BubbleDataPoint
+from data_processing.event_data_set import EVENT_FILE_PATH
 
 import ROOT
 

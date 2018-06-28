@@ -6,7 +6,7 @@ import pickle
 import random
 from typing import List, Optional, Set, Tuple
 
-from bubble_data_point import BubbleDataPoint, RunType, TriggerCause
+from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerCause
 
 import numpy as np
 

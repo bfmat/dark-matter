@@ -6,8 +6,8 @@ import sys
 
 import matplotlib.pyplot as plt
 
-from experiment_serialization import load_test
-from verify_arguments import verify_arguments
+from data_processing.experiment_serialization import load_test
+from utilities.verify_arguments import verify_arguments
 
 # Verify that a path to the JSON data file is passed
 verify_arguments('JSON data file')

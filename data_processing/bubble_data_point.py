@@ -1,4 +1,5 @@
 """Code related to the custom bubble data format used instead of ROOT"""
+# Created by Brendon Matusch, June 2018
 
 from enum import IntEnum
 import datetime
