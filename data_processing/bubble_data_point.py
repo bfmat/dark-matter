@@ -135,10 +135,10 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
                 image_folder_path,
                 f'cam{camera_number}_image{image_number}.png'
             )
-            # Attempt to load it as a NumPy array, skipping to the next iteration if it we are not permitted
+            # Attempt to load it as a NumPy array, skipping to the next iteration if it we are not permitted to load the image or if it does not exist
             try:
                 full_image = imread(image_path)
-            except PermissionError:
+            except (PermissionError, FileNotFoundError):
                 continue
             # Round the bubble X and Y positions to integers so they can be used to index the image
             bubble_x_integer, bubble_y_integer = (
