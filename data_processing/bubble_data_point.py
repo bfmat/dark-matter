@@ -104,11 +104,16 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
     """Given a bubble data point, load, crop, and return a list of windows which contain that bubble"""
     # Format the date and run number to get the folder name, padding one-digit month and day numbers with zeroes
     date_run_folder_name = f'{bubble.date.year}{bubble.date.month:0>2d}{bubble.date.day:0>2d}_{bubble.run_number}'
+    # Paths to the image folders are inconsistent; sometimes they contain another folder named with the date inside the first folder, and sometimes they do not
+    # Check if there is a folder inside the first one and format the path accordingly
+    date_run_folder_path = os.path.join(RAW_DATA_PATH, date_run_folder_name)
+    name_duplicated_path = os.path.join(
+        date_run_folder_path, date_run_folder_name)
+    if os.path.isdir(name_duplicated_path):
+        date_run_folder_path = name_duplicated_path
     # Combine this with the event number to get the full path to the image folder
     image_folder_path = os.path.join(
-        RAW_DATA_PATH,
-        date_run_folder_name,
-        date_run_folder_name,
+        date_run_folder_path,
         str(bubble.event_number),
         'Images'
     )
