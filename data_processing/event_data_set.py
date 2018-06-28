@@ -137,6 +137,9 @@ class EventDataSet:
         training_ground_truths = []
         validation_images = []
         validation_ground_truths = []
+        # Create an index to count how many images we have loaded and compare it to the total
+        images_loaded = 0
+        total_images = len(self.training_events) + len(self.validation_events)
         # Iterate over the training and validation bubble lists, and corresponding image and ground truth lists
         for bubbles, images, ground_truths in zip(
             [self.training_events, self.validation_events],
@@ -153,5 +156,8 @@ class EventDataSet:
                     [(bubble.run_type == RunType.LOW_BACKGROUND)]
                     * len(bubble_images)
                 )
+                # Add to the counting index and notify the user what image we are at
+                images_loaded += 1
+                print(f'Loaded {images_loaded} images of {total_images}')
         # Return both components of both datasets, converted to NumPy arrays
         return np.array(training_images), np.array(training_ground_truths), np.array(validation_images), np.array(validation_ground_truths)
