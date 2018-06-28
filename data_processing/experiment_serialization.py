@@ -28,7 +28,7 @@ def save_test(event_data_set: EventDataSet, validation_ground_truths: np.ndarray
         # Add the processed dictionary to the list
         output_list.append(bubble_information)
     # Create a JSON file in the temporary folder, named with the current Unix time, save the data in it, and notify the user
-    json_file_path = f'/tmp/{int(time.time())}.json'
+    json_file_path = os.path.expanduser(f'~/{int(time.time())}.json')
     with open(json_file_path, 'w') as output_file:
         json.dump(output_list, output_file)
     print('Data saved at', json_file_path)
