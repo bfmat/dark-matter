@@ -158,6 +158,6 @@ class EventDataSet:
                 )
                 # Add to the counting index and notify the user what image we are at
                 images_loaded += 1
-                print(f'Loaded {images_loaded} images of {total_images}')
+                print(f'Loaded {images_loaded} bubbles of {total_images}')
         # Return both components of both datasets, converted to NumPy arrays
         return np.array(training_images), np.array(training_ground_truths), np.array(validation_images), np.array(validation_ground_truths)

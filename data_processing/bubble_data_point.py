@@ -6,6 +6,7 @@ import datetime
 import itertools
 import math
 import os
+import random
 from typing import List
 
 import numpy as np
@@ -16,6 +17,9 @@ RAW_DATA_PATH = os.path.expanduser('~/projects/rrg-kenclark/pico/30l-16-data')
 
 # The side length in pixels of the square windows to crop out of the bubble chamber images
 WINDOW_SIDE_LENGTH = 50
+
+# The number of images to load out of the 21 possibilities for each bubble
+IMAGES_PER_BUBBLE = 1
 
 
 class RunType(IntEnum):
@@ -124,8 +128,8 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
         # If either axis is less than zero, the bubble could not be found; skip to the next iteration
         if bubble_x < 0 or bubble_y < 0:
             continue
-        # Otherwise, iterate over the image numbers 50 to 70 inclusive, which are recorded after the bubble is detected
-        for image_number in range(50, 71):
+        # Otherwise, iterate over randomly chosen samples from the image numbers 50 to 70 inclusive, which are recorded after the bubble is detected
+        for image_number in random.sample(range(50, 71), IMAGES_PER_BUBBLE):
             # Format the full path of this image and load it as a NumPy array
             image_path = os.path.join(
                 image_folder_path,
