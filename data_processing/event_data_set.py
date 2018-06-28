@@ -22,9 +22,9 @@ VALIDATION_SPLIT = 0.2
 # The number of images that are returned in each batch from the generator
 IMAGE_BATCH_SIZE = 32
 # The number of images that are held in memory within the image generator
-IMAGE_STORAGE_SIZE = 256
+IMAGE_STORAGE_SIZE = 512
 # The number of images that are replaced in the storage list every batch
-IMAGES_REPLACED_PER_BATCH = 2
+IMAGES_REPLACED_PER_BATCH = 16
 
 
 class EventDataSet:
