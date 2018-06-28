@@ -140,13 +140,17 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
                 full_image = imread(image_path)
             except (PermissionError, FileNotFoundError):
                 continue
-            # Round the bubble X and Y positions to integers so they can be used to index the image
+            # Round the bubble X and Y positions to integers and cap them at the edges of the image, so they can be used to index the image
             bubble_x_integer, bubble_y_integer = (
-                int(round(position)) for position in [bubble_x, bubble_y]
+                min(max(int(round(position)), WINDOW_SIDE_LENGTH), shape_dimension - (WINDOW_SIDE_LENGTH + 1))
+                for position, shape_dimension in zip([bubble_x, bubble_y], reversed(full_image.shape))
             )
-            # Crop a square out, centered at the integer position
-            window = full_image[(bubble_x_integer-WINDOW_SIDE_LENGTH):(bubble_y_integer+WINDOW_SIDE_LENGTH),
-                                (bubble_y_integer-WINDOW_SIDE_LENGTH):(bubble_y_integer+WINDOW_SIDE_LENGTH)]
+            # Crop a square out, centered at the integer position (the image is indexed Y, X)
+            half_side_length = WINDOW_SIDE_LENGTH // 2
+            window = full_image[(bubble_y_integer - half_side_length):(bubble_y_integer + half_side_length),
+                                (bubble_x_integer - half_side_length):(bubble_x_integer + half_side_length)]
+            # Add a channel dimension of 1 at the end; it is expected by Keras
+            window = np.expand_dims(window, axis=-1)
             # Add the cropped window to the list of images
             bubble_images.append(window)
     # Return the list of cropped images

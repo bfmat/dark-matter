@@ -158,10 +158,7 @@ class EventDataSet:
                 bubble_images = load_bubble_images(bubble)
                 images += bubble_images
                 # Add an equivalent number of binary values to the ground truth list, saying whether these images represent alpha particles or neutrons
-                ground_truths.append(
-                    [(bubble.run_type == RunType.LOW_BACKGROUND)]
-                    * len(bubble_images)
-                )
+                ground_truths += [(bubble.run_type == RunType.LOW_BACKGROUND)] * len(bubble_images)
                 # Add to the counting index and notify the user what image we are at
                 images_loaded += 1
                 print(f'Loaded {images_loaded} bubbles of {total_images}')

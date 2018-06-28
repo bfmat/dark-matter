@@ -17,7 +17,7 @@ event_data_set = EventDataSet(
         RunType.LOW_BACKGROUND,
         RunType.AMERICIUM_BERYLLIUM,
     ]),
-    filter_proportion_randomly=0.7
+    filter_proportion_randomly=0.8
 )
 # Get the bubble images and corresponding ground truths
 training_images, training_ground_truths, validation_images, validation_ground_truths = event_data_set.image_alpha_classification()
@@ -25,7 +25,7 @@ training_images, training_ground_truths, validation_images, validation_ground_tr
 # Create a convolutional neural network model with hyperbolic tangent activations
 activation = 'tanh'
 model = Sequential([
-    InputLayer(input_shape=(WINDOW_SIDE_LENGTH, WINDOW_SIDE_LENGTH)),
+    InputLayer(input_shape=(WINDOW_SIDE_LENGTH, WINDOW_SIDE_LENGTH, 1)),
     Conv2D(filters=16, kernel_size=4, strides=2, activation=activation),
     Conv2D(filters=32, kernel_size=3, strides=2, activation=activation),
     Conv2D(filters=64, kernel_size=2, strides=1, activation=activation),
