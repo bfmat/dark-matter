@@ -61,4 +61,10 @@ for _ in range(20):
         epochs=1
     )
     # Evaluate the model on the validation data set
-    model.evaluate(x=validation_inputs, y=validation_ground_truths)
+    loss, accuracy = model.evaluate(
+        x=validation_inputs,
+        y=validation_ground_truths,
+        verbose=0
+    )
+    print('Validation loss:', loss)
+    print('Validation accuracy:', accuracy)
