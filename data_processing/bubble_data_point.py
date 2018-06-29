@@ -7,6 +7,7 @@ import itertools
 import math
 import os
 import random
+import sys
 from typing import List
 
 import numpy as np
@@ -20,6 +21,9 @@ WINDOW_SIDE_LENGTH = 50
 
 # The number of images to load out of the 21 possibilities for each bubble
 IMAGES_PER_BUBBLE = 1
+
+# The number of piezo channels present in the audio files (not all of them work)
+CHANNELS = 8
 
 
 class RunType(IntEnum):
@@ -104,8 +108,8 @@ class BubbleDataPoint:
         ]
 
 
-def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
-    """Given a bubble data point, load, crop, and return a list of windows which contain that bubble"""
+def bubble_data_path(bubble: BubbleDataPoint) -> str:
+    """Given a bubble data point, return the path to the folder containing all of the data corresponding to that bubble"""
     # Format the date and run number to get the folder name, padding one-digit month and day numbers with zeroes
     date_run_folder_name = f'{bubble.date.year}{bubble.date.month:0>2d}{bubble.date.day:0>2d}_{bubble.run_number}'
     # Paths to the image folders are inconsistent; sometimes they contain another folder named with the date inside the first folder, and sometimes they do not
@@ -115,10 +119,48 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
         date_run_folder_path, date_run_folder_name)
     if os.path.isdir(name_duplicated_path):
         date_run_folder_path = name_duplicated_path
-    # Combine this with the event number to get the full path to the image folder
-    image_folder_path = os.path.join(
+    # Combine this with the event number to get the full path to the data folder
+    return os.path.join(
         date_run_folder_path,
-        str(bubble.event_number),
+        str(bubble.event_number)
+    )
+
+
+def load_bubble_audio(bubble: BubbleDataPoint) -> np.ndarray:
+    """Load an audio file in the raw binary format present in the PICO-60 data set, returning an array with dimensions 2 by the number of samples containing the data from only the working microphones"""
+    # Get the path to the bubble data folder, and load the audio binary file within it
+    audio_file_path = os.path.join(
+        bubble_data_path(bubble),
+        'fastDAQ_0.bin'
+    )
+    # Open the file for binary reading
+    with open(audio_file_path, 'rb') as audio_file:
+        # Read and ignore 4 bytes which comprise the header
+        audio_file.read(4)
+        # The next 2 bytes are the length of the string describing the channels
+        channels_string_length = int.from_bytes(
+            audio_file.read(2), sys.byteorder)
+        # Read the channels description string from the file now, and decode it as a string
+        channels_string = audio_file.read(channels_string_length).decode()
+        # Read the number of samples from the file, which is used in parsing the rest of the file
+        samples = int.from_bytes(audio_file.read(4), sys.byteorder)
+        # The rest of the file consists of 2-byte integers, one per channel per sample; read all of it
+        raw_data = audio_file.read(CHANNELS * samples * 2)
+    # Convert the data into a 1-dimensional NumPy array
+    data_array_flat = np.frombuffer(raw_data, dtype=np.int16)
+    # Reshape the 1-dimensional array into channels and samples
+    data_array = np.reshape(data_array_flat, (samples, CHANNELS))
+    # Transpose it so that the channels axis comes first
+    data_array = np.transpose(data_array)
+    # Index and return the data of microphones 3 and 7, the only ones that work
+    return data_array[[0, 3]]
+
+
+def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
+    """Given a bubble data point, load, crop, and return a list of windows which contain that bubble"""
+    # Get the path to the bubble data folder and use it to get that to the image folder
+    image_folder_path = os.path.join(
+        bubble_data_path(bubble),
         'Images'
     )
     # Create a list to hold the images of this bubble
