@@ -58,7 +58,6 @@ for _ in range(20):
     model.fit_generator(
         training_generator,
         steps_per_epoch=128,
-        validation_data=(validation_inputs, validation_ground_truths),
         epochs=1
     )
     # Evaluate the model on the validation data set
