@@ -2,26 +2,36 @@
 # Created by Brendon Matusch, June 2018
 
 import os
-from typing import List, Tuple
-
+import sys
 import numpy as np
-from scipy.io.wavfile import read
+
+# The number of piezo channels present in the file (not all of them work)
+CHANNELS = 8
 
 
-def load_audio(folder_path: str) -> List[Tuple[int, np.ndarray]]:
-    """Load a number of audio files in WAV format"""
-    # Get the full paths of the audio files in the folder
-    audio_folder = os.path.expanduser(folder_path)
-    audio_paths = [
-        os.path.join(audio_folder, file_name)
-        for file_name in os.listdir(audio_folder)
-    ]
-    # Load each of the files, including the sample rates as well as the data in NumPy array format
-    rates, data_arrays = zip(*(read(path) for path in audio_paths))
-    # Take the first element of each multi-dimensional sub-array in the data array so that the output is one-dimensional (mono rather than stereo)
-    data_arrays_mono = [
-        array[:, 0] if len(array.shape) > 1 else array
-        for array in data_arrays
-    ]
-    # Zip the rates with the data arrays and return them
-    return list(zip(rates, data_arrays_mono))
+def load_audio(file_path: str) -> np.ndarray:
+    """Load an audio file in the MATLAB binary format present in the PICO-60 data set"""
+    # Open the file for binary reading
+    with open(os.path.expanduser(file_path), 'rb') as audio_file:
+        # Read and ignore 4 bytes which comprise the header
+        audio_file.read(4)
+        # The next 2 bytes are the length of the string describing the channels
+        channels_description_length = int.from_bytes(
+            audio_file.read(2), sys.byteorder)
+        # Read the channels description string from the file now, and decode it as a string
+        channels_description = audio_file.read(
+            channels_description_length).decode()
+        # Read the number of samples from the file, which is used in parsing the rest of the file
+        samples = int.from_bytes(audio_file.read(4), sys.byteorder)
+        # The rest of the file consists of 2-byte integers, one per channel per sample; read all of it
+        raw_data = audio_file.read(CHANNELS * samples * 2)
+    # Convert the data into a 1-dimensional NumPy array
+    data_array_flat = np.fromstring(raw_data, dtype=np.int16)
+    # Reshape the 1-dimensional array into channels and samples
+    data_array = np.reshape(data_array_flat, (samples, CHANNELS))
+    # Transpose it so that the channels axis comes first
+    data_array = np.transpose(data_array)
+    print(data_array)
+
+
+load_audio('~/Desktop/20170101_0/20170101_0/0/fastDAQ_0.bin')
