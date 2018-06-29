@@ -16,8 +16,8 @@ event_data_set = EventDataSet(
         RunType.LOW_BACKGROUND,
         RunType.AMERICIUM_BERYLLIUM,
     ]),
-    filter_proportion_randomly=0.5,
-    use_fiducial_cuts=False
+    filter_proportion_randomly=0,
+    use_fiducial_cuts=True
 )
 # Create a training data generator and get validation data array with the image loading function
 training_generator_callable, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
