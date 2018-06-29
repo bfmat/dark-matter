@@ -126,7 +126,7 @@ def bubble_data_path(bubble: BubbleDataPoint) -> str:
     )
 
 
-def load_bubble_audio(bubble: BubbleDataPoint) -> np.ndarray:
+def load_bubble_audio(bubble: BubbleDataPoint) -> List[np.ndarray]:
     """Load an audio file in the raw binary format present in the PICO-60 data set, returning an array with dimensions 2 by the number of samples containing the data from only the working microphones"""
     # Get the path to the bubble data folder, and load the audio binary file within it
     audio_file_path = os.path.join(
@@ -153,7 +153,8 @@ def load_bubble_audio(bubble: BubbleDataPoint) -> np.ndarray:
     # Transpose it so that the channels axis comes first
     data_array = np.transpose(data_array)
     # Index and return the data of microphones 3 and 7, the only ones that work
-    return data_array[[0, 3]]
+    # Wrap it in a single-element list because that is expected by the data generator
+    return [data_array[[0, 3]]]
 
 
 def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:

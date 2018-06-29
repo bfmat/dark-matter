@@ -6,8 +6,7 @@ from keras.layers import Conv2D, Flatten, Dense, Dropout, InputLayer
 from keras.models import Sequential
 
 from data_processing.event_data_set import EventDataSet, RunType
-from data_processing.experiment_serialization import save_test
-from data_processing.bubble_data_point import WINDOW_SIDE_LENGTH
+from data_processing.bubble_data_point import load_bubble_images, WINDOW_SIDE_LENGTH
 
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
 event_data_set = EventDataSet(
@@ -19,12 +18,13 @@ event_data_set = EventDataSet(
     ]),
     filter_proportion_randomly=0.5
 )
-# Get data generators for both training and validation
-training_generator = event_data_set.image_alpha_classification_generator(
-    validation=False
-)
-validation_generator = event_data_set.image_alpha_classification_generator(
-    validation=True
+# Create a training data generator with the image loading function
+training_generator = event_data_set.arbitrary_alpha_classification_generator(
+    validation=False,
+    data_converter=load_bubble_images,
+    storage_size=512,
+    batch_size=32,
+    examples_replaced_per_batch=16
 )
 
 # Create a convolutional neural network model with hyperbolic tangent activations
@@ -55,7 +55,5 @@ model.compile(
 model.fit_generator(
     training_generator,
     steps_per_epoch=128,
-    validation_data=validation_generator,
-    validation_steps=8,
     epochs=20
 )
