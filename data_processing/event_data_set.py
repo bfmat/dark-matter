@@ -188,8 +188,8 @@ class EventDataSet:
         training_bubbles = bubbles[GENERATOR_VALIDATION_EXAMPLES:]
         validation_bubbles = bubbles[:GENERATOR_VALIDATION_EXAMPLES]
         # Convert the validation bubbles right away, and also get corresponding binary values for ground truth
-        validation_inputs = np.array([
-            data_converter(bubble)
+        validation_inputs = np.stack([
+            data_converter(bubble)[0]
             for bubble in validation_bubbles
         ])
         validation_ground_truths = np.array([
