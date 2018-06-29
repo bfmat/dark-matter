@@ -17,7 +17,7 @@ event_data_set = EventDataSet(
         RunType.LOW_BACKGROUND,
         RunType.AMERICIUM_BERYLLIUM,
     ]),
-    filter_proportion_randomly=0.8
+    filter_proportion_randomly=0.5
 )
 # Get data generators for both training and validation
 training_generator = event_data_set.image_alpha_classification_generator(
@@ -32,6 +32,7 @@ activation = 'tanh'
 model = Sequential([
     InputLayer(input_shape=(WINDOW_SIDE_LENGTH, WINDOW_SIDE_LENGTH, 1)),
     Conv2D(filters=16, kernel_size=4, strides=2, activation=activation),
+    Conv2D(filters=32, kernel_size=3, strides=2, activation=activation),
     Conv2D(filters=32, kernel_size=3, strides=2, activation=activation),
     Conv2D(filters=64, kernel_size=2, strides=1, activation=activation),
     Flatten(),

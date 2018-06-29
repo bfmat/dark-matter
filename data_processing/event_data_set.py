@@ -22,9 +22,9 @@ VALIDATION_SPLIT = 0.2
 # The number of images that are returned in each batch from the generator
 IMAGE_BATCH_SIZE = 32
 # The number of images that are held in memory within the image generator
-IMAGE_STORAGE_SIZE = 256
+IMAGE_STORAGE_SIZE = 512
 # The number of images that are replaced in the storage list every batch
-IMAGES_REPLACED_PER_BATCH = 2
+IMAGES_REPLACED_PER_BATCH = 16
 
 
 class EventDataSet:
@@ -166,11 +166,11 @@ class EventDataSet:
             batch_indices = random.sample(
                 range(len(images)), IMAGE_BATCH_SIZE)
             # Select lists of images and ground truths with these indices and convert them to NumPy arrays
-            batch_images = np.array(images[batch_indices])
-            batch_ground_truths = np.array(ground_truths[batch_indices])
+            batch_images = np.array(images)[batch_indices]
+            batch_ground_truths = np.array(ground_truths)[batch_indices]
             # Yield both components of the data
             yield batch_images, batch_ground_truths
             # Remove some random indices from both lists (they will be added back on the next iteration)
-            for index in random.sample(range(len(images)), IMAGES_REPLACED_PER_BATCH):
+            for index in reversed(sorted(random.sample((range(len(images))), IMAGES_REPLACED_PER_BATCH))):
                 images.pop(index)
                 ground_truths.pop(index)
