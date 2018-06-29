@@ -1,0 +1,74 @@
+Using TensorFlow backend.
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+batch_normalization_1 (Batch (None, 72)                288       
+_________________________________________________________________
+dense_1 (Dense)              (None, 24)                1752      
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 24)                0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 6)                 150       
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 6)                 0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 7         
+=================================================================
+Total params: 2,197
+Trainable params: 2,053
+Non-trainable params: 144
+_________________________________________________________________
+None
+Train on 545 samples, validate on 137 samples
+Epoch 1/20
+2018-06-29 13:28:08.768685: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-06-29 13:28:08.853870: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:898] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-06-29 13:28:08.854210: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1356] Found device 0 with properties: 
+name: GeForce GTX 1080 major: 6 minor: 1 memoryClockRate(GHz): 1.8475
+pciBusID: 0000:01:00.0
+totalMemory: 7.93GiB freeMemory: 7.01GiB
+2018-06-29 13:28:08.854230: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1435] Adding visible gpu devices: 0
+2018-06-29 13:28:08.990563: I tensorflow/core/common_runtime/gpu/gpu_device.cc:923] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-06-29 13:28:08.990585: I tensorflow/core/common_runtime/gpu/gpu_device.cc:929]      0 
+2018-06-29 13:28:08.990590: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 0:   N 
+2018-06-29 13:28:08.990712: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6764 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080, pci bus id: 0000:01:00.0, compute capability: 6.1)
+545/545 [==============================] - 1s 1ms/step - loss: 0.5742 - acc: 0.5193 - val_loss: 0.1588 - val_acc: 0.8175
+Epoch 2/20
+545/545 [==============================] - 0s 72us/step - loss: 0.4763 - acc: 0.5431 - val_loss: 0.1120 - val_acc: 0.8686
+Epoch 3/20
+545/545 [==============================] - 0s 73us/step - loss: 0.3629 - acc: 0.6018 - val_loss: 0.0892 - val_acc: 0.8832
+Epoch 4/20
+545/545 [==============================] - 0s 70us/step - loss: 0.3588 - acc: 0.6165 - val_loss: 0.0779 - val_acc: 0.8978
+Epoch 5/20
+545/545 [==============================] - 0s 69us/step - loss: 0.3048 - acc: 0.6385 - val_loss: 0.0734 - val_acc: 0.9124
+Epoch 6/20
+545/545 [==============================] - 0s 70us/step - loss: 0.2782 - acc: 0.6789 - val_loss: 0.0707 - val_acc: 0.9270
+Epoch 7/20
+545/545 [==============================] - 0s 68us/step - loss: 0.2765 - acc: 0.6954 - val_loss: 0.0674 - val_acc: 0.9197
+Epoch 8/20
+545/545 [==============================] - 0s 70us/step - loss: 0.2408 - acc: 0.7248 - val_loss: 0.0639 - val_acc: 0.9197
+Epoch 9/20
+545/545 [==============================] - 0s 68us/step - loss: 0.2228 - acc: 0.7541 - val_loss: 0.0635 - val_acc: 0.9124
+Epoch 10/20
+545/545 [==============================] - 0s 70us/step - loss: 0.1947 - acc: 0.7450 - val_loss: 0.0623 - val_acc: 0.9197
+Epoch 11/20
+545/545 [==============================] - 0s 69us/step - loss: 0.1945 - acc: 0.7670 - val_loss: 0.0612 - val_acc: 0.9124
+Epoch 12/20
+545/545 [==============================] - 0s 71us/step - loss: 0.1853 - acc: 0.7798 - val_loss: 0.0609 - val_acc: 0.9124
+Epoch 13/20
+545/545 [==============================] - 0s 73us/step - loss: 0.1688 - acc: 0.8073 - val_loss: 0.0600 - val_acc: 0.9124
+Epoch 14/20
+545/545 [==============================] - 0s 77us/step - loss: 0.1629 - acc: 0.8092 - val_loss: 0.0603 - val_acc: 0.9124
+Epoch 15/20
+545/545 [==============================] - 0s 77us/step - loss: 0.1564 - acc: 0.8128 - val_loss: 0.0603 - val_acc: 0.9124
+Epoch 16/20
+545/545 [==============================] - 0s 75us/step - loss: 0.1328 - acc: 0.8550 - val_loss: 0.0599 - val_acc: 0.9197
+Epoch 17/20
+545/545 [==============================] - 0s 72us/step - loss: 0.1506 - acc: 0.8349 - val_loss: 0.0605 - val_acc: 0.9124
+Epoch 18/20
+545/545 [==============================] - 0s 70us/step - loss: 0.1359 - acc: 0.8404 - val_loss: 0.0609 - val_acc: 0.9124
+Epoch 19/20
+545/545 [==============================] - 0s 69us/step - loss: 0.1411 - acc: 0.8422 - val_loss: 0.0612 - val_acc: 0.9124
+Epoch 20/20
+545/545 [==============================] - 0s 70us/step - loss: 0.1326 - acc: 0.8550 - val_loss: 0.0617 - val_acc: 0.8905
+Data saved at /home/brendonm/1530293290.json
