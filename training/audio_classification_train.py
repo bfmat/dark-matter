@@ -33,8 +33,11 @@ activation = 'tanh'
 model = Sequential([
     InputLayer(input_shape=(250000, 2)),
     Conv1D(filters=16, kernel_size=16, strides=8, activation=activation),
+    Dropout(0.25),
     Conv1D(filters=32, kernel_size=12, strides=6, activation=activation),
+    Dropout(0.25),
     Conv1D(filters=64, kernel_size=8, strides=4, activation=activation),
+    Dropout(0.25),
     Flatten(),
     Dense(64, activation=activation),
     Dropout(0.5),
