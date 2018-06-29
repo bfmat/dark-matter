@@ -86,8 +86,6 @@ class BubbleDataPoint:
         banded_array = np.array(list(root_event.piezo_E_PosCor))
         # Reshape it into the format (time bin, frequency bin, piezo channel) where there are 3 time bins, 8 frequency bins, and 3 piezo channels
         self.banded_frequency_domain = np.reshape(banded_array, (3, 8, 3))
-        # Get the number of bubbles present in the event, calculated through image matching
-        self.num_bubbles = root_event.nbub
         # Get the approximated position of the bubble in 3 dimensions
         self.x_position = root_event.X
         self.y_position = root_event.Y
@@ -106,6 +104,10 @@ class BubbleDataPoint:
             (root_event.hori2, root_event.vert2),
             (root_event.hori3, root_event.vert3)
         ]
+        # Get the number of bubbles present in the event, calculated through image matching
+        self.num_bubbles_image = root_event.nbub
+        # Get the approximated number of bubbles based on the pressure transducer
+        self.num_bubbles_pressure = root_event.dytranCZ
 
 
 def bubble_data_path(bubble: BubbleDataPoint) -> str:

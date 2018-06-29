@@ -74,11 +74,11 @@ class EventDataSet:
                 # Exclude all events with a significantly negative acoustic parameter
                 and event.logarithmic_acoustic_parameter > 0.4
             ]
-        # Keep only events containing one bubble if the filter is enabled
+        # Keep only events containing around one bubble based on the pressure transducer if the filter is enabled
         if filter_multiple_bubbles:
             events_data = [
                 event for event in events_data
-                if event.num_bubbles == 1
+                if event.num_bubbles_pressure >= 0.8 and event.num_bubbles_pressure <= 1.2
             ]
         # Randomize the order of the events and remove a certain proportion
         random.shuffle(events_data)
