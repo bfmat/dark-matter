@@ -90,9 +90,13 @@ class BubbleDataPoint:
         self.x_position = root_event.X
         self.y_position = root_event.Y
         self.z_position = root_event.Z
-        # Get the horizontal and depth-wise distances from the bubble to the wall
-        self.horizontal_distance_to_wall = root_event.Dwall
-        self.depth_wise_distance_to_wall = root_event.Dwall_horiz
+        # Get the distance from the center of the jar from the perspective of a camera, replacing it with a very large value if it is negative (could not be found)
+        if root_event.R2 >= 0:
+            self.distance_from_center = math.sqrt(root_event.R2)
+        else:
+            self.distance_from_center = 100000
+        # Get the minimum of the distances from the bubble to the wall on two axes
+        self.distance_to_wall = min(root_event.Dwall, root_event.Dwall_horiz)
         # Compute the logarithmic acoustic parameter, which is used to sort background events out of the calibration runs
         # Substitute a large negative number if the raw value is zero or negative
         self.logarithmic_acoustic_parameter = math.log(root_event.acoustic_bubnum, 10) if root_event.acoustic_bubnum > 0 \

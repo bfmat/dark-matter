@@ -41,6 +41,8 @@ class EventDataSet:
                  filter_acoustic_parameter: bool,
                  # Filter out a certain proportion of the remaining data set randomly
                  filter_proportion_randomly: float,
+                 # Filter out all events within certain areas of the tank near the walls
+                 use_fiducial_cuts: bool
                  ) -> None:
         """Initializer that takes parameters that determine which data is loaded; None for the set of run types represents no filtering"""
         # Load the data and run a series of filters on it
@@ -51,9 +53,6 @@ class EventDataSet:
             if event.run_type != RunType.GARBAGE
             # Keep only events captured due to the camera trigger and not timeouts, manual triggers, or auto-relaunches
             and event.trigger_cause == TriggerCause.CAMERA_TRIGGER
-            # Keep only events within a certain vertical range
-            and event.z_position >= 0
-            and event.z_position <= 523
             # Always exclude events with a very large negative acoustic parameter (this is completely invalid)
             and event.logarithmic_acoustic_parameter > -100
         ]
@@ -74,11 +73,45 @@ class EventDataSet:
                 # Exclude all events with a significantly negative acoustic parameter
                 and event.logarithmic_acoustic_parameter > 0.4
             ]
-        # Keep only events containing around one bubble based on the pressure transducer if the filter is enabled
+        # Keep only events containing around one bubble based on the image and pressure transducer if the filter is enabled
         if filter_multiple_bubbles:
             events_data = [
                 event for event in events_data
-                if event.num_bubbles_pressure >= 0.8 and event.num_bubbles_pressure <= 1.2
+                if event.num_bubbles_image == 1
+                and event.num_bubbles_pressure >= 0.8 and event.num_bubbles_pressure <= 1.2
+            ]
+        # Filter out events near the wall of the tank if the cuts are enabled
+        if use_fiducial_cuts:
+            events_data = [
+                event for event in events_data
+                # Omit events above a certain height (too near the surface of the vessel)
+                if event.z_position <= 523
+                # Accept several different possible regions that the bubble can occupy around the center of the tank
+                and (
+                    # The bubble can be near the wall, but must be within a constrained vertical range above the center of the tank
+                    (
+                        event.distance_to_wall > 6
+                        and event.z_position > 0
+                        and event.z_position <= 400
+                    )
+                    # The bubble can be near the wall and below the center of the tank, but has to be within a certain radius of the center
+                    or (
+                        event.distance_to_wall > 6
+                        and event.z_position <= 0
+                        and event.distance_from_center <= 100
+                    )
+                    # The bubble must be distant from the wall and below center, but must be far from the center
+                    or (
+                        event.distance_to_wall > 13
+                        and event.distance_from_center > 100
+                        and event.z_position <= 0
+                    )
+                    # The bubble can be distant from the wall and in the upper part of the tank
+                    or (
+                        event.distance_to_wall > 13
+                        and event.z_position > 400
+                    )
+                )
             ]
         # Randomize the order of the events and remove a certain proportion
         random.shuffle(events_data)
@@ -99,7 +132,8 @@ class EventDataSet:
             keep_run_types=None,
             filter_multiple_bubbles=False,
             filter_acoustic_parameter=False,
-            filter_proportion_randomly=0
+            filter_proportion_randomly=0,
+            use_fiducial_cuts=False
         )
         # Combine its training and validation data into one array
         all_data = event_data_set.training_events + event_data_set.validation_events
