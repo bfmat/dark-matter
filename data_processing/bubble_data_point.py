@@ -133,19 +133,24 @@ def load_bubble_audio(bubble: BubbleDataPoint) -> List[np.ndarray]:
         bubble_data_path(bubble),
         'fastDAQ_0.bin'
     )
-    # Open the file for binary reading
-    with open(audio_file_path, 'rb') as audio_file:
-        # Read and ignore 4 bytes which comprise the header
-        audio_file.read(4)
-        # The next 2 bytes are the length of the string describing the channels
-        channels_string_length = int.from_bytes(
-            audio_file.read(2), sys.byteorder)
-        # Read the channels description string from the file now, and decode it as a string
-        channels_string = audio_file.read(channels_string_length).decode()
-        # Read the number of samples from the file, which is used in parsing the rest of the file
-        samples = int.from_bytes(audio_file.read(4), sys.byteorder)
-        # The rest of the file consists of 2-byte integers, one per channel per sample; read all of it
-        raw_data = audio_file.read(CHANNELS * samples * 2)
+    # Try to open the file for binary reading
+    try:
+        with open(audio_file_path, 'rb') as audio_file:
+            # Read and ignore 4 bytes which comprise the header
+            audio_file.read(4)
+            # The next 2 bytes are the length of the string describing the channels
+            channels_string_length = int.from_bytes(
+                audio_file.read(2), sys.byteorder)
+            # Read the channels description string from the file now, and decode it as a string
+            channels_string = audio_file.read(channels_string_length).decode()
+            # Read the number of samples from the file, which is used in parsing the rest of the file
+            samples = int.from_bytes(audio_file.read(4), sys.byteorder)
+            # The rest of the file consists of 2-byte integers, one per channel per sample; read all of it
+            raw_data = audio_file.read(CHANNELS * samples * 2)
+    # If we are not permitted to load the file or if it does not exist, notify the user and return an empty list with no examples
+    except (PermissionError, FileNotFoundError):
+        print(f'File {audio_file_path} could not be loaded')
+        return []
     # Convert the data into a 1-dimensional NumPy array
     data_array_flat = np.frombuffer(raw_data, dtype=np.int16)
     # Reshape the 1-dimensional array into channels and samples
