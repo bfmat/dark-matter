@@ -37,7 +37,7 @@ model = Sequential([
     Dropout(0.5),
     Dense(6, activation=activation),
     Dropout(0.5),
-    Dense(1)
+    Dense(1, activation='sigmoid')
 ])
 # Output a summary of the model's architecture
 print(model.summary())
