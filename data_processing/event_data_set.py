@@ -58,6 +58,9 @@ class EventDataSet:
             and event.trigger_cause == TriggerCause.CAMERA_TRIGGER
             # Always exclude events with a very large negative acoustic parameter (this is completely invalid)
             and event.logarithmic_acoustic_parameter > -100
+            # TEMPORARY HACK: Only include events within a certain vertical range
+            and event.z_position >= 0
+            and event.z_position <= 523
         ]
         # If there are run types provided, filter out data points that are not in the set
         if keep_run_types is not None:
@@ -75,9 +78,6 @@ class EventDataSet:
                 and not (event.run_type != RunType.LOW_BACKGROUND and event.logarithmic_acoustic_parameter < ACOUSTIC_PARAMETER_THRESHOLD)
                 # Exclude all events with a significantly negative acoustic parameter
                 and event.logarithmic_acoustic_parameter > 0.4
-                # TEMPORARY HACK: Only include events within a certain vertical range
-                and event.z_position >= 0
-                and event.z_position <= 523
             ]
         # Keep only events containing around one bubble based on the image and pressure transducer if the filter is enabled
         if filter_multiple_bubbles:
