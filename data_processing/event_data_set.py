@@ -17,8 +17,11 @@ EVENT_FILE_PATH = os.path.expanduser('~/merged.pkl')
 # A threshold for the logarithmic acoustic parameter, which approximately discriminates between neutrons (below) and alpha particles (above)
 ACOUSTIC_PARAMETER_THRESHOLD = 1.2
 
-# The amount of data (out of 1) to remove for validation
+# The amount of data (out of 1) to remove for validation in the non-generator training functions
 VALIDATION_SPLIT = 0.2
+
+# The absolute number of examples to reserve for validation in the training generator
+GENERATOR_VALIDATION_EXAMPLES = 128
 
 
 class EventDataSet:
@@ -173,39 +176,56 @@ class EventDataSet:
 
     def arbitrary_alpha_classification_generator(
         self,
-        validation: bool,
         data_converter: Callable[[BubbleDataPoint], List[np.ndarray]],
         storage_size: int,
         batch_size: int,
         examples_replaced_per_batch: int
-    ) -> Generator[Tuple[np.ndarray, np.ndarray], None, None]:
-        """Return a generator which, for training or validation, produces arbitrary training data for each bubble, with corresponding binary classification ground truths into neutrons and alpha particles"""
-        # Based on the validation parameter, select a list of bubbles which the generator will read from
-        bubbles = self.validation_events if validation else self.training_events
-        # Create lists to store a changing set of training examples and ground truths in, so that they don't have to be reloaded for every batch
-        training_examples = []
-        ground_truths = []
-        # Iterate forever, loading and returning training examples and ground truth values
-        while True:
-            # If there are fewer examples than expected in the list, load some more
-            while len(training_examples) < storage_size:
-                # Choose one of the bubbles randomly
-                bubble = random.choice(bubbles)
-                # Get examples for this bubble and add it to the list
-                bubble_examples = data_converter(bubble)
-                training_examples += bubble_examples
-                # Add an equivalent number of binary values to the ground truth list, saying whether these examples represent alpha particles or neutrons
-                ground_truths += [(bubble.run_type ==
-                                   RunType.LOW_BACKGROUND)] * len(bubble_examples)
-            # Choose some random indices from the length of the training input and ground truth lists to return as a batch
-            batch_indices = random.sample(
-                range(len(training_examples)), batch_size)
-            # Select lists of training examples and ground truths with these indices and convert them to NumPy arrays
-            batch_inputs = np.array(training_examples)[batch_indices]
-            batch_ground_truths = np.array(ground_truths)[batch_indices]
-            # Yield both components of the data
-            yield batch_inputs, batch_ground_truths
-            # Remove some random indices from both lists (they will be added back on the next iteration)
-            for index in reversed(sorted(random.sample((range(len(training_examples))), examples_replaced_per_batch))):
-                training_examples.pop(index)
-                ground_truths.pop(index)
+    ) -> Tuple[Callable[[], Generator[Tuple[np.ndarray, np.ndarray], None, None]], np.ndarray, np.ndarray]:
+        """Return a generator which produces arbitrary training data for each bubble, with corresponding binary classification ground truths into neutrons and alpha particles; alongside it, return arrays of validation data"""
+        # Combine the training and validation lists together
+        bubbles = self.training_events + self.validation_events
+        # Split it into training and validation, but with a smaller number for validation; this is a hack required because Keras's validation generator feature does not work as documented
+        training_bubbles = bubbles[GENERATOR_VALIDATION_EXAMPLES:]
+        validation_bubbles = bubbles[:GENERATOR_VALIDATION_EXAMPLES]
+        # Convert the validation bubbles right away, and also get corresponding binary values for ground truth
+        validation_inputs = np.array([
+            data_converter(bubble)
+            for bubble in validation_bubbles
+        ])
+        validation_ground_truths = np.array([
+            bubble.run_type == RunType.LOW_BACKGROUND
+            for bubble in validation_bubbles
+        ])
+
+        def generate_data() -> Generator[Tuple[np.ndarray, np.ndarray], None, None]:
+            """The generator returned from the function"""
+            # Create lists to store a changing set of training examples and ground truths in, so that they don't have to be reloaded for every batch
+            training_examples = []
+            ground_truths = []
+            # Iterate forever, loading and returning training examples and ground truth values
+            while True:
+                # If there are fewer examples than expected in the list, load some more
+                while len(training_examples) < storage_size:
+                    # Choose one of the bubbles randomly
+                    bubble = random.choice(training_bubbles)
+                    # Get examples for this bubble and add it to the list
+                    bubble_examples = data_converter(bubble)
+                    training_examples += bubble_examples
+                    # Add an equivalent number of binary values to the ground truth list, saying whether these examples represent alpha particles or neutrons
+                    ground_truths += [(bubble.run_type ==
+                                       RunType.LOW_BACKGROUND)] * len(bubble_examples)
+                # Choose some random indices from the length of the training input and ground truth lists to return as a batch
+                batch_indices = random.sample(
+                    range(len(training_examples)), batch_size)
+                # Select lists of training examples and ground truths with these indices and convert them to NumPy arrays
+                batch_inputs = np.array(training_examples)[batch_indices]
+                batch_ground_truths = np.array(ground_truths)[batch_indices]
+                # Yield both components of the data
+                yield batch_inputs, batch_ground_truths
+                # Remove some random indices from both lists (they will be added back on the next iteration)
+                for index in reversed(sorted(random.sample((range(len(training_examples))), examples_replaced_per_batch))):
+                    training_examples.pop(index)
+                    ground_truths.pop(index)
+
+        # Return the generator alongside the validation inputs and ground truths
+        return generate_data, validation_inputs, validation_ground_truths

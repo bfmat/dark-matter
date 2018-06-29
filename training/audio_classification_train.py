@@ -16,11 +16,11 @@ event_data_set = EventDataSet(
         RunType.LOW_BACKGROUND,
         RunType.AMERICIUM_BERYLLIUM,
     ]),
-    filter_proportion_randomly=0.5
+    filter_proportion_randomly=0.5,
+    use_fiducial_cuts=False
 )
 # Create a training data generator with the audio loading function
-training_generator = event_data_set.arbitrary_alpha_classification_generator(
-    validation=False,
+training_generator, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
     data_converter=load_bubble_audio,
     storage_size=512,
     batch_size=32,
@@ -58,5 +58,6 @@ model.compile(
 model.fit_generator(
     training_generator,
     steps_per_epoch=128,
+    validation_data=(validation_inputs, validation_ground_truths),
     epochs=20
 )
