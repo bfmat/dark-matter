@@ -20,12 +20,13 @@ event_data_set = EventDataSet(
     use_fiducial_cuts=False
 )
 # Create a training data generator and get validation data array with the image loading function
-training_generator, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
+training_generator_callable, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
     data_converter=load_bubble_images,
     storage_size=512,
     batch_size=32,
     examples_replaced_per_batch=16
 )
+training_generator = training_generator_callable()
 
 # Create a convolutional neural network model with hyperbolic tangent activations
 activation = 'tanh'
@@ -51,10 +52,14 @@ model.compile(
     metrics=['accuracy']
 )
 
-# Train the model on the loaded data set
-model.fit_generator(
-    training_generator(),
-    steps_per_epoch=128,
-    validation_data=(validation_inputs, validation_ground_truths),
-    epochs=20
-)
+# Iterate over training and validation for 20 epochs
+for _ in range(20):
+    # Train the model on the generator
+    model.fit_generator(
+        training_generator,
+        steps_per_epoch=128,
+        validation_data=(validation_inputs, validation_ground_truths),
+        epochs=1
+    )
+    # Evaluate the model on the validation data set
+    model.evaluate(x=validation_inputs, y=validation_ground_truths)
