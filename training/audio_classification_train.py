@@ -7,6 +7,7 @@ from keras.models import Sequential
 
 from data_processing.event_data_set import EventDataSet
 from data_processing.bubble_data_point import RunType, load_bubble_audio
+from data_processing.experiment_serialization import save_test
 
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
 event_data_set = EventDataSet(
@@ -71,3 +72,6 @@ for _ in range(20):
     )
     print('Validation loss:', loss)
     print('Validation accuracy:', accuracy)
+# Run predictions on the validation data set, and save the experimental run
+validation_network_outputs = model.predict(validation_inputs)
+save_test(event_data_set, validation_ground_truths, validation_network_outputs)

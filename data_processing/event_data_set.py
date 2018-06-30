@@ -182,19 +182,19 @@ class EventDataSet:
         examples_replaced_per_batch: int
     ) -> Tuple[Callable[[], Generator[Tuple[np.ndarray, np.ndarray], None, None]], np.ndarray, np.ndarray]:
         """Return a generator which produces arbitrary training data for each bubble, with corresponding binary classification ground truths into neutrons and alpha particles; alongside it, return arrays of validation data"""
-        # Combine the training and validation lists together
-        bubbles = self.training_events + self.validation_events
+        # Combine the training and validation lists together; we need to divide them differently with a smaller number for validation because all of the validation events must be loaded at once
+        all_events = self.training_events + self.validation_events
         # Split it into training and validation, but with a smaller number for validation; this is a hack required because Keras's validation generator feature does not work as documented
-        training_bubbles = bubbles[GENERATOR_VALIDATION_EXAMPLES:]
-        validation_bubbles = bubbles[:GENERATOR_VALIDATION_EXAMPLES]
+        self.training_events = all_events[GENERATOR_VALIDATION_EXAMPLES:]
+        self.validation_events = all_events[:GENERATOR_VALIDATION_EXAMPLES]
         # Convert the validation bubbles right away, and also get corresponding binary values for ground truth
         validation_inputs = np.stack([
             data_converter(bubble)[0]
-            for bubble in validation_bubbles
+            for bubble in self.validation_events
         ])
         validation_ground_truths = np.array([
             bubble.run_type == RunType.LOW_BACKGROUND
-            for bubble in validation_bubbles
+            for bubble in self.validation_events
         ])
 
         def generate_data() -> Generator[Tuple[np.ndarray, np.ndarray], None, None]:
@@ -207,7 +207,7 @@ class EventDataSet:
                 # If there are fewer examples than expected in the list, load some more
                 while len(training_examples) < storage_size:
                     # Choose one of the bubbles randomly
-                    bubble = random.choice(training_bubbles)
+                    bubble = random.choice(self.training_events)
                     # Get examples for this bubble and add it to the list
                     bubble_examples = data_converter(bubble)
                     training_examples += bubble_examples
