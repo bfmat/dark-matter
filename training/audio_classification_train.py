@@ -54,10 +54,19 @@ model.compile(
     metrics=['accuracy']
 )
 
-# Train the model on the loaded data set
-model.fit_generator(
-    training_generator,
-    steps_per_epoch=128,
-    validation_data=(validation_inputs, validation_ground_truths),
-    epochs=20
-)
+# Iterate over training and validation for 20 epochs
+for _ in range(20):
+    # Train the model on the generator
+    model.fit_generator(
+        training_generator,
+        steps_per_epoch=128,
+        epochs=1
+    )
+    # Evaluate the model on the validation data set
+    loss, accuracy = model.evaluate(
+        x=validation_inputs,
+        y=validation_ground_truths,
+        verbose=0
+    )
+    print('Validation loss:', loss)
+    print('Validation accuracy:', accuracy)
