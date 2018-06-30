@@ -10,10 +10,11 @@ from keras.models import load_model
 
 from data_processing.event_data_set import EventDataSet
 from data_processing.bubble_data_point import RunType, load_bubble_audio, load_bubble_images
+from data_processing.experiment_serialization import save_test
 from utilities.verify_arguments import verify_arguments
 
-# The number of batches to load from the training data set for evaluation
-TRAINING_SET_BATCHES = 16
+# The number of bubbles to load from the training data set for evaluation
+TRAINING_SET_BUBBLES = 512
 
 # This script should take a keyword identifying the data set to test on, and a trained model
 verify_arguments('"waveform" or "image"', 'trained model')
@@ -28,23 +29,31 @@ event_data_set = EventDataSet(
     ]),
     use_fiducial_cuts=False
 )
-# Create a training data generator with a loading function that depends on the keyword in the first argument
+# Choose a data loading function that depends on the keyword in the first argument
 keyword = sys.argv[1].strip().lower()
 loading_function = load_bubble_audio if keyword == 'waveform' else load_bubble_images
-training_generator_callable, inputs, ground_truths = event_data_set.arbitrary_alpha_classification_generator(
-    data_converter=load_bubble_audio,
+# Run the function to create a generator but ignore the result; we will read the training and validation bubble lists separately
+event_data_set.arbitrary_alpha_classification_generator(
+    data_converter=loading_function,
     storage_size=512,
     batch_size=32,
     examples_replaced_per_batch=16
 )
-training_generator = training_generator_callable()
-# Iterate over the training generator, concatenating batches to the arrays of inputs and ground truths
-for batch_inputs, batch_ground_truths in training_generator:
-    inputs = np.concatenate(inputs, batch_inputs)
-    ground_truths = np.concatenate(ground_truths, batch_ground_truths)
+# Combine the validation set and the beginning of the training set into a single list, and iterate over it, adding the data to lists for inputs and ground truths
+inputs = []
+ground_truths = []
+for bubble in event_data_set.validation_events + event_data_set.training_events[:TRAINING_SET_BUBBLES]:
+    # Run the bubble through the loading function to get the input
+    inputs.append(loading_function(bubble))
+    # Predict the bubble is an alpha particle if it is in the background radiation set
+    ground_truths.append(bubble.run_type == RunType.LOW_BACKGROUND)
+# Convert the input and ground truth lists to NumPy arrays
+inputs_array = np.array(inputs)
+ground_truths_array = np.array(ground_truths)
 
 # Load the trained model from disk
 model = load_model(os.path.expanduser(sys.argv[2]))
-
 # Run inference on the combined training and validation inputs
-network_outputs = model.predict(inputs)
+network_outputs = model.predict(inputs_array)
+# Save this experiment so it can be graphed
+save_test(event_data_set, ground_truths, network_outputs)
