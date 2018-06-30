@@ -1,4 +1,4 @@
-"""Code related to the conversion of audio data from the domain to the frequency domain and vice versa"""
+"""Code related to the division of audio into bands and conversion of audio data from the domain to the frequency domain and vice versa"""
 # Created by Brendon Matusch, June 2018
 
 from typing import List

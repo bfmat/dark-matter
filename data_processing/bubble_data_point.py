@@ -10,6 +10,8 @@ import random
 import sys
 from typing import List
 
+from data_processing.audio_domain_processing import time_to_frequency_domain, band_time_domain, band_frequency_domain
+
 import numpy as np
 from scipy.ndimage import imread
 
@@ -18,12 +20,16 @@ RAW_DATA_PATH = os.path.expanduser('~/projects/rrg-kenclark/pico/30l-16-data')
 
 # The side length in pixels of the square windows to crop out of the bubble chamber images
 WINDOW_SIDE_LENGTH = 50
-
 # The number of images to load out of the 21 possibilities for each bubble
 IMAGES_PER_BUBBLE = 1
 
 # The number of piezo channels present in the audio files (not all of them work)
 CHANNELS = 8
+
+# The number of bands to split the recording into for frequency domain processing, from beginning to end
+TIME_BANDS = 16
+# The number of bands to split the frequency domain representation of each time band into
+FREQUENCY_BANDS = 1024
 
 
 class RunType(IntEnum):
@@ -164,6 +170,27 @@ def load_bubble_audio(bubble: BubbleDataPoint) -> List[np.ndarray]:
     # Index and return the data of microphones 3 and 7, the only ones that work
     # Wrap it in a single-element list because that is expected by the data generator
     return [data_array[:, [0, 3]]]
+
+
+def load_bubble_frequency_domain(bubble: BubbleDataPoint) -> List[np.ndarray]:
+    """Given a bubble data point, load a flattened representation of the audio in frequency domain in various time and frequency bins and for both channels"""
+    # First, get the audio waveform corresponding to this bubble
+    time_domain = load_bubble_audio(bubble)
+    # Split into a list of multiple time bands
+    time_domain_bands = band_time_domain(time_domain, TIME_BANDS)
+    # Convert each of the time bands into frequency domain
+    time_bands_frequency = [
+        time_to_frequency_domain(band)
+        for band in time_domain_bands
+    ]
+    # Reduce the frequency domain representations into bands and stack them together into a single array
+    banded_frequency_domain = np.stack([
+        band_frequency_domain(band, FREQUENCY_BANDS)
+        for band in time_bands_frequency
+    ])
+    print(banded_frequency_domain.shape)
+    # Flatten the array so it can be input into a dense layer and return the result
+    return banded_frequency_domain.flatten()
 
 
 def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
