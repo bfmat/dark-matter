@@ -42,8 +42,6 @@ class EventDataSet:
                  filter_multiple_bubbles: bool,
                  # Run cuts based on acoustic parameter
                  filter_acoustic_parameter: bool,
-                 # Filter out a certain proportion of the remaining data set randomly
-                 filter_proportion_randomly: float,
                  # Filter out all events within certain areas of the tank near the walls
                  use_fiducial_cuts: bool
                  ) -> None:
@@ -116,11 +114,8 @@ class EventDataSet:
                     )
                 )
             ]
-        # Randomize the order of the events and remove a certain proportion
+        # Randomize the order of the events and divide them into global training and validation sets according to the predefined proportion
         random.shuffle(events_data)
-        number_to_remove = int(filter_proportion_randomly * len(events_data))
-        events_data = events_data[number_to_remove:]
-        # Divide the events into global training and validation sets according to the predefined proportion
         training_split = 1 - VALIDATION_SPLIT
         validation_start_index = int(len(events_data) * training_split)
         self.training_events = events_data[:validation_start_index]
@@ -135,7 +130,6 @@ class EventDataSet:
             keep_run_types=None,
             filter_multiple_bubbles=False,
             filter_acoustic_parameter=False,
-            filter_proportion_randomly=0,
             use_fiducial_cuts=False
         )
         # Combine its training and validation data into one array
