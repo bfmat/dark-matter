@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+"""A script for running inference with a trained classification model on a data generator, and saving its outputs and the ground truths on the validation set and a portion of the training set"""
+# Created by Brendon Matusch, June 2018
+
+import os
+import sys
+
+import numpy as np
+from keras.models import load_model
+
+from data_processing.event_data_set import EventDataSet
+from data_processing.bubble_data_point import RunType, load_bubble_audio, load_bubble_images
+from utilities.verify_arguments import verify_arguments
+
+# The number of batches to load from the training data set for evaluation
+TRAINING_SET_BATCHES = 16
+
+# This script should take a keyword identifying the data set to test on, and a trained model
+verify_arguments('"waveform" or "image"', 'trained model')
+
+# Load the event data set from the file (the cuts here can be adjusted)
+event_data_set = EventDataSet(
+    filter_multiple_bubbles=True,
+    filter_acoustic_parameter=False,
+    keep_run_types=set([
+        RunType.LOW_BACKGROUND,
+        RunType.AMERICIUM_BERYLLIUM,
+    ]),
+    use_fiducial_cuts=False
+)
+# Create a training data generator with a loading function that depends on the keyword in the first argument
+keyword = sys.argv[1].strip().lower()
+loading_function = load_bubble_audio if keyword == 'waveform' else load_bubble_images
+training_generator_callable, inputs, ground_truths = event_data_set.arbitrary_alpha_classification_generator(
+    data_converter=load_bubble_audio,
+    storage_size=512,
+    batch_size=32,
+    examples_replaced_per_batch=16
+)
+training_generator = training_generator_callable()
+# Iterate over the training generator, concatenating batches to the arrays of inputs and ground truths
+for batch_inputs, batch_ground_truths in training_generator:
+    inputs = np.concatenate(inputs, batch_inputs)
+    ground_truths = np.concatenate(ground_truths, batch_ground_truths)
+
+# Load the trained model from disk
+model = load_model(os.path.expanduser(sys.argv[2]))
+
+# Run inference on the combined training and validation inputs
+network_outputs = model.predict(inputs)
