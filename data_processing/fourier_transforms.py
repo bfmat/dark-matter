@@ -29,3 +29,20 @@ def frequency_to_time_domain(frequency_domain_audio: np.ndarray) -> np.ndarray:
     ])
     # Transpose it back so that the sample axis comes first, and return it
     return np.transpose(channels_first_time)
+
+
+def band_frequency_domain(frequency_domain_audio: np.ndarray, bands: int) -> np.ndarray:
+    """Reduce a frequency domain audio recording down to a specified number of bands, each containing the average of the values within the band"""
+    # Get the indices that separate each of the bands, including the beginning and end
+    band_separators = np.linspace(
+        start=0,
+        stop=frequency_domain_audio.shape[0],
+        num=bands + 1
+    )
+    # Sum the segments of the audio array corresponding to each of the bands, stack the results into a NumPy array, and return it
+    return np.stack([
+        np.sum(frequency_domain_audio[
+            band_separators[band_index]:band_separators[band_index + 1]
+        ], axis=0)
+        for band_index in range(bands)
+    ])
