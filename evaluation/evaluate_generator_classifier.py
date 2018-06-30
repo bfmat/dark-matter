@@ -14,7 +14,7 @@ from data_processing.experiment_serialization import save_test
 from utilities.verify_arguments import verify_arguments
 
 # The number of bubbles to load from the training data set for evaluation
-TRAINING_SET_BUBBLES = 512
+TRAINING_SET_BUBBLES = 4
 
 # This script should take a keyword identifying the data set to test on, and a trained model
 verify_arguments('"waveform" or "image"', 'trained model')
@@ -47,6 +47,7 @@ for bubble in event_data_set.validation_events + event_data_set.training_events[
     inputs.append(loading_function(bubble))
     # Predict the bubble is an alpha particle if it is in the background radiation set
     ground_truths.append(bubble.run_type == RunType.LOW_BACKGROUND)
+    print('jeff')
 # Convert the input and ground truth lists to NumPy arrays
 inputs_array = np.array(inputs)
 ground_truths_array = np.array(ground_truths)
