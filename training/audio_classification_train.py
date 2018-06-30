@@ -2,6 +2,8 @@
 """Training script for a neural network that classifies audio samples into alpha particles and neutrons"""
 # Created by Brendon Matusch, June 2018
 
+import os
+
 from keras.layers import Conv1D, Flatten, Dense, Dropout, InputLayer, BatchNormalization
 from keras.models import Sequential
 
@@ -62,7 +64,7 @@ training_generator_callable, validation_inputs, validation_ground_truths = event
 training_generator = training_generator_callable()
 
 # Iterate over training and validation for 20 epochs
-for _ in range(20):
+for epoch in range(20):
     # Train the model on the generator
     model.fit_generator(
         training_generator,
@@ -75,8 +77,17 @@ for _ in range(20):
         y=validation_ground_truths,
         verbose=0
     )
+    # Output the validation loss and accuracy to the user
     print('Validation loss:', loss)
     print('Validation accuracy:', accuracy)
-# Run predictions on the validation data set, and save the experimental run
-validation_network_outputs = model.predict(validation_inputs)
-save_test(event_data_set, validation_ground_truths, validation_network_outputs)
+    # Run predictions on the validation data set, and save the experimental run
+    validation_network_outputs = model.predict(validation_inputs)
+    save_test(
+        event_data_set,
+        validation_ground_truths,
+        validation_network_outputs,
+        epoch
+    )
+    # Save the current model, named with the epoch number
+    model_path = os.path.expanduser(f'~/epoch{epoch}.h5')
+    model.save(model_path)
