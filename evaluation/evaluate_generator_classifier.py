@@ -56,26 +56,26 @@ ground_truths_array = np.array(ground_truths)
 # It should take both microphone channels and an entire clip of audio
 activation = 'tanh'
 model = Sequential([
-        InputLayer(input_shape=(250000, 2)),
-            BatchNormalization(),
-                Conv1D(filters=16, kernel_size=64, strides=24, activation=activation),
-                    BatchNormalization(),
-                        Dropout(0.25),
-                            Conv1D(filters=16, kernel_size=64, strides=24, activation=activation),
-                                BatchNormalization(),
-                                    Dropout(0.25),
-                                        Conv1D(filters=32, kernel_size=32, strides=12, activation=activation),
-                                            BatchNormalization(),
-                                                Dropout(0.25),
-                                                    Conv1D(filters=64, kernel_size=8, strides=3, activation=activation),
-                                                        BatchNormalization(),
-                                                            Dropout(0.25),
-                                                                Conv1D(filters=64, kernel_size=3, strides=2, activation=activation),
-                                                                    BatchNormalization(),
-                                                                        Dropout(0.25),
-                                                                            Flatten(),
-                                                                                Dense(1, activation='sigmoid')
-                                                                                ])
+    InputLayer(input_shape=(250000, 2)),
+    BatchNormalization(),
+    Conv1D(filters=16, kernel_size=64, strides=24, activation=activation),
+    BatchNormalization(),
+    Dropout(0.25),
+    Conv1D(filters=16, kernel_size=64, strides=24, activation=activation),
+    BatchNormalization(),
+    Dropout(0.25),
+    Conv1D(filters=32, kernel_size=32, strides=12, activation=activation),
+    BatchNormalization(),
+    Dropout(0.25),
+    Conv1D(filters=64, kernel_size=8, strides=3, activation=activation),
+    BatchNormalization(),
+    Dropout(0.25),
+    Conv1D(filters=64, kernel_size=3, strides=2, activation=activation),
+    BatchNormalization(),
+    Dropout(0.25),
+    Flatten(),
+    Dense(1, activation='sigmoid')
+])
 # Load the trained weights from disk
 model.load_weights(os.path.expanduser(sys.argv[2]))
 # Run inference on the combined training and validation inputs
