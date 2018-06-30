@@ -20,12 +20,13 @@ event_data_set = EventDataSet(
     use_fiducial_cuts=False
 )
 # Create a training data generator with the audio loading function
-training_generator, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
+training_generator_callable, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
     data_converter=load_bubble_audio,
     storage_size=512,
     batch_size=32,
     examples_replaced_per_batch=16
 )
+training_generator = training_generator_callable()
 
 # Create a one-dimensional convolutional neural network model with hyperbolic tangent activations
 # It should take both microphone channels and an entire clip of audio
