@@ -6,7 +6,8 @@ import os
 import sys
 
 import numpy as np
-from keras.models import load_model
+from keras.layers import Conv1D, Flatten, Dense, Dropout, InputLayer, BatchNormalization
+from keras.models import Sequential, load_model
 
 from data_processing.event_data_set import EventDataSet
 from data_processing.bubble_data_point import RunType, load_bubble_audio, load_bubble_images
@@ -47,14 +48,37 @@ for bubble in event_data_set.validation_events + event_data_set.training_events[
     inputs.append(loading_function(bubble))
     # Predict the bubble is an alpha particle if it is in the background radiation set
     ground_truths.append(bubble.run_type == RunType.LOW_BACKGROUND)
-    print('jeff')
 # Convert the input and ground truth lists to NumPy arrays
-inputs_array = np.array(inputs)
+inputs_array = np.concatenate(inputs)
 ground_truths_array = np.array(ground_truths)
 
-# Load the trained model from disk
-model = load_model(os.path.expanduser(sys.argv[2]))
+# Create a one-dimensional convolutional neural network model with hyperbolic tangent activations
+# It should take both microphone channels and an entire clip of audio
+activation = 'tanh'
+model = Sequential([
+        InputLayer(input_shape=(250000, 2)),
+            BatchNormalization(),
+                Conv1D(filters=16, kernel_size=64, strides=24, activation=activation),
+                    BatchNormalization(),
+                        Dropout(0.25),
+                            Conv1D(filters=16, kernel_size=64, strides=24, activation=activation),
+                                BatchNormalization(),
+                                    Dropout(0.25),
+                                        Conv1D(filters=32, kernel_size=32, strides=12, activation=activation),
+                                            BatchNormalization(),
+                                                Dropout(0.25),
+                                                    Conv1D(filters=64, kernel_size=8, strides=3, activation=activation),
+                                                        BatchNormalization(),
+                                                            Dropout(0.25),
+                                                                Conv1D(filters=64, kernel_size=3, strides=2, activation=activation),
+                                                                    BatchNormalization(),
+                                                                        Dropout(0.25),
+                                                                            Flatten(),
+                                                                                Dense(1, activation='sigmoid')
+                                                                                ])
+# Load the trained weights from disk
+model.load_weights(os.path.expanduser(sys.argv[2]))
 # Run inference on the combined training and validation inputs
 network_outputs = model.predict(inputs_array)
 # Save this experiment so it can be graphed
-save_test(event_data_set, ground_truths, network_outputs)
+save_test(event_data_set, ground_truths_array, network_outputs)
