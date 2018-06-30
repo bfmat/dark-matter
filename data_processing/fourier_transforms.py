@@ -1,6 +1,8 @@
 """Code related to the conversion of audio data from the domain to the frequency domain and vice versa"""
 # Created by Brendon Matusch, June 2018
 
+from typing import List
+
 import numpy as np
 
 
@@ -31,6 +33,23 @@ def frequency_to_time_domain(frequency_domain_audio: np.ndarray) -> np.ndarray:
     return np.transpose(channels_first_time)
 
 
+def band_time_domain(time_domain_audio: np.ndarray, bands: int) -> List[np.ndarray]:
+    """Split a time domain audio recording into a specified number of bands in a list"""
+    # Get the indices that separate each of the bands, including the beginning and end
+    band_separators = np.linspace(
+        start=0,
+        stop=time_domain_audio.shape[0],
+        num=bands + 1
+    )
+    # Split the recording along the samples axis according to the separator indices, and return the resulting list
+    return [
+        time_domain_audio[
+            band_separators[band_index]:band_separators[band_index + 1]
+        ]
+        for band_index in range(bands)
+    ]
+
+
 def band_frequency_domain(frequency_domain_audio: np.ndarray, bands: int) -> np.ndarray:
     """Reduce a frequency domain audio recording down to a specified number of bands, each containing the average of the values within the band"""
     # Get the indices that separate each of the bands, including the beginning and end
@@ -39,9 +58,9 @@ def band_frequency_domain(frequency_domain_audio: np.ndarray, bands: int) -> np.
         stop=frequency_domain_audio.shape[0],
         num=bands + 1
     )
-    # Sum the segments of the audio array corresponding to each of the bands, stack the results into a NumPy array, and return it
+    # Average the segments of the audio array corresponding to each of the bands, stack the results into a NumPy array, and return it
     return np.stack([
-        np.sum(frequency_domain_audio[
+        np.average(frequency_domain_audio[
             band_separators[band_index]:band_separators[band_index + 1]
         ], axis=0)
         for band_index in range(bands)
