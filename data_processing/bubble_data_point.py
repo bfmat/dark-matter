@@ -118,6 +118,8 @@ class BubbleDataPoint:
         self.num_bubbles_image = root_event.nbub
         # Get the approximated number of bubbles based on the pressure transducer
         self.num_bubbles_pressure = root_event.dytranCZ
+        # Get the neural network score predicted in the original PICO-60 paper
+        self.original_neural_network_score = root_event.NN_score
 
 
 def bubble_data_path(bubble: BubbleDataPoint) -> str:
