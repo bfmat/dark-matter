@@ -16,15 +16,15 @@ verify_arguments('JSON data file')
 # Load the data set from the file
 event_data_set, ground_truths, network_outputs = load_test(sys.argv[1])
 # Get the acoustic parameter and neural network score data from the events
-acoustic_parameters, original_neural_network_scores = zip(
-    *((event.logarithmic_acoustic_parameter, event.original_neural_network_score)
-      for event in event_data_set.validation_events)
-)
+acoustic_parameters = [
+    event.logarithmic_acoustic_parameter
+    for event in event_data_set.validation_events
+]
 
 # Iterate over the three criteria standard deviations will be calculated for, and corresponding names
 for criterion_data, criterion_name in zip(
-    [network_outputs, acoustic_parameters, original_neural_network_scores],
-    ['network outputs', 'acoustic parameters', 'original neural network scores']
+    [network_outputs, acoustic_parameters],
+    ['network outputs', 'acoustic parameters']
 ):
     # Divide all of these data points by the difference between the maximum and the minimum, to normalize their range
     criterion_data /= np.std(criterion_data)
