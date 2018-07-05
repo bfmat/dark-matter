@@ -40,7 +40,7 @@ print(model.summary())
 # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
 model.compile(
     optimizer='adam',
-    loss='binary_crossentropy',
+    loss='mse',
     metrics=['accuracy']
 )
 
