@@ -2,6 +2,7 @@
 """A tool for graphing a validation data set, printing out standard deviation data, and comparing a neural network's output with the acoustic parameter or the original neural network score"""
 # Created by Brendon Matusch, June 2018
 
+import copy
 import sys
 
 import matplotlib.pyplot as plt
@@ -23,10 +24,10 @@ acoustic_parameters = [
 
 # Iterate over the three criteria standard deviations will be calculated for, and corresponding names
 for criterion_data, criterion_name in zip(
-    [network_outputs, acoustic_parameters],
+    copy.deepcopy([network_outputs, acoustic_parameters]),
     ['network outputs', 'acoustic parameters']
 ):
-    # Divide all of these data points by the difference between the maximum and the minimum, to normalize their range
+    # Divide all of these data points by the overall standard deviation, to normalize their range
     criterion_data /= np.std(criterion_data)
     # Iterate over both possible values of the ground truth, and corresponding names
     for ground_truth_value, ground_truth_name in zip([True, False], ['alpha particles', 'neutrons']):

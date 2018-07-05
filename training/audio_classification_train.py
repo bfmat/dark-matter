@@ -40,7 +40,7 @@ print(model.summary())
 # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
 model.compile(
     optimizer='adam',
-    loss='mse',
+    loss='binary_crossentropy',
     metrics=['accuracy']
 )
 
@@ -69,11 +69,14 @@ training_generator = training_generator_callable()
 
 # Iterate over training and validation for 20 epochs
 for epoch in range(20):
+    # Weight the alpha class so it is worth eight times as much as the neutron class (since there are many fewer alphas)
+    class_weight = {0: 1, 1: 8}
     # Train the model on the generator
     model.fit_generator(
         training_generator,
         steps_per_epoch=128,
-        epochs=1
+        epochs=1,
+        class_weight=class_weight
     )
     # Evaluate the model on the validation data set
     loss, accuracy = model.evaluate(
