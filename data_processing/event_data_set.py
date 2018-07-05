@@ -14,9 +14,6 @@ from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerC
 # The path to the Pickle data file which contains processed attributes of bubble events
 EVENT_FILE_PATH = os.path.expanduser('~/merged.pkl')
 
-# A threshold for the logarithmic acoustic parameter, which approximately discriminates between neutrons (below) and alpha particles (above)
-ACOUSTIC_PARAMETER_THRESHOLD = 1.2
-
 # The amount of data (out of 1) to remove for validation in the non-generator training functions
 VALIDATION_SPLIT = 0.2
 
@@ -40,8 +37,6 @@ class EventDataSet:
                  keep_run_types: Optional[Set[RunType]],
                  # Remove events containing multiple bubbles
                  filter_multiple_bubbles: bool,
-                 # Run cuts based on acoustic parameter
-                 filter_acoustic_parameter: bool,
                  # Filter out all events within certain areas of the tank near the walls
                  use_fiducial_cuts: bool
                  ) -> None:
@@ -62,17 +57,6 @@ class EventDataSet:
             events_data = [
                 event for event in events_data
                 if event.run_type in keep_run_types
-            ]
-        # Run some acoustic parameter cuts if the filter is enabled
-        if filter_acoustic_parameter:
-            events_data = [
-                event for event in events_data
-                # Exclude events in the low background runs with an acoustic parameter above a threshold
-                if not (event.run_type == RunType.LOW_BACKGROUND and event.logarithmic_acoustic_parameter > ACOUSTIC_PARAMETER_THRESHOLD)
-                # Exclude events in the calibration runs with an acoustic parameter below that same threshold
-                and not (event.run_type != RunType.LOW_BACKGROUND and event.logarithmic_acoustic_parameter < ACOUSTIC_PARAMETER_THRESHOLD)
-                # Exclude all events with a significantly negative acoustic parameter
-                and event.logarithmic_acoustic_parameter > 0.4
             ]
         # Keep only events containing around one bubble based on the image and pressure transducer if the filter is enabled
         if filter_multiple_bubbles:
@@ -129,7 +113,6 @@ class EventDataSet:
         event_data_set = EventDataSet(
             keep_run_types=None,
             filter_multiple_bubbles=False,
-            filter_acoustic_parameter=False,
             use_fiducial_cuts=False
         )
         # Combine its training and validation data into one array
