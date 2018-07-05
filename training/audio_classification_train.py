@@ -56,7 +56,7 @@ event_data_set = EventDataSet(
         RunType.BARIUM_100CM,
         RunType.BARIUM_40CM
     ]),
-    use_fiducial_cuts=False
+    use_fiducial_cuts=True
 )
 # Create a training data generator with the audio loading function
 training_generator_callable, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
