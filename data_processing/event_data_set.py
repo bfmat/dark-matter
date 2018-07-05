@@ -173,23 +173,32 @@ class EventDataSet:
         data_converter: Callable[[BubbleDataPoint], List[np.ndarray]],
         storage_size: int,
         batch_size: int,
-        examples_replaced_per_batch: int
+        examples_replaced_per_batch: int,
+        custom_training_data: Optional[List[BubbleDataPoint]] = None
     ) -> Tuple[Callable[[], Generator[Tuple[np.ndarray, np.ndarray], None, None]], np.ndarray, np.ndarray]:
         """Return a generator which produces arbitrary training data for each bubble, with corresponding binary classification ground truths into neutrons and alpha particles; alongside it, return arrays of validation data"""
-        # Combine the training and validation lists together; we need to divide them differently with a smaller number for validation because all of the validation events must be loaded at once
-        all_events = self.training_events + self.validation_events
-        # Split it into training and validation, but with a smaller number for validation; this is a hack required because Keras's validation generator feature does not work as documented
-        self.training_events = all_events[GENERATOR_VALIDATION_EXAMPLES:]
-        self.validation_events = all_events[:GENERATOR_VALIDATION_EXAMPLES]
-        # Convert the validation bubbles right away, and also get corresponding binary values for ground truth
-        validation_inputs = np.stack([
-            data_converter(bubble)[0]
-            for bubble in self.validation_events
-        ])
-        validation_ground_truths = np.array([
-            bubble.run_type == RunType.LOW_BACKGROUND
-            for bubble in self.validation_events
-        ])
+
+        # If there is a training list provided, ignore the validation bubbles and just set it directly
+        if custom_training_data is not None:
+            validation_inputs = []
+            validation_ground_truths = []
+            self.training_events = custom_training_data
+        # Otherwise, split the data into training and validation
+        else:
+            # Combine the training and validation lists together; we need to divide them differently with a smaller number for validation because all of the validation events must be loaded at once
+            all_events = self.training_events + self.validation_events
+            # Split it into training and validation, but with a smaller number for validation; this is a hack required because Keras's validation generator feature does not work as documented
+            self.training_events = all_events[GENERATOR_VALIDATION_EXAMPLES:]
+            self.validation_events = all_events[:GENERATOR_VALIDATION_EXAMPLES]
+            # Convert the validation bubbles right away, and also get corresponding binary values for ground truth
+            validation_inputs = np.stack([
+                data_converter(bubble)[0]
+                for bubble in self.validation_events
+            ])
+            validation_ground_truths = np.array([
+                bubble.run_type == RunType.LOW_BACKGROUND
+                for bubble in self.validation_events
+            ])
 
         def generate_data() -> Generator[Tuple[np.ndarray, np.ndarray], None, None]:
             """The generator returned from the function"""
