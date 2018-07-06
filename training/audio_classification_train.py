@@ -4,7 +4,7 @@
 
 import os
 
-from keras.layers import Conv1D, Flatten, Dense, Dropout, InputLayer, BatchNormalization
+from keras.layers import Conv1D, GlobalAveragePooling1D, MaxPooling1D, Activation, Flatten, Dropout, InputLayer, BatchNormalization, Reshape
 from keras.models import Sequential
 
 from data_processing.event_data_set import EventDataSet
@@ -14,27 +14,35 @@ from data_processing.experiment_serialization import save_test
 # Create a one-dimensional convolutional neural network model with hyperbolic tangent activations
 # It should take both microphone channels and an entire clip of audio
 activation = 'tanh'
-model = Sequential([
-    InputLayer(input_shape=(250000, 2)),
-    BatchNormalization(),
-    Conv1D(filters=16, kernel_size=64, strides=24, activation=activation),
-    BatchNormalization(),
-    Dropout(0.25),
-    Conv1D(filters=16, kernel_size=64, strides=24, activation=activation),
-    BatchNormalization(),
-    Dropout(0.25),
-    Conv1D(filters=32, kernel_size=32, strides=12, activation=activation),
-    BatchNormalization(),
-    Dropout(0.25),
-    Conv1D(filters=64, kernel_size=8, strides=3, activation=activation),
-    BatchNormalization(),
-    Dropout(0.25),
-    Conv1D(filters=64, kernel_size=3, strides=2, activation=activation),
-    BatchNormalization(),
-    Dropout(0.25),
-    Flatten(),
-    Dense(1, activation='sigmoid')
-])
+model = Sequential()
+model.add(InputLayer(input_shape=(250000, 2)))
+model.add(BatchNormalization())
+model.add(Conv1D(filters=48, kernel_size=80,
+                 strides=4, activation=activation))
+model.add(MaxPooling1D(6))
+model.add(BatchNormalization())
+for _ in range(3):
+    model.add(Conv1D(filters=48, kernel_size=3))
+    model.add(BatchNormalization())
+model.add(MaxPooling1D(6))
+model.add(BatchNormalization())
+for _ in range(4):
+    model.add(Conv1D(filters=96, kernel_size=3))
+    model.add(BatchNormalization())
+model.add(MaxPooling1D(6))
+model.add(BatchNormalization())
+for _ in range(6):
+    model.add(Conv1D(filters=192, kernel_size=3))
+    model.add(BatchNormalization())
+model.add(MaxPooling1D(6))
+model.add(BatchNormalization())
+for _ in range(3):
+    model.add(Conv1D(filters=384, kernel_size=3))
+    model.add(BatchNormalization())
+model.add(Reshape((-1, 1)))
+model.add(GlobalAveragePooling1D())
+model.add(Activation('sigmoid'))
+
 # Output a summary of the model's architecture
 print(model.summary())
 # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
@@ -49,7 +57,13 @@ event_data_set = EventDataSet(
     filter_multiple_bubbles=True,
     keep_run_types=set([
         RunType.LOW_BACKGROUND,
-        RunType.AMERICIUM_BERYLLIUM
+        RunType.LOW_BACKGROUND,
+        RunType.AMERICIUM_BERYLLIUM,
+        RunType.AMERICIUM_BERYLLIUM,
+        RunType.CALIFORNIUM_40CM,
+        RunType.CALIFORNIUM_60CM,
+        RunType.BARIUM_100CM,
+        RunType.BARIUM_40CM
     ]),
     use_fiducial_cuts=False
 )
