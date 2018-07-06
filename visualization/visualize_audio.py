@@ -2,12 +2,14 @@
 """A tool for saving the audio from a bubble event as a graph in the time and frequency domains, as well as an audio clip that can be listened to"""
 # Created by Brendon Matusch, June 2018
 
-import sys
 import itertools
+import os
+import sys
+import time
 
 import matplotlib.pyplot as plt
-from numpy.fft import fft
 
+from data_processing.audio_domain_processing import time_to_frequency_domain
 from data_processing.bubble_data_point import load_bubble_audio
 from data_processing.event_data_set import EventDataSet
 from utilities.verify_arguments import verify_arguments
@@ -22,24 +24,27 @@ bubble = event_data_set.validation_events[0]
 bubble_audio_list = load_bubble_audio(bubble)
 if len(bubble_audio_list) == 0:
     sys.exit('Audio file does not exist, or access is forbidden')
-# Otherwise, get the first and only element of the list: a NumPy array containing the audio
-bubble_audio_numpy = bubble_audio_list[0]
-print(bubble_audio_numpy.shape)
+# Otherwise, get the first and only element of the list: a NumPy array containing the audio in time domain
+time_domain = bubble_audio_list[0]
+# Run a Fourier transform on the audio to get it in the frequency domain
+frequency_domain = time_to_frequency_domain(time_domain)
 
-# Iterate over the audio loaded from the provided folder, and corresponding figure indices
-# Ignore the sample rate; only take the data array
-for (_, audio_recording), figure_number in zip(load_audio(sys.argv[1]), itertools.count()):
-    # Create a new window to graph in
-    plt.figure(figure_number)
-    # Select the first plot in the window with 2 plots and graph the time domain
-    plt.subplot(2, 1, 1)
-    plt.plot(audio_recording)
-    plt.title('Time Domain')
-    # Run a Fourier transform on the sample and graph that in the plot below
-    audio_recording_frequency = fft(audio_recording)
-    plt.subplot(2, 1, 2)
-    plt.plot(audio_recording_frequency)
-    plt.title('Frequency Domain')
-
-# Display the graph on screen
-plt.show()
+# Iterate over the channel indices, which correspond to the row indices in the graph
+channels = time_domain.shape[1]
+for channel_index in range(channels):
+    # Select the plot in the first column and whatever row we are on, and graph the time domain
+    time_domain_plot_index = (channel_index * 2) + 1
+    time_domain_channel = time_domain[:, channel_index]
+    plt.subplot(channels, 2, time_domain_plot_index)
+    plt.plot(time_domain_channel)
+    plt.title(f'Time Domain, Channel {channel_index}')
+    # Graph the audio in frequency domain in the plot to the right
+    frequency_domain_plot_index = time_domain_plot_index + 1
+    frequency_domain_channel = frequency_domain[:, channel_index]
+    plt.subplot(channels, 2, frequency_domain_plot_index)
+    plt.plot(frequency_domain_channel)
+    plt.title(f'Frequency Domain, Channel {channel_index}')
+# Save the graph as an image named with the current Unix time and notify the user
+file_name = os.path.expanduser(f'~/{time.time()}.png')
+plt.savefig(file_name)
+print('Graph saved as {file_name}')
