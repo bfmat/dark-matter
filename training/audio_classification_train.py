@@ -52,11 +52,18 @@ event_data_set = EventDataSet(
         RunType.AMERICIUM_BERYLLIUM,
         RunType.CALIFORNIUM_40CM,
         RunType.CALIFORNIUM_60CM,
-        RunType.BARIUM_100CM,
-        RunType.BARIUM_40CM
+        RunType.BARIUM_40CM,
+        RunType.BARIUM_100CM
     ]),
-    use_fiducial_cuts=True
+    use_fiducial_cuts=False
 )
+e = event_data_set.training_events + event_data_set.validation_events
+print(len([x for x in e if x.run_type == RunType.LOW_BACKGROUND]))
+print(len([x for x in e if x.run_type == RunType.AMERICIUM_BERYLLIUM]))
+print(len([x for x in e if x.run_type == RunType.CALIFORNIUM_40CM]))
+print(len([x for x in e if x.run_type == RunType.CALIFORNIUM_60CM]))
+print(len([x for x in e if x.run_type == RunType.BARIUM_40CM]))
+print(len([x for x in e if x.run_type == RunType.BARIUM_100CM]))
 # Create a training data generator with the audio loading function
 training_generator_callable, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
     data_converter=load_bubble_audio,
@@ -68,14 +75,11 @@ training_generator = training_generator_callable()
 
 # Iterate over training and validation for 20 epochs
 for epoch in range(20):
-    # Weight the alpha class so it is worth eight times as much as the neutron class (since there are many fewer alphas)
-    class_weight = {0: 1, 1: 8}
     # Train the model on the generator
     model.fit_generator(
         training_generator,
         steps_per_epoch=128,
-        epochs=1,
-        class_weight=class_weight
+        epochs=1
     )
     # Evaluate the model on the validation data set
     loss, accuracy = model.evaluate(
