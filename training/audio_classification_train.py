@@ -49,21 +49,11 @@ event_data_set = EventDataSet(
     filter_multiple_bubbles=True,
     keep_run_types=set([
         RunType.LOW_BACKGROUND,
-        RunType.AMERICIUM_BERYLLIUM,
-        RunType.CALIFORNIUM_40CM,
         RunType.CALIFORNIUM_60CM,
-        RunType.BARIUM_40CM,
-        RunType.BARIUM_100CM
     ]),
     use_fiducial_cuts=False
 )
 e = event_data_set.training_events + event_data_set.validation_events
-print(len([x for x in e if x.run_type == RunType.LOW_BACKGROUND]))
-print(len([x for x in e if x.run_type == RunType.AMERICIUM_BERYLLIUM]))
-print(len([x for x in e if x.run_type == RunType.CALIFORNIUM_40CM]))
-print(len([x for x in e if x.run_type == RunType.CALIFORNIUM_60CM]))
-print(len([x for x in e if x.run_type == RunType.BARIUM_40CM]))
-print(len([x for x in e if x.run_type == RunType.BARIUM_100CM]))
 # Create a training data generator with the audio loading function
 training_generator_callable, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
     data_converter=load_bubble_audio,
