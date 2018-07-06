@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""A tool for visualizing audio samples in the time and frequency domains"""
+"""A tool for saving the audio from a bubble event as a graph in the time and frequency domains, as well as an audio clip that can be listened to"""
 # Created by Brendon Matusch, June 2018
 
 import sys
@@ -8,11 +8,23 @@ import itertools
 import matplotlib.pyplot as plt
 from numpy.fft import fft
 
-from data_processing.load_audio import load_audio
+from data_processing.bubble_data_point import load_bubble_audio
+from data_processing.event_data_set import EventDataSet
 from utilities.verify_arguments import verify_arguments
 
-# A folder containing the audio files in WAV format is expected
-verify_arguments('WAV audio folder')
+# A unique identifier for a bubble event is required
+verify_arguments('unique bubble identifier')
+
+# Load only the bubble event with this specific index
+event_data_set = EventDataSet.load_specific_indices([int(sys.argv[1])])
+bubble = event_data_set.validation_events[0]
+# Try to load the audio corresponding to this bubble; if it is not found, exit with an error message
+bubble_audio_list = load_bubble_audio(bubble)
+if len(bubble_audio_list) == 0:
+    sys.exit('Audio file does not exist, or access is forbidden')
+# Otherwise, get the first and only element of the list: a NumPy array containing the audio
+bubble_audio_numpy = bubble_audio_list[0]
+print(bubble_audio_numpy.shape)
 
 # Iterate over the audio loaded from the provided folder, and corresponding figure indices
 # Ignore the sample rate; only take the data array
