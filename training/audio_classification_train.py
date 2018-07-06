@@ -53,7 +53,6 @@ event_data_set = EventDataSet(
     ]),
     use_fiducial_cuts=False
 )
-e = event_data_set.training_events + event_data_set.validation_events
 # Create a training data generator with the audio loading function
 training_generator_callable, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
     data_converter=load_bubble_audio,
