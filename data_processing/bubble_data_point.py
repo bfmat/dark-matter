@@ -8,7 +8,7 @@ import math
 import os
 import random
 import sys
-from typing import List
+from typing import List, Optional
 
 from data_processing.audio_domain_processing import time_to_frequency_domain, band_time_domain, band_frequency_domain
 
@@ -140,13 +140,15 @@ def bubble_data_path(bubble: BubbleDataPoint) -> str:
     )
 
 
-def load_bubble_audio(bubble: BubbleDataPoint) -> List[np.ndarray]:
+def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Optional[str] = None) -> List[np.ndarray]:
     """Load an audio file in the raw binary format present in the PICO-60 data set, returning an array with dimensions the number of samples containing the data from only the working microphones by 2"""
-    # Get the path to the bubble data folder, and load the audio binary file within it
-    audio_file_path = os.path.join(
-        bubble_data_path(bubble),
-        'fastDAQ_0.bin'
-    )
+    # If a path is not provided, get it from the bubble
+    if audio_file_path is None:
+        # Get the path to the bubble data folder, and load the audio binary file within it
+        audio_file_path = os.path.join(
+            bubble_data_path(bubble),
+            'fastDAQ_0.bin'
+        )
     # Try to open the file for binary reading
     try:
         with open(audio_file_path, 'rb') as audio_file:

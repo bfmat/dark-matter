@@ -18,16 +18,12 @@ from utilities.verify_arguments import verify_arguments
 # The number of samples per second to use when saving the audio as WAV files
 SAMPLE_RATE = 12_500
 
-# A unique identifier for a bubble event is required
-verify_arguments('unique bubble identifier')
+# A path to a binary audio file is required
+verify_arguments('binary file path')
 
-# Load only the bubble event with this specific index
-event_data_set = EventDataSet.load_specific_indices([int(sys.argv[1])])
-bubble = event_data_set.validation_events[0]
-# Try to load the audio corresponding to this bubble; if it is not found, exit with an error message
-bubble_audio_list = load_bubble_audio(bubble)
-if len(bubble_audio_list) == 0:
-    sys.exit('Audio file does not exist, or access is forbidden')
+# Load the audio file located at the path provided
+file_path = os.path.expanduser(sys.argv[1])
+bubble_audio_list = load_bubble_audio(None, file_path)
 # Otherwise, get the first and only element of the list: a NumPy array containing the audio in time domain
 time_domain = bubble_audio_list[0]
 # Run a Fourier transform on the audio to get it in the frequency domain
@@ -54,7 +50,5 @@ for channel_index in range(channels):
     wavfile.write(file_path, SAMPLE_RATE, time_domain_channel)
     print(f'Saved audio for channel {channel_index} as {file_path}')
 
-# Save the graph as an image named with the current Unix time and notify the user
-file_path = os.path.expanduser(f'~/{time.time()}.png')
-plt.savefig(file_path)
-print(f'Graph saved as {file_path}')
+# Show the graph to the user
+plt.show()
