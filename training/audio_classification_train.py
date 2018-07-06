@@ -47,7 +47,6 @@ model.compile(
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
 event_data_set = EventDataSet(
     filter_multiple_bubbles=True,
-    filter_acoustic_parameter=False,
     keep_run_types=set([
         RunType.LOW_BACKGROUND,
         RunType.AMERICIUM_BERYLLIUM,
