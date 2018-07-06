@@ -63,7 +63,7 @@ class EventDataSet:
             events_data = [
                 event for event in events_data
                 if event.num_bubbles_image == 1
-                # and event.num_bubbles_pressure >= 0.8 and event.num_bubbles_pressure <= 1.2
+                and event.num_bubbles_pressure >= 0.8 and event.num_bubbles_pressure <= 1.2
             ]
         # Filter out events near the wall of the tank if the cuts are enabled
         if use_fiducial_cuts:

@@ -11,9 +11,9 @@ from data_processing.event_data_set import EventDataSet
 from data_processing.bubble_data_point import RunType, load_bubble_audio
 from data_processing.experiment_serialization import save_test
 
-# Create a one-dimensional convolutional neural network model with hyperbolic tangent activations
+# Create a one-dimensional convolutional neural network model with rectified linear activations
 # It should take both microphone channels and an entire clip of audio
-activation = 'tanh'
+activation = 'relu'
 model = Sequential()
 model.add(InputLayer(input_shape=(250000, 2)))
 model.add(BatchNormalization())
@@ -22,22 +22,22 @@ model.add(Conv1D(filters=48, kernel_size=80,
 model.add(MaxPooling1D(6))
 model.add(BatchNormalization())
 for _ in range(3):
-    model.add(Conv1D(filters=48, kernel_size=3))
+    model.add(Conv1D(filters=48, kernel_size=3, activation=activation))
     model.add(BatchNormalization())
 model.add(MaxPooling1D(6))
 model.add(BatchNormalization())
 for _ in range(4):
-    model.add(Conv1D(filters=96, kernel_size=3))
+    model.add(Conv1D(filters=96, kernel_size=3, activation=activation))
     model.add(BatchNormalization())
 model.add(MaxPooling1D(6))
 model.add(BatchNormalization())
 for _ in range(6):
-    model.add(Conv1D(filters=192, kernel_size=3))
+    model.add(Conv1D(filters=192, kernel_size=3, activation=activation))
     model.add(BatchNormalization())
 model.add(MaxPooling1D(6))
 model.add(BatchNormalization())
 for _ in range(3):
-    model.add(Conv1D(filters=384, kernel_size=3))
+    model.add(Conv1D(filters=384, kernel_size=3, activation=activation))
     model.add(BatchNormalization())
 model.add(Reshape((-1, 1)))
 model.add(GlobalAveragePooling1D())
