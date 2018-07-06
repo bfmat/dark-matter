@@ -8,11 +8,15 @@ import sys
 import time
 
 import matplotlib.pyplot as plt
+from scipy.io import wavfile
 
 from data_processing.audio_domain_processing import time_to_frequency_domain
 from data_processing.bubble_data_point import load_bubble_audio
 from data_processing.event_data_set import EventDataSet
 from utilities.verify_arguments import verify_arguments
+
+# The number of samples per second to use when saving the audio as WAV files
+SAMPLE_RATE = 25_000
 
 # A unique identifier for a bubble event is required
 verify_arguments('unique bubble identifier')
@@ -44,7 +48,13 @@ for channel_index in range(channels):
     plt.subplot(channels, 2, frequency_domain_plot_index)
     plt.plot(frequency_domain_channel)
     plt.title(f'Frequency Domain, Channel {channel_index}')
+
+    # Take the time domain for this channel, save it as a WAV file, and notify the user
+    file_path = os.path.expanduser(f'~/channel_{channel_index}.wav')
+    wavfile.write(file_path, SAMPLE_RATE, time_domain_channel)
+    print(f'Saved audio for channel {channel_index} as {file_path}')
+
 # Save the graph as an image named with the current Unix time and notify the user
-file_name = os.path.expanduser(f'~/{time.time()}.png')
-plt.savefig(file_name)
-print('Graph saved as {file_name}')
+file_path = os.path.expanduser(f'~/{time.time()}.png')
+plt.savefig(file_path)
+print(f'Graph saved as {file_path}')
