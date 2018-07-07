@@ -4,52 +4,10 @@
 
 import os
 
-from keras.layers import Conv1D, MaxPooling1D, Flatten, Dropout, InputLayer, BatchNormalization, Dense
-from keras.models import Sequential
-
 from data_processing.event_data_set import EventDataSet
 from data_processing.bubble_data_point import RunType, load_bubble_audio
 from data_processing.experiment_serialization import save_test
-
-# Create a one-dimensional convolutional neural network model with rectified linear activations
-# It should take both microphone channels and an entire clip of audio
-activation = 'relu'
-model = Sequential()
-model.add(InputLayer(input_shape=(250000, 2)))
-model.add(BatchNormalization())
-model.add(Conv1D(filters=48, kernel_size=80,
-                 strides=4, activation=activation))
-model.add(MaxPooling1D(8))
-model.add(BatchNormalization())
-for _ in range(3):
-    model.add(Conv1D(filters=48, kernel_size=3, activation=activation))
-    model.add(BatchNormalization())
-model.add(MaxPooling1D(8))
-model.add(BatchNormalization())
-for _ in range(4):
-    model.add(Conv1D(filters=96, kernel_size=3, activation=activation))
-    model.add(BatchNormalization())
-model.add(MaxPooling1D(8))
-model.add(BatchNormalization())
-for _ in range(6):
-    model.add(Conv1D(filters=192, kernel_size=3, activation=activation))
-    model.add(BatchNormalization())
-model.add(MaxPooling1D(8))
-model.add(BatchNormalization())
-for _ in range(3):
-    model.add(Conv1D(filters=384, kernel_size=3, activation=activation))
-    model.add(BatchNormalization())
-model.add(Flatten())
-model.add(Dense(1, activation='sigmoid'))
-
-# Output a summary of the model's architecture
-print(model.summary())
-# Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
-model.compile(
-    optimizer='adam',
-    loss='mse',
-    metrics=['accuracy']
-)
+from models.very_deep_convolutional_network import create_model
 
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
 event_data_set = EventDataSet(
@@ -72,7 +30,8 @@ training_generator_callable, validation_inputs, validation_ground_truths = event
     examples_replaced_per_batch=16
 )
 training_generator = training_generator_callable()
-
+# Create an instance of the fully convolutional network model
+model = create_model()
 # Iterate over training and validation for 20 epochs
 for epoch in range(20):
     # Train the model on the generator
