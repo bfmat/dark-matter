@@ -20,11 +20,11 @@ def confident_enough_for_initial_set(bubble: BubbleDataPoint) -> bool:
     # Run different checks depending on whether the bubble is expected to be an alpha or not
     if bubble.run_type == RunType.LOW_BACKGROUND:
         # Accept only alphas with an acoustic parameter above a certain threshold
-        if bubble.logarithmic_acoustic_parameter < 1.4:
+        if bubble.logarithmic_acoustic_parameter < 0.9:
             return False
     else:
         # Accept only neutrons with an acoustic parameter below a certain threshold
-        if bubble.logarithmic_acoustic_parameter > 1.0:
+        if bubble.logarithmic_acoustic_parameter > 1.5:
             return False
     # If none of the checks fail, the bubble's classification is sufficiently confident
     return True
@@ -53,7 +53,9 @@ training_bubbles = [
 # Create an instance of the fully convolutional network model
 model = create_model()
 # Iterate for 50 epochs
-for _ in range(50):
+for epoch in range(50):
+    # Output the number of examples there are in the training set for this epoch
+    print(len(training_bubbles), 'training examples for epoch', epoch)
     # Create a training data generator with the current list of bubbles
     training_generator_callable, _, _ = event_data_set.arbitrary_alpha_classification_generator(
         data_converter=load_bubble_audio,
