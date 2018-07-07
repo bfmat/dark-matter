@@ -20,12 +20,18 @@ TRAINING_SET_BUBBLES = 4
 # This script should take a keyword identifying the data set to test on, and a trained model
 verify_arguments('"waveform" or "image"', 'trained model')
 
-# Load the event data set from the file (the cuts here can be adjusted)
+# Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
 event_data_set = EventDataSet(
     filter_multiple_bubbles=True,
     keep_run_types=set([
         RunType.LOW_BACKGROUND,
+        RunType.LOW_BACKGROUND,
         RunType.AMERICIUM_BERYLLIUM,
+        RunType.AMERICIUM_BERYLLIUM,
+        RunType.CALIFORNIUM_40CM,
+        RunType.CALIFORNIUM_60CM,
+        RunType.BARIUM_100CM,
+        RunType.BARIUM_40CM
     ]),
     use_fiducial_cuts=False
 )
