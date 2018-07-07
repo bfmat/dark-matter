@@ -57,8 +57,6 @@ event_data_set = EventDataSet(
     filter_multiple_bubbles=True,
     keep_run_types=set([
         RunType.LOW_BACKGROUND,
-        RunType.LOW_BACKGROUND,
-        RunType.AMERICIUM_BERYLLIUM,
         RunType.AMERICIUM_BERYLLIUM,
         RunType.CALIFORNIUM_40CM,
         RunType.CALIFORNIUM_60CM,
