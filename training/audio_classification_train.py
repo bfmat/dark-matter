@@ -4,7 +4,7 @@
 
 import os
 
-from keras.layers import Conv1D, GlobalAveragePooling1D, MaxPooling1D, Activation, Flatten, Dropout, InputLayer, BatchNormalization, Reshape
+from keras.layers import Conv1D, MaxPooling1D, Flatten, Dropout, InputLayer, BatchNormalization, Dense
 from keras.models import Sequential
 
 from data_processing.event_data_set import EventDataSet
@@ -19,29 +19,28 @@ model.add(InputLayer(input_shape=(250000, 2)))
 model.add(BatchNormalization())
 model.add(Conv1D(filters=48, kernel_size=80,
                  strides=4, activation=activation))
-model.add(MaxPooling1D(6))
+model.add(MaxPooling1D(8))
 model.add(BatchNormalization())
 for _ in range(3):
     model.add(Conv1D(filters=48, kernel_size=3, activation=activation))
     model.add(BatchNormalization())
-model.add(MaxPooling1D(6))
+model.add(MaxPooling1D(8))
 model.add(BatchNormalization())
 for _ in range(4):
     model.add(Conv1D(filters=96, kernel_size=3, activation=activation))
     model.add(BatchNormalization())
-model.add(MaxPooling1D(6))
+model.add(MaxPooling1D(8))
 model.add(BatchNormalization())
 for _ in range(6):
     model.add(Conv1D(filters=192, kernel_size=3, activation=activation))
     model.add(BatchNormalization())
-model.add(MaxPooling1D(6))
+model.add(MaxPooling1D(8))
 model.add(BatchNormalization())
 for _ in range(3):
     model.add(Conv1D(filters=384, kernel_size=3, activation=activation))
     model.add(BatchNormalization())
-model.add(Reshape((-1, 1)))
-model.add(GlobalAveragePooling1D())
-model.add(Activation('sigmoid'))
+model.add(Flatten())
+model.add(Dense(1, activation='sigmoid'))
 
 # Output a summary of the model's architecture
 print(model.summary())
