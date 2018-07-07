@@ -24,6 +24,13 @@ bubbles = event_data_set.training_events + event_data_set.validation_events
 # Iterate over ech of the run types
 for run_type in all_run_types:
     # Print the overall count of each run type
-    instances = len([bubble for bubble in bubbles
-                     if bubble.run_type == run_type])
-    print(f'{instances} instances of {run_type.name}')
+    run_type_bubbles = [bubble for bubble in bubbles
+                        if bubble.run_type == run_type]
+    print(len(run_type_bubbles), 'bubbles that are instances of', run_type.name)
+    # Print the number that qualify as single bubbles
+    single_bubble_instances = len([
+        bubble for bubble in run_type_bubbles
+        if bubble.num_bubbles_image == 1
+        and bubble.num_bubbles_pressure >= 0.8 and bubble.num_bubbles_pressure <= 1.2
+    ])
+    print(single_bubble_instances, 'single bubble events')
