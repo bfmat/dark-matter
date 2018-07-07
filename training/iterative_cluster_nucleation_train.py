@@ -6,10 +6,10 @@ import copy
 from typing import Callable, List
 
 import numpy as np
-from keras.models import Model
 
 from data_processing.bubble_data_point import BubbleDataPoint, load_bubble_audio, RunType
 from data_processing.event_data_set import EventDataSet
+from models.very_deep_convolutional_network import create_model
 
 # The distance from 0 or 1 an example must be to be added to the training set
 TRAINING_THRESHOLD_DISTANCE = 0.025
@@ -50,6 +50,8 @@ training_bubbles = [
     bubble for bubble in bubbles
     if confident_enough_for_initial_set(bubble)
 ]
+# Create an instance of the fully convolutional network model
+model = create_model()
 # Iterate for 50 epochs
 for _ in range(50):
     # Create a training data generator with the current list of bubbles
