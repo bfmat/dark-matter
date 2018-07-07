@@ -16,6 +16,11 @@ verify_arguments('JSON data file')
 
 # Load the data set from the file
 event_data_set, ground_truths, network_outputs = load_test(sys.argv[1])
+# Temporary: shift the network's outputs down and run an offset sigmoid transform on them
+network_outputs -= 0.9
+network_outputs = np.tanh(network_outputs)
+network_outputs += 1
+network_outputs /= 2
 # Get the acoustic parameter and neural network score data from the events
 acoustic_parameters = [
     event.logarithmic_acoustic_parameter
