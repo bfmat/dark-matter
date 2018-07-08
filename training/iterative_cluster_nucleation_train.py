@@ -86,7 +86,7 @@ for epoch in range(50):
         if min([prediction, 1 - prediction]) < TRAINING_THRESHOLD_DISTANCE:
             # Copy the bubble and set its run type so that it is in the corresponding ground truth
             bubble_copy = copy.deepcopy(bubble)
-            bubble_copy.run_type = RunType.AMERICIUM_BERYLLIUM if bool(round(prediction[0])) \
+            bubble_copy.run_type = RunType.AMERICIUM_BERYLLIUM if bool(round(prediction[0, 0])) \
                 else RunType.LOW_BACKGROUND
             # Add the modified bubble to the training list
             training_bubbles.append(bubble_copy)
