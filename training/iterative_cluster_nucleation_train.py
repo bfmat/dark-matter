@@ -78,8 +78,10 @@ for epoch in range(50):
         # If there are no audio samples, skip to the next iteration
         if not audio_samples:
             continue
+        # Add a batch dimension with one element to the NumPy array
+        audio_sample = np.expand_dims(audio_samples[0], axis=0)
         # Run a prediction on the audio sample using the existing neural network
-        prediction = model.predict(audio_samples[0])
+        prediction = model.predict(audio_sample)
         # If the prediction is within a certain threshold distance of either 0 or 1
         if min([prediction, 1 - prediction]) < TRAINING_THRESHOLD_DISTANCE:
             # Copy the bubble and set its run type so that it is in the corresponding ground truth
