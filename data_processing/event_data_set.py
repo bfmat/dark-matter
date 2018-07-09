@@ -175,7 +175,7 @@ class EventDataSet:
             self.validation_events = all_events[:GENERATOR_VALIDATION_EXAMPLES]
             # Convert the validation bubbles right away, and also get corresponding binary values for ground truth
             validation_inputs = np.stack([
-                data_converter(bubble)[0]
+                data_converter(bubble, use_synthesis=False)[0]
                 for bubble in self.validation_events
             ])
             validation_ground_truths = np.array([
@@ -195,7 +195,8 @@ class EventDataSet:
                     # Choose one of the bubbles randomly
                     bubble = random.choice(self.training_events)
                     # Get examples for this bubble and add it to the list
-                    bubble_examples = data_converter(bubble)
+                    bubble_examples = data_converter(
+                        bubble, use_synthesis=False)
                     training_examples += bubble_examples
                     # Add an equivalent number of binary values to the ground truth list, saying whether these examples represent alpha particles or neutrons
                     ground_truths += [(bubble.run_type ==

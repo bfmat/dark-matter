@@ -11,6 +11,7 @@ import sys
 from typing import List, Optional
 
 from data_processing.audio_domain_processing import time_to_frequency_domain, band_time_domain, band_frequency_domain
+from data_processing.audio_synthesis import normalize, add_time_noise, multiply_frequency_noise
 
 import numpy as np
 from scipy.ndimage import imread
@@ -25,6 +26,14 @@ IMAGES_PER_BUBBLE = 1
 
 # The number of piezo channels present in the audio files (not all of them work)
 CHANNELS = 8
+# The number of times to multiply distinct noise into the frequency domain when synthesizing audio training examples
+FREQUENCY_DOMAIN_NOISE_COUNT = 4
+# The number of times to add distinct noise to the time domain for each frequency domain example
+TIME_DOMAIN_NOISE_COUNT = 4
+# The standard deviation off of 1, after normalization, for multiplicative noise to the frequency domain
+FREQUENCY_DOMAIN_NOISE_STANDARD_DEVIATION = 0.1
+# The standard deviation, after normalization, for additive noise to the time domain
+TIME_DOMAIN_NOISE_STANDARD_DEVIATION = 0.05
 
 # The number of bands to split the recording into for frequency domain processing, from beginning to end
 TIME_BANDS = 16
@@ -40,7 +49,7 @@ class RunType(IntEnum):
     CALIFORNIUM_40CM = 14  # Cf source at 40cm from the bottom of the source tube
     CALIFORNIUM_60CM = 15  # Cf source at 60cm from the bottom of the source tube
     BARIUM_100CM = 21  # Ba source at 100cm from the bottom of the source tube
-    BARIUM_40CM = 22  # Ba source at 45cm from the bottom of the source tube
+    BARIUM_40CM = 22  # Ba source at 40cm from the bottom of the source tube
     GARBAGE = 99  # Invalid data or unknown run type
 
 
@@ -140,8 +149,8 @@ def bubble_data_path(bubble: BubbleDataPoint) -> str:
     )
 
 
-def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Optional[str] = None) -> List[np.ndarray]:
-    """Load an audio file in the raw binary format present in the PICO-60 data set, returning an array with dimensions the number of samples containing the data from only the working microphones by 2"""
+def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Optional[str] = None, use_synthesis: bool = False) -> List[np.ndarray]:
+    """Load an audio file in the raw binary format present in the PICO-60 data set, returning an array with dimensions the number of samples containing the data from only the working microphones by 2, or multiple arrays with noise added if synthesis is enabled"""
     # If a path is not provided, get it from the bubble
     if audio_file_path is None:
         # Get the path to the bubble data folder, and load the audio binary file within it
@@ -172,8 +181,31 @@ def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Option
     # Reshape the 1-dimensional array into channels and samples
     data_array = np.reshape(data_array_flat, (samples, CHANNELS))
     # Index and return the data of microphones 3 and 7, the only ones that work
-    # Wrap it in a single-element list because that is expected by the data generator
-    return [data_array[:, [0, 3]]]
+    data_array = data_array[:, [0, 3]]
+    # Normalize the audio array so its geometric mean is 1
+    data_array = normalize(data_array)
+    # If synthesis is not enabled, wrap it in a single-element list because that is expected by the data generator and return it
+    if not use_synthesis:
+        return [data_array]
+    # Otherwise, create a list to add synthesized examples to (starting with the real example) and iterate over the number of times to multiply noise into the frequency domain
+    examples = [data_array]
+    for _ in range(FREQUENCY_DOMAIN_NOISE_COUNT):
+        # Incorporate frequency domain noise into the audio with the defined standard deviation and add it to the list
+        audio_with_frequency_noise = multiply_frequency_noise(
+            audio=data_array,
+            standard_deviation=FREQUENCY_DOMAIN_NOISE_STANDARD_DEVIATION
+        )
+        examples.append(audio_with_frequency_noise)
+        # Iterate over the number of times to add noise to the time domain
+        for _ in range(TIME_DOMAIN_NOISE_COUNT):
+            # Add time domain noise to the audio that already has frequency noise and add it to the list
+            audio_with_time_noise = add_time_noise(
+                audio=audio_with_frequency_noise,
+                standard_deviation=TIME_DOMAIN_NOISE_STANDARD_DEVIATION
+            )
+            examples.append(audio_with_time_noise)
+    # Return the list including the original examples alongside synthesized examples
+    return examples
 
 
 def load_bubble_frequency_domain(bubble: BubbleDataPoint) -> List[np.ndarray]:
