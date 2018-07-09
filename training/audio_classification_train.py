@@ -3,6 +3,7 @@
 # Created by Brendon Matusch, June 2018
 
 import os
+import sys
 
 from data_processing.event_data_set import EventDataSet
 from data_processing.bubble_data_point import RunType, load_bubble_audio
@@ -22,12 +23,17 @@ event_data_set = EventDataSet(
     ]),
     use_fiducial_cuts=False
 )
-# Create a training data generator with the audio loading function
+# If the option "wall" is passed, discriminate between wall and non-wall events; otherwise, use the default
+ground_truth = EventDataSet.is_not_wall_event \
+    if len(sys.argv) >= 2 and sys.argv[1].lower() == "wall" \
+    else None
+# Create a training data generator with the audio loading function and whatever ground truth function has been chosen
 training_generator_callable, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
     data_converter=load_bubble_audio,
     storage_size=512,
     batch_size=32,
-    examples_replaced_per_batch=16
+    examples_replaced_per_batch=16,
+    ground_truth=ground_truth
 )
 training_generator = training_generator_callable()
 # Create an instance of the fully convolutional network model
