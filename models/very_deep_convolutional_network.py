@@ -22,7 +22,7 @@ def create_model() -> Model:
         activation=activation,
         kernel_regularizer=regularizer
     ))
-    model.add(MaxPooling1D(8))
+    model.add(MaxPooling1D(6))
     model.add(BatchNormalization())
     for _ in range(3):
         model.add(Conv1D(
@@ -32,7 +32,7 @@ def create_model() -> Model:
             kernel_regularizer=regularizer
         ))
         model.add(BatchNormalization())
-    model.add(MaxPooling1D(8))
+    model.add(MaxPooling1D(6))
     model.add(BatchNormalization())
     for _ in range(4):
         model.add(Conv1D(
@@ -42,7 +42,7 @@ def create_model() -> Model:
             kernel_regularizer=regularizer
         ))
         model.add(BatchNormalization())
-    model.add(MaxPooling1D(8))
+    model.add(MaxPooling1D(6))
     model.add(BatchNormalization())
     for _ in range(6):
         model.add(Conv1D(
@@ -52,7 +52,7 @@ def create_model() -> Model:
             kernel_regularizer=regularizer
         ))
         model.add(BatchNormalization())
-    model.add(MaxPooling1D(8))
+    model.add(MaxPooling1D(6))
     model.add(BatchNormalization())
     for _ in range(3):
         model.add(Conv1D(
