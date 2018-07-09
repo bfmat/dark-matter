@@ -52,10 +52,10 @@ training_bubbles = [
 ]
 # Create an instance of the fully convolutional network model
 model = create_model()
-# Iterate for 50 epochs
-for epoch in range(50):
+# Run 50 training iterations, each containing a number of epochs
+for iteration in range(50):
     # Output the number of examples there are in the training set for this epoch
-    print(len(training_bubbles), 'training examples for epoch', epoch)
+    print(len(training_bubbles), 'training examples for iteration', iteration)
     # Create a training data generator with the current list of bubbles
     training_generator_callable, _, _ = event_data_set.arbitrary_alpha_classification_generator(
         data_converter=load_bubble_audio,
@@ -65,11 +65,11 @@ for epoch in range(50):
         custom_training_data=training_bubbles
     )
     training_generator = training_generator_callable()
-    # Train the model for one epoch on the generator
+    # Train the model for a certain number of epochs on the generator
     model.fit_generator(
         training_generator,
         steps_per_epoch=128,
-        epochs=1
+        epochs=10
     )
     # Iterate over the entire list of bubbles, running predictions
     for bubble in bubbles:
