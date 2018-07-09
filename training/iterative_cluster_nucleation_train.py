@@ -52,8 +52,8 @@ training_bubbles = [
 ]
 # Create an instance of the fully convolutional network model
 model = create_model()
-# Run 50 training iterations, each containing a number of epochs
-for iteration in range(50):
+# Run several training iterations, each containing a number of epochs
+for iteration in range(20):
     # Output the number of examples there are in the training set for this epoch
     print(len(training_bubbles), 'training examples for iteration', iteration)
     # Create a training data generator with the current list of bubbles
