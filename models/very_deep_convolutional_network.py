@@ -11,7 +11,7 @@ def create_model() -> Model:
     # Create a one-dimensional convolutional neural network model with rectified linear activations
     # It should take both microphone channels and an entire clip of audio
     activation = 'relu'
-    regularizer = l2(0.0003)
+    regularizer = l2(0)
     model = Sequential()
     model.add(InputLayer(input_shape=(100_000, 2)))
     model.add(BatchNormalization())
