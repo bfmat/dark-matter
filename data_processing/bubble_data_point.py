@@ -182,8 +182,8 @@ def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Option
     data_array = np.reshape(data_array_flat, (samples, CHANNELS))
     # Index and return the data of microphones 3 and 7, the only ones that work
     data_array = data_array[:, [0, 3]]
-    # Convert the array to 64-bit integers to prevent overflows
-    data_array = data_array.astype(np.int64)
+    # Convert the array to 64-bit floats to prevent overflows
+    data_array = data_array.astype(np.float64)
     # Normalize the audio array so its geometric mean is 1
     data_array = normalize(data_array)
     # If synthesis is not enabled, wrap it in a single-element list because that is expected by the data generator and return it
