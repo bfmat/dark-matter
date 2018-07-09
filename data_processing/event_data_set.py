@@ -69,34 +69,7 @@ class EventDataSet:
         if use_fiducial_cuts:
             events_data = [
                 event for event in events_data
-                # Omit events above a certain height (too near the surface of the vessel)
-                if event.z_position <= 523
-                # Accept several different possible regions that the bubble can occupy around the center of the tank
-                and (
-                    # The bubble can be near the wall, but must be within a constrained vertical range above the center of the tank
-                    (
-                        event.distance_to_wall > 6
-                        and event.z_position > 0
-                        and event.z_position <= 400
-                    )
-                    # The bubble can be near the wall and below the center of the tank, but has to be within a certain radius of the center
-                    or (
-                        event.distance_to_wall > 6
-                        and event.z_position <= 0
-                        and event.distance_from_center <= 100
-                    )
-                    # The bubble must be distant from the wall and below center, but must be far from the center
-                    or (
-                        event.distance_to_wall > 13
-                        and event.distance_from_center > 100
-                        and event.z_position <= 0
-                    )
-                    # The bubble can be distant from the wall and in the upper part of the tank
-                    or (
-                        event.distance_to_wall > 13
-                        and event.z_position > 400
-                    )
-                )
+                if self.is_not_wall_event(event)
             ]
         # Randomize the order of the events and divide them into global training and validation sets according to the predefined proportion
         random.shuffle(events_data)
@@ -104,6 +77,37 @@ class EventDataSet:
         validation_start_index = int(len(events_data) * training_split)
         self.training_events = events_data[:validation_start_index]
         self.validation_events = events_data[validation_start_index:]
+
+    @staticmethod
+    def is_not_wall_event(event: BubbleDataPoint) -> bool:
+        """Determines whether an event is far enough the wall to not be removed by fiducial cuts"""
+        # Omit events above a certain height (too near the surface of the vessel)
+        return event.z_position <= 523 and (
+            # Accept several different possible regions that the bubble can occupy around the center of the tank
+            # The bubble can be near the wall, but must be within a constrained vertical range above the center of the tank
+            (
+                event.distance_to_wall > 6
+                and event.z_position > 0
+                and event.z_position <= 400
+            )
+            # The bubble can be near the wall and below the center of the tank, but has to be within a certain radius of the center
+            or (
+                event.distance_to_wall > 6
+                and event.z_position <= 0
+                and event.distance_from_center <= 100
+            )
+            # The bubble must be distant from the wall and below center, but must be far from the center
+            or (
+                event.distance_to_wall > 13
+                and event.distance_from_center > 100
+                and event.z_position <= 0
+            )
+            # The bubble can be distant from the wall and in the upper part of the tank
+            or (
+                event.distance_to_wall > 13
+                and event.z_position > 400
+            )
+        )
 
     @staticmethod
     def load_specific_indices(specific_unique_indices: List[int]):
@@ -157,9 +161,15 @@ class EventDataSet:
         storage_size: int,
         batch_size: int,
         examples_replaced_per_batch: int,
-        custom_training_data: Optional[List[BubbleDataPoint]] = None
+        custom_training_data: Optional[List[BubbleDataPoint]] = None,
+        ground_truth: Optional[Callable[[BubbleDataPoint], bool]] = None
     ) -> Tuple[Callable[[], Generator[Tuple[np.ndarray, np.ndarray], None, None]], np.ndarray, np.ndarray]:
         """Return a generator which produces arbitrary training data for each bubble, with corresponding binary classification ground truths into neutrons and alpha particles; alongside it, return arrays of validation data"""
+
+        # If None is provided for the ground truth calculation function, assume it is discrimination between low background and calibration runs
+        if ground_truth is None:
+            def ground_truth(bubble):
+                return bubble.run_type == RunType.LOW_BACKGROUND
 
         # If there is a training list provided, ignore the validation bubbles and just set it directly
         if custom_training_data is not None:
