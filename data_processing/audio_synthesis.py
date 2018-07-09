@@ -9,7 +9,7 @@ from data_processing.audio_domain_processing import time_to_frequency_domain, fr
 def normalize(audio: np.ndarray) -> np.ndarray:
     """Normalize an audio recording so its geometric mean (standard deviation off of 0) is equal to 1"""
     # Flatten the array and compute the geometric mean (the square root of the average squared value)
-    audio_flat_squared = audio.flatten() ** 2
+    audio_flat_squared = np.square(audio.flatten())
     geometric_mean = np.sqrt(np.mean(audio_flat_squared))
     # Divide the array by the geometric mean to normalize it to that range
     return audio / geometric_mean
