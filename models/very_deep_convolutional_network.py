@@ -13,7 +13,7 @@ def create_model() -> Model:
     activation = 'relu'
     regularizer = l2(0.0003)
     model = Sequential()
-    model.add(InputLayer(input_shape=(250000, 2)))
+    model.add(InputLayer(input_shape=(100_000, 2)))
     model.add(BatchNormalization())
     model.add(Conv1D(
         filters=48,
