@@ -229,8 +229,8 @@ def load_bubble_frequency_domain(bubble: BubbleDataPoint, use_synthesis: bool = 
         band_frequency_domain(band, FREQUENCY_BANDS)
         for band in time_bands_frequency
     ])
-    # Flatten the array so it can be input into a dense layer and return the result
-    return banded_frequency_domain.flatten()
+    # Flatten the array so it can be input into a dense layer and return the result wrapped in a single-element list
+    return [banded_frequency_domain.flatten()]
 
 
 def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
