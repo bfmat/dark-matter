@@ -11,7 +11,7 @@ import numpy as np
 from data_processing.event_data_set import EventDataSet
 
 
-def save_test(event_data_set: EventDataSet, validation_ground_truths: np.ndarray, validation_network_outputs: np.ndarray, epoch: Optional[int] = None) -> None:
+def save_test(event_data_set: EventDataSet, validation_ground_truths: np.ndarray, validation_network_outputs: np.ndarray, epoch: Optional[int] = None, prefix: str = '') -> None:
     """Save a validation data set, with corresponding experimental network outputs, in a file"""
     # Iterate over tuples of validation event classes alongside ground truths and network outputs, processing them and adding them to a list
     output_list = []
@@ -27,8 +27,9 @@ def save_test(event_data_set: EventDataSet, validation_ground_truths: np.ndarray
         }
         # Add the processed dictionary to the list
         output_list.append(bubble_information)
-    # Create a JSON file in the temporary folder, named with the current Unix time and epoch number, save the data in it, and notify the user
-    json_file_path = os.path.expanduser(f'~/{int(time.time())}_{epoch}.json')
+    # Create a JSON file in the temporary folder, named with the prefix, current Unix time, and epoch number, save the data in it, and notify the user
+    json_file_path = os.path.expanduser(
+        f'~/{prefix}time{int(time.time())}_epoch{epoch}.json')
     with open(json_file_path, 'w') as output_file:
         json.dump(output_list, output_file)
     print('Data saved at', json_file_path)

@@ -61,7 +61,8 @@ for epoch in range(20):
         event_data_set,
         validation_ground_truths,
         validation_network_outputs,
-        epoch
+        epoch,
+        prefix='waveform_'
     )
     # Save the current model, named with the epoch number
     model_path = os.path.expanduser(f'~/epoch{epoch}.h5')
