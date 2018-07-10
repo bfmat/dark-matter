@@ -72,6 +72,8 @@ def create_model() -> Model:
     axes_inputs = Input((3,))
     x = concatenate([x, axes_inputs])
     x = BatchNormalization()(x)
+    x = Dense(64, activation=activation, kernel_regularizer=regularizer)(x)
+    x = BatchNormalization()(x)
     x = Dense(16, activation=activation, kernel_regularizer=regularizer)(x)
     x = BatchNormalization()(x)
     outputs = Dense(1, activation='sigmoid', kernel_regularizer=regularizer)(x)
