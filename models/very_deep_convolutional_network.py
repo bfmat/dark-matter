@@ -28,52 +28,63 @@ def create_model() -> Model:
     x = MaxPooling1D(6)(x)
     x = BatchNormalization()(x)
     for _ in range(3):
-        conv_out = Conv1D(
-            filters=48,
-            kernel_size=3,
-            activation=activation,
-            kernel_regularizer=regularizer,
-            padding=padding
-        )(x)
-        x = add([x, conv_out])
-        x = BatchNormalization()(x)
+        initial_conv_in = x
+        for _ in range(2):
+            x = Conv1D(
+                filters=48,
+                kernel_size=3,
+                activation=activation,
+                kernel_regularizer=regularizer,
+                padding=padding
+            )(x)
+            x = BatchNormalization()(x)
+        x = add([x, initial_conv_in])
     x = MaxPooling1D(6)(x)
     x = BatchNormalization()(x)
     for i in range(4):
-        conv_out = Conv1D(
-            filters=96,
-            kernel_size=3,
-            activation=activation,
-            kernel_regularizer=regularizer,
-            padding=padding
-        )(x)
+        initial_conv_in = x
+        for _ in range(2):
+            x = Conv1D(
+                filters=96,
+                kernel_size=3,
+                activation=activation,
+                kernel_regularizer=regularizer,
+                padding=padding
+            )(x)
+            x = BatchNormalization()(x)
         # Skip the residual block if this is the first iteration (meaning the number of filters of the input versus the output is different)
-        x = conv_out if i == 0 else add([x, conv_out])
-        x = BatchNormalization()(x)
+        if i != 0:
+            x = add([x, initial_conv_in])
     x = MaxPooling1D(6)(x)
     x = BatchNormalization()(x)
     for i in range(6):
-        conv_out = Conv1D(
-            filters=192,
-            kernel_size=3,
-            activation=activation,
-            kernel_regularizer=regularizer,
-            padding=padding
-        )(x)
-        x = conv_out if i == 0 else add([x, conv_out])
-        x = BatchNormalization()(x)
+        initial_conv_in = x
+        for _ in range(2):
+            x = Conv1D(
+                filters=192,
+                kernel_size=3,
+                activation=activation,
+                kernel_regularizer=regularizer,
+                padding=padding
+            )(x)
+            x = BatchNormalization()(x)
+        if i != 0:
+            x = add([x, initial_conv_in])
     x = MaxPooling1D(6)(x)
     x = BatchNormalization()(x)
     for i in range(3):
-        conv_out = Conv1D(
-            filters=384,
-            kernel_size=3,
-            activation=activation,
-            kernel_regularizer=regularizer,
-            padding=padding
-        )(x)
-        x = conv_out if i == 0 else add([x, conv_out])
-        x = BatchNormalization()(x)
+        initial_conv_in = x
+        for _ in range(2):
+            x = Conv1D(
+                filters=384,
+                kernel_size=3,
+                activation=activation,
+                kernel_regularizer=regularizer,
+                padding=padding
+            )(x)
+            x = BatchNormalization()(x)
+        if i != 0:
+            x = add([x, initial_conv_in])
     x = Flatten()(x)
     outputs = Dense(1, activation='sigmoid', kernel_regularizer=regularizer)(x)
     model = Model(inputs=inputs, outputs=outputs)
