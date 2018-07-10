@@ -32,14 +32,15 @@ class EventDataSet:
             data_list = pickle.load(pickle_file)
         return data_list
 
-    def __init__(self,
-                 # Keep only a certain set of run types in the data set
-                 keep_run_types: Optional[Set[RunType]],
-                 # Remove events containing multiple bubbles
-                 filter_multiple_bubbles: bool,
-                 # Filter out all events within certain areas of the tank near the walls
-                 use_fiducial_cuts: bool
-                 ) -> None:
+    def __init__(
+        self,
+        # Keep only a certain set of run types in the data set
+        keep_run_types: Optional[Set[RunType]],
+        # Remove events containing multiple bubbles
+        filter_multiple_bubbles: bool,
+        # Filter out all events within certain areas of the tank near the walls
+        use_fiducial_cuts: bool
+    ) -> None:
         """Initializer that takes parameters that determine which data is loaded; None for the set of run types represents no filtering"""
         # Load the data and run a series of filters on it
         events_data = self.load_data_from_file()
