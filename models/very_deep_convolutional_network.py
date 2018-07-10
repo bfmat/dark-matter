@@ -1,7 +1,7 @@
 """A very deep 1-dimensional fully convolutional network intended for processing of raw audio waveforms and inspired by the M34 architecture"""
 # Created by Brendon Matusch, July 2018
 
-from keras.layers import Conv1D, MaxPooling1D, Flatten, Dropout, Input, BatchNormalization, Dense
+from keras.layers import Conv1D, MaxPooling1D, Flatten, Dropout, Input, BatchNormalization, Dense, concatenate
 from keras.models import Model, Sequential
 from keras.regularizers import l2
 
@@ -9,12 +9,12 @@ from keras.regularizers import l2
 def create_model() -> Model:
     """Create and return a new instance of the very deep convolutional network"""
     # Create a one-dimensional convolutional neural network model with rectified linear activations, using the Keras functional API
-    # It should take both microphone channels and an entire clip of audio
+    # It should take both microphone channels and an entire clip of audio, and take the position of the bubble on all 3 axes as a secondary input
     activation = 'relu'
     padding = 'same'
     regularizer = l2(0)
-    inputs = Input((100_000, 2))
-    x = BatchNormalization()(inputs)
+    audio_inputs = Input((100_000, 2))
+    x = BatchNormalization()(audio_inputs)
     x = Conv1D(
         filters=48,
         kernel_size=80,
@@ -68,8 +68,14 @@ def create_model() -> Model:
         )(x)
         x = BatchNormalization()(x)
     x = Flatten()(x)
+    # Create a secondary input for the 3 axes and concatenate it to the outputs of the convolutional layers
+    axes_inputs = Input((3,))
+    x = concatenate([x, axes_inputs])
+    x = BatchNormalization()(x)
+    x = Dense(16, activation=activation, kernel_regularizer=regularizer)(x)
+    x = BatchNormalization()(x)
     outputs = Dense(1, activation='sigmoid', kernel_regularizer=regularizer)(x)
-    model = Model(inputs=inputs, outputs=outputs)
+    model = Model(inputs=[audio_inputs, axes_inputs], outputs=outputs)
     # Output a summary of the model's architecture
     print(model.summary())
     # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
