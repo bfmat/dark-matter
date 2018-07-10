@@ -34,3 +34,9 @@ for run_type in all_run_types:
         and bubble.num_bubbles_pressure >= 0.8 and bubble.num_bubbles_pressure <= 1.2
     ])
     print(single_bubble_instances, 'single bubble events')
+    # Print the number that pass the fiducial cuts
+    pass_fiducial_cuts = len([
+        bubble for bubble in run_type_bubbles
+        if EventDataSet.is_not_wall_event(bubble)
+    ])
+    print(pass_fiducial_cuts, 'that pass fiducial cuts')
