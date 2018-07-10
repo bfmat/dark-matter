@@ -18,7 +18,7 @@ EVENT_FILE_PATH = os.path.expanduser('~/merged.pkl')
 VALIDATION_SPLIT = 0.2
 
 # The absolute number of examples to reserve for validation in the training generator
-GENERATOR_VALIDATION_EXAMPLES = 128
+GENERATOR_VALIDATION_EXAMPLES = 1024
 
 
 class EventDataSet:
