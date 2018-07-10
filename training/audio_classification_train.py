@@ -10,20 +10,8 @@ from data_processing.bubble_data_point import RunType, load_bubble_audio
 from data_processing.experiment_serialization import save_test
 from models.very_deep_convolutional_network import create_model
 
-# Load two different data sets from the file, one for training which does not include fiducial cuts, and one for validation which does
-training_data_set = EventDataSet(
-    filter_multiple_bubbles=True,
-    keep_run_types=set([
-        RunType.LOW_BACKGROUND,
-        RunType.AMERICIUM_BERYLLIUM,
-        RunType.CALIFORNIUM_40CM,
-        RunType.CALIFORNIUM_60CM,
-        RunType.BARIUM_100CM,
-        RunType.BARIUM_40CM
-    ]),
-    use_fiducial_cuts=False
-)
-validation_data_set = EventDataSet(
+# Load a data set from the file, including fiducial cuts
+event_data_set = EventDataSet(
     filter_multiple_bubbles=True,
     keep_run_types=set([
         RunType.LOW_BACKGROUND,
@@ -39,8 +27,8 @@ validation_data_set = EventDataSet(
 ground_truth = EventDataSet.is_not_wall_event \
     if len(sys.argv) >= 2 and sys.argv[1].lower() == "wall" \
     else None
-# Create a training data generator with the audio loading function and whatever ground truth function has been chosen
-training_generator_callable, _, _ = training_data_set.arbitrary_alpha_classification_generator(
+# Create a training data generator and validation data with the audio loading function and whatever ground truth function has been chosen
+training_generator_callable, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
     data_converter=load_bubble_audio,
     storage_size=512,
     batch_size=32,
@@ -48,14 +36,6 @@ training_generator_callable, _, _ = training_data_set.arbitrary_alpha_classifica
     ground_truth=ground_truth
 )
 training_generator = training_generator_callable()
-# Get validation data from the set which has fiducial cuts enabled (since this is the data for which inference accuracy is very meaningful)
-_, validation_inputs, validation_ground_truths = validation_data_set.arbitrary_alpha_classification_generator(
-    data_converter=load_bubble_audio,
-    storage_size=512,
-    batch_size=32,
-    examples_replaced_per_batch=16,
-    ground_truth=ground_truth
-)
 # Create an instance of the fully convolutional network model
 model = create_model()
 # Iterate over training and validation for 20 epochs
@@ -78,7 +58,7 @@ for epoch in range(20):
     # Run predictions on the validation data set, and save the experimental run
     validation_network_outputs = model.predict(validation_inputs)
     save_test(
-        validation_data_set,
+        event_data_set,
         validation_ground_truths,
         validation_network_outputs,
         epoch,
