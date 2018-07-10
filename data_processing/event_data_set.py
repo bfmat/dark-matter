@@ -184,11 +184,17 @@ class EventDataSet:
             # Split it into training and validation, but with a smaller number for validation; this is a hack required because Keras's validation generator feature does not work as documented
             self.training_events = all_events[GENERATOR_VALIDATION_EXAMPLES:]
             self.validation_events = all_events[:GENERATOR_VALIDATION_EXAMPLES]
-            # Convert the validation bubbles right away, and also get corresponding binary values for ground truth
-            validation_inputs = np.stack([
-                data_converter(bubble, use_synthesis=False)[0]
-                for bubble in self.validation_events
-            ])
+            # Convert the validation bubbles right away and include the position data, and also get corresponding binary values for ground truth
+            validation_inputs = [
+                np.stack([
+                    data_converter(bubble, use_synthesis=False)[0]
+                    for bubble in self.validation_events
+                ]),
+                np.stack([
+                    [bubble.x_position, bubble.y_position, bubble.z_position]
+                    for bubble in self.validation_events
+                ])
+            ]
             validation_ground_truths = np.array([
                 bubble.run_type == RunType.LOW_BACKGROUND
                 for bubble in self.validation_events
