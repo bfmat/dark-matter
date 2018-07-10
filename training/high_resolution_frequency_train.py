@@ -56,13 +56,13 @@ for epoch in range(20):
     print('Validation loss:', loss)
     print('Validation accuracy:', accuracy)
     # Run predictions on the validation data set, and save the experimental run
-    validation_network_outputs = model.predict(validation_inputs)
-    save_test(
-        event_data_set,
-        validation_ground_truths,
-        validation_network_outputs,
-        epoch
-    )
+    # validation_network_outputs = model.predict(validation_inputs)
+    # save_test(
+    #     event_data_set,
+    #     validation_ground_truths,
+    #     validation_network_outputs,
+    #     epoch
+    # )
     # Save the current model, named with the epoch number
-    model_path = os.path.expanduser(f'~/epoch{epoch}.h5')
-    model.save(model_path)
+    # model_path = os.path.expanduser(f'~/epoch{epoch}.h5')
+    # model.save(model_path)
