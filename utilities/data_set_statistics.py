@@ -40,3 +40,13 @@ for run_type in all_run_types:
         if EventDataSet.is_not_wall_event(bubble)
     ])
     print(pass_fiducial_cuts, 'that pass fiducial cuts')
+    # Print the number for that are single bubbles and also pass the fiducial cuts
+    pass_both_tests = len([
+        bubble for bubble in run_type_bubbles
+        if bubble.num_bubbles_image == 1
+        and bubble.num_bubbles_pressure >= 0.8 and bubble.num_bubbles_pressure <= 1.2
+        and EventDataSet.is_not_wall_event(bubble)
+    ])
+    print(pass_both_tests, 'pass both tests')
+    # Print a blank line for separation
+    print()
