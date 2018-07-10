@@ -21,11 +21,11 @@ event_data_set = EventDataSet(
         RunType.BARIUM_100CM,
         RunType.BARIUM_40CM
     ]),
-    use_fiducial_cuts=True
+    use_fiducial_cuts=False
 )
 # If the option "wall" is passed, discriminate between wall and non-wall events; otherwise, use the default
 ground_truth = EventDataSet.is_not_wall_event \
-    if len(sys.argv) >= 2 and sys.argv[1].lower() == "wall" \
+    if len(sys.argv) >= 2 and sys.argv[1].lower() == 'wall' \
     else None
 # Create a training data generator and validation data with the audio loading function and whatever ground truth function has been chosen
 training_generator_callable, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
