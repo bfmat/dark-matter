@@ -1,7 +1,7 @@
 """A very deep 1-dimensional fully convolutional network intended for processing of raw audio waveforms and inspired by the M34 architecture"""
 # Created by Brendon Matusch, July 2018
 
-from keras.layers import Conv1D, MaxPooling1D, Flatten, Input, BatchNormalization, Dense
+from keras.layers import Conv1D, MaxPooling1D, Flatten, Dropout, Input, BatchNormalization, Dense
 from keras.models import Model, Sequential
 from keras.regularizers import l2
 
@@ -25,7 +25,7 @@ def create_model() -> Model:
     )(x)
     x = MaxPooling1D(6)(x)
     x = BatchNormalization()(x)
-    for _ in range(6):
+    for _ in range(3):
         x = Conv1D(
             filters=48,
             kernel_size=3,
@@ -36,7 +36,7 @@ def create_model() -> Model:
         x = BatchNormalization()(x)
     x = MaxPooling1D(6)(x)
     x = BatchNormalization()(x)
-    for i in range(8):
+    for _ in range(4):
         x = Conv1D(
             filters=96,
             kernel_size=3,
@@ -47,7 +47,7 @@ def create_model() -> Model:
         x = BatchNormalization()(x)
     x = MaxPooling1D(6)(x)
     x = BatchNormalization()(x)
-    for i in range(12):
+    for _ in range(6):
         x = Conv1D(
             filters=192,
             kernel_size=3,
@@ -58,7 +58,7 @@ def create_model() -> Model:
         x = BatchNormalization()(x)
     x = MaxPooling1D(6)(x)
     x = BatchNormalization()(x)
-    for i in range(6):
+    for _ in range(3):
         x = Conv1D(
             filters=384,
             kernel_size=3,
