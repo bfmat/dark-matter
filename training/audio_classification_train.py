@@ -65,5 +65,5 @@ for epoch in range(20):
         prefix='waveform_'
     )
     # Save the current model, named with the epoch number
-    model_path = os.path.expanduser(f'~/epoch{epoch}.h5')
+    model_path = os.path.expanduser(f'~/waveform_epoch{epoch}.h5')
     model.save(model_path)

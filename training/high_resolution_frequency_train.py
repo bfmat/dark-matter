@@ -65,5 +65,5 @@ for epoch in range(20):
         prefix='high_resolution_frequency_'
     )
     # Save the current model, named with the epoch number
-    model_path = os.path.expanduser(f'~/epoch{epoch}.h5')
+    model_path = os.path.expanduser(f'~/frequency_epoch{epoch}.h5')
     model.save(model_path)
