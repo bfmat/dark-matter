@@ -18,8 +18,6 @@ event_data_set = EventDataSet(
         RunType.AMERICIUM_BERYLLIUM,
         RunType.CALIFORNIUM_40CM,
         RunType.CALIFORNIUM_60CM,
-        RunType.BARIUM_100CM,
-        RunType.BARIUM_40CM
     ]),
     use_fiducial_cuts=False
 )
