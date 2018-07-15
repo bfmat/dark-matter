@@ -32,5 +32,8 @@ ax.scatter(
 # Use logarithmic scales for both axes
 ax.set_xscale('log')
 ax.set_yscale('log')
+# Label the X and Y axes
+plt.xlabel('AP12')
+plt.ylabel('Pressure Without Position Correction')
 # Display the graph on screen
 plt.show()
