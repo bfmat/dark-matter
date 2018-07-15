@@ -112,7 +112,7 @@ class BubbleDataPoint:
         month = int(run_identifier[4:6])
         day = int(run_identifier[6:8])
         self.date = datetime.date(year=year, month=month, day=day)
-       # At the end of the string, there are often strange characters; iterate up to the last one which is a numeric digit, and use that to cut out the run number
+        # At the end of the string, there are often strange characters; iterate up to the last one which is a numeric digit, and use that to cut out the run number
         run_number_end_index = 10
         for character_index in itertools.count(run_number_end_index + 1):
             # Subtract one from the index because indexing in Python is exclusive for the end
@@ -123,11 +123,11 @@ class BubbleDataPoint:
         self.run_number = int(run_identifier[9:run_number_end_index])
         # Get the event number within the run, which starts at 0
         self.event_number = root_event.ev
-        # Assign the run type based on the raw numeric value, assuming garbage if the value is not present in the enumeration
-        raw_run_type = root_event.run_type
-        self.run_type = RunType(raw_run_type) \
-            if raw_run_type in set(possible_run_type.value for possible_run_type in RunType) \
-            else RunType.GARBAGE
+        # Assign the run type by looking up the raw numeric value in the dictionary, assuming garbage if the value is not present in the dictionary
+        if root_event.run_type in RUN_TYPE_DICTIONARY:
+            self.run_type = RUN_TYPE_DICTIONARY[root_event.run_type]
+        else:
+            self.run_type = RunType.GARBAGE
         # Likewise for the cause of the recording trigger, assuming a manual trigger or relaunch due to a problem
         raw_trigger_cause = root_event.trigger_main
         self.trigger_cause = TriggerCause(raw_trigger_cause) \
@@ -166,6 +166,8 @@ class BubbleDataPoint:
         self.num_bubbles_pressure = root_event.dytranCZ
         # Get the neural network score predicted in the original PICO-60 paper
         self.original_neural_network_score = root_event.NN_score
+        # Get the time since the target pressure was reached
+        self.time_since_target_pressure = root_event.te
 
 
 def bubble_data_path(bubble: BubbleDataPoint) -> str:

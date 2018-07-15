@@ -58,6 +58,8 @@ class EventDataSet:
             # Keep only events containing around one bubble based on the image and pressure transducer
             and event.num_bubbles_image <= 1
             and event.num_bubbles_pressure >= 0.8 and event.num_bubbles_pressure <= 1.2
+            # Do not use events within the first 25s after reaching target pressure
+            and event.time_since_target_pressure > 25
         ]
         # Run cuts required only for validation on a copy of the list; this should optimize performance of the acoustic parameter
         validation_events = [

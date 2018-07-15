@@ -6,19 +6,15 @@ from data_processing.bubble_data_point import RunType
 from data_processing.event_data_set import EventDataSet
 
 # Load the data set without running any cuts other than the basic garbage filters
-all_run_types = [
+all_run_types = {
     RunType.LOW_BACKGROUND,
     RunType.AMERICIUM_BERYLLIUM,
-    RunType.CALIFORNIUM_40CM,
-    RunType.CALIFORNIUM_60CM,
-    RunType.BARIUM_100CM,
-    RunType.BARIUM_40CM
-]
-event_data_set = EventDataSet(
-    filter_multiple_bubbles=False,
-    keep_run_types=set(all_run_types),
-    use_fiducial_cuts=False
-)
+    RunType.CALIFORNIUM,
+    RunType.BARIUM,
+    RunType.COBALT,
+    RunType.GARBAGE
+}
+event_data_set = EventDataSet(all_run_types)
 # Combine the training and validation lists
 bubbles = event_data_set.training_events + event_data_set.validation_events
 # Iterate over ech of the run types
