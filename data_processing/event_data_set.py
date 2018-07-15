@@ -130,8 +130,8 @@ class EventDataSet:
             and event.pressure_not_position_corrected > 0.7
         ) and (
             # Run a cut on the AP12 variable, which is based on the frequency distribution and distinguishes wall events
-            event.acoustic_parameter_12 < 3800
-            and event.acoustic_parameter_12 > 1800
+            event.acoustic_parameter_12 < 300
+            and event.acoustic_parameter_12 > 45
         )
 
     @classmethod
