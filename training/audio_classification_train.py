@@ -11,16 +11,12 @@ from data_processing.experiment_serialization import save_test
 from models.very_deep_convolutional_network import create_model
 
 # Load a data set from the file, including fiducial cuts
-event_data_set = EventDataSet(
-    filter_multiple_bubbles=True,
-    keep_run_types=set([
-        RunType.LOW_BACKGROUND,
-        RunType.AMERICIUM_BERYLLIUM,
-        RunType.CALIFORNIUM_40CM,
-        RunType.CALIFORNIUM_60CM,
-    ]),
-    use_fiducial_cuts=False
-)
+event_data_set = EventDataSet({
+    RunType.LOW_BACKGROUND,
+    RunType.AMERICIUM_BERYLLIUM,
+    RunType.CALIFORNIUM_40CM,
+    RunType.CALIFORNIUM_60CM,
+})
 # If the option "wall" is passed, discriminate between wall and non-wall events; otherwise, use the default
 ground_truth = EventDataSet.is_not_wall_event \
     if len(sys.argv) >= 2 and sys.argv[1].lower() == 'wall' \

@@ -4,10 +4,11 @@
 import json
 import os
 import time
-from typing import Tuple, Optional
+from typing import Tuple, Optional, List
 
 import numpy as np
 
+from data_processing.bubble_data_point import BubbleDataPoint
 from data_processing.event_data_set import EventDataSet
 
 
@@ -35,7 +36,7 @@ def save_test(event_data_set: EventDataSet, validation_ground_truths: np.ndarray
     print('Data saved at', json_file_path)
 
 
-def load_test(json_file_path: str) -> Tuple[EventDataSet, np.ndarray, np.ndarray]:
+def load_test(json_file_path: str) -> Tuple[List[BubbleDataPoint], np.ndarray, np.ndarray]:
     """Load a validation data set from a JSON file encoded by the save function; returns the event data set, the validation ground truths, followed by the validation network outputs"""
     # Load the contents of the JSON file from the provided path
     with open(os.path.expanduser(json_file_path)) as input_file:
@@ -50,6 +51,6 @@ def load_test(json_file_path: str) -> Tuple[EventDataSet, np.ndarray, np.ndarray
         ground_truths.append(bubble_information['ground_truth'])
         network_outputs.append(bubble_information['network_output'])
     # Load from disk only the bubbles with the provided set of indices
-    event_data_set = EventDataSet.load_specific_indices(unique_bubble_indices)
-    # Return the event data set, and the ground truths and network outputs as NumPy arrays
-    return event_data_set, np.array(ground_truths), np.array(network_outputs)
+    events = EventDataSet.load_specific_indices(unique_bubble_indices)
+    # Return the list of events, and the ground truths and network outputs as NumPy arrays
+    return events, np.array(ground_truths), np.array(network_outputs)

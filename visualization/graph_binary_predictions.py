@@ -15,11 +15,11 @@ from utilities.verify_arguments import verify_arguments
 verify_arguments('JSON data file')
 
 # Load the data set from the file
-event_data_set, ground_truths, network_outputs = load_test(sys.argv[1])
+events, ground_truths, network_outputs = load_test(sys.argv[1])
 # Get the acoustic parameter and neural network score data from the events
 acoustic_parameters = [
     event.logarithmic_acoustic_parameter
-    for event in event_data_set.validation_events
+    for event in events
 ]
 
 # Iterate over the three criteria standard deviations will be calculated for, and corresponding names

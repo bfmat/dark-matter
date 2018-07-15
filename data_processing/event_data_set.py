@@ -17,8 +17,8 @@ EVENT_FILE_PATH = os.path.expanduser('~/merged.pkl')
 # The amount of data (out of 1) to remove for validation in the non-generator training functions
 VALIDATION_SPLIT = 0.2
 
-# The absolute number of examples to reserve for validation in the training generator
-GENERATOR_VALIDATION_EXAMPLES = 128
+# The number of examples to include in the validation set
+VALIDATION_EXAMPLES = 128
 
 
 class EventDataSet:
@@ -35,49 +35,45 @@ class EventDataSet:
     def __init__(
         self,
         # Keep only a certain set of run types in the data set
-        keep_run_types: Optional[Set[RunType]],
-        # Remove events containing multiple bubbles
-        filter_multiple_bubbles: bool,
-        # Filter out all events within certain areas of the tank near the walls
-        use_fiducial_cuts: bool
+        keep_run_types: Optional[Set[RunType]]
     ) -> None:
         """Initializer that takes parameters that determine which data is loaded; None for the set of run types represents no filtering"""
-        # Load the data and run a series of filters on it
-        events_data = self.load_data_from_file()
-        events_data = [
-            event for event in events_data
+        # Load the data from the Pickle file on disk
+        events = self.load_data_from_file()
+        # If there are run types provided, filter out data points that are not in the set
+        if keep_run_types is not None:
+            events = [
+                event for event in events
+                if event.run_type in keep_run_types
+            ]
+        # Run a series of filters on it (these are the universal filters used for both training and validation)
+        events = [
+            event for event in events
             # Always filter out the garbage data
             if event.run_type != RunType.GARBAGE
             # Keep only events captured due to the camera trigger and not timeouts, manual triggers, or auto-relaunches
             and event.trigger_cause == TriggerCause.CAMERA_TRIGGER
             # Always exclude events with a very large negative acoustic parameter (this is completely invalid)
             and event.logarithmic_acoustic_parameter > -100
+            # Keep only events containing around one bubble based on the image and pressure transducer
+            and event.num_bubbles_image <= 1
+            and event.num_bubbles_pressure >= 0.8 and event.num_bubbles_pressure <= 1.2
         ]
-        # If there are run types provided, filter out data points that are not in the set
-        if keep_run_types is not None:
-            events_data = [
-                event for event in events_data
-                if event.run_type in keep_run_types
-            ]
-        # Keep only events containing around one bubble based on the image and pressure transducer if the filter is enabled
-        if filter_multiple_bubbles:
-            events_data = [
-                event for event in events_data
-                if event.num_bubbles_image <= 1
-                and event.num_bubbles_pressure >= 0.8 and event.num_bubbles_pressure <= 1.2
-            ]
-        # Filter out events near the wall of the tank if the cuts are enabled
-        if use_fiducial_cuts:
-            events_data = [
-                event for event in events_data
-                if self.is_not_wall_event(event)
-            ]
-        # Randomize the order of the events and divide them into global training and validation sets according to the predefined proportion
-        random.shuffle(events_data)
-        training_split = 1 - VALIDATION_SPLIT
-        validation_start_index = int(len(events_data) * training_split)
-        self.training_events = events_data[:validation_start_index]
-        self.validation_events = events_data[validation_start_index:]
+        # Run cuts required only for validation on a copy of the list; this should optimize performance of the acoustic parameter
+        validation_events = [
+            event for event in events
+            # Filter out events near the wall of the tank
+            if self.is_not_wall_event(event)
+        ]
+        # Choose a specified number of random examples from the list with validation cuts applied
+        self.validation_events = random.sample(
+            validation_events, VALIDATION_EXAMPLES)
+        # Remove all of the validation events from the original list of events
+        for validation_event in validation_events:
+            events.remove(validation_event)
+        # Randomize the order of the remaining events and move them into a global list
+        random.shuffle(events)
+        self.training_events = events
 
     @staticmethod
     def is_not_wall_event(event: BubbleDataPoint) -> bool:
@@ -110,18 +106,11 @@ class EventDataSet:
             )
         )
 
-    @staticmethod
-    def load_specific_indices(specific_unique_indices: List[int]):
+    @classmethod
+    def load_specific_indices(cls, specific_unique_indices: List[int]) -> List[BubbleDataPoint]:
         """An alternative loading method that does not do any filtering or sorting (except for the standard cuts), but rather loads only events with specific defined indices"""
-        # Return type annotation is not possible because this class cannot be referenced inside itself
-        # Create a new instance of this class with no filtering except for the cuts that are always done
-        event_data_set = EventDataSet(
-            keep_run_types=None,
-            filter_multiple_bubbles=False,
-            use_fiducial_cuts=False
-        )
-        # Combine its training and validation data into one array
-        all_data = event_data_set.training_events + event_data_set.validation_events
+        # Load all events from the Pickle file on disk
+        all_data = cls.load_data_from_file()
         # Filter out the bubbles whose unique indices are not in the provided list
         filtered_data = [
             bubble for bubble in all_data
@@ -134,10 +123,8 @@ class EventDataSet:
                 bubble.unique_bubble_index
             )
         )
-        # Set the validation data list in the event data set with the filtered and sorted data (and empty the training data list), and return it
-        event_data_set.training_events = []
-        event_data_set.validation_events = sorted_data
-        return event_data_set
+        # Return the list of filtered events
+        return sorted_data
 
     def banded_frequency_alpha_classification(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Return the banded frequency domain data, with corresponding binary classification ground truths into neutrons and alpha particles"""
@@ -162,8 +149,8 @@ class EventDataSet:
         storage_size: int,
         batch_size: int,
         examples_replaced_per_batch: int,
-        custom_training_data: Optional[List[BubbleDataPoint]] = None,
-        ground_truth: Optional[Callable[[BubbleDataPoint], bool]] = None
+        custom_training_data: Optional[List[BubbleDataPoint]]=None,
+        ground_truth: Optional[Callable[[BubbleDataPoint], bool]]=None
     ) -> Tuple[Callable[[], Generator[Tuple[np.ndarray, np.ndarray], None, None]], np.ndarray, np.ndarray]:
         """Return a generator which produces arbitrary training data for each bubble, with corresponding binary classification ground truths into neutrons and alpha particles; alongside it, return arrays of validation data"""
 
@@ -177,13 +164,8 @@ class EventDataSet:
             validation_inputs = []
             validation_ground_truths = []
             self.training_events = custom_training_data
-        # Otherwise, split the data into training and validation
+        # Otherwise, create training and validation data
         else:
-            # Combine the training and validation lists together; we need to divide them differently with a smaller number for validation because all of the validation events must be loaded at once
-            all_events = self.training_events + self.validation_events
-            # Split it into training and validation, but with a smaller number for validation; this is a hack required because Keras's validation generator feature does not work as documented
-            self.training_events = all_events[GENERATOR_VALIDATION_EXAMPLES:]
-            self.validation_events = all_events[:GENERATOR_VALIDATION_EXAMPLES]
             # Convert the validation bubbles right away and include the position data, and also get corresponding binary values for ground truth
             validation_inputs = [
                 np.stack([
