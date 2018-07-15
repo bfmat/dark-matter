@@ -49,23 +49,12 @@ class EventDataSet:
         # Run a series of filters on it (these are the universal filters used for both training and validation)
         events = [
             event for event in events
-            # Always filter out the garbage data
-            if event.run_type != RunType.GARBAGE
-            # Keep only events captured due to the camera trigger and not timeouts, manual triggers, or auto-relaunches
-            and event.trigger_cause == TriggerCause.CAMERA_TRIGGER
-            # Always exclude events with a very large negative acoustic parameter (this is completely invalid)
-            and event.logarithmic_acoustic_parameter > -100
-            # Keep only events containing around one bubble based on the image and pressure transducer
-            and event.num_bubbles_image <= 1
-            and event.num_bubbles_pressure >= 0.8 and event.num_bubbles_pressure <= 1.2
-            # Do not use events within the first 25s after reaching target pressure
-            and event.time_since_target_pressure > 25
+            if self.passes_standard_cuts(event)
         ]
-        # Run cuts required only for validation on a copy of the list; this should optimize performance of the acoustic parameter
+        # Run cuts required only for validation on a copy of the list
         validation_events = [
             event for event in events
-            # Filter out events near the wall of the tank
-            if self.is_not_wall_event(event)
+            if self.passes_validation_cuts(event)
         ]
         # Choose a specified number of random examples from the list with validation cuts applied
         self.validation_events = random.sample(
@@ -78,8 +67,26 @@ class EventDataSet:
         self.training_events = events
 
     @staticmethod
-    def is_not_wall_event(event: BubbleDataPoint) -> bool:
-        """Determines whether an event is far enough the wall to not be removed by fiducial cuts"""
+    def passes_standard_cuts(event: BubbleDataPoint) -> bool:
+        """Determines whether an event passes the basic quality cuts run on all data"""
+        # Run a series of binary cuts; if any of them fail, return False
+        return (
+            # Always filter out the garbage data
+            event.run_type != RunType.GARBAGE
+            # Keep only events captured due to the camera trigger and not timeouts, manual triggers, or auto-relaunches
+            and event.trigger_cause == TriggerCause.CAMERA_TRIGGER
+            # Always exclude events with a very large negative acoustic parameter (this is completely invalid)
+            and event.logarithmic_acoustic_parameter > -100
+            # Keep only events containing around one bubble based on the image and pressure transducer
+            and event.num_bubbles_image <= 1
+            and event.num_bubbles_pressure >= 0.8 and event.num_bubbles_pressure <= 1.2
+            # Do not use events within the first 25s after reaching target pressure
+            and event.time_since_target_pressure > 25
+        )
+
+    @staticmethod
+    def passes_validation_cuts(event: BubbleDataPoint) -> bool:
+        """Determines whether an event passes the cuts necessary for validation, which optimize discrimination using the acoustic parameter"""
         # Omit events above a certain height (too near the surface of the vessel)
         return event.z_position <= 523 and (
             # Accept several different possible regions that the bubble can occupy around the center of the tank
