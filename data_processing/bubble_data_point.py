@@ -1,7 +1,7 @@
 """Code related to the custom bubble data format used instead of ROOT"""
 # Created by Brendon Matusch, June 2018
 
-from enum import IntEnum
+from enum import Enum, IntEnum, auto
 import datetime
 import itertools
 import math
@@ -41,16 +41,53 @@ TIME_BANDS = 16
 FREQUENCY_BANDS = 1024
 
 
-class RunType(IntEnum):
+class RunType(Enum):
     """An enumeration of the possible run types, including various distinct radiation sources; numbers correspond to the numeric representations in the data table"""
-    LOW_BACKGROUND = 0  # Run with normal background radiation
-    AMERICIUM_BERYLLIUM = 2  # Calibration with AmBe source at the end of the source tube
-    ACOUSTICS_BLINDED = 10  # Run with acoustic information blinded
-    CALIFORNIUM_40CM = 14  # Cf source at 40cm from the bottom of the source tube
-    CALIFORNIUM_60CM = 15  # Cf source at 60cm from the bottom of the source tube
-    BARIUM_100CM = 21  # Ba source at 100cm from the bottom of the source tube
-    BARIUM_40CM = 22  # Ba source at 40cm from the bottom of the source tube
-    GARBAGE = 99  # Invalid data or unknown run type
+    # Run with normal background radiation
+    LOW_BACKGROUND = auto()
+    # Calibration with AmBe neutron source at the end of the source tube
+    AMERICIUM_BERYLLIUM = auto()
+    # Californium neutron source at various distances from the bottom of the source tube
+    CALIFORNIUM = auto()
+    # Barium gamma source at various distances from the bottom of the source tube
+    BARIUM = auto()
+    # Cobalt gamma source at 45cm from the bottom of the source tube
+    COBALT = auto()
+    # Engineering, test and commissioning data which should not be used
+    GARBAGE = auto()
+
+
+# A dictionary mapping numeric run types to values in the enum
+RUN_TYPE_DICTIONARY = {
+    # Unblind background radiation data
+    0: RunType.LOW_BACKGROUND,
+    # Data with acoustics originally blinded, with a 200Hz camera frame rate
+    10: RunType.LOW_BACKGROUND,
+    # More data with acoustics originally blinded, with a 340Hz camera frame rate
+    100: RunType.LOW_BACKGROUND,
+    # Neutron calibration data with AmBe source at the bottom of the source tube
+    2: RunType.AMERICIUM_BERYLLIUM,
+    # Neutron calibration data with 252Cf source 40cm from the bottom of the source tube
+    14: RunType.CALIFORNIUM,
+    # Neutron calibration data with 252Cf source 60cm from the bottom of the source tube
+    15: RunType.CALIFORNIUM,
+    # Neutron calibration data with 252Cf source 80cm from the bottom of the source tube
+    16: RunType.CALIFORNIUM,
+    # Gamma calibration data with 133Ba source 100cm from the bottom of the source tube
+    21: RunType.BARIUM,
+    # Gamma calibration data with 133Ba source 45cm from the bottom of the source tube
+    22: RunType.BARIUM,
+    # Gamma calibration data with 133Ba source 120cm from the bottom of the source tube
+    23: RunType.BARIUM,
+    # Gamma calibration data with 133Ba source 10cm from the bottom of the source tube
+    24: RunType.BARIUM,
+    # Gamma calibration data with 133Ba source 45cm from the bottom of the source tube, after the frame rate change
+    32: RunType.BARIUM,
+    # Gamma calibration data with 60Co source 45cm from the bottom of the source tube, after the frame rate change
+    41: RunType.COBALT,
+    # Engineering, test and commissioning data which should not be used
+    99: RunType.GARBAGE
+}
 
 
 class TriggerCause(IntEnum):
