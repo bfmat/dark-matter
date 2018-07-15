@@ -14,8 +14,7 @@ from models.very_deep_convolutional_network import create_model
 event_data_set = EventDataSet({
     RunType.LOW_BACKGROUND,
     RunType.AMERICIUM_BERYLLIUM,
-    RunType.CALIFORNIUM_40CM,
-    RunType.CALIFORNIUM_60CM,
+    RunType.CALIFORNIUM
 })
 # If the option "wall" is passed, discriminate between wall and non-wall events; otherwise, use the default
 ground_truth = EventDataSet.is_not_wall_event \
