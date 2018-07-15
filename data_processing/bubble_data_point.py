@@ -164,6 +164,8 @@ class BubbleDataPoint:
         self.num_bubbles_image = root_event.nbub
         # Get the approximated number of bubbles based on the pressure transducer
         self.num_bubbles_pressure = root_event.dytranCZ
+        # Get the pressure transducer value not corrected for position
+        self.pressure_not_position_corrected = root_event.dytranC
         # Get the neural network score predicted in the original PICO-60 paper
         self.original_neural_network_score = root_event.NN_score
         # Get the time since the target pressure was reached

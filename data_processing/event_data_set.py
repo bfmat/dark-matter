@@ -106,6 +106,10 @@ class EventDataSet:
                 event.distance_to_wall > 13
                 and event.z_position > 400
             )
+        ) and (
+            # Run a cut on the pressure transducer value not corrected for position, to remove more wall-like events
+            event.pressure_not_position_corrected < 1.3
+            and event.pressure_not_position_corrected > 0.7
         )
 
     @classmethod
