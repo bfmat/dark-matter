@@ -79,14 +79,20 @@ class EventDataSet:
             and event.logarithmic_acoustic_parameter > -100
             # Keep only events containing around one bubble based on the image and pressure transducer
             and event.num_bubbles_image <= 1
-            and event.num_bubbles_pressure >= 0.8 and event.num_bubbles_pressure <= 1.2
+            and event.num_bubbles_pressure >= 0.7 and event.num_bubbles_pressure <= 1.3
             # Do not use events within the first 25s after reaching target pressure
             and event.time_since_target_pressure > 25
         )
 
-    @staticmethod
-    def passes_validation_cuts(event: BubbleDataPoint) -> bool:
+    @classmethod
+    def passes_validation_cuts(cls, event: BubbleDataPoint) -> bool:
         """Determines whether an event passes the cuts necessary for validation, which optimize discrimination using the acoustic parameter"""
+        # Accept only events that pass both the fiducial cuts and the audio-based wall cuts
+        return cls.passes_fiducial_cuts(event) and cls.passes_audio_wall_cuts(event)
+
+    @staticmethod
+    def passes_fiducial_cuts(event: BubbleDataPoint) -> bool:
+        """Determines whether an event passes the fiducial cuts which define an area of the vessel excluding the horizontal and vertical extremes"""
         # Omit events above a certain height (too near the surface of the vessel)
         return event.z_position <= 523 and (
             # Accept several different possible regions that the bubble can occupy around the center of the tank
@@ -113,8 +119,13 @@ class EventDataSet:
                 event.distance_to_wall > 13
                 and event.z_position > 400
             )
-        ) and (
-            # Run a cut on the pressure transducer value not corrected for position, to remove more wall-like events
+        )
+
+    @staticmethod
+    def passes_audio_wall_cuts(event: BubbleDataPoint) -> bool:
+        """Determines whether an event passes the cuts that distinguish between bulk and wall events based on the pressure transducer and the piezo frequency distribution"""
+        # Run a cut on the pressure transducer value not corrected for position, to remove more wall-like events
+        return (
             event.pressure_not_position_corrected < 1.3
             and event.pressure_not_position_corrected > 0.7
         ) and (
