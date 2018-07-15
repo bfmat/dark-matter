@@ -110,6 +110,10 @@ class EventDataSet:
             # Run a cut on the pressure transducer value not corrected for position, to remove more wall-like events
             event.pressure_not_position_corrected < 1.3
             and event.pressure_not_position_corrected > 0.7
+        ) and (
+            # Run a cut on the AP12 variable, which is based on the frequency distribution and distinguishes wall events
+            event.acoustic_parameter_12 < 3800
+            and event.acoustic_parameter_12 > 1800
         )
 
     @classmethod
