@@ -223,9 +223,13 @@ def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Option
             # An example: Piezo3;int16;1;Piezo4;int16;1;Piezo9;int16;1;Piezo7;int16;1;unused1;int16;1;FrameClock;int16;1;Cam0Trig;int16;1;Cam1Trig;int16;1;
             # First, split it into the semicolon-separated components
             components = channels_string.split(';')
-            # Get the indices of piezos 3 and 7 (the only ones that work), integer dividing them by 3 because of the data type annotations (int16) and mysterious 1s
-            piezo_3_index = components.index('Piezo3') // 3
-            piezo_7_index = components.index('Piezo7') // 3
+            # Try to get the indices of piezos 3 and 7 (the only ones that work), integer dividing them by 3 because of the data type annotations (int16) and mysterious 1s
+            try:
+                piezo_3_index = components.index('Piezo3') // 3
+                piezo_7_index = components.index('Piezo7') // 3
+            # If one or both of the piezos are not present in the file, print an error message and return nothing
+            except ValueError:
+                print(f'File {audio_file_path} is missing piezo 3 and/or 7')
             # Read the number of samples from the file, which is used in parsing the rest of the file
             samples = int.from_bytes(audio_file.read(4), sys.byteorder)
             # The rest of the file consists of 2-byte integers, one per channel per sample; read all of it
