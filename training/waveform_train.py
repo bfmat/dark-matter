@@ -20,9 +20,9 @@ event_data_set = EventDataSet({
 training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = event_data_set.waveform_alpha_classification()
 # Create an instance of the fully convolutional network model
 model = create_model()
-# Iterate over training and validation for 20 epochs
-for epoch in range(20):
-    # Train the model on the generator
+# Iterate over training and validation for several epochs
+for epoch in range(40):
+    # Train the model on the input and ground truth arrays
     model.fit(
         x=training_inputs,
         y=training_ground_truths,
