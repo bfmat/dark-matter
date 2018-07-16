@@ -68,16 +68,17 @@ def create_model() -> Model:
         )(x)
         x = BatchNormalization()(x)
     x = Flatten()(x)
-    # Create a secondary input for the 3 axes and concatenate it to the outputs of the convolutional layers
-    axes_inputs = Input((3,))
-    x = concatenate([x, axes_inputs])
-    x = BatchNormalization()(x)
+    # # Create a secondary input for the 3 axes and concatenate it to the outputs of the convolutional layers
+    # axes_inputs = Input((3,))
+    # x = concatenate([x, axes_inputs])
+    # x = BatchNormalization()(x)
     x = Dense(64, activation=activation, kernel_regularizer=regularizer)(x)
     x = BatchNormalization()(x)
     x = Dense(16, activation=activation, kernel_regularizer=regularizer)(x)
     x = BatchNormalization()(x)
     outputs = Dense(1, activation='sigmoid', kernel_regularizer=regularizer)(x)
-    model = Model(inputs=[audio_inputs, axes_inputs], outputs=outputs)
+    # model = Model(inputs=[audio_inputs, axes_inputs], outputs=outputs)
+    model = Model(inputs=audio_inputs, outputs=outputs)
     # Output a summary of the model's architecture
     print(model.summary())
     # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
