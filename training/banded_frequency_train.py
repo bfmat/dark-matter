@@ -4,25 +4,20 @@
 
 from keras.layers import Dense, Dropout, BatchNormalization, InputLayer
 from keras.models import Sequential
+from keras.regularizers import l2
 
 from data_processing.event_data_set import EventDataSet, RunType
 from data_processing.experiment_serialization import save_test
 
+# The number of epochs to train for
+EPOCHS = 100
+
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
-event_data_set = EventDataSet(
-    filter_multiple_bubbles=True,
-    filter_acoustic_parameter=False,
-    keep_run_types=set([
-        RunType.LOW_BACKGROUND,
-        RunType.AMERICIUM_BERYLLIUM,
-        RunType.CALIFORNIUM_40CM,
-        RunType.CALIFORNIUM_60CM,
-        RunType.BARIUM_40CM,
-        RunType.BARIUM_100CM
-    ]),
-    filter_proportion_randomly=0,
-    use_fiducial_cuts=True
-)
+event_data_set = EventDataSet({
+    RunType.LOW_BACKGROUND,
+    RunType.AMERICIUM_BERYLLIUM,
+    RunType.CALIFORNIUM,
+})
 # Get the banded frequency domain data and corresponding binary ground truths
 training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()
 
@@ -53,8 +48,14 @@ model.fit(
     x=training_input,
     y=training_ground_truths,
     validation_data=(validation_input, validation_ground_truths),
-    epochs=20
+    epochs=EPOCHS
 )
 # Run predictions on the validation data set, and save the experimental run
 validation_network_outputs = model.predict(validation_input)
-save_test(event_data_set, validation_ground_truths, validation_network_outputs)
+save_test(
+    event_data_set,
+    validation_ground_truths,
+    validation_network_outputs,
+    epoch=EPOCHS - 1,
+    prefix='banded_low_resolution_'
+)
