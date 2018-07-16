@@ -14,9 +14,6 @@ from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerC
 # The path to the Pickle data file which contains processed attributes of bubble events
 EVENT_FILE_PATH = os.path.expanduser('~/merged.pkl')
 
-# The amount of data (out of 1) to remove for validation in the non-generator training functions
-VALIDATION_SPLIT = 0.2
-
 # The number of examples to include in the validation set
 VALIDATION_EXAMPLES = 128
 
