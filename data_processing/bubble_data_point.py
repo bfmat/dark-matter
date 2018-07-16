@@ -219,6 +219,13 @@ def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Option
                 audio_file.read(2), sys.byteorder)
             # Read the channels description string from the file now, and decode it as a string
             channels_string = audio_file.read(channels_string_length).decode()
+            # The channels string is a semicolon-separated list of all the channels of the file
+            # An example: Piezo3;int16;1;Piezo4;int16;1;Piezo9;int16;1;Piezo7;int16;1;unused1;int16;1;FrameClock;int16;1;Cam0Trig;int16;1;Cam1Trig;int16;1;
+            # First, split it into the semicolon-separated components
+            components = channels_string.split(';')
+            # Get the indices of piezos 3 and 7 (the only ones that work), integer dividing them by 3 because of the data type annotations (int16) and mysterious 1s
+            piezo_3_index = components.index('Piezo3') // 3
+            piezo_7_index = components.index('Piezo7') // 3
             # Read the number of samples from the file, which is used in parsing the rest of the file
             samples = int.from_bytes(audio_file.read(4), sys.byteorder)
             # The rest of the file consists of 2-byte integers, one per channel per sample; read all of it
@@ -231,8 +238,8 @@ def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Option
     data_array_flat = np.frombuffer(raw_data, dtype=np.int16)
     # Reshape the 1-dimensional array into channels and samples
     data_array = np.reshape(data_array_flat, (samples, CHANNELS))
-    # Index and return the data of microphones 3 and 7, the only ones that work
-    data_array = data_array[:, [0, 3]]
+    # Index and return the data of piezos 3 and 7
+    data_array = data_array[:, [piezo_3_index, piezo_7_index]]
     # Cut out most of the empty noise at the beginning, and the hydraulic pump sounds at the end
     data_array = data_array[90_000:190_000]
     # Return the data array without any further processing (temporary)
