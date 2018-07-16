@@ -16,7 +16,7 @@ from data_processing.event_data_set import EventDataSet
 from utilities.verify_arguments import verify_arguments
 
 # The number of samples per second to use when saving the audio as WAV files
-SAMPLE_RATE = 12_500
+SAMPLE_RATE = 25_000
 
 # A path to a binary audio file is required
 verify_arguments('binary file path')
