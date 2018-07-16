@@ -52,13 +52,16 @@ class EventDataSet:
             if self.passes_standard_cuts(event)
         ]
         # Run cuts required only for validation on a copy of the list
-        validation_events = [
+        events_passing_validation_cuts = [
             event for event in events
             if self.passes_validation_cuts(event)
         ]
+        # Add 2 copies of the events passing validation cuts to the original list of events, so they are weighted 3 times as heavily
+        for _ in range(2):
+            events += events_passing_validation_cuts
         # Choose a specified number of random examples from the list with validation cuts applied
         self.validation_events = random.sample(
-            validation_events, VALIDATION_EXAMPLES)
+            events_passing_validation_cuts, VALIDATION_EXAMPLES)
         # Remove all of the validation events from the original list of events
         for validation_event in self.validation_events:
             events.remove(validation_event)
