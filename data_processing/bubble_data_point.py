@@ -237,32 +237,6 @@ def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Option
     data_array = data_array[90_000:190_000]
     # Return the data array without any further processing (temporary)
     return [data_array]
-    # # Convert the array to 64-bit floats to prevent overflows
-    # data_array = data_array.astype(np.float64)
-    # # Normalize the audio array so its geometric mean is 1
-    # data_array = normalize(data_array)
-    # # If synthesis is not enabled, wrap it in a single-element list because that is expected by the data generator and return it
-    # if not use_synthesis:
-    #     return [data_array]
-    # # Otherwise, create a list to add synthesized examples to (starting with the real example) and iterate over the number of times to multiply noise into the frequency domain
-    # examples = [data_array]
-    # for _ in range(FREQUENCY_DOMAIN_NOISE_COUNT):
-    #     # Incorporate frequency domain noise into the audio with the defined standard deviation and add it to the list
-    #     audio_with_frequency_noise = multiply_frequency_noise(
-    #         audio=data_array,
-    #         standard_deviation=FREQUENCY_DOMAIN_NOISE_STANDARD_DEVIATION
-    #     )
-    #     examples.append(audio_with_frequency_noise)
-    #     # Iterate over the number of times to add noise to the time domain
-    #     for _ in range(TIME_DOMAIN_NOISE_COUNT):
-    #         # Add time domain noise to the audio that already has frequency noise and add it to the list
-    #         audio_with_time_noise = add_time_noise(
-    #             audio=audio_with_frequency_noise,
-    #             standard_deviation=TIME_DOMAIN_NOISE_STANDARD_DEVIATION
-    #         )
-    #         examples.append(audio_with_time_noise)
-    # # Return the list including the original examples alongside synthesized examples
-    # return examples
 
 
 def load_bubble_frequency_domain(bubble: BubbleDataPoint, use_synthesis: bool = False) -> List[np.ndarray]:
