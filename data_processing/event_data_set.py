@@ -175,14 +175,17 @@ class EventDataSet:
 
     def waveform_alpha_classification(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Return the audio waveform data, with corresponding binary classification ground truths into neutrons and alpha particles"""
-        # Iterate over the training and validation events, with corresponding lists to add inputs and ground truths to
-        training_inputs = []
+        # Iterate over the training and validation events, with corresponding lists to add audio and position inputs and ground truths to
+        training_audio_inputs = []
+        training_position_inputs = []
         training_ground_truths = []
-        validation_inputs = []
+        validation_audio_inputs = []
+        validation_position_inputs = []
         validation_ground_truths = []
-        for events, inputs, ground_truths in zip(
+        for events, audio_inputs, position_inputs, ground_truths in zip(
             [self.training_events, self.validation_events],
-            [training_inputs, validation_inputs],
+            [training_audio_inputs, validation_audio_inputs],
+            [training_position_inputs, validation_position_inputs],
             [training_ground_truths, validation_ground_truths]
         ):
             # Iterate over the events, loading audio and ground truth data
@@ -193,11 +196,28 @@ class EventDataSet:
                 if not audio:
                     continue
                 # Otherwise, add the audio waveform to the list
-                inputs.append(audio[0])
+                audio_inputs.append(audio[0])
+                # Add the spatial position of the bubble to the list of inputs
+                position_inputs.append([
+                    event.x_position,
+                    event.y_position,
+                    event.z_position
+                ])
                 # Add a corresponding ground truth, True if this is from the alpha data set and false otherwise
                 ground_truths.append(event.run_type == RunType.LOW_BACKGROUND)
-        # Convert the lists into NumPy arrays and return them
-        return np.array(training_inputs), np.array(training_ground_truths), np.array(validation_inputs), np.array(validation_ground_truths)
+        # Convert the lists into NumPy arrays and return them, combining the audio inputs with the position inputs
+        return (
+            [
+                np.array(training_audio_inputs),
+                np.array(training_position_inputs)
+            ],
+            np.array(training_ground_truths)
+            [
+                np.array(validation_audio_inputs),
+                np.array(validation_position_inputs)
+            ],
+            np.array(validation_ground_truths)
+        )
 
     def arbitrary_alpha_classification_generator(
         self,
