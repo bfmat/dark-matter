@@ -230,6 +230,7 @@ def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Option
             # If one or both of the piezos are not present in the file, print an error message and return nothing
             except ValueError:
                 print(f'File {audio_file_path} is missing piezo 3 and/or 7')
+                return []
             # Read the number of samples from the file, which is used in parsing the rest of the file
             samples = int.from_bytes(audio_file.read(4), sys.byteorder)
             # The rest of the file consists of 2-byte integers, one per channel per sample; read all of it
