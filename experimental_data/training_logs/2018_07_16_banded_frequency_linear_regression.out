@@ -1,0 +1,222 @@
+/usr/local/lib/python3.6/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+/usr/local/Cellar/python/3.6.5_1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
+  return f(*args, **kwds)
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+input_1 (InputLayer)         (None, 72)                0
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 72)                288
+_________________________________________________________________
+dense_1 (Dense)              (None, 1)                 73
+=================================================================
+Total params: 361
+Trainable params: 217
+Non-trainable params: 144
+_________________________________________________________________
+None
+Train on 496 samples, validate on 128 samples
+Epoch 1/100
+2018-07-16 08:10:03.300532: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+496/496 [==============================] - 0s 817us/step - loss: 0.3018 - acc: 0.5020 - val_loss: 0.2902 - val_acc: 0.5547
+Epoch 2/100
+496/496 [==============================] - 0s 62us/step - loss: 0.2532 - acc: 0.6149 - val_loss: 0.2485 - val_acc: 0.6016
+Epoch 3/100
+496/496 [==============================] - 0s 76us/step - loss: 0.2037 - acc: 0.7036 - val_loss: 0.2121 - val_acc: 0.6641
+Epoch 4/100
+496/496 [==============================] - 0s 80us/step - loss: 0.1816 - acc: 0.7540 - val_loss: 0.1833 - val_acc: 0.7109
+Epoch 5/100
+496/496 [==============================] - 0s 96us/step - loss: 0.1520 - acc: 0.7964 - val_loss: 0.1612 - val_acc: 0.7812
+Epoch 6/100
+496/496 [==============================] - 0s 67us/step - loss: 0.1355 - acc: 0.8165 - val_loss: 0.1468 - val_acc: 0.8203
+Epoch 7/100
+496/496 [==============================] - 0s 62us/step - loss: 0.1233 - acc: 0.8367 - val_loss: 0.1375 - val_acc: 0.8516
+Epoch 8/100
+496/496 [==============================] - 0s 66us/step - loss: 0.1203 - acc: 0.8226 - val_loss: 0.1314 - val_acc: 0.8672
+Epoch 9/100
+496/496 [==============================] - 0s 63us/step - loss: 0.1041 - acc: 0.8508 - val_loss: 0.1273 - val_acc: 0.8672
+Epoch 10/100
+496/496 [==============================] - 0s 60us/step - loss: 0.1047 - acc: 0.8730 - val_loss: 0.1230 - val_acc: 0.8750
+Epoch 11/100
+496/496 [==============================] - 0s 77us/step - loss: 0.0974 - acc: 0.8770 - val_loss: 0.1196 - val_acc: 0.8750
+Epoch 12/100
+496/496 [==============================] - 0s 67us/step - loss: 0.0997 - acc: 0.8750 - val_loss: 0.1165 - val_acc: 0.8750
+Epoch 13/100
+496/496 [==============================] - 0s 68us/step - loss: 0.0951 - acc: 0.8710 - val_loss: 0.1138 - val_acc: 0.8828
+Epoch 14/100
+496/496 [==============================] - 0s 64us/step - loss: 0.0899 - acc: 0.8871 - val_loss: 0.1113 - val_acc: 0.8750
+Epoch 15/100
+496/496 [==============================] - 0s 66us/step - loss: 0.0849 - acc: 0.8972 - val_loss: 0.1090 - val_acc: 0.8750
+Epoch 16/100
+496/496 [==============================] - 0s 72us/step - loss: 0.0802 - acc: 0.9052 - val_loss: 0.1067 - val_acc: 0.8828
+Epoch 17/100
+496/496 [==============================] - 0s 90us/step - loss: 0.0802 - acc: 0.9052 - val_loss: 0.1047 - val_acc: 0.8828
+Epoch 18/100
+496/496 [==============================] - 0s 72us/step - loss: 0.0813 - acc: 0.8952 - val_loss: 0.1029 - val_acc: 0.8828
+Epoch 19/100
+496/496 [==============================] - 0s 82us/step - loss: 0.0759 - acc: 0.9073 - val_loss: 0.1013 - val_acc: 0.8828
+Epoch 20/100
+496/496 [==============================] - 0s 76us/step - loss: 0.0764 - acc: 0.9073 - val_loss: 0.0999 - val_acc: 0.8906
+Epoch 21/100
+496/496 [==============================] - 0s 77us/step - loss: 0.0740 - acc: 0.9133 - val_loss: 0.0985 - val_acc: 0.8906
+Epoch 22/100
+496/496 [==============================] - 0s 77us/step - loss: 0.0760 - acc: 0.8952 - val_loss: 0.0971 - val_acc: 0.8906
+Epoch 23/100
+496/496 [==============================] - 0s 81us/step - loss: 0.0668 - acc: 0.9194 - val_loss: 0.0961 - val_acc: 0.8906
+Epoch 24/100
+496/496 [==============================] - 0s 80us/step - loss: 0.0715 - acc: 0.9194 - val_loss: 0.0950 - val_acc: 0.8906
+Epoch 25/100
+496/496 [==============================] - 0s 92us/step - loss: 0.0748 - acc: 0.9113 - val_loss: 0.0942 - val_acc: 0.8906
+Epoch 26/100
+496/496 [==============================] - 0s 73us/step - loss: 0.0655 - acc: 0.9315 - val_loss: 0.0933 - val_acc: 0.8906
+Epoch 27/100
+496/496 [==============================] - 0s 83us/step - loss: 0.0649 - acc: 0.9315 - val_loss: 0.0925 - val_acc: 0.8906
+Epoch 28/100
+496/496 [==============================] - 0s 78us/step - loss: 0.0679 - acc: 0.9234 - val_loss: 0.0918 - val_acc: 0.8906
+Epoch 29/100
+496/496 [==============================] - 0s 78us/step - loss: 0.0682 - acc: 0.9335 - val_loss: 0.0910 - val_acc: 0.8906
+Epoch 30/100
+496/496 [==============================] - 0s 84us/step - loss: 0.0607 - acc: 0.9214 - val_loss: 0.0902 - val_acc: 0.8906
+Epoch 31/100
+496/496 [==============================] - 0s 77us/step - loss: 0.0642 - acc: 0.9315 - val_loss: 0.0895 - val_acc: 0.9062
+Epoch 32/100
+496/496 [==============================] - 0s 98us/step - loss: 0.0630 - acc: 0.9315 - val_loss: 0.0889 - val_acc: 0.9062
+Epoch 33/100
+496/496 [==============================] - 0s 90us/step - loss: 0.0625 - acc: 0.9214 - val_loss: 0.0882 - val_acc: 0.9062
+Epoch 34/100
+496/496 [==============================] - 0s 83us/step - loss: 0.0543 - acc: 0.9456 - val_loss: 0.0875 - val_acc: 0.9062
+Epoch 35/100
+496/496 [==============================] - 0s 65us/step - loss: 0.0598 - acc: 0.9375 - val_loss: 0.0871 - val_acc: 0.9062
+Epoch 36/100
+496/496 [==============================] - 0s 88us/step - loss: 0.0575 - acc: 0.9395 - val_loss: 0.0866 - val_acc: 0.9062
+Epoch 37/100
+496/496 [==============================] - 0s 95us/step - loss: 0.0645 - acc: 0.9294 - val_loss: 0.0861 - val_acc: 0.9062
+Epoch 38/100
+496/496 [==============================] - 0s 70us/step - loss: 0.0585 - acc: 0.9355 - val_loss: 0.0858 - val_acc: 0.9062
+Epoch 39/100
+496/496 [==============================] - 0s 88us/step - loss: 0.0579 - acc: 0.9395 - val_loss: 0.0853 - val_acc: 0.9062
+Epoch 40/100
+496/496 [==============================] - 0s 84us/step - loss: 0.0609 - acc: 0.9335 - val_loss: 0.0847 - val_acc: 0.9141
+Epoch 41/100
+496/496 [==============================] - 0s 75us/step - loss: 0.0673 - acc: 0.9194 - val_loss: 0.0845 - val_acc: 0.9141
+Epoch 42/100
+496/496 [==============================] - 0s 68us/step - loss: 0.0624 - acc: 0.9234 - val_loss: 0.0841 - val_acc: 0.9141
+Epoch 43/100
+496/496 [==============================] - 0s 73us/step - loss: 0.0580 - acc: 0.9274 - val_loss: 0.0838 - val_acc: 0.9141
+Epoch 44/100
+496/496 [==============================] - 0s 80us/step - loss: 0.0559 - acc: 0.9395 - val_loss: 0.0832 - val_acc: 0.9141
+Epoch 45/100
+496/496 [==============================] - 0s 78us/step - loss: 0.0575 - acc: 0.9355 - val_loss: 0.0831 - val_acc: 0.9141
+Epoch 46/100
+496/496 [==============================] - 0s 92us/step - loss: 0.0624 - acc: 0.9254 - val_loss: 0.0827 - val_acc: 0.9141
+Epoch 47/100
+496/496 [==============================] - 0s 80us/step - loss: 0.0544 - acc: 0.9395 - val_loss: 0.0823 - val_acc: 0.9141
+Epoch 48/100
+496/496 [==============================] - 0s 83us/step - loss: 0.0596 - acc: 0.9254 - val_loss: 0.0817 - val_acc: 0.9141
+Epoch 49/100
+496/496 [==============================] - 0s 82us/step - loss: 0.0546 - acc: 0.9355 - val_loss: 0.0816 - val_acc: 0.9141
+Epoch 50/100
+496/496 [==============================] - 0s 94us/step - loss: 0.0587 - acc: 0.9335 - val_loss: 0.0814 - val_acc: 0.9141
+Epoch 51/100
+496/496 [==============================] - 0s 87us/step - loss: 0.0531 - acc: 0.9435 - val_loss: 0.0815 - val_acc: 0.9141
+Epoch 52/100
+496/496 [==============================] - 0s 85us/step - loss: 0.0603 - acc: 0.9274 - val_loss: 0.0813 - val_acc: 0.9141
+Epoch 53/100
+496/496 [==============================] - 0s 80us/step - loss: 0.0508 - acc: 0.9435 - val_loss: 0.0812 - val_acc: 0.9141
+Epoch 54/100
+496/496 [==============================] - 0s 78us/step - loss: 0.0525 - acc: 0.9415 - val_loss: 0.0810 - val_acc: 0.9141
+Epoch 55/100
+496/496 [==============================] - 0s 88us/step - loss: 0.0483 - acc: 0.9456 - val_loss: 0.0807 - val_acc: 0.9141
+Epoch 56/100
+496/496 [==============================] - 0s 75us/step - loss: 0.0553 - acc: 0.9375 - val_loss: 0.0803 - val_acc: 0.9141
+Epoch 57/100
+496/496 [==============================] - 0s 79us/step - loss: 0.0533 - acc: 0.9395 - val_loss: 0.0802 - val_acc: 0.9141
+Epoch 58/100
+496/496 [==============================] - 0s 83us/step - loss: 0.0584 - acc: 0.9315 - val_loss: 0.0799 - val_acc: 0.9141
+Epoch 59/100
+496/496 [==============================] - 0s 80us/step - loss: 0.0596 - acc: 0.9335 - val_loss: 0.0797 - val_acc: 0.9141
+Epoch 60/100
+496/496 [==============================] - 0s 88us/step - loss: 0.0508 - acc: 0.9496 - val_loss: 0.0797 - val_acc: 0.9141
+Epoch 61/100
+496/496 [==============================] - 0s 78us/step - loss: 0.0519 - acc: 0.9456 - val_loss: 0.0796 - val_acc: 0.9141
+Epoch 62/100
+496/496 [==============================] - 0s 77us/step - loss: 0.0564 - acc: 0.9335 - val_loss: 0.0793 - val_acc: 0.9141
+Epoch 63/100
+496/496 [==============================] - 0s 76us/step - loss: 0.0569 - acc: 0.9294 - val_loss: 0.0794 - val_acc: 0.9141
+Epoch 64/100
+496/496 [==============================] - 0s 63us/step - loss: 0.0446 - acc: 0.9536 - val_loss: 0.0792 - val_acc: 0.9141
+Epoch 65/100
+496/496 [==============================] - 0s 89us/step - loss: 0.0520 - acc: 0.9315 - val_loss: 0.0789 - val_acc: 0.9141
+Epoch 66/100
+496/496 [==============================] - 0s 73us/step - loss: 0.0505 - acc: 0.9435 - val_loss: 0.0790 - val_acc: 0.9141
+Epoch 67/100
+496/496 [==============================] - 0s 74us/step - loss: 0.0503 - acc: 0.9375 - val_loss: 0.0789 - val_acc: 0.9141
+Epoch 68/100
+496/496 [==============================] - 0s 81us/step - loss: 0.0540 - acc: 0.9335 - val_loss: 0.0787 - val_acc: 0.9141
+Epoch 69/100
+496/496 [==============================] - 0s 81us/step - loss: 0.0558 - acc: 0.9315 - val_loss: 0.0785 - val_acc: 0.9141
+Epoch 70/100
+496/496 [==============================] - 0s 81us/step - loss: 0.0518 - acc: 0.9456 - val_loss: 0.0783 - val_acc: 0.9141
+Epoch 71/100
+496/496 [==============================] - 0s 84us/step - loss: 0.0571 - acc: 0.9315 - val_loss: 0.0782 - val_acc: 0.9141
+Epoch 72/100
+496/496 [==============================] - 0s 84us/step - loss: 0.0575 - acc: 0.9375 - val_loss: 0.0780 - val_acc: 0.9141
+Epoch 73/100
+496/496 [==============================] - 0s 79us/step - loss: 0.0563 - acc: 0.9335 - val_loss: 0.0778 - val_acc: 0.9141
+Epoch 74/100
+496/496 [==============================] - 0s 76us/step - loss: 0.0605 - acc: 0.9173 - val_loss: 0.0774 - val_acc: 0.9141
+Epoch 75/100
+496/496 [==============================] - 0s 89us/step - loss: 0.0482 - acc: 0.9435 - val_loss: 0.0772 - val_acc: 0.9141
+Epoch 76/100
+496/496 [==============================] - 0s 73us/step - loss: 0.0471 - acc: 0.9476 - val_loss: 0.0771 - val_acc: 0.9141
+Epoch 77/100
+496/496 [==============================] - 0s 62us/step - loss: 0.0496 - acc: 0.9435 - val_loss: 0.0770 - val_acc: 0.9141
+Epoch 78/100
+496/496 [==============================] - 0s 77us/step - loss: 0.0496 - acc: 0.9375 - val_loss: 0.0770 - val_acc: 0.9141
+Epoch 79/100
+496/496 [==============================] - 0s 75us/step - loss: 0.0527 - acc: 0.9315 - val_loss: 0.0769 - val_acc: 0.9141
+Epoch 80/100
+496/496 [==============================] - 0s 81us/step - loss: 0.0546 - acc: 0.9355 - val_loss: 0.0768 - val_acc: 0.9141
+Epoch 81/100
+496/496 [==============================] - 0s 73us/step - loss: 0.0525 - acc: 0.9415 - val_loss: 0.0767 - val_acc: 0.9141
+Epoch 82/100
+496/496 [==============================] - 0s 75us/step - loss: 0.0519 - acc: 0.9395 - val_loss: 0.0768 - val_acc: 0.9141
+Epoch 83/100
+496/496 [==============================] - 0s 73us/step - loss: 0.0471 - acc: 0.9435 - val_loss: 0.0767 - val_acc: 0.9141
+Epoch 84/100
+496/496 [==============================] - 0s 86us/step - loss: 0.0518 - acc: 0.9435 - val_loss: 0.0768 - val_acc: 0.9141
+Epoch 85/100
+496/496 [==============================] - 0s 77us/step - loss: 0.0489 - acc: 0.9476 - val_loss: 0.0766 - val_acc: 0.9141
+Epoch 86/100
+496/496 [==============================] - 0s 65us/step - loss: 0.0556 - acc: 0.9335 - val_loss: 0.0765 - val_acc: 0.9141
+Epoch 87/100
+496/496 [==============================] - 0s 90us/step - loss: 0.0501 - acc: 0.9415 - val_loss: 0.0764 - val_acc: 0.9219
+Epoch 88/100
+496/496 [==============================] - 0s 71us/step - loss: 0.0478 - acc: 0.9476 - val_loss: 0.0762 - val_acc: 0.9219
+Epoch 89/100
+496/496 [==============================] - 0s 77us/step - loss: 0.0519 - acc: 0.9335 - val_loss: 0.0764 - val_acc: 0.9219
+Epoch 90/100
+496/496 [==============================] - 0s 76us/step - loss: 0.0557 - acc: 0.9315 - val_loss: 0.0763 - val_acc: 0.9219
+Epoch 91/100
+496/496 [==============================] - 0s 79us/step - loss: 0.0540 - acc: 0.9375 - val_loss: 0.0760 - val_acc: 0.9219
+Epoch 92/100
+496/496 [==============================] - 0s 82us/step - loss: 0.0537 - acc: 0.9415 - val_loss: 0.0760 - val_acc: 0.9219
+Epoch 93/100
+496/496 [==============================] - 0s 63us/step - loss: 0.0478 - acc: 0.9395 - val_loss: 0.0759 - val_acc: 0.9219
+Epoch 94/100
+496/496 [==============================] - 0s 85us/step - loss: 0.0490 - acc: 0.9415 - val_loss: 0.0757 - val_acc: 0.9219
+Epoch 95/100
+496/496 [==============================] - 0s 77us/step - loss: 0.0564 - acc: 0.9355 - val_loss: 0.0756 - val_acc: 0.9219
+Epoch 96/100
+496/496 [==============================] - 0s 84us/step - loss: 0.0504 - acc: 0.9496 - val_loss: 0.0756 - val_acc: 0.9219
+Epoch 97/100
+496/496 [==============================] - 0s 69us/step - loss: 0.0539 - acc: 0.9335 - val_loss: 0.0755 - val_acc: 0.9219
+Epoch 98/100
+496/496 [==============================] - 0s 77us/step - loss: 0.0635 - acc: 0.9214 - val_loss: 0.0753 - val_acc: 0.9219
+Epoch 99/100
+496/496 [==============================] - 0s 82us/step - loss: 0.0480 - acc: 0.9415 - val_loss: 0.0753 - val_acc: 0.9219
+Epoch 100/100
+496/496 [==============================] - 0s 77us/step - loss: 0.0578 - acc: 0.9355 - val_loss: 0.0752 - val_acc: 0.9219
+Data saved at /Users/brendonm/banded_low_resolution_time1531743007_epoch99.json
