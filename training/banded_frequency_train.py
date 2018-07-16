@@ -28,6 +28,8 @@ activation = 'tanh'
 model = Sequential([
     InputLayer(input_shape=(input_dimension,)),
     BatchNormalization(),
+    Dense(12, activation=activation),
+    Dropout(0.5),
     Dense(1, activation='sigmoid')
 ])
 # Output a summary of the model's architecture
