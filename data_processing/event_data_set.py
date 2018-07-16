@@ -173,7 +173,7 @@ class EventDataSet:
         # Return both components of both datasets
         return training_inputs, training_ground_truths, validation_inputs, validation_ground_truths
 
-    def audio_alpha_classification(self, loading_function: Callable[[BubbleDataPoint], List[np.ndarray]]) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    def audio_alpha_classification(self, loading_function: Callable[[BubbleDataPoint], List[np.ndarray]], include_positions: bool) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Return the audio data from a provided loading function, with corresponding binary classification ground truths into neutrons and alpha particles"""
         # Iterate over the training and validation events, with corresponding lists to add audio and position inputs and ground truths to
         training_audio_inputs = []
@@ -205,19 +205,29 @@ class EventDataSet:
                 ])
                 # Add a corresponding ground truth, True if this is from the alpha data set and false otherwise
                 ground_truths.append(event.run_type == RunType.LOW_BACKGROUND)
-        # Convert the lists into NumPy arrays and return them, combining the audio inputs with the position inputs
-        return (
-            [
+        # Next, convert the lists into NumPy arrays and return them
+        # Combine the audio inputs with the position inputs if the feature is enabled
+        if include_positions:
+            return (
+                [
+                    np.array(training_audio_inputs),
+                    np.array(training_position_inputs)
+                ],
+                np.array(training_ground_truths),
+                [
+                    np.array(validation_audio_inputs),
+                    np.array(validation_position_inputs)
+                ],
+                np.array(validation_ground_truths)
+            )
+        # Otherwise, just return the audio data
+        else:
+            return (
                 np.array(training_audio_inputs),
-                np.array(training_position_inputs)
-            ],
-            np.array(training_ground_truths),
-            [
+                np.array(training_ground_truths),
                 np.array(validation_audio_inputs),
-                np.array(validation_position_inputs)
-            ],
-            np.array(validation_ground_truths)
-        )
+                np.array(validation_ground_truths)
+            )
 
     def arbitrary_alpha_classification_generator(
         self,
