@@ -60,7 +60,7 @@ class EventDataSet:
         self.validation_events = random.sample(
             validation_events, VALIDATION_EXAMPLES)
         # Remove all of the validation events from the original list of events
-        for validation_event in validation_events:
+        for validation_event in self.validation_events:
             events.remove(validation_event)
         # Randomize the order of the remaining events and move them into a global list
         random.shuffle(events)
