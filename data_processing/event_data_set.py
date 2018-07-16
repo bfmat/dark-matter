@@ -8,7 +8,7 @@ from typing import Callable, List, Optional, Set, Tuple, Generator
 
 import numpy as np
 
-from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerCause
+from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerCause, load_bubble_audio
 
 
 # The path to the Pickle data file which contains processed attributes of bubble events
@@ -159,7 +159,7 @@ class EventDataSet:
     def banded_frequency_alpha_classification(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Return the banded frequency domain data, with corresponding binary classification ground truths into neutrons and alpha particles"""
         # Create flattened training arrays and binary ground truth arrays for both training and validation
-        (training_input, training_ground_truths), (validation_input, validation_ground_truths) = [
+        (training_inputs, training_ground_truths), (validation_inputs, validation_ground_truths) = [
             (
                 # Flatten the banded frequency domain information into single-dimensional arrays, and stack all of the examples into an array
                 np.stack([event.banded_frequency_domain.flatten()
@@ -171,7 +171,33 @@ class EventDataSet:
             for events in [self.training_events, self.validation_events]
         ]
         # Return both components of both datasets
-        return training_input, training_ground_truths, validation_input, validation_ground_truths
+        return training_inputs, training_ground_truths, validation_inputs, validation_ground_truths
+
+    def waveform_alpha_classification(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        """Return the audio waveform data, with corresponding binary classification ground truths into neutrons and alpha particles"""
+        # Iterate over the training and validation events, with corresponding lists to add inputs and ground truths to
+        training_inputs = []
+        training_ground_truths = []
+        validation_inputs = []
+        validation_ground_truths = []
+        for events, inputs, ground_truths in zip(
+            [self.training_events, self.validation_events],
+            [training_inputs, validation_inputs],
+            [training_ground_truths, validation_ground_truths]
+        ):
+            # Iterate over the events, loading audio and ground truth data
+            for event in events:
+                # Try to load the audio corresponding to this event
+                audio = load_bubble_audio(event)
+                # If an empty list is returned, continue to the next iteration
+                if not audio:
+                    continue
+                # Otherwise, add the audio waveform to the list
+                inputs.append(audio[0])
+                # Add a corresponding ground truth, True if this is from the alpha data set and false otherwise
+                ground_truths.append(event.run_type == RunType.LOW_BACKGROUND)
+        # Convert the lists into NumPy arrays and return them
+        return np.array(training_inputs), np.array(training_ground_truths), np.array(validation_inputs), np.array(validation_ground_truths)
 
     def arbitrary_alpha_classification_generator(
         self,
