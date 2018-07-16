@@ -66,8 +66,8 @@ class EventDataSet:
         random.shuffle(events)
         self.training_events = events
 
-    @classmethod
-    def passes_standard_cuts(cls, event: BubbleDataPoint) -> bool:
+    @staticmethod
+    def passes_standard_cuts(event: BubbleDataPoint) -> bool:
         """Determines whether an event passes the basic quality cuts run on all data"""
         # Run a series of binary cuts; if any of them fail, return False
         return (
@@ -82,8 +82,6 @@ class EventDataSet:
             and event.num_bubbles_pressure >= 0.7 and event.num_bubbles_pressure <= 1.3
             # Do not use events within the first 25s after reaching target pressure
             and event.time_since_target_pressure > 25
-            # Temporary: Only take events that pass validation cuts
-            and cls.passes_validation_cuts(event)
         )
 
     @classmethod
