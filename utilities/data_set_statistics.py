@@ -5,36 +5,32 @@
 from data_processing.bubble_data_point import RunType
 from data_processing.event_data_set import EventDataSet
 
-# Load the data set without running any cuts other than the basic garbage filters
-all_run_types = {
+# Load all bubble events straight from disk
+bubbles = EventDataSet.load_data_from_file()
+# Iterate over all of the run types, excepting garbage
+all_run_types = [
     RunType.LOW_BACKGROUND,
     RunType.AMERICIUM_BERYLLIUM,
     RunType.CALIFORNIUM,
     RunType.BARIUM,
-    RunType.COBALT,
-    RunType.GARBAGE
-}
-event_data_set = EventDataSet(all_run_types)
-# Combine the training and validation lists
-bubbles = event_data_set.training_events + event_data_set.validation_events
-# Iterate over ech of the run types
+    RunType.COBALT
+]
 for run_type in all_run_types:
     # Print the overall count of each run type
     run_type_bubbles = [bubble for bubble in bubbles
                         if bubble.run_type == run_type]
     print(len(run_type_bubbles), 'bubbles that are instances of', run_type.name)
-    # Print the number that qualify as single bubbles
-    single_bubble_instances = len([
+    # Print the number that pass standard cuts for quality and number of bubbles
+    passing_standard_cuts = [
         bubble for bubble in run_type_bubbles
-        if bubble.num_bubbles_image == 1
-        and bubble.num_bubbles_pressure >= 0.8 and bubble.num_bubbles_pressure <= 1.2
-    ])
-    print(single_bubble_instances, 'single bubble events')
-    # Print the number that pass the validation cuts
-    pass_validation_cuts = len([
-        bubble for bubble in run_type_bubbles
+        if EventDataSet.passes_standard_cuts(bubble)
+    ]
+    print(len(passing_standard_cuts), 'that pass standard cuts')
+    # Print the number that also pass the validation cuts
+    passing_validation_cuts = [
+        bubble for bubble in passing_standard_cuts
         if EventDataSet.passes_validation_cuts(bubble)
-    ])
-    print(pass_validation_cuts, 'that pass validation cuts')
+    ]
+    print(len(passing_validation_cuts), 'that also pass validation cuts')
     # Print a blank line for separation
     print()
