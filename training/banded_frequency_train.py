@@ -4,7 +4,6 @@
 
 from keras.layers import Dense, Dropout, BatchNormalization, InputLayer
 from keras.models import Sequential
-from keras.regularizers import l2
 
 from data_processing.event_data_set import EventDataSet, RunType
 from data_processing.experiment_serialization import save_test
@@ -16,7 +15,7 @@ EPOCHS = 100
 event_data_set = EventDataSet({
     RunType.LOW_BACKGROUND,
     RunType.AMERICIUM_BERYLLIUM,
-    RunType.CALIFORNIUM,
+    RunType.CALIFORNIUM
 })
 # Get the banded frequency domain data and corresponding binary ground truths
 training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()
