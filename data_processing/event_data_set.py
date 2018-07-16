@@ -211,7 +211,7 @@ class EventDataSet:
                 np.array(training_audio_inputs),
                 np.array(training_position_inputs)
             ],
-            np.array(training_ground_truths)
+            np.array(training_ground_truths),
             [
                 np.array(validation_audio_inputs),
                 np.array(validation_position_inputs)
