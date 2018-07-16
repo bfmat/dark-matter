@@ -11,7 +11,6 @@ import sys
 from typing import List, Optional
 
 from data_processing.audio_domain_processing import time_to_frequency_domain, band_time_domain, band_frequency_domain
-from data_processing.audio_synthesis import normalize, add_time_noise, multiply_frequency_noise
 
 import numpy as np
 from scipy.ndimage import imread
@@ -26,14 +25,6 @@ IMAGES_PER_BUBBLE = 1
 
 # The number of piezo channels present in the audio files (not all of them work)
 CHANNELS = 8
-# The number of times to multiply distinct noise into the frequency domain when synthesizing audio training examples
-FREQUENCY_DOMAIN_NOISE_COUNT = 4
-# The number of times to add distinct noise to the time domain for each frequency domain example
-TIME_DOMAIN_NOISE_COUNT = 4
-# The standard deviation off of 1, after normalization, for multiplicative noise to the frequency domain
-FREQUENCY_DOMAIN_NOISE_STANDARD_DEVIATION = 0.1
-# The standard deviation, after normalization, for additive noise to the time domain
-TIME_DOMAIN_NOISE_STANDARD_DEVIATION = 0.05
 
 # The number of bands to split the recording into for frequency domain processing, from beginning to end
 TIME_BANDS = 16
