@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Training script for a neural network that classifies audio samples into alpha particles and neutrons"""
+"""Training script for a convolutional neural network that classifies audio samples into alpha particles and neutrons based on the raw audio waveform"""
 # Created by Brendon Matusch, June 2018
 
 import os
@@ -16,26 +16,16 @@ event_data_set = EventDataSet({
     RunType.AMERICIUM_BERYLLIUM,
     RunType.CALIFORNIUM
 })
-# If the option "wall" is passed, discriminate between wall and non-wall events; otherwise, use the default
-ground_truth = EventDataSet.is_not_wall_event \
-    if len(sys.argv) >= 2 and sys.argv[1].lower() == 'wall' \
-    else None
-# Create a training data generator and validation data with the audio loading function and whatever ground truth function has been chosen
-training_generator_callable, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
-    data_converter=load_bubble_audio,
-    storage_size=512,
-    batch_size=32,
-    examples_replaced_per_batch=16,
-    ground_truth=ground_truth
-)
-training_generator = training_generator_callable()
+# Load training and validation data as NumPy arrays
+training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = event_data_set.waveform_alpha_classification()
 # Create an instance of the fully convolutional network model
 model = create_model()
 # Iterate over training and validation for 20 epochs
 for epoch in range(20):
     # Train the model on the generator
-    model.fit_generator(
-        training_generator,
+    model.fit(
+        x=training_inputs,
+        y=training_ground_truths,
         steps_per_epoch=128,
         epochs=1
     )
