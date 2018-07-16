@@ -27,7 +27,8 @@ for epoch in range(20):
         x=training_inputs,
         y=training_ground_truths,
         steps_per_epoch=128,
-        epochs=1
+        epochs=1,
+        batch_size=1
     )
     # Evaluate the model on the validation data set
     loss, accuracy = model.evaluate(
