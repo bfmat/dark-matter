@@ -2,6 +2,8 @@
 """A script for extracting various statistics related to the distribution of classes in the data set"""
 # Created by Brendon Matusch, July 2018
 
+import random
+
 from data_processing.bubble_data_point import RunType
 from data_processing.event_data_set import EventDataSet
 
@@ -32,5 +34,12 @@ for run_type in all_run_types:
         if EventDataSet.passes_validation_cuts(bubble)
     ]
     print(len(passing_validation_cuts), 'that also pass validation cuts')
+    # Shuffle the list of bubbles that pass the validation cuts and randomly select a few to output
+    random.shuffle(passing_validation_cuts)
+    examples = passing_validation_cuts[:10]
+    # Print the date, run number, and event number for those chosen examples
+    print('Examples that pass standard and validation cuts:')
+    for example in examples:
+        print(f'{example.date}, run {example.run_number}, event {example.event_number}')
     # Print a blank line for separation
     print()
