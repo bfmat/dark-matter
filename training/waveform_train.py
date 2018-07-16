@@ -17,7 +17,10 @@ event_data_set = EventDataSet({
     RunType.CALIFORNIUM
 })
 # Load training and validation data as NumPy arrays
-training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = event_data_set.waveform_alpha_classification()
+training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = \
+    event_data_set.audio_alpha_classification(
+        loading_function=load_bubble_audio
+    )
 # Create an instance of the fully convolutional network model
 model = create_model()
 # Iterate over training and validation for several epochs

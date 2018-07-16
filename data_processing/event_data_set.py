@@ -173,8 +173,8 @@ class EventDataSet:
         # Return both components of both datasets
         return training_inputs, training_ground_truths, validation_inputs, validation_ground_truths
 
-    def waveform_alpha_classification(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-        """Return the audio waveform data, with corresponding binary classification ground truths into neutrons and alpha particles"""
+    def audio_alpha_classification(self, loading_function: Callable[[BubbleDataPoint], List[np.ndarray]]) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        """Return the audio data from a provided loading function, with corresponding binary classification ground truths into neutrons and alpha particles"""
         # Iterate over the training and validation events, with corresponding lists to add audio and position inputs and ground truths to
         training_audio_inputs = []
         training_position_inputs = []
@@ -191,7 +191,7 @@ class EventDataSet:
             # Iterate over the events, loading audio and ground truth data
             for event in events:
                 # Try to load the audio corresponding to this event
-                audio = load_bubble_audio(event)
+                audio = loading_function(event)
                 # If an empty list is returned, continue to the next iteration
                 if not audio:
                     continue
