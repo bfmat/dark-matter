@@ -28,9 +28,7 @@ activation = 'tanh'
 model = Sequential([
     InputLayer(input_shape=(input_dimension,)),
     BatchNormalization(),
-    Dense(24, activation=activation),
-    Dropout(0.5),
-    Dense(6, activation=activation),
+    Dense(12, activation=activation),
     Dropout(0.5),
     Dense(1, activation='sigmoid')
 ])
