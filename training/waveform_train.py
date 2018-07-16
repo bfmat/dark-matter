@@ -26,7 +26,6 @@ for epoch in range(20):
     model.fit(
         x=training_inputs,
         y=training_ground_truths,
-        steps_per_epoch=128,
         epochs=1,
         batch_size=1
     )
