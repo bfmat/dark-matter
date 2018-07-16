@@ -191,8 +191,8 @@ def bubble_data_path(bubble: BubbleDataPoint) -> str:
     )
 
 
-def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Optional[str] = None, use_synthesis: bool = False) -> List[np.ndarray]:
-    """Load an audio file in the raw binary format present in the PICO-60 data set, returning an array with dimensions the number of samples containing the data from only the working microphones by 2, or multiple arrays with noise added if synthesis is enabled"""
+def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Optional[str] = None) -> List[np.ndarray]:
+    """Load an audio file in the raw binary format present in the PICO-60 data set, returning an array with dimensions the number of samples containing the data from only the working microphones by 2"""
     # If a path is not provided, get it from the bubble
     if audio_file_path is None:
         # Get the path to the bubble data folder, and load the audio binary file within it
@@ -242,12 +242,11 @@ def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Option
     return [data_array]
 
 
-def load_bubble_frequency_domain(bubble: BubbleDataPoint, use_synthesis: bool = False) -> List[np.ndarray]:
+def load_bubble_frequency_domain(bubble: BubbleDataPoint) -> List[np.ndarray]:
     """Given a bubble data point, load a flattened representation of the audio in frequency domain in various time and frequency bins and for both channels; 1 example will be in the returned list, or 0 if it cannot be loaded"""
-    # Note that synthesis is currently not implemented for this loading function, but is a necessary part of the API
     # First, try to get the audio waveform corresponding to this bubble
     try:
-        time_domain = load_bubble_audio(bubble, use_synthesis=use_synthesis)[0]
+        time_domain = load_bubble_audio(bubble)[0]
     # If the list is empty, return the same thing
     except IndexError:
         return []
