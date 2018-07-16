@@ -11,39 +11,21 @@ from data_processing.experiment_serialization import save_test
 from models.high_resolution_frequency_network import create_model
 
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
-event_data_set = EventDataSet(
-    filter_multiple_bubbles=True,
-    keep_run_types=set([
-        RunType.LOW_BACKGROUND,
-        RunType.AMERICIUM_BERYLLIUM,
-        RunType.CALIFORNIUM_40CM,
-        RunType.CALIFORNIUM_60CM,
-        RunType.BARIUM_100CM,
-        RunType.BARIUM_40CM
-    ]),
-    use_fiducial_cuts=False
-)
-# If the option "wall" is passed, discriminate between wall and non-wall events; otherwise, use the default
-ground_truth = EventDataSet.is_not_wall_event \
-    if len(sys.argv) >= 2 and sys.argv[1].lower() == "wall" \
-    else None
-# Create a training data generator with the frequency domain audio loading function and whatever ground truth function has been chosen
-training_generator_callable, validation_inputs, validation_ground_truths = event_data_set.arbitrary_alpha_classification_generator(
-    data_converter=load_bubble_frequency_domain,
-    storage_size=512,
-    batch_size=32,
-    examples_replaced_per_batch=16,
-    ground_truth=ground_truth
-)
-training_generator = training_generator_callable()
-# Create an instance of the fully convolutional network model
+event_data_set = EventDataSet({
+    RunType.LOW_BACKGROUND,
+    RunType.AMERICIUM_BERYLLIUM,
+    RunType.CALIFORNIUM
+})
+# Load training and validation data as NumPy arrays
+training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = event_data_set.waveform_alpha_classification()
+# Create an instance of the high resolution frequency network
 model = create_model()
-# Iterate over training and validation for 20 epochs
-for epoch in range(20):
-    # Train the model on the generator
-    model.fit_generator(
-        training_generator,
-        steps_per_epoch=128,
+# Iterate over training and validation for several epochs
+for epoch in range(100):
+    # Train the model on the input and ground truth arrays
+    model.fit(
+        x=training_inputs,
+        y=training_ground_truths,
         epochs=1
     )
     # Evaluate the model on the validation data set

@@ -254,8 +254,12 @@ def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Option
 def load_bubble_frequency_domain(bubble: BubbleDataPoint, use_synthesis: bool = False) -> List[np.ndarray]:
     """Given a bubble data point, load a flattened representation of the audio in frequency domain in various time and frequency bins and for both channels; 1 example will be in the returned list, or 0 if it cannot be loaded"""
     # Note that synthesis is currently not implemented for this loading function, but is a necessary part of the API
-    # First, get the audio waveform corresponding to this bubble
-    time_domain = load_bubble_audio(bubble)[0]
+    # First, try to get the audio waveform corresponding to this bubble
+    try:
+        time_domain = load_bubble_audio(bubble, use_synthesis=use_synthesis)[0]
+    # If the list is empty, return the same thing
+    except IndexError:
+        return []
     # Split into a list of multiple time bands
     time_domain_bands = band_time_domain(time_domain, TIME_BANDS)
     # Convert each of the time bands into frequency domain
