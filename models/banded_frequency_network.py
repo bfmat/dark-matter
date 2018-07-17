@@ -10,11 +10,9 @@ def create_model() -> Model:
     # Create a neural network model that includes several dense layers with hyperbolic tangent activations, dropout, and batch normalization
     activation = 'tanh'
     model = Sequential([
-        InputLayer(input_shape=(51,)),
+        InputLayer(input_shape=(48,)),
         BatchNormalization(),
         Dense(12, activation=activation),
-        Dropout(0.5),
-        Dense(8, activation=activation),
         Dropout(0.5),
         Dense(1, activation='sigmoid')
     ])
