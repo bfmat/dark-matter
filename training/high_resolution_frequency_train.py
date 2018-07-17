@@ -20,12 +20,12 @@ event_data_set = EventDataSet({
 training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = \
     event_data_set.audio_alpha_classification(
         loading_function=load_bubble_frequency_domain,
-        include_positions=False
+        include_positions=True
     )
 # Create an instance of the high resolution frequency network
 model = create_model()
 # Iterate over training and validation for several epochs
-for epoch in range(100):
+for epoch in range(250):
     # Train the model on the input and ground truth arrays
     model.fit(
         x=training_inputs,
