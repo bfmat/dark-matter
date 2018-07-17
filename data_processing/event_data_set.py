@@ -8,6 +8,7 @@ from typing import Callable, List, Optional, Set, Tuple, Generator
 
 import numpy as np
 
+from data_processing.audio_synthesis import normalize
 from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerCause, load_bubble_audio
 
 
@@ -161,8 +162,8 @@ class EventDataSet:
         # Create flattened training arrays and binary ground truth arrays for both training and validation
         (training_inputs, training_ground_truths), (validation_inputs, validation_ground_truths) = [
             (
-                # Flatten the banded frequency domain information into single-dimensional arrays, and stack all of the examples into an array
-                np.stack([event.banded_frequency_domain.flatten()
+                # Normalize the banded frequency domain information, flatten it into a single-dimensional arrays, and stack all of the examples into an array
+                np.stack([normalize(event.banded_frequency_domain).flatten()
                           for event in events]),
                 # Normal background radiation data represents alpha particles in the ground truth array, and everything else represents neutrons
                 np.array([event.run_type == RunType.LOW_BACKGROUND
