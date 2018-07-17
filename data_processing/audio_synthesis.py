@@ -7,12 +7,14 @@ from data_processing.audio_domain_processing import time_to_frequency_domain, fr
 
 
 def normalize(audio: np.ndarray) -> np.ndarray:
-    """Normalize an audio recording so its geometric mean (standard deviation off of 0) is equal to 1"""
+    """Normalize an audio recording so its mean is 0 and its geometric mean (standard deviation off of 0) is equal to 1"""
+    # Subtract the average of the array from the array
+    audio_mean_0 = audio - np.mean(audio)
     # Flatten the array and compute the geometric mean (the square root of the average squared value)
-    audio_flat_squared = np.square(audio.flatten())
+    audio_flat_squared = np.square(audio_mean_0.flatten())
     geometric_mean = np.sqrt(np.mean(audio_flat_squared))
     # Divide the array by the geometric mean to normalize it to that range
-    return audio / geometric_mean
+    return audio_mean_0 / geometric_mean
 
 
 def add_time_noise(audio: np.ndarray, standard_deviation: float) -> np.ndarray:
