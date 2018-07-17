@@ -9,7 +9,7 @@ from data_processing.experiment_serialization import save_test
 from models.banded_frequency_network import create_model
 
 # The number of epochs to train for
-EPOCHS = 1000
+EPOCHS = 250
 
 # Create an instance of the fully connected neural network
 model = create_model()
