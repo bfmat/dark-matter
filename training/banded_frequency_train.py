@@ -9,7 +9,7 @@ from data_processing.event_data_set import EventDataSet, RunType
 from data_processing.experiment_serialization import save_test
 
 # The number of epochs to train for
-EPOCHS = 100
+EPOCHS = 1000
 
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
 event_data_set = EventDataSet({
