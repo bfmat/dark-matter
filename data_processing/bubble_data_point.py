@@ -131,10 +131,10 @@ class BubbleDataPoint:
         self.banded_frequency_domain = np.reshape(banded_array, (3, 8, 3))
         # Do the same with the banded frequency domain representation without any position corrections
         banded_array = np.array(list(root_event.piezo_E))
-        banded_frequency_domain_raw = np.reshape(banded_array, (3, 8, 3))
+        self.banded_frequency_domain_raw = np.reshape(banded_array, (3, 8, 3))
         # Calculate the AP12 variable, which is used to detect wall events with greater accuracy
         self.acoustic_parameter_12 = np.mean(
-            banded_frequency_domain_raw
+            self.banded_frequency_domain_raw
             [[0, 2], :, :]
             [:, [0, 1], :]
             [:, :, 2]
