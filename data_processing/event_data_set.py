@@ -164,7 +164,8 @@ class EventDataSet:
         (training_inputs, training_ground_truths), (validation_inputs, validation_ground_truths) = [
             (
                 # Flatten the banded frequency domain information (without positional corrections) into single-dimensional arrays, and stack all of the examples into an array
-                np.stack([event.banded_frequency_domain_raw.flatten()
+                # Take only the last two piezos, as the first one does not work
+                np.stack([event.banded_frequency_domain_raw[1:].flatten()
                           for event in events]),
                 # Normal background radiation data represents alpha particles in the ground truth array, and everything else represents neutrons
                 np.array([event.run_type == RunType.LOW_BACKGROUND
