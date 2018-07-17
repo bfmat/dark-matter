@@ -27,9 +27,9 @@ IMAGES_PER_BUBBLE = 1
 CHANNELS = 8
 
 # The number of bands to split the recording into for frequency domain processing, from beginning to end
-TIME_BANDS = 16
+TIME_BANDS = 3
 # The number of bands to split the frequency domain representation of each time band into
-FREQUENCY_BANDS = 1024
+FREQUENCY_BANDS = 8
 
 
 class RunType(Enum):
