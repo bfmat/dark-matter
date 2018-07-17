@@ -50,8 +50,7 @@ for epoch in range(EPOCHS):
         x=training_input,
         y=training_ground_truths,
         validation_data=(validation_input, validation_ground_truths),
-        epochs=1,
-        verbose=False
+        epochs=1
     )
     # Run predictions on the validation data set, and save the experimental run
     validation_network_outputs = model.predict(validation_input)
