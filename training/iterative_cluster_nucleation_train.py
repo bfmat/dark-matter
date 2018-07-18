@@ -12,7 +12,7 @@ from data_processing.experiment_serialization import save_test
 from models.banded_frequency_network import create_model
 
 # The initial number of examples to put in the training set
-INITIAL_TRAINING_EXAMPLES = 256
+INITIAL_TRAINING_EXAMPLES = 512
 
 # The distance from 0 or 1 an example must be to be added to the training set
 TRAINING_THRESHOLD_DISTANCE = 0.02
