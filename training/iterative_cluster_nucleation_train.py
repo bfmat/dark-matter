@@ -15,7 +15,7 @@ from models.banded_frequency_network import create_model
 INITIAL_TRAINING_EXAMPLES = 256
 
 # The distance from 0 or 1 an example must be to be added to the training set
-training_threshold = 0.05
+training_threshold = 0.02
 # The number (slightly greater than 1) that the threshold is multiplied by when no new examples are added
 TRAINING_THRESHOLD_MULTIPLIER = 1.025
 
