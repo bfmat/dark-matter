@@ -3,20 +3,22 @@
 
 from keras.layers import Dense, Dropout, BatchNormalization, InputLayer
 from keras.models import Model, Sequential
+from keras.regularizers import l2
 
 
 def create_model() -> Model:
     """Create and return a new instance of the fully connected network for banded frequency domain information"""
-    # Create a neural network model that includes several dense layers with hyperbolic tangent activations, dropout, and batch normalization
+    # Create a neural network model that includes several dense layers with hyperbolic tangent activations, L2 regularization, and batch normalization
+    regularizer = l2(0.003)
     activation = 'tanh'
     model = Sequential([
         InputLayer(input_shape=(51,)),
         BatchNormalization(),
-        Dense(12, activation=activation),
+        Dense(12, activation=activation, kernel_regularizer=regularizer),
         Dropout(0.5),
-        Dense(8, activation=activation),
+        Dense(8, activation=activation, kernel_regularizer=regularizer),
         Dropout(0.5),
-        Dense(1, activation='sigmoid')
+        Dense(1, activation='sigmoid', kernel_regularizer=regularizer)
     ])
     # Output a summary of the model's architecture
     print(model.summary())
