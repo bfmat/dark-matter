@@ -15,7 +15,7 @@ from models.banded_frequency_network import create_model
 INITIAL_TRAINING_EXAMPLES = 256
 
 # The distance from 0 or 1 an example must be to be added to the training set
-TRAINING_THRESHOLD_DISTANCE = 0.02
+TRAINING_THRESHOLD_DISTANCE = 0.01
 
 # Create a data set, running fiducial cuts for the most reasonable data
 event_data_set = EventDataSet({
@@ -58,6 +58,9 @@ for iteration in range(100):
     )
     # Create a list to add to of events that have been added to the main training list
     remove_from_original = []
+    # Create accumulators to record how many examples were added, and how many are correct
+    examples_added = 0
+    examples_correct = 0
     # Iterate over the entire list of potential training examples, running predictions
     for event in original_training_events:
         # Get the frequency domain input data from the event, and add a batch axis
@@ -80,8 +83,14 @@ for iteration in range(100):
                 else RunType.AMERICIUM_BERYLLIUM
             # Add the modified bubble to the training list
             event_data_set.training_events.append(bubble_copy)
+            # Update the accumulators according to whether or not the ground truth is right
+            examples_added += 1
+            if event.run_type == bubble_copy.run_type:
+                examples_correct += 1
     # Remove the events newly added to the training list from the list of original events
     original_training_events = [
         event for event in original_training_events
         if event not in remove_from_original
     ]
+    # Notify the user how many were added and how many were correct
+    print(f'{examples_added} examples added; {examples_correct} were correct')
