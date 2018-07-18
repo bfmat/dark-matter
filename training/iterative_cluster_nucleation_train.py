@@ -12,7 +12,7 @@ from data_processing.experiment_serialization import save_test
 from models.banded_frequency_network import create_model
 
 # The initial number of examples to put in the training set
-INITIAL_TRAINING_EXAMPLES = 128
+INITIAL_TRAINING_EXAMPLES = 256
 
 # The distance from 0 or 1 an example must be to be added to the training set
 TRAINING_THRESHOLD_DISTANCE = 0.025
@@ -29,7 +29,7 @@ event_data_set.training_events = event_data_set.training_events[:INITIAL_TRAININ
 # Create an instance of the fully convolutional network model
 model = create_model()
 # Run several training iterations, each containing a number of epochs
-for iteration in range(20):
+for iteration in range(100):
     # Output the number of examples there are in the training set for this epoch
     print(len(event_data_set.training_events),
           'training examples for iteration', iteration)
@@ -40,7 +40,7 @@ for iteration in range(20):
         x=training_input,
         y=training_ground_truths,
         validation_data=(validation_input, validation_ground_truths),
-        epochs=10
+        epochs=50
     )
     # Run predictions on the validation data set, and save the experimental run
     validation_network_outputs = model.predict(validation_input)
@@ -67,7 +67,7 @@ for iteration in range(20):
         if min([prediction, 1 - prediction]) < TRAINING_THRESHOLD_DISTANCE:
             # Copy the event and set its run type so that it is in the corresponding ground truth
             bubble_copy = copy.deepcopy(event)
-            bubble_copy.run_type = RunType.AMERICIUM_BERYLLIUM if bool(round(prediction[0, 0])) \
-                else RunType.LOW_BACKGROUND
+            bubble_copy.run_type = RunType.LOW_BACKGROUND if bool(round(prediction[0, 0])) \
+                else RunType.AMERICIUM_BERYLLIUM
             # Add the modified bubble to the training list
             event_data_set.training_events.append(bubble_copy)
