@@ -15,7 +15,9 @@ from models.banded_frequency_network import create_model
 INITIAL_TRAINING_EXAMPLES = 512
 
 # The distance from 0 or 1 an example must be to be added to the training set
-TRAINING_THRESHOLD_DISTANCE = 0.02
+training_threshold = 0.02
+# The number (slightly greater than 1) that the threshold is multiplied by when no new examples are added
+TRAINING_THRESHOLD_MULTIPLIER = 1.01
 
 # Create a data set, running fiducial cuts for the most reasonable data
 event_data_set = EventDataSet({
@@ -74,7 +76,7 @@ for iteration in range(100):
         # Run a prediction on the audio sample using the existing neural network
         prediction = model.predict(input_data)
         # If the prediction is within a certain threshold distance of either 0 or 1
-        if min([prediction, 1 - prediction]) < TRAINING_THRESHOLD_DISTANCE:
+        if min([prediction, 1 - prediction]) < training_threshold:
             # Mark the event for removal from the original list
             remove_from_original.append(event)
             # Copy the event and set its run type so that it is in the corresponding ground truth
@@ -94,3 +96,10 @@ for iteration in range(100):
     ]
     # Notify the user how many were added and how many were correct
     print(f'{examples_added} examples added; {examples_correct} were correct')
+    # If no new examples were added, increase the training data threshold and notify the user
+    if examples_added == 0:
+        training_threshold *= TRAINING_THRESHOLD_MULTIPLIER
+        print(f'Training threshold increased to {training_threshold}')
+    # Otherwise, notify the user what it currently is at
+    else:
+        print(f'Training threshold remains at {training_threshold}')
