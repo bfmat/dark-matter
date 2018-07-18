@@ -15,7 +15,7 @@ from models.banded_frequency_network import create_model
 INITIAL_TRAINING_EXAMPLES = 256
 
 # The distance from 0 or 1 an example must be to be added to the training set
-TRAINING_THRESHOLD_DISTANCE = 0.01
+TRAINING_THRESHOLD_DISTANCE = 0.02
 
 # Create a data set, running fiducial cuts for the most reasonable data
 event_data_set = EventDataSet({
