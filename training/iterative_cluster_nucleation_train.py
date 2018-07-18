@@ -27,11 +27,11 @@ event_data_set = EventDataSet({
 })
 # Make a copy of the full training set to get examples from later
 original_training_events = event_data_set.training_events.copy()
-# Sort the list of training events down to only those that pass the validation cuts
-event_data_set.training_events = [
-    event for event in event_data_set.training_events
-    if EventDataSet.passes_validation_cuts(event)
-]
+# # Sort the list of training events down to only those that pass the validation cuts
+# event_data_set.training_events = [
+#     event for event in event_data_set.training_events
+#     if EventDataSet.passes_validation_cuts(event)
+# ]
 # Truncate the list to only a certain number of initial training examples
 event_data_set.training_events = event_data_set.training_events[:INITIAL_TRAINING_EXAMPLES]
 # Remove the actual training events from the list of original training events (that list will be picked from for new examples)
