@@ -13,9 +13,9 @@ def create_model() -> Model:
         InputLayer(input_shape=(51,)),
         BatchNormalization(),
         Dense(12, activation=activation),
-        # Dropout(0.5),
+        Dropout(0.3),
         Dense(8, activation=activation),
-        # Dropout(0.5),
+        Dropout(0.3),
         Dense(1, activation='sigmoid')
     ])
     # Output a summary of the model's architecture
