@@ -26,6 +26,11 @@ event_data_set = EventDataSet({
 # Make a copy of the full training set, and then truncate the actual training set to a predefined length
 original_training_events = event_data_set.training_events.copy()
 event_data_set.training_events = event_data_set.training_events[:INITIAL_TRAINING_EXAMPLES]
+# Remove the actual training events from the list of original training events (that list will be picked from for new examples)
+original_training_events = [
+    event for event in original_training_events
+    if event not in event_data_set.training_events
+]
 # Create an instance of the fully convolutional network model
 model = create_model()
 # Run several training iterations, each containing a number of epochs
@@ -40,7 +45,7 @@ for iteration in range(100):
         x=training_input,
         y=training_ground_truths,
         validation_data=(validation_input, validation_ground_truths),
-        epochs=50
+        epochs=100
     )
     # Run predictions on the validation data set, and save the experimental run
     validation_network_outputs = model.predict(validation_input)
@@ -51,6 +56,8 @@ for iteration in range(100):
         epoch=iteration,
         prefix='iterative_cluster_nucleation_'
     )
+    # Create a list to add to of events that have been added to the main training list
+    remove_from_original = []
     # Iterate over the entire list of potential training examples, running predictions
     for event in original_training_events:
         # Get the frequency domain input data from the event, and add a batch axis
@@ -65,9 +72,16 @@ for iteration in range(100):
         prediction = model.predict(input_data)
         # If the prediction is within a certain threshold distance of either 0 or 1
         if min([prediction, 1 - prediction]) < TRAINING_THRESHOLD_DISTANCE:
+            # Mark the event for removal from the original list
+            remove_from_original.append(event)
             # Copy the event and set its run type so that it is in the corresponding ground truth
             bubble_copy = copy.deepcopy(event)
             bubble_copy.run_type = RunType.LOW_BACKGROUND if bool(round(prediction[0, 0])) \
                 else RunType.AMERICIUM_BERYLLIUM
             # Add the modified bubble to the training list
             event_data_set.training_events.append(bubble_copy)
+    # Remove the events newly added to the training list from the list of original events
+    original_training_events = [
+        event for event in original_training_events
+        if event not in remove_from_original
+    ]
