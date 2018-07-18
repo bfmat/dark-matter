@@ -1,0 +1,1028 @@
+Using TensorFlow backend.
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+batch_normalization_1 (Batch (None, 51)                204       
+_________________________________________________________________
+dense_1 (Dense)              (None, 12)                624       
+_________________________________________________________________
+dense_2 (Dense)              (None, 8)                 104       
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 9         
+=================================================================
+Total params: 941
+Trainable params: 839
+Non-trainable params: 102
+_________________________________________________________________
+None
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+2018-07-18 09:34:10.811888: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-07-18 09:34:10.894658: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:898] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-07-18 09:34:10.894974: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1356] Found device 0 with properties: 
+name: GeForce GTX 1080 major: 6 minor: 1 memoryClockRate(GHz): 1.8475
+pciBusID: 0000:01:00.0
+totalMemory: 7.93GiB freeMemory: 7.20GiB
+2018-07-18 09:34:10.894987: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1435] Adding visible gpu devices: 0
+2018-07-18 09:34:11.005435: I tensorflow/core/common_runtime/gpu/gpu_device.cc:923] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-18 09:34:11.005462: I tensorflow/core/common_runtime/gpu/gpu_device.cc:929]      0 
+2018-07-18 09:34:11.005469: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 0:   N 
+2018-07-18 09:34:11.005588: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6948 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080, pci bus id: 0000:01:00.0, compute capability: 6.1)
+1488/1488 [==============================] - 1s 391us/step - loss: 0.2258 - acc: 0.6371 - val_loss: 0.1465 - val_acc: 0.8047
+Data saved at /home/brendonm/banded_low_resolution_time1531920851_epoch0.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.1164 - acc: 0.8669 - val_loss: 0.1073 - val_acc: 0.8672
+Data saved at /home/brendonm/banded_low_resolution_time1531920851_epoch1.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0959 - acc: 0.8837 - val_loss: 0.0922 - val_acc: 0.8906
+Data saved at /home/brendonm/banded_low_resolution_time1531920851_epoch2.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0855 - acc: 0.8931 - val_loss: 0.0822 - val_acc: 0.8984
+Data saved at /home/brendonm/banded_low_resolution_time1531920851_epoch3.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0796 - acc: 0.8965 - val_loss: 0.0763 - val_acc: 0.9062
+Data saved at /home/brendonm/banded_low_resolution_time1531920851_epoch4.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0752 - acc: 0.9093 - val_loss: 0.0711 - val_acc: 0.9141
+Data saved at /home/brendonm/banded_low_resolution_time1531920851_epoch5.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0759 - acc: 0.9079 - val_loss: 0.0667 - val_acc: 0.9141
+Data saved at /home/brendonm/banded_low_resolution_time1531920852_epoch6.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0713 - acc: 0.9099 - val_loss: 0.0651 - val_acc: 0.9141
+Data saved at /home/brendonm/banded_low_resolution_time1531920852_epoch7.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0699 - acc: 0.9173 - val_loss: 0.0642 - val_acc: 0.9141
+Data saved at /home/brendonm/banded_low_resolution_time1531920852_epoch8.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0660 - acc: 0.9234 - val_loss: 0.0640 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920852_epoch9.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0619 - acc: 0.9254 - val_loss: 0.0608 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920852_epoch10.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0626 - acc: 0.9261 - val_loss: 0.0594 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920852_epoch11.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0631 - acc: 0.9153 - val_loss: 0.0594 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920852_epoch12.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0572 - acc: 0.9288 - val_loss: 0.0587 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920852_epoch13.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0505 - acc: 0.9449 - val_loss: 0.0576 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920852_epoch14.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0553 - acc: 0.9328 - val_loss: 0.0572 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920852_epoch15.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0568 - acc: 0.9315 - val_loss: 0.0545 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920852_epoch16.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0507 - acc: 0.9375 - val_loss: 0.0556 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920853_epoch17.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0498 - acc: 0.9382 - val_loss: 0.0562 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920853_epoch18.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0515 - acc: 0.9308 - val_loss: 0.0543 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920853_epoch19.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0482 - acc: 0.9422 - val_loss: 0.0520 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920853_epoch20.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0451 - acc: 0.9442 - val_loss: 0.0524 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920853_epoch21.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0457 - acc: 0.9435 - val_loss: 0.0528 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920853_epoch22.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0519 - acc: 0.9335 - val_loss: 0.0504 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920853_epoch23.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0395 - acc: 0.9536 - val_loss: 0.0488 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920853_epoch24.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0376 - acc: 0.9570 - val_loss: 0.0486 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920853_epoch25.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0359 - acc: 0.9550 - val_loss: 0.0487 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920853_epoch26.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0400 - acc: 0.9516 - val_loss: 0.0488 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920853_epoch27.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0360 - acc: 0.9530 - val_loss: 0.0504 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920854_epoch28.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0377 - acc: 0.9543 - val_loss: 0.0499 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920854_epoch29.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0355 - acc: 0.9590 - val_loss: 0.0477 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920854_epoch30.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0331 - acc: 0.9583 - val_loss: 0.0479 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920854_epoch31.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0305 - acc: 0.9664 - val_loss: 0.0499 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920854_epoch32.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0291 - acc: 0.9677 - val_loss: 0.0497 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920854_epoch33.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0281 - acc: 0.9664 - val_loss: 0.0497 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920854_epoch34.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0264 - acc: 0.9671 - val_loss: 0.0498 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920854_epoch35.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0273 - acc: 0.9691 - val_loss: 0.0497 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920854_epoch36.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0285 - acc: 0.9617 - val_loss: 0.0487 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920854_epoch37.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0234 - acc: 0.9758 - val_loss: 0.0487 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920854_epoch38.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0232 - acc: 0.9724 - val_loss: 0.0505 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920855_epoch39.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0229 - acc: 0.9731 - val_loss: 0.0496 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920855_epoch40.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0233 - acc: 0.9738 - val_loss: 0.0495 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920855_epoch41.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0267 - acc: 0.9657 - val_loss: 0.0517 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920855_epoch42.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0212 - acc: 0.9778 - val_loss: 0.0529 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920855_epoch43.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0229 - acc: 0.9724 - val_loss: 0.0477 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920855_epoch44.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0191 - acc: 0.9785 - val_loss: 0.0462 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920855_epoch45.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0213 - acc: 0.9758 - val_loss: 0.0494 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920855_epoch46.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0202 - acc: 0.9751 - val_loss: 0.0506 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920855_epoch47.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0166 - acc: 0.9819 - val_loss: 0.0485 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920855_epoch48.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0171 - acc: 0.9751 - val_loss: 0.0499 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920856_epoch49.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0182 - acc: 0.9785 - val_loss: 0.0524 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920856_epoch50.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0179 - acc: 0.9778 - val_loss: 0.0506 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920856_epoch51.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0165 - acc: 0.9819 - val_loss: 0.0487 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920856_epoch52.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0163 - acc: 0.9812 - val_loss: 0.0475 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920856_epoch53.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0167 - acc: 0.9792 - val_loss: 0.0485 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920856_epoch54.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0153 - acc: 0.9819 - val_loss: 0.0484 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920856_epoch55.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0163 - acc: 0.9765 - val_loss: 0.0470 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920856_epoch56.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0175 - acc: 0.9785 - val_loss: 0.0510 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920856_epoch57.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0164 - acc: 0.9778 - val_loss: 0.0514 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920856_epoch58.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0152 - acc: 0.9819 - val_loss: 0.0523 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920856_epoch59.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0125 - acc: 0.9859 - val_loss: 0.0494 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920857_epoch60.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0172 - acc: 0.9758 - val_loss: 0.0492 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920857_epoch61.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0189 - acc: 0.9765 - val_loss: 0.0562 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920857_epoch62.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0131 - acc: 0.9852 - val_loss: 0.0586 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920857_epoch63.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0107 - acc: 0.9879 - val_loss: 0.0600 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920857_epoch64.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0118 - acc: 0.9859 - val_loss: 0.0558 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920857_epoch65.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0143 - acc: 0.9832 - val_loss: 0.0549 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920857_epoch66.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0090 - acc: 0.9906 - val_loss: 0.0533 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920857_epoch67.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0146 - acc: 0.9805 - val_loss: 0.0545 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920857_epoch68.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0100 - acc: 0.9919 - val_loss: 0.0536 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920857_epoch69.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0109 - acc: 0.9866 - val_loss: 0.0540 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920857_epoch70.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0138 - acc: 0.9852 - val_loss: 0.0464 - val_acc: 0.9531
+Data saved at /home/brendonm/banded_low_resolution_time1531920858_epoch71.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0122 - acc: 0.9859 - val_loss: 0.0524 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920858_epoch72.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0145 - acc: 0.9839 - val_loss: 0.0494 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920858_epoch73.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0142 - acc: 0.9832 - val_loss: 0.0514 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920858_epoch74.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0143 - acc: 0.9839 - val_loss: 0.0518 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920858_epoch75.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0095 - acc: 0.9906 - val_loss: 0.0529 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920858_epoch76.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0093 - acc: 0.9919 - val_loss: 0.0558 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920858_epoch77.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0068 - acc: 0.9940 - val_loss: 0.0491 - val_acc: 0.9531
+Data saved at /home/brendonm/banded_low_resolution_time1531920858_epoch78.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0126 - acc: 0.9852 - val_loss: 0.0511 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920858_epoch79.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0138 - acc: 0.9805 - val_loss: 0.0526 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920858_epoch80.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0122 - acc: 0.9859 - val_loss: 0.0488 - val_acc: 0.9531
+Data saved at /home/brendonm/banded_low_resolution_time1531920858_epoch81.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0106 - acc: 0.9879 - val_loss: 0.0506 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920859_epoch82.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0122 - acc: 0.9859 - val_loss: 0.0500 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920859_epoch83.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0133 - acc: 0.9832 - val_loss: 0.0563 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920859_epoch84.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0093 - acc: 0.9886 - val_loss: 0.0580 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920859_epoch85.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0130 - acc: 0.9852 - val_loss: 0.0595 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920859_epoch86.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0067 - acc: 0.9919 - val_loss: 0.0566 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920859_epoch87.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0114 - acc: 0.9845 - val_loss: 0.0548 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920859_epoch88.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0097 - acc: 0.9866 - val_loss: 0.0542 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920859_epoch89.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0086 - acc: 0.9899 - val_loss: 0.0586 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920859_epoch90.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0112 - acc: 0.9879 - val_loss: 0.0584 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920859_epoch91.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0089 - acc: 0.9886 - val_loss: 0.0589 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920860_epoch92.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0100 - acc: 0.9892 - val_loss: 0.0613 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920860_epoch93.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0110 - acc: 0.9872 - val_loss: 0.0594 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920860_epoch94.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0106 - acc: 0.9866 - val_loss: 0.0625 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920860_epoch95.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0100 - acc: 0.9872 - val_loss: 0.0616 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920860_epoch96.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0095 - acc: 0.9913 - val_loss: 0.0568 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920860_epoch97.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0160 - acc: 0.9765 - val_loss: 0.0579 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920860_epoch98.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0072 - acc: 0.9906 - val_loss: 0.0568 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920860_epoch99.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0077 - acc: 0.9940 - val_loss: 0.0608 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920860_epoch100.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0057 - acc: 0.9953 - val_loss: 0.0548 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920860_epoch101.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0082 - acc: 0.9906 - val_loss: 0.0572 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920860_epoch102.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0079 - acc: 0.9892 - val_loss: 0.0565 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920861_epoch103.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0081 - acc: 0.9940 - val_loss: 0.0531 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920861_epoch104.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0073 - acc: 0.9926 - val_loss: 0.0531 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920861_epoch105.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0072 - acc: 0.9899 - val_loss: 0.0609 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920861_epoch106.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0070 - acc: 0.9913 - val_loss: 0.0629 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920861_epoch107.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0068 - acc: 0.9919 - val_loss: 0.0551 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920861_epoch108.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0094 - acc: 0.9866 - val_loss: 0.0608 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920861_epoch109.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0083 - acc: 0.9906 - val_loss: 0.0627 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920861_epoch110.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0106 - acc: 0.9859 - val_loss: 0.0593 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920861_epoch111.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0071 - acc: 0.9926 - val_loss: 0.0589 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920861_epoch112.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0103 - acc: 0.9879 - val_loss: 0.0565 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920861_epoch113.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0116 - acc: 0.9825 - val_loss: 0.0625 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920862_epoch114.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0088 - acc: 0.9892 - val_loss: 0.0586 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920862_epoch115.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0139 - acc: 0.9825 - val_loss: 0.0583 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920862_epoch116.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0065 - acc: 0.9926 - val_loss: 0.0530 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920862_epoch117.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0088 - acc: 0.9906 - val_loss: 0.0536 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920862_epoch118.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0123 - acc: 0.9825 - val_loss: 0.0534 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920862_epoch119.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0100 - acc: 0.9906 - val_loss: 0.0525 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920862_epoch120.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 51us/step - loss: 0.0093 - acc: 0.9886 - val_loss: 0.0608 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920862_epoch121.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0089 - acc: 0.9906 - val_loss: 0.0553 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920862_epoch122.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0083 - acc: 0.9899 - val_loss: 0.0524 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920862_epoch123.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0041 - acc: 0.9953 - val_loss: 0.0540 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920863_epoch124.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0076 - acc: 0.9926 - val_loss: 0.0522 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920863_epoch125.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0060 - acc: 0.9946 - val_loss: 0.0524 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920863_epoch126.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0093 - acc: 0.9892 - val_loss: 0.0512 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920863_epoch127.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0072 - acc: 0.9906 - val_loss: 0.0522 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920863_epoch128.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0080 - acc: 0.9899 - val_loss: 0.0495 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920863_epoch129.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0058 - acc: 0.9946 - val_loss: 0.0490 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920863_epoch130.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0062 - acc: 0.9933 - val_loss: 0.0511 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920863_epoch131.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0117 - acc: 0.9845 - val_loss: 0.0610 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920863_epoch132.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0077 - acc: 0.9899 - val_loss: 0.0582 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920863_epoch133.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0058 - acc: 0.9933 - val_loss: 0.0563 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920863_epoch134.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0056 - acc: 0.9933 - val_loss: 0.0537 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920864_epoch135.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0058 - acc: 0.9919 - val_loss: 0.0514 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920864_epoch136.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0079 - acc: 0.9899 - val_loss: 0.0493 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920864_epoch137.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0071 - acc: 0.9906 - val_loss: 0.0549 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920864_epoch138.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0087 - acc: 0.9892 - val_loss: 0.0490 - val_acc: 0.9531
+Data saved at /home/brendonm/banded_low_resolution_time1531920864_epoch139.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0095 - acc: 0.9872 - val_loss: 0.0513 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920864_epoch140.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0092 - acc: 0.9886 - val_loss: 0.0541 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920864_epoch141.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0050 - acc: 0.9953 - val_loss: 0.0572 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920864_epoch142.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0046 - acc: 0.9966 - val_loss: 0.0575 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920864_epoch143.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0063 - acc: 0.9926 - val_loss: 0.0604 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920864_epoch144.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0061 - acc: 0.9926 - val_loss: 0.0632 - val_acc: 0.9062
+Data saved at /home/brendonm/banded_low_resolution_time1531920864_epoch145.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0058 - acc: 0.9926 - val_loss: 0.0622 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920865_epoch146.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0073 - acc: 0.9926 - val_loss: 0.0556 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920865_epoch147.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0052 - acc: 0.9940 - val_loss: 0.0568 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920865_epoch148.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0045 - acc: 0.9960 - val_loss: 0.0511 - val_acc: 0.9531
+Data saved at /home/brendonm/banded_low_resolution_time1531920865_epoch149.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0051 - acc: 0.9933 - val_loss: 0.0501 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920865_epoch150.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0106 - acc: 0.9866 - val_loss: 0.0582 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920865_epoch151.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0060 - acc: 0.9940 - val_loss: 0.0609 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920865_epoch152.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0098 - acc: 0.9879 - val_loss: 0.0598 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920865_epoch153.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0064 - acc: 0.9933 - val_loss: 0.0560 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920865_epoch154.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0060 - acc: 0.9933 - val_loss: 0.0547 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920865_epoch155.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0035 - acc: 0.9960 - val_loss: 0.0565 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920865_epoch156.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0073 - acc: 0.9913 - val_loss: 0.0572 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920866_epoch157.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0055 - acc: 0.9940 - val_loss: 0.0569 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920866_epoch158.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0063 - acc: 0.9913 - val_loss: 0.0568 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920866_epoch159.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0052 - acc: 0.9940 - val_loss: 0.0629 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920866_epoch160.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0110 - acc: 0.9852 - val_loss: 0.0601 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920866_epoch161.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0068 - acc: 0.9906 - val_loss: 0.0621 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920866_epoch162.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0054 - acc: 0.9919 - val_loss: 0.0589 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920866_epoch163.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0066 - acc: 0.9919 - val_loss: 0.0590 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920866_epoch164.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0072 - acc: 0.9906 - val_loss: 0.0596 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920866_epoch165.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0062 - acc: 0.9926 - val_loss: 0.0596 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920866_epoch166.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0065 - acc: 0.9913 - val_loss: 0.0580 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920867_epoch167.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0048 - acc: 0.9926 - val_loss: 0.0612 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920867_epoch168.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0078 - acc: 0.9913 - val_loss: 0.0567 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920867_epoch169.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0077 - acc: 0.9919 - val_loss: 0.0553 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920867_epoch170.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0085 - acc: 0.9886 - val_loss: 0.0564 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920867_epoch171.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0062 - acc: 0.9919 - val_loss: 0.0589 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920867_epoch172.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0079 - acc: 0.9892 - val_loss: 0.0598 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920867_epoch173.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0056 - acc: 0.9933 - val_loss: 0.0614 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920867_epoch174.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0071 - acc: 0.9892 - val_loss: 0.0681 - val_acc: 0.9141
+Data saved at /home/brendonm/banded_low_resolution_time1531920867_epoch175.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0084 - acc: 0.9913 - val_loss: 0.0625 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920867_epoch176.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0025 - acc: 0.9987 - val_loss: 0.0589 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920867_epoch177.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0085 - acc: 0.9899 - val_loss: 0.0593 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920868_epoch178.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0042 - acc: 0.9966 - val_loss: 0.0562 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920868_epoch179.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0063 - acc: 0.9940 - val_loss: 0.0556 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920868_epoch180.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0034 - acc: 0.9973 - val_loss: 0.0543 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920868_epoch181.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0034 - acc: 0.9966 - val_loss: 0.0513 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920868_epoch182.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 51us/step - loss: 0.0055 - acc: 0.9926 - val_loss: 0.0500 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920868_epoch183.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0077 - acc: 0.9913 - val_loss: 0.0491 - val_acc: 0.9531
+Data saved at /home/brendonm/banded_low_resolution_time1531920868_epoch184.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0059 - acc: 0.9940 - val_loss: 0.0472 - val_acc: 0.9531
+Data saved at /home/brendonm/banded_low_resolution_time1531920868_epoch185.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0047 - acc: 0.9953 - val_loss: 0.0501 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920868_epoch186.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0078 - acc: 0.9906 - val_loss: 0.0556 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920868_epoch187.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0069 - acc: 0.9899 - val_loss: 0.0498 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920868_epoch188.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0053 - acc: 0.9946 - val_loss: 0.0499 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920869_epoch189.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0072 - acc: 0.9913 - val_loss: 0.0516 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920869_epoch190.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0054 - acc: 0.9926 - val_loss: 0.0589 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920869_epoch191.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0070 - acc: 0.9913 - val_loss: 0.0553 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920869_epoch192.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0068 - acc: 0.9926 - val_loss: 0.0548 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920869_epoch193.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0060 - acc: 0.9940 - val_loss: 0.0511 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920869_epoch194.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0047 - acc: 0.9946 - val_loss: 0.0558 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920869_epoch195.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0075 - acc: 0.9913 - val_loss: 0.0537 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920869_epoch196.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0089 - acc: 0.9892 - val_loss: 0.0615 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920869_epoch197.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0059 - acc: 0.9926 - val_loss: 0.0573 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920869_epoch198.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0023 - acc: 0.9987 - val_loss: 0.0575 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920869_epoch199.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0051 - acc: 0.9940 - val_loss: 0.0501 - val_acc: 0.9531
+Data saved at /home/brendonm/banded_low_resolution_time1531920870_epoch200.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0046 - acc: 0.9953 - val_loss: 0.0528 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920870_epoch201.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0071 - acc: 0.9892 - val_loss: 0.0537 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920870_epoch202.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0081 - acc: 0.9892 - val_loss: 0.0513 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920870_epoch203.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0063 - acc: 0.9933 - val_loss: 0.0560 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920870_epoch204.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0065 - acc: 0.9906 - val_loss: 0.0562 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920870_epoch205.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0035 - acc: 0.9966 - val_loss: 0.0568 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920870_epoch206.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0074 - acc: 0.9913 - val_loss: 0.0587 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920870_epoch207.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0057 - acc: 0.9926 - val_loss: 0.0546 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920870_epoch208.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0055 - acc: 0.9940 - val_loss: 0.0534 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920870_epoch209.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0078 - acc: 0.9892 - val_loss: 0.0517 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920871_epoch210.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 54us/step - loss: 0.0061 - acc: 0.9926 - val_loss: 0.0528 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920871_epoch211.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 54us/step - loss: 0.0051 - acc: 0.9946 - val_loss: 0.0587 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920871_epoch212.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0076 - acc: 0.9886 - val_loss: 0.0676 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920871_epoch213.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 54us/step - loss: 0.0087 - acc: 0.9872 - val_loss: 0.0581 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920871_epoch214.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 54us/step - loss: 0.0067 - acc: 0.9919 - val_loss: 0.0565 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920871_epoch215.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 54us/step - loss: 0.0042 - acc: 0.9946 - val_loss: 0.0564 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920871_epoch216.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 61us/step - loss: 0.0089 - acc: 0.9859 - val_loss: 0.0536 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920871_epoch217.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 57us/step - loss: 0.0040 - acc: 0.9953 - val_loss: 0.0525 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920871_epoch218.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 56us/step - loss: 0.0027 - acc: 0.9973 - val_loss: 0.0574 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920871_epoch219.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 58us/step - loss: 0.0048 - acc: 0.9933 - val_loss: 0.0524 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920871_epoch220.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 57us/step - loss: 0.0075 - acc: 0.9906 - val_loss: 0.0568 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920872_epoch221.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 57us/step - loss: 0.0068 - acc: 0.9899 - val_loss: 0.0571 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920872_epoch222.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 60us/step - loss: 0.0067 - acc: 0.9926 - val_loss: 0.0595 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920872_epoch223.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 57us/step - loss: 0.0044 - acc: 0.9940 - val_loss: 0.0562 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920872_epoch224.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 55us/step - loss: 0.0040 - acc: 0.9953 - val_loss: 0.0562 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920872_epoch225.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0077 - acc: 0.9899 - val_loss: 0.0631 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920872_epoch226.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 57us/step - loss: 0.0084 - acc: 0.9906 - val_loss: 0.0570 - val_acc: 0.9219
+Data saved at /home/brendonm/banded_low_resolution_time1531920872_epoch227.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 54us/step - loss: 0.0037 - acc: 0.9946 - val_loss: 0.0525 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920872_epoch228.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 56us/step - loss: 0.0061 - acc: 0.9926 - val_loss: 0.0529 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920872_epoch229.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 57us/step - loss: 0.0031 - acc: 0.9973 - val_loss: 0.0548 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920872_epoch230.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 55us/step - loss: 0.0049 - acc: 0.9940 - val_loss: 0.0545 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920873_epoch231.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 52us/step - loss: 0.0054 - acc: 0.9940 - val_loss: 0.0514 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920873_epoch232.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 57us/step - loss: 0.0049 - acc: 0.9960 - val_loss: 0.0515 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920873_epoch233.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 56us/step - loss: 0.0061 - acc: 0.9913 - val_loss: 0.0563 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920873_epoch234.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 61us/step - loss: 0.0057 - acc: 0.9933 - val_loss: 0.0520 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920873_epoch235.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 57us/step - loss: 0.0051 - acc: 0.9933 - val_loss: 0.0548 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920873_epoch236.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 56us/step - loss: 0.0048 - acc: 0.9940 - val_loss: 0.0507 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920873_epoch237.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 59us/step - loss: 0.0043 - acc: 0.9946 - val_loss: 0.0533 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920873_epoch238.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 60us/step - loss: 0.0058 - acc: 0.9926 - val_loss: 0.0516 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920873_epoch239.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 58us/step - loss: 0.0036 - acc: 0.9953 - val_loss: 0.0526 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920874_epoch240.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 54us/step - loss: 0.0032 - acc: 0.9973 - val_loss: 0.0564 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920874_epoch241.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 54us/step - loss: 0.0050 - acc: 0.9946 - val_loss: 0.0523 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920874_epoch242.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 57us/step - loss: 0.0095 - acc: 0.9872 - val_loss: 0.0478 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920874_epoch243.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 58us/step - loss: 0.0032 - acc: 0.9980 - val_loss: 0.0486 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920874_epoch244.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 60us/step - loss: 0.0051 - acc: 0.9946 - val_loss: 0.0527 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920874_epoch245.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 55us/step - loss: 0.0042 - acc: 0.9953 - val_loss: 0.0544 - val_acc: 0.9297
+Data saved at /home/brendonm/banded_low_resolution_time1531920874_epoch246.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 59us/step - loss: 0.0060 - acc: 0.9940 - val_loss: 0.0534 - val_acc: 0.9375
+Data saved at /home/brendonm/banded_low_resolution_time1531920874_epoch247.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0081 - acc: 0.9886 - val_loss: 0.0519 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920874_epoch248.json
+Train on 1488 samples, validate on 128 samples
+Epoch 1/1
+1488/1488 [==============================] - 0s 53us/step - loss: 0.0072 - acc: 0.9913 - val_loss: 0.0532 - val_acc: 0.9453
+Data saved at /home/brendonm/banded_low_resolution_time1531920874_epoch249.json
