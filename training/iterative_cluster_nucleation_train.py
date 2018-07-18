@@ -85,7 +85,7 @@ for iteration in range(100):
             event_data_set.training_events.append(bubble_copy)
             # Update the accumulators according to whether or not the ground truth is right
             examples_added += 1
-            if event.run_type == bubble_copy.run_type:
+            if (event.run_type == RunType.LOW_BACKGROUND) == (bubble_copy.run_type == RunType.LOW_BACKGROUND):
                 examples_correct += 1
     # Remove the events newly added to the training list from the list of original events
     original_training_events = [
