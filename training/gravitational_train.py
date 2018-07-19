@@ -2,6 +2,8 @@
 """A script for a semi-supervised training technique where certain examples have defined ground truths and others are assigned probabilistic ground truths based on what they are predicted to be by the network"""
 # Created by Brendon Matusch, July 2018
 
+import copy
+
 import numpy as np
 
 from data_processing.bubble_data_point import RunType
@@ -29,8 +31,15 @@ event_data_set.training_events = [
     event for event in event_data_set.training_events
     if EventDataSet.passes_validation_cuts(event)
 ]
-# Get the banded frequency domain data; the data set class will not be used from here on
+# Get the banded frequency domain data for training and validation
 training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()
+
+# For comparison later, store the original training ground truths of the examples for which they will be changed
+original_training_ground_truths = training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:]
+# Make a copy of the event data set, replacing the validation set with the corresponding training examples for saving the training data
+training_data_set = copy.deepcopy(event_data_set)
+training_data_set.validation_events = \
+    event_data_set.training_events[DEFINITIVE_TRAINING_EXAMPLES:]
 # Initially, set all of the training ground truths (except for the few for which the original ground truth is kept) to 0.5
 # This keeps the network from learning anything it shouldn't until at least some training has been done on the definitive data
 # It must first be converted to floating-point
@@ -63,12 +72,22 @@ for epoch in range(EPOCHS):
         validation_ground_truths,
         validation_network_outputs,
         epoch=epoch,
-        prefix='gravitational_'
+        prefix='gravitational_validation_'
     )
     # Run predictions on the part of the training set for which the ground truths are not definitive
     predictions = model.predict(training_input[DEFINITIVE_TRAINING_EXAMPLES:])
     # Convert the predictions to a NumPy array and remove the unnecessary second dimension
     predictions_array = np.array(predictions)[:, 0]
     # Calculate the new ground truths for those examples using the gravitational function
-    training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:] = \
-        gravitational_ground_truths(predictions_array)
+    ground_truths = gravitational_ground_truths(predictions_array)
+    training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:] = ground_truths
+    # Expand the dimensions of the new ground truth array so the test saving function will interpret it correctly
+    ground_truths_saving = np.expand_dims(ground_truths, axis=1)
+    # Save data for comparing the new gravitational ground truths to the original, correct ones
+    save_test(
+        training_data_set,
+        original_training_ground_truths,
+        ground_truths_saving,
+        epoch=epoch,
+        prefix='gravitational_ground_truths_'
+    )
