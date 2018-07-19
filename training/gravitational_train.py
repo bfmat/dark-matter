@@ -67,6 +67,8 @@ for epoch in range(EPOCHS):
     )
     # Run predictions on the part of the training set for which the ground truths are not definitive
     predictions = model.predict(training_input[DEFINITIVE_TRAINING_EXAMPLES:])
+    # Convert the predictions to a NumPy array and remove the unnecessary second dimension
+    predictions_array = np.array(predictions)[:, 0]
     # Calculate the new ground truths for those examples using the gravitational function
     training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:] = \
-        gravitational_ground_truths(np.array(predictions))
+        gravitational_ground_truths(predictions_array)
