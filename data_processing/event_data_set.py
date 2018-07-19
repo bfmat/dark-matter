@@ -54,9 +54,9 @@ class EventDataSet:
             # Temporary: use all events for validation
             # if self.passes_validation_cuts(event)
         ]
-        # Add 2 copies of the events passing validation cuts to the original list of events, so they are weighted 3 times as heavily
-        for _ in range(2):
-            events += events_passing_validation_cuts
+        # # Add 2 copies of the events passing validation cuts to the original list of events, so they are weighted 3 times as heavily
+        # for _ in range(2):
+        # events += events_passing_validation_cuts
         # Choose a specified number of random examples from the list with validation cuts applied
         self.validation_events = random.sample(
             events_passing_validation_cuts, VALIDATION_EXAMPLES)
