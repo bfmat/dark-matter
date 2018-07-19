@@ -42,7 +42,7 @@ original_training_events = [
 # Create an instance of the fully convolutional network model
 model = create_model()
 # Run several training iterations, each containing a number of epochs
-for iteration in range(100):
+for iteration in range(400):
     # Output the number of examples there are in the training set for this epoch
     print(len(event_data_set.training_events),
           'training examples for iteration', iteration)
