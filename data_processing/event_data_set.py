@@ -167,7 +167,7 @@ class EventDataSet:
                 # Take only the last two piezos, as the first one does not work
                 np.stack([
                     np.concatenate([
-                        event.banded_frequency_domain_raw[1:].flatten(),
+                        event.banded_frequency_domain_raw[1:, :, 2].flatten(),
                         [event.x_position, event.y_position, event.z_position]
                     ])
                     for event in events
