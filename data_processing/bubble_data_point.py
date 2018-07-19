@@ -265,11 +265,11 @@ def load_bubble_frequency_domain(bubble: BubbleDataPoint) -> List[np.ndarray]:
         start_frequency = FREQUENCY_BANDS[band_edge_index]
         end_frequency = FREQUENCY_BANDS[band_edge_index + 1]
         # Get the indices of samples corresponding to frequencies within this band
-        band_indices = np.argwhere(
+        band_indices = np.argwhere(np.logical_and(
             # Include the start frequency but exclude the end frequency so values are not duplicated
-            corresponding_frequencies >= start_frequency
-            & corresponding_frequencies < end_frequency
-        )
+            corresponding_frequencies >= start_frequency,
+            corresponding_frequencies < end_frequency
+        ))
         # The resonant energy of this frequency band is the mean of the squares of the frequency magnitudes multiplied by their corresponding frequencies
         resonant_energies.append(np.mean(np.square(
             frequency_magnitudes[band_indices]
