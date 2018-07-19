@@ -17,8 +17,8 @@ def create_model() -> Model:
         BatchNormalization(),
         Dense(12, activation=activation, kernel_regularizer=regularizer),
         Dropout(dropout),
-        # Dense(8, activation=activation, kernel_regularizer=regularizer),
-        # Dropout(dropout),
+        Dense(8, activation=activation, kernel_regularizer=regularizer),
+        Dropout(dropout),
         Dense(1, activation='sigmoid', kernel_regularizer=regularizer)
     ])
     # Output a summary of the model's architecture
