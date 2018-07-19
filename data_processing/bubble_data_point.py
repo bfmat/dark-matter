@@ -270,11 +270,13 @@ def load_bubble_frequency_domain(bubble: BubbleDataPoint) -> List[np.ndarray]:
             corresponding_frequencies >= start_frequency,
             corresponding_frequencies < end_frequency
         ))
-        # The resonant energy of this frequency band is the mean of the squares of the frequency magnitudes multiplied by their corresponding frequencies
-        resonant_energies.append(np.mean(np.square(
-            frequency_magnitudes[band_indices]
-            * corresponding_frequencies[band_indices]
-        )))
+        # Iterate over both piezos
+        for piezo_index in range(2):
+            # The resonant energy of this frequency band, for this piezo, is the mean of the squares of the frequency magnitudes multiplied by their corresponding frequencies
+            resonant_energies.append(np.mean(np.square(
+                frequency_magnitudes[band_indices, piezo_index]
+                * corresponding_frequencies[band_indices]
+            )))
     # Return the resonant energies as a NumPy array, wrapped in a single-element list
     return [np.array(resonant_energies)]
 
