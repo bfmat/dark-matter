@@ -47,13 +47,12 @@ training_ground_truths = training_ground_truths.astype(float)
 training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:] = 0.5
 
 
-def gravitational_ground_truths(predictions: np.ndarray) -> np.ndarray:
-    """Get an array ground truths based on a gravitational model where examples classified very close to one edge will be pulled toward that edge, and examples near the middle will make little difference"""
-    # The function should pass through (0.5, 0.5), should change very little near that point, and should rapidly asymptote to 0 or 1 as the prediction comes close to 0 or 1
-    # This can be accomplished by scaling the predictions to the range of -1 to 1, taking the 9th root of the hyperbolic tangent (so that the area around 0 is squashed), and scaling the output back to the range of 0 to 1
+def gravitational_ground_truth_offsets(predictions: np.ndarray) -> np.ndarray:
+    """Get an array of ground truth offsets based on a gravitational model where examples classified very close to one edge will be pulled toward that edge, and examples near the middle will make little difference"""
+    # The function should pass through (0.5, 0.5), should change very little near that point, and should rapidly asymptote in the negative or positive directions as the prediction comes close to 0 or 1
+    # This can be accomplished by scaling the predictions to the range of -1 to 1, taking the 9th root of the hyperbolic tangent (so that the area around 0 is squashed), and multiplying it by a constant so the graviational offset does not dominate the training process
     predictions_scaled = (predictions - 0.5) * 2
-    squashed_tanh = np.cbrt(np.cbrt(np.tanh(predictions_scaled)))
-    return (squashed_tanh / 2) + 0.5
+    return np.cbrt(np.cbrt(np.tanh(predictions_scaled))) * 0.05
 
 
 # Iterate over however many epochs we are training for
@@ -78,8 +77,9 @@ for epoch in range(EPOCHS):
     predictions = model.predict(training_input[DEFINITIVE_TRAINING_EXAMPLES:])
     # Convert the predictions to a NumPy array and remove the unnecessary second dimension
     predictions_array = np.array(predictions)[:, 0]
-    # Calculate the new ground truths for those examples using the gravitational function
-    ground_truths = gravitational_ground_truths(predictions_array)
+    # Calculate the new ground truths for those examples by adding the gravitational function to the current predictions
+    ground_truths = predictions_array + \
+        gravitational_ground_truth_offsets(predictions_array)
     training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:] = ground_truths
     # Expand the dimensions of the new ground truth array so the test saving function will interpret it correctly
     ground_truths_saving = np.expand_dims(ground_truths, axis=1)
