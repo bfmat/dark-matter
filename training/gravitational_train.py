@@ -50,7 +50,7 @@ training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:] = 0.5
 def gravitational_ground_truth_offsets(predictions: np.ndarray) -> np.ndarray:
     """Get an array of ground truth offsets based on a gravitational model where examples classified very close to one edge will be pulled toward that edge, and examples near the middle will make little difference"""
     # The function should pass through (0.5, 0.5), should change very little near that point, and should rapidly asymptote in the negative or positive directions as the prediction comes close to 0 or 1
-    # This can be accomplished by scaling the predictions to the range of -1 to 1, taking the 9th root of the hyperbolic tangent (so that the area around 0 is squashed), and multiplying it by a constant so the graviational offset does not dominate the training process
+    # This can be accomplished by scaling the predictions to the range of -1 to 1, taking the 9th root of the hyperbolic tangent (so that the area around 0 is squashed), and multiplying it by a constant so the gravitational offset does not dominate the training process
     predictions_scaled = (predictions - 0.5) * 2
     return np.cbrt(np.cbrt(np.tanh(predictions_scaled))) * 0.05
 
