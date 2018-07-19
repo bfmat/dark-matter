@@ -13,7 +13,7 @@ from models.banded_frequency_network import create_model
 EPOCHS = 250
 
 # The number of training examples for which the ground truth is actually used, and is not dynamically generated
-DEFINITIVE_TRAINING_EXAMPLES = 512
+DEFINITIVE_TRAINING_EXAMPLES = 128
 
 # Create an instance of the fully connected neural network
 model = create_model()
@@ -41,7 +41,7 @@ training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:] = 0.5
 def gravitational_ground_truths(predictions: np.ndarray) -> np.ndarray:
     """Get an array ground truths based on a gravitational model where examples classified very close to one edge will be pulled toward that edge, and examples near the middle will make little difference"""
     # The function should pass through (0.5, 0.5), should change very little near that point, and should rapidly asymptote to 0 or 1 as the prediction comes close to 0 or 1
-    # This can be approximated by scaling the predictions to the range of -1 to 1, taking the 9th root of the hyperbolic tangent (so that the area around 0 is squashed), and scaling the output back to the range of 0 to 1
+    # This can be accomplished by scaling the predictions to the range of -1 to 1, taking the 9th root of the hyperbolic tangent (so that the area around 0 is squashed), and scaling the output back to the range of 0 to 1
     predictions_scaled = (predictions - 0.5) * 2
     squashed_tanh = np.cbrt(np.cbrt(np.tanh(predictions_scaled)))
     return (squashed_tanh / 2) + 0.5
@@ -67,3 +67,6 @@ for epoch in range(EPOCHS):
     )
     # Run predictions on the part of the training set for which the ground truths are not definitive
     predictions = model.predict(training_input[DEFINITIVE_TRAINING_EXAMPLES:])
+    # Calculate the new ground truths for those examples using the gravitational function
+    training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:] = \
+        gravitational_ground_truths(np.array(predictions))
