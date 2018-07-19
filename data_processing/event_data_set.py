@@ -51,7 +51,8 @@ class EventDataSet:
         # Run cuts required only for validation on a copy of the list
         events_passing_validation_cuts = [
             event for event in events
-            if self.passes_validation_cuts(event)
+            # Temporary: use all events for validation
+            # if self.passes_validation_cuts(event)
         ]
         # Add 2 copies of the events passing validation cuts to the original list of events, so they are weighted 3 times as heavily
         for _ in range(2):
