@@ -53,25 +53,3 @@ def band_time_domain(time_domain_audio: np.ndarray, bands: int) -> List[np.ndarr
         ]
         for band_index in range(bands)
     ]
-
-
-def band_frequency_domain(frequency_domain_audio: np.ndarray, bands: int) -> np.ndarray:
-    """Reduce a frequency domain audio recording down to a specified number of bands, each containing the average of the values within the band"""
-    # Get the indices that separate each of the bands, including the beginning and end
-    band_separators = np.linspace(
-        start=0,
-        stop=frequency_domain_audio.shape[0],
-        num=bands + 1
-    )
-    # Round the band separators to integers
-    band_separators_integer = [
-        int(round(separator))
-        for separator in band_separators
-    ]
-    # Average the segments of the audio array corresponding to each of the bands, stack the results into a NumPy array, and return it
-    return np.stack([
-        np.average(frequency_domain_audio[
-            band_separators_integer[band_index]:band_separators_integer[band_index + 1]
-        ], axis=0)
-        for band_index in range(bands)
-    ])

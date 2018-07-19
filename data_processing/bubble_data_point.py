@@ -10,7 +10,7 @@ import random
 import sys
 from typing import List, Optional
 
-from data_processing.audio_domain_processing import time_to_frequency_domain, band_time_domain, band_frequency_domain
+from data_processing.audio_domain_processing import time_to_frequency_domain, band_time_domain
 
 import numpy as np
 from scipy.ndimage import imread
@@ -26,10 +26,11 @@ IMAGES_PER_BUBBLE = 1
 # The number of piezo channels present in the audio files (not all of them work)
 CHANNELS = 8
 
-# The number of bands to split the recording into for frequency domain processing, from beginning to end
-TIME_BANDS = 3
-# The number of bands to split the frequency domain representation of each time band into
-FREQUENCY_BANDS = 8
+# The bands (in Hz) to split the frequency domain representation of each time band into
+FREQUENCY_BANDS = [0, 7.5e3, 2e4, 6e4, 1.5e5, 2.0e5]
+
+# The number of audio samples per second in raw recordings
+SAMPLES_PER_SECOND = 100_000
 
 
 class RunType(Enum):
@@ -250,20 +251,32 @@ def load_bubble_frequency_domain(bubble: BubbleDataPoint) -> List[np.ndarray]:
     # If the list is empty, return the same thing
     except IndexError:
         return []
-    # Split into a list of multiple time bands
-    time_domain_bands = band_time_domain(time_domain, TIME_BANDS)
-    # Convert each of the time bands into frequency domain
-    time_bands_frequency = [
-        time_to_frequency_domain(band)
-        for band in time_domain_bands
-    ]
-    # Reduce the frequency domain representations into bands and stack them together into a single array
-    banded_frequency_domain = np.stack([
-        band_frequency_domain(band, FREQUENCY_BANDS)
-        for band in time_bands_frequency
-    ])
-    # Flatten the array so it can be input into a dense layer and return the result wrapped in a single-element list
-    return [banded_frequency_domain.flatten()]
+    # Convert the audio into frequency domain
+    frequency_domain = time_to_frequency_domain(time_domain)
+    # Get the magnitude of the complex outputs
+    frequency_magnitudes = np.absolute(frequency_domain)
+    # Get the frequencies that correspond to the values in the output array
+    corresponding_frequencies = np.fft.rfftfreq(time_domain.shape[0])
+    # Create a list to add the resonant energies of the frequency bands to
+    resonant_energies = []
+    # Iterate over the indices of the frequency band edges, excluding the last one
+    for band_edge_index in range(len(FREQUENCY_BANDS) - 1):
+        # Get the start and end frequencies of the band corresponding to this index
+        start_frequency = FREQUENCY_BANDS[band_edge_index]
+        end_frequency = FREQUENCY_BANDS[band_edge_index + 1]
+        # Get the indices of samples corresponding to frequencies within this band
+        band_indices = np.argwhere(
+            # Include the start frequency but exclude the end frequency so values are not duplicated
+            corresponding_frequencies >= start_frequency
+            & corresponding_frequencies < end_frequency
+        )
+        # The resonant energy of this frequency band is the mean of the squares of the frequency magnitudes multiplied by their corresponding frequencies
+        resonant_energies.append(np.mean(np.square(
+            frequency_magnitudes[band_indices]
+            * corresponding_frequencies[band_indices]
+        )))
+    # Return the resonant energies as a NumPy array, wrapped in a single-element list
+    return [np.array(resonant_energies)]
 
 
 def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
