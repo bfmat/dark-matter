@@ -29,15 +29,25 @@ CHANNELS = 8
 # The separations between the bands (in Hz) to split the frequency domain representation of each time band into
 FREQUENCY_BANDS = [
     0,
+    1.5e3
     3.5e3,
+    5e3,
     7.5e3,
+    9e3,
     1.25e4,
+    1.6e4,
     2e4,
+    2.75e4,
     3.5e4,
+    4.5e4,
     6e4,
+    8e4,
     1e5,
+    1.25e5,
     1.5e5,
+    1.6e5,
     1.75e5,
+    1.85e5,
     2.0e5
 ]
 
