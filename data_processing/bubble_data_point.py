@@ -277,11 +277,9 @@ def load_bubble_frequency_domain(bubble: BubbleDataPoint) -> List[np.ndarray]:
     frequency_domain = time_to_frequency_domain(time_domain)
     # Get the magnitude of the complex outputs
     frequency_magnitudes = np.absolute(frequency_domain)
-    print('frequency_magnitudes:', frequency_magnitudes)
     # Get the frequencies that correspond to the values in the output array, and multiply them by the number of samples per second so they are in Hz
     corresponding_frequencies = np.fft.rfftfreq(time_domain.shape[0]) \
         * SAMPLES_PER_SECOND
-    print('corresponding_frequencies:', corresponding_frequencies)
     # Create a list to add the resonant energies of the frequency bands to
     resonant_energies = []
     # Iterate over the indices of the frequency band edges, excluding the last one
@@ -306,7 +304,6 @@ def load_bubble_frequency_domain(bubble: BubbleDataPoint) -> List[np.ndarray]:
                     ) ** 2)
                 / (len(corresponding_frequencies) ** 2)
             )
-    print('resonant_energies:', resonant_energies)
     # Return the resonant energies as a NumPy array, wrapped in a single-element list
     return [np.array(resonant_energies)]
 
