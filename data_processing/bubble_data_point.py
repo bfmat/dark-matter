@@ -30,7 +30,7 @@ CHANNELS = 8
 FREQUENCY_BANDS = [0, 7.5e3, 2e4, 6e4, 1.5e5, 2.0e5]
 
 # The number of audio samples per second in raw recordings
-SAMPLES_PER_SECOND = 100_000
+SAMPLES_PER_SECOND = 400_000
 
 
 class RunType(Enum):
