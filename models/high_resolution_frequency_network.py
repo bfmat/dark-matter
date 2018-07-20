@@ -10,7 +10,7 @@ def create_model() -> Model:
     # Create a neural network composed of dense layers with dropout regularization, using rectified linear activations
     activation = 'relu'
     # Create two inputs, one for the audio data and one for the position, and concatenate them together
-    audio_input = Input((10,))
+    audio_input = Input((20,))
     position_input = Input((3,))
     x = concatenate([audio_input, position_input])
     x = BatchNormalization()(x)
