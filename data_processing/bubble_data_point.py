@@ -26,8 +26,20 @@ IMAGES_PER_BUBBLE = 1
 # The number of piezo channels present in the audio files (not all of them work)
 CHANNELS = 8
 
-# The bands (in Hz) to split the frequency domain representation of each time band into
-FREQUENCY_BANDS = [0, 7.5e3, 2e4, 6e4, 1.5e5, 2.0e5]
+# The separations between the bands (in Hz) to split the frequency domain representation of each time band into
+FREQUENCY_BANDS = [
+    0,
+    3.5e3,
+    7.5e3,
+    1.25e4,
+    2e4,
+    3.5e4,
+    6e4,
+    1e5,
+    1.5e5,
+    1.75e5,
+    2.0e5
+]
 
 # The number of audio samples per second in raw recordings
 SAMPLES_PER_SECOND = 400_000
