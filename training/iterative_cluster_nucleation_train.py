@@ -72,13 +72,10 @@ for iteration in range(400):
     # Iterate over the entire list of potential training examples, running predictions
     for event in original_training_events:
         # Get the frequency domain input data from the event, and add a batch axis
-        input_data = np.expand_dims(
-            np.concatenate([
-                event.banded_frequency_domain_raw[1:].flatten(),
-                [event.x_position, event.y_position, event.z_position]
-            ]),
-            axis=0
-        )
+        input_data = [
+            load_bubble_frequency_domain(event)[0],
+            [event.x_position, event.y_position, event.z_position]
+        ]
         # Run a prediction on the audio sample using the existing neural network
         prediction = model.predict(input_data)
         # If the prediction is within a certain threshold distance of either 0 or 1
