@@ -53,7 +53,7 @@ for iteration in range(400):
         x=training_inputs,
         y=training_ground_truths,
         validation_data=(validation_inputs, validation_ground_truths),
-        epochs=100
+        epochs=30
     )
     # Run predictions on the validation data set, and save the experimental run
     validation_network_outputs = model.predict(validation_inputs)
