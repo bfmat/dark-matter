@@ -9,7 +9,7 @@ import numpy as np
 from data_processing.bubble_data_point import RunType, load_bubble_frequency_domain
 from data_processing.event_data_set import EventDataSet
 from data_processing.experiment_serialization import save_test
-from models.banded_frequency_network import create_model
+from models.high_resolution_frequency_network import create_model
 
 # The initial number of examples to put in the training set
 INITIAL_TRAINING_EXAMPLES = 128
