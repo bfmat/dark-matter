@@ -277,9 +277,9 @@ def load_bubble_frequency_domain(bubble: BubbleDataPoint, banded: bool = True) -
     frequency_domain = time_to_frequency_domain(time_domain)
     # Get the magnitude of the complex outputs
     frequency_magnitudes = np.absolute(frequency_domain)
-    # If banding is disabled, return the magnitudes directly, wrapped in a single-element list
+    # If banding is disabled, return the flattened array of magnitudes directly, wrapped in a single-element list
     if not banded:
-        return [frequency_magnitudes]
+        return [frequency_magnitudes.flatten()]
     # Get the frequencies that correspond to the values in the output array, and multiply them by the number of samples per second so they are in Hz
     corresponding_frequencies = np.fft.rfftfreq(time_domain.shape[0]) \
         * SAMPLES_PER_SECOND
