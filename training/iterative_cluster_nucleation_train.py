@@ -74,7 +74,7 @@ for iteration in range(400):
         # Get the frequency domain input data from the event, and add a batch axis
         input_data = [
             load_bubble_frequency_domain(event)[0],
-            [event.x_position, event.y_position, event.z_position]
+            np.array([event.x_position, event.y_position, event.z_position])
         ]
         # Run a prediction on the audio sample using the existing neural network
         prediction = model.predict(input_data)
