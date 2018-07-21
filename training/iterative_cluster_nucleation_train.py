@@ -71,12 +71,14 @@ for iteration in range(400):
     examples_correct = 0
     # Iterate over the entire list of potential training examples, running predictions
     for event in original_training_events:
-        # Get the frequency domain and position input data from the event, and add a batch axis
+        # Try to load the frequency domain audio data for this event
+        audio_data = load_bubble_frequency_domain(event, banded=False)
+        # If the audio cannot be loaded, skip to the next iterations
+        if not audio_data:
+            continue
+        # Combine it with the position input data from the event, and add a batch axis
         input_data = [
-            np.expand_dims(
-                load_bubble_frequency_domain(event, banded=False)[0],
-                axis=0
-            ),
+            np.expand_dims(audio_data[0], axis=0),
             np.expand_dims(
                 np.array([event.x_position, event.y_position, event.z_position]),
                 axis=0
