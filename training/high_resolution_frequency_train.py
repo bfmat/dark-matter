@@ -16,10 +16,11 @@ event_data_set = EventDataSet({
     RunType.AMERICIUM_BERYLLIUM,
     RunType.CALIFORNIUM
 })
-# Load training and validation data as NumPy arrays
+# Load training and validation data as NumPy arrays, currying the loading function to disable banding
 training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = \
     event_data_set.audio_alpha_classification(
-        loading_function=load_bubble_frequency_domain,
+        loading_function=lambda bubble:
+        load_bubble_frequency_domain(bubble, banded=False),
         include_positions=True
     )
 # Create an instance of the high resolution frequency network

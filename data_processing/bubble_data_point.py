@@ -265,8 +265,8 @@ def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Option
     return [data_array]
 
 
-def load_bubble_frequency_domain(bubble: BubbleDataPoint) -> List[np.ndarray]:
-    """Given a bubble data point, load a flattened representation of the audio in frequency domain in various time and frequency bins and for both channels; 1 example will be in the returned list, or 0 if it cannot be loaded"""
+def load_bubble_frequency_domain(bubble: BubbleDataPoint, banded: bool = True) -> List[np.ndarray]:
+    """Given a bubble data point, load a flattened representation of the audio in frequency domain, either in various time and frequency bins or continuous, and for both channels; 1 example will be in the returned list, or 0 if it cannot be loaded"""
     # First, try to get the audio waveform corresponding to this bubble
     try:
         time_domain = load_bubble_audio(bubble)[0]
@@ -277,6 +277,9 @@ def load_bubble_frequency_domain(bubble: BubbleDataPoint) -> List[np.ndarray]:
     frequency_domain = time_to_frequency_domain(time_domain)
     # Get the magnitude of the complex outputs
     frequency_magnitudes = np.absolute(frequency_domain)
+    # If banding is disabled, return the magnitudes directly, wrapped in a single-element list
+    if not banded:
+        return [frequency_magnitudes]
     # Get the frequencies that correspond to the values in the output array, and multiply them by the number of samples per second so they are in Hz
     corresponding_frequencies = np.fft.rfftfreq(time_domain.shape[0]) \
         * SAMPLES_PER_SECOND
