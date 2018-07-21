@@ -6,7 +6,7 @@ import copy
 
 import numpy as np
 
-from data_processing.bubble_data_point import RunType
+from data_processing.bubble_data_point import RunType, load_bubble_frequency_domain
 from data_processing.event_data_set import EventDataSet
 from data_processing.experiment_serialization import save_test
 from models.banded_frequency_network import create_model
@@ -27,11 +27,6 @@ event_data_set = EventDataSet({
 })
 # Make a copy of the full training set to get examples from later
 original_training_events = event_data_set.training_events.copy()
-# Sort the list of training events down to only those that pass the validation cuts
-event_data_set.training_events = [
-    event for event in event_data_set.training_events
-    if EventDataSet.passes_validation_cuts(event)
-]
 # Truncate the list to only a certain number of initial training examples
 event_data_set.training_events = event_data_set.training_events[:INITIAL_TRAINING_EXAMPLES]
 # Remove the actual training events from the list of original training events (that list will be picked from for new examples)
@@ -46,17 +41,22 @@ for iteration in range(400):
     # Output the number of examples there are in the training set for this epoch
     print(len(event_data_set.training_events),
           'training examples for iteration', iteration)
-    # Load the training and validation data with the current examples
-    training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()
+    # Load training and validation data as NumPy arrays, currying the loading function to disable banding
+    training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = \
+        event_data_set.audio_alpha_classification(
+            loading_function=lambda bubble:
+            load_bubble_frequency_domain(bubble, banded=False),
+            include_positions=True
+        )
     # Train the model for a certain number of epochs on the generator
     model.fit(
-        x=training_input,
+        x=training_inputs,
         y=training_ground_truths,
-        validation_data=(validation_input, validation_ground_truths),
+        validation_data=(validation_inputs, validation_ground_truths),
         epochs=100
     )
     # Run predictions on the validation data set, and save the experimental run
-    validation_network_outputs = model.predict(validation_input)
+    validation_network_outputs = model.predict(validation_inputs)
     save_test(
         event_data_set,
         validation_ground_truths,
