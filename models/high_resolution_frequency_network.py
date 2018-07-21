@@ -13,7 +13,7 @@ def create_model() -> Model:
     regularizer = l2(0)
     dropout = 0
     # Create two inputs, one for the audio data and one for the position, and concatenate them together
-    audio_input = Input((100_005,))
+    audio_input = Input((100_002,))
     position_input = Input((3,))
     x = concatenate([audio_input, position_input])
     x = BatchNormalization()(x)
