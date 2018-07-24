@@ -30,6 +30,9 @@ training_inputs, training_ground_truths, validation_inputs, validation_ground_tr
 for dropout in [0, 0.25, 0.5]:
     for l2_lambda in [0, 0.0003, 0.001, 0.003, 0.01]:
         for hidden_layers in [1, 2, 3]:
+            # Print a few blank lines for separation
+            for _ in range(3):
+                print()
             # Document the current hyperparameter combination
             print('HYPERPARAMETERS')
             print('Dropout:', dropout)
