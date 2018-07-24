@@ -1,0 +1,2624 @@
+/usr/local/lib/python3.6/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+batch_normalization_1 (Batch (None, 19)                76
+_________________________________________________________________
+dense_1 (Dense)              (None, 12)                240
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 12)                0
+_________________________________________________________________
+dense_2 (Dense)              (None, 8)                 104
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 8)                 0
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 9
+=================================================================
+Total params: 429
+Trainable params: 391
+Non-trainable params: 38
+_________________________________________________________________
+None
+128 training examples for iteration 0
+Train on 128 samples, validate on 128 samples
+Epoch 1/30
+2018-07-24 11:10:30.688653: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+128/128 [==============================] - 1s 10ms/step - loss: 0.2823 - acc: 0.4922 - val_loss: 0.2736 - val_acc: 0.4766
+Epoch 2/30
+128/128 [==============================] - 0s 196us/step - loss: 0.2848 - acc: 0.4453 - val_loss: 0.2644 - val_acc: 0.4766
+Epoch 3/30
+128/128 [==============================] - 0s 320us/step - loss: 0.2563 - acc: 0.5234 - val_loss: 0.2553 - val_acc: 0.5312
+Epoch 4/30
+128/128 [==============================] - 0s 176us/step - loss: 0.2589 - acc: 0.5547 - val_loss: 0.2474 - val_acc: 0.6016
+Epoch 5/30
+128/128 [==============================] - 0s 123us/step - loss: 0.2545 - acc: 0.5391 - val_loss: 0.2399 - val_acc: 0.6328
+Epoch 6/30
+128/128 [==============================] - 0s 341us/step - loss: 0.2345 - acc: 0.6094 - val_loss: 0.2330 - val_acc: 0.6562
+Epoch 7/30
+128/128 [==============================] - 0s 144us/step - loss: 0.2337 - acc: 0.6328 - val_loss: 0.2268 - val_acc: 0.6641
+Epoch 8/30
+128/128 [==============================] - 0s 161us/step - loss: 0.2248 - acc: 0.6641 - val_loss: 0.2209 - val_acc: 0.6641
+Epoch 9/30
+128/128 [==============================] - 0s 118us/step - loss: 0.2223 - acc: 0.6641 - val_loss: 0.2154 - val_acc: 0.6719
+Epoch 10/30
+128/128 [==============================] - 0s 122us/step - loss: 0.2082 - acc: 0.6484 - val_loss: 0.2105 - val_acc: 0.6875
+Epoch 11/30
+128/128 [==============================] - 0s 124us/step - loss: 0.2077 - acc: 0.7031 - val_loss: 0.2059 - val_acc: 0.6875
+Epoch 12/30
+128/128 [==============================] - 0s 124us/step - loss: 0.2015 - acc: 0.6797 - val_loss: 0.2017 - val_acc: 0.6953
+Epoch 13/30
+128/128 [==============================] - 0s 114us/step - loss: 0.1930 - acc: 0.7266 - val_loss: 0.1975 - val_acc: 0.7188
+Epoch 14/30
+128/128 [==============================] - 0s 197us/step - loss: 0.1978 - acc: 0.7031 - val_loss: 0.1938 - val_acc: 0.7188
+Epoch 15/30
+128/128 [==============================] - 0s 251us/step - loss: 0.1855 - acc: 0.7266 - val_loss: 0.1904 - val_acc: 0.7344
+Epoch 16/30
+128/128 [==============================] - 0s 192us/step - loss: 0.1871 - acc: 0.7734 - val_loss: 0.1871 - val_acc: 0.7344
+Epoch 17/30
+128/128 [==============================] - 0s 118us/step - loss: 0.1786 - acc: 0.7344 - val_loss: 0.1844 - val_acc: 0.7422
+Epoch 18/30
+128/128 [==============================] - 0s 139us/step - loss: 0.1726 - acc: 0.7422 - val_loss: 0.1817 - val_acc: 0.7422
+Epoch 19/30
+128/128 [==============================] - 0s 127us/step - loss: 0.1737 - acc: 0.7734 - val_loss: 0.1790 - val_acc: 0.7500
+Epoch 20/30
+128/128 [==============================] - 0s 151us/step - loss: 0.1730 - acc: 0.7422 - val_loss: 0.1766 - val_acc: 0.7578
+Epoch 21/30
+128/128 [==============================] - 0s 141us/step - loss: 0.1659 - acc: 0.7891 - val_loss: 0.1744 - val_acc: 0.7578
+Epoch 22/30
+128/128 [==============================] - 0s 93us/step - loss: 0.1596 - acc: 0.7812 - val_loss: 0.1723 - val_acc: 0.7578
+Epoch 23/30
+128/128 [==============================] - 0s 111us/step - loss: 0.1531 - acc: 0.7969 - val_loss: 0.1703 - val_acc: 0.7656
+Epoch 24/30
+128/128 [==============================] - 0s 119us/step - loss: 0.1581 - acc: 0.8047 - val_loss: 0.1684 - val_acc: 0.7734
+Epoch 25/30
+128/128 [==============================] - 0s 119us/step - loss: 0.1515 - acc: 0.7812 - val_loss: 0.1666 - val_acc: 0.7812
+Epoch 26/30
+128/128 [==============================] - 0s 163us/step - loss: 0.1502 - acc: 0.8047 - val_loss: 0.1649 - val_acc: 0.7891
+Epoch 27/30
+128/128 [==============================] - 0s 231us/step - loss: 0.1589 - acc: 0.7891 - val_loss: 0.1634 - val_acc: 0.7969
+Epoch 28/30
+128/128 [==============================] - 0s 206us/step - loss: 0.1492 - acc: 0.7891 - val_loss: 0.1620 - val_acc: 0.7969
+Epoch 29/30
+128/128 [==============================] - 0s 136us/step - loss: 0.1475 - acc: 0.8203 - val_loss: 0.1606 - val_acc: 0.7969
+Epoch 30/30
+128/128 [==============================] - 0s 149us/step - loss: 0.1392 - acc: 0.8203 - val_loss: 0.1594 - val_acc: 0.7969
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445032_epoch0.json
+0 examples added; 0 were correct
+Training threshold increased to 0.020499999999999997
+128 training examples for iteration 1
+Train on 128 samples, validate on 128 samples
+Epoch 1/30
+128/128 [==============================] - 0s 110us/step - loss: 0.1509 - acc: 0.8047 - val_loss: 0.1585 - val_acc: 0.7969
+Epoch 2/30
+128/128 [==============================] - 0s 151us/step - loss: 0.1357 - acc: 0.8281 - val_loss: 0.1575 - val_acc: 0.8047
+Epoch 3/30
+128/128 [==============================] - 0s 162us/step - loss: 0.1436 - acc: 0.8125 - val_loss: 0.1565 - val_acc: 0.8047
+Epoch 4/30
+128/128 [==============================] - 0s 130us/step - loss: 0.1342 - acc: 0.8359 - val_loss: 0.1558 - val_acc: 0.8125
+Epoch 5/30
+128/128 [==============================] - 0s 134us/step - loss: 0.1383 - acc: 0.7969 - val_loss: 0.1550 - val_acc: 0.8125
+Epoch 6/30
+128/128 [==============================] - 0s 156us/step - loss: 0.1381 - acc: 0.8281 - val_loss: 0.1544 - val_acc: 0.8125
+Epoch 7/30
+128/128 [==============================] - 0s 100us/step - loss: 0.1407 - acc: 0.8203 - val_loss: 0.1537 - val_acc: 0.8125
+Epoch 8/30
+128/128 [==============================] - 0s 149us/step - loss: 0.1293 - acc: 0.8438 - val_loss: 0.1532 - val_acc: 0.8125
+Epoch 9/30
+128/128 [==============================] - 0s 125us/step - loss: 0.1302 - acc: 0.8359 - val_loss: 0.1528 - val_acc: 0.8125
+Epoch 10/30
+128/128 [==============================] - 0s 133us/step - loss: 0.1282 - acc: 0.8516 - val_loss: 0.1523 - val_acc: 0.8125
+Epoch 11/30
+128/128 [==============================] - 0s 89us/step - loss: 0.1356 - acc: 0.8203 - val_loss: 0.1518 - val_acc: 0.8125
+Epoch 12/30
+128/128 [==============================] - 0s 113us/step - loss: 0.1230 - acc: 0.8516 - val_loss: 0.1514 - val_acc: 0.8125
+Epoch 13/30
+128/128 [==============================] - 0s 126us/step - loss: 0.1281 - acc: 0.8516 - val_loss: 0.1510 - val_acc: 0.8125
+Epoch 14/30
+128/128 [==============================] - 0s 123us/step - loss: 0.1309 - acc: 0.8203 - val_loss: 0.1506 - val_acc: 0.8125
+Epoch 15/30
+128/128 [==============================] - 0s 83us/step - loss: 0.1167 - acc: 0.8594 - val_loss: 0.1503 - val_acc: 0.8125
+Epoch 16/30
+128/128 [==============================] - 0s 97us/step - loss: 0.1191 - acc: 0.8672 - val_loss: 0.1500 - val_acc: 0.8125
+Epoch 17/30
+128/128 [==============================] - 0s 122us/step - loss: 0.1176 - acc: 0.8516 - val_loss: 0.1499 - val_acc: 0.8125
+Epoch 18/30
+128/128 [==============================] - 0s 110us/step - loss: 0.1098 - acc: 0.8672 - val_loss: 0.1497 - val_acc: 0.8125
+Epoch 19/30
+128/128 [==============================] - 0s 105us/step - loss: 0.1216 - acc: 0.8438 - val_loss: 0.1496 - val_acc: 0.8125
+Epoch 20/30
+128/128 [==============================] - 0s 78us/step - loss: 0.1165 - acc: 0.8438 - val_loss: 0.1495 - val_acc: 0.8125
+Epoch 21/30
+128/128 [==============================] - 0s 90us/step - loss: 0.1145 - acc: 0.8672 - val_loss: 0.1495 - val_acc: 0.8125
+Epoch 22/30
+128/128 [==============================] - 0s 142us/step - loss: 0.1103 - acc: 0.8594 - val_loss: 0.1494 - val_acc: 0.8125
+Epoch 23/30
+128/128 [==============================] - 0s 118us/step - loss: 0.1138 - acc: 0.8438 - val_loss: 0.1495 - val_acc: 0.8125
+Epoch 24/30
+128/128 [==============================] - 0s 111us/step - loss: 0.1165 - acc: 0.8594 - val_loss: 0.1493 - val_acc: 0.8047
+Epoch 25/30
+128/128 [==============================] - 0s 85us/step - loss: 0.1124 - acc: 0.8516 - val_loss: 0.1493 - val_acc: 0.8047
+Epoch 26/30
+128/128 [==============================] - 0s 92us/step - loss: 0.1154 - acc: 0.8438 - val_loss: 0.1494 - val_acc: 0.8047
+Epoch 27/30
+128/128 [==============================] - 0s 108us/step - loss: 0.1107 - acc: 0.8750 - val_loss: 0.1495 - val_acc: 0.7969
+Epoch 28/30
+128/128 [==============================] - 0s 104us/step - loss: 0.1106 - acc: 0.8672 - val_loss: 0.1496 - val_acc: 0.7891
+Epoch 29/30
+128/128 [==============================] - 0s 94us/step - loss: 0.1065 - acc: 0.8906 - val_loss: 0.1495 - val_acc: 0.7891
+Epoch 30/30
+128/128 [==============================] - 0s 98us/step - loss: 0.1005 - acc: 0.8750 - val_loss: 0.1498 - val_acc: 0.7891
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445035_epoch1.json
+0 examples added; 0 were correct
+Training threshold increased to 0.021012499999999996
+128 training examples for iteration 2
+Train on 128 samples, validate on 128 samples
+Epoch 1/30
+128/128 [==============================] - 0s 81us/step - loss: 0.1151 - acc: 0.8359 - val_loss: 0.1500 - val_acc: 0.7891
+Epoch 2/30
+128/128 [==============================] - 0s 97us/step - loss: 0.1190 - acc: 0.8516 - val_loss: 0.1501 - val_acc: 0.7812
+Epoch 3/30
+128/128 [==============================] - 0s 92us/step - loss: 0.1063 - acc: 0.8750 - val_loss: 0.1504 - val_acc: 0.7812
+Epoch 4/30
+128/128 [==============================] - 0s 85us/step - loss: 0.1090 - acc: 0.8672 - val_loss: 0.1505 - val_acc: 0.7812
+Epoch 5/30
+128/128 [==============================] - 0s 91us/step - loss: 0.1086 - acc: 0.8672 - val_loss: 0.1506 - val_acc: 0.7812
+Epoch 6/30
+128/128 [==============================] - 0s 78us/step - loss: 0.1183 - acc: 0.8594 - val_loss: 0.1507 - val_acc: 0.7891
+Epoch 7/30
+128/128 [==============================] - 0s 117us/step - loss: 0.0992 - acc: 0.8828 - val_loss: 0.1508 - val_acc: 0.7891
+Epoch 8/30
+128/128 [==============================] - 0s 108us/step - loss: 0.1067 - acc: 0.8672 - val_loss: 0.1509 - val_acc: 0.7891
+Epoch 9/30
+128/128 [==============================] - 0s 104us/step - loss: 0.1191 - acc: 0.8281 - val_loss: 0.1511 - val_acc: 0.7891
+Epoch 10/30
+128/128 [==============================] - 0s 104us/step - loss: 0.0977 - acc: 0.8906 - val_loss: 0.1512 - val_acc: 0.7891
+Epoch 11/30
+128/128 [==============================] - 0s 106us/step - loss: 0.1339 - acc: 0.8281 - val_loss: 0.1512 - val_acc: 0.7891
+Epoch 12/30
+128/128 [==============================] - 0s 97us/step - loss: 0.1063 - acc: 0.8828 - val_loss: 0.1513 - val_acc: 0.7891
+Epoch 13/30
+128/128 [==============================] - 0s 90us/step - loss: 0.1030 - acc: 0.8906 - val_loss: 0.1514 - val_acc: 0.7891
+Epoch 14/30
+128/128 [==============================] - 0s 108us/step - loss: 0.1010 - acc: 0.8828 - val_loss: 0.1514 - val_acc: 0.7891
+Epoch 15/30
+128/128 [==============================] - 0s 115us/step - loss: 0.0999 - acc: 0.8750 - val_loss: 0.1516 - val_acc: 0.7891
+Epoch 16/30
+128/128 [==============================] - 0s 83us/step - loss: 0.0994 - acc: 0.8828 - val_loss: 0.1516 - val_acc: 0.7891
+Epoch 17/30
+128/128 [==============================] - 0s 124us/step - loss: 0.1043 - acc: 0.8672 - val_loss: 0.1518 - val_acc: 0.7891
+Epoch 18/30
+128/128 [==============================] - 0s 112us/step - loss: 0.1010 - acc: 0.8906 - val_loss: 0.1520 - val_acc: 0.7891
+Epoch 19/30
+128/128 [==============================] - 0s 101us/step - loss: 0.1055 - acc: 0.8672 - val_loss: 0.1523 - val_acc: 0.7891
+Epoch 20/30
+128/128 [==============================] - 0s 106us/step - loss: 0.1093 - acc: 0.8672 - val_loss: 0.1521 - val_acc: 0.7891
+Epoch 21/30
+128/128 [==============================] - 0s 116us/step - loss: 0.0993 - acc: 0.8750 - val_loss: 0.1520 - val_acc: 0.7969
+Epoch 22/30
+128/128 [==============================] - 0s 115us/step - loss: 0.0976 - acc: 0.8672 - val_loss: 0.1520 - val_acc: 0.7969
+Epoch 23/30
+128/128 [==============================] - 0s 86us/step - loss: 0.0920 - acc: 0.9062 - val_loss: 0.1520 - val_acc: 0.7891
+Epoch 24/30
+128/128 [==============================] - 0s 83us/step - loss: 0.0953 - acc: 0.8906 - val_loss: 0.1518 - val_acc: 0.7891
+Epoch 25/30
+128/128 [==============================] - 0s 118us/step - loss: 0.1037 - acc: 0.8750 - val_loss: 0.1517 - val_acc: 0.7891
+Epoch 26/30
+128/128 [==============================] - 0s 111us/step - loss: 0.0896 - acc: 0.8906 - val_loss: 0.1515 - val_acc: 0.7891
+Epoch 27/30
+128/128 [==============================] - 0s 105us/step - loss: 0.0963 - acc: 0.8828 - val_loss: 0.1514 - val_acc: 0.7969
+Epoch 28/30
+128/128 [==============================] - 0s 94us/step - loss: 0.0846 - acc: 0.8984 - val_loss: 0.1514 - val_acc: 0.7969
+Epoch 29/30
+128/128 [==============================] - 0s 105us/step - loss: 0.0987 - acc: 0.8750 - val_loss: 0.1513 - val_acc: 0.7891
+Epoch 30/30
+128/128 [==============================] - 0s 111us/step - loss: 0.1092 - acc: 0.8594 - val_loss: 0.1512 - val_acc: 0.7891
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445036_epoch2.json
+0 examples added; 0 were correct
+Training threshold increased to 0.021537812499999996
+128 training examples for iteration 3
+Train on 128 samples, validate on 128 samples
+Epoch 1/30
+128/128 [==============================] - 0s 62us/step - loss: 0.0994 - acc: 0.8672 - val_loss: 0.1511 - val_acc: 0.7891
+Epoch 2/30
+128/128 [==============================] - 0s 70us/step - loss: 0.0981 - acc: 0.8828 - val_loss: 0.1511 - val_acc: 0.7891
+Epoch 3/30
+128/128 [==============================] - 0s 94us/step - loss: 0.1092 - acc: 0.8516 - val_loss: 0.1509 - val_acc: 0.7891
+Epoch 4/30
+128/128 [==============================] - 0s 83us/step - loss: 0.0903 - acc: 0.8984 - val_loss: 0.1506 - val_acc: 0.7891
+Epoch 5/30
+128/128 [==============================] - 0s 88us/step - loss: 0.0936 - acc: 0.8828 - val_loss: 0.1505 - val_acc: 0.7891
+Epoch 6/30
+128/128 [==============================] - 0s 88us/step - loss: 0.1037 - acc: 0.8750 - val_loss: 0.1504 - val_acc: 0.7891
+Epoch 7/30
+128/128 [==============================] - 0s 133us/step - loss: 0.0990 - acc: 0.8750 - val_loss: 0.1504 - val_acc: 0.7891
+Epoch 8/30
+128/128 [==============================] - 0s 94us/step - loss: 0.1058 - acc: 0.8516 - val_loss: 0.1502 - val_acc: 0.7891
+Epoch 9/30
+128/128 [==============================] - 0s 121us/step - loss: 0.0944 - acc: 0.8906 - val_loss: 0.1501 - val_acc: 0.7891
+Epoch 10/30
+128/128 [==============================] - 0s 105us/step - loss: 0.0931 - acc: 0.8750 - val_loss: 0.1502 - val_acc: 0.7891
+Epoch 11/30
+128/128 [==============================] - 0s 67us/step - loss: 0.0968 - acc: 0.8828 - val_loss: 0.1501 - val_acc: 0.7969
+Epoch 12/30
+128/128 [==============================] - 0s 93us/step - loss: 0.0864 - acc: 0.8984 - val_loss: 0.1502 - val_acc: 0.7969
+Epoch 13/30
+128/128 [==============================] - 0s 124us/step - loss: 0.0939 - acc: 0.8750 - val_loss: 0.1504 - val_acc: 0.7969
+Epoch 14/30
+128/128 [==============================] - 0s 71us/step - loss: 0.0851 - acc: 0.8750 - val_loss: 0.1506 - val_acc: 0.7969
+Epoch 15/30
+128/128 [==============================] - 0s 97us/step - loss: 0.0930 - acc: 0.8828 - val_loss: 0.1508 - val_acc: 0.7969
+Epoch 16/30
+128/128 [==============================] - 0s 88us/step - loss: 0.0904 - acc: 0.8906 - val_loss: 0.1509 - val_acc: 0.7969
+Epoch 17/30
+128/128 [==============================] - 0s 91us/step - loss: 0.0880 - acc: 0.8906 - val_loss: 0.1511 - val_acc: 0.7969
+Epoch 18/30
+128/128 [==============================] - 0s 135us/step - loss: 0.0897 - acc: 0.8906 - val_loss: 0.1513 - val_acc: 0.7969
+Epoch 19/30
+128/128 [==============================] - 0s 70us/step - loss: 0.0933 - acc: 0.8750 - val_loss: 0.1513 - val_acc: 0.7969
+Epoch 20/30
+128/128 [==============================] - 0s 68us/step - loss: 0.0902 - acc: 0.8750 - val_loss: 0.1515 - val_acc: 0.7969
+Epoch 21/30
+128/128 [==============================] - 0s 106us/step - loss: 0.0966 - acc: 0.8672 - val_loss: 0.1518 - val_acc: 0.7969
+Epoch 22/30
+128/128 [==============================] - 0s 85us/step - loss: 0.0874 - acc: 0.8984 - val_loss: 0.1519 - val_acc: 0.7969
+Epoch 23/30
+128/128 [==============================] - 0s 88us/step - loss: 0.0975 - acc: 0.8672 - val_loss: 0.1518 - val_acc: 0.7969
+Epoch 24/30
+128/128 [==============================] - 0s 114us/step - loss: 0.0878 - acc: 0.8828 - val_loss: 0.1519 - val_acc: 0.7969
+Epoch 25/30
+128/128 [==============================] - 0s 68us/step - loss: 0.0840 - acc: 0.8906 - val_loss: 0.1520 - val_acc: 0.7969
+Epoch 26/30
+128/128 [==============================] - 0s 98us/step - loss: 0.0862 - acc: 0.8828 - val_loss: 0.1520 - val_acc: 0.7969
+Epoch 27/30
+128/128 [==============================] - 0s 104us/step - loss: 0.1034 - acc: 0.8438 - val_loss: 0.1521 - val_acc: 0.7969
+Epoch 28/30
+128/128 [==============================] - 0s 92us/step - loss: 0.0739 - acc: 0.9141 - val_loss: 0.1524 - val_acc: 0.7969
+Epoch 29/30
+128/128 [==============================] - 0s 134us/step - loss: 0.1024 - acc: 0.8594 - val_loss: 0.1520 - val_acc: 0.7969
+Epoch 30/30
+128/128 [==============================] - 0s 75us/step - loss: 0.0830 - acc: 0.8828 - val_loss: 0.1516 - val_acc: 0.7969
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445038_epoch3.json
+1 examples added; 1 were correct
+Training threshold remains at 0.021537812499999996
+129 training examples for iteration 4
+Train on 129 samples, validate on 128 samples
+Epoch 1/30
+129/129 [==============================] - 0s 83us/step - loss: 0.0871 - acc: 0.8992 - val_loss: 0.1517 - val_acc: 0.7969
+Epoch 2/30
+129/129 [==============================] - 0s 105us/step - loss: 0.0887 - acc: 0.8837 - val_loss: 0.1521 - val_acc: 0.8047
+Epoch 3/30
+129/129 [==============================] - 0s 89us/step - loss: 0.0860 - acc: 0.8915 - val_loss: 0.1521 - val_acc: 0.8047
+Epoch 4/30
+129/129 [==============================] - 0s 117us/step - loss: 0.0941 - acc: 0.8915 - val_loss: 0.1529 - val_acc: 0.8047
+Epoch 5/30
+129/129 [==============================] - 0s 134us/step - loss: 0.0974 - acc: 0.8837 - val_loss: 0.1523 - val_acc: 0.8047
+Epoch 6/30
+129/129 [==============================] - 0s 86us/step - loss: 0.0831 - acc: 0.8837 - val_loss: 0.1536 - val_acc: 0.8047
+Epoch 7/30
+129/129 [==============================] - 0s 77us/step - loss: 0.0784 - acc: 0.8992 - val_loss: 0.1547 - val_acc: 0.8047
+Epoch 8/30
+129/129 [==============================] - 0s 76us/step - loss: 0.0827 - acc: 0.8837 - val_loss: 0.1566 - val_acc: 0.8125
+Epoch 9/30
+129/129 [==============================] - 0s 82us/step - loss: 0.0830 - acc: 0.9147 - val_loss: 0.1568 - val_acc: 0.8125
+Epoch 10/30
+129/129 [==============================] - 0s 122us/step - loss: 0.0921 - acc: 0.8992 - val_loss: 0.1572 - val_acc: 0.8125
+Epoch 11/30
+129/129 [==============================] - 0s 112us/step - loss: 0.0845 - acc: 0.8992 - val_loss: 0.1572 - val_acc: 0.8125
+Epoch 12/30
+129/129 [==============================] - 0s 90us/step - loss: 0.0882 - acc: 0.8682 - val_loss: 0.1565 - val_acc: 0.8125
+Epoch 13/30
+129/129 [==============================] - 0s 147us/step - loss: 0.0907 - acc: 0.8915 - val_loss: 0.1557 - val_acc: 0.8203
+Epoch 14/30
+129/129 [==============================] - 0s 105us/step - loss: 0.0781 - acc: 0.9070 - val_loss: 0.1569 - val_acc: 0.8125
+Epoch 15/30
+129/129 [==============================] - 0s 101us/step - loss: 0.1025 - acc: 0.8760 - val_loss: 0.1573 - val_acc: 0.8125
+Epoch 16/30
+129/129 [==============================] - 0s 104us/step - loss: 0.0853 - acc: 0.8837 - val_loss: 0.1570 - val_acc: 0.8125
+Epoch 17/30
+129/129 [==============================] - 0s 124us/step - loss: 0.0883 - acc: 0.8760 - val_loss: 0.1560 - val_acc: 0.8125
+Epoch 18/30
+129/129 [==============================] - 0s 76us/step - loss: 0.0839 - acc: 0.9070 - val_loss: 0.1564 - val_acc: 0.8047
+Epoch 19/30
+129/129 [==============================] - 0s 102us/step - loss: 0.0917 - acc: 0.8837 - val_loss: 0.1588 - val_acc: 0.7969
+Epoch 20/30
+129/129 [==============================] - 0s 92us/step - loss: 0.0890 - acc: 0.8915 - val_loss: 0.1587 - val_acc: 0.8047
+Epoch 21/30
+129/129 [==============================] - 0s 138us/step - loss: 0.0815 - acc: 0.9070 - val_loss: 0.1609 - val_acc: 0.7891
+Epoch 22/30
+129/129 [==============================] - 0s 119us/step - loss: 0.0807 - acc: 0.9070 - val_loss: 0.1626 - val_acc: 0.7891
+Epoch 23/30
+129/129 [==============================] - 0s 91us/step - loss: 0.0784 - acc: 0.8992 - val_loss: 0.1615 - val_acc: 0.7891
+Epoch 24/30
+129/129 [==============================] - 0s 117us/step - loss: 0.0919 - acc: 0.8605 - val_loss: 0.1638 - val_acc: 0.7891
+Epoch 25/30
+129/129 [==============================] - 0s 127us/step - loss: 0.0758 - acc: 0.8915 - val_loss: 0.1652 - val_acc: 0.7891
+Epoch 26/30
+129/129 [==============================] - 0s 128us/step - loss: 0.0842 - acc: 0.9070 - val_loss: 0.1668 - val_acc: 0.7812
+Epoch 27/30
+129/129 [==============================] - 0s 133us/step - loss: 0.0743 - acc: 0.9225 - val_loss: 0.1679 - val_acc: 0.7812
+Epoch 28/30
+129/129 [==============================] - 0s 105us/step - loss: 0.0780 - acc: 0.9302 - val_loss: 0.1720 - val_acc: 0.7734
+Epoch 29/30
+129/129 [==============================] - 0s 110us/step - loss: 0.0858 - acc: 0.8992 - val_loss: 0.1732 - val_acc: 0.7656
+Epoch 30/30
+129/129 [==============================] - 0s 140us/step - loss: 0.0969 - acc: 0.8605 - val_loss: 0.1728 - val_acc: 0.7656
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445040_epoch4.json
+0 examples added; 0 were correct
+Training threshold increased to 0.022076257812499993
+129 training examples for iteration 5
+Train on 129 samples, validate on 128 samples
+Epoch 1/30
+129/129 [==============================] - 0s 76us/step - loss: 0.0856 - acc: 0.9147 - val_loss: 0.1736 - val_acc: 0.7656
+Epoch 2/30
+129/129 [==============================] - 0s 104us/step - loss: 0.0843 - acc: 0.8837 - val_loss: 0.1762 - val_acc: 0.7500
+Epoch 3/30
+129/129 [==============================] - 0s 100us/step - loss: 0.0967 - acc: 0.8915 - val_loss: 0.1792 - val_acc: 0.7344
+Epoch 4/30
+129/129 [==============================] - 0s 154us/step - loss: 0.0894 - acc: 0.9070 - val_loss: 0.1828 - val_acc: 0.7188
+Epoch 5/30
+129/129 [==============================] - 0s 110us/step - loss: 0.0869 - acc: 0.8992 - val_loss: 0.1873 - val_acc: 0.7109
+Epoch 6/30
+129/129 [==============================] - 0s 98us/step - loss: 0.0958 - acc: 0.8682 - val_loss: 0.1871 - val_acc: 0.7188
+Epoch 7/30
+129/129 [==============================] - 0s 90us/step - loss: 0.0902 - acc: 0.9147 - val_loss: 0.1826 - val_acc: 0.7188
+Epoch 8/30
+129/129 [==============================] - 0s 158us/step - loss: 0.0951 - acc: 0.8915 - val_loss: 0.1784 - val_acc: 0.7344
+Epoch 9/30
+129/129 [==============================] - 0s 98us/step - loss: 0.0837 - acc: 0.8915 - val_loss: 0.1735 - val_acc: 0.7422
+Epoch 10/30
+129/129 [==============================] - 0s 99us/step - loss: 0.0893 - acc: 0.8837 - val_loss: 0.1736 - val_acc: 0.7422
+Epoch 11/30
+129/129 [==============================] - 0s 132us/step - loss: 0.0754 - acc: 0.9302 - val_loss: 0.1764 - val_acc: 0.7422
+Epoch 12/30
+129/129 [==============================] - 0s 120us/step - loss: 0.0819 - acc: 0.9225 - val_loss: 0.1761 - val_acc: 0.7422
+Epoch 13/30
+129/129 [==============================] - 0s 119us/step - loss: 0.0834 - acc: 0.9070 - val_loss: 0.1738 - val_acc: 0.7422
+Epoch 14/30
+129/129 [==============================] - 0s 130us/step - loss: 0.0794 - acc: 0.9302 - val_loss: 0.1718 - val_acc: 0.7656
+Epoch 15/30
+129/129 [==============================] - 0s 84us/step - loss: 0.0779 - acc: 0.9380 - val_loss: 0.1690 - val_acc: 0.7734
+Epoch 16/30
+129/129 [==============================] - 0s 128us/step - loss: 0.0736 - acc: 0.9147 - val_loss: 0.1663 - val_acc: 0.7891
+Epoch 17/30
+129/129 [==============================] - 0s 94us/step - loss: 0.0961 - acc: 0.8760 - val_loss: 0.1630 - val_acc: 0.7812
+Epoch 18/30
+129/129 [==============================] - 0s 103us/step - loss: 0.0817 - acc: 0.8915 - val_loss: 0.1642 - val_acc: 0.7812
+Epoch 19/30
+129/129 [==============================] - 0s 171us/step - loss: 0.0889 - acc: 0.8837 - val_loss: 0.1638 - val_acc: 0.7812
+Epoch 20/30
+129/129 [==============================] - 0s 95us/step - loss: 0.0905 - acc: 0.8760 - val_loss: 0.1618 - val_acc: 0.7812
+Epoch 21/30
+129/129 [==============================] - 0s 119us/step - loss: 0.0725 - acc: 0.9302 - val_loss: 0.1635 - val_acc: 0.7812
+Epoch 22/30
+129/129 [==============================] - 0s 136us/step - loss: 0.0780 - acc: 0.9302 - val_loss: 0.1648 - val_acc: 0.7812
+Epoch 23/30
+129/129 [==============================] - 0s 100us/step - loss: 0.0678 - acc: 0.9302 - val_loss: 0.1657 - val_acc: 0.7891
+Epoch 24/30
+129/129 [==============================] - 0s 128us/step - loss: 0.0752 - acc: 0.9070 - val_loss: 0.1650 - val_acc: 0.7891
+Epoch 25/30
+129/129 [==============================] - 0s 122us/step - loss: 0.0801 - acc: 0.8915 - val_loss: 0.1634 - val_acc: 0.7812
+Epoch 26/30
+129/129 [==============================] - 0s 192us/step - loss: 0.0757 - acc: 0.9147 - val_loss: 0.1603 - val_acc: 0.7812
+Epoch 27/30
+129/129 [==============================] - 0s 119us/step - loss: 0.0679 - acc: 0.9225 - val_loss: 0.1619 - val_acc: 0.7812
+Epoch 28/30
+129/129 [==============================] - 0s 137us/step - loss: 0.0738 - acc: 0.8992 - val_loss: 0.1599 - val_acc: 0.7812
+Epoch 29/30
+129/129 [==============================] - 0s 107us/step - loss: 0.0742 - acc: 0.9147 - val_loss: 0.1603 - val_acc: 0.7891
+Epoch 30/30
+129/129 [==============================] - 0s 107us/step - loss: 0.0681 - acc: 0.9457 - val_loss: 0.1597 - val_acc: 0.7891
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445041_epoch5.json
+10 examples added; 10 were correct
+Training threshold remains at 0.022076257812499993
+139 training examples for iteration 6
+Train on 139 samples, validate on 128 samples
+Epoch 1/30
+139/139 [==============================] - 0s 78us/step - loss: 0.0705 - acc: 0.9065 - val_loss: 0.1599 - val_acc: 0.7891
+Epoch 2/30
+139/139 [==============================] - 0s 104us/step - loss: 0.0781 - acc: 0.9065 - val_loss: 0.1604 - val_acc: 0.7891
+Epoch 3/30
+139/139 [==============================] - 0s 115us/step - loss: 0.0732 - acc: 0.9137 - val_loss: 0.1605 - val_acc: 0.7891
+Epoch 4/30
+139/139 [==============================] - 0s 92us/step - loss: 0.0817 - acc: 0.8993 - val_loss: 0.1607 - val_acc: 0.7891
+Epoch 5/30
+139/139 [==============================] - 0s 101us/step - loss: 0.0752 - acc: 0.9209 - val_loss: 0.1601 - val_acc: 0.7891
+Epoch 6/30
+139/139 [==============================] - 0s 129us/step - loss: 0.0788 - acc: 0.8993 - val_loss: 0.1601 - val_acc: 0.7969
+Epoch 7/30
+139/139 [==============================] - 0s 113us/step - loss: 0.0628 - acc: 0.9137 - val_loss: 0.1594 - val_acc: 0.8047
+Epoch 8/30
+139/139 [==============================] - 0s 192us/step - loss: 0.0788 - acc: 0.9065 - val_loss: 0.1591 - val_acc: 0.7969
+Epoch 9/30
+139/139 [==============================] - 0s 115us/step - loss: 0.0680 - acc: 0.9424 - val_loss: 0.1588 - val_acc: 0.7969
+Epoch 10/30
+139/139 [==============================] - 0s 100us/step - loss: 0.0763 - acc: 0.8849 - val_loss: 0.1588 - val_acc: 0.7969
+Epoch 11/30
+139/139 [==============================] - 0s 137us/step - loss: 0.0686 - acc: 0.9281 - val_loss: 0.1587 - val_acc: 0.8047
+Epoch 12/30
+139/139 [==============================] - 0s 111us/step - loss: 0.0679 - acc: 0.9209 - val_loss: 0.1581 - val_acc: 0.8047
+Epoch 13/30
+139/139 [==============================] - 0s 115us/step - loss: 0.0716 - acc: 0.9065 - val_loss: 0.1583 - val_acc: 0.7969
+Epoch 14/30
+139/139 [==============================] - 0s 150us/step - loss: 0.0625 - acc: 0.9209 - val_loss: 0.1573 - val_acc: 0.8047
+Epoch 15/30
+139/139 [==============================] - 0s 109us/step - loss: 0.0740 - acc: 0.9137 - val_loss: 0.1559 - val_acc: 0.8047
+Epoch 16/30
+139/139 [==============================] - 0s 108us/step - loss: 0.0610 - acc: 0.9281 - val_loss: 0.1537 - val_acc: 0.8125
+Epoch 17/30
+139/139 [==============================] - 0s 108us/step - loss: 0.0580 - acc: 0.9424 - val_loss: 0.1531 - val_acc: 0.8125
+Epoch 18/30
+139/139 [==============================] - 0s 67us/step - loss: 0.0655 - acc: 0.8993 - val_loss: 0.1523 - val_acc: 0.8125
+Epoch 19/30
+139/139 [==============================] - 0s 83us/step - loss: 0.0598 - acc: 0.9281 - val_loss: 0.1517 - val_acc: 0.8047
+Epoch 20/30
+139/139 [==============================] - 0s 87us/step - loss: 0.0777 - acc: 0.8993 - val_loss: 0.1519 - val_acc: 0.7969
+Epoch 21/30
+139/139 [==============================] - 0s 91us/step - loss: 0.0618 - acc: 0.9137 - val_loss: 0.1510 - val_acc: 0.8047
+Epoch 22/30
+139/139 [==============================] - 0s 129us/step - loss: 0.0817 - acc: 0.9065 - val_loss: 0.1503 - val_acc: 0.8047
+Epoch 23/30
+139/139 [==============================] - 0s 74us/step - loss: 0.0628 - acc: 0.9281 - val_loss: 0.1496 - val_acc: 0.8047
+Epoch 24/30
+139/139 [==============================] - 0s 87us/step - loss: 0.0766 - acc: 0.9065 - val_loss: 0.1497 - val_acc: 0.8125
+Epoch 25/30
+139/139 [==============================] - 0s 78us/step - loss: 0.0663 - acc: 0.9137 - val_loss: 0.1510 - val_acc: 0.8125
+Epoch 26/30
+139/139 [==============================] - 0s 97us/step - loss: 0.0540 - acc: 0.9496 - val_loss: 0.1513 - val_acc: 0.8047
+Epoch 27/30
+139/139 [==============================] - 0s 120us/step - loss: 0.0564 - acc: 0.9209 - val_loss: 0.1526 - val_acc: 0.7969
+Epoch 28/30
+139/139 [==============================] - 0s 69us/step - loss: 0.0611 - acc: 0.9353 - val_loss: 0.1544 - val_acc: 0.7891
+Epoch 29/30
+139/139 [==============================] - 0s 75us/step - loss: 0.0571 - acc: 0.9281 - val_loss: 0.1550 - val_acc: 0.7891
+Epoch 30/30
+139/139 [==============================] - 0s 103us/step - loss: 0.0847 - acc: 0.8921 - val_loss: 0.1557 - val_acc: 0.7812
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445043_epoch6.json
+53 examples added; 53 were correct
+Training threshold remains at 0.022076257812499993
+192 training examples for iteration 7
+Train on 192 samples, validate on 128 samples
+Epoch 1/30
+192/192 [==============================] - 0s 61us/step - loss: 0.0625 - acc: 0.9219 - val_loss: 0.1559 - val_acc: 0.7734
+Epoch 2/30
+192/192 [==============================] - 0s 80us/step - loss: 0.0595 - acc: 0.9115 - val_loss: 0.1551 - val_acc: 0.7812
+Epoch 3/30
+192/192 [==============================] - 0s 86us/step - loss: 0.0579 - acc: 0.9271 - val_loss: 0.1544 - val_acc: 0.7812
+Epoch 4/30
+192/192 [==============================] - 0s 99us/step - loss: 0.0678 - acc: 0.9115 - val_loss: 0.1537 - val_acc: 0.7578
+Epoch 5/30
+192/192 [==============================] - 0s 92us/step - loss: 0.0511 - acc: 0.9375 - val_loss: 0.1538 - val_acc: 0.7656
+Epoch 6/30
+192/192 [==============================] - 0s 57us/step - loss: 0.0622 - acc: 0.9271 - val_loss: 0.1547 - val_acc: 0.7734
+Epoch 7/30
+192/192 [==============================] - 0s 56us/step - loss: 0.0513 - acc: 0.9479 - val_loss: 0.1555 - val_acc: 0.7656
+Epoch 8/30
+192/192 [==============================] - 0s 62us/step - loss: 0.0515 - acc: 0.9479 - val_loss: 0.1559 - val_acc: 0.7656
+Epoch 9/30
+192/192 [==============================] - 0s 105us/step - loss: 0.0481 - acc: 0.9375 - val_loss: 0.1563 - val_acc: 0.7734
+Epoch 10/30
+192/192 [==============================] - 0s 82us/step - loss: 0.0521 - acc: 0.9479 - val_loss: 0.1555 - val_acc: 0.7734
+Epoch 11/30
+192/192 [==============================] - 0s 141us/step - loss: 0.0511 - acc: 0.9427 - val_loss: 0.1545 - val_acc: 0.7734
+Epoch 12/30
+192/192 [==============================] - 0s 77us/step - loss: 0.0445 - acc: 0.9531 - val_loss: 0.1539 - val_acc: 0.7734
+Epoch 13/30
+192/192 [==============================] - 0s 99us/step - loss: 0.0424 - acc: 0.9583 - val_loss: 0.1541 - val_acc: 0.7734
+Epoch 14/30
+192/192 [==============================] - 0s 60us/step - loss: 0.0535 - acc: 0.9323 - val_loss: 0.1543 - val_acc: 0.7734
+Epoch 15/30
+192/192 [==============================] - 0s 87us/step - loss: 0.0356 - acc: 0.9740 - val_loss: 0.1546 - val_acc: 0.7656
+Epoch 16/30
+192/192 [==============================] - 0s 85us/step - loss: 0.0478 - acc: 0.9375 - val_loss: 0.1551 - val_acc: 0.7578
+Epoch 17/30
+192/192 [==============================] - 0s 85us/step - loss: 0.0442 - acc: 0.9635 - val_loss: 0.1553 - val_acc: 0.7656
+Epoch 18/30
+192/192 [==============================] - 0s 67us/step - loss: 0.0519 - acc: 0.9271 - val_loss: 0.1564 - val_acc: 0.7656
+Epoch 19/30
+192/192 [==============================] - 0s 81us/step - loss: 0.0422 - acc: 0.9635 - val_loss: 0.1571 - val_acc: 0.7656
+Epoch 20/30
+192/192 [==============================] - 0s 85us/step - loss: 0.0369 - acc: 0.9635 - val_loss: 0.1574 - val_acc: 0.7656
+Epoch 21/30
+192/192 [==============================] - 0s 102us/step - loss: 0.0432 - acc: 0.9427 - val_loss: 0.1568 - val_acc: 0.7656
+Epoch 22/30
+192/192 [==============================] - 0s 59us/step - loss: 0.0533 - acc: 0.9271 - val_loss: 0.1569 - val_acc: 0.7734
+Epoch 23/30
+192/192 [==============================] - 0s 70us/step - loss: 0.0483 - acc: 0.9427 - val_loss: 0.1578 - val_acc: 0.7734
+Epoch 24/30
+192/192 [==============================] - 0s 109us/step - loss: 0.0458 - acc: 0.9375 - val_loss: 0.1583 - val_acc: 0.7734
+Epoch 25/30
+192/192 [==============================] - 0s 103us/step - loss: 0.0533 - acc: 0.9271 - val_loss: 0.1579 - val_acc: 0.7812
+Epoch 26/30
+192/192 [==============================] - 0s 59us/step - loss: 0.0448 - acc: 0.9531 - val_loss: 0.1570 - val_acc: 0.7734
+Epoch 27/30
+192/192 [==============================] - 0s 73us/step - loss: 0.0522 - acc: 0.9323 - val_loss: 0.1564 - val_acc: 0.7891
+Epoch 28/30
+192/192 [==============================] - 0s 72us/step - loss: 0.0419 - acc: 0.9531 - val_loss: 0.1566 - val_acc: 0.7891
+Epoch 29/30
+192/192 [==============================] - 0s 79us/step - loss: 0.0422 - acc: 0.9479 - val_loss: 0.1564 - val_acc: 0.7812
+Epoch 30/30
+192/192 [==============================] - 0s 93us/step - loss: 0.0412 - acc: 0.9375 - val_loss: 0.1565 - val_acc: 0.7891
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445044_epoch7.json
+40 examples added; 39 were correct
+Training threshold remains at 0.022076257812499993
+232 training examples for iteration 8
+Train on 232 samples, validate on 128 samples
+Epoch 1/30
+232/232 [==============================] - 0s 59us/step - loss: 0.0355 - acc: 0.9655 - val_loss: 0.1587 - val_acc: 0.7891
+Epoch 2/30
+232/232 [==============================] - 0s 71us/step - loss: 0.0448 - acc: 0.9397 - val_loss: 0.1603 - val_acc: 0.7734
+Epoch 3/30
+232/232 [==============================] - 0s 82us/step - loss: 0.0383 - acc: 0.9569 - val_loss: 0.1624 - val_acc: 0.7734
+Epoch 4/30
+232/232 [==============================] - 0s 110us/step - loss: 0.0409 - acc: 0.9526 - val_loss: 0.1646 - val_acc: 0.7578
+Epoch 5/30
+232/232 [==============================] - 0s 94us/step - loss: 0.0409 - acc: 0.9612 - val_loss: 0.1654 - val_acc: 0.7578
+Epoch 6/30
+232/232 [==============================] - 0s 91us/step - loss: 0.0372 - acc: 0.9483 - val_loss: 0.1638 - val_acc: 0.7656
+Epoch 7/30
+232/232 [==============================] - 0s 91us/step - loss: 0.0423 - acc: 0.9483 - val_loss: 0.1620 - val_acc: 0.7656
+Epoch 8/30
+232/232 [==============================] - 0s 106us/step - loss: 0.0376 - acc: 0.9483 - val_loss: 0.1592 - val_acc: 0.7578
+Epoch 9/30
+232/232 [==============================] - 0s 82us/step - loss: 0.0402 - acc: 0.9397 - val_loss: 0.1572 - val_acc: 0.7578
+Epoch 10/30
+232/232 [==============================] - 0s 77us/step - loss: 0.0394 - acc: 0.9526 - val_loss: 0.1571 - val_acc: 0.7578
+Epoch 11/30
+232/232 [==============================] - 0s 103us/step - loss: 0.0315 - acc: 0.9655 - val_loss: 0.1570 - val_acc: 0.7578
+Epoch 12/30
+232/232 [==============================] - 0s 91us/step - loss: 0.0388 - acc: 0.9569 - val_loss: 0.1575 - val_acc: 0.7578
+Epoch 13/30
+232/232 [==============================] - 0s 114us/step - loss: 0.0507 - acc: 0.9353 - val_loss: 0.1594 - val_acc: 0.7578
+Epoch 14/30
+232/232 [==============================] - 0s 120us/step - loss: 0.0311 - acc: 0.9526 - val_loss: 0.1629 - val_acc: 0.7578
+Epoch 15/30
+232/232 [==============================] - 0s 107us/step - loss: 0.0386 - acc: 0.9569 - val_loss: 0.1643 - val_acc: 0.7578
+Epoch 16/30
+232/232 [==============================] - 0s 102us/step - loss: 0.0413 - acc: 0.9483 - val_loss: 0.1674 - val_acc: 0.7578
+Epoch 17/30
+232/232 [==============================] - 0s 134us/step - loss: 0.0370 - acc: 0.9526 - val_loss: 0.1669 - val_acc: 0.7500
+Epoch 18/30
+232/232 [==============================] - 0s 107us/step - loss: 0.0350 - acc: 0.9612 - val_loss: 0.1641 - val_acc: 0.7500
+Epoch 19/30
+232/232 [==============================] - 0s 146us/step - loss: 0.0259 - acc: 0.9784 - val_loss: 0.1623 - val_acc: 0.7500
+Epoch 20/30
+232/232 [==============================] - 0s 110us/step - loss: 0.0383 - acc: 0.9526 - val_loss: 0.1618 - val_acc: 0.7500
+Epoch 21/30
+232/232 [==============================] - 0s 143us/step - loss: 0.0316 - acc: 0.9741 - val_loss: 0.1612 - val_acc: 0.7578
+Epoch 22/30
+232/232 [==============================] - 0s 126us/step - loss: 0.0468 - acc: 0.9353 - val_loss: 0.1613 - val_acc: 0.7578
+Epoch 23/30
+232/232 [==============================] - 0s 102us/step - loss: 0.0365 - acc: 0.9483 - val_loss: 0.1608 - val_acc: 0.7578
+Epoch 24/30
+232/232 [==============================] - 0s 103us/step - loss: 0.0281 - acc: 0.9655 - val_loss: 0.1602 - val_acc: 0.7578
+Epoch 25/30
+232/232 [==============================] - 0s 134us/step - loss: 0.0509 - acc: 0.9397 - val_loss: 0.1597 - val_acc: 0.7578
+Epoch 26/30
+232/232 [==============================] - 0s 98us/step - loss: 0.0261 - acc: 0.9741 - val_loss: 0.1599 - val_acc: 0.7578
+Epoch 27/30
+232/232 [==============================] - 0s 115us/step - loss: 0.0312 - acc: 0.9655 - val_loss: 0.1584 - val_acc: 0.7578
+Epoch 28/30
+232/232 [==============================] - 0s 118us/step - loss: 0.0333 - acc: 0.9526 - val_loss: 0.1581 - val_acc: 0.7344
+Epoch 29/30
+232/232 [==============================] - 0s 126us/step - loss: 0.0362 - acc: 0.9569 - val_loss: 0.1565 - val_acc: 0.7344
+Epoch 30/30
+232/232 [==============================] - 0s 97us/step - loss: 0.0337 - acc: 0.9655 - val_loss: 0.1540 - val_acc: 0.7500
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445047_epoch8.json
+38 examples added; 35 were correct
+Training threshold remains at 0.022076257812499993
+270 training examples for iteration 9
+Train on 270 samples, validate on 128 samples
+Epoch 1/30
+270/270 [==============================] - 0s 78us/step - loss: 0.0224 - acc: 0.9741 - val_loss: 0.1533 - val_acc: 0.7344
+Epoch 2/30
+270/270 [==============================] - 0s 100us/step - loss: 0.0325 - acc: 0.9630 - val_loss: 0.1524 - val_acc: 0.7422
+Epoch 3/30
+270/270 [==============================] - 0s 101us/step - loss: 0.0268 - acc: 0.9630 - val_loss: 0.1539 - val_acc: 0.7500
+Epoch 4/30
+270/270 [==============================] - 0s 107us/step - loss: 0.0261 - acc: 0.9704 - val_loss: 0.1545 - val_acc: 0.7422
+Epoch 5/30
+270/270 [==============================] - 0s 72us/step - loss: 0.0296 - acc: 0.9667 - val_loss: 0.1519 - val_acc: 0.7422
+Epoch 6/30
+270/270 [==============================] - 0s 98us/step - loss: 0.0268 - acc: 0.9667 - val_loss: 0.1508 - val_acc: 0.7500
+Epoch 7/30
+270/270 [==============================] - 0s 85us/step - loss: 0.0274 - acc: 0.9630 - val_loss: 0.1522 - val_acc: 0.7422
+Epoch 8/30
+270/270 [==============================] - 0s 97us/step - loss: 0.0301 - acc: 0.9630 - val_loss: 0.1523 - val_acc: 0.7422
+Epoch 9/30
+270/270 [==============================] - 0s 95us/step - loss: 0.0280 - acc: 0.9778 - val_loss: 0.1535 - val_acc: 0.7422
+Epoch 10/30
+270/270 [==============================] - 0s 67us/step - loss: 0.0237 - acc: 0.9778 - val_loss: 0.1535 - val_acc: 0.7422
+Epoch 11/30
+270/270 [==============================] - 0s 80us/step - loss: 0.0316 - acc: 0.9593 - val_loss: 0.1537 - val_acc: 0.7422
+Epoch 12/30
+270/270 [==============================] - 0s 72us/step - loss: 0.0305 - acc: 0.9630 - val_loss: 0.1536 - val_acc: 0.7500
+Epoch 13/30
+270/270 [==============================] - 0s 69us/step - loss: 0.0238 - acc: 0.9778 - val_loss: 0.1545 - val_acc: 0.7500
+Epoch 14/30
+270/270 [==============================] - 0s 91us/step - loss: 0.0351 - acc: 0.9556 - val_loss: 0.1542 - val_acc: 0.7500
+Epoch 15/30
+270/270 [==============================] - 0s 78us/step - loss: 0.0284 - acc: 0.9667 - val_loss: 0.1549 - val_acc: 0.7578
+Epoch 16/30
+270/270 [==============================] - 0s 88us/step - loss: 0.0221 - acc: 0.9778 - val_loss: 0.1535 - val_acc: 0.7656
+Epoch 17/30
+270/270 [==============================] - 0s 81us/step - loss: 0.0184 - acc: 0.9852 - val_loss: 0.1517 - val_acc: 0.7734
+Epoch 18/30
+270/270 [==============================] - 0s 78us/step - loss: 0.0247 - acc: 0.9667 - val_loss: 0.1496 - val_acc: 0.7734
+Epoch 19/30
+270/270 [==============================] - 0s 75us/step - loss: 0.0246 - acc: 0.9741 - val_loss: 0.1500 - val_acc: 0.7812
+Epoch 20/30
+270/270 [==============================] - 0s 77us/step - loss: 0.0256 - acc: 0.9704 - val_loss: 0.1513 - val_acc: 0.7734
+Epoch 21/30
+270/270 [==============================] - 0s 96us/step - loss: 0.0270 - acc: 0.9704 - val_loss: 0.1514 - val_acc: 0.7734
+Epoch 22/30
+270/270 [==============================] - 0s 84us/step - loss: 0.0265 - acc: 0.9593 - val_loss: 0.1504 - val_acc: 0.7734
+Epoch 23/30
+270/270 [==============================] - 0s 77us/step - loss: 0.0312 - acc: 0.9667 - val_loss: 0.1503 - val_acc: 0.7656
+Epoch 24/30
+270/270 [==============================] - 0s 101us/step - loss: 0.0204 - acc: 0.9741 - val_loss: 0.1524 - val_acc: 0.7656
+Epoch 25/30
+270/270 [==============================] - 0s 74us/step - loss: 0.0295 - acc: 0.9667 - val_loss: 0.1544 - val_acc: 0.7656
+Epoch 26/30
+270/270 [==============================] - 0s 64us/step - loss: 0.0286 - acc: 0.9667 - val_loss: 0.1558 - val_acc: 0.7656
+Epoch 27/30
+270/270 [==============================] - 0s 86us/step - loss: 0.0311 - acc: 0.9630 - val_loss: 0.1546 - val_acc: 0.7656
+Epoch 28/30
+270/270 [==============================] - 0s 75us/step - loss: 0.0265 - acc: 0.9667 - val_loss: 0.1519 - val_acc: 0.7656
+Epoch 29/30
+270/270 [==============================] - 0s 100us/step - loss: 0.0228 - acc: 0.9741 - val_loss: 0.1498 - val_acc: 0.7500
+Epoch 30/30
+270/270 [==============================] - 0s 94us/step - loss: 0.0241 - acc: 0.9778 - val_loss: 0.1492 - val_acc: 0.7500
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445049_epoch9.json
+74 examples added; 69 were correct
+Training threshold remains at 0.022076257812499993
+344 training examples for iteration 10
+Train on 344 samples, validate on 128 samples
+Epoch 1/30
+344/344 [==============================] - 0s 163us/step - loss: 0.0240 - acc: 0.9680 - val_loss: 0.1489 - val_acc: 0.7656
+Epoch 2/30
+344/344 [==============================] - 0s 76us/step - loss: 0.0173 - acc: 0.9855 - val_loss: 0.1503 - val_acc: 0.7500
+Epoch 3/30
+344/344 [==============================] - 0s 81us/step - loss: 0.0204 - acc: 0.9738 - val_loss: 0.1508 - val_acc: 0.7500
+Epoch 4/30
+344/344 [==============================] - 0s 87us/step - loss: 0.0205 - acc: 0.9767 - val_loss: 0.1507 - val_acc: 0.7656
+Epoch 5/30
+344/344 [==============================] - 0s 70us/step - loss: 0.0211 - acc: 0.9797 - val_loss: 0.1504 - val_acc: 0.7656
+Epoch 6/30
+344/344 [==============================] - 0s 83us/step - loss: 0.0258 - acc: 0.9738 - val_loss: 0.1510 - val_acc: 0.7578
+Epoch 7/30
+344/344 [==============================] - 0s 99us/step - loss: 0.0167 - acc: 0.9826 - val_loss: 0.1485 - val_acc: 0.7656
+Epoch 8/30
+344/344 [==============================] - 0s 67us/step - loss: 0.0180 - acc: 0.9797 - val_loss: 0.1461 - val_acc: 0.7891
+Epoch 9/30
+344/344 [==============================] - 0s 89us/step - loss: 0.0169 - acc: 0.9826 - val_loss: 0.1466 - val_acc: 0.7891
+Epoch 10/30
+344/344 [==============================] - 0s 81us/step - loss: 0.0140 - acc: 0.9855 - val_loss: 0.1470 - val_acc: 0.7969
+Epoch 11/30
+344/344 [==============================] - 0s 67us/step - loss: 0.0153 - acc: 0.9855 - val_loss: 0.1466 - val_acc: 0.7969
+Epoch 12/30
+344/344 [==============================] - 0s 94us/step - loss: 0.0174 - acc: 0.9826 - val_loss: 0.1466 - val_acc: 0.8047
+Epoch 13/30
+344/344 [==============================] - 0s 79us/step - loss: 0.0163 - acc: 0.9826 - val_loss: 0.1457 - val_acc: 0.7969
+Epoch 14/30
+344/344 [==============================] - 0s 67us/step - loss: 0.0212 - acc: 0.9738 - val_loss: 0.1455 - val_acc: 0.7891
+Epoch 15/30
+344/344 [==============================] - 0s 94us/step - loss: 0.0165 - acc: 0.9826 - val_loss: 0.1467 - val_acc: 0.7891
+Epoch 16/30
+344/344 [==============================] - 0s 64us/step - loss: 0.0173 - acc: 0.9797 - val_loss: 0.1448 - val_acc: 0.7969
+Epoch 17/30
+344/344 [==============================] - 0s 83us/step - loss: 0.0171 - acc: 0.9855 - val_loss: 0.1447 - val_acc: 0.7891
+Epoch 18/30
+344/344 [==============================] - 0s 75us/step - loss: 0.0156 - acc: 0.9797 - val_loss: 0.1457 - val_acc: 0.7969
+Epoch 19/30
+344/344 [==============================] - 0s 61us/step - loss: 0.0159 - acc: 0.9826 - val_loss: 0.1449 - val_acc: 0.8047
+Epoch 20/30
+344/344 [==============================] - 0s 81us/step - loss: 0.0151 - acc: 0.9855 - val_loss: 0.1464 - val_acc: 0.7891
+Epoch 21/30
+344/344 [==============================] - 0s 55us/step - loss: 0.0175 - acc: 0.9797 - val_loss: 0.1463 - val_acc: 0.7969
+Epoch 22/30
+344/344 [==============================] - 0s 64us/step - loss: 0.0155 - acc: 0.9797 - val_loss: 0.1466 - val_acc: 0.8047
+Epoch 23/30
+344/344 [==============================] - 0s 86us/step - loss: 0.0172 - acc: 0.9826 - val_loss: 0.1484 - val_acc: 0.8047
+Epoch 24/30
+344/344 [==============================] - 0s 78us/step - loss: 0.0152 - acc: 0.9855 - val_loss: 0.1472 - val_acc: 0.8047
+Epoch 25/30
+344/344 [==============================] - 0s 110us/step - loss: 0.0221 - acc: 0.9709 - val_loss: 0.1455 - val_acc: 0.8047
+Epoch 26/30
+344/344 [==============================] - 0s 91us/step - loss: 0.0199 - acc: 0.9738 - val_loss: 0.1450 - val_acc: 0.8047
+Epoch 27/30
+344/344 [==============================] - 0s 96us/step - loss: 0.0165 - acc: 0.9855 - val_loss: 0.1442 - val_acc: 0.8047
+Epoch 28/30
+344/344 [==============================] - 0s 124us/step - loss: 0.0209 - acc: 0.9738 - val_loss: 0.1431 - val_acc: 0.8125
+Epoch 29/30
+344/344 [==============================] - 0s 96us/step - loss: 0.0176 - acc: 0.9826 - val_loss: 0.1411 - val_acc: 0.8047
+Epoch 30/30
+344/344 [==============================] - 0s 79us/step - loss: 0.0233 - acc: 0.9738 - val_loss: 0.1440 - val_acc: 0.8047
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445051_epoch10.json
+172 examples added; 156 were correct
+Training threshold remains at 0.022076257812499993
+516 training examples for iteration 11
+Train on 516 samples, validate on 128 samples
+Epoch 1/30
+516/516 [==============================] - 0s 61us/step - loss: 0.0125 - acc: 0.9884 - val_loss: 0.1501 - val_acc: 0.7969
+Epoch 2/30
+516/516 [==============================] - 0s 80us/step - loss: 0.0121 - acc: 0.9845 - val_loss: 0.1529 - val_acc: 0.7812
+Epoch 3/30
+516/516 [==============================] - 0s 78us/step - loss: 0.0095 - acc: 0.9903 - val_loss: 0.1527 - val_acc: 0.7656
+Epoch 4/30
+516/516 [==============================] - 0s 76us/step - loss: 0.0088 - acc: 0.9922 - val_loss: 0.1519 - val_acc: 0.7734
+Epoch 5/30
+516/516 [==============================] - 0s 66us/step - loss: 0.0109 - acc: 0.9903 - val_loss: 0.1535 - val_acc: 0.7734
+Epoch 6/30
+516/516 [==============================] - 0s 65us/step - loss: 0.0094 - acc: 0.9903 - val_loss: 0.1521 - val_acc: 0.7891
+Epoch 7/30
+516/516 [==============================] - 0s 83us/step - loss: 0.0103 - acc: 0.9864 - val_loss: 0.1566 - val_acc: 0.7969
+Epoch 8/30
+516/516 [==============================] - 0s 75us/step - loss: 0.0097 - acc: 0.9922 - val_loss: 0.1573 - val_acc: 0.7734
+Epoch 9/30
+516/516 [==============================] - 0s 73us/step - loss: 0.0129 - acc: 0.9864 - val_loss: 0.1533 - val_acc: 0.7734
+Epoch 10/30
+516/516 [==============================] - 0s 75us/step - loss: 0.0091 - acc: 0.9942 - val_loss: 0.1517 - val_acc: 0.7891
+Epoch 11/30
+516/516 [==============================] - 0s 59us/step - loss: 0.0108 - acc: 0.9884 - val_loss: 0.1525 - val_acc: 0.7891
+Epoch 12/30
+516/516 [==============================] - 0s 80us/step - loss: 0.0111 - acc: 0.9884 - val_loss: 0.1552 - val_acc: 0.7891
+Epoch 13/30
+516/516 [==============================] - 0s 72us/step - loss: 0.0122 - acc: 0.9806 - val_loss: 0.1526 - val_acc: 0.7891
+Epoch 14/30
+516/516 [==============================] - 0s 73us/step - loss: 0.0096 - acc: 0.9903 - val_loss: 0.1537 - val_acc: 0.7891
+Epoch 15/30
+516/516 [==============================] - 0s 67us/step - loss: 0.0095 - acc: 0.9903 - val_loss: 0.1534 - val_acc: 0.7812
+Epoch 16/30
+516/516 [==============================] - 0s 77us/step - loss: 0.0144 - acc: 0.9845 - val_loss: 0.1522 - val_acc: 0.7812
+Epoch 17/30
+516/516 [==============================] - 0s 71us/step - loss: 0.0108 - acc: 0.9884 - val_loss: 0.1516 - val_acc: 0.7812
+Epoch 18/30
+516/516 [==============================] - 0s 80us/step - loss: 0.0125 - acc: 0.9826 - val_loss: 0.1497 - val_acc: 0.7812
+Epoch 19/30
+516/516 [==============================] - 0s 62us/step - loss: 0.0101 - acc: 0.9884 - val_loss: 0.1489 - val_acc: 0.7891
+Epoch 20/30
+516/516 [==============================] - 0s 80us/step - loss: 0.0114 - acc: 0.9884 - val_loss: 0.1508 - val_acc: 0.7891
+Epoch 21/30
+516/516 [==============================] - 0s 80us/step - loss: 0.0066 - acc: 0.9961 - val_loss: 0.1508 - val_acc: 0.7891
+Epoch 22/30
+516/516 [==============================] - 0s 80us/step - loss: 0.0087 - acc: 0.9903 - val_loss: 0.1507 - val_acc: 0.7969
+Epoch 23/30
+516/516 [==============================] - 0s 78us/step - loss: 0.0106 - acc: 0.9884 - val_loss: 0.1508 - val_acc: 0.7969
+Epoch 24/30
+516/516 [==============================] - 0s 65us/step - loss: 0.0099 - acc: 0.9864 - val_loss: 0.1515 - val_acc: 0.7812
+Epoch 25/30
+516/516 [==============================] - 0s 82us/step - loss: 0.0093 - acc: 0.9903 - val_loss: 0.1550 - val_acc: 0.7812
+Epoch 26/30
+516/516 [==============================] - 0s 76us/step - loss: 0.0086 - acc: 0.9922 - val_loss: 0.1545 - val_acc: 0.7812
+Epoch 27/30
+516/516 [==============================] - 0s 81us/step - loss: 0.0101 - acc: 0.9884 - val_loss: 0.1534 - val_acc: 0.7812
+Epoch 28/30
+516/516 [==============================] - 0s 81us/step - loss: 0.0072 - acc: 0.9961 - val_loss: 0.1530 - val_acc: 0.7812
+Epoch 29/30
+516/516 [==============================] - 0s 61us/step - loss: 0.0093 - acc: 0.9942 - val_loss: 0.1525 - val_acc: 0.7812
+Epoch 30/30
+516/516 [==============================] - 0s 83us/step - loss: 0.0090 - acc: 0.9884 - val_loss: 0.1538 - val_acc: 0.7656
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445053_epoch11.json
+162 examples added; 148 were correct
+Training threshold remains at 0.022076257812499993
+678 training examples for iteration 12
+Train on 678 samples, validate on 128 samples
+Epoch 1/30
+678/678 [==============================] - 0s 77us/step - loss: 0.0085 - acc: 0.9926 - val_loss: 0.1539 - val_acc: 0.7734
+Epoch 2/30
+678/678 [==============================] - 0s 75us/step - loss: 0.0087 - acc: 0.9912 - val_loss: 0.1554 - val_acc: 0.7812
+Epoch 3/30
+678/678 [==============================] - 0s 72us/step - loss: 0.0070 - acc: 0.9926 - val_loss: 0.1531 - val_acc: 0.7812
+Epoch 4/30
+678/678 [==============================] - 0s 75us/step - loss: 0.0096 - acc: 0.9897 - val_loss: 0.1555 - val_acc: 0.7734
+Epoch 5/30
+678/678 [==============================] - 0s 87us/step - loss: 0.0085 - acc: 0.9867 - val_loss: 0.1558 - val_acc: 0.7812
+Epoch 6/30
+678/678 [==============================] - 0s 86us/step - loss: 0.0075 - acc: 0.9941 - val_loss: 0.1544 - val_acc: 0.7891
+Epoch 7/30
+678/678 [==============================] - 0s 77us/step - loss: 0.0071 - acc: 0.9926 - val_loss: 0.1548 - val_acc: 0.7734
+Epoch 8/30
+678/678 [==============================] - 0s 78us/step - loss: 0.0070 - acc: 0.9912 - val_loss: 0.1550 - val_acc: 0.7734
+Epoch 9/30
+678/678 [==============================] - 0s 80us/step - loss: 0.0079 - acc: 0.9912 - val_loss: 0.1547 - val_acc: 0.8047
+Epoch 10/30
+678/678 [==============================] - 0s 78us/step - loss: 0.0062 - acc: 0.9956 - val_loss: 0.1555 - val_acc: 0.7891
+Epoch 11/30
+678/678 [==============================] - 0s 73us/step - loss: 0.0055 - acc: 0.9941 - val_loss: 0.1567 - val_acc: 0.7734
+Epoch 12/30
+678/678 [==============================] - 0s 74us/step - loss: 0.0087 - acc: 0.9912 - val_loss: 0.1590 - val_acc: 0.7891
+Epoch 13/30
+678/678 [==============================] - 0s 70us/step - loss: 0.0054 - acc: 0.9956 - val_loss: 0.1555 - val_acc: 0.7734
+Epoch 14/30
+678/678 [==============================] - 0s 82us/step - loss: 0.0074 - acc: 0.9956 - val_loss: 0.1563 - val_acc: 0.7812
+Epoch 15/30
+678/678 [==============================] - 0s 58us/step - loss: 0.0079 - acc: 0.9926 - val_loss: 0.1559 - val_acc: 0.7891
+Epoch 16/30
+678/678 [==============================] - 0s 86us/step - loss: 0.0084 - acc: 0.9897 - val_loss: 0.1510 - val_acc: 0.8125
+Epoch 17/30
+678/678 [==============================] - 0s 78us/step - loss: 0.0073 - acc: 0.9926 - val_loss: 0.1537 - val_acc: 0.7812
+Epoch 18/30
+678/678 [==============================] - 0s 74us/step - loss: 0.0087 - acc: 0.9897 - val_loss: 0.1621 - val_acc: 0.7734
+Epoch 19/30
+678/678 [==============================] - 0s 69us/step - loss: 0.0069 - acc: 0.9912 - val_loss: 0.1652 - val_acc: 0.7578
+Epoch 20/30
+678/678 [==============================] - 0s 68us/step - loss: 0.0074 - acc: 0.9882 - val_loss: 0.1694 - val_acc: 0.7500
+Epoch 21/30
+678/678 [==============================] - 0s 73us/step - loss: 0.0056 - acc: 0.9956 - val_loss: 0.1671 - val_acc: 0.7578
+Epoch 22/30
+678/678 [==============================] - 0s 71us/step - loss: 0.0061 - acc: 0.9941 - val_loss: 0.1628 - val_acc: 0.7578
+Epoch 23/30
+678/678 [==============================] - 0s 74us/step - loss: 0.0081 - acc: 0.9897 - val_loss: 0.1648 - val_acc: 0.7656
+Epoch 24/30
+678/678 [==============================] - 0s 72us/step - loss: 0.0050 - acc: 0.9941 - val_loss: 0.1641 - val_acc: 0.7578
+Epoch 25/30
+678/678 [==============================] - 0s 73us/step - loss: 0.0070 - acc: 0.9926 - val_loss: 0.1657 - val_acc: 0.7578
+Epoch 26/30
+678/678 [==============================] - 0s 84us/step - loss: 0.0065 - acc: 0.9926 - val_loss: 0.1664 - val_acc: 0.7734
+Epoch 27/30
+678/678 [==============================] - 0s 73us/step - loss: 0.0078 - acc: 0.9897 - val_loss: 0.1712 - val_acc: 0.7734
+Epoch 28/30
+678/678 [==============================] - 0s 72us/step - loss: 0.0099 - acc: 0.9882 - val_loss: 0.1616 - val_acc: 0.7891
+Epoch 29/30
+678/678 [==============================] - 0s 70us/step - loss: 0.0047 - acc: 0.9941 - val_loss: 0.1602 - val_acc: 0.7734
+Epoch 30/30
+678/678 [==============================] - 0s 75us/step - loss: 0.0043 - acc: 0.9971 - val_loss: 0.1618 - val_acc: 0.7812
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445055_epoch12.json
+206 examples added; 176 were correct
+Training threshold remains at 0.022076257812499993
+884 training examples for iteration 13
+Train on 884 samples, validate on 128 samples
+Epoch 1/30
+884/884 [==============================] - 0s 55us/step - loss: 0.0097 - acc: 0.9910 - val_loss: 0.1675 - val_acc: 0.7656
+Epoch 2/30
+884/884 [==============================] - 0s 72us/step - loss: 0.0098 - acc: 0.9898 - val_loss: 0.1709 - val_acc: 0.7734
+Epoch 3/30
+884/884 [==============================] - 0s 48us/step - loss: 0.0078 - acc: 0.9898 - val_loss: 0.1662 - val_acc: 0.7734
+Epoch 4/30
+884/884 [==============================] - 0s 60us/step - loss: 0.0055 - acc: 0.9943 - val_loss: 0.1674 - val_acc: 0.7578
+Epoch 5/30
+884/884 [==============================] - 0s 60us/step - loss: 0.0075 - acc: 0.9898 - val_loss: 0.1681 - val_acc: 0.7578
+Epoch 6/30
+884/884 [==============================] - 0s 70us/step - loss: 0.0059 - acc: 0.9921 - val_loss: 0.1639 - val_acc: 0.7656
+Epoch 7/30
+884/884 [==============================] - 0s 55us/step - loss: 0.0077 - acc: 0.9864 - val_loss: 0.1648 - val_acc: 0.7578
+Epoch 8/30
+884/884 [==============================] - 0s 62us/step - loss: 0.0083 - acc: 0.9910 - val_loss: 0.1649 - val_acc: 0.7578
+Epoch 9/30
+884/884 [==============================] - 0s 68us/step - loss: 0.0083 - acc: 0.9898 - val_loss: 0.1681 - val_acc: 0.7422
+Epoch 10/30
+884/884 [==============================] - 0s 55us/step - loss: 0.0046 - acc: 0.9977 - val_loss: 0.1671 - val_acc: 0.7734
+Epoch 11/30
+884/884 [==============================] - 0s 56us/step - loss: 0.0076 - acc: 0.9921 - val_loss: 0.1640 - val_acc: 0.7656
+Epoch 12/30
+884/884 [==============================] - 0s 56us/step - loss: 0.0087 - acc: 0.9898 - val_loss: 0.1631 - val_acc: 0.7734
+Epoch 13/30
+884/884 [==============================] - 0s 91us/step - loss: 0.0046 - acc: 0.9966 - val_loss: 0.1587 - val_acc: 0.7656
+Epoch 14/30
+884/884 [==============================] - 0s 80us/step - loss: 0.0058 - acc: 0.9921 - val_loss: 0.1613 - val_acc: 0.7656
+Epoch 15/30
+884/884 [==============================] - 0s 81us/step - loss: 0.0056 - acc: 0.9921 - val_loss: 0.1608 - val_acc: 0.7812
+Epoch 16/30
+884/884 [==============================] - 0s 77us/step - loss: 0.0100 - acc: 0.9853 - val_loss: 0.1629 - val_acc: 0.7734
+Epoch 17/30
+884/884 [==============================] - 0s 74us/step - loss: 0.0059 - acc: 0.9943 - val_loss: 0.1566 - val_acc: 0.7656
+Epoch 18/30
+884/884 [==============================] - 0s 76us/step - loss: 0.0071 - acc: 0.9910 - val_loss: 0.1583 - val_acc: 0.7734
+Epoch 19/30
+884/884 [==============================] - 0s 63us/step - loss: 0.0050 - acc: 0.9955 - val_loss: 0.1572 - val_acc: 0.7734
+Epoch 20/30
+884/884 [==============================] - 0s 68us/step - loss: 0.0066 - acc: 0.9921 - val_loss: 0.1636 - val_acc: 0.7656
+Epoch 21/30
+884/884 [==============================] - 0s 73us/step - loss: 0.0068 - acc: 0.9932 - val_loss: 0.1722 - val_acc: 0.7656
+Epoch 22/30
+884/884 [==============================] - 0s 83us/step - loss: 0.0042 - acc: 0.9955 - val_loss: 0.1669 - val_acc: 0.7656
+Epoch 23/30
+884/884 [==============================] - 0s 71us/step - loss: 0.0050 - acc: 0.9955 - val_loss: 0.1679 - val_acc: 0.7500
+Epoch 24/30
+884/884 [==============================] - 0s 71us/step - loss: 0.0054 - acc: 0.9955 - val_loss: 0.1705 - val_acc: 0.7578
+Epoch 25/30
+884/884 [==============================] - 0s 86us/step - loss: 0.0082 - acc: 0.9910 - val_loss: 0.1663 - val_acc: 0.7656
+Epoch 26/30
+884/884 [==============================] - 0s 72us/step - loss: 0.0069 - acc: 0.9910 - val_loss: 0.1636 - val_acc: 0.7656
+Epoch 27/30
+884/884 [==============================] - 0s 73us/step - loss: 0.0037 - acc: 0.9966 - val_loss: 0.1666 - val_acc: 0.7578
+Epoch 28/30
+884/884 [==============================] - 0s 76us/step - loss: 0.0058 - acc: 0.9943 - val_loss: 0.1657 - val_acc: 0.7812
+Epoch 29/30
+884/884 [==============================] - 0s 69us/step - loss: 0.0081 - acc: 0.9898 - val_loss: 0.1726 - val_acc: 0.7578
+Epoch 30/30
+884/884 [==============================] - 0s 57us/step - loss: 0.0077 - acc: 0.9898 - val_loss: 0.1799 - val_acc: 0.7578
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445058_epoch13.json
+191 examples added; 159 were correct
+Training threshold remains at 0.022076257812499993
+1075 training examples for iteration 14
+Train on 1075 samples, validate on 128 samples
+Epoch 1/30
+1075/1075 [==============================] - 0s 60us/step - loss: 0.0080 - acc: 0.9898 - val_loss: 0.1776 - val_acc: 0.7656
+Epoch 2/30
+1075/1075 [==============================] - 0s 60us/step - loss: 0.0056 - acc: 0.9944 - val_loss: 0.1776 - val_acc: 0.7734
+Epoch 3/30
+1075/1075 [==============================] - 0s 59us/step - loss: 0.0068 - acc: 0.9907 - val_loss: 0.1799 - val_acc: 0.7656
+Epoch 4/30
+1075/1075 [==============================] - 0s 60us/step - loss: 0.0056 - acc: 0.9935 - val_loss: 0.1806 - val_acc: 0.7734
+Epoch 5/30
+1075/1075 [==============================] - 0s 58us/step - loss: 0.0077 - acc: 0.9898 - val_loss: 0.1802 - val_acc: 0.7656
+Epoch 6/30
+1075/1075 [==============================] - 0s 63us/step - loss: 0.0066 - acc: 0.9926 - val_loss: 0.1796 - val_acc: 0.7656
+Epoch 7/30
+1075/1075 [==============================] - 0s 63us/step - loss: 0.0050 - acc: 0.9935 - val_loss: 0.1736 - val_acc: 0.7812
+Epoch 8/30
+1075/1075 [==============================] - 0s 82us/step - loss: 0.0048 - acc: 0.9944 - val_loss: 0.1751 - val_acc: 0.7656
+Epoch 9/30
+1075/1075 [==============================] - 0s 72us/step - loss: 0.0042 - acc: 0.9953 - val_loss: 0.1779 - val_acc: 0.7734
+Epoch 10/30
+1075/1075 [==============================] - 0s 77us/step - loss: 0.0056 - acc: 0.9944 - val_loss: 0.1826 - val_acc: 0.7656
+Epoch 11/30
+1075/1075 [==============================] - 0s 76us/step - loss: 0.0075 - acc: 0.9907 - val_loss: 0.1796 - val_acc: 0.7500
+Epoch 12/30
+1075/1075 [==============================] - 0s 75us/step - loss: 0.0066 - acc: 0.9916 - val_loss: 0.1824 - val_acc: 0.7656
+Epoch 13/30
+1075/1075 [==============================] - 0s 91us/step - loss: 0.0073 - acc: 0.9898 - val_loss: 0.1844 - val_acc: 0.7734
+Epoch 14/30
+1075/1075 [==============================] - 0s 71us/step - loss: 0.0064 - acc: 0.9916 - val_loss: 0.1845 - val_acc: 0.7500
+Epoch 15/30
+1075/1075 [==============================] - 0s 66us/step - loss: 0.0050 - acc: 0.9953 - val_loss: 0.1931 - val_acc: 0.7734
+Epoch 16/30
+1075/1075 [==============================] - 0s 71us/step - loss: 0.0043 - acc: 0.9963 - val_loss: 0.1857 - val_acc: 0.7734
+Epoch 17/30
+1075/1075 [==============================] - 0s 73us/step - loss: 0.0068 - acc: 0.9898 - val_loss: 0.1769 - val_acc: 0.7578
+Epoch 18/30
+1075/1075 [==============================] - 0s 66us/step - loss: 0.0031 - acc: 0.9981 - val_loss: 0.1785 - val_acc: 0.7656
+Epoch 19/30
+1075/1075 [==============================] - 0s 62us/step - loss: 0.0073 - acc: 0.9935 - val_loss: 0.1787 - val_acc: 0.7656
+Epoch 20/30
+1075/1075 [==============================] - 0s 63us/step - loss: 0.0056 - acc: 0.9926 - val_loss: 0.1810 - val_acc: 0.7500
+Epoch 21/30
+1075/1075 [==============================] - 0s 64us/step - loss: 0.0057 - acc: 0.9935 - val_loss: 0.1803 - val_acc: 0.7656
+Epoch 22/30
+1075/1075 [==============================] - 0s 63us/step - loss: 0.0108 - acc: 0.9842 - val_loss: 0.1812 - val_acc: 0.7422
+Epoch 23/30
+1075/1075 [==============================] - 0s 60us/step - loss: 0.0072 - acc: 0.9898 - val_loss: 0.1848 - val_acc: 0.7422
+Epoch 24/30
+1075/1075 [==============================] - 0s 61us/step - loss: 0.0055 - acc: 0.9916 - val_loss: 0.1886 - val_acc: 0.7500
+Epoch 25/30
+1075/1075 [==============================] - 0s 65us/step - loss: 0.0096 - acc: 0.9851 - val_loss: 0.1781 - val_acc: 0.7656
+Epoch 26/30
+1075/1075 [==============================] - 0s 63us/step - loss: 0.0056 - acc: 0.9944 - val_loss: 0.1779 - val_acc: 0.7812
+Epoch 27/30
+1075/1075 [==============================] - 0s 64us/step - loss: 0.0068 - acc: 0.9926 - val_loss: 0.1772 - val_acc: 0.7734
+Epoch 28/30
+1075/1075 [==============================] - 0s 61us/step - loss: 0.0063 - acc: 0.9935 - val_loss: 0.1834 - val_acc: 0.7578
+Epoch 29/30
+1075/1075 [==============================] - 0s 57us/step - loss: 0.0049 - acc: 0.9935 - val_loss: 0.1865 - val_acc: 0.7500
+Epoch 30/30
+1075/1075 [==============================] - 0s 66us/step - loss: 0.0056 - acc: 0.9916 - val_loss: 0.1897 - val_acc: 0.7422
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445060_epoch14.json
+209 examples added; 165 were correct
+Training threshold remains at 0.022076257812499993
+1284 training examples for iteration 15
+Train on 1284 samples, validate on 128 samples
+Epoch 1/30
+1284/1284 [==============================] - 0s 63us/step - loss: 0.0076 - acc: 0.9907 - val_loss: 0.1843 - val_acc: 0.7734
+Epoch 2/30
+1284/1284 [==============================] - 0s 69us/step - loss: 0.0083 - acc: 0.9883 - val_loss: 0.1859 - val_acc: 0.7891
+Epoch 3/30
+1284/1284 [==============================] - 0s 74us/step - loss: 0.0075 - acc: 0.9899 - val_loss: 0.1886 - val_acc: 0.7812
+Epoch 4/30
+1284/1284 [==============================] - 0s 68us/step - loss: 0.0042 - acc: 0.9961 - val_loss: 0.1866 - val_acc: 0.7656
+Epoch 5/30
+1284/1284 [==============================] - 0s 68us/step - loss: 0.0088 - acc: 0.9883 - val_loss: 0.1841 - val_acc: 0.7656
+Epoch 6/30
+1284/1284 [==============================] - 0s 61us/step - loss: 0.0077 - acc: 0.9891 - val_loss: 0.1774 - val_acc: 0.7734
+Epoch 7/30
+1284/1284 [==============================] - 0s 66us/step - loss: 0.0098 - acc: 0.9875 - val_loss: 0.1867 - val_acc: 0.7734
+Epoch 8/30
+1284/1284 [==============================] - 0s 64us/step - loss: 0.0082 - acc: 0.9907 - val_loss: 0.1931 - val_acc: 0.7812
+Epoch 9/30
+1284/1284 [==============================] - 0s 64us/step - loss: 0.0098 - acc: 0.9875 - val_loss: 0.1898 - val_acc: 0.7656
+Epoch 10/30
+1284/1284 [==============================] - 0s 76us/step - loss: 0.0087 - acc: 0.9907 - val_loss: 0.1870 - val_acc: 0.7734
+Epoch 11/30
+1284/1284 [==============================] - 0s 73us/step - loss: 0.0079 - acc: 0.9899 - val_loss: 0.1880 - val_acc: 0.7734
+Epoch 12/30
+1284/1284 [==============================] - 0s 73us/step - loss: 0.0092 - acc: 0.9907 - val_loss: 0.1892 - val_acc: 0.7812
+Epoch 13/30
+1284/1284 [==============================] - 0s 71us/step - loss: 0.0067 - acc: 0.9930 - val_loss: 0.1908 - val_acc: 0.7812
+Epoch 14/30
+1284/1284 [==============================] - 0s 63us/step - loss: 0.0072 - acc: 0.9914 - val_loss: 0.1891 - val_acc: 0.7656
+Epoch 15/30
+1284/1284 [==============================] - 0s 80us/step - loss: 0.0089 - acc: 0.9868 - val_loss: 0.1840 - val_acc: 0.7734
+Epoch 16/30
+1284/1284 [==============================] - 0s 72us/step - loss: 0.0058 - acc: 0.9930 - val_loss: 0.1878 - val_acc: 0.7656
+Epoch 17/30
+1284/1284 [==============================] - 0s 65us/step - loss: 0.0067 - acc: 0.9907 - val_loss: 0.1839 - val_acc: 0.7734
+Epoch 18/30
+1284/1284 [==============================] - 0s 70us/step - loss: 0.0093 - acc: 0.9899 - val_loss: 0.1797 - val_acc: 0.7656
+Epoch 19/30
+1284/1284 [==============================] - 0s 60us/step - loss: 0.0065 - acc: 0.9930 - val_loss: 0.1823 - val_acc: 0.7891
+Epoch 20/30
+1284/1284 [==============================] - 0s 61us/step - loss: 0.0066 - acc: 0.9907 - val_loss: 0.1922 - val_acc: 0.7656
+Epoch 21/30
+1284/1284 [==============================] - 0s 66us/step - loss: 0.0064 - acc: 0.9945 - val_loss: 0.1917 - val_acc: 0.7656
+Epoch 22/30
+1284/1284 [==============================] - 0s 81us/step - loss: 0.0066 - acc: 0.9922 - val_loss: 0.1851 - val_acc: 0.7734
+Epoch 23/30
+1284/1284 [==============================] - 0s 71us/step - loss: 0.0109 - acc: 0.9868 - val_loss: 0.1877 - val_acc: 0.7812
+Epoch 24/30
+1284/1284 [==============================] - 0s 76us/step - loss: 0.0103 - acc: 0.9875 - val_loss: 0.1893 - val_acc: 0.7734
+Epoch 25/30
+1284/1284 [==============================] - 0s 73us/step - loss: 0.0056 - acc: 0.9938 - val_loss: 0.1880 - val_acc: 0.7812
+Epoch 26/30
+1284/1284 [==============================] - 0s 70us/step - loss: 0.0098 - acc: 0.9868 - val_loss: 0.2022 - val_acc: 0.7266
+Epoch 27/30
+1284/1284 [==============================] - 0s 78us/step - loss: 0.0076 - acc: 0.9899 - val_loss: 0.1892 - val_acc: 0.7656
+Epoch 28/30
+1284/1284 [==============================] - 0s 75us/step - loss: 0.0077 - acc: 0.9891 - val_loss: 0.1852 - val_acc: 0.7578
+Epoch 29/30
+1284/1284 [==============================] - 0s 66us/step - loss: 0.0081 - acc: 0.9907 - val_loss: 0.1864 - val_acc: 0.7812
+Epoch 30/30
+1284/1284 [==============================] - 0s 62us/step - loss: 0.0051 - acc: 0.9953 - val_loss: 0.1914 - val_acc: 0.7500
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445064_epoch15.json
+171 examples added; 116 were correct
+Training threshold remains at 0.022076257812499993
+1455 training examples for iteration 16
+Train on 1455 samples, validate on 128 samples
+Epoch 1/30
+1455/1455 [==============================] - 0s 57us/step - loss: 0.0181 - acc: 0.9787 - val_loss: 0.1806 - val_acc: 0.7969
+Epoch 2/30
+1455/1455 [==============================] - 0s 59us/step - loss: 0.0146 - acc: 0.9773 - val_loss: 0.1943 - val_acc: 0.7734
+Epoch 3/30
+1455/1455 [==============================] - 0s 60us/step - loss: 0.0137 - acc: 0.9821 - val_loss: 0.1951 - val_acc: 0.7734
+Epoch 4/30
+1455/1455 [==============================] - 0s 57us/step - loss: 0.0187 - acc: 0.9766 - val_loss: 0.1975 - val_acc: 0.7734
+Epoch 5/30
+1455/1455 [==============================] - 0s 57us/step - loss: 0.0150 - acc: 0.9828 - val_loss: 0.1974 - val_acc: 0.7891
+Epoch 6/30
+1455/1455 [==============================] - 0s 61us/step - loss: 0.0190 - acc: 0.9759 - val_loss: 0.1924 - val_acc: 0.7812
+Epoch 7/30
+1455/1455 [==============================] - 0s 59us/step - loss: 0.0165 - acc: 0.9773 - val_loss: 0.1868 - val_acc: 0.7969
+Epoch 8/30
+1455/1455 [==============================] - 0s 57us/step - loss: 0.0148 - acc: 0.9801 - val_loss: 0.1917 - val_acc: 0.7812
+Epoch 9/30
+1455/1455 [==============================] - 0s 56us/step - loss: 0.0094 - acc: 0.9911 - val_loss: 0.1929 - val_acc: 0.7734
+Epoch 10/30
+1455/1455 [==============================] - 0s 56us/step - loss: 0.0115 - acc: 0.9869 - val_loss: 0.1856 - val_acc: 0.7969
+Epoch 11/30
+1455/1455 [==============================] - 0s 60us/step - loss: 0.0125 - acc: 0.9835 - val_loss: 0.1972 - val_acc: 0.7656
+Epoch 12/30
+1455/1455 [==============================] - 0s 70us/step - loss: 0.0139 - acc: 0.9835 - val_loss: 0.1935 - val_acc: 0.7812
+Epoch 13/30
+1455/1455 [==============================] - 0s 73us/step - loss: 0.0110 - acc: 0.9863 - val_loss: 0.1959 - val_acc: 0.7734
+Epoch 14/30
+1455/1455 [==============================] - 0s 72us/step - loss: 0.0166 - acc: 0.9787 - val_loss: 0.1777 - val_acc: 0.7969
+Epoch 15/30
+1455/1455 [==============================] - 0s 67us/step - loss: 0.0126 - acc: 0.9835 - val_loss: 0.1792 - val_acc: 0.8125
+Epoch 16/30
+1455/1455 [==============================] - 0s 69us/step - loss: 0.0112 - acc: 0.9869 - val_loss: 0.1746 - val_acc: 0.8203
+Epoch 17/30
+1455/1455 [==============================] - 0s 75us/step - loss: 0.0141 - acc: 0.9835 - val_loss: 0.1851 - val_acc: 0.7734
+Epoch 18/30
+1455/1455 [==============================] - 0s 67us/step - loss: 0.0095 - acc: 0.9897 - val_loss: 0.1910 - val_acc: 0.7734
+Epoch 19/30
+1455/1455 [==============================] - 0s 70us/step - loss: 0.0187 - acc: 0.9773 - val_loss: 0.1782 - val_acc: 0.8047
+Epoch 20/30
+1455/1455 [==============================] - 0s 67us/step - loss: 0.0135 - acc: 0.9828 - val_loss: 0.1918 - val_acc: 0.7891
+Epoch 21/30
+1455/1455 [==============================] - 0s 63us/step - loss: 0.0145 - acc: 0.9808 - val_loss: 0.1804 - val_acc: 0.7969
+Epoch 22/30
+1455/1455 [==============================] - 0s 65us/step - loss: 0.0149 - acc: 0.9835 - val_loss: 0.1895 - val_acc: 0.7812
+Epoch 23/30
+1455/1455 [==============================] - 0s 55us/step - loss: 0.0125 - acc: 0.9842 - val_loss: 0.1973 - val_acc: 0.7734
+Epoch 24/30
+1455/1455 [==============================] - 0s 55us/step - loss: 0.0121 - acc: 0.9828 - val_loss: 0.1975 - val_acc: 0.7656
+Epoch 25/30
+1455/1455 [==============================] - 0s 59us/step - loss: 0.0172 - acc: 0.9773 - val_loss: 0.1789 - val_acc: 0.8047
+Epoch 26/30
+1455/1455 [==============================] - 0s 57us/step - loss: 0.0109 - acc: 0.9876 - val_loss: 0.1763 - val_acc: 0.8125
+Epoch 27/30
+1455/1455 [==============================] - 0s 58us/step - loss: 0.0111 - acc: 0.9856 - val_loss: 0.1920 - val_acc: 0.7812
+Epoch 28/30
+1455/1455 [==============================] - 0s 60us/step - loss: 0.0103 - acc: 0.9869 - val_loss: 0.1957 - val_acc: 0.7734
+Epoch 29/30
+1455/1455 [==============================] - 0s 63us/step - loss: 0.0095 - acc: 0.9897 - val_loss: 0.1875 - val_acc: 0.7812
+Epoch 30/30
+1455/1455 [==============================] - 0s 61us/step - loss: 0.0124 - acc: 0.9835 - val_loss: 0.1896 - val_acc: 0.7734
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445067_epoch16.json
+107 examples added; 88 were correct
+Training threshold remains at 0.022076257812499993
+1562 training examples for iteration 17
+Train on 1562 samples, validate on 128 samples
+Epoch 1/30
+1562/1562 [==============================] - 0s 54us/step - loss: 0.0139 - acc: 0.9821 - val_loss: 0.2005 - val_acc: 0.7734
+Epoch 2/30
+1562/1562 [==============================] - 0s 57us/step - loss: 0.0159 - acc: 0.9802 - val_loss: 0.2047 - val_acc: 0.7812
+Epoch 3/30
+1562/1562 [==============================] - 0s 55us/step - loss: 0.0158 - acc: 0.9802 - val_loss: 0.1954 - val_acc: 0.7812
+Epoch 4/30
+1562/1562 [==============================] - 0s 55us/step - loss: 0.0160 - acc: 0.9802 - val_loss: 0.2022 - val_acc: 0.7656
+Epoch 5/30
+1562/1562 [==============================] - 0s 56us/step - loss: 0.0152 - acc: 0.9789 - val_loss: 0.2114 - val_acc: 0.7422
+Epoch 6/30
+1562/1562 [==============================] - 0s 60us/step - loss: 0.0130 - acc: 0.9846 - val_loss: 0.2176 - val_acc: 0.7422
+Epoch 7/30
+1562/1562 [==============================] - 0s 59us/step - loss: 0.0133 - acc: 0.9853 - val_loss: 0.2110 - val_acc: 0.7578
+Epoch 8/30
+1562/1562 [==============================] - 0s 59us/step - loss: 0.0164 - acc: 0.9770 - val_loss: 0.2076 - val_acc: 0.7578
+Epoch 9/30
+1562/1562 [==============================] - 0s 55us/step - loss: 0.0165 - acc: 0.9770 - val_loss: 0.1943 - val_acc: 0.7812
+Epoch 10/30
+1562/1562 [==============================] - 0s 55us/step - loss: 0.0166 - acc: 0.9802 - val_loss: 0.2053 - val_acc: 0.7656
+Epoch 11/30
+1562/1562 [==============================] - 0s 55us/step - loss: 0.0157 - acc: 0.9808 - val_loss: 0.2062 - val_acc: 0.7422
+Epoch 12/30
+1562/1562 [==============================] - 0s 57us/step - loss: 0.0121 - acc: 0.9859 - val_loss: 0.1930 - val_acc: 0.7891
+Epoch 13/30
+1562/1562 [==============================] - 0s 56us/step - loss: 0.0139 - acc: 0.9846 - val_loss: 0.2027 - val_acc: 0.7734
+Epoch 14/30
+1562/1562 [==============================] - 0s 58us/step - loss: 0.0127 - acc: 0.9853 - val_loss: 0.2055 - val_acc: 0.7656
+Epoch 15/30
+1562/1562 [==============================] - 0s 57us/step - loss: 0.0128 - acc: 0.9859 - val_loss: 0.2033 - val_acc: 0.7656
+Epoch 16/30
+1562/1562 [==============================] - 0s 58us/step - loss: 0.0125 - acc: 0.9859 - val_loss: 0.2057 - val_acc: 0.7578
+Epoch 17/30
+1562/1562 [==============================] - 0s 57us/step - loss: 0.0121 - acc: 0.9853 - val_loss: 0.1976 - val_acc: 0.7734
+Epoch 18/30
+1562/1562 [==============================] - 0s 58us/step - loss: 0.0142 - acc: 0.9795 - val_loss: 0.2040 - val_acc: 0.7734
+Epoch 19/30
+1562/1562 [==============================] - 0s 58us/step - loss: 0.0131 - acc: 0.9834 - val_loss: 0.2060 - val_acc: 0.7656
+Epoch 20/30
+1562/1562 [==============================] - 0s 57us/step - loss: 0.0130 - acc: 0.9834 - val_loss: 0.1967 - val_acc: 0.7812
+Epoch 21/30
+1562/1562 [==============================] - 0s 57us/step - loss: 0.0152 - acc: 0.9795 - val_loss: 0.2100 - val_acc: 0.7500
+Epoch 22/30
+1562/1562 [==============================] - 0s 57us/step - loss: 0.0196 - acc: 0.9725 - val_loss: 0.2019 - val_acc: 0.7578
+Epoch 23/30
+1562/1562 [==============================] - 0s 57us/step - loss: 0.0130 - acc: 0.9821 - val_loss: 0.2089 - val_acc: 0.7500
+Epoch 24/30
+1562/1562 [==============================] - 0s 56us/step - loss: 0.0183 - acc: 0.9776 - val_loss: 0.1987 - val_acc: 0.7812
+Epoch 25/30
+1562/1562 [==============================] - 0s 56us/step - loss: 0.0110 - acc: 0.9872 - val_loss: 0.2047 - val_acc: 0.7500
+Epoch 26/30
+1562/1562 [==============================] - 0s 57us/step - loss: 0.0154 - acc: 0.9776 - val_loss: 0.1952 - val_acc: 0.7891
+Epoch 27/30
+1562/1562 [==============================] - 0s 57us/step - loss: 0.0140 - acc: 0.9814 - val_loss: 0.2078 - val_acc: 0.7500
+Epoch 28/30
+1562/1562 [==============================] - 0s 57us/step - loss: 0.0126 - acc: 0.9853 - val_loss: 0.2018 - val_acc: 0.7656
+Epoch 29/30
+1562/1562 [==============================] - 0s 59us/step - loss: 0.0147 - acc: 0.9821 - val_loss: 0.1941 - val_acc: 0.7734
+Epoch 30/30
+1562/1562 [==============================] - 0s 67us/step - loss: 0.0091 - acc: 0.9891 - val_loss: 0.1985 - val_acc: 0.7656
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445070_epoch17.json
+96 examples added; 65 were correct
+Training threshold remains at 0.022076257812499993
+1658 training examples for iteration 18
+Train on 1658 samples, validate on 128 samples
+Epoch 1/30
+1658/1658 [==============================] - 0s 72us/step - loss: 0.0203 - acc: 0.9753 - val_loss: 0.1783 - val_acc: 0.7812
+Epoch 2/30
+1658/1658 [==============================] - 0s 71us/step - loss: 0.0182 - acc: 0.9765 - val_loss: 0.1919 - val_acc: 0.7500
+Epoch 3/30
+1658/1658 [==============================] - 0s 74us/step - loss: 0.0166 - acc: 0.9789 - val_loss: 0.1954 - val_acc: 0.7422
+Epoch 4/30
+1658/1658 [==============================] - 0s 61us/step - loss: 0.0169 - acc: 0.9777 - val_loss: 0.2069 - val_acc: 0.7500
+Epoch 5/30
+1658/1658 [==============================] - 0s 56us/step - loss: 0.0115 - acc: 0.9873 - val_loss: 0.2197 - val_acc: 0.7422
+Epoch 6/30
+1658/1658 [==============================] - 0s 58us/step - loss: 0.0167 - acc: 0.9801 - val_loss: 0.2146 - val_acc: 0.7422
+Epoch 7/30
+1658/1658 [==============================] - 0s 57us/step - loss: 0.0174 - acc: 0.9765 - val_loss: 0.2108 - val_acc: 0.7344
+Epoch 8/30
+1658/1658 [==============================] - 0s 56us/step - loss: 0.0138 - acc: 0.9837 - val_loss: 0.2044 - val_acc: 0.7344
+Epoch 9/30
+1658/1658 [==============================] - 0s 56us/step - loss: 0.0133 - acc: 0.9843 - val_loss: 0.2091 - val_acc: 0.7344
+Epoch 10/30
+1658/1658 [==============================] - 0s 55us/step - loss: 0.0107 - acc: 0.9867 - val_loss: 0.2065 - val_acc: 0.7500
+Epoch 11/30
+1658/1658 [==============================] - 0s 55us/step - loss: 0.0168 - acc: 0.9765 - val_loss: 0.2059 - val_acc: 0.7344
+Epoch 12/30
+1658/1658 [==============================] - 0s 58us/step - loss: 0.0189 - acc: 0.9741 - val_loss: 0.2109 - val_acc: 0.7422
+Epoch 13/30
+1658/1658 [==============================] - 0s 56us/step - loss: 0.0136 - acc: 0.9831 - val_loss: 0.2030 - val_acc: 0.7500
+Epoch 14/30
+1658/1658 [==============================] - 0s 55us/step - loss: 0.0156 - acc: 0.9813 - val_loss: 0.2020 - val_acc: 0.7422
+Epoch 15/30
+1658/1658 [==============================] - 0s 62us/step - loss: 0.0151 - acc: 0.9825 - val_loss: 0.2055 - val_acc: 0.7500
+Epoch 16/30
+1658/1658 [==============================] - 0s 73us/step - loss: 0.0105 - acc: 0.9867 - val_loss: 0.2068 - val_acc: 0.7422
+Epoch 17/30
+1658/1658 [==============================] - 0s 65us/step - loss: 0.0146 - acc: 0.9813 - val_loss: 0.2025 - val_acc: 0.7500
+Epoch 18/30
+1658/1658 [==============================] - 0s 65us/step - loss: 0.0110 - acc: 0.9843 - val_loss: 0.2036 - val_acc: 0.7500
+Epoch 19/30
+1658/1658 [==============================] - 0s 65us/step - loss: 0.0130 - acc: 0.9861 - val_loss: 0.2133 - val_acc: 0.7344
+Epoch 20/30
+1658/1658 [==============================] - 0s 69us/step - loss: 0.0116 - acc: 0.9855 - val_loss: 0.2042 - val_acc: 0.7656
+Epoch 21/30
+1658/1658 [==============================] - 0s 68us/step - loss: 0.0147 - acc: 0.9819 - val_loss: 0.2000 - val_acc: 0.7656
+Epoch 22/30
+1658/1658 [==============================] - 0s 62us/step - loss: 0.0182 - acc: 0.9759 - val_loss: 0.1781 - val_acc: 0.8047
+Epoch 23/30
+1658/1658 [==============================] - 0s 55us/step - loss: 0.0162 - acc: 0.9789 - val_loss: 0.2082 - val_acc: 0.7578
+Epoch 24/30
+1658/1658 [==============================] - 0s 57us/step - loss: 0.0113 - acc: 0.9891 - val_loss: 0.2052 - val_acc: 0.7500
+Epoch 25/30
+1658/1658 [==============================] - 0s 58us/step - loss: 0.0116 - acc: 0.9849 - val_loss: 0.2054 - val_acc: 0.7422
+Epoch 26/30
+1658/1658 [==============================] - 0s 58us/step - loss: 0.0167 - acc: 0.9801 - val_loss: 0.2159 - val_acc: 0.7344
+Epoch 27/30
+1658/1658 [==============================] - 0s 66us/step - loss: 0.0153 - acc: 0.9807 - val_loss: 0.2087 - val_acc: 0.7500
+Epoch 28/30
+1658/1658 [==============================] - 0s 68us/step - loss: 0.0159 - acc: 0.9783 - val_loss: 0.2022 - val_acc: 0.7500
+Epoch 29/30
+1658/1658 [==============================] - 0s 48us/step - loss: 0.0147 - acc: 0.9843 - val_loss: 0.2147 - val_acc: 0.7344
+Epoch 30/30
+1658/1658 [==============================] - 0s 63us/step - loss: 0.0138 - acc: 0.9813 - val_loss: 0.2168 - val_acc: 0.7422
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445073_epoch18.json
+71 examples added; 39 were correct
+Training threshold remains at 0.022076257812499993
+1729 training examples for iteration 19
+Train on 1729 samples, validate on 128 samples
+Epoch 1/30
+1729/1729 [==============================] - 0s 72us/step - loss: 0.0165 - acc: 0.9798 - val_loss: 0.2290 - val_acc: 0.7422
+Epoch 2/30
+1729/1729 [==============================] - 0s 71us/step - loss: 0.0170 - acc: 0.9798 - val_loss: 0.2095 - val_acc: 0.7500
+Epoch 3/30
+1729/1729 [==============================] - 0s 65us/step - loss: 0.0140 - acc: 0.9815 - val_loss: 0.2023 - val_acc: 0.7578
+Epoch 4/30
+1729/1729 [==============================] - 0s 69us/step - loss: 0.0188 - acc: 0.9757 - val_loss: 0.2020 - val_acc: 0.7500
+Epoch 5/30
+1729/1729 [==============================] - 0s 74us/step - loss: 0.0199 - acc: 0.9728 - val_loss: 0.2172 - val_acc: 0.7344
+Epoch 6/30
+1729/1729 [==============================] - 0s 70us/step - loss: 0.0158 - acc: 0.9798 - val_loss: 0.2174 - val_acc: 0.7422
+Epoch 7/30
+1729/1729 [==============================] - 0s 74us/step - loss: 0.0134 - acc: 0.9826 - val_loss: 0.2190 - val_acc: 0.7344
+Epoch 8/30
+1729/1729 [==============================] - 0s 62us/step - loss: 0.0206 - acc: 0.9711 - val_loss: 0.2170 - val_acc: 0.7500
+Epoch 9/30
+1729/1729 [==============================] - 0s 65us/step - loss: 0.0185 - acc: 0.9786 - val_loss: 0.2209 - val_acc: 0.7344
+Epoch 10/30
+1729/1729 [==============================] - 0s 64us/step - loss: 0.0182 - acc: 0.9763 - val_loss: 0.2228 - val_acc: 0.7422
+Epoch 11/30
+1729/1729 [==============================] - 0s 57us/step - loss: 0.0146 - acc: 0.9809 - val_loss: 0.2276 - val_acc: 0.7344
+Epoch 12/30
+1729/1729 [==============================] - 0s 57us/step - loss: 0.0139 - acc: 0.9826 - val_loss: 0.2144 - val_acc: 0.7422
+Epoch 13/30
+1729/1729 [==============================] - 0s 57us/step - loss: 0.0140 - acc: 0.9832 - val_loss: 0.2244 - val_acc: 0.7344
+Epoch 14/30
+1729/1729 [==============================] - 0s 57us/step - loss: 0.0155 - acc: 0.9809 - val_loss: 0.2089 - val_acc: 0.7422
+Epoch 15/30
+1729/1729 [==============================] - 0s 60us/step - loss: 0.0172 - acc: 0.9786 - val_loss: 0.2036 - val_acc: 0.7578
+Epoch 16/30
+1729/1729 [==============================] - 0s 58us/step - loss: 0.0185 - acc: 0.9774 - val_loss: 0.2202 - val_acc: 0.7422
+Epoch 17/30
+1729/1729 [==============================] - 0s 59us/step - loss: 0.0160 - acc: 0.9780 - val_loss: 0.2184 - val_acc: 0.7422
+Epoch 18/30
+1729/1729 [==============================] - 0s 57us/step - loss: 0.0146 - acc: 0.9838 - val_loss: 0.2150 - val_acc: 0.7422
+Epoch 19/30
+1729/1729 [==============================] - 0s 56us/step - loss: 0.0211 - acc: 0.9740 - val_loss: 0.2197 - val_acc: 0.7422
+Epoch 20/30
+1729/1729 [==============================] - 0s 55us/step - loss: 0.0204 - acc: 0.9740 - val_loss: 0.2124 - val_acc: 0.7422
+Epoch 21/30
+1729/1729 [==============================] - 0s 55us/step - loss: 0.0147 - acc: 0.9821 - val_loss: 0.2117 - val_acc: 0.7422
+Epoch 22/30
+1729/1729 [==============================] - 0s 55us/step - loss: 0.0196 - acc: 0.9751 - val_loss: 0.2139 - val_acc: 0.7422
+Epoch 23/30
+1729/1729 [==============================] - 0s 59us/step - loss: 0.0152 - acc: 0.9826 - val_loss: 0.2172 - val_acc: 0.7422
+Epoch 24/30
+1729/1729 [==============================] - 0s 70us/step - loss: 0.0180 - acc: 0.9774 - val_loss: 0.2230 - val_acc: 0.7422
+Epoch 25/30
+1729/1729 [==============================] - 0s 69us/step - loss: 0.0204 - acc: 0.9722 - val_loss: 0.2050 - val_acc: 0.7578
+Epoch 26/30
+1729/1729 [==============================] - 0s 65us/step - loss: 0.0149 - acc: 0.9815 - val_loss: 0.2231 - val_acc: 0.7422
+Epoch 27/30
+1729/1729 [==============================] - 0s 67us/step - loss: 0.0174 - acc: 0.9780 - val_loss: 0.2160 - val_acc: 0.7500
+Epoch 28/30
+1729/1729 [==============================] - 0s 69us/step - loss: 0.0172 - acc: 0.9815 - val_loss: 0.2210 - val_acc: 0.7422
+Epoch 29/30
+1729/1729 [==============================] - 0s 69us/step - loss: 0.0139 - acc: 0.9844 - val_loss: 0.2139 - val_acc: 0.7578
+Epoch 30/30
+1729/1729 [==============================] - 0s 66us/step - loss: 0.0164 - acc: 0.9803 - val_loss: 0.2209 - val_acc: 0.7422
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445077_epoch19.json
+27 examples added; 22 were correct
+Training threshold remains at 0.022076257812499993
+1756 training examples for iteration 20
+Train on 1756 samples, validate on 128 samples
+Epoch 1/30
+1756/1756 [==============================] - 0s 66us/step - loss: 0.0178 - acc: 0.9778 - val_loss: 0.2335 - val_acc: 0.7344
+Epoch 2/30
+1756/1756 [==============================] - 0s 68us/step - loss: 0.0188 - acc: 0.9761 - val_loss: 0.2146 - val_acc: 0.7422
+Epoch 3/30
+1756/1756 [==============================] - 0s 64us/step - loss: 0.0191 - acc: 0.9732 - val_loss: 0.2108 - val_acc: 0.7578
+Epoch 4/30
+1756/1756 [==============================] - 0s 56us/step - loss: 0.0188 - acc: 0.9761 - val_loss: 0.2339 - val_acc: 0.7266
+Epoch 5/30
+1756/1756 [==============================] - 0s 55us/step - loss: 0.0130 - acc: 0.9846 - val_loss: 0.2141 - val_acc: 0.7500
+Epoch 6/30
+1756/1756 [==============================] - 0s 54us/step - loss: 0.0157 - acc: 0.9806 - val_loss: 0.2242 - val_acc: 0.7422
+Epoch 7/30
+1756/1756 [==============================] - 0s 63us/step - loss: 0.0165 - acc: 0.9801 - val_loss: 0.2286 - val_acc: 0.7344
+Epoch 8/30
+1756/1756 [==============================] - 0s 60us/step - loss: 0.0205 - acc: 0.9755 - val_loss: 0.2101 - val_acc: 0.7578
+Epoch 9/30
+1756/1756 [==============================] - 0s 65us/step - loss: 0.0189 - acc: 0.9761 - val_loss: 0.2221 - val_acc: 0.7344
+Epoch 10/30
+1756/1756 [==============================] - 0s 57us/step - loss: 0.0168 - acc: 0.9795 - val_loss: 0.2125 - val_acc: 0.7500
+Epoch 11/30
+1756/1756 [==============================] - 0s 52us/step - loss: 0.0136 - acc: 0.9823 - val_loss: 0.2088 - val_acc: 0.7578
+Epoch 12/30
+1756/1756 [==============================] - 0s 54us/step - loss: 0.0204 - acc: 0.9738 - val_loss: 0.2247 - val_acc: 0.7344
+Epoch 13/30
+1756/1756 [==============================] - 0s 57us/step - loss: 0.0179 - acc: 0.9761 - val_loss: 0.2331 - val_acc: 0.7266
+Epoch 14/30
+1756/1756 [==============================] - 0s 59us/step - loss: 0.0170 - acc: 0.9795 - val_loss: 0.2288 - val_acc: 0.7422
+Epoch 15/30
+1756/1756 [==============================] - 0s 58us/step - loss: 0.0175 - acc: 0.9778 - val_loss: 0.2328 - val_acc: 0.7344
+Epoch 16/30
+1756/1756 [==============================] - 0s 59us/step - loss: 0.0210 - acc: 0.9732 - val_loss: 0.2206 - val_acc: 0.7422
+Epoch 17/30
+1756/1756 [==============================] - 0s 61us/step - loss: 0.0168 - acc: 0.9801 - val_loss: 0.2262 - val_acc: 0.7344
+Epoch 18/30
+1756/1756 [==============================] - 0s 56us/step - loss: 0.0141 - acc: 0.9812 - val_loss: 0.2213 - val_acc: 0.7422
+Epoch 19/30
+1756/1756 [==============================] - 0s 55us/step - loss: 0.0157 - acc: 0.9812 - val_loss: 0.2245 - val_acc: 0.7422
+Epoch 20/30
+1756/1756 [==============================] - 0s 54us/step - loss: 0.0213 - acc: 0.9721 - val_loss: 0.2105 - val_acc: 0.7422
+Epoch 21/30
+1756/1756 [==============================] - 0s 56us/step - loss: 0.0236 - acc: 0.9715 - val_loss: 0.1957 - val_acc: 0.7656
+Epoch 22/30
+1756/1756 [==============================] - 0s 55us/step - loss: 0.0163 - acc: 0.9784 - val_loss: 0.2242 - val_acc: 0.7422
+Epoch 23/30
+1756/1756 [==============================] - 0s 59us/step - loss: 0.0144 - acc: 0.9823 - val_loss: 0.2178 - val_acc: 0.7422
+Epoch 24/30
+1756/1756 [==============================] - 0s 57us/step - loss: 0.0124 - acc: 0.9846 - val_loss: 0.1998 - val_acc: 0.7578
+Epoch 25/30
+1756/1756 [==============================] - 0s 58us/step - loss: 0.0143 - acc: 0.9818 - val_loss: 0.2210 - val_acc: 0.7422
+Epoch 26/30
+1756/1756 [==============================] - 0s 57us/step - loss: 0.0203 - acc: 0.9755 - val_loss: 0.2081 - val_acc: 0.7578
+Epoch 27/30
+1756/1756 [==============================] - 0s 56us/step - loss: 0.0146 - acc: 0.9829 - val_loss: 0.2123 - val_acc: 0.7344
+Epoch 28/30
+1756/1756 [==============================] - 0s 57us/step - loss: 0.0163 - acc: 0.9778 - val_loss: 0.2154 - val_acc: 0.7500
+Epoch 29/30
+1756/1756 [==============================] - 0s 55us/step - loss: 0.0206 - acc: 0.9744 - val_loss: 0.2150 - val_acc: 0.7500
+Epoch 30/30
+1756/1756 [==============================] - 0s 52us/step - loss: 0.0157 - acc: 0.9795 - val_loss: 0.2087 - val_acc: 0.7500
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445080_epoch20.json
+2 examples added; 2 were correct
+Training threshold remains at 0.022076257812499993
+1758 training examples for iteration 21
+Train on 1758 samples, validate on 128 samples
+Epoch 1/30
+1758/1758 [==============================] - 0s 66us/step - loss: 0.0160 - acc: 0.9801 - val_loss: 0.2064 - val_acc: 0.7656
+Epoch 2/30
+1758/1758 [==============================] - 0s 59us/step - loss: 0.0188 - acc: 0.9755 - val_loss: 0.2303 - val_acc: 0.7344
+Epoch 3/30
+1758/1758 [==============================] - 0s 57us/step - loss: 0.0193 - acc: 0.9778 - val_loss: 0.2125 - val_acc: 0.7422
+Epoch 4/30
+1758/1758 [==============================] - 0s 59us/step - loss: 0.0157 - acc: 0.9801 - val_loss: 0.2098 - val_acc: 0.7422
+Epoch 5/30
+1758/1758 [==============================] - 0s 58us/step - loss: 0.0152 - acc: 0.9824 - val_loss: 0.2137 - val_acc: 0.7500
+Epoch 6/30
+1758/1758 [==============================] - 0s 58us/step - loss: 0.0209 - acc: 0.9721 - val_loss: 0.2160 - val_acc: 0.7422
+Epoch 7/30
+1758/1758 [==============================] - 0s 57us/step - loss: 0.0172 - acc: 0.9772 - val_loss: 0.2193 - val_acc: 0.7344
+Epoch 8/30
+1758/1758 [==============================] - 0s 57us/step - loss: 0.0182 - acc: 0.9767 - val_loss: 0.2116 - val_acc: 0.7578
+Epoch 9/30
+1758/1758 [==============================] - 0s 56us/step - loss: 0.0176 - acc: 0.9778 - val_loss: 0.2162 - val_acc: 0.7500
+Epoch 10/30
+1758/1758 [==============================] - 0s 57us/step - loss: 0.0122 - acc: 0.9852 - val_loss: 0.2159 - val_acc: 0.7500
+Epoch 11/30
+1758/1758 [==============================] - 0s 56us/step - loss: 0.0145 - acc: 0.9824 - val_loss: 0.2239 - val_acc: 0.7344
+Epoch 12/30
+1758/1758 [==============================] - 0s 56us/step - loss: 0.0180 - acc: 0.9790 - val_loss: 0.2131 - val_acc: 0.7578
+Epoch 13/30
+1758/1758 [==============================] - 0s 62us/step - loss: 0.0154 - acc: 0.9790 - val_loss: 0.2243 - val_acc: 0.7422
+Epoch 14/30
+1758/1758 [==============================] - 0s 64us/step - loss: 0.0158 - acc: 0.9807 - val_loss: 0.2159 - val_acc: 0.7344
+Epoch 15/30
+1758/1758 [==============================] - 0s 62us/step - loss: 0.0181 - acc: 0.9744 - val_loss: 0.2141 - val_acc: 0.7578
+Epoch 16/30
+1758/1758 [==============================] - 0s 62us/step - loss: 0.0180 - acc: 0.9755 - val_loss: 0.2076 - val_acc: 0.7578
+Epoch 17/30
+1758/1758 [==============================] - 0s 63us/step - loss: 0.0140 - acc: 0.9829 - val_loss: 0.2170 - val_acc: 0.7500
+Epoch 18/30
+1758/1758 [==============================] - 0s 62us/step - loss: 0.0167 - acc: 0.9795 - val_loss: 0.2080 - val_acc: 0.7500
+Epoch 19/30
+1758/1758 [==============================] - 0s 55us/step - loss: 0.0209 - acc: 0.9727 - val_loss: 0.2097 - val_acc: 0.7422
+Epoch 20/30
+1758/1758 [==============================] - 0s 63us/step - loss: 0.0161 - acc: 0.9807 - val_loss: 0.2032 - val_acc: 0.7656
+Epoch 21/30
+1758/1758 [==============================] - 0s 59us/step - loss: 0.0179 - acc: 0.9778 - val_loss: 0.1999 - val_acc: 0.7734
+Epoch 22/30
+1758/1758 [==============================] - 0s 59us/step - loss: 0.0132 - acc: 0.9858 - val_loss: 0.2058 - val_acc: 0.7500
+Epoch 23/30
+1758/1758 [==============================] - 0s 63us/step - loss: 0.0157 - acc: 0.9801 - val_loss: 0.2076 - val_acc: 0.7578
+Epoch 24/30
+1758/1758 [==============================] - 0s 64us/step - loss: 0.0117 - acc: 0.9869 - val_loss: 0.2047 - val_acc: 0.7578
+Epoch 25/30
+1758/1758 [==============================] - 0s 74us/step - loss: 0.0154 - acc: 0.9795 - val_loss: 0.2103 - val_acc: 0.7500
+Epoch 26/30
+1758/1758 [==============================] - 0s 69us/step - loss: 0.0135 - acc: 0.9852 - val_loss: 0.2146 - val_acc: 0.7422
+Epoch 27/30
+1758/1758 [==============================] - 0s 68us/step - loss: 0.0179 - acc: 0.9795 - val_loss: 0.2151 - val_acc: 0.7422
+Epoch 28/30
+1758/1758 [==============================] - 0s 66us/step - loss: 0.0153 - acc: 0.9801 - val_loss: 0.2112 - val_acc: 0.7500
+Epoch 29/30
+1758/1758 [==============================] - 0s 61us/step - loss: 0.0142 - acc: 0.9824 - val_loss: 0.2132 - val_acc: 0.7500
+Epoch 30/30
+1758/1758 [==============================] - 0s 71us/step - loss: 0.0124 - acc: 0.9841 - val_loss: 0.2179 - val_acc: 0.7500
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445084_epoch21.json
+16 examples added; 6 were correct
+Training threshold remains at 0.022076257812499993
+1774 training examples for iteration 22
+Train on 1774 samples, validate on 128 samples
+Epoch 1/30
+1774/1774 [==============================] - 0s 73us/step - loss: 0.0132 - acc: 0.9837 - val_loss: 0.2230 - val_acc: 0.7500
+Epoch 2/30
+1774/1774 [==============================] - 0s 67us/step - loss: 0.0181 - acc: 0.9769 - val_loss: 0.2103 - val_acc: 0.7500
+Epoch 3/30
+1774/1774 [==============================] - 0s 66us/step - loss: 0.0144 - acc: 0.9820 - val_loss: 0.2080 - val_acc: 0.7422
+Epoch 4/30
+1774/1774 [==============================] - 0s 71us/step - loss: 0.0150 - acc: 0.9825 - val_loss: 0.2116 - val_acc: 0.7500
+Epoch 5/30
+1774/1774 [==============================] - 0s 67us/step - loss: 0.0190 - acc: 0.9763 - val_loss: 0.2183 - val_acc: 0.7344
+Epoch 6/30
+1774/1774 [==============================] - 0s 60us/step - loss: 0.0169 - acc: 0.9786 - val_loss: 0.2303 - val_acc: 0.7344
+Epoch 7/30
+1774/1774 [==============================] - 0s 70us/step - loss: 0.0135 - acc: 0.9837 - val_loss: 0.2275 - val_acc: 0.7344
+Epoch 8/30
+1774/1774 [==============================] - 0s 72us/step - loss: 0.0194 - acc: 0.9769 - val_loss: 0.2225 - val_acc: 0.7344
+Epoch 9/30
+1774/1774 [==============================] - 0s 69us/step - loss: 0.0213 - acc: 0.9741 - val_loss: 0.2339 - val_acc: 0.7344
+Epoch 10/30
+1774/1774 [==============================] - 0s 72us/step - loss: 0.0150 - acc: 0.9803 - val_loss: 0.2201 - val_acc: 0.7500
+Epoch 11/30
+1774/1774 [==============================] - 0s 66us/step - loss: 0.0182 - acc: 0.9752 - val_loss: 0.2316 - val_acc: 0.7344
+Epoch 12/30
+1774/1774 [==============================] - 0s 64us/step - loss: 0.0188 - acc: 0.9746 - val_loss: 0.2178 - val_acc: 0.7500
+Epoch 13/30
+1774/1774 [==============================] - 0s 62us/step - loss: 0.0202 - acc: 0.9752 - val_loss: 0.2201 - val_acc: 0.7344
+Epoch 14/30
+1774/1774 [==============================] - 0s 59us/step - loss: 0.0164 - acc: 0.9808 - val_loss: 0.2119 - val_acc: 0.7578
+Epoch 15/30
+1774/1774 [==============================] - 0s 58us/step - loss: 0.0214 - acc: 0.9707 - val_loss: 0.2154 - val_acc: 0.7344
+Epoch 16/30
+1774/1774 [==============================] - 0s 59us/step - loss: 0.0167 - acc: 0.9797 - val_loss: 0.2219 - val_acc: 0.7344
+Epoch 17/30
+1774/1774 [==============================] - 0s 59us/step - loss: 0.0181 - acc: 0.9775 - val_loss: 0.2343 - val_acc: 0.7266
+Epoch 18/30
+1774/1774 [==============================] - 0s 59us/step - loss: 0.0185 - acc: 0.9791 - val_loss: 0.2281 - val_acc: 0.7344
+Epoch 19/30
+1774/1774 [==============================] - 0s 59us/step - loss: 0.0147 - acc: 0.9842 - val_loss: 0.2228 - val_acc: 0.7422
+Epoch 20/30
+1774/1774 [==============================] - 0s 59us/step - loss: 0.0180 - acc: 0.9780 - val_loss: 0.2275 - val_acc: 0.7266
+Epoch 21/30
+1774/1774 [==============================] - 0s 60us/step - loss: 0.0167 - acc: 0.9803 - val_loss: 0.2300 - val_acc: 0.7266
+Epoch 22/30
+1774/1774 [==============================] - 0s 61us/step - loss: 0.0150 - acc: 0.9825 - val_loss: 0.2307 - val_acc: 0.7266
+Epoch 23/30
+1774/1774 [==============================] - 0s 68us/step - loss: 0.0149 - acc: 0.9803 - val_loss: 0.2289 - val_acc: 0.7266
+Epoch 24/30
+1774/1774 [==============================] - 0s 61us/step - loss: 0.0201 - acc: 0.9741 - val_loss: 0.2232 - val_acc: 0.7344
+Epoch 25/30
+1774/1774 [==============================] - 0s 55us/step - loss: 0.0143 - acc: 0.9837 - val_loss: 0.2349 - val_acc: 0.7266
+Epoch 26/30
+1774/1774 [==============================] - 0s 57us/step - loss: 0.0174 - acc: 0.9791 - val_loss: 0.2248 - val_acc: 0.7344
+Epoch 27/30
+1774/1774 [==============================] - 0s 56us/step - loss: 0.0167 - acc: 0.9808 - val_loss: 0.2256 - val_acc: 0.7422
+Epoch 28/30
+1774/1774 [==============================] - 0s 59us/step - loss: 0.0189 - acc: 0.9769 - val_loss: 0.2360 - val_acc: 0.7266
+Epoch 29/30
+1774/1774 [==============================] - 0s 59us/step - loss: 0.0156 - acc: 0.9808 - val_loss: 0.2325 - val_acc: 0.7266
+Epoch 30/30
+1774/1774 [==============================] - 0s 65us/step - loss: 0.0157 - acc: 0.9808 - val_loss: 0.2276 - val_acc: 0.7266
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445087_epoch22.json
+14 examples added; 6 were correct
+Training threshold remains at 0.022076257812499993
+1788 training examples for iteration 23
+Train on 1788 samples, validate on 128 samples
+Epoch 1/30
+1788/1788 [==============================] - 0s 60us/step - loss: 0.0170 - acc: 0.9793 - val_loss: 0.2279 - val_acc: 0.7422
+Epoch 2/30
+1788/1788 [==============================] - 0s 59us/step - loss: 0.0159 - acc: 0.9804 - val_loss: 0.2255 - val_acc: 0.7422
+Epoch 3/30
+1788/1788 [==============================] - 0s 68us/step - loss: 0.0188 - acc: 0.9732 - val_loss: 0.2162 - val_acc: 0.7422
+Epoch 4/30
+1788/1788 [==============================] - 0s 59us/step - loss: 0.0171 - acc: 0.9804 - val_loss: 0.2242 - val_acc: 0.7344
+Epoch 5/30
+1788/1788 [==============================] - 0s 57us/step - loss: 0.0185 - acc: 0.9754 - val_loss: 0.2215 - val_acc: 0.7578
+Epoch 6/30
+1788/1788 [==============================] - 0s 68us/step - loss: 0.0157 - acc: 0.9804 - val_loss: 0.2234 - val_acc: 0.7500
+Epoch 7/30
+1788/1788 [==============================] - 0s 69us/step - loss: 0.0152 - acc: 0.9782 - val_loss: 0.2254 - val_acc: 0.7344
+Epoch 8/30
+1788/1788 [==============================] - 0s 67us/step - loss: 0.0153 - acc: 0.9810 - val_loss: 0.2356 - val_acc: 0.7266
+Epoch 9/30
+1788/1788 [==============================] - 0s 74us/step - loss: 0.0196 - acc: 0.9760 - val_loss: 0.2344 - val_acc: 0.7266
+Epoch 10/30
+1788/1788 [==============================] - 0s 56us/step - loss: 0.0169 - acc: 0.9793 - val_loss: 0.2366 - val_acc: 0.7266
+Epoch 11/30
+1788/1788 [==============================] - 0s 71us/step - loss: 0.0176 - acc: 0.9787 - val_loss: 0.2379 - val_acc: 0.7266
+Epoch 12/30
+1788/1788 [==============================] - 0s 71us/step - loss: 0.0169 - acc: 0.9782 - val_loss: 0.2315 - val_acc: 0.7266
+Epoch 13/30
+1788/1788 [==============================] - 0s 78us/step - loss: 0.0203 - acc: 0.9760 - val_loss: 0.2166 - val_acc: 0.7422
+Epoch 14/30
+1788/1788 [==============================] - 0s 87us/step - loss: 0.0209 - acc: 0.9748 - val_loss: 0.2274 - val_acc: 0.7266
+Epoch 15/30
+1788/1788 [==============================] - 0s 73us/step - loss: 0.0178 - acc: 0.9782 - val_loss: 0.2260 - val_acc: 0.7422
+Epoch 16/30
+1788/1788 [==============================] - 0s 58us/step - loss: 0.0215 - acc: 0.9709 - val_loss: 0.2134 - val_acc: 0.7500
+Epoch 17/30
+1788/1788 [==============================] - 0s 58us/step - loss: 0.0193 - acc: 0.9748 - val_loss: 0.2313 - val_acc: 0.7266
+Epoch 18/30
+1788/1788 [==============================] - 0s 88us/step - loss: 0.0194 - acc: 0.9748 - val_loss: 0.2320 - val_acc: 0.7266
+Epoch 19/30
+1788/1788 [==============================] - 0s 82us/step - loss: 0.0220 - acc: 0.9732 - val_loss: 0.2131 - val_acc: 0.7500
+Epoch 20/30
+1788/1788 [==============================] - 0s 63us/step - loss: 0.0186 - acc: 0.9754 - val_loss: 0.2237 - val_acc: 0.7266
+Epoch 21/30
+1788/1788 [==============================] - 0s 61us/step - loss: 0.0169 - acc: 0.9815 - val_loss: 0.2279 - val_acc: 0.7266
+Epoch 22/30
+1788/1788 [==============================] - 0s 59us/step - loss: 0.0178 - acc: 0.9776 - val_loss: 0.2267 - val_acc: 0.7266
+Epoch 23/30
+1788/1788 [==============================] - 0s 56us/step - loss: 0.0191 - acc: 0.9793 - val_loss: 0.2177 - val_acc: 0.7500
+Epoch 24/30
+1788/1788 [==============================] - 0s 52us/step - loss: 0.0224 - acc: 0.9704 - val_loss: 0.2353 - val_acc: 0.7266
+Epoch 25/30
+1788/1788 [==============================] - 0s 56us/step - loss: 0.0218 - acc: 0.9704 - val_loss: 0.2177 - val_acc: 0.7500
+Epoch 26/30
+1788/1788 [==============================] - 0s 54us/step - loss: 0.0138 - acc: 0.9855 - val_loss: 0.2207 - val_acc: 0.7500
+Epoch 27/30
+1788/1788 [==============================] - 0s 57us/step - loss: 0.0180 - acc: 0.9760 - val_loss: 0.2204 - val_acc: 0.7500
+Epoch 28/30
+1788/1788 [==============================] - 0s 55us/step - loss: 0.0145 - acc: 0.9838 - val_loss: 0.2313 - val_acc: 0.7344
+Epoch 29/30
+1788/1788 [==============================] - 0s 53us/step - loss: 0.0178 - acc: 0.9771 - val_loss: 0.2234 - val_acc: 0.7500
+Epoch 30/30
+1788/1788 [==============================] - 0s 54us/step - loss: 0.0187 - acc: 0.9776 - val_loss: 0.2330 - val_acc: 0.7266
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445091_epoch23.json
+3 examples added; 3 were correct
+Training threshold remains at 0.022076257812499993
+1791 training examples for iteration 24
+Train on 1791 samples, validate on 128 samples
+Epoch 1/30
+1791/1791 [==============================] - 0s 81us/step - loss: 0.0216 - acc: 0.9698 - val_loss: 0.2309 - val_acc: 0.7266
+Epoch 2/30
+1791/1791 [==============================] - 0s 73us/step - loss: 0.0174 - acc: 0.9771 - val_loss: 0.2307 - val_acc: 0.7266
+Epoch 3/30
+1791/1791 [==============================] - 0s 70us/step - loss: 0.0152 - acc: 0.9832 - val_loss: 0.2347 - val_acc: 0.7188
+Epoch 4/30
+1791/1791 [==============================] - 0s 78us/step - loss: 0.0174 - acc: 0.9782 - val_loss: 0.2220 - val_acc: 0.7422
+Epoch 5/30
+1791/1791 [==============================] - 0s 66us/step - loss: 0.0167 - acc: 0.9805 - val_loss: 0.2147 - val_acc: 0.7500
+Epoch 6/30
+1791/1791 [==============================] - 0s 74us/step - loss: 0.0186 - acc: 0.9743 - val_loss: 0.2203 - val_acc: 0.7500
+Epoch 7/30
+1791/1791 [==============================] - 0s 58us/step - loss: 0.0152 - acc: 0.9799 - val_loss: 0.2300 - val_acc: 0.7266
+Epoch 8/30
+1791/1791 [==============================] - 0s 64us/step - loss: 0.0145 - acc: 0.9821 - val_loss: 0.2387 - val_acc: 0.7266
+Epoch 9/30
+1791/1791 [==============================] - 0s 64us/step - loss: 0.0211 - acc: 0.9732 - val_loss: 0.2270 - val_acc: 0.7344
+Epoch 10/30
+1791/1791 [==============================] - 0s 77us/step - loss: 0.0168 - acc: 0.9765 - val_loss: 0.2368 - val_acc: 0.7266
+Epoch 11/30
+1791/1791 [==============================] - 0s 74us/step - loss: 0.0159 - acc: 0.9810 - val_loss: 0.2269 - val_acc: 0.7422
+Epoch 12/30
+1791/1791 [==============================] - 0s 71us/step - loss: 0.0164 - acc: 0.9799 - val_loss: 0.2305 - val_acc: 0.7266
+Epoch 13/30
+1791/1791 [==============================] - 0s 67us/step - loss: 0.0167 - acc: 0.9805 - val_loss: 0.2250 - val_acc: 0.7422
+Epoch 14/30
+1791/1791 [==============================] - 0s 67us/step - loss: 0.0164 - acc: 0.9788 - val_loss: 0.2241 - val_acc: 0.7422
+Epoch 15/30
+1791/1791 [==============================] - 0s 70us/step - loss: 0.0152 - acc: 0.9821 - val_loss: 0.2290 - val_acc: 0.7266
+Epoch 16/30
+1791/1791 [==============================] - 0s 71us/step - loss: 0.0163 - acc: 0.9782 - val_loss: 0.2330 - val_acc: 0.7266
+Epoch 17/30
+1791/1791 [==============================] - 0s 60us/step - loss: 0.0154 - acc: 0.9799 - val_loss: 0.2319 - val_acc: 0.7266
+Epoch 18/30
+1791/1791 [==============================] - 0s 67us/step - loss: 0.0210 - acc: 0.9743 - val_loss: 0.2241 - val_acc: 0.7422
+Epoch 19/30
+1791/1791 [==============================] - 0s 67us/step - loss: 0.0193 - acc: 0.9760 - val_loss: 0.2226 - val_acc: 0.7422
+Epoch 20/30
+1791/1791 [==============================] - 0s 74us/step - loss: 0.0182 - acc: 0.9760 - val_loss: 0.2250 - val_acc: 0.7422
+Epoch 21/30
+1791/1791 [==============================] - 0s 112us/step - loss: 0.0160 - acc: 0.9793 - val_loss: 0.2320 - val_acc: 0.7266
+Epoch 22/30
+1791/1791 [==============================] - 0s 121us/step - loss: 0.0138 - acc: 0.9849 - val_loss: 0.2314 - val_acc: 0.7266
+Epoch 23/30
+1791/1791 [==============================] - 0s 94us/step - loss: 0.0197 - acc: 0.9726 - val_loss: 0.2273 - val_acc: 0.7344
+Epoch 24/30
+1791/1791 [==============================] - 0s 92us/step - loss: 0.0196 - acc: 0.9760 - val_loss: 0.2249 - val_acc: 0.7422
+Epoch 25/30
+1791/1791 [==============================] - 0s 106us/step - loss: 0.0194 - acc: 0.9743 - val_loss: 0.2354 - val_acc: 0.7188
+Epoch 26/30
+1791/1791 [==============================] - 0s 66us/step - loss: 0.0177 - acc: 0.9788 - val_loss: 0.2431 - val_acc: 0.7266
+Epoch 27/30
+1791/1791 [==============================] - 0s 77us/step - loss: 0.0171 - acc: 0.9771 - val_loss: 0.2369 - val_acc: 0.7266
+Epoch 28/30
+1791/1791 [==============================] - 0s 100us/step - loss: 0.0162 - acc: 0.9788 - val_loss: 0.2350 - val_acc: 0.7344
+Epoch 29/30
+1791/1791 [==============================] - 0s 84us/step - loss: 0.0182 - acc: 0.9782 - val_loss: 0.2261 - val_acc: 0.7266
+Epoch 30/30
+1791/1791 [==============================] - 0s 60us/step - loss: 0.0205 - acc: 0.9726 - val_loss: 0.2322 - val_acc: 0.7344
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445095_epoch24.json
+12 examples added; 8 were correct
+Training threshold remains at 0.022076257812499993
+1803 training examples for iteration 25
+Train on 1803 samples, validate on 128 samples
+Epoch 1/30
+1803/1803 [==============================] - 0s 50us/step - loss: 0.0163 - acc: 0.9817 - val_loss: 0.2288 - val_acc: 0.7188
+Epoch 2/30
+1803/1803 [==============================] - 0s 56us/step - loss: 0.0134 - acc: 0.9823 - val_loss: 0.2289 - val_acc: 0.7266
+Epoch 3/30
+1803/1803 [==============================] - 0s 53us/step - loss: 0.0205 - acc: 0.9739 - val_loss: 0.2411 - val_acc: 0.7266
+Epoch 4/30
+1803/1803 [==============================] - 0s 53us/step - loss: 0.0219 - acc: 0.9728 - val_loss: 0.2293 - val_acc: 0.7266
+Epoch 5/30
+1803/1803 [==============================] - 0s 87us/step - loss: 0.0202 - acc: 0.9728 - val_loss: 0.2286 - val_acc: 0.7266
+Epoch 6/30
+1803/1803 [==============================] - 0s 115us/step - loss: 0.0180 - acc: 0.9767 - val_loss: 0.2364 - val_acc: 0.7344
+Epoch 7/30
+1803/1803 [==============================] - 0s 82us/step - loss: 0.0155 - acc: 0.9795 - val_loss: 0.2393 - val_acc: 0.7344
+Epoch 8/30
+1803/1803 [==============================] - 0s 85us/step - loss: 0.0191 - acc: 0.9745 - val_loss: 0.2343 - val_acc: 0.7344
+Epoch 9/30
+1803/1803 [==============================] - 0s 105us/step - loss: 0.0208 - acc: 0.9717 - val_loss: 0.2334 - val_acc: 0.7344
+Epoch 10/30
+1803/1803 [==============================] - 0s 114us/step - loss: 0.0147 - acc: 0.9823 - val_loss: 0.2427 - val_acc: 0.7266
+Epoch 11/30
+1803/1803 [==============================] - 0s 92us/step - loss: 0.0222 - acc: 0.9734 - val_loss: 0.2444 - val_acc: 0.7266
+Epoch 12/30
+1803/1803 [==============================] - 0s 88us/step - loss: 0.0156 - acc: 0.9839 - val_loss: 0.2436 - val_acc: 0.7266
+Epoch 13/30
+1803/1803 [==============================] - 0s 78us/step - loss: 0.0202 - acc: 0.9734 - val_loss: 0.2326 - val_acc: 0.7266
+Epoch 14/30
+1803/1803 [==============================] - 0s 87us/step - loss: 0.0211 - acc: 0.9734 - val_loss: 0.2352 - val_acc: 0.7188
+Epoch 15/30
+1803/1803 [==============================] - 0s 114us/step - loss: 0.0218 - acc: 0.9728 - val_loss: 0.2284 - val_acc: 0.7266
+Epoch 16/30
+1803/1803 [==============================] - 0s 94us/step - loss: 0.0192 - acc: 0.9750 - val_loss: 0.2298 - val_acc: 0.7266
+Epoch 17/30
+1803/1803 [==============================] - 0s 65us/step - loss: 0.0211 - acc: 0.9745 - val_loss: 0.2386 - val_acc: 0.7188
+Epoch 18/30
+1803/1803 [==============================] - 0s 55us/step - loss: 0.0160 - acc: 0.9817 - val_loss: 0.2274 - val_acc: 0.7344
+Epoch 19/30
+1803/1803 [==============================] - 0s 55us/step - loss: 0.0178 - acc: 0.9767 - val_loss: 0.2397 - val_acc: 0.7188
+Epoch 20/30
+1803/1803 [==============================] - 0s 70us/step - loss: 0.0206 - acc: 0.9717 - val_loss: 0.2335 - val_acc: 0.7188
+Epoch 21/30
+1803/1803 [==============================] - 0s 52us/step - loss: 0.0177 - acc: 0.9784 - val_loss: 0.2321 - val_acc: 0.7266
+Epoch 22/30
+1803/1803 [==============================] - 0s 54us/step - loss: 0.0212 - acc: 0.9728 - val_loss: 0.2356 - val_acc: 0.7188
+Epoch 23/30
+1803/1803 [==============================] - 0s 56us/step - loss: 0.0184 - acc: 0.9762 - val_loss: 0.2297 - val_acc: 0.7266
+Epoch 24/30
+1803/1803 [==============================] - 0s 61us/step - loss: 0.0145 - acc: 0.9817 - val_loss: 0.2348 - val_acc: 0.7344
+Epoch 25/30
+1803/1803 [==============================] - 0s 57us/step - loss: 0.0167 - acc: 0.9811 - val_loss: 0.2357 - val_acc: 0.7266
+Epoch 26/30
+1803/1803 [==============================] - 0s 59us/step - loss: 0.0167 - acc: 0.9806 - val_loss: 0.2349 - val_acc: 0.7266
+Epoch 27/30
+1803/1803 [==============================] - 0s 55us/step - loss: 0.0175 - acc: 0.9778 - val_loss: 0.2287 - val_acc: 0.7344
+Epoch 28/30
+1803/1803 [==============================] - 0s 61us/step - loss: 0.0181 - acc: 0.9767 - val_loss: 0.2304 - val_acc: 0.7188
+Epoch 29/30
+1803/1803 [==============================] - 0s 55us/step - loss: 0.0217 - acc: 0.9717 - val_loss: 0.2345 - val_acc: 0.7344
+Epoch 30/30
+1803/1803 [==============================] - 0s 54us/step - loss: 0.0161 - acc: 0.9828 - val_loss: 0.2378 - val_acc: 0.7266
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445100_epoch25.json
+1 examples added; 0 were correct
+Training threshold remains at 0.022076257812499993
+1804 training examples for iteration 26
+Train on 1804 samples, validate on 128 samples
+Epoch 1/30
+1804/1804 [==============================] - 0s 58us/step - loss: 0.0169 - acc: 0.9789 - val_loss: 0.2394 - val_acc: 0.7266
+Epoch 2/30
+1804/1804 [==============================] - 0s 58us/step - loss: 0.0189 - acc: 0.9767 - val_loss: 0.2335 - val_acc: 0.7266
+Epoch 3/30
+1804/1804 [==============================] - 0s 55us/step - loss: 0.0137 - acc: 0.9823 - val_loss: 0.2239 - val_acc: 0.7422
+Epoch 4/30
+1804/1804 [==============================] - 0s 56us/step - loss: 0.0199 - acc: 0.9751 - val_loss: 0.2358 - val_acc: 0.7266
+Epoch 5/30
+1804/1804 [==============================] - 0s 53us/step - loss: 0.0157 - acc: 0.9800 - val_loss: 0.2387 - val_acc: 0.7266
+Epoch 6/30
+1804/1804 [==============================] - 0s 52us/step - loss: 0.0167 - acc: 0.9795 - val_loss: 0.2380 - val_acc: 0.7266
+Epoch 7/30
+1804/1804 [==============================] - 0s 66us/step - loss: 0.0196 - acc: 0.9728 - val_loss: 0.2388 - val_acc: 0.7266
+Epoch 8/30
+1804/1804 [==============================] - 0s 65us/step - loss: 0.0153 - acc: 0.9817 - val_loss: 0.2375 - val_acc: 0.7266
+Epoch 9/30
+1804/1804 [==============================] - 0s 71us/step - loss: 0.0179 - acc: 0.9789 - val_loss: 0.2489 - val_acc: 0.7109
+Epoch 10/30
+1804/1804 [==============================] - 0s 64us/step - loss: 0.0210 - acc: 0.9756 - val_loss: 0.2382 - val_acc: 0.7188
+Epoch 11/30
+1804/1804 [==============================] - 0s 67us/step - loss: 0.0163 - acc: 0.9800 - val_loss: 0.2325 - val_acc: 0.7188
+Epoch 12/30
+1804/1804 [==============================] - 0s 81us/step - loss: 0.0195 - acc: 0.9745 - val_loss: 0.2429 - val_acc: 0.7188
+Epoch 13/30
+1804/1804 [==============================] - 0s 67us/step - loss: 0.0140 - acc: 0.9812 - val_loss: 0.2430 - val_acc: 0.7188
+Epoch 14/30
+1804/1804 [==============================] - 0s 61us/step - loss: 0.0137 - acc: 0.9823 - val_loss: 0.2327 - val_acc: 0.7188
+Epoch 15/30
+1804/1804 [==============================] - 0s 59us/step - loss: 0.0186 - acc: 0.9778 - val_loss: 0.2351 - val_acc: 0.7188
+Epoch 16/30
+1804/1804 [==============================] - 0s 61us/step - loss: 0.0203 - acc: 0.9762 - val_loss: 0.2394 - val_acc: 0.7188
+Epoch 17/30
+1804/1804 [==============================] - 0s 58us/step - loss: 0.0194 - acc: 0.9762 - val_loss: 0.2283 - val_acc: 0.7266
+Epoch 18/30
+1804/1804 [==============================] - 0s 58us/step - loss: 0.0189 - acc: 0.9767 - val_loss: 0.2456 - val_acc: 0.7188
+Epoch 19/30
+1804/1804 [==============================] - 0s 59us/step - loss: 0.0174 - acc: 0.9812 - val_loss: 0.2430 - val_acc: 0.7188
+Epoch 20/30
+1804/1804 [==============================] - 0s 58us/step - loss: 0.0187 - acc: 0.9751 - val_loss: 0.2362 - val_acc: 0.7266
+Epoch 21/30
+1804/1804 [==============================] - 0s 59us/step - loss: 0.0144 - acc: 0.9828 - val_loss: 0.2433 - val_acc: 0.7188
+Epoch 22/30
+1804/1804 [==============================] - 0s 59us/step - loss: 0.0156 - acc: 0.9812 - val_loss: 0.2350 - val_acc: 0.7188
+Epoch 23/30
+1804/1804 [==============================] - 0s 59us/step - loss: 0.0162 - acc: 0.9800 - val_loss: 0.2407 - val_acc: 0.7188
+Epoch 24/30
+1804/1804 [==============================] - 0s 54us/step - loss: 0.0163 - acc: 0.9773 - val_loss: 0.2351 - val_acc: 0.7266
+Epoch 25/30
+1804/1804 [==============================] - 0s 63us/step - loss: 0.0179 - acc: 0.9778 - val_loss: 0.2307 - val_acc: 0.7266
+Epoch 26/30
+1804/1804 [==============================] - 0s 58us/step - loss: 0.0162 - acc: 0.9812 - val_loss: 0.2349 - val_acc: 0.7188
+Epoch 27/30
+1804/1804 [==============================] - 0s 58us/step - loss: 0.0188 - acc: 0.9756 - val_loss: 0.2345 - val_acc: 0.7266
+Epoch 28/30
+1804/1804 [==============================] - 0s 59us/step - loss: 0.0146 - acc: 0.9817 - val_loss: 0.2333 - val_acc: 0.7266
+Epoch 29/30
+1804/1804 [==============================] - 0s 61us/step - loss: 0.0168 - acc: 0.9800 - val_loss: 0.2361 - val_acc: 0.7266
+Epoch 30/30
+1804/1804 [==============================] - 0s 61us/step - loss: 0.0168 - acc: 0.9789 - val_loss: 0.2382 - val_acc: 0.7266
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445103_epoch26.json
+2 examples added; 0 were correct
+Training threshold remains at 0.022076257812499993
+1806 training examples for iteration 27
+Train on 1806 samples, validate on 128 samples
+Epoch 1/30
+1806/1806 [==============================] - 0s 63us/step - loss: 0.0171 - acc: 0.9779 - val_loss: 0.2344 - val_acc: 0.7266
+Epoch 2/30
+1806/1806 [==============================] - 0s 53us/step - loss: 0.0194 - acc: 0.9745 - val_loss: 0.2348 - val_acc: 0.7266
+Epoch 3/30
+1806/1806 [==============================] - 0s 64us/step - loss: 0.0150 - acc: 0.9817 - val_loss: 0.2297 - val_acc: 0.7344
+Epoch 4/30
+1806/1806 [==============================] - 0s 69us/step - loss: 0.0170 - acc: 0.9795 - val_loss: 0.2448 - val_acc: 0.7266
+Epoch 5/30
+1806/1806 [==============================] - 0s 62us/step - loss: 0.0151 - acc: 0.9790 - val_loss: 0.2430 - val_acc: 0.7266
+Epoch 6/30
+1806/1806 [==============================] - 0s 61us/step - loss: 0.0166 - acc: 0.9779 - val_loss: 0.2393 - val_acc: 0.7109
+Epoch 7/30
+1806/1806 [==============================] - 0s 60us/step - loss: 0.0256 - acc: 0.9657 - val_loss: 0.2339 - val_acc: 0.7266
+Epoch 8/30
+1806/1806 [==============================] - 0s 59us/step - loss: 0.0147 - acc: 0.9806 - val_loss: 0.2443 - val_acc: 0.7266
+Epoch 9/30
+1806/1806 [==============================] - 0s 61us/step - loss: 0.0150 - acc: 0.9812 - val_loss: 0.2320 - val_acc: 0.7422
+Epoch 10/30
+1806/1806 [==============================] - 0s 66us/step - loss: 0.0169 - acc: 0.9790 - val_loss: 0.2398 - val_acc: 0.7266
+Epoch 11/30
+1806/1806 [==============================] - 0s 64us/step - loss: 0.0173 - acc: 0.9784 - val_loss: 0.2433 - val_acc: 0.7266
+Epoch 12/30
+1806/1806 [==============================] - 0s 68us/step - loss: 0.0177 - acc: 0.9767 - val_loss: 0.2383 - val_acc: 0.7266
+Epoch 13/30
+1806/1806 [==============================] - 0s 65us/step - loss: 0.0147 - acc: 0.9806 - val_loss: 0.2445 - val_acc: 0.7344
+Epoch 14/30
+1806/1806 [==============================] - 0s 63us/step - loss: 0.0161 - acc: 0.9784 - val_loss: 0.2405 - val_acc: 0.7266
+Epoch 15/30
+1806/1806 [==============================] - 0s 65us/step - loss: 0.0177 - acc: 0.9784 - val_loss: 0.2452 - val_acc: 0.7266
+Epoch 16/30
+1806/1806 [==============================] - 0s 57us/step - loss: 0.0152 - acc: 0.9790 - val_loss: 0.2339 - val_acc: 0.7266
+Epoch 17/30
+1806/1806 [==============================] - 0s 57us/step - loss: 0.0195 - acc: 0.9767 - val_loss: 0.2376 - val_acc: 0.7344
+Epoch 18/30
+1806/1806 [==============================] - 0s 58us/step - loss: 0.0165 - acc: 0.9779 - val_loss: 0.2414 - val_acc: 0.7266
+Epoch 19/30
+1806/1806 [==============================] - 0s 58us/step - loss: 0.0176 - acc: 0.9767 - val_loss: 0.2505 - val_acc: 0.7188
+Epoch 20/30
+1806/1806 [==============================] - 0s 59us/step - loss: 0.0164 - acc: 0.9779 - val_loss: 0.2350 - val_acc: 0.7188
+Epoch 21/30
+1806/1806 [==============================] - 0s 62us/step - loss: 0.0181 - acc: 0.9784 - val_loss: 0.2490 - val_acc: 0.7266
+Epoch 22/30
+1806/1806 [==============================] - 0s 58us/step - loss: 0.0189 - acc: 0.9751 - val_loss: 0.2472 - val_acc: 0.7188
+Epoch 23/30
+1806/1806 [==============================] - 0s 57us/step - loss: 0.0184 - acc: 0.9784 - val_loss: 0.2464 - val_acc: 0.7266
+Epoch 24/30
+1806/1806 [==============================] - 0s 53us/step - loss: 0.0165 - acc: 0.9795 - val_loss: 0.2482 - val_acc: 0.7188
+Epoch 25/30
+1806/1806 [==============================] - 0s 52us/step - loss: 0.0193 - acc: 0.9790 - val_loss: 0.2453 - val_acc: 0.7188
+Epoch 26/30
+1806/1806 [==============================] - 0s 55us/step - loss: 0.0149 - acc: 0.9817 - val_loss: 0.2349 - val_acc: 0.7266
+Epoch 27/30
+1806/1806 [==============================] - 0s 65us/step - loss: 0.0185 - acc: 0.9773 - val_loss: 0.2393 - val_acc: 0.7188
+Epoch 28/30
+1806/1806 [==============================] - 0s 69us/step - loss: 0.0167 - acc: 0.9801 - val_loss: 0.2544 - val_acc: 0.7188
+Epoch 29/30
+1806/1806 [==============================] - 0s 68us/step - loss: 0.0163 - acc: 0.9790 - val_loss: 0.2498 - val_acc: 0.7188
+Epoch 30/30
+1806/1806 [==============================] - 0s 68us/step - loss: 0.0185 - acc: 0.9745 - val_loss: 0.2528 - val_acc: 0.7188
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445106_epoch27.json
+2 examples added; 1 were correct
+Training threshold remains at 0.022076257812499993
+1808 training examples for iteration 28
+Train on 1808 samples, validate on 128 samples
+Epoch 1/30
+1808/1808 [==============================] - 0s 67us/step - loss: 0.0205 - acc: 0.9746 - val_loss: 0.2463 - val_acc: 0.7266
+Epoch 2/30
+1808/1808 [==============================] - 0s 58us/step - loss: 0.0177 - acc: 0.9779 - val_loss: 0.2423 - val_acc: 0.7266
+Epoch 3/30
+1808/1808 [==============================] - 0s 63us/step - loss: 0.0177 - acc: 0.9790 - val_loss: 0.2460 - val_acc: 0.7266
+Epoch 4/30
+1808/1808 [==============================] - 0s 64us/step - loss: 0.0175 - acc: 0.9790 - val_loss: 0.2350 - val_acc: 0.7188
+Epoch 5/30
+1808/1808 [==============================] - 0s 65us/step - loss: 0.0168 - acc: 0.9768 - val_loss: 0.2426 - val_acc: 0.7188
+Epoch 6/30
+1808/1808 [==============================] - 0s 63us/step - loss: 0.0190 - acc: 0.9773 - val_loss: 0.2351 - val_acc: 0.7188
+Epoch 7/30
+1808/1808 [==============================] - 0s 58us/step - loss: 0.0173 - acc: 0.9790 - val_loss: 0.2438 - val_acc: 0.7266
+Epoch 8/30
+1808/1808 [==============================] - 0s 60us/step - loss: 0.0172 - acc: 0.9768 - val_loss: 0.2363 - val_acc: 0.7188
+Epoch 9/30
+1808/1808 [==============================] - 0s 61us/step - loss: 0.0158 - acc: 0.9801 - val_loss: 0.2467 - val_acc: 0.7266
+Epoch 10/30
+1808/1808 [==============================] - 0s 60us/step - loss: 0.0165 - acc: 0.9795 - val_loss: 0.2435 - val_acc: 0.7344
+Epoch 11/30
+1808/1808 [==============================] - 0s 60us/step - loss: 0.0172 - acc: 0.9773 - val_loss: 0.2434 - val_acc: 0.7266
+Epoch 12/30
+1808/1808 [==============================] - 0s 58us/step - loss: 0.0176 - acc: 0.9773 - val_loss: 0.2409 - val_acc: 0.7344
+Epoch 13/30
+1808/1808 [==============================] - 0s 59us/step - loss: 0.0143 - acc: 0.9812 - val_loss: 0.2493 - val_acc: 0.7266
+Epoch 14/30
+1808/1808 [==============================] - 0s 59us/step - loss: 0.0157 - acc: 0.9790 - val_loss: 0.2477 - val_acc: 0.7266
+Epoch 15/30
+1808/1808 [==============================] - 0s 62us/step - loss: 0.0183 - acc: 0.9768 - val_loss: 0.2411 - val_acc: 0.7266
+Epoch 16/30
+1808/1808 [==============================] - 0s 64us/step - loss: 0.0209 - acc: 0.9735 - val_loss: 0.2337 - val_acc: 0.7266
+Epoch 17/30
+1808/1808 [==============================] - 0s 72us/step - loss: 0.0154 - acc: 0.9812 - val_loss: 0.2405 - val_acc: 0.7188
+Epoch 18/30
+1808/1808 [==============================] - 0s 66us/step - loss: 0.0170 - acc: 0.9784 - val_loss: 0.2434 - val_acc: 0.7266
+Epoch 19/30
+1808/1808 [==============================] - 0s 65us/step - loss: 0.0188 - acc: 0.9740 - val_loss: 0.2312 - val_acc: 0.7188
+Epoch 20/30
+1808/1808 [==============================] - 0s 64us/step - loss: 0.0167 - acc: 0.9773 - val_loss: 0.2334 - val_acc: 0.7109
+Epoch 21/30
+1808/1808 [==============================] - 0s 60us/step - loss: 0.0186 - acc: 0.9779 - val_loss: 0.2395 - val_acc: 0.7188
+Epoch 22/30
+1808/1808 [==============================] - 0s 60us/step - loss: 0.0168 - acc: 0.9784 - val_loss: 0.2383 - val_acc: 0.7188
+Epoch 23/30
+1808/1808 [==============================] - 0s 55us/step - loss: 0.0181 - acc: 0.9773 - val_loss: 0.2371 - val_acc: 0.7109
+Epoch 24/30
+1808/1808 [==============================] - 0s 58us/step - loss: 0.0158 - acc: 0.9801 - val_loss: 0.2417 - val_acc: 0.7266
+Epoch 25/30
+1808/1808 [==============================] - 0s 62us/step - loss: 0.0204 - acc: 0.9751 - val_loss: 0.2407 - val_acc: 0.7109
+Epoch 26/30
+1808/1808 [==============================] - 0s 65us/step - loss: 0.0198 - acc: 0.9773 - val_loss: 0.2483 - val_acc: 0.7109
+Epoch 27/30
+1808/1808 [==============================] - 0s 68us/step - loss: 0.0174 - acc: 0.9790 - val_loss: 0.2504 - val_acc: 0.7188
+Epoch 28/30
+1808/1808 [==============================] - 0s 64us/step - loss: 0.0183 - acc: 0.9773 - val_loss: 0.2373 - val_acc: 0.7266
+Epoch 29/30
+1808/1808 [==============================] - 0s 61us/step - loss: 0.0155 - acc: 0.9806 - val_loss: 0.2318 - val_acc: 0.7188
+Epoch 30/30
+1808/1808 [==============================] - 0s 57us/step - loss: 0.0160 - acc: 0.9801 - val_loss: 0.2394 - val_acc: 0.7109
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445110_epoch28.json
+1 examples added; 0 were correct
+Training threshold remains at 0.022076257812499993
+1809 training examples for iteration 29
+Train on 1809 samples, validate on 128 samples
+Epoch 1/30
+1809/1809 [==============================] - 0s 60us/step - loss: 0.0161 - acc: 0.9807 - val_loss: 0.2358 - val_acc: 0.7188
+Epoch 2/30
+1809/1809 [==============================] - 0s 70us/step - loss: 0.0143 - acc: 0.9823 - val_loss: 0.2322 - val_acc: 0.7188
+Epoch 3/30
+1809/1809 [==============================] - 0s 71us/step - loss: 0.0140 - acc: 0.9823 - val_loss: 0.2310 - val_acc: 0.7188
+Epoch 4/30
+1809/1809 [==============================] - 0s 64us/step - loss: 0.0139 - acc: 0.9840 - val_loss: 0.2395 - val_acc: 0.7188
+Epoch 5/30
+1809/1809 [==============================] - 0s 57us/step - loss: 0.0190 - acc: 0.9740 - val_loss: 0.2419 - val_acc: 0.7188
+Epoch 6/30
+1809/1809 [==============================] - 0s 59us/step - loss: 0.0187 - acc: 0.9779 - val_loss: 0.2408 - val_acc: 0.7188
+Epoch 7/30
+1809/1809 [==============================] - 0s 61us/step - loss: 0.0222 - acc: 0.9696 - val_loss: 0.2348 - val_acc: 0.7266
+Epoch 8/30
+1809/1809 [==============================] - 0s 60us/step - loss: 0.0178 - acc: 0.9784 - val_loss: 0.2286 - val_acc: 0.7266
+Epoch 9/30
+1809/1809 [==============================] - 0s 59us/step - loss: 0.0151 - acc: 0.9818 - val_loss: 0.2277 - val_acc: 0.7266
+Epoch 10/30
+1809/1809 [==============================] - 0s 58us/step - loss: 0.0145 - acc: 0.9851 - val_loss: 0.2301 - val_acc: 0.7188
+Epoch 11/30
+1809/1809 [==============================] - 0s 59us/step - loss: 0.0184 - acc: 0.9768 - val_loss: 0.2258 - val_acc: 0.7344
+Epoch 12/30
+1809/1809 [==============================] - 0s 57us/step - loss: 0.0144 - acc: 0.9818 - val_loss: 0.2351 - val_acc: 0.7344
+Epoch 13/30
+1809/1809 [==============================] - 0s 53us/step - loss: 0.0206 - acc: 0.9751 - val_loss: 0.2282 - val_acc: 0.7266
+Epoch 14/30
+1809/1809 [==============================] - 0s 53us/step - loss: 0.0193 - acc: 0.9768 - val_loss: 0.2193 - val_acc: 0.7266
+Epoch 15/30
+1809/1809 [==============================] - 0s 56us/step - loss: 0.0169 - acc: 0.9784 - val_loss: 0.2286 - val_acc: 0.7344
+Epoch 16/30
+1809/1809 [==============================] - 0s 57us/step - loss: 0.0133 - acc: 0.9823 - val_loss: 0.2287 - val_acc: 0.7266
+Epoch 17/30
+1809/1809 [==============================] - 0s 58us/step - loss: 0.0176 - acc: 0.9790 - val_loss: 0.2280 - val_acc: 0.7266
+Epoch 18/30
+1809/1809 [==============================] - 0s 62us/step - loss: 0.0153 - acc: 0.9795 - val_loss: 0.2292 - val_acc: 0.7266
+Epoch 19/30
+1809/1809 [==============================] - 0s 61us/step - loss: 0.0159 - acc: 0.9784 - val_loss: 0.2324 - val_acc: 0.7266
+Epoch 20/30
+1809/1809 [==============================] - 0s 55us/step - loss: 0.0145 - acc: 0.9834 - val_loss: 0.2335 - val_acc: 0.7266
+Epoch 21/30
+1809/1809 [==============================] - 0s 56us/step - loss: 0.0173 - acc: 0.9784 - val_loss: 0.2334 - val_acc: 0.7266
+Epoch 22/30
+1809/1809 [==============================] - 0s 55us/step - loss: 0.0156 - acc: 0.9812 - val_loss: 0.2394 - val_acc: 0.7344
+Epoch 23/30
+1809/1809 [==============================] - 0s 55us/step - loss: 0.0159 - acc: 0.9795 - val_loss: 0.2341 - val_acc: 0.7188
+Epoch 24/30
+1809/1809 [==============================] - 0s 57us/step - loss: 0.0174 - acc: 0.9801 - val_loss: 0.2380 - val_acc: 0.7266
+Epoch 25/30
+1809/1809 [==============================] - 0s 61us/step - loss: 0.0157 - acc: 0.9779 - val_loss: 0.2359 - val_acc: 0.7344
+Epoch 26/30
+1809/1809 [==============================] - 0s 71us/step - loss: 0.0160 - acc: 0.9801 - val_loss: 0.2389 - val_acc: 0.7188
+Epoch 27/30
+1809/1809 [==============================] - 0s 65us/step - loss: 0.0187 - acc: 0.9740 - val_loss: 0.2370 - val_acc: 0.7266
+Epoch 28/30
+1809/1809 [==============================] - 0s 59us/step - loss: 0.0156 - acc: 0.9812 - val_loss: 0.2314 - val_acc: 0.7188
+Epoch 29/30
+1809/1809 [==============================] - 0s 58us/step - loss: 0.0161 - acc: 0.9807 - val_loss: 0.2347 - val_acc: 0.7188
+Epoch 30/30
+1809/1809 [==============================] - 0s 57us/step - loss: 0.0162 - acc: 0.9812 - val_loss: 0.2411 - val_acc: 0.7266
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445113_epoch29.json
+0 examples added; 0 were correct
+Training threshold increased to 0.02262816425781249
+1809 training examples for iteration 30
+Train on 1809 samples, validate on 128 samples
+Epoch 1/30
+1809/1809 [==============================] - 0s 63us/step - loss: 0.0185 - acc: 0.9740 - val_loss: 0.2341 - val_acc: 0.7188
+Epoch 2/30
+1809/1809 [==============================] - 0s 61us/step - loss: 0.0156 - acc: 0.9801 - val_loss: 0.2376 - val_acc: 0.7188
+Epoch 3/30
+1809/1809 [==============================] - 0s 62us/step - loss: 0.0176 - acc: 0.9773 - val_loss: 0.2280 - val_acc: 0.7188
+Epoch 4/30
+1809/1809 [==============================] - 0s 59us/step - loss: 0.0193 - acc: 0.9757 - val_loss: 0.2254 - val_acc: 0.7266
+Epoch 5/30
+1809/1809 [==============================] - 0s 61us/step - loss: 0.0151 - acc: 0.9823 - val_loss: 0.2322 - val_acc: 0.7344
+Epoch 6/30
+1809/1809 [==============================] - 0s 60us/step - loss: 0.0166 - acc: 0.9779 - val_loss: 0.2337 - val_acc: 0.7344
+Epoch 7/30
+1809/1809 [==============================] - 0s 58us/step - loss: 0.0187 - acc: 0.9751 - val_loss: 0.2245 - val_acc: 0.7266
+Epoch 8/30
+1809/1809 [==============================] - 0s 61us/step - loss: 0.0184 - acc: 0.9751 - val_loss: 0.2341 - val_acc: 0.7344
+Epoch 9/30
+1809/1809 [==============================] - 0s 59us/step - loss: 0.0156 - acc: 0.9818 - val_loss: 0.2356 - val_acc: 0.7344
+Epoch 10/30
+1809/1809 [==============================] - 0s 56us/step - loss: 0.0175 - acc: 0.9790 - val_loss: 0.2404 - val_acc: 0.7188
+Epoch 11/30
+1809/1809 [==============================] - 0s 57us/step - loss: 0.0161 - acc: 0.9790 - val_loss: 0.2358 - val_acc: 0.7266
+Epoch 12/30
+1809/1809 [==============================] - 0s 57us/step - loss: 0.0160 - acc: 0.9818 - val_loss: 0.2428 - val_acc: 0.7266
+Epoch 13/30
+1809/1809 [==============================] - 0s 60us/step - loss: 0.0162 - acc: 0.9795 - val_loss: 0.2403 - val_acc: 0.7266
+Epoch 14/30
+1809/1809 [==============================] - 0s 57us/step - loss: 0.0125 - acc: 0.9867 - val_loss: 0.2423 - val_acc: 0.7109
+Epoch 15/30
+1809/1809 [==============================] - 0s 59us/step - loss: 0.0145 - acc: 0.9823 - val_loss: 0.2452 - val_acc: 0.7188
+Epoch 16/30
+1809/1809 [==============================] - 0s 55us/step - loss: 0.0130 - acc: 0.9845 - val_loss: 0.2383 - val_acc: 0.7266
+Epoch 17/30
+1809/1809 [==============================] - 0s 55us/step - loss: 0.0161 - acc: 0.9818 - val_loss: 0.2443 - val_acc: 0.7344
+Epoch 18/30
+1809/1809 [==============================] - 0s 56us/step - loss: 0.0215 - acc: 0.9713 - val_loss: 0.2366 - val_acc: 0.7188
+Epoch 19/30
+1809/1809 [==============================] - 0s 60us/step - loss: 0.0204 - acc: 0.9746 - val_loss: 0.2316 - val_acc: 0.7188
+Epoch 20/30
+1809/1809 [==============================] - 0s 61us/step - loss: 0.0196 - acc: 0.9779 - val_loss: 0.2393 - val_acc: 0.7344
+Epoch 21/30
+1809/1809 [==============================] - 0s 61us/step - loss: 0.0166 - acc: 0.9807 - val_loss: 0.2441 - val_acc: 0.7266
+Epoch 22/30
+1809/1809 [==============================] - 0s 58us/step - loss: 0.0195 - acc: 0.9757 - val_loss: 0.2378 - val_acc: 0.7188
+Epoch 23/30
+1809/1809 [==============================] - 0s 57us/step - loss: 0.0210 - acc: 0.9746 - val_loss: 0.2348 - val_acc: 0.7266
+Epoch 24/30
+1809/1809 [==============================] - 0s 61us/step - loss: 0.0161 - acc: 0.9801 - val_loss: 0.2393 - val_acc: 0.7266
+Epoch 25/30
+1809/1809 [==============================] - 0s 61us/step - loss: 0.0164 - acc: 0.9784 - val_loss: 0.2367 - val_acc: 0.7266
+Epoch 26/30
+1809/1809 [==============================] - 0s 63us/step - loss: 0.0142 - acc: 0.9829 - val_loss: 0.2295 - val_acc: 0.7266
+Epoch 27/30
+1809/1809 [==============================] - 0s 61us/step - loss: 0.0177 - acc: 0.9790 - val_loss: 0.2368 - val_acc: 0.7266
+Epoch 28/30
+1809/1809 [==============================] - 0s 59us/step - loss: 0.0162 - acc: 0.9784 - val_loss: 0.2278 - val_acc: 0.7266
+Epoch 29/30
+1809/1809 [==============================] - 0s 60us/step - loss: 0.0169 - acc: 0.9784 - val_loss: 0.2364 - val_acc: 0.7266
+Epoch 30/30
+1809/1809 [==============================] - 0s 58us/step - loss: 0.0197 - acc: 0.9768 - val_loss: 0.2352 - val_acc: 0.7266
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445117_epoch30.json
+0 examples added; 0 were correct
+Training threshold increased to 0.0231938683642578
+1809 training examples for iteration 31
+Train on 1809 samples, validate on 128 samples
+Epoch 1/30
+1809/1809 [==============================] - 0s 70us/step - loss: 0.0137 - acc: 0.9807 - val_loss: 0.2377 - val_acc: 0.7188
+Epoch 2/30
+1809/1809 [==============================] - 0s 60us/step - loss: 0.0184 - acc: 0.9779 - val_loss: 0.2384 - val_acc: 0.7188
+Epoch 3/30
+1809/1809 [==============================] - 0s 57us/step - loss: 0.0191 - acc: 0.9746 - val_loss: 0.2412 - val_acc: 0.7188
+Epoch 4/30
+1809/1809 [==============================] - 0s 58us/step - loss: 0.0169 - acc: 0.9818 - val_loss: 0.2430 - val_acc: 0.7266
+Epoch 5/30
+1809/1809 [==============================] - 0s 58us/step - loss: 0.0197 - acc: 0.9735 - val_loss: 0.2380 - val_acc: 0.7266
+Epoch 6/30
+1809/1809 [==============================] - 0s 58us/step - loss: 0.0215 - acc: 0.9724 - val_loss: 0.2287 - val_acc: 0.7266
+Epoch 7/30
+1809/1809 [==============================] - 0s 63us/step - loss: 0.0138 - acc: 0.9823 - val_loss: 0.2252 - val_acc: 0.7266
+Epoch 8/30
+1809/1809 [==============================] - 0s 63us/step - loss: 0.0167 - acc: 0.9790 - val_loss: 0.2412 - val_acc: 0.7266
+Epoch 9/30
+1809/1809 [==============================] - 0s 64us/step - loss: 0.0141 - acc: 0.9834 - val_loss: 0.2371 - val_acc: 0.7344
+Epoch 10/30
+1809/1809 [==============================] - 0s 67us/step - loss: 0.0149 - acc: 0.9834 - val_loss: 0.2287 - val_acc: 0.7344
+Epoch 11/30
+1809/1809 [==============================] - 0s 56us/step - loss: 0.0176 - acc: 0.9768 - val_loss: 0.2215 - val_acc: 0.7500
+Epoch 12/30
+1809/1809 [==============================] - 0s 58us/step - loss: 0.0155 - acc: 0.9812 - val_loss: 0.2351 - val_acc: 0.7344
+Epoch 13/30
+1809/1809 [==============================] - 0s 58us/step - loss: 0.0154 - acc: 0.9812 - val_loss: 0.2403 - val_acc: 0.7188
+Epoch 14/30
+1809/1809 [==============================] - 0s 56us/step - loss: 0.0151 - acc: 0.9807 - val_loss: 0.2314 - val_acc: 0.7266
+Epoch 15/30
+1809/1809 [==============================] - 0s 57us/step - loss: 0.0158 - acc: 0.9795 - val_loss: 0.2341 - val_acc: 0.7266
+Epoch 16/30
+1809/1809 [==============================] - 0s 59us/step - loss: 0.0159 - acc: 0.9790 - val_loss: 0.2178 - val_acc: 0.7422
+Epoch 17/30
+1809/1809 [==============================] - 0s 69us/step - loss: 0.0148 - acc: 0.9823 - val_loss: 0.2315 - val_acc: 0.7266
+Epoch 18/30
+1809/1809 [==============================] - 0s 70us/step - loss: 0.0213 - acc: 0.9713 - val_loss: 0.2205 - val_acc: 0.7344
+Epoch 19/30
+1809/1809 [==============================] - 0s 68us/step - loss: 0.0158 - acc: 0.9812 - val_loss: 0.2384 - val_acc: 0.7188
+Epoch 20/30
+1809/1809 [==============================] - 0s 61us/step - loss: 0.0162 - acc: 0.9795 - val_loss: 0.2382 - val_acc: 0.7188
+Epoch 21/30
+1809/1809 [==============================] - 0s 67us/step - loss: 0.0145 - acc: 0.9812 - val_loss: 0.2290 - val_acc: 0.7266
+Epoch 22/30
+1809/1809 [==============================] - 0s 60us/step - loss: 0.0163 - acc: 0.9807 - val_loss: 0.2363 - val_acc: 0.7266
+Epoch 23/30
+1809/1809 [==============================] - 0s 62us/step - loss: 0.0170 - acc: 0.9768 - val_loss: 0.2277 - val_acc: 0.7266
+Epoch 24/30
+1809/1809 [==============================] - 0s 62us/step - loss: 0.0188 - acc: 0.9751 - val_loss: 0.2300 - val_acc: 0.7266
+Epoch 25/30
+1809/1809 [==============================] - 0s 66us/step - loss: 0.0116 - acc: 0.9851 - val_loss: 0.2396 - val_acc: 0.7266
+Epoch 26/30
+1809/1809 [==============================] - 0s 64us/step - loss: 0.0204 - acc: 0.9729 - val_loss: 0.2312 - val_acc: 0.7266
+Epoch 27/30
+1809/1809 [==============================] - 0s 69us/step - loss: 0.0150 - acc: 0.9812 - val_loss: 0.2343 - val_acc: 0.7266
+Epoch 28/30
+1809/1809 [==============================] - 0s 75us/step - loss: 0.0186 - acc: 0.9773 - val_loss: 0.2319 - val_acc: 0.7266
+Epoch 29/30
+1809/1809 [==============================] - 0s 75us/step - loss: 0.0156 - acc: 0.9807 - val_loss: 0.2423 - val_acc: 0.7266
+Epoch 30/30
+1809/1809 [==============================] - 0s 72us/step - loss: 0.0209 - acc: 0.9740 - val_loss: 0.2367 - val_acc: 0.7266
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445120_epoch31.json
+2 examples added; 1 were correct
+Training threshold remains at 0.0231938683642578
+1811 training examples for iteration 32
+Train on 1811 samples, validate on 128 samples
+Epoch 1/30
+1811/1811 [==============================] - 0s 75us/step - loss: 0.0143 - acc: 0.9834 - val_loss: 0.2370 - val_acc: 0.7266
+Epoch 2/30
+1811/1811 [==============================] - 0s 79us/step - loss: 0.0158 - acc: 0.9796 - val_loss: 0.2371 - val_acc: 0.7266
+Epoch 3/30
+1811/1811 [==============================] - 0s 68us/step - loss: 0.0144 - acc: 0.9829 - val_loss: 0.2354 - val_acc: 0.7266
+Epoch 4/30
+1811/1811 [==============================] - 0s 56us/step - loss: 0.0139 - acc: 0.9845 - val_loss: 0.2422 - val_acc: 0.7188
+Epoch 5/30
+1811/1811 [==============================] - 0s 55us/step - loss: 0.0155 - acc: 0.9818 - val_loss: 0.2311 - val_acc: 0.7188
+Epoch 6/30
+1811/1811 [==============================] - 0s 55us/step - loss: 0.0130 - acc: 0.9840 - val_loss: 0.2364 - val_acc: 0.7266
+Epoch 7/30
+1811/1811 [==============================] - 0s 57us/step - loss: 0.0168 - acc: 0.9763 - val_loss: 0.2231 - val_acc: 0.7344
+Epoch 8/30
+1811/1811 [==============================] - 0s 60us/step - loss: 0.0188 - acc: 0.9779 - val_loss: 0.2301 - val_acc: 0.7266
+Epoch 9/30
+1811/1811 [==============================] - 0s 59us/step - loss: 0.0133 - acc: 0.9840 - val_loss: 0.2406 - val_acc: 0.7266
+Epoch 10/30
+1811/1811 [==============================] - 0s 56us/step - loss: 0.0166 - acc: 0.9801 - val_loss: 0.2336 - val_acc: 0.7188
+Epoch 11/30
+1811/1811 [==============================] - 0s 57us/step - loss: 0.0156 - acc: 0.9818 - val_loss: 0.2454 - val_acc: 0.7266
+Epoch 12/30
+1811/1811 [==============================] - 0s 64us/step - loss: 0.0213 - acc: 0.9724 - val_loss: 0.2161 - val_acc: 0.7500
+Epoch 13/30
+1811/1811 [==============================] - 0s 53us/step - loss: 0.0180 - acc: 0.9785 - val_loss: 0.2375 - val_acc: 0.7266
+Epoch 14/30
+1811/1811 [==============================] - 0s 55us/step - loss: 0.0137 - acc: 0.9834 - val_loss: 0.2367 - val_acc: 0.7266
+Epoch 15/30
+1811/1811 [==============================] - 0s 56us/step - loss: 0.0144 - acc: 0.9829 - val_loss: 0.2395 - val_acc: 0.7344
+Epoch 16/30
+1811/1811 [==============================] - 0s 64us/step - loss: 0.0178 - acc: 0.9774 - val_loss: 0.2352 - val_acc: 0.7266
+Epoch 17/30
+1811/1811 [==============================] - 0s 70us/step - loss: 0.0141 - acc: 0.9840 - val_loss: 0.2393 - val_acc: 0.7266
+Epoch 18/30
+1811/1811 [==============================] - 0s 70us/step - loss: 0.0182 - acc: 0.9763 - val_loss: 0.2320 - val_acc: 0.7266
+Epoch 19/30
+1811/1811 [==============================] - 0s 66us/step - loss: 0.0146 - acc: 0.9812 - val_loss: 0.2388 - val_acc: 0.7266
+Epoch 20/30
+1811/1811 [==============================] - 0s 67us/step - loss: 0.0214 - acc: 0.9735 - val_loss: 0.2204 - val_acc: 0.7266
+Epoch 21/30
+1811/1811 [==============================] - 0s 64us/step - loss: 0.0184 - acc: 0.9757 - val_loss: 0.2389 - val_acc: 0.7188
+Epoch 22/30
+1811/1811 [==============================] - 0s 55us/step - loss: 0.0193 - acc: 0.9752 - val_loss: 0.2337 - val_acc: 0.7188
+Epoch 23/30
+1811/1811 [==============================] - 0s 56us/step - loss: 0.0180 - acc: 0.9801 - val_loss: 0.2357 - val_acc: 0.7188
+Epoch 24/30
+1811/1811 [==============================] - 0s 57us/step - loss: 0.0126 - acc: 0.9845 - val_loss: 0.2367 - val_acc: 0.7188
+Epoch 25/30
+1811/1811 [==============================] - 0s 63us/step - loss: 0.0180 - acc: 0.9785 - val_loss: 0.2302 - val_acc: 0.7344
+Epoch 26/30
+1811/1811 [==============================] - 0s 63us/step - loss: 0.0159 - acc: 0.9807 - val_loss: 0.2320 - val_acc: 0.7188
+Epoch 27/30
+1811/1811 [==============================] - 0s 57us/step - loss: 0.0152 - acc: 0.9785 - val_loss: 0.2302 - val_acc: 0.7188
+Epoch 28/30
+1811/1811 [==============================] - 0s 60us/step - loss: 0.0158 - acc: 0.9818 - val_loss: 0.2435 - val_acc: 0.7344
+Epoch 29/30
+1811/1811 [==============================] - 0s 71us/step - loss: 0.0150 - acc: 0.9807 - val_loss: 0.2409 - val_acc: 0.7188
+Epoch 30/30
+1811/1811 [==============================] - 0s 66us/step - loss: 0.0175 - acc: 0.9790 - val_loss: 0.2382 - val_acc: 0.7188
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445124_epoch32.json
+3 examples added; 0 were correct
+Training threshold remains at 0.0231938683642578
+1814 training examples for iteration 33
+Train on 1814 samples, validate on 128 samples
+Epoch 1/30
+1814/1814 [==============================] - 0s 68us/step - loss: 0.0181 - acc: 0.9796 - val_loss: 0.2322 - val_acc: 0.7188
+Epoch 2/30
+1814/1814 [==============================] - 0s 66us/step - loss: 0.0166 - acc: 0.9802 - val_loss: 0.2367 - val_acc: 0.7266
+Epoch 3/30
+1814/1814 [==============================] - 0s 72us/step - loss: 0.0132 - acc: 0.9829 - val_loss: 0.2422 - val_acc: 0.7188
+Epoch 4/30
+1814/1814 [==============================] - 0s 68us/step - loss: 0.0217 - acc: 0.9730 - val_loss: 0.2473 - val_acc: 0.7266
+Epoch 5/30
+1814/1814 [==============================] - 0s 66us/step - loss: 0.0170 - acc: 0.9779 - val_loss: 0.2388 - val_acc: 0.7109
+Epoch 6/30
+1814/1814 [==============================] - 0s 76us/step - loss: 0.0198 - acc: 0.9741 - val_loss: 0.2442 - val_acc: 0.7188
+Epoch 7/30
+1814/1814 [==============================] - 0s 69us/step - loss: 0.0140 - acc: 0.9846 - val_loss: 0.2365 - val_acc: 0.7266
+Epoch 8/30
+1814/1814 [==============================] - 0s 61us/step - loss: 0.0160 - acc: 0.9791 - val_loss: 0.2374 - val_acc: 0.7266
+Epoch 9/30
+1814/1814 [==============================] - 0s 61us/step - loss: 0.0143 - acc: 0.9796 - val_loss: 0.2451 - val_acc: 0.7266
+Epoch 10/30
+1814/1814 [==============================] - 0s 74us/step - loss: 0.0159 - acc: 0.9813 - val_loss: 0.2345 - val_acc: 0.7266
+Epoch 11/30
+1814/1814 [==============================] - 0s 72us/step - loss: 0.0167 - acc: 0.9807 - val_loss: 0.2350 - val_acc: 0.7266
+Epoch 12/30
+1814/1814 [==============================] - 0s 59us/step - loss: 0.0165 - acc: 0.9796 - val_loss: 0.2356 - val_acc: 0.7344
+Epoch 13/30
+1814/1814 [==============================] - 0s 56us/step - loss: 0.0193 - acc: 0.9768 - val_loss: 0.2330 - val_acc: 0.7109
+Epoch 14/30
+1814/1814 [==============================] - 0s 58us/step - loss: 0.0166 - acc: 0.9779 - val_loss: 0.2453 - val_acc: 0.7188
+Epoch 15/30
+1814/1814 [==============================] - 0s 56us/step - loss: 0.0189 - acc: 0.9774 - val_loss: 0.2522 - val_acc: 0.7266
+Epoch 16/30
+1814/1814 [==============================] - 0s 59us/step - loss: 0.0154 - acc: 0.9802 - val_loss: 0.2444 - val_acc: 0.7109
+Epoch 17/30
+1814/1814 [==============================] - 0s 58us/step - loss: 0.0167 - acc: 0.9818 - val_loss: 0.2427 - val_acc: 0.7188
+Epoch 18/30
+1814/1814 [==============================] - 0s 57us/step - loss: 0.0182 - acc: 0.9757 - val_loss: 0.2339 - val_acc: 0.7188
+Epoch 19/30
+1814/1814 [==============================] - 0s 56us/step - loss: 0.0179 - acc: 0.9785 - val_loss: 0.2349 - val_acc: 0.7188
+Epoch 20/30
+1814/1814 [==============================] - 0s 55us/step - loss: 0.0179 - acc: 0.9757 - val_loss: 0.2412 - val_acc: 0.7188
+Epoch 21/30
+1814/1814 [==============================] - 0s 54us/step - loss: 0.0164 - acc: 0.9791 - val_loss: 0.2462 - val_acc: 0.7188
+Epoch 22/30
+1814/1814 [==============================] - 0s 55us/step - loss: 0.0173 - acc: 0.9774 - val_loss: 0.2458 - val_acc: 0.7188
+Epoch 23/30
+1814/1814 [==============================] - 0s 57us/step - loss: 0.0173 - acc: 0.9763 - val_loss: 0.2491 - val_acc: 0.7109
+Epoch 24/30
+1814/1814 [==============================] - 0s 56us/step - loss: 0.0156 - acc: 0.9807 - val_loss: 0.2455 - val_acc: 0.7188
+Epoch 25/30
+1814/1814 [==============================] - 0s 56us/step - loss: 0.0171 - acc: 0.9791 - val_loss: 0.2383 - val_acc: 0.7109
+Epoch 26/30
+1814/1814 [==============================] - 0s 57us/step - loss: 0.0156 - acc: 0.9779 - val_loss: 0.2500 - val_acc: 0.7188
+Epoch 27/30
+1814/1814 [==============================] - 0s 56us/step - loss: 0.0176 - acc: 0.9768 - val_loss: 0.2469 - val_acc: 0.7109
+Epoch 28/30
+1814/1814 [==============================] - 0s 56us/step - loss: 0.0174 - acc: 0.9796 - val_loss: 0.2539 - val_acc: 0.7109
+Epoch 29/30
+1814/1814 [==============================] - 0s 56us/step - loss: 0.0146 - acc: 0.9829 - val_loss: 0.2443 - val_acc: 0.7188
+Epoch 30/30
+1814/1814 [==============================] - 0s 55us/step - loss: 0.0210 - acc: 0.9730 - val_loss: 0.2415 - val_acc: 0.7109
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445128_epoch33.json
+2 examples added; 1 were correct
+Training threshold remains at 0.0231938683642578
+1816 training examples for iteration 34
+Train on 1816 samples, validate on 128 samples
+Epoch 1/30
+1816/1816 [==============================] - 0s 63us/step - loss: 0.0180 - acc: 0.9774 - val_loss: 0.2404 - val_acc: 0.7188
+Epoch 2/30
+1816/1816 [==============================] - 0s 54us/step - loss: 0.0185 - acc: 0.9763 - val_loss: 0.2399 - val_acc: 0.7188
+Epoch 3/30
+1816/1816 [==============================] - 0s 54us/step - loss: 0.0218 - acc: 0.9730 - val_loss: 0.2416 - val_acc: 0.7188
+Epoch 4/30
+1816/1816 [==============================] - 0s 54us/step - loss: 0.0154 - acc: 0.9829 - val_loss: 0.2518 - val_acc: 0.7109
+Epoch 5/30
+1816/1816 [==============================] - 0s 59us/step - loss: 0.0161 - acc: 0.9791 - val_loss: 0.2474 - val_acc: 0.7109
+Epoch 6/30
+1816/1816 [==============================] - 0s 73us/step - loss: 0.0162 - acc: 0.9802 - val_loss: 0.2468 - val_acc: 0.7109
+Epoch 7/30
+1816/1816 [==============================] - 0s 73us/step - loss: 0.0171 - acc: 0.9796 - val_loss: 0.2430 - val_acc: 0.7109
+Epoch 8/30
+1816/1816 [==============================] - 0s 69us/step - loss: 0.0153 - acc: 0.9818 - val_loss: 0.2503 - val_acc: 0.7031
+Epoch 9/30
+1816/1816 [==============================] - 0s 69us/step - loss: 0.0184 - acc: 0.9780 - val_loss: 0.2451 - val_acc: 0.7266
+Epoch 10/30
+1816/1816 [==============================] - 0s 68us/step - loss: 0.0192 - acc: 0.9763 - val_loss: 0.2415 - val_acc: 0.7109
+Epoch 11/30
+1816/1816 [==============================] - 0s 62us/step - loss: 0.0192 - acc: 0.9774 - val_loss: 0.2454 - val_acc: 0.7109
+Epoch 12/30
+1816/1816 [==============================] - 0s 63us/step - loss: 0.0196 - acc: 0.9747 - val_loss: 0.2486 - val_acc: 0.7109
+Epoch 13/30
+1816/1816 [==============================] - 0s 66us/step - loss: 0.0149 - acc: 0.9835 - val_loss: 0.2398 - val_acc: 0.7109
+Epoch 14/30
+1816/1816 [==============================] - 0s 60us/step - loss: 0.0185 - acc: 0.9780 - val_loss: 0.2444 - val_acc: 0.7188
+Epoch 15/30
+1816/1816 [==============================] - 0s 61us/step - loss: 0.0146 - acc: 0.9813 - val_loss: 0.2355 - val_acc: 0.7109
+Epoch 16/30
+1816/1816 [==============================] - 0s 60us/step - loss: 0.0210 - acc: 0.9714 - val_loss: 0.2292 - val_acc: 0.7109
+Epoch 17/30
+1816/1816 [==============================] - 0s 60us/step - loss: 0.0184 - acc: 0.9730 - val_loss: 0.2410 - val_acc: 0.7109
+Epoch 18/30
+1816/1816 [==============================] - 0s 64us/step - loss: 0.0171 - acc: 0.9769 - val_loss: 0.2483 - val_acc: 0.7109
+Epoch 19/30
+1816/1816 [==============================] - 0s 60us/step - loss: 0.0141 - acc: 0.9835 - val_loss: 0.2462 - val_acc: 0.7188
+Epoch 20/30
+1816/1816 [==============================] - 0s 64us/step - loss: 0.0162 - acc: 0.9791 - val_loss: 0.2486 - val_acc: 0.7109
+Epoch 21/30
+1816/1816 [==============================] - 0s 60us/step - loss: 0.0183 - acc: 0.9769 - val_loss: 0.2454 - val_acc: 0.7109
+Epoch 22/30
+1816/1816 [==============================] - 0s 62us/step - loss: 0.0198 - acc: 0.9763 - val_loss: 0.2481 - val_acc: 0.7188
+Epoch 23/30
+1816/1816 [==============================] - 0s 64us/step - loss: 0.0151 - acc: 0.9796 - val_loss: 0.2306 - val_acc: 0.7188
+Epoch 24/30
+1816/1816 [==============================] - 0s 59us/step - loss: 0.0160 - acc: 0.9802 - val_loss: 0.2367 - val_acc: 0.7188
+Epoch 25/30
+1816/1816 [==============================] - 0s 60us/step - loss: 0.0194 - acc: 0.9741 - val_loss: 0.2377 - val_acc: 0.7188
+Epoch 26/30
+1816/1816 [==============================] - 0s 60us/step - loss: 0.0181 - acc: 0.9769 - val_loss: 0.2381 - val_acc: 0.7109
+Epoch 27/30
+1816/1816 [==============================] - 0s 61us/step - loss: 0.0165 - acc: 0.9796 - val_loss: 0.2365 - val_acc: 0.7109
+Epoch 28/30
+1816/1816 [==============================] - 0s 56us/step - loss: 0.0191 - acc: 0.9747 - val_loss: 0.2435 - val_acc: 0.7188
+Epoch 29/30
+1816/1816 [==============================] - 0s 55us/step - loss: 0.0161 - acc: 0.9807 - val_loss: 0.2360 - val_acc: 0.7188
+Epoch 30/30
+1816/1816 [==============================] - 0s 55us/step - loss: 0.0166 - acc: 0.9807 - val_loss: 0.2375 - val_acc: 0.7109
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445131_epoch34.json
+0 examples added; 0 were correct
+Training threshold increased to 0.023773715073364243
+1816 training examples for iteration 35
+Train on 1816 samples, validate on 128 samples
+Epoch 1/30
+1816/1816 [==============================] - 0s 63us/step - loss: 0.0148 - acc: 0.9824 - val_loss: 0.2295 - val_acc: 0.7188
+Epoch 2/30
+1816/1816 [==============================] - 0s 63us/step - loss: 0.0175 - acc: 0.9813 - val_loss: 0.2261 - val_acc: 0.7266
+Epoch 3/30
+1816/1816 [==============================] - 0s 62us/step - loss: 0.0223 - acc: 0.9725 - val_loss: 0.2243 - val_acc: 0.7266
+Epoch 4/30
+1816/1816 [==============================] - 0s 56us/step - loss: 0.0146 - acc: 0.9824 - val_loss: 0.2383 - val_acc: 0.7266
+Epoch 5/30
+1816/1816 [==============================] - 0s 56us/step - loss: 0.0163 - acc: 0.9796 - val_loss: 0.2330 - val_acc: 0.7266
+Epoch 6/30
+1816/1816 [==============================] - 0s 56us/step - loss: 0.0172 - acc: 0.9769 - val_loss: 0.2297 - val_acc: 0.7266
+Epoch 7/30
+1816/1816 [==============================] - 0s 56us/step - loss: 0.0187 - acc: 0.9763 - val_loss: 0.2417 - val_acc: 0.7266
+Epoch 8/30
+1816/1816 [==============================] - 0s 58us/step - loss: 0.0212 - acc: 0.9730 - val_loss: 0.2260 - val_acc: 0.7344
+Epoch 9/30
+1816/1816 [==============================] - 0s 57us/step - loss: 0.0161 - acc: 0.9807 - val_loss: 0.2346 - val_acc: 0.7266
+Epoch 10/30
+1816/1816 [==============================] - 0s 56us/step - loss: 0.0182 - acc: 0.9780 - val_loss: 0.2289 - val_acc: 0.7188
+Epoch 11/30
+1816/1816 [==============================] - 0s 57us/step - loss: 0.0151 - acc: 0.9813 - val_loss: 0.2272 - val_acc: 0.7266
+Epoch 12/30
+1816/1816 [==============================] - 0s 56us/step - loss: 0.0149 - acc: 0.9829 - val_loss: 0.2262 - val_acc: 0.7344
+Epoch 13/30
+1816/1816 [==============================] - 0s 57us/step - loss: 0.0185 - acc: 0.9774 - val_loss: 0.2362 - val_acc: 0.7266
+Epoch 14/30
+1816/1816 [==============================] - 0s 57us/step - loss: 0.0146 - acc: 0.9829 - val_loss: 0.2305 - val_acc: 0.7344
+Epoch 15/30
+1816/1816 [==============================] - 0s 59us/step - loss: 0.0141 - acc: 0.9829 - val_loss: 0.2234 - val_acc: 0.7188
+Epoch 16/30
+1816/1816 [==============================] - 0s 55us/step - loss: 0.0125 - acc: 0.9857 - val_loss: 0.2238 - val_acc: 0.7266
+Epoch 17/30
+1816/1816 [==============================] - 0s 57us/step - loss: 0.0229 - acc: 0.9708 - val_loss: 0.2320 - val_acc: 0.7266
+Epoch 18/30
+1816/1816 [==============================] - 0s 57us/step - loss: 0.0137 - acc: 0.9857 - val_loss: 0.2370 - val_acc: 0.7188
+Epoch 19/30
+1816/1816 [==============================] - 0s 56us/step - loss: 0.0173 - acc: 0.9785 - val_loss: 0.2400 - val_acc: 0.7188
+Epoch 20/30
+1816/1816 [==============================] - 0s 56us/step - loss: 0.0152 - acc: 0.9824 - val_loss: 0.2372 - val_acc: 0.7266
+Epoch 21/30
+1816/1816 [==============================] - 0s 59us/step - loss: 0.0174 - acc: 0.9774 - val_loss: 0.2354 - val_acc: 0.7266
+Epoch 22/30
+1816/1816 [==============================] - 0s 59us/step - loss: 0.0180 - acc: 0.9741 - val_loss: 0.2269 - val_acc: 0.7188
+Epoch 23/30
+1816/1816 [==============================] - 0s 57us/step - loss: 0.0170 - acc: 0.9802 - val_loss: 0.2318 - val_acc: 0.7266
+Epoch 24/30
+1816/1816 [==============================] - 0s 58us/step - loss: 0.0160 - acc: 0.9807 - val_loss: 0.2440 - val_acc: 0.7266
+Epoch 25/30
+1816/1816 [==============================] - 0s 56us/step - loss: 0.0189 - acc: 0.9758 - val_loss: 0.2422 - val_acc: 0.7188
+Epoch 26/30
+1816/1816 [==============================] - 0s 58us/step - loss: 0.0180 - acc: 0.9769 - val_loss: 0.2346 - val_acc: 0.7266
+Epoch 27/30
+1816/1816 [==============================] - 0s 57us/step - loss: 0.0173 - acc: 0.9780 - val_loss: 0.2351 - val_acc: 0.7188
+Epoch 28/30
+1816/1816 [==============================] - 0s 57us/step - loss: 0.0152 - acc: 0.9818 - val_loss: 0.2510 - val_acc: 0.7266
+Epoch 29/30
+1816/1816 [==============================] - 0s 60us/step - loss: 0.0145 - acc: 0.9824 - val_loss: 0.2325 - val_acc: 0.7188
+Epoch 30/30
+1816/1816 [==============================] - 0s 56us/step - loss: 0.0166 - acc: 0.9791 - val_loss: 0.2396 - val_acc: 0.7188
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445134_epoch35.json
+2 examples added; 1 were correct
+Training threshold remains at 0.023773715073364243
+1818 training examples for iteration 36
+Train on 1818 samples, validate on 128 samples
+Epoch 1/30
+1818/1818 [==============================] - 0s 63us/step - loss: 0.0160 - acc: 0.9807 - val_loss: 0.2322 - val_acc: 0.7188
+Epoch 2/30
+1818/1818 [==============================] - 0s 58us/step - loss: 0.0157 - acc: 0.9791 - val_loss: 0.2344 - val_acc: 0.7188
+Epoch 3/30
+1818/1818 [==============================] - 0s 55us/step - loss: 0.0151 - acc: 0.9807 - val_loss: 0.2341 - val_acc: 0.7188
+Epoch 4/30
+1818/1818 [==============================] - 0s 55us/step - loss: 0.0175 - acc: 0.9769 - val_loss: 0.2430 - val_acc: 0.7266
+Epoch 5/30
+1818/1818 [==============================] - 0s 60us/step - loss: 0.0149 - acc: 0.9818 - val_loss: 0.2435 - val_acc: 0.7109
+Epoch 6/30
+1818/1818 [==============================] - 0s 56us/step - loss: 0.0202 - acc: 0.9763 - val_loss: 0.2414 - val_acc: 0.7109
+Epoch 7/30
+1818/1818 [==============================] - 0s 60us/step - loss: 0.0132 - acc: 0.9840 - val_loss: 0.2543 - val_acc: 0.7188
+Epoch 8/30
+1818/1818 [==============================] - 0s 55us/step - loss: 0.0146 - acc: 0.9813 - val_loss: 0.2490 - val_acc: 0.7109
+Epoch 9/30
+1818/1818 [==============================] - 0s 58us/step - loss: 0.0145 - acc: 0.9829 - val_loss: 0.2419 - val_acc: 0.7109
+Epoch 10/30
+1818/1818 [==============================] - 0s 59us/step - loss: 0.0165 - acc: 0.9813 - val_loss: 0.2489 - val_acc: 0.7188
+Epoch 11/30
+1818/1818 [==============================] - 0s 62us/step - loss: 0.0154 - acc: 0.9813 - val_loss: 0.2475 - val_acc: 0.7188
+Epoch 12/30
+1818/1818 [==============================] - 0s 62us/step - loss: 0.0152 - acc: 0.9818 - val_loss: 0.2461 - val_acc: 0.7188
+Epoch 13/30
+1818/1818 [==============================] - 0s 56us/step - loss: 0.0162 - acc: 0.9802 - val_loss: 0.2608 - val_acc: 0.7188
+Epoch 14/30
+1818/1818 [==============================] - 0s 58us/step - loss: 0.0225 - acc: 0.9708 - val_loss: 0.2528 - val_acc: 0.7188
+Epoch 15/30
+1818/1818 [==============================] - 0s 60us/step - loss: 0.0161 - acc: 0.9791 - val_loss: 0.2450 - val_acc: 0.7188
+Epoch 16/30
+1818/1818 [==============================] - 0s 57us/step - loss: 0.0147 - acc: 0.9807 - val_loss: 0.2391 - val_acc: 0.7109
+Epoch 17/30
+1818/1818 [==============================] - 0s 58us/step - loss: 0.0148 - acc: 0.9813 - val_loss: 0.2470 - val_acc: 0.7188
+Epoch 18/30
+1818/1818 [==============================] - 0s 57us/step - loss: 0.0156 - acc: 0.9818 - val_loss: 0.2350 - val_acc: 0.7188
+Epoch 19/30
+1818/1818 [==============================] - 0s 65us/step - loss: 0.0166 - acc: 0.9785 - val_loss: 0.2566 - val_acc: 0.7109
+Epoch 20/30
+1818/1818 [==============================] - 0s 74us/step - loss: 0.0162 - acc: 0.9802 - val_loss: 0.2520 - val_acc: 0.7188
+Epoch 21/30
+1818/1818 [==============================] - 0s 71us/step - loss: 0.0170 - acc: 0.9796 - val_loss: 0.2514 - val_acc: 0.7188
+Epoch 22/30
+1818/1818 [==============================] - 0s 57us/step - loss: 0.0162 - acc: 0.9802 - val_loss: 0.2481 - val_acc: 0.7188
+Epoch 23/30
+1818/1818 [==============================] - 0s 57us/step - loss: 0.0183 - acc: 0.9780 - val_loss: 0.2412 - val_acc: 0.7188
+Epoch 24/30
+1818/1818 [==============================] - 0s 59us/step - loss: 0.0146 - acc: 0.9802 - val_loss: 0.2432 - val_acc: 0.7188
+Epoch 25/30
+1818/1818 [==============================] - 0s 60us/step - loss: 0.0159 - acc: 0.9802 - val_loss: 0.2516 - val_acc: 0.7188
+Epoch 26/30
+1818/1818 [==============================] - 0s 54us/step - loss: 0.0167 - acc: 0.9774 - val_loss: 0.2465 - val_acc: 0.7188
+Epoch 27/30
+1818/1818 [==============================] - 0s 65us/step - loss: 0.0196 - acc: 0.9758 - val_loss: 0.2427 - val_acc: 0.7188
+Epoch 28/30
+1818/1818 [==============================] - 0s 64us/step - loss: 0.0153 - acc: 0.9802 - val_loss: 0.2421 - val_acc: 0.7188
+Epoch 29/30
+1818/1818 [==============================] - 0s 56us/step - loss: 0.0168 - acc: 0.9774 - val_loss: 0.2414 - val_acc: 0.7188
+Epoch 30/30
+1818/1818 [==============================] - 0s 60us/step - loss: 0.0161 - acc: 0.9807 - val_loss: 0.2406 - val_acc: 0.7188
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445138_epoch36.json
+5 examples added; 4 were correct
+Training threshold remains at 0.023773715073364243
+1823 training examples for iteration 37
+Train on 1823 samples, validate on 128 samples
+Epoch 1/30
+1823/1823 [==============================] - 0s 64us/step - loss: 0.0164 - acc: 0.9786 - val_loss: 0.2413 - val_acc: 0.7188
+Epoch 2/30
+1823/1823 [==============================] - 0s 56us/step - loss: 0.0160 - acc: 0.9786 - val_loss: 0.2276 - val_acc: 0.7344
+Epoch 3/30
+1823/1823 [==============================] - 0s 58us/step - loss: 0.0171 - acc: 0.9792 - val_loss: 0.2443 - val_acc: 0.7188
+Epoch 4/30
+1823/1823 [==============================] - 0s 56us/step - loss: 0.0155 - acc: 0.9786 - val_loss: 0.2403 - val_acc: 0.7109
+Epoch 5/30
+1823/1823 [==============================] - 0s 57us/step - loss: 0.0166 - acc: 0.9803 - val_loss: 0.2386 - val_acc: 0.7188
+Epoch 6/30
+1823/1823 [==============================] - 0s 57us/step - loss: 0.0192 - acc: 0.9764 - val_loss: 0.2441 - val_acc: 0.7188
+Epoch 7/30
+1823/1823 [==============================] - 0s 59us/step - loss: 0.0167 - acc: 0.9792 - val_loss: 0.2331 - val_acc: 0.7188
+Epoch 8/30
+1823/1823 [==============================] - 0s 60us/step - loss: 0.0147 - acc: 0.9841 - val_loss: 0.2344 - val_acc: 0.7188
+Epoch 9/30
+1823/1823 [==============================] - 0s 51us/step - loss: 0.0146 - acc: 0.9824 - val_loss: 0.2329 - val_acc: 0.7188
+Epoch 10/30
+1823/1823 [==============================] - 0s 65us/step - loss: 0.0160 - acc: 0.9803 - val_loss: 0.2392 - val_acc: 0.7188
+Epoch 11/30
+1823/1823 [==============================] - 0s 68us/step - loss: 0.0161 - acc: 0.9803 - val_loss: 0.2495 - val_acc: 0.7188
+Epoch 12/30
+1823/1823 [==============================] - 0s 58us/step - loss: 0.0177 - acc: 0.9792 - val_loss: 0.2418 - val_acc: 0.7188
+Epoch 13/30
+1823/1823 [==============================] - 0s 51us/step - loss: 0.0181 - acc: 0.9764 - val_loss: 0.2505 - val_acc: 0.7109
+Epoch 14/30
+1823/1823 [==============================] - 0s 55us/step - loss: 0.0170 - acc: 0.9781 - val_loss: 0.2427 - val_acc: 0.7109
+Epoch 15/30
+1823/1823 [==============================] - 0s 58us/step - loss: 0.0170 - acc: 0.9786 - val_loss: 0.2407 - val_acc: 0.7109
+Epoch 16/30
+1823/1823 [==============================] - 0s 59us/step - loss: 0.0188 - acc: 0.9770 - val_loss: 0.2461 - val_acc: 0.7188
+Epoch 17/30
+1823/1823 [==============================] - 0s 70us/step - loss: 0.0197 - acc: 0.9748 - val_loss: 0.2328 - val_acc: 0.7109
+Epoch 18/30
+1823/1823 [==============================] - 0s 67us/step - loss: 0.0189 - acc: 0.9770 - val_loss: 0.2374 - val_acc: 0.7109
+Epoch 19/30
+1823/1823 [==============================] - 0s 61us/step - loss: 0.0202 - acc: 0.9770 - val_loss: 0.2365 - val_acc: 0.7109
+Epoch 20/30
+1823/1823 [==============================] - 0s 61us/step - loss: 0.0165 - acc: 0.9786 - val_loss: 0.2461 - val_acc: 0.7188
+Epoch 21/30
+1823/1823 [==============================] - 0s 61us/step - loss: 0.0179 - acc: 0.9775 - val_loss: 0.2292 - val_acc: 0.7188
+Epoch 22/30
+1823/1823 [==============================] - 0s 61us/step - loss: 0.0184 - acc: 0.9786 - val_loss: 0.2390 - val_acc: 0.7188
+Epoch 23/30
+1823/1823 [==============================] - 0s 61us/step - loss: 0.0176 - acc: 0.9792 - val_loss: 0.2404 - val_acc: 0.7188
+Epoch 24/30
+1823/1823 [==============================] - 0s 60us/step - loss: 0.0145 - acc: 0.9819 - val_loss: 0.2465 - val_acc: 0.7188
+Epoch 25/30
+1823/1823 [==============================] - 0s 58us/step - loss: 0.0185 - acc: 0.9770 - val_loss: 0.2467 - val_acc: 0.7188
+Epoch 26/30
+1823/1823 [==============================] - 0s 61us/step - loss: 0.0156 - acc: 0.9797 - val_loss: 0.2484 - val_acc: 0.7188
+Epoch 27/30
+1823/1823 [==============================] - 0s 61us/step - loss: 0.0172 - acc: 0.9770 - val_loss: 0.2467 - val_acc: 0.7188
+Epoch 28/30
+1823/1823 [==============================] - 0s 59us/step - loss: 0.0170 - acc: 0.9781 - val_loss: 0.2414 - val_acc: 0.7109
+Epoch 29/30
+1823/1823 [==============================] - 0s 61us/step - loss: 0.0169 - acc: 0.9792 - val_loss: 0.2399 - val_acc: 0.7109
+Epoch 30/30
+1823/1823 [==============================] - 0s 64us/step - loss: 0.0147 - acc: 0.9841 - val_loss: 0.2404 - val_acc: 0.7188
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445141_epoch37.json
+0 examples added; 0 were correct
+Training threshold increased to 0.024368057950198346
+1823 training examples for iteration 38
+Train on 1823 samples, validate on 128 samples
+Epoch 1/30
+1823/1823 [==============================] - 0s 66us/step - loss: 0.0142 - acc: 0.9813 - val_loss: 0.2341 - val_acc: 0.7188
+Epoch 2/30
+1823/1823 [==============================] - 0s 63us/step - loss: 0.0176 - acc: 0.9770 - val_loss: 0.2385 - val_acc: 0.7188
+Epoch 3/30
+1823/1823 [==============================] - 0s 57us/step - loss: 0.0177 - acc: 0.9786 - val_loss: 0.2341 - val_acc: 0.7188
+Epoch 4/30
+1823/1823 [==============================] - 0s 60us/step - loss: 0.0159 - acc: 0.9808 - val_loss: 0.2397 - val_acc: 0.7188
+Epoch 5/30
+1823/1823 [==============================] - 0s 56us/step - loss: 0.0174 - acc: 0.9770 - val_loss: 0.2437 - val_acc: 0.7266
+Epoch 6/30
+1823/1823 [==============================] - 0s 56us/step - loss: 0.0154 - acc: 0.9797 - val_loss: 0.2399 - val_acc: 0.7266
+Epoch 7/30
+1823/1823 [==============================] - 0s 60us/step - loss: 0.0215 - acc: 0.9726 - val_loss: 0.2361 - val_acc: 0.7266
+Epoch 8/30
+1823/1823 [==============================] - 0s 60us/step - loss: 0.0171 - acc: 0.9786 - val_loss: 0.2465 - val_acc: 0.7188
+Epoch 9/30
+1823/1823 [==============================] - 0s 58us/step - loss: 0.0156 - acc: 0.9824 - val_loss: 0.2451 - val_acc: 0.7188
+Epoch 10/30
+1823/1823 [==============================] - 0s 58us/step - loss: 0.0156 - acc: 0.9808 - val_loss: 0.2480 - val_acc: 0.7266
+Epoch 11/30
+1823/1823 [==============================] - 0s 59us/step - loss: 0.0168 - acc: 0.9786 - val_loss: 0.2380 - val_acc: 0.7109
+Epoch 12/30
+1823/1823 [==============================] - 0s 60us/step - loss: 0.0148 - acc: 0.9824 - val_loss: 0.2424 - val_acc: 0.7109
+Epoch 13/30
+1823/1823 [==============================] - 0s 66us/step - loss: 0.0161 - acc: 0.9797 - val_loss: 0.2445 - val_acc: 0.7109
+Epoch 14/30
+1823/1823 [==============================] - 0s 68us/step - loss: 0.0175 - acc: 0.9781 - val_loss: 0.2401 - val_acc: 0.7188
+Epoch 15/30
+1823/1823 [==============================] - 0s 65us/step - loss: 0.0162 - acc: 0.9786 - val_loss: 0.2526 - val_acc: 0.7266
+Epoch 16/30
+1823/1823 [==============================] - 0s 62us/step - loss: 0.0143 - acc: 0.9813 - val_loss: 0.2305 - val_acc: 0.7188
+Epoch 17/30
+1823/1823 [==============================] - 0s 56us/step - loss: 0.0145 - acc: 0.9786 - val_loss: 0.2382 - val_acc: 0.7188
+Epoch 18/30
+1823/1823 [==============================] - 0s 55us/step - loss: 0.0127 - acc: 0.9846 - val_loss: 0.2413 - val_acc: 0.7188
+Epoch 19/30
+1823/1823 [==============================] - 0s 58us/step - loss: 0.0139 - acc: 0.9813 - val_loss: 0.2436 - val_acc: 0.7188
+Epoch 20/30
+1823/1823 [==============================] - 0s 56us/step - loss: 0.0176 - acc: 0.9786 - val_loss: 0.2398 - val_acc: 0.7266
+Epoch 21/30
+1823/1823 [==============================] - 0s 58us/step - loss: 0.0164 - acc: 0.9781 - val_loss: 0.2418 - val_acc: 0.7266
+Epoch 22/30
+1823/1823 [==============================] - 0s 69us/step - loss: 0.0160 - acc: 0.9770 - val_loss: 0.2416 - val_acc: 0.7266
+Epoch 23/30
+1823/1823 [==============================] - 0s 65us/step - loss: 0.0162 - acc: 0.9786 - val_loss: 0.2330 - val_acc: 0.7266
+Epoch 24/30
+1823/1823 [==============================] - 0s 69us/step - loss: 0.0174 - acc: 0.9770 - val_loss: 0.2380 - val_acc: 0.7266
+Epoch 25/30
+1823/1823 [==============================] - 0s 57us/step - loss: 0.0164 - acc: 0.9786 - val_loss: 0.2397 - val_acc: 0.7188
+Epoch 26/30
+1823/1823 [==============================] - 0s 63us/step - loss: 0.0165 - acc: 0.9803 - val_loss: 0.2393 - val_acc: 0.7188
+Epoch 27/30
+1823/1823 [==============================] - 0s 61us/step - loss: 0.0165 - acc: 0.9792 - val_loss: 0.2417 - val_acc: 0.7266
+Epoch 28/30
+1823/1823 [==============================] - 0s 61us/step - loss: 0.0172 - acc: 0.9797 - val_loss: 0.2404 - val_acc: 0.7109
+Epoch 29/30
+1823/1823 [==============================] - 0s 59us/step - loss: 0.0177 - acc: 0.9786 - val_loss: 0.2419 - val_acc: 0.7188
+Epoch 30/30
+1823/1823 [==============================] - 0s 58us/step - loss: 0.0123 - acc: 0.9846 - val_loss: 0.2472 - val_acc: 0.7188
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445145_epoch38.json
+0 examples added; 0 were correct
+Training threshold increased to 0.024977259398953303
+1823 training examples for iteration 39
+Train on 1823 samples, validate on 128 samples
+Epoch 1/30
+1823/1823 [==============================] - 0s 60us/step - loss: 0.0168 - acc: 0.9759 - val_loss: 0.2409 - val_acc: 0.7188
+Epoch 2/30
+1823/1823 [==============================] - 0s 80us/step - loss: 0.0135 - acc: 0.9819 - val_loss: 0.2418 - val_acc: 0.7188
+Epoch 3/30
+1823/1823 [==============================] - 0s 71us/step - loss: 0.0243 - acc: 0.9687 - val_loss: 0.2456 - val_acc: 0.7188
+Epoch 4/30
+1823/1823 [==============================] - 0s 60us/step - loss: 0.0186 - acc: 0.9781 - val_loss: 0.2373 - val_acc: 0.7266
+Epoch 5/30
+1823/1823 [==============================] - 0s 52us/step - loss: 0.0191 - acc: 0.9764 - val_loss: 0.2401 - val_acc: 0.7266
+Epoch 6/30
+1823/1823 [==============================] - 0s 63us/step - loss: 0.0148 - acc: 0.9819 - val_loss: 0.2403 - val_acc: 0.7266
+Epoch 7/30
+1823/1823 [==============================] - 0s 60us/step - loss: 0.0146 - acc: 0.9824 - val_loss: 0.2394 - val_acc: 0.7266
+Epoch 8/30
+1823/1823 [==============================] - 0s 73us/step - loss: 0.0163 - acc: 0.9808 - val_loss: 0.2446 - val_acc: 0.7266
+Epoch 9/30
+1823/1823 [==============================] - 0s 73us/step - loss: 0.0144 - acc: 0.9830 - val_loss: 0.2427 - val_acc: 0.7266
+Epoch 10/30
+1823/1823 [==============================] - 0s 66us/step - loss: 0.0127 - acc: 0.9852 - val_loss: 0.2383 - val_acc: 0.7188
+Epoch 11/30
+1823/1823 [==============================] - 0s 64us/step - loss: 0.0132 - acc: 0.9857 - val_loss: 0.2494 - val_acc: 0.7188
+Epoch 12/30
+1823/1823 [==============================] - 0s 62us/step - loss: 0.0129 - acc: 0.9852 - val_loss: 0.2409 - val_acc: 0.7188
+Epoch 13/30
+1823/1823 [==============================] - 0s 57us/step - loss: 0.0146 - acc: 0.9835 - val_loss: 0.2430 - val_acc: 0.7188
+Epoch 14/30
+1823/1823 [==============================] - 0s 59us/step - loss: 0.0184 - acc: 0.9786 - val_loss: 0.2385 - val_acc: 0.7266
+Epoch 15/30
+1823/1823 [==============================] - 0s 59us/step - loss: 0.0173 - acc: 0.9797 - val_loss: 0.2435 - val_acc: 0.7266
+Epoch 16/30
+1823/1823 [==============================] - 0s 59us/step - loss: 0.0165 - acc: 0.9792 - val_loss: 0.2400 - val_acc: 0.7188
+Epoch 17/30
+1823/1823 [==============================] - 0s 59us/step - loss: 0.0157 - acc: 0.9797 - val_loss: 0.2353 - val_acc: 0.7266
+Epoch 18/30
+1823/1823 [==============================] - 0s 61us/step - loss: 0.0187 - acc: 0.9748 - val_loss: 0.2294 - val_acc: 0.7266
+Epoch 19/30
+1823/1823 [==============================] - 0s 60us/step - loss: 0.0205 - acc: 0.9748 - val_loss: 0.2258 - val_acc: 0.7188
+Epoch 20/30
+1823/1823 [==============================] - 0s 58us/step - loss: 0.0167 - acc: 0.9764 - val_loss: 0.2334 - val_acc: 0.7266
+Epoch 21/30
+1823/1823 [==============================] - 0s 59us/step - loss: 0.0142 - acc: 0.9835 - val_loss: 0.2352 - val_acc: 0.7266
+Epoch 22/30
+1823/1823 [==============================] - 0s 56us/step - loss: 0.0142 - acc: 0.9803 - val_loss: 0.2253 - val_acc: 0.7422
+Epoch 23/30
+1823/1823 [==============================] - 0s 60us/step - loss: 0.0165 - acc: 0.9830 - val_loss: 0.2391 - val_acc: 0.7266
+Epoch 24/30
+1823/1823 [==============================] - 0s 62us/step - loss: 0.0158 - acc: 0.9808 - val_loss: 0.2370 - val_acc: 0.7266
+Epoch 25/30
+1823/1823 [==============================] - 0s 60us/step - loss: 0.0157 - acc: 0.9808 - val_loss: 0.2421 - val_acc: 0.7109
+Epoch 26/30
+1823/1823 [==============================] - 0s 57us/step - loss: 0.0166 - acc: 0.9786 - val_loss: 0.2404 - val_acc: 0.7266
+Epoch 27/30
+1823/1823 [==============================] - 0s 56us/step - loss: 0.0123 - acc: 0.9857 - val_loss: 0.2331 - val_acc: 0.7188
+Epoch 28/30
+1823/1823 [==============================] - 0s 59us/step - loss: 0.0146 - acc: 0.9813 - val_loss: 0.2384 - val_acc: 0.7188
+Epoch 29/30
+1823/1823 [==============================] - 0s 61us/step - loss: 0.0146 - acc: 0.9846 - val_loss: 0.2447 - val_acc: 0.7188
+Epoch 30/30
+1823/1823 [==============================] - 0s 58us/step - loss: 0.0147 - acc: 0.9830 - val_loss: 0.2285 - val_acc: 0.7188
+Data saved at /Users/brendonm/iterative_cluster_nucleation_time1532445148_epoch39.json
+1 examples added; 1 were correct
+Training threshold remains at 0.024977259398953303
