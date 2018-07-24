@@ -5,16 +5,18 @@ from keras.layers import Conv2D, Flatten, Dropout, InputLayer, BatchNormalizatio
 from keras.models import Model, Sequential
 from keras.regularizers import l2
 
-from data_processing.bubble_data_point import WINDOW_SIDE_LENGTH
+from data_processing.bubble_data_point import WINDOW_SIDE_LENGTH, START_IMAGE_INDEX, END_IMAGE_INDEX
 
 
 def create_model() -> Model:
     """Create and return a new instance of the image classification convolutional network"""
+    # Calculate the number of images there are stacked along the channels axis
+    channels = END_IMAGE_INDEX - START_IMAGE_INDEX
     # Create a network with hyperbolic tangent activations and dropout regularization on the fully connected layers
     activation = 'tanh'
     dropout = 0.5
     model = Sequential([
-        InputLayer(input_shape=(WINDOW_SIDE_LENGTH, WINDOW_SIDE_LENGTH, 1)),
+        InputLayer(input_shape=(WINDOW_SIDE_LENGTH, WINDOW_SIDE_LENGTH, channels)),
         BatchNormalization(),
         Conv2D(filters=16, kernel_size=4, strides=2, activation=activation),
         Conv2D(filters=32, kernel_size=3, strides=2, activation=activation),

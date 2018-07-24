@@ -20,8 +20,9 @@ RAW_DATA_PATH = os.path.expanduser('~/projects/rrg-kenclark/pico/30l-16-data')
 
 # The side length in pixels of the square windows to crop out of the bubble chamber images
 WINDOW_SIDE_LENGTH = 50
-# The number of images to load out of the 21 possibilities for each bubble
-IMAGES_PER_BUBBLE = 1
+# The start (inclusive) and end (exclusive) indices of the range of images to load and stack
+START_IMAGE_INDEX = 45
+END_IMAGE_INDEX = 55
 
 # The number of piezo channels present in the audio files (not all of them work)
 CHANNELS = 8
@@ -312,7 +313,7 @@ def load_bubble_frequency_domain(bubble: BubbleDataPoint, banded: bool = True) -
 
 
 def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
-    """Given a bubble data point, load, crop, and return a list of windows which contain that bubble"""
+    """Given a bubble data point, load, crop, and return a stacked array of windows (wrapped in a list) which contain that bubble"""
     # Get the path to the bubble data folder and use it to get that to the image folder
     image_folder_path = os.path.join(
         bubble_data_path(bubble),
@@ -322,22 +323,22 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
     bubble_images = []
     # Iterate over the number of each of the four cameras and the position of the bubble in this camera
     for camera_number, (bubble_x, bubble_y) in enumerate(bubble.camera_positions):
-        # If either axis is less than zero, the bubble could not be found; skip to the next iteration
+        # If either axis is less than zero, the bubble could not be found; return from the function
         if bubble_x < 0 or bubble_y < 0:
-            continue
-        # Otherwise, iterate over randomly chosen samples from the image numbers 50 to 70 inclusive, which are recorded after the bubble is detected
-        for image_number in random.sample(range(50, 71), IMAGES_PER_BUBBLE):
+            return []
+        # Otherwise, iterate over several frame indices before and after the bubble detection is triggered
+        for image_number in range(START_IMAGE_INDEX, END_IMAGE_INDEX):
             # Format the full path of this image
             image_path = os.path.join(
                 image_folder_path,
                 f'cam{camera_number}_image{image_number}.png'
             )
-            # Attempt to load it as a NumPy array, skipping to the next iteration if it we are not permitted to load the image or if it does not exist
+            # Attempt to load it as a NumPy array, returning from the function if it we are not permitted to load the image or if it does not exist
             try:
                 full_image = imread(image_path)
             except (PermissionError, FileNotFoundError):
                 print(f'File {image_path} could not be loaded')
-                continue
+                return []
             # Round the bubble X and Y positions to integers and cap them at the edges of the image, so they can be used to index the image
             bubble_x_integer, bubble_y_integer = (
                 min(max(int(round(position)), WINDOW_SIDE_LENGTH),
@@ -348,9 +349,7 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
             half_side_length = WINDOW_SIDE_LENGTH // 2
             window = full_image[(bubble_y_integer - half_side_length):(bubble_y_integer + half_side_length),
                                 (bubble_x_integer - half_side_length):(bubble_x_integer + half_side_length)]
-            # Add a channel dimension of 1 at the end; it is expected by Keras
-            window = np.expand_dims(window, axis=-1)
             # Add the cropped window to the list of images
             bubble_images.append(window)
-    # Return the list of cropped images
-    return bubble_images
+    # Return the cropped images, stacked along the channels dimension
+    return np.stack(bubble_images, axis=2)
