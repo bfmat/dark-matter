@@ -91,10 +91,10 @@ class EventDataSet:
     @classmethod
     def passes_validation_cuts(cls, event: BubbleDataPoint) -> bool:
         """Determines whether an event passes the cuts necessary for validation, which optimize discrimination using the acoustic parameter"""
-        # Validation cuts are disabled; always return True
-        return True
-        # # Accept only events that pass both the fiducial cuts and the audio-based wall cuts
-        # return cls.passes_fiducial_cuts(event) and cls.passes_audio_wall_cuts(event)
+        # # Validation cuts are disabled; always return True
+        # return True
+        # Accept only events that pass both the fiducial cuts and the audio-based wall cuts
+        return cls.passes_fiducial_cuts(event) and cls.passes_audio_wall_cuts(event)
 
     @staticmethod
     def passes_fiducial_cuts(event: BubbleDataPoint) -> bool:
