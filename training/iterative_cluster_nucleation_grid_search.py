@@ -31,7 +31,7 @@ for initial_training_examples in [128, 256]:
                     print('L2 lambda:', l2_lambda)
                     print('Dropout:', dropout)
                     # Create a description string that is used when saving validation data
-                    description = f'icn_grid_search_dropout{dropout}_l2_lambda{l2_lambda}_initial_examples{initial_training_examples}_initial_threshold{initial_threshold}_threshold_multiplier{threshold_multiplier}'
+                    description = f'icn_grid_search_dropout{dropout}_l2_lambda{l2_lambda}_initial_examples{initial_training_examples}_initial_threshold{initial_threshold}_threshold_multiplier{threshold_multiplier}_'
 
                     # Make a mutable copy of the training threshold
                     training_threshold = initial_threshold
