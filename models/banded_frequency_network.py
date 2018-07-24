@@ -10,7 +10,7 @@ def create_model() -> Model:
     """Create and return a new instance of the fully connected network for banded frequency domain information"""
     # Create a neural network model that includes several dense layers with hyperbolic tangent activations, L2 regularization, and batch normalization
     regularizer = l2(0)
-    dropout = 0
+    dropout = 0.5
     activation = 'tanh'
     model = Sequential([
         InputLayer(input_shape=(19,)),
