@@ -6,7 +6,7 @@ import copy
 
 import numpy as np
 
-from data_processing.bubble_data_point import RunType, load_bubble_frequency_domain
+from data_processing.bubble_data_point import RunType
 from data_processing.event_data_set import EventDataSet
 from data_processing.experiment_serialization import save_test
 from models.banded_frequency_network import create_model
@@ -67,19 +67,12 @@ for iteration in range(400):
     examples_correct = 0
     # Iterate over the entire list of potential training examples, running predictions
     for event in original_training_events:
-        # Try to load the frequency domain audio data for this event
-        audio_data = load_bubble_frequency_domain(event, banded=False)
-        # If the audio cannot be loaded, skip to the next iterations
-        if not audio_data:
-            continue
-        # Combine it with the position input data from the event, and add a batch axis
-        input_data = [
-            np.expand_dims(audio_data[0], axis=0),
-            np.expand_dims(
-                np.array([event.x_position, event.y_position, event.z_position]),
-                axis=0
-            )
-        ]
+        # Combine the banded frequency domain data with the position input data from the event, and add a batch axis
+        input_data = np.concatenate([
+            event.banded_frequency_domain_raw[1:, :, 2].flatten(),
+            [event.x_position, event.y_position, event.z_position]
+        ])
+        input_data = np.expand_dims(input_data, axis=0)
         # Run a prediction on the audio sample using the existing neural network
         prediction = model.predict(input_data)
         # If the prediction is within a certain threshold distance of either 0 or 1
