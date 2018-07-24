@@ -9,7 +9,7 @@ import numpy as np
 from data_processing.bubble_data_point import RunType, load_bubble_frequency_domain
 from data_processing.event_data_set import EventDataSet
 from data_processing.experiment_serialization import save_test
-from models.high_resolution_frequency_network import create_model
+from models.banded_frequency_network import create_model
 
 # The initial number of examples to put in the training set
 INITIAL_TRAINING_EXAMPLES = 128
@@ -41,22 +41,18 @@ for iteration in range(400):
     # Output the number of examples there are in the training set for this epoch
     print(len(event_data_set.training_events),
           'training examples for iteration', iteration)
-    # Load training and validation data as NumPy arrays, currying the loading function to disable banding
-    training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = \
-        event_data_set.audio_alpha_classification(
-            loading_function=lambda bubble:
-            load_bubble_frequency_domain(bubble, banded=False),
-            include_positions=True
-        )
+    # Get the banded frequency domain data and corresponding binary ground truths
+    training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()
+
     # Train the model for a certain number of epochs on the generator
     model.fit(
-        x=training_inputs,
+        x=training_input,
         y=training_ground_truths,
-        validation_data=(validation_inputs, validation_ground_truths),
+        validation_data=(validation_input, validation_ground_truths),
         epochs=30
     )
     # Run predictions on the validation data set, and save the experimental run
-    validation_network_outputs = model.predict(validation_inputs)
+    validation_network_outputs = model.predict(validation_input)
     save_test(
         event_data_set,
         validation_ground_truths,
