@@ -22,8 +22,7 @@ event_data_set = EventDataSet({
 # Load training and validation data as NumPy arrays, currying the loading function to disable banding
 training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = \
     event_data_set.audio_alpha_classification(
-        loading_function=lambda bubble:
-        load_bubble_frequency_domain(bubble, banded=False),
+        loading_function=lambda bubble: load_bubble_frequency_domain(bubble, banded=False),
         include_positions=True
     )
 
