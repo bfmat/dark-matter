@@ -2,11 +2,9 @@
 """Training script for a neural network that classifies images of bubbles into alpha particles and neutrons"""
 # Created by Brendon Matusch, June 2018
 
-from keras.layers import Conv2D, Flatten, Dense, Dropout, InputLayer
-from keras.models import Sequential
-
 from data_processing.event_data_set import EventDataSet, RunType
-from data_processing.bubble_data_point import load_bubble_images, WINDOW_SIDE_LENGTH
+from data_processing.bubble_data_point import load_bubble_images
+from models.image_classification_network import create_model
 
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
 event_data_set = EventDataSet(
@@ -28,29 +26,8 @@ training_generator_callable, validation_inputs, validation_ground_truths = event
 )
 training_generator = training_generator_callable()
 
-# Create a convolutional neural network model with hyperbolic tangent activations
-activation = 'tanh'
-model = Sequential([
-    InputLayer(input_shape=(WINDOW_SIDE_LENGTH, WINDOW_SIDE_LENGTH, 1)),
-    Conv2D(filters=16, kernel_size=4, strides=2, activation=activation),
-    Conv2D(filters=32, kernel_size=3, strides=2, activation=activation),
-    Conv2D(filters=32, kernel_size=3, strides=2, activation=activation),
-    Conv2D(filters=64, kernel_size=2, strides=1, activation=activation),
-    Flatten(),
-    Dense(64, activation=activation),
-    Dropout(0.5),
-    Dense(16, activation=activation),
-    Dropout(0.5),
-    Dense(1)
-])
-# Output a summary of the model's architecture
-print(model.summary())
-# Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
-model.compile(
-    optimizer='adam',
-    loss='mse',
-    metrics=['accuracy']
-)
+# Create an instance of the image processing convolutional neural network
+model = create_model()
 
 # Iterate over training and validation for 20 epochs
 for _ in range(20):
