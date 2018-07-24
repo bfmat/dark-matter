@@ -1,7 +1,7 @@
 """A 2-dimensional convolutional neural network intended for processing image windows containing bubbles"""
 # Created by Brendon Matusch, July 2018
 
-from keras.layers import Conv2D, Flatten, Dropout, InputLayer, BatchNormalization, Dense, concatenate
+from keras.layers import Conv2D, Flatten, Dropout, InputLayer, BatchNormalization, Dense
 from keras.models import Model, Sequential
 from keras.regularizers import l2
 
@@ -15,6 +15,7 @@ def create_model() -> Model:
     dropout = 0.5
     model = Sequential([
         InputLayer(input_shape=(WINDOW_SIDE_LENGTH, WINDOW_SIDE_LENGTH, 1)),
+        BatchNormalization(),
         Conv2D(filters=16, kernel_size=4, strides=2, activation=activation),
         Conv2D(filters=32, kernel_size=3, strides=2, activation=activation),
         Conv2D(filters=32, kernel_size=3, strides=2, activation=activation),
