@@ -25,13 +25,12 @@ training_inputs, training_ground_truths, validation_inputs, validation_ground_tr
 # Create an instance of the fully convolutional network model
 model = create_model()
 # Iterate over training and validation for several epochs
-for epoch in range(40):
+for epoch in range(100):
     # Train the model on the input and ground truth arrays
     model.fit(
         x=training_inputs,
         y=training_ground_truths,
-        epochs=1,
-        batch_size=4
+        epochs=1
     )
     # Evaluate the model on the validation data set
     loss, accuracy = model.evaluate(
