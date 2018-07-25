@@ -10,7 +10,7 @@ def create_model() -> Model:
     """Create and return a new instance of the very deep convolutional network"""
     # Create a one-dimensional convolutional neural network model with rectified linear activations, using the Keras functional API
     # It should take both microphone channels and an entire clip of audio, and take the position of the bubble on all 3 axes as a secondary input
-    activation = 'relu'
+    activation = 'tanh'
     padding = 'valid'
     regularizer = l2(0.0003)
     dense_dropout = 0.5
