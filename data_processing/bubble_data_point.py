@@ -15,7 +15,7 @@ from typing import List, Optional
 from data_processing.audio_domain_processing import time_to_frequency_domain, band_time_domain
 
 import numpy as np
-from scipy.misc import imread, imsave
+from skimage.io import imread, imsave
 
 # The path in which all of the raw images and audio data are stored
 RAW_DATA_PATH = os.path.expanduser('~/projects/rrg-kenclark/pico/30l-16-data')
