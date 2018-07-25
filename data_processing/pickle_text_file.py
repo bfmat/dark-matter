@@ -2,7 +2,9 @@
 """A script for converting data serialized as a text file to the Pickle format that is loaded when running training or analysis"""
 # Created by Brendon Matusch, July 2018
 
+import itertools
 import os
+import shlex
 
 from functools import reduce
 
@@ -43,5 +45,20 @@ with open(os.path.expanduser('~/merged_all.txt')) as text_file:
     # Read and split the next line, which contains format strings for every element in the lines ahead
     format_strings = text_file.readline().strip().split()
     # Take only the last letter of each format string, which denotes the type, and get the types corresponding to these from the dictionary
-    attribute_types = [TYPES_BY_FORMAT[format_string[-1]] for format_string in format_strings]
-    print(attribute_types)
+    data_types = [TYPES_BY_FORMAT[format_string[-1]] for format_string in format_strings]
+    # Read and ignore the next 3 lines, which do not contain any data
+    for _ in range(3):
+        text_file.readline()
+    # Iterate over line indices, reading data, until breaking at the end of the file
+    for line_index in itertools.count():
+        # Notify the user every 100 lines
+        if line_index % 100 == 0:
+            print(f'Loaded {line_index} lines')
+        # Read a line of data; stop iteration if it is empty, meaning we have reached the end of the file
+        data_line = text_file.readline()
+        if not data_line:
+            break
+        # Otherwise, strip and split it using the shlex module to keep strings in quotes intact
+        data_strings = shlex.split(data_line.strip())
+        # Convert the strings to their corresponding data types
+        data_points = [data_type(data_string) for data_type, data_string in zip(data_types, data_strings)]
