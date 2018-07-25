@@ -351,7 +351,7 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
             half_side_length = WINDOW_SIDE_LENGTH // 2
             window = full_image[(bubble_y_integer - half_side_length):(bubble_y_integer + half_side_length),
                                 (bubble_x_integer - half_side_length):(bubble_x_integer + half_side_length)]
-            imsave(f'~/img/{time.time()}.png', window)
+            imsave(os.path.expanduser(f'~/img/{time.time()}.png'), window)
             # Add the cropped window to the list of images
             bubble_images.append(window)
     # Return the cropped images, stacked along the channels dimension, and wrapped in a single-element array
