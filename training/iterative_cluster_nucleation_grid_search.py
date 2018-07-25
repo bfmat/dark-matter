@@ -76,7 +76,7 @@ for initial_training_examples in [128, 256]:
                     )
 
                     # Run several training iterations, each containing a number of epochs
-                    for iteration in range(400):
+                    for iteration in range(600):
                         # Output the number of examples there are in the training set for this epoch
                         print(len(event_data_set.training_events),
                               'training examples for iteration', iteration)
