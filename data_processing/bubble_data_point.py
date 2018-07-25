@@ -1,19 +1,21 @@
 """Code related to the custom bubble data format used instead of ROOT"""
 # Created by Brendon Matusch, June 2018
 
-from enum import Enum, IntEnum, auto
 import datetime
 import itertools
 import math
 import os
 import random
 import sys
+import time
+
+from enum import Enum, IntEnum, auto
 from typing import List, Optional
 
 from data_processing.audio_domain_processing import time_to_frequency_domain, band_time_domain
 
 import numpy as np
-from scipy.ndimage import imread
+from scipy.misc import imread, imsave
 
 # The path in which all of the raw images and audio data are stored
 RAW_DATA_PATH = os.path.expanduser('~/projects/rrg-kenclark/pico/30l-16-data')
@@ -349,7 +351,8 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
             half_side_length = WINDOW_SIDE_LENGTH // 2
             window = full_image[(bubble_y_integer - half_side_length):(bubble_y_integer + half_side_length),
                                 (bubble_x_integer - half_side_length):(bubble_x_integer + half_side_length)]
+            imsave(f'~/img/{time.time()}.png', window)
             # Add the cropped window to the list of images
             bubble_images.append(window)
-    # Return the cropped images, stacked along the channels dimension
-    return np.stack(bubble_images, axis=2)
+    # Return the cropped images, stacked along the channels dimension, and wrapped in a single-element array
+    return [np.stack(bubble_images, axis=2)]
