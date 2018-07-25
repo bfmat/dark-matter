@@ -10,10 +10,13 @@ from data_processing.experiment_serialization import save_test
 from models.image_classification_network import create_model
 
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
-event_data_set = EventDataSet({
-    RunType.LOW_BACKGROUND,
-    RunType.AMERICIUM_BERYLLIUM,
-})
+event_data_set = EventDataSet(
+    keep_run_types={
+        RunType.LOW_BACKGROUND,
+        RunType.AMERICIUM_BERYLLIUM,
+    },
+    use_wall_cuts=True
+)
 # Load the image data as NumPy arrays
 training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = \
     event_data_set.audio_alpha_classification(

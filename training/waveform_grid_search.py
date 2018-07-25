@@ -13,12 +13,15 @@ from data_processing.event_data_set import EventDataSet
 from data_processing.bubble_data_point import RunType, load_bubble_audio
 from data_processing.experiment_serialization import save_test
 
-# Load a data set from the file, including fiducial cuts
-event_data_set = EventDataSet({
-    RunType.LOW_BACKGROUND,
-    RunType.AMERICIUM_BERYLLIUM,
-    RunType.CALIFORNIUM
-})
+# Load a data set from the file, without fiducial cuts
+event_data_set = EventDataSet(
+    keep_run_types={
+        RunType.LOW_BACKGROUND,
+        RunType.AMERICIUM_BERYLLIUM,
+        RunType.CALIFORNIUM
+    },
+    use_wall_cuts=False
+)
 # Load training and validation data as NumPy arrays
 training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = \
     event_data_set.audio_alpha_classification(

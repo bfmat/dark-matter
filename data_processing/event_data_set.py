@@ -32,7 +32,9 @@ class EventDataSet:
     def __init__(
         self,
         # Keep only a certain set of run types in the data set
-        keep_run_types: Optional[Set[RunType]]
+        keep_run_types: Optional[Set[RunType]],
+        # Use wall cuts on training and validation data
+        use_wall_cuts: bool
     ) -> None:
         """Initializer that takes parameters that determine which data is loaded; None for the set of run types represents no filtering"""
         # Load the data from the Pickle file on disk
@@ -48,17 +50,15 @@ class EventDataSet:
             event for event in events
             if self.passes_standard_cuts(event)
         ]
-        # Run cuts required only for validation on a copy of the list
-        events_passing_validation_cuts = [
-            event for event in events
-            if self.passes_validation_cuts(event)
-        ]
-        # # Add 2 copies of the events passing validation cuts to the original list of events, so they are weighted 3 times as heavily
-        # for _ in range(2):
-        # events += events_passing_validation_cuts
+        # If wall cuts are enabled, run them on all events
+        if use_wall_cuts:
+            events = [
+                event for event in events
+                if self.passes_fiducial_cuts(event)
+                and self.passes_audio_wall_cuts(event)
+            ]
         # Choose a specified number of random examples from the list with validation cuts applied
-        self.validation_events = random.sample(
-            events_passing_validation_cuts, VALIDATION_EXAMPLES)
+        self.validation_events = random.sample(events, VALIDATION_EXAMPLES)
         # Remove all of the validation events from the original list of events
         events = [
             event for event in events
@@ -68,8 +68,8 @@ class EventDataSet:
         random.shuffle(events)
         self.training_events = events
 
-    @classmethod
-    def passes_standard_cuts(cls, event: BubbleDataPoint) -> bool:
+    @staticmethod
+    def passes_standard_cuts(event: BubbleDataPoint) -> bool:
         """Determines whether an event passes the basic quality cuts run on all data"""
         # Run a series of binary cuts; if any of them fail, return False
         return (
@@ -84,17 +84,7 @@ class EventDataSet:
             and event.num_bubbles_pressure >= 0.7 and event.num_bubbles_pressure <= 1.3
             # Do not use events within the first 25s after reaching target pressure
             and event.time_since_target_pressure > 25
-            # Run validation wall cuts on all events
-            and cls.passes_validation_cuts(event)
         )
-
-    @classmethod
-    def passes_validation_cuts(cls, event: BubbleDataPoint) -> bool:
-        """Determines whether an event passes the cuts necessary for validation, which optimize discrimination using the acoustic parameter"""
-        # Validation cuts are disabled; always return True
-        return True
-        # # Accept only events that pass both the fiducial cuts and the audio-based wall cuts
-        # return cls.passes_fiducial_cuts(event) and cls.passes_audio_wall_cuts(event)
 
     @staticmethod
     def passes_fiducial_cuts(event: BubbleDataPoint) -> bool:
