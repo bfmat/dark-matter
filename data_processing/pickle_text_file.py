@@ -60,5 +60,10 @@ with open(os.path.expanduser('~/merged_all.txt')) as text_file:
             break
         # Otherwise, strip and split it using the shlex module to keep strings in quotes intact
         data_strings = shlex.split(data_line.strip())
-        # Convert the strings to their corresponding data types
-        data_points = [data_type(data_string) for data_type, data_string in zip(data_types, data_strings)]
+        # Create a generator to convert the strings to their corresponding data types
+        data_points = (data_type(data_string) for data_type, data_string in zip(data_types, data_strings))
+        # Iterate over the names and numbers of elements in the attributes, adding the data to an event dictionary
+        event_dictionary = {}
+        for name, num_elements in zip(attribute_names, attribute_elements):
+            # If there is only one element, take it from the generator and add it to the dictionary; if there are multiple, take and add them as a list
+            event_dictionary[name] = next(data_points) if num_elements == 1 else [next(data_points) for _ in range(num_elements)]
