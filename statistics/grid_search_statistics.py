@@ -43,3 +43,8 @@ for test_index, test in enumerate(tests):
     print('Maximum training accuracy:', max(training_accuracy))
     print('Mean validation accuracy:', sum(validation_accuracy) / len(validation_accuracy))
     print('Maximum validation accuracy:', max(validation_accuracy))
+    # Get the line index corresponding to the maximum validation accuracy
+    maximum_validation_line_index = test_lines.index(f'Validation accuracy: {max(validation_accuracy)}')
+    # The next line contains the path to the corresponding validation data; get this and print it out
+    validation_data_path = test_lines[maximum_validation_line_index + 1].split()[3]
+    print('Maximum accuracy validation set is saved at', validation_data_path)
