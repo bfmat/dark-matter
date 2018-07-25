@@ -13,6 +13,7 @@ def create_model() -> Model:
     activation = 'relu'
     padding = 'valid'
     regularizer = l2(0.0003)
+    dense_dropout = 0.5
     audio_inputs = Input((100_000, 2))
     x = BatchNormalization()(audio_inputs)
     x = Conv1D(
@@ -73,9 +74,9 @@ def create_model() -> Model:
     x = concatenate([x, axes_inputs])
     x = BatchNormalization()(x)
     x = Dense(64, activation=activation, kernel_regularizer=regularizer)(x)
-    x = BatchNormalization()(x)
+    x = Dropout(dense_dropout)(x)
     x = Dense(16, activation=activation, kernel_regularizer=regularizer)(x)
-    x = BatchNormalization()(x)
+    x = Dropout(dense_dropout)(x)
     outputs = Dense(1, activation='sigmoid', kernel_regularizer=regularizer)(x)
     model = Model(inputs=[audio_inputs, axes_inputs], outputs=outputs)
     # Output a summary of the model's architecture
