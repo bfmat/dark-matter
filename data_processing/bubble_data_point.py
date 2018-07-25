@@ -12,10 +12,10 @@ import time
 from enum import Enum, IntEnum, auto
 from typing import List, Optional
 
-from data_processing.audio_domain_processing import time_to_frequency_domain, band_time_domain
-
 import numpy as np
-from skimage.io import imread, imsave
+from skimage.io import imread
+
+from data_processing.audio_domain_processing import time_to_frequency_domain, band_time_domain
 
 # The path in which all of the raw images and audio data are stored
 RAW_DATA_PATH = os.path.expanduser('~/projects/rrg-kenclark/pico/30l-16-data')
@@ -345,13 +345,12 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
             bubble_x_integer, bubble_y_integer = (
                 min(max(int(round(position)), WINDOW_SIDE_LENGTH),
                     shape_dimension - (WINDOW_SIDE_LENGTH + 1))
-                for position, shape_dimension in zip([bubble_x, bubble_y], reversed(full_image.shape))
+                for position, shape_dimension in zip([bubble_x, bubble_y], full_image.shape)
             )
-            # Crop a square out, centered at the integer position (the image is indexed Y, X)
+            # Crop a square out, centered at the integer position
             half_side_length = WINDOW_SIDE_LENGTH // 2
-            window = full_image[(bubble_y_integer - half_side_length):(bubble_y_integer + half_side_length),
-                                (bubble_x_integer - half_side_length):(bubble_x_integer + half_side_length)]
-            imsave(os.path.expanduser(f'~/img/{time.time()}.png'), window)
+            window = full_image[(bubble_x_integer - half_side_length):(bubble_x_integer + half_side_length),
+                                (bubble_y_integer - half_side_length):(bubble_y_integer + half_side_length)]
             # Add the cropped window to the list of images
             bubble_images.append(window)
     # Return the cropped images, stacked along the channels dimension, and wrapped in a single-element array
