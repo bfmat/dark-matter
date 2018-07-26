@@ -338,7 +338,9 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
     for camera_number, (bubble_x, bubble_y) in enumerate(bubble.camera_positions):
         # If either axis is less than zero, the bubble could not be found; return from the function
         if bubble_x < 0 or bubble_y < 0:
+            print('Bubble not found')
             return []
+        print('Bubble was found')
         # Create a list to add the bubbles for this camera to
         camera_bubble_images = []
         # Otherwise, iterate over several frame indices before and after the bubble detection is triggered
