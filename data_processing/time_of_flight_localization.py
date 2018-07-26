@@ -22,7 +22,7 @@ def expected_times_of_flight(bubble_position):
     # Create a list to hold the expected times of flight
     times_of_flight = []
     # Iterate over each of the piezo positions
-    for piezo_position in PIEZO_POSITIONS:
+    for piezo_position in piezo_positions:
         # Calculate the distance between this piezo and the bubble
         distance = np.linalg.norm(bubble_position - piezo_position)
         # Divide the distance by the speed of sound and add it to the list
