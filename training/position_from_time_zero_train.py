@@ -4,6 +4,10 @@
 
 from data_processing.event_data_set import EventDataSet, RunType
 from data_processing.experiment_serialization import save_test
+from models.position_from_time_zero_network import create_model
+
+# Create an instance of the fully connected neural network
+model = create_model()
 
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
 event_data_set = EventDataSet(
@@ -14,6 +18,5 @@ event_data_set = EventDataSet(
     },
     use_wall_cuts=False
 )
-
 # Get the zero time arrays and corresponding position ground truths
 training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.position_from_time_zero()
