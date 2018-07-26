@@ -1,0 +1,163 @@
+2018-07-26 09:35:12.356035: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1356] Found device 0 with properties: 
+name: Tesla P100-PCIE-12GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:04:00.0
+totalMemory: 11.91GiB freeMemory: 11.62GiB
+2018-07-26 09:35:12.356652: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1435] Adding visible gpu devices: 0
+2018-07-26 09:35:12.737332: I tensorflow/core/common_runtime/gpu/gpu_device.cc:923] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-26 09:35:12.737396: I tensorflow/core/common_runtime/gpu/gpu_device.cc:929]      0 
+2018-07-26 09:35:12.737416: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 0:   N 
+2018-07-26 09:35:12.738703: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11248 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:04:00.0, compute capability: 6.0)
+2018-07-26 09:35:12.873752: I tensorflow/core/common_runtime/process_util.cc:63] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+batch_normalization_1 (Batch (None, 50, 50, 10)        40        
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 24, 24, 16)        2576      
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 11, 11, 32)        4640      
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 5, 5, 32)          9248      
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 4, 4, 64)          8256      
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 1024)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 64)                65600     
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 64)                0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 16)                1040      
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 16)                0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 17        
+=================================================================
+Total params: 91,417
+Trainable params: 91,397
+Non-trainable params: 20
+_________________________________________________________________
+None
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 6s - loss: 1.0534 - acc: 0.2188
+112/112 [==============================] - 3s 24ms/step - loss: 1.0305 - acc: 0.3393
+Validation loss: 0.35408174494902295
+Validation accuracy: 0.6354166666666666
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.8333 - acc: 0.4688
+112/112 [==============================] - 0s 303us/step - loss: 1.0956 - acc: 0.4018
+Validation loss: 0.44315069913864136
+Validation accuracy: 0.4166666666666667
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 1.0146 - acc: 0.3750
+112/112 [==============================] - 0s 293us/step - loss: 0.7265 - acc: 0.3839
+Validation loss: 0.29680579900741577
+Validation accuracy: 0.59375
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.6942 - acc: 0.3438
+112/112 [==============================] - 0s 289us/step - loss: 0.7206 - acc: 0.3393
+Validation loss: 0.20243537922700247
+Validation accuracy: 0.71875
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.7648 - acc: 0.5938
+112/112 [==============================] - 0s 291us/step - loss: 0.5926 - acc: 0.5893
+Validation loss: 0.2533034334580104
+Validation accuracy: 0.6666666666666666
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.7654 - acc: 0.3438
+112/112 [==============================] - 0s 290us/step - loss: 0.5688 - acc: 0.4554
+Validation loss: 0.2087866018215815
+Validation accuracy: 0.7083333333333334
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.4607 - acc: 0.5000
+112/112 [==============================] - 0s 292us/step - loss: 0.4707 - acc: 0.5179
+Validation loss: 0.18126033246517181
+Validation accuracy: 0.7604166666666666
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.5366 - acc: 0.6250
+112/112 [==============================] - 0s 289us/step - loss: 0.3488 - acc: 0.6696
+Validation loss: 0.16816056768099466
+Validation accuracy: 0.78125
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.5662 - acc: 0.4688
+112/112 [==============================] - 0s 294us/step - loss: 0.4417 - acc: 0.5446
+Validation loss: 0.20696995655695596
+Validation accuracy: 0.7083333333333334
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.3988 - acc: 0.5000
+112/112 [==============================] - 0s 294us/step - loss: 0.4575 - acc: 0.5089
+Validation loss: 0.16544781376918158
+Validation accuracy: 0.7708333333333334
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.4304 - acc: 0.5625
+112/112 [==============================] - 0s 289us/step - loss: 0.5105 - acc: 0.4554
+Validation loss: 0.17541357378164926
+Validation accuracy: 0.78125
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.4797 - acc: 0.4375
+112/112 [==============================] - 0s 291us/step - loss: 0.3859 - acc: 0.5179
+Validation loss: 0.17336026827494302
+Validation accuracy: 0.7604166666666666
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.3935 - acc: 0.5000
+112/112 [==============================] - 0s 300us/step - loss: 0.3792 - acc: 0.5536
+Validation loss: 0.18407642592986426
+Validation accuracy: 0.75
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.2904 - acc: 0.6562
+112/112 [==============================] - 0s 293us/step - loss: 0.3118 - acc: 0.6429
+Validation loss: 0.19075951725244522
+Validation accuracy: 0.75
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.2410 - acc: 0.6250
+112/112 [==============================] - 0s 288us/step - loss: 0.3218 - acc: 0.5714
+Validation loss: 0.18251646558443704
+Validation accuracy: 0.7604166666666666
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.3236 - acc: 0.6250
+112/112 [==============================] - 0s 292us/step - loss: 0.3608 - acc: 0.5536
+Validation loss: 0.1795325974623362
+Validation accuracy: 0.7395833333333334
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.4497 - acc: 0.4375
+112/112 [==============================] - 0s 292us/step - loss: 0.3121 - acc: 0.6071
+Validation loss: 0.17201819767554602
+Validation accuracy: 0.7708333333333334
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.3487 - acc: 0.6562
+112/112 [==============================] - 0s 295us/step - loss: 0.3183 - acc: 0.6429
+Validation loss: 0.18334831049044928
+Validation accuracy: 0.7604166666666666
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.3427 - acc: 0.5938
+112/112 [==============================] - 0s 300us/step - loss: 0.3501 - acc: 0.6071
+Validation loss: 0.1644034261504809
+Validation accuracy: 0.8125
+Epoch 1/1
+
+ 32/112 [=======>......................] - ETA: 0s - loss: 0.3086 - acc: 0.6250
+112/112 [==============================] - 0s 292us/step - loss: 0.3166 - acc: 0.6250
+/home/brendonm/python/lib/python3.6/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Validation loss: 0.1702845518787702
+Validation accuracy: 0.78125
