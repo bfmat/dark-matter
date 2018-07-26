@@ -1,0 +1,328 @@
+/usr/local/lib/python3.6/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+batch_normalization_1 (Batch (None, 6)                 24
+_________________________________________________________________
+dense_1 (Dense)              (None, 24)                168
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 24)                0
+_________________________________________________________________
+dense_2 (Dense)              (None, 12)                300
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 12)                0
+_________________________________________________________________
+dense_3 (Dense)              (None, 6)                 78
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 6)                 0
+_________________________________________________________________
+dense_4 (Dense)              (None, 3)                 21
+=================================================================
+Total params: 591
+Trainable params: 579
+Non-trainable params: 12
+_________________________________________________________________
+None
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+2018-07-26 15:18:21.655911: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+26491/26491 [==============================] - 2s 75us/step - loss: 10039.1876 - val_loss: 9835.6401
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 9622.4978 - val_loss: 9494.5767
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 9283.1266 - val_loss: 9187.2283
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 8976.6882 - val_loss: 8906.2496
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 8697.1675 - val_loss: 8647.0276
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 52us/step - loss: 8440.9227 - val_loss: 8408.8369
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 8205.9343 - val_loss: 8189.9012
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 52us/step - loss: 7991.7255 - val_loss: 7990.3179
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 7797.7644 - val_loss: 7810.8617
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 7623.1536 - val_loss: 7649.1946
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 7467.5992 - val_loss: 7506.6946
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 7330.8701 - val_loss: 7382.3844
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 7212.2704 - val_loss: 7275.7310
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 52us/step - loss: 7111.3392 - val_loss: 7186.5531
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 7027.3968 - val_loss: 7113.0847
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6959.3658 - val_loss: 7055.3080
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6906.0545 - val_loss: 7011.0259
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6866.0201 - val_loss: 6979.4865
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 56us/step - loss: 6837.5772 - val_loss: 6957.8315
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 56us/step - loss: 6818.4224 - val_loss: 6944.3260
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 57us/step - loss: 6806.2620 - val_loss: 6936.1251
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6799.0541 - val_loss: 6931.9858
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 52us/step - loss: 6794.9964 - val_loss: 6929.7930
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 54us/step - loss: 6792.8844 - val_loss: 6928.6379
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6791.7923 - val_loss: 6928.6150
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 54us/step - loss: 6791.2491 - val_loss: 6928.4033
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 55us/step - loss: 6790.9810 - val_loss: 6928.4812
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 51us/step - loss: 6790.8236 - val_loss: 6928.7412
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7585 - val_loss: 6928.5094
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7332 - val_loss: 6928.4203
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7196 - val_loss: 6928.4320
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7195 - val_loss: 6928.6702
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7103 - val_loss: 6928.8680
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 52us/step - loss: 6790.7130 - val_loss: 6928.6515
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 52us/step - loss: 6790.7078 - val_loss: 6928.6312
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 54us/step - loss: 6790.7026 - val_loss: 6928.6682
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7071 - val_loss: 6928.7471
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7000 - val_loss: 6928.8160
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7077 - val_loss: 6929.0725
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7012 - val_loss: 6929.1051
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.6972 - val_loss: 6928.8280
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.6906 - val_loss: 6928.9403
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7123 - val_loss: 6928.7334
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7051 - val_loss: 6928.6064
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7037 - val_loss: 6928.6519
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.6980 - val_loss: 6928.8676
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7049 - val_loss: 6928.6493
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7189 - val_loss: 6928.5043
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7022 - val_loss: 6928.4575
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7163 - val_loss: 6928.7744
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7070 - val_loss: 6928.5090
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7105 - val_loss: 6928.5338
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 54us/step - loss: 6790.6905 - val_loss: 6928.5432
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 62us/step - loss: 6790.6843 - val_loss: 6928.3455
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 54us/step - loss: 6790.7082 - val_loss: 6928.2332
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7016 - val_loss: 6928.4491
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.6961 - val_loss: 6928.5984
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.6971 - val_loss: 6928.6177
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.6898 - val_loss: 6928.7721
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7198 - val_loss: 6928.5144
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.6960 - val_loss: 6928.6405
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7017 - val_loss: 6928.5798
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7064 - val_loss: 6928.4712
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.6968 - val_loss: 6928.5917
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 63us/step - loss: 6790.6964 - val_loss: 6928.6414
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 3s 101us/step - loss: 6790.7044 - val_loss: 6928.6982
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 74us/step - loss: 6790.6996 - val_loss: 6928.7428
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 59us/step - loss: 6790.7044 - val_loss: 6928.6335
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 59us/step - loss: 6790.7008 - val_loss: 6928.6919
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 66us/step - loss: 6790.6982 - val_loss: 6928.8282
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 69us/step - loss: 6790.7083 - val_loss: 6928.6411
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 67us/step - loss: 6790.7196 - val_loss: 6928.7755
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 67us/step - loss: 6790.7173 - val_loss: 6928.5974
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 67us/step - loss: 6790.7156 - val_loss: 6928.6692
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 70us/step - loss: 6790.6935 - val_loss: 6928.7072
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 69us/step - loss: 6790.7222 - val_loss: 6928.8994
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 61us/step - loss: 6790.6920 - val_loss: 6928.6342
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 63us/step - loss: 6790.7003 - val_loss: 6928.6089
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 61us/step - loss: 6790.7045 - val_loss: 6928.3290
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 61us/step - loss: 6790.6975 - val_loss: 6928.6152
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 60us/step - loss: 6790.7074 - val_loss: 6928.5378
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 58us/step - loss: 6790.7096 - val_loss: 6928.6772
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 56us/step - loss: 6790.7166 - val_loss: 6928.6691
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 56us/step - loss: 6790.7203 - val_loss: 6928.4484
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 54us/step - loss: 6790.6985 - val_loss: 6928.4749
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 54us/step - loss: 6790.7040 - val_loss: 6928.6006
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 55us/step - loss: 6790.6985 - val_loss: 6928.6565
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 54us/step - loss: 6790.7028 - val_loss: 6928.7692
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 63us/step - loss: 6790.6980 - val_loss: 6928.6169
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 54us/step - loss: 6790.7037 - val_loss: 6928.7444
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 58us/step - loss: 6790.7044 - val_loss: 6928.6021
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 54us/step - loss: 6790.7024 - val_loss: 6928.6216
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7033 - val_loss: 6928.6511
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7006 - val_loss: 6928.7631
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.6911 - val_loss: 6928.5494
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7105 - val_loss: 6928.6458
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 53us/step - loss: 6790.7104 - val_loss: 6928.6570
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 1s 56us/step - loss: 6790.7215 - val_loss: 6928.7939
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 64us/step - loss: 6790.7098 - val_loss: 6928.7480
+Train on 26491 samples, validate on 128 samples
+Epoch 1/1
+26491/26491 [==============================] - 2s 58us/step - loss: 6790.6922 - val_loss: 6928.7594
