@@ -5,9 +5,7 @@ import datetime
 import itertools
 import math
 import os
-import random
 import sys
-import time
 
 from enum import Enum, IntEnum, auto
 from typing import List, Optional
@@ -15,7 +13,7 @@ from typing import List, Optional
 import numpy as np
 from skimage.io import imread
 
-from data_processing.audio_domain_processing import time_to_frequency_domain, band_time_domain
+from data_processing.audio_domain_processing import time_to_frequency_domain
 
 # The path in which all of the raw images and audio data are stored
 RAW_DATA_PATH = os.path.expanduser('~/projects/rrg-kenclark/pico/30l-16-data')
@@ -56,6 +54,9 @@ FREQUENCY_BANDS = [
 
 # The number of audio samples per second in raw recordings
 SAMPLES_PER_SECOND = 400_000
+
+# The shape of the piezo_E banded Fourier transform array
+BANDED_FREQUENCY_DOMAIN_SHAPE = (9, 45, 3)
 
 
 class RunType(Enum):
@@ -125,6 +126,7 @@ class BubbleDataPoint:
         self.timestamp = root_event.timestamp
         # The run identifier is in the format YYYYMMDD_RR (R is the run within that day); parse it to get a date and a run number
         run_identifier = root_event.run
+        print(run_identifier)
         year = int(run_identifier[:4])
         month = int(run_identifier[4:6])
         day = int(run_identifier[6:8])
@@ -133,7 +135,7 @@ class BubbleDataPoint:
         run_number_end_index = 10
         for character_index in itertools.count(run_number_end_index + 1):
             # Subtract one from the index because indexing in Python is exclusive for the end
-            if run_identifier[character_index - 1].isdigit():
+            if len(run_identifier) >= character_index and run_identifier[character_index - 1].isdigit():
                 run_number_end_index = character_index
             else:
                 break
@@ -154,10 +156,10 @@ class BubbleDataPoint:
         # It has to be converted to a list first; NumPy reads the length incorrectly
         banded_array = np.array(list(root_event.piezo_E_PosCor))
         # Reshape it into the format (time bin, frequency bin, piezo channel) where there are 3 time bins, 8 frequency bins, and 3 piezo channels
-        self.banded_frequency_domain = np.reshape(banded_array, (3, 8, 3))
+        self.banded_frequency_domain = np.reshape(banded_array, BANDED_FREQUENCY_DOMAIN_SHAPE)
         # Do the same with the banded frequency domain representation without any position corrections
         banded_array = np.array(list(root_event.piezo_E))
-        self.banded_frequency_domain_raw = np.reshape(banded_array, (3, 8, 3))
+        self.banded_frequency_domain_raw = np.reshape(banded_array, BANDED_FREQUENCY_DOMAIN_SHAPE)
         # Calculate the AP12 variable, which is used to detect wall events with greater accuracy
         self.acoustic_parameter_12 = np.mean(
             self.banded_frequency_domain_raw
