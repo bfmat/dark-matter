@@ -16,7 +16,7 @@ from skimage.io import imread
 from data_processing.audio_domain_processing import time_to_frequency_domain
 
 # A constant that defines which run we are currently using
-USE_RUN_1 = False
+USE_RUN_1 = True
 
 # The path in which all of the raw images and audio data are stored
 RAW_DATA_PATH = os.path.expanduser('~/projects/rrg-kenclark/pico/30l-16-data')
