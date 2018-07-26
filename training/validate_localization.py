@@ -17,15 +17,7 @@ events = [
 ]
 # Randomize the order of the events and take a certain number from the beginning
 random.shuffle(events)
-# events = events[:1000]
-print(np.mean([e.z_position for e in events if (np.array(e.piezo_time_zero) - min(e.piezo_time_zero))[0] == 0]))
-print(np.mean([e.z_position for e in events if (np.array(e.piezo_time_zero) - min(e.piezo_time_zero))[1] == 0]))
-print(np.mean([e.z_position for e in events if (np.array(e.piezo_time_zero) - min(e.piezo_time_zero))[2] == 0]))
-print(np.mean([e.z_position for e in events if (np.array(e.piezo_time_zero) - min(e.piezo_time_zero))[4] == 0]))
-print(np.mean([e.z_position for e in events if (np.array(e.piezo_time_zero) - min(e.piezo_time_zero))[5] == 0]))
-print(np.mean([e.z_position for e in events if (np.array(e.piezo_time_zero) - min(e.piezo_time_zero))[6] == 0]))
-import sys
-sys.exit()
+events = events[:1000]
 
 
 def mean_squared_positional_error(piezo_positions_combined: np.ndarray) -> float:
