@@ -19,8 +19,10 @@ def mean_squared_positional_error() -> float:
     # Iterate over all of the events, adding squared errors to a list
     squared_errors = []
     for event in events:
+        # Subtract the first piezo signal time from all of them, so they are either 0 or positive, and at least one is 0
+        piezo_timings = event.piezo_time_zero - np.min(event.piezo_time_zero)
         # Approximate the position of the bubble based the times audio starts at the different piezos
-        audio_position = localize_bubble(event.piezo_start_time)
+        audio_position = localize_bubble(piezo_timings)
         # Subtract it from the position calculated by the camera to get an error vector
         camera_position = np.array([event.x_position, event.y_position, event.z_position])
         error_vector = audio_position - camera_position
