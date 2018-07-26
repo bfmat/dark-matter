@@ -14,7 +14,9 @@ import numpy as np
 from skimage.io import imread
 
 from data_processing.audio_domain_processing import time_to_frequency_domain
-from data_processing.event_data_set import USE_RUN_1
+
+# A constant that defines which run we are currently using
+USE_RUN_1 = True
 
 # The path in which all of the raw images and audio data are stored
 RAW_DATA_PATH = os.path.expanduser('~/projects/rrg-kenclark/pico/30l-16-data')
@@ -152,11 +154,6 @@ class BubbleDataPoint:
         self.trigger_cause = TriggerCause(raw_trigger_cause) \
             if raw_trigger_cause in set(possible_trigger_cause.value for possible_trigger_cause in TriggerCause) \
             else TriggerCause.MANUAL_OR_RELAUNCH
-        # Get the position-corrected banded frequency domain representation of the audio as an array of strength values
-        # It has to be converted to a list first; NumPy reads the length incorrectly
-        banded_array = np.array(list(root_event.piezo_E_PosCor))
-        # Reshape it into the format (time bin, frequency bin, piezo channel) where there are 3 time bins, 8 frequency bins, and 3 piezo channels
-        self.banded_frequency_domain = np.reshape(banded_array, BANDED_FREQUENCY_DOMAIN_SHAPE)
         # Do the same with the banded frequency domain representation without any position corrections
         banded_array = np.array(list(root_event.piezo_E))
         self.banded_frequency_domain_raw = np.reshape(banded_array, BANDED_FREQUENCY_DOMAIN_SHAPE)
@@ -201,6 +198,11 @@ class BubbleDataPoint:
             self.pressure_not_position_corrected = root_event.dytranC
             # Get the neural network score predicted in the original PICO-60 paper
             self.original_neural_network_score = root_event.NN_score
+            # Get the position-corrected banded frequency domain representation of the audio as an array of strength values
+            # It has to be converted to a list first; NumPy reads the length incorrectly
+            banded_array = np.array(list(root_event.piezo_E_PosCor))
+            # Reshape it into the format (time bin, frequency bin, piezo channel) where there are 3 time bins, 8 frequency bins, and 3 piezo channels
+            self.banded_frequency_domain = np.reshape(banded_array, BANDED_FREQUENCY_DOMAIN_SHAPE)
         # There are also some that are only loaded for run 1
         else:
             # Load the piezo start and end times

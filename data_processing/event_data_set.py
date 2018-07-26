@@ -8,14 +8,12 @@ from typing import Callable, List, Optional, Set, Tuple, Generator
 
 import numpy as np
 
-from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerCause, load_bubble_audio
+from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerCause, load_bubble_audio, USE_RUN_1
 
 
 # The paths to the Pickle data files, which contains processed attributes of bubble events, for each of the two PICO-60 runs
 RUN_1_PATH = os.path.expanduser('~/run1merged.pkl')
 RUN_2_PATH = os.path.expanduser('~/run2merged.pkl')
-# A constant that defines which run we are currently using
-USE_RUN_1 = True
 # Set the path to use accordingly
 EVENT_FILE_PATH = RUN_1_PATH if USE_RUN_1 else RUN_2_PATH
 
