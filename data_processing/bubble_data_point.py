@@ -366,6 +366,8 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
                                 (bubble_y_integer - half_side_length):(bubble_y_integer + half_side_length)]
             # Add the cropped window to the list of images for this camera
             camera_bubble_images.append(window)
+            print(len(camera_bubble_images))
+            print(camera_bubble_images[0].shape)
         # Add the list of bubbles for this camera to the list of all bubble images
         bubble_images.append(camera_bubble_images)
     # Return the cropped images as a NumPy array, wrapped in a single-element list
