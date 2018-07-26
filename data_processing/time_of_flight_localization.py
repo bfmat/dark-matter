@@ -5,16 +5,16 @@ import autograd.numpy as np
 from autograd import grad
 from scipy.optimize import minimize
 
-# A list of the positions of the piezos in 3D space, in millimeters, relative to the same origin as the bubble positions in the ROOT file
-PIEZO_POSITIONS = [
-    np.array([5, 5, 0]),
-    np.array([-5, -5, 0]),
-    np.array([3, -3, 0]),
-    np.array([-3, 3, 0])
-]
-
 # The speed of sound, in millimeters per second, in the CF3I present in the PICO-60 vessel for run 1
 SPEED_OF_SOUND = 106_000
+
+# A list of the approximate positions of the piezos in 3D space, in millimeters, relative to the same origin as the bubble positions in the ROOT file
+INITIAL_PIEZO_POSITIONS = np.array([
+
+])
+
+# A copy of the above list that changes as it is optimized; no perfect parameters are available
+piezo_positions = None
 
 
 def expected_times_of_flight(bubble_position):
@@ -41,8 +41,11 @@ def timing_error(bubble_position, piezo_timings):
     return np.linalg.norm(expected_timings - piezo_timings)
 
 
-def localize_bubble(piezo_timings):
+def localize_bubble(piezo_timings, piezo_positions_in):
     """Calculate the position of a bubble, based on the timings of the signals to the piezos (of which the lowest value is expected to be 0), using error optimization"""
+    # Set the global piezo positions variable with the array passed
+    global piezo_positions
+    piezo_positions = piezo_positions_in
     # Convert the piezo timings to an Autograd NumPy array
     piezo_timings_numpy = np.array(piezo_timings)
     # Get the derivative of the timing error calculation function, used for optimization
