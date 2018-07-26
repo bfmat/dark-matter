@@ -20,3 +20,11 @@ event_data_set = EventDataSet(
 )
 # Get the zero time arrays and corresponding position ground truths
 training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.position_from_time_zero()
+
+# Train the model on the loaded data set for a certain number of epochs
+model.fit(
+    x=training_input,
+    y=training_ground_truths,
+    validation_data=(validation_input, validation_ground_truths),
+    epochs=200
+)
