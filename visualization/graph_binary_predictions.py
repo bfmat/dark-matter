@@ -3,6 +3,7 @@
 # Created by Brendon Matusch, June 2018
 
 import copy
+import random
 import sys
 
 import matplotlib.pyplot as plt
@@ -16,13 +17,19 @@ verify_arguments('JSON data file')
 
 # Load the data set from the file
 events, ground_truths, network_outputs = load_test(sys.argv[1])
-# Get the acoustic parameter and neural network score data from the events
-acoustic_parameters, original_neural_network_scores = zip(
-    *((event.logarithmic_acoustic_parameter, event.original_neural_network_score)
-      for event in events)
-)
+# Get the acoustic parameter and neural network score data from the events, if they are present (if one is, both will be)
+if hasattr(events[0], 'logarithmic_acoustic_parameter'):
+    acoustic_parameters, original_neural_network_scores = zip(
+        *((event.logarithmic_acoustic_parameter, event.original_neural_network_score)
+          for event in events)
+    )
+# Otherwise, make them lists of random values of the same length as the network outputs
+else:
+    random_values = [random.uniform(0, 1) for _ in range(len(network_outputs))]
+    acoustic_parameters = random_values
+    original_neural_network_scores = random_values
 
-# Iterate over the three criteria standard deviations will be calculated for, and corresponding names
+    # Iterate over the three criteria standard deviations will be calculated for, and corresponding names
 for criterion_data, criterion_name in zip(
     copy.deepcopy([network_outputs, acoustic_parameters,
                    original_neural_network_scores]),
