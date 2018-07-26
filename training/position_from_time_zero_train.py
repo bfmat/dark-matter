@@ -26,5 +26,5 @@ model.fit(
     x=training_input,
     y=training_ground_truths,
     validation_data=(validation_input, validation_ground_truths),
-    epochs=200
+    epochs=1000
 )
