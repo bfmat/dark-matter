@@ -364,5 +364,6 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
                                 (bubble_y_integer - half_side_length):(bubble_y_integer + half_side_length)]
             # Add the cropped window to the list of images
             bubble_images.append(window)
+            print(len(bubble_images))
     # Return the cropped images, stacked along the channels dimension, and wrapped in a single-element array
     return [np.stack(bubble_images, axis=2)]
