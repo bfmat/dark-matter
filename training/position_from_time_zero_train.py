@@ -24,7 +24,7 @@ event_data_set = EventDataSet(
 training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.position_from_time_zero()
 
 # Iterate for a certain number of epochs
-for epoch in range(100):
+for epoch in range(500):
     # Train the model on the loaded data set
     model.fit(
         x=training_input,
