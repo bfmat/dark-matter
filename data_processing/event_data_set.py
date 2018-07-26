@@ -192,7 +192,8 @@ class EventDataSet:
             (
                 # Stack together all of the zero time data, for all piezos, even the ones that were disabled in earlier analyses
                 np.stack([
-                    event.piezo_time_zero
+                    # Subtract the first piezo signal time from all of them, so they are either 0 or positive, and at least one is 0
+                    event.piezo_time_zero - np.min(event.piezo_time_zero)
                     for event in events
                 ]),
                 # Stack together the 3 position values
