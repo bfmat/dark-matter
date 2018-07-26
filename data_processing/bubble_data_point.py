@@ -334,15 +334,11 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
     )
     # Create a list to hold all images of this bubble
     bubble_images = []
-    found = 0
-    not_found = 0
     # Iterate over the number of each of the four cameras and the position of the bubble in this camera
     for camera_number, (bubble_x, bubble_y) in enumerate(bubble.camera_positions):
-        # If either axis is less than zero, the bubble could not be found; return from the function
+        # If either axis is less than zero, the bubble could not be found; skip to the next iteration
         if bubble_x < 0 or bubble_y < 0:
-            not_found += 1
-            return []
-        found += 1
+            continue
         # Create a list to add the bubbles for this camera to
         camera_bubble_images = []
         # Otherwise, iterate over several frame indices before and after the bubble detection is triggered
@@ -373,6 +369,5 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
         # Combine the images for this camera into a NumPy array, stacking on the last axis (channels), and add it to the list
         images_array = np.stack(camera_bubble_images, axis=2)
         bubble_images.append(images_array)
-    print(f'{found} bubbles found, {not_found} not found')
     # Return the list of arrays of bubble images for each camera
     return bubble_images
