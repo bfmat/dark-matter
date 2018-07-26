@@ -17,7 +17,7 @@ events = [
 ]
 # Randomize the order of the events and take a certain number from the beginning
 random.shuffle(events)
-events = events[:1000]
+# events = events[:1000]
 
 
 def mean_squared_positional_error(piezo_positions_combined: np.ndarray) -> float:
