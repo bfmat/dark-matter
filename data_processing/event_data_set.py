@@ -190,9 +190,9 @@ class EventDataSet:
         # Create flattened training arrays and binary ground truth arrays for both training and validation
         (training_inputs, training_ground_truths), (validation_inputs, validation_ground_truths) = [
             (
-                # Stack together all of the zero time data, for only the working 6 piezos
+                # Stack together all of the zero time data, for all piezos, even the ones that were disabled in earlier analyses
                 np.stack([
-                    np.array(event.piezo_time_zero)[[0, 1, 2, 4, 5, 6]]
+                    event.piezo_time_zero
                     for event in events
                 ]),
                 # Stack together the 3 position values
