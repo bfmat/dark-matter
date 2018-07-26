@@ -185,6 +185,27 @@ class EventDataSet:
         # Return both components of both datasets
         return training_inputs, training_ground_truths, validation_inputs, validation_ground_truths
 
+    def position_from_time_zero(self) ->Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        """Return zero time data arrays, alongside position ground truths that the network should be trained to predict"""
+        # Create flattened training arrays and binary ground truth arrays for both training and validation
+        (training_inputs, training_ground_truths), (validation_inputs, validation_ground_truths) = [
+            (
+                # Stack together all of the zero time data, for only the working 6 piezos
+                np.stack([
+                    np.array(event.piezo_time_zero)[[0, 1, 2, 4, 5, 6]]
+                    for event in events
+                ]),
+                # Stack together the 3 position values
+                np.stack([
+                    [event.x_position, event.y_position, event.z_position]
+                    for event in events
+                ])
+            )
+            for events in [self.training_events, self.validation_events]
+        ]
+        # Return both components of both datasets
+        return training_inputs, training_ground_truths, validation_inputs, validation_ground_truths
+
     def audio_alpha_classification(self, loading_function: Callable[[BubbleDataPoint], List[np.ndarray]], include_positions: bool) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Return the audio data from a provided loading function, with corresponding binary classification ground truths into neutrons and alpha particles"""
         # Iterate over the training and validation events, with corresponding lists to add audio and position inputs and ground truths to
