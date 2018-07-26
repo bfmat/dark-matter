@@ -205,9 +205,8 @@ class BubbleDataPoint:
             self.banded_frequency_domain = np.reshape(banded_array, BANDED_FREQUENCY_DOMAIN_SHAPE)
         # There are also some that are only loaded for run 1
         else:
-            # Load the piezo start and end times
-            self.piezo_start_time = root_event.piezo_starttime
-            self.piezo_end_time = root_event.piezo_endtime
+            # Get the time that each of the piezos received the signal
+            self.piezo_time_zero = root_event.piezo_t0
 
 
 def bubble_data_path(bubble: BubbleDataPoint) -> str:
