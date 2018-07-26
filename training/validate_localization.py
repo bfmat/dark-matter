@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+"""A script for running time of flight localization on many different examples and comparing it to the positions calculated with the camera"""
+# Created by Brendon Matusch, July 2018
+
+import numpy as np
+
+from data_processing.event_data_set import EventDataSet
+from data_processing.time_of_flight_localization import localize_bubble
+
+# Load all events straight from the file, and apply standard quality cuts
+events = [
+    event for event in EventDataSet.load_data_from_file()
+    if EventDataSet.passes_standard_cuts(event)
+]
+
+
+def mean_squared_positional_error() -> float:
+    """Run through all events in the data set, approximating their positions using audio and comparing them to those calculated based on the camera, and return the mean squared error over all events"""
+    # Iterate over all of the events, adding squared errors to a list
+    squared_errors = []
+    for event in events:
+        # Approximate the position of the bubble based the times audio starts at the different piezos
+        audio_position = localize_bubble(event.piezo_start_time)
+        # Subtract it from the position calculated by the camera to get an error vector
+        camera_position = np.array([event.x_position, event.y_position, event.z_position])
+        error_vector = audio_position - camera_position
+        # Square the error values and append them to the list for all events
+        squared_error_vector = error_vector ** 2
+        squared_errors += squared_error_vector.tolist()
+        # Print the mean of the error vector for just this event
+        print(f'Mean squared error for event {event.unique_bubble_identifier} is {np.mean(squared_error_vector)}')
+    # Return the mean of all of the squared errors
+    return np.mean(squared_errors)
+
+
+# Calculate the mean squared error for all events and print it out
+mean_squared_error = mean_squared_positional_error()
+print(f'Mean squared error over all events is {mean_squared_error}')
