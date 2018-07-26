@@ -80,11 +80,18 @@ class EventDataSet:
             event.run_type != RunType.GARBAGE
             # Keep only events captured due to the camera trigger and not timeouts, manual triggers, or auto-relaunches
             and event.trigger_cause == TriggerCause.CAMERA_TRIGGER
-            # Always exclude events with a very large negative acoustic parameter (this is completely invalid)
-            and event.logarithmic_acoustic_parameter > -100
+            # Always exclude events with a very large negative acoustic parameter (this is completely invalid), but skip this cut if the event does not have the acoustic parameter attribute
+            and (
+                not hasattr(event, 'logarithmic_acoustic_parameter')
+                or event.logarithmic_acoustic_parameter > -100
+            )
             # Keep only events containing around one bubble based on the image and pressure transducer
             and event.num_bubbles_image <= 1
-            and event.num_bubbles_pressure >= 0.7 and event.num_bubbles_pressure <= 1.3
+            # Skip the pressure cut if the event does not have the attribute
+            and (
+                not hasattr(event, 'num_bubbles_pressure')
+                or (event.num_bubbles_pressure >= 0.7 and event.num_bubbles_pressure <= 1.3)
+            )
             # Do not use events within the first 25s after reaching target pressure
             and event.time_since_target_pressure > 25
         )
