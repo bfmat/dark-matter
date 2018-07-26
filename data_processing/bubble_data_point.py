@@ -332,13 +332,15 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
         bubble_data_path(bubble),
         'Images'
     )
-    # Create a list to hold the images of this bubble
+    # Create a list to hold all images of this bubble
     bubble_images = []
     # Iterate over the number of each of the four cameras and the position of the bubble in this camera
     for camera_number, (bubble_x, bubble_y) in enumerate(bubble.camera_positions):
         # If either axis is less than zero, the bubble could not be found; return from the function
         if bubble_x < 0 or bubble_y < 0:
             return []
+        # Create a list to add the bubbles for this camera to
+        camera_bubble_images = []
         # Otherwise, iterate over several frame indices before and after the bubble detection is triggered
         for image_number in range(START_IMAGE_INDEX, END_IMAGE_INDEX):
             # Format the full path of this image
@@ -362,8 +364,9 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
             half_side_length = WINDOW_SIDE_LENGTH // 2
             window = full_image[(bubble_x_integer - half_side_length):(bubble_x_integer + half_side_length),
                                 (bubble_y_integer - half_side_length):(bubble_y_integer + half_side_length)]
-            # Add the cropped window to the list of images
-            bubble_images.append(window)
-            print(len(bubble_images))
-    # Return the cropped images, stacked along the channels dimension, and wrapped in a single-element array
+            # Add the cropped window to the list of images for this camera
+            camera_bubble_images.append(window)
+        # Add the list of bubbles for this camera to the list of all bubble images
+        bubble_images.append(camera_bubble_images)
+    # Return the cropped images as a NumPy array, wrapped in a single-element list
     return [np.stack(bubble_images, axis=2)]
