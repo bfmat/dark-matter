@@ -10,6 +10,7 @@ import shlex
 from collections import namedtuple
 from functools import reduce
 
+from data_processing.bubble_data_point import BubbleDataPoint
 from data_processing.event_data_set import EVENT_FILE_PATH
 
 # A dictionary corresponding the last letter of a format string to the type of that element
@@ -51,8 +52,8 @@ with open(os.path.expanduser('~/merged_all.txt')) as text_file:
     # Read and ignore the next 3 lines, which do not contain any data
     for _ in range(3):
         text_file.readline()
-    # Create a list to add the event objects to
-    event_objects = []
+    # Create a list to add the bubbles to
+    bubbles = []
     # Iterate over line indices, reading data, until breaking at the end of the file
     for line_index in itertools.count():
         # Notify the user every 100 lines
@@ -71,9 +72,11 @@ with open(os.path.expanduser('~/merged_all.txt')) as text_file:
         for name, num_elements in zip(attribute_names, attribute_elements):
             # If there is only one element, take it from the generator and add it to the dictionary; if there are multiple, take and add them as a list
             event_dictionary[name] = next(data_points) if num_elements == 1 else [next(data_points) for _ in range(num_elements)]
-        # Create a named tuple object out of the dictionary and add it to the list
-        event_objects.append(namedtuple('Event', sorted(event_dictionary.keys()))(**event_dictionary))
+        # Create a named tuple object out of the dictionary
+        event_object = namedtuple('Event', sorted(event_dictionary.keys()))(**event_dictionary)
+        # Convert it to a bubble with the corresponding unique line index
+        bubbles.append(BubbleDataPoint(event_object, line_index))
 # Serialize the list to a Pickle binary file and notify the user
 with open(EVENT_FILE_PATH, 'wb') as pickle_file:
-    pickle.dump(event_objects, pickle_file)
+    pickle.dump(bubbles, pickle_file)
 print('Saved as', EVENT_FILE_PATH)
