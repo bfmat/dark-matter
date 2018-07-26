@@ -14,6 +14,7 @@ import numpy as np
 from skimage.io import imread
 
 from data_processing.audio_domain_processing import time_to_frequency_domain
+from data_processing.event_data_set import USE_RUN_1
 
 # The path in which all of the raw images and audio data are stored
 RAW_DATA_PATH = os.path.expanduser('~/projects/rrg-kenclark/pico/30l-16-data')
@@ -119,7 +120,7 @@ class BubbleDataPoint:
     """A bubble event data class that contains all of the data necessary for training, for a single bubble; there are multiple of these recorded for a multi-bubble event"""
 
     def __init__(self, root_event, unique_bubble_index: int) -> None:
-        """Initializer that takes a single event in the CERN ROOT format and extracts the relevant data; it also takes a unique index for this bubble"""
+        """Initializer that takes a single event in the CERN ROOT format and extracts the relevant data; it also takes a unique index for this bubble, and it loads different attributes depending on whether it is PICO-60 run 1 or run 2"""
         # Set a global variable with the provided unique index
         self.unique_bubble_index = unique_bubble_index
         # Get the timestamp that this event was recorded at
@@ -151,12 +152,11 @@ class BubbleDataPoint:
         self.trigger_cause = TriggerCause(raw_trigger_cause) \
             if raw_trigger_cause in set(possible_trigger_cause.value for possible_trigger_cause in TriggerCause) \
             else TriggerCause.MANUAL_OR_RELAUNCH
-        # # Get the position-corrected banded frequency domain representation of the audio as an array of strength values
-        # # It has to be converted to a list first; NumPy reads the length incorrectly
-        # banded_array = np.array(list(root_event.piezo_E_PosCor))
-        # # Reshape it into the format (time bin, frequency bin, piezo channel) where there are 3 time bins, 8 frequency bins, and 3 piezo channels
-        # self.banded_frequency_domain = np.reshape(banded_array, BANDED_FREQUENCY_DOMAIN_SHAPE)
-        self.banded_frequency_domain = None
+        # Get the position-corrected banded frequency domain representation of the audio as an array of strength values
+        # It has to be converted to a list first; NumPy reads the length incorrectly
+        banded_array = np.array(list(root_event.piezo_E_PosCor))
+        # Reshape it into the format (time bin, frequency bin, piezo channel) where there are 3 time bins, 8 frequency bins, and 3 piezo channels
+        self.banded_frequency_domain = np.reshape(banded_array, BANDED_FREQUENCY_DOMAIN_SHAPE)
         # Do the same with the banded frequency domain representation without any position corrections
         banded_array = np.array(list(root_event.piezo_E))
         self.banded_frequency_domain_raw = np.reshape(banded_array, BANDED_FREQUENCY_DOMAIN_SHAPE)
@@ -178,32 +178,34 @@ class BubbleDataPoint:
             self.distance_from_center = 100000
         # Get the minimum of the distances from the bubble to the wall on two axes
         self.distance_to_wall = min(root_event.Dwall, root_event.Dwall_horiz)
-        # # Compute the logarithmic acoustic parameter, which is used to sort background events out of the calibration runs
-        # # Substitute a large negative number if the raw value is zero or negative
-        # self.logarithmic_acoustic_parameter = math.log(root_event.acoustic_bubnum, 10) if root_event.acoustic_bubnum > 0 \
-        #     else -10_000
-        self.logarithmic_acoustic_parameter = None
-        # # Get the X and Y positions of the bubble on each of the four cameras
-        # self.camera_positions = [
-        #     (root_event.hori0, root_event.vert0),
-        #     (root_event.hori1, root_event.vert1),
-        #     (root_event.hori2, root_event.vert2),
-        #     (root_event.hori3, root_event.vert3)
-        # ]
-        self.camera_positions = None
         # Get the number of bubbles present in the event, calculated through image matching
         self.num_bubbles_image = root_event.nbub
-        # # Get the approximated number of bubbles based on the pressure transducer
-        # self.num_bubbles_pressure = root_event.dytranCZ
-        self.num_bubbles_pressure = None
-        # # Get the pressure transducer value not corrected for position
-        # self.pressure_not_position_corrected = root_event.dytranC
-        self.pressure_not_position_corrected = None
-        # # Get the neural network score predicted in the original PICO-60 paper
-        # self.original_neural_network_score = root_event.NN_score
-        self.original_neural_network_score = None
         # Get the time since the target pressure was reached
         self.time_since_target_pressure = root_event.te
+        # There are certain attributes that are only loaded for run 2
+        if not USE_RUN_1:
+            # Compute the logarithmic acoustic parameter, which is used to sort background events out of the calibration runs
+            # Substitute a large negative number if the raw value is zero or negative
+            self.logarithmic_acoustic_parameter = math.log(root_event.acoustic_bubnum, 10) if root_event.acoustic_bubnum > 0 \
+                else -10_000
+            # Get the X and Y positions of the bubble on each of the four cameras
+            self.camera_positions = [
+                (root_event.hori0, root_event.vert0),
+                (root_event.hori1, root_event.vert1),
+                (root_event.hori2, root_event.vert2),
+                (root_event.hori3, root_event.vert3)
+            ]
+            # Get the approximated number of bubbles based on the pressure transducer
+            self.num_bubbles_pressure = root_event.dytranCZ
+            # Get the pressure transducer value not corrected for position
+            self.pressure_not_position_corrected = root_event.dytranC
+            # Get the neural network score predicted in the original PICO-60 paper
+            self.original_neural_network_score = root_event.NN_score
+        # There are also some that are only loaded for run 1
+        else:
+            # Load the piezo start and end times
+            self.piezo_start_time = root_event.piezo_starttime
+            self.piezo_end_time = root_event.piezo_endtime
 
 
 def bubble_data_path(bubble: BubbleDataPoint) -> str:
