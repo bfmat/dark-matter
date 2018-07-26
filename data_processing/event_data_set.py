@@ -199,7 +199,7 @@ class EventDataSet:
                 if not audio:
                     continue
                 # Otherwise, add the audio waveform to the list
-                audio_inputs.append(audio[0])
+                audio_inputs += audio
                 # Add the spatial position of the bubble to the list of inputs
                 position_inputs.append([
                     event.x_position,
