@@ -5,7 +5,7 @@ import autograd.numpy as np
 from autograd import grad
 from scipy.optimize import minimize
 
-# A list of the positions of the piezos in 3D space, using the same units as the bubble positions in the ROOT file
+# A list of the positions of the piezos in 3D space, in millimeters, relative to the same origin as the bubble positions in the ROOT file
 PIEZO_POSITIONS = [
     np.array([5, 5, 0]),
     np.array([-5, -5, 0]),
@@ -13,8 +13,8 @@ PIEZO_POSITIONS = [
     np.array([-3, 3, 0])
 ]
 
-# The speed of sound, in distance units per second, in the medium present in the vessel
-SPEED_OF_SOUND = 1
+# The speed of sound, in millimeters per second, in the CF3I present in the PICO-60 vessel for run 1
+SPEED_OF_SOUND = 106_000
 
 
 def expected_times_of_flight(bubble_position):
