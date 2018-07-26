@@ -34,6 +34,7 @@ for epoch in range(100):
     )
     # # Run predictions on the validation data set, and save the experimental run
     # validation_network_outputs = model.predict(validation_input)
+    # print(validation_network_outputs)
     # save_test(
     #     event_data_set,
     #     validation_ground_truths,
