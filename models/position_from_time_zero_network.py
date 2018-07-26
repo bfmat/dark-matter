@@ -3,6 +3,7 @@
 
 from keras.layers import Dense, BatchNormalization, InputLayer
 from keras.models import Model, Sequential
+from keras.optimizers import Adam
 
 
 def create_model() -> Model:
@@ -21,7 +22,7 @@ def create_model() -> Model:
     print(model.summary())
     # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
     model.compile(
-        optimizer='adam',
+        optimizer=Adam(lr=0.0001),
         loss='mse'
     )
     # Return the untrained model
