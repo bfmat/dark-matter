@@ -28,8 +28,7 @@ def create_model() -> Model:
     # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
     model.compile(
         optimizer='adam',
-        loss='mse',
-        metrics=['accuracy']
+        loss='mse'
     )
     # Return the untrained model
     return model
