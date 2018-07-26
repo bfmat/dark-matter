@@ -366,9 +366,8 @@ def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
                                 (bubble_y_integer - half_side_length):(bubble_y_integer + half_side_length)]
             # Add the cropped window to the list of images for this camera
             camera_bubble_images.append(window)
-        # Combine the images for this camera into a NumPy array, transpose it so the channels axis comes last, and add it to the list
-        images_array = np.array(bubble_images)
-        images_array = np.transpose(images_array, (1, 2, 0))
+        # Combine the images for this camera into a NumPy array, stacking on the last axis (channels), and add it to the list
+        images_array = np.stack(camera_bubble_images, axis=2)
         bubble_images.append(images_array)
     # Return the list of arrays of bubble images for each camera
     return bubble_images
