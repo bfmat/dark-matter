@@ -32,15 +32,15 @@ for epoch in range(1000):
         validation_data=(validation_input, validation_ground_truths),
         epochs=1
     )
-    # Run predictions on the validation data set, and save the experimental run
-    validation_network_outputs = model.predict(validation_input)
-    save_test(
-        event_data_set,
-        validation_ground_truths,
-        validation_network_outputs,
-        epoch=epoch,
-        prefix='zero_time_'
-    )
-    # Save the current model, named with the epoch number
-    model_path = os.path.expanduser(f'~/zero_time_epoch{epoch}.h5')
-    model.save(model_path)
+    # # Run predictions on the validation data set, and save the experimental run
+    # validation_network_outputs = model.predict(validation_input)
+    # save_test(
+    #     event_data_set,
+    #     validation_ground_truths,
+    #     validation_network_outputs,
+    #     epoch=epoch,
+    #     prefix='zero_time_'
+    # )
+    # # Save the current model, named with the epoch number
+    # model_path = os.path.expanduser(f'~/zero_time_epoch{epoch}.h5')
+    # model.save(model_path)
