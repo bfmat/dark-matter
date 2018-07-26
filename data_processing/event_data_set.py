@@ -94,6 +94,8 @@ class EventDataSet:
             )
             # Do not use events within the first 25s after reaching target pressure
             and event.time_since_target_pressure > 25
+            # Do not use events where the position values are exactly -100 (this is presumably an error code)
+            and event.x_position == -100
         )
 
     @staticmethod
