@@ -11,11 +11,14 @@ from data_processing.experiment_serialization import save_test
 from models.high_resolution_frequency_network import create_model
 
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
-event_data_set = EventDataSet({
-    RunType.LOW_BACKGROUND,
-    RunType.AMERICIUM_BERYLLIUM,
-    RunType.CALIFORNIUM
-})
+event_data_set = EventDataSet(
+    keep_run_types={
+        RunType.LOW_BACKGROUND,
+        RunType.AMERICIUM_BERYLLIUM,
+        RunType.CALIFORNIUM
+    },
+    use_wall_cuts=False
+)
 # Load training and validation data as NumPy arrays, currying the loading function to disable banding
 training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = \
     event_data_set.audio_alpha_classification(

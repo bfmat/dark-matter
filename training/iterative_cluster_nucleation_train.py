@@ -20,11 +20,14 @@ training_threshold = 0.02
 TRAINING_THRESHOLD_MULTIPLIER = 1.025
 
 # Create a data set, running fiducial cuts for the most reasonable data
-event_data_set = EventDataSet({
-    RunType.LOW_BACKGROUND,
-    RunType.AMERICIUM_BERYLLIUM,
-    RunType.CALIFORNIUM
-})
+event_data_set = EventDataSet(
+    keep_run_types={
+        RunType.LOW_BACKGROUND,
+        RunType.AMERICIUM_BERYLLIUM,
+        RunType.CALIFORNIUM
+    },
+    use_wall_cuts=True
+)
 # Make a copy of the full training set to get examples from later
 original_training_events = event_data_set.training_events.copy()
 # Truncate the list to only a certain number of initial training examples

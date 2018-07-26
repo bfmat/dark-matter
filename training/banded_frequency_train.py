@@ -15,11 +15,14 @@ EPOCHS = 250
 model = create_model()
 
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
-event_data_set = EventDataSet({
-    RunType.LOW_BACKGROUND,
-    RunType.AMERICIUM_BERYLLIUM,
-    RunType.CALIFORNIUM
-})
+event_data_set = EventDataSet(
+    keep_run_types={
+        RunType.LOW_BACKGROUND,
+        RunType.AMERICIUM_BERYLLIUM,
+        RunType.CALIFORNIUM
+    },
+    use_wall_cuts=True
+)
 # Get the banded frequency domain data and corresponding binary ground truths
 training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()
 
