@@ -23,6 +23,10 @@ VALIDATION_EXAMPLES = 128
 class EventDataSet:
     """A bubble event data set class that is loaded from Pickle data, and is convertible to many different formats, containing varying data types, that can be used to train neural networks"""
 
+    # Lists for the initial input and ground truth indices corresponding to the examples of the training and validation sets
+    training_initial_input_indices = None
+    validation_initial_input_indices = None
+
     @staticmethod
     def load_data_from_file(use_run_1: bool = False) -> List[BubbleDataPoint]:
         """Load and return all bubbles from the Pickle file for either PICO-60 run 1 or 2"""
@@ -215,18 +219,21 @@ class EventDataSet:
 
     def audio_alpha_classification(self, loading_function: Callable[[BubbleDataPoint], List[np.ndarray]], include_positions: bool) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Return the audio data from a provided loading function, with corresponding binary classification ground truths into neutrons and alpha particles"""
-        # Iterate over the training and validation events, with corresponding lists to add audio and position inputs and ground truths to
+        # Iterate over the training and validation events, with corresponding lists to add audio and position inputs and ground truths to, as well as lists to add initial input indices to
         training_audio_inputs = []
         training_position_inputs = []
         training_ground_truths = []
+        self.training_initial_input_indices = []
         validation_audio_inputs = []
         validation_position_inputs = []
         validation_ground_truths = []
-        for events, audio_inputs, position_inputs, ground_truths in zip(
+        self.validation_initial_input_indices = []
+        for events, audio_inputs, position_inputs, ground_truths, initial_input_indices in zip(
             [self.training_events, self.validation_events],
             [training_audio_inputs, validation_audio_inputs],
             [training_position_inputs, validation_position_inputs],
-            [training_ground_truths, validation_ground_truths]
+            [training_ground_truths, validation_ground_truths],
+            [self.training_initial_input_indices, self.validation_initial_input_indices]
         ):
             # Iterate over the events, loading audio and ground truth data
             for event in events:
@@ -235,6 +242,8 @@ class EventDataSet:
                 # If an empty list is returned, continue to the next iteration
                 if not audio:
                     continue
+                # The current length of the input list corresponds to the initial index for the next event
+                initial_input_indices.append(len(audio_inputs))
                 # Otherwise, add the audio waveform to the list
                 audio_inputs += audio
                 # Add the spatial position of the bubble to the list of inputs

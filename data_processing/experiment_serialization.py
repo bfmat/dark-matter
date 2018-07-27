@@ -14,9 +14,25 @@ from data_processing.event_data_set import EventDataSet
 
 def save_test(event_data_set: EventDataSet, validation_ground_truths: np.ndarray, validation_network_outputs: np.ndarray, epoch: Optional[int] = None, prefix: str = '') -> None:
     """Save a validation data set, with corresponding experimental network outputs, in a file"""
-    # Iterate over tuples of validation event classes alongside ground truths and network outputs, processing them and adding them to a list
+    # If there are initial indices in the data set, each event corresponds to multiple inputs and ground truths
+    # If this is the case, iterate over the indices of this list, adding copies of validation events to a list
+    if event_data_set.validation_initial_input_indices is not None:
+        validation_events = []
+        # Add the number of ground truths as the last index, so the number of inputs for the last event can be calculated
+        indices = event_data_set.validation_initial_input_indices.copy()
+        indices.append(len(validation_ground_truths))
+        # Do not include the last index when iterating; it will be used to calculate the number of inputs for the last event
+        for event_index in range(len(indices) - 1):
+            # The number of inputs corresponding to the current event is the difference between the current index and the next index
+            num_inputs = indices[event_index + 1] - indices[event_index]
+            # Add that number of copies of the validation event to the list, so they will correspond correctly with the inputs and ground truths
+            validation_events += [event_data_set.validation_events[event_index]] * num_inputs
+    # If there are no indices, there is one input per event, so the validation events can be used directly
+    else:
+        validation_events = event_data_set.validation_events
+    # Iterate over tuples of validation events alongside ground truths and network outputs, processing them and adding them to a list
     output_list = []
-    for event, ground_truth, network_output in zip(event_data_set.validation_events, validation_ground_truths.tolist(), validation_network_outputs.tolist()):
+    for event, ground_truth, network_output in zip(validation_events, validation_ground_truths.tolist(), validation_network_outputs.tolist()):
         # Combine the date with the unique index, ground truth value, and network output for this bubble in a dictionary
         bubble_information = {
             # A unique index for this bubble that is constant each time the data set is loaded
