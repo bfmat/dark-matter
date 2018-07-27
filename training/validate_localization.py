@@ -17,7 +17,7 @@ events = [
 ]
 # Randomize the order of the events and take a certain number from the beginning
 random.shuffle(events)
-# events = events[:1000]
+events = events[:500]
 
 
 def mean_squared_positional_error(piezo_positions_combined: np.ndarray) -> float:
@@ -39,8 +39,6 @@ def mean_squared_positional_error(piezo_positions_combined: np.ndarray) -> float
         # Square the error values and append them to the list for all events
         squared_error_vector = error_vector ** 2
         squared_errors += squared_error_vector.tolist()
-        # # Print the mean of the error vector for just this event
-        # print(f'Mean squared error for event {event.unique_bubble_index} is {np.mean(squared_error_vector)}')
     # Print and return the mean of all of the squared errors
     mean_squared_error = np.mean(squared_errors)
     print(f'Mean squared error over all events is {mean_squared_error}')
