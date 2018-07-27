@@ -5,6 +5,9 @@
 import os
 import sys
 
+# Use only the first GPU (GTX 1080)
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+
 from keras.layers import Conv1D, MaxPooling1D, Flatten, Dropout, Input, BatchNormalization, Dense, concatenate
 from keras.models import Model, Sequential
 from keras.regularizers import l2
