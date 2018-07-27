@@ -7,13 +7,14 @@ import random
 from typing import Callable, List, Optional, Set, Tuple, Generator
 
 import numpy as np
+from sklearn.externals import joblib
 
 from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerCause, load_bubble_audio, USE_RUN_1
 
 
-# The paths to the Pickle data files, which contains processed attributes of bubble events, for each of the two PICO-60 runs
+# The paths to the data files which contain processed attributes of bubble events, for each of the two PICO-60 runs
 RUN_1_PATH = os.path.expanduser('~/run1merged.pkl')
-RUN_2_PATH = os.path.expanduser('~/run2merged.pkl')
+RUN_2_PATH = os.path.expanduser('~/run2alldata.pkl')
 
 # The number of examples to include in the validation set
 VALIDATION_EXAMPLES = 128
@@ -25,11 +26,14 @@ class EventDataSet:
     @staticmethod
     def load_data_from_file(use_run_1: bool = False) -> List[BubbleDataPoint]:
         """Load and return all bubbles from the Pickle file for either PICO-60 run 1 or 2"""
+
         # Select the path to the Pickle file for either run 1 or 2, depending on which is selected
         path = RUN_1_PATH if use_run_1 else RUN_2_PATH
-        # Simply load the list straight from the binary file and return it
+        # Use Pickle for run 1, but scikit-learn joblib for run 2
+        loader = pickle if use_run_1 else joblib
+        # Load the list straight from the binary file and return it
         with open(path, 'rb') as pickle_file:
-            data_list = pickle.load(pickle_file)
+            data_list = loader.load(pickle_file)
         return data_list
 
     def __init__(

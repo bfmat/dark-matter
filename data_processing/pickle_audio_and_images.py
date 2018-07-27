@@ -5,6 +5,8 @@
 import os
 import pickle
 
+from sklearn.externals import joblib
+
 from data_processing.bubble_data_point import load_bubble_audio, load_bubble_frequency_domain, load_bubble_images, RunType
 from data_processing.event_data_set import EventDataSet, RUN_2_PATH
 
@@ -40,6 +42,6 @@ for bubble_index, bubble in enumerate(bubbles):
     # Notify the user how many bubbles have been loaded
     print(f'Loaded bubble {bubble_index} out of {num_bubbles}')
 
-# Save the list of bubbles, with the extra data included, as a new Pickle file
+# Save the list of bubbles, with the extra data included, as a scikit-learn joblib file (Pickle crashes because it is too large)
 with open(AUDIO_AND_IMAGE_FILE_PATH, 'wb') as output_file:
-    pickle.dump(bubbles, output_file)
+    joblib.dump(bubbles, output_file)
