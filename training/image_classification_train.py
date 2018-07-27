@@ -14,6 +14,7 @@ event_data_set = EventDataSet(
     keep_run_types={
         RunType.LOW_BACKGROUND,
         RunType.AMERICIUM_BERYLLIUM,
+        RunType.CALIFORNIUM
     },
     use_wall_cuts=True
 )
