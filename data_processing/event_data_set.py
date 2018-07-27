@@ -239,7 +239,7 @@ class EventDataSet:
                 audio_inputs += audio
                 # Add the spatial position of the bubble to the list of inputs
                 # There should be just as many copies as there are main inputs
-                for _ in len(audio):
+                for _ in range(len(audio)):
                     position_inputs.append([
                         event.x_position,
                         event.y_position,
