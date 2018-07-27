@@ -4,12 +4,12 @@
 import os
 import pickle
 import random
-from typing import Callable, List, Optional, Set, Tuple, Generator
+from typing import Callable, List, Optional, Set, Tuple
 
 import numpy as np
 from sklearn.externals import joblib
 
-from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerCause, load_bubble_audio, USE_RUN_1
+from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerCause
 
 
 # The paths to the data files which contain processed attributes of bubble events, for each of the two PICO-60 runs
