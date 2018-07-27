@@ -157,20 +157,11 @@ class EventDataSet:
         """An alternative loading method that does not do any filtering or sorting (except for the standard cuts), but rather loads only events with specific defined indices"""
         # Load all events from the Pickle file on disk
         all_data = cls.load_data_from_file()
-        # Filter out the bubbles whose unique indices are not in the provided list
-        filtered_data = [
-            bubble for bubble in all_data
-            if bubble.unique_bubble_index in specific_unique_indices
+        # Find a bubble corresponding to every index, ensuring that there is a 1 to 1 correspondence (that is, duplicate indices are respected)
+        return [
+            next(bubble for bubble in all_data if bubble.unique_bubble_index == unique_index)
+            for unique_index in specific_unique_indices
         ]
-        # Sort the list of bubbles so that its order is the same as that of the list of indices provided
-        sorted_data = sorted(
-            filtered_data,
-            key=lambda bubble: specific_unique_indices.index(
-                bubble.unique_bubble_index
-            )
-        )
-        # Return the list of filtered events
-        return sorted_data
 
     def banded_frequency_alpha_classification(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Return the banded frequency domain data, with corresponding binary classification ground truths into neutrons and alpha particles"""
