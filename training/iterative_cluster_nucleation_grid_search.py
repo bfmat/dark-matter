@@ -3,8 +3,12 @@
 # Created by Brendon Matusch, July 2018
 
 import copy
+import os
 
 import numpy as np
+
+# Use only the second GPU (GTX 1060)
+os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 
 from keras.layers import Dense, Dropout, BatchNormalization, InputLayer
 from keras.models import Sequential
