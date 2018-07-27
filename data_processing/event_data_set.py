@@ -191,7 +191,7 @@ class EventDataSet:
         # Return both components of both datasets
         return training_inputs, training_ground_truths, validation_inputs, validation_ground_truths
 
-    def position_from_time_zero(self) ->Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    def position_from_time_zero(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Return zero time data arrays, alongside position ground truths that the network should be trained to predict"""
         # Create flattened training arrays and binary ground truth arrays for both training and validation
         (training_inputs, training_ground_truths), (validation_inputs, validation_ground_truths) = [
@@ -238,11 +238,13 @@ class EventDataSet:
                 # Otherwise, add the audio waveform to the list
                 audio_inputs += audio
                 # Add the spatial position of the bubble to the list of inputs
-                position_inputs.append([
-                    event.x_position,
-                    event.y_position,
-                    event.z_position
-                ])
+                # There should be just as many copies as there are main inputs
+                for _ in len(audio):
+                    position_inputs.append([
+                        event.x_position,
+                        event.y_position,
+                        event.z_position
+                    ])
                 # Add a corresponding ground truth, True if this is from the alpha data set and false otherwise
                 # If there are multiple input arrays returned, add that number of ground truths
                 ground_truths += [event.run_type == RunType.LOW_BACKGROUND] * len(audio)
