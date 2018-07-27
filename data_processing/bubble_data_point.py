@@ -229,6 +229,9 @@ def bubble_data_path(bubble: BubbleDataPoint) -> str:
 
 def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Optional[str] = None) -> List[np.ndarray]:
     """Load an audio file in the raw binary format present in the PICO-60 data set, returning an array with dimensions the number of samples containing the data from only the working microphones by 2"""
+    # If the audio waveform has already been loaded, and no specific path has been selected, return it
+    if audio_file_path is None and hasattr(bubble, 'waveform'):
+        return bubble.waveform
     # If a path is not provided, get it from the bubble
     if audio_file_path is None:
         # Get the path to the bubble data folder, and load the audio binary file within it
@@ -280,6 +283,9 @@ def load_bubble_audio(bubble: Optional[BubbleDataPoint], audio_file_path: Option
 
 def load_bubble_frequency_domain(bubble: BubbleDataPoint, banded: bool = True) -> List[np.ndarray]:
     """Given a bubble data point, load a flattened representation of the audio in frequency domain, either in various time and frequency bins or continuous, and for both channels; 1 example will be in the returned list, or 0 if it cannot be loaded"""
+    # If banding is disabled, and the full resolution data has already been loaded, return it
+    if not banded and hasattr(bubble, 'full_resolution_frequency_domain'):
+        return bubble.full_resolution_frequency_domain
     # First, try to get the audio waveform corresponding to this bubble
     try:
         time_domain = load_bubble_audio(bubble)[0]
@@ -326,6 +332,9 @@ def load_bubble_frequency_domain(bubble: BubbleDataPoint, banded: bool = True) -
 
 def load_bubble_images(bubble: BubbleDataPoint) -> List[np.ndarray]:
     """Given a bubble data point, load, crop, and return a stacked array of windows (wrapped in a list) which contain that bubble"""
+    # If the images have already been combined with the data, just return the ones on the object
+    if hasattr(bubble, 'images'):
+        return bubble.images
     # Get the path to the bubble data folder and use it to get that to the image folder
     image_folder_path = os.path.join(
         bubble_data_path(bubble),

@@ -13,7 +13,7 @@ from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerC
 
 # The paths to the Pickle data files, which contains processed attributes of bubble events, for each of the two PICO-60 runs
 RUN_1_PATH = os.path.expanduser('~/run1merged.pkl')
-RUN_2_PATH = os.path.expanduser('~/run2merged.pkl')
+RUN_2_PATH = os.path.expanduser('~/run2alldata.pkl')
 # Set the path to use accordingly
 EVENT_FILE_PATH = RUN_1_PATH if USE_RUN_1 else RUN_2_PATH
 
