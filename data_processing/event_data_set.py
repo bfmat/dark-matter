@@ -13,9 +13,7 @@ from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerC
 
 # The paths to the Pickle data files, which contains processed attributes of bubble events, for each of the two PICO-60 runs
 RUN_1_PATH = os.path.expanduser('~/run1merged.pkl')
-RUN_2_PATH = os.path.expanduser('~/run2alldata.pkl')
-# Set the path to use accordingly
-EVENT_FILE_PATH = RUN_1_PATH if USE_RUN_1 else RUN_2_PATH
+RUN_2_PATH = os.path.expanduser('~/run2merged.pkl')
 
 # The number of examples to include in the validation set
 VALIDATION_EXAMPLES = 128
@@ -25,10 +23,12 @@ class EventDataSet:
     """A bubble event data set class that is loaded from Pickle data, and is convertible to many different formats, containing varying data types, that can be used to train neural networks"""
 
     @staticmethod
-    def load_data_from_file() -> List[BubbleDataPoint]:
-        """Load and return all bubbles from the Pickle file"""
+    def load_data_from_file(use_run_1: bool = False) -> List[BubbleDataPoint]:
+        """Load and return all bubbles from the Pickle file for either PICO-60 run 1 or 2"""
+        # Select the path to the Pickle file for either run 1 or 2, depending on which is selected
+        path = RUN_1_PATH if use_run_1 else RUN_2_PATH
         # Simply load the list straight from the binary file and return it
-        with open(EVENT_FILE_PATH, 'rb') as pickle_file:
+        with open(path, 'rb') as pickle_file:
             data_list = pickle.load(pickle_file)
         return data_list
 
@@ -37,11 +37,13 @@ class EventDataSet:
         # Keep only a certain set of run types in the data set
         keep_run_types: Optional[Set[RunType]],
         # Use wall cuts on training and validation data
-        use_wall_cuts: bool
+        use_wall_cuts: bool,
+        # Whether to use PICO-60 run 1 or 2
+        use_run_1: bool = False
     ) -> None:
         """Initializer that takes parameters that determine which data is loaded; None for the set of run types represents no filtering"""
-        # Load the data from the Pickle file on disk
-        events = self.load_data_from_file()
+        # Load the data from the Pickle file on disk according to the run selected
+        events = self.load_data_from_file(use_run_1)
         # If there are run types provided, filter out data points that are not in the set
         if keep_run_types is not None:
             events = [
