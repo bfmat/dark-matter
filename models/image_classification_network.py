@@ -15,14 +15,22 @@ def create_model() -> Model:
     # Create a network with hyperbolic tangent activations, dropout regularization on the fully connected layers, and L2 regularization everywhere
     activation = 'tanh'
     dropout = 0.25
-    regularizer = l2(0.003)
+    regularizer = l2(0.01)
     model = Sequential([
         InputLayer(input_shape=(WINDOW_SIDE_LENGTH, WINDOW_SIDE_LENGTH, channels)),
         BatchNormalization(),
-        Conv2D(filters=16, kernel_size=4, strides=2, activation=activation, kernel_regularizer=regularizer),
-        Conv2D(filters=32, kernel_size=3, strides=2, activation=activation, kernel_regularizer=regularizer),
-        Conv2D(filters=32, kernel_size=3, strides=2, activation=activation, kernel_regularizer=regularizer),
-        Conv2D(filters=64, kernel_size=2, strides=1, activation=activation, kernel_regularizer=regularizer),
+        Conv2D(filters=32, kernel_size=4, strides=2, activation=activation, kernel_regularizer=regularizer),
+        Conv2D(filters=32, kernel_size=4, activation=activation, kernel_regularizer=regularizer),
+        Conv2D(filters=32, kernel_size=4, activation=activation, kernel_regularizer=regularizer),
+        Conv2D(filters=32, kernel_size=4, activation=activation, kernel_regularizer=regularizer),
+        Conv2D(filters=64, kernel_size=3, activation=activation, kernel_regularizer=regularizer),
+        Conv2D(filters=64, kernel_size=3, activation=activation, kernel_regularizer=regularizer),
+        Conv2D(filters=64, kernel_size=3, activation=activation, kernel_regularizer=regularizer),
+        Conv2D(filters=64, kernel_size=3, activation=activation, kernel_regularizer=regularizer),
+        Conv2D(filters=128, kernel_size=2, activation=activation, kernel_regularizer=regularizer),
+        Conv2D(filters=128, kernel_size=2, activation=activation, kernel_regularizer=regularizer),
+        Conv2D(filters=128, kernel_size=2, activation=activation, kernel_regularizer=regularizer),
+        Conv2D(filters=128, kernel_size=2, activation=activation, kernel_regularizer=regularizer),
         Flatten(),
         Dense(64, activation=activation, kernel_regularizer=regularizer),
         Dropout(dropout),
