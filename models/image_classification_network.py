@@ -15,7 +15,7 @@ def create_model() -> Model:
     # Create a network with hyperbolic tangent activations, dropout regularization on the fully connected layers, and L2 regularization everywhere
     activation = 'tanh'
     dropout = 0.25
-    regularizer = l2(0.01)
+    regularizer = l2(0.003)
     model = Sequential([
         InputLayer(input_shape=(WINDOW_SIDE_LENGTH, WINDOW_SIDE_LENGTH, channels)),
         BatchNormalization(),
