@@ -4,8 +4,8 @@
 
 import os
 
-# Use only the first GPU (GTX 1080)
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+# Use only the CPU for training
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 from data_processing.event_data_set import EventDataSet, RunType
 from data_processing.bubble_data_point import load_bubble_images
