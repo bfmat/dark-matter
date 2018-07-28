@@ -1,0 +1,1056 @@
+Using TensorFlow backend.
+/usr/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  return f(*args, **kwds)
+2018-07-28 11:51:00.537135: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-07-28 11:51:00.541245: E tensorflow/stream_executor/cuda/cuda_driver.cc:406] failed call to cuInit: CUDA_ERROR_NO_DEVICE
+2018-07-28 11:51:00.541281: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:158] retrieving CUDA diagnostic information for host: Death-Star-Ubuntu
+2018-07-28 11:51:00.541287: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:165] hostname: Death-Star-Ubuntu
+2018-07-28 11:51:00.541329: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:189] libcuda reported version is: 390.48.0
+2018-07-28 11:51:00.541362: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:193] kernel reported version is: 390.48.0
+2018-07-28 11:51:00.541368: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:300] kernel version seems to match DSO: 390.48.0
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+batch_normalization_1 (Batch (None, 50, 50, 10)        40        
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 24, 24, 32)        5152      
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 21, 21, 32)        16416     
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 18, 18, 32)        16416     
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 15, 15, 32)        16416     
+_________________________________________________________________
+conv2d_5 (Conv2D)            (None, 13, 13, 64)        18496     
+_________________________________________________________________
+conv2d_6 (Conv2D)            (None, 11, 11, 64)        36928     
+_________________________________________________________________
+conv2d_7 (Conv2D)            (None, 9, 9, 64)          36928     
+_________________________________________________________________
+conv2d_8 (Conv2D)            (None, 7, 7, 64)          36928     
+_________________________________________________________________
+conv2d_9 (Conv2D)            (None, 6, 6, 128)         32896     
+_________________________________________________________________
+conv2d_10 (Conv2D)           (None, 5, 5, 128)         65664     
+_________________________________________________________________
+conv2d_11 (Conv2D)           (None, 4, 4, 128)         65664     
+_________________________________________________________________
+conv2d_12 (Conv2D)           (None, 3, 3, 128)         65664     
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 1152)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 64)                73792     
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 64)                0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 16)                1040      
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 16)                0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 17        
+=================================================================
+Total params: 488,457
+Trainable params: 488,437
+Non-trainable params: 20
+_________________________________________________________________
+None
+Epoch 1/1
+1203/1203 [==============================] - 5s 4ms/step - loss: 10.0886 - acc: 0.4248
+Validation loss: 8.954326687262498
+Validation accuracy: 0.64350453154198
+Data saved at /home/brendonm/image_time1532793067_epoch0.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 8.5136 - acc: 0.4946
+Validation loss: 7.432376119665509
+Validation accuracy: 0.64350453154198
+Data saved at /home/brendonm/image_time1532793072_epoch1.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 7.0530 - acc: 0.5004
+Validation loss: 6.175783575121369
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793076_epoch2.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 5.8512 - acc: 0.5154
+Validation loss: 5.028293884772909
+Validation accuracy: 0.6495468276144875
+Data saved at /home/brendonm/image_time1532793081_epoch3.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 4.7626 - acc: 0.5254
+Validation loss: 4.075426347306128
+Validation accuracy: 0.6042296079710531
+Data saved at /home/brendonm/image_time1532793086_epoch4.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 3.8299 - acc: 0.5619
+Validation loss: 3.278923580653718
+Validation accuracy: 0.64350453154198
+Data saved at /home/brendonm/image_time1532793090_epoch5.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 3.0773 - acc: 0.5495
+Validation loss: 2.663705542008322
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793095_epoch6.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 2.4304 - acc: 0.6434
+Validation loss: 2.167738377147571
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793100_epoch7.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 1.9649 - acc: 0.6816
+Validation loss: 1.781140280634255
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793104_epoch8.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 1.6209 - acc: 0.6841
+Validation loss: 1.4822331847020866
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793109_epoch9.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 1.3528 - acc: 0.6825
+Validation loss: 1.2449206178642112
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793114_epoch10.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 1.1410 - acc: 0.6825
+Validation loss: 1.05826560374113
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793119_epoch11.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.9751 - acc: 0.6825
+Validation loss: 0.9139175116115467
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793123_epoch12.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.8447 - acc: 0.6841
+Validation loss: 0.7965713969890444
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793128_epoch13.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.7407 - acc: 0.6825
+Validation loss: 0.7029813769360683
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793133_epoch14.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.6575 - acc: 0.6825
+Validation loss: 0.6316790337648996
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793137_epoch15.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.5921 - acc: 0.6825
+Validation loss: 0.5711726126714055
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793142_epoch16.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.5349 - acc: 0.6791
+Validation loss: 0.521376673818715
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793147_epoch17.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.4915 - acc: 0.6825
+Validation loss: 0.4826197813284721
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793151_epoch18.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.4542 - acc: 0.6825
+Validation loss: 0.45240072415314414
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793156_epoch19.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.4267 - acc: 0.6825
+Validation loss: 0.4252008678689824
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793161_epoch20.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.4022 - acc: 0.6808
+Validation loss: 0.4009949527118141
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793165_epoch21.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.3799 - acc: 0.6825
+Validation loss: 0.3821400587652385
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793170_epoch22.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.3621 - acc: 0.6816
+Validation loss: 0.36314677660919026
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793175_epoch23.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.3476 - acc: 0.6825
+Validation loss: 0.351470426220188
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793179_epoch24.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.3341 - acc: 0.6825
+Validation loss: 0.33887247889783806
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793184_epoch25.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.3228 - acc: 0.6750
+Validation loss: 0.3302213703577612
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793189_epoch26.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.3117 - acc: 0.6825
+Validation loss: 0.3192227965395256
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793193_epoch27.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.3028 - acc: 0.6825
+Validation loss: 0.3089804075815887
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793198_epoch28.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2929 - acc: 0.6825
+Validation loss: 0.30036167642861333
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793203_epoch29.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2857 - acc: 0.6825
+Validation loss: 0.29393437486760926
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793207_epoch30.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2783 - acc: 0.6825
+Validation loss: 0.28815060070634246
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793212_epoch31.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2734 - acc: 0.6825
+Validation loss: 0.2826391891140232
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793217_epoch32.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2684 - acc: 0.6825
+Validation loss: 0.27760280997371384
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793221_epoch33.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2637 - acc: 0.6825
+Validation loss: 0.2729202170386415
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793226_epoch34.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2599 - acc: 0.6825
+Validation loss: 0.26945502259219883
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793231_epoch35.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2550 - acc: 0.6825
+Validation loss: 0.2659313622918374
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793235_epoch36.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2524 - acc: 0.6825
+Validation loss: 0.2631616469506411
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793240_epoch37.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2495 - acc: 0.6825
+Validation loss: 0.2606120354009179
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793245_epoch38.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2449 - acc: 0.6825
+Validation loss: 0.2569778686743849
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793249_epoch39.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2438 - acc: 0.6825
+Validation loss: 0.2551167028818246
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793254_epoch40.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2406 - acc: 0.6825
+Validation loss: 0.2528274278536304
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793259_epoch41.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2400 - acc: 0.6825
+Validation loss: 0.25059040849662617
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793263_epoch42.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2379 - acc: 0.6825
+Validation loss: 0.2491746551590744
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793268_epoch43.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2351 - acc: 0.6825
+Validation loss: 0.24729391144661744
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793273_epoch44.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2340 - acc: 0.6825
+Validation loss: 0.2458234046251032
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793277_epoch45.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2315 - acc: 0.6825
+Validation loss: 0.24478329047335598
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793282_epoch46.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2314 - acc: 0.6825
+Validation loss: 0.2435147285551463
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793287_epoch47.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2302 - acc: 0.6825
+Validation loss: 0.24219591496934342
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793292_epoch48.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2299 - acc: 0.6825
+Validation loss: 0.24127761236310366
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793296_epoch49.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2274 - acc: 0.6825
+Validation loss: 0.23994962101256379
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793301_epoch50.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2270 - acc: 0.6825
+Validation loss: 0.2386586916860857
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793306_epoch51.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2252 - acc: 0.6825
+Validation loss: 0.23829536076938998
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793310_epoch52.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2250 - acc: 0.6825
+Validation loss: 0.2370012259375293
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793315_epoch53.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2228 - acc: 0.6825
+Validation loss: 0.23638754921017097
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793320_epoch54.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2238 - acc: 0.6825
+Validation loss: 0.23627280018480884
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793324_epoch55.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2239 - acc: 0.6825
+Validation loss: 0.23609804440841214
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793329_epoch56.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2236 - acc: 0.6825
+Validation loss: 0.23491023080226517
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793334_epoch57.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2217 - acc: 0.6825
+Validation loss: 0.23527354600746467
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793339_epoch58.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2224 - acc: 0.6825
+Validation loss: 0.23403164699358522
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793343_epoch59.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2215 - acc: 0.6825
+Validation loss: 0.23346243479100598
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793348_epoch60.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2217 - acc: 0.6825
+Validation loss: 0.23353359080693512
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793353_epoch61.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2205 - acc: 0.6825
+Validation loss: 0.23306130259959
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793357_epoch62.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2207 - acc: 0.6825
+Validation loss: 0.233096285529007
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793362_epoch63.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2199 - acc: 0.6825
+Validation loss: 0.23225651739947387
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793367_epoch64.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2191 - acc: 0.6825
+Validation loss: 0.2322604872759015
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793371_epoch65.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2186 - acc: 0.6825
+Validation loss: 0.23171228584566145
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793376_epoch66.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2188 - acc: 0.6825
+Validation loss: 0.23182146741904522
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793381_epoch67.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2178 - acc: 0.6825
+Validation loss: 0.23077441499852702
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793385_epoch68.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2183 - acc: 0.6825
+Validation loss: 0.2314098297739317
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793390_epoch69.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2188 - acc: 0.6825
+Validation loss: 0.2311681174079457
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793395_epoch70.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2191 - acc: 0.6825
+Validation loss: 0.23173862349050642
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793399_epoch71.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2176 - acc: 0.6825
+Validation loss: 0.23062176079548377
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793404_epoch72.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2173 - acc: 0.6825
+Validation loss: 0.2303911183715947
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793409_epoch73.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2174 - acc: 0.6825
+Validation loss: 0.23033961154002797
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793413_epoch74.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2186 - acc: 0.6825
+Validation loss: 0.2307851363614967
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793418_epoch75.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2186 - acc: 0.6825
+Validation loss: 0.23081149998208186
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793423_epoch76.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2175 - acc: 0.6825
+Validation loss: 0.23058793313373613
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793427_epoch77.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2179 - acc: 0.6825
+Validation loss: 0.2306832508198084
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793432_epoch78.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2170 - acc: 0.6825
+Validation loss: 0.2298339100222573
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793437_epoch79.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2175 - acc: 0.6825
+Validation loss: 0.23027826359444875
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793442_epoch80.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2177 - acc: 0.6825
+Validation loss: 0.23053311014103386
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793446_epoch81.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2178 - acc: 0.6825
+Validation loss: 0.2302218099825332
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793451_epoch82.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2169 - acc: 0.6825
+Validation loss: 0.2302397808729702
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793456_epoch83.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2166 - acc: 0.6825
+Validation loss: 0.2301791132486839
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793460_epoch84.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2177 - acc: 0.6825
+Validation loss: 0.23012236278402842
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793465_epoch85.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2178 - acc: 0.6825
+Validation loss: 0.2303319960112298
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793470_epoch86.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2172 - acc: 0.6825
+Validation loss: 0.22997194564594603
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793474_epoch87.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2179 - acc: 0.6825
+Validation loss: 0.22991482967516447
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793479_epoch88.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2178 - acc: 0.6825
+Validation loss: 0.23017806940208388
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793484_epoch89.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2168 - acc: 0.6825
+Validation loss: 0.23047471726228824
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793488_epoch90.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2175 - acc: 0.6825
+Validation loss: 0.2298059439641111
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793493_epoch91.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2177 - acc: 0.6825
+Validation loss: 0.23018424816182012
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793498_epoch92.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2178 - acc: 0.6825
+Validation loss: 0.23032015728626368
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793502_epoch93.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2182 - acc: 0.6825
+Validation loss: 0.2304798731090799
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793507_epoch94.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2190 - acc: 0.6825
+Validation loss: 0.23043334952293926
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793512_epoch95.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2175 - acc: 0.6825
+Validation loss: 0.23047922574141236
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793517_epoch96.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2164 - acc: 0.6825
+Validation loss: 0.22987727586776469
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793521_epoch97.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2167 - acc: 0.6825
+Validation loss: 0.22987159307809754
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793526_epoch98.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2175 - acc: 0.6825
+Validation loss: 0.2300100849204193
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793531_epoch99.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2181 - acc: 0.6825
+Validation loss: 0.22963436708709625
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793535_epoch100.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2173 - acc: 0.6825
+Validation loss: 0.22986484546315633
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793540_epoch101.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2171 - acc: 0.6825
+Validation loss: 0.23012072194558977
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793545_epoch102.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2158 - acc: 0.6825
+Validation loss: 0.22933500464949363
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793549_epoch103.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2168 - acc: 0.6825
+Validation loss: 0.2299829836698457
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793554_epoch104.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2167 - acc: 0.6825
+Validation loss: 0.23035556771243806
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793559_epoch105.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2181 - acc: 0.6825
+Validation loss: 0.2299901758886176
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793563_epoch106.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2169 - acc: 0.6825
+Validation loss: 0.2297905728085884
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793568_epoch107.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2171 - acc: 0.6825
+Validation loss: 0.23000422885410735
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793573_epoch108.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2178 - acc: 0.6825
+Validation loss: 0.22998684577171175
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793578_epoch109.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2174 - acc: 0.6825
+Validation loss: 0.23013299780129667
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793582_epoch110.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2177 - acc: 0.6825
+Validation loss: 0.2298808783472845
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793587_epoch111.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2168 - acc: 0.6825
+Validation loss: 0.23039906235619975
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793592_epoch112.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2171 - acc: 0.6825
+Validation loss: 0.22966516621163244
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793596_epoch113.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2175 - acc: 0.6825
+Validation loss: 0.2301932717828232
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793601_epoch114.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2180 - acc: 0.6825
+Validation loss: 0.23070790652422027
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793606_epoch115.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2174 - acc: 0.6825
+Validation loss: 0.23023236095004931
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793610_epoch116.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2163 - acc: 0.6825
+Validation loss: 0.2291502230477117
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793615_epoch117.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2173 - acc: 0.6825
+Validation loss: 0.22991222215203
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793620_epoch118.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2175 - acc: 0.6825
+Validation loss: 0.23028202728562486
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793624_epoch119.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2172 - acc: 0.6825
+Validation loss: 0.22959228440714027
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793629_epoch120.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2173 - acc: 0.6825
+Validation loss: 0.2300781323110229
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793634_epoch121.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2162 - acc: 0.6825
+Validation loss: 0.2295487984969897
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793638_epoch122.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2177 - acc: 0.6825
+Validation loss: 0.22992754275164937
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793643_epoch123.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2167 - acc: 0.6825
+Validation loss: 0.23036283056541512
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793648_epoch124.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2170 - acc: 0.6825
+Validation loss: 0.23012025478743353
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793652_epoch125.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2163 - acc: 0.6825
+Validation loss: 0.22975419317667578
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793657_epoch126.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2172 - acc: 0.6825
+Validation loss: 0.22986579792197018
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793662_epoch127.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2167 - acc: 0.6825
+Validation loss: 0.2301143803085085
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793666_epoch128.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2174 - acc: 0.6825
+Validation loss: 0.2299748240010616
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793671_epoch129.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2176 - acc: 0.6825
+Validation loss: 0.23065998438982085
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793676_epoch130.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2175 - acc: 0.6825
+Validation loss: 0.22987558663431612
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793680_epoch131.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2172 - acc: 0.6825
+Validation loss: 0.22956820359042765
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793685_epoch132.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2182 - acc: 0.6825
+Validation loss: 0.23038124623975725
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793690_epoch133.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2169 - acc: 0.6825
+Validation loss: 0.23012564878269265
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793695_epoch134.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2176 - acc: 0.6825
+Validation loss: 0.2301081815154891
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793699_epoch135.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2167 - acc: 0.6825
+Validation loss: 0.22983811858737577
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793704_epoch136.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2170 - acc: 0.6825
+Validation loss: 0.22981773929113347
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793709_epoch137.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2176 - acc: 0.6825
+Validation loss: 0.2296845989464993
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793713_epoch138.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2174 - acc: 0.6825
+Validation loss: 0.23011117453301422
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793718_epoch139.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2170 - acc: 0.6825
+Validation loss: 0.22955006838204997
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793723_epoch140.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2174 - acc: 0.6825
+Validation loss: 0.22996478201399398
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793727_epoch141.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2173 - acc: 0.6825
+Validation loss: 0.22982020595102512
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793732_epoch142.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2165 - acc: 0.6825
+Validation loss: 0.22990375982310476
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793737_epoch143.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2173 - acc: 0.6825
+Validation loss: 0.2297144012238684
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793741_epoch144.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2175 - acc: 0.6825
+Validation loss: 0.22979233510724728
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793746_epoch145.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2169 - acc: 0.6825
+Validation loss: 0.22988690539429196
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793751_epoch146.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2168 - acc: 0.6825
+Validation loss: 0.2301597106312697
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793755_epoch147.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2166 - acc: 0.6825
+Validation loss: 0.23024589638155393
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793760_epoch148.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2173 - acc: 0.6825
+Validation loss: 0.23017814224220115
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793764_epoch149.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2169 - acc: 0.6825
+Validation loss: 0.22990849204473984
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793769_epoch150.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2175 - acc: 0.6825
+Validation loss: 0.22972142853945765
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793774_epoch151.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2169 - acc: 0.6825
+Validation loss: 0.22996075996099283
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793778_epoch152.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2171 - acc: 0.6825
+Validation loss: 0.23017417011484279
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793783_epoch153.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2181 - acc: 0.6825
+Validation loss: 0.22988255812682415
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793788_epoch154.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2173 - acc: 0.6825
+Validation loss: 0.23024374093534003
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793792_epoch155.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2164 - acc: 0.6825
+Validation loss: 0.2296807170364432
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793797_epoch156.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2178 - acc: 0.6825
+Validation loss: 0.2305590739963278
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793802_epoch157.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2171 - acc: 0.6825
+Validation loss: 0.23043158816967127
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793806_epoch158.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2171 - acc: 0.6825
+Validation loss: 0.22963623666511201
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793811_epoch159.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2166 - acc: 0.6825
+Validation loss: 0.22964095470588372
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793815_epoch160.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2168 - acc: 0.6825
+Validation loss: 0.23027613871587368
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793820_epoch161.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2173 - acc: 0.6825
+Validation loss: 0.23019651600421376
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793825_epoch162.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2170 - acc: 0.6825
+Validation loss: 0.22991565734238062
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793829_epoch163.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2171 - acc: 0.6825
+Validation loss: 0.23036512782026275
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793834_epoch164.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2167 - acc: 0.6825
+Validation loss: 0.23024618810217187
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793838_epoch165.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2174 - acc: 0.6825
+Validation loss: 0.23022773362178456
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793843_epoch166.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2172 - acc: 0.6825
+Validation loss: 0.2299904837709179
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793848_epoch167.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2166 - acc: 0.6825
+Validation loss: 0.23003256861176735
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793852_epoch168.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2169 - acc: 0.6825
+Validation loss: 0.23004425094206887
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793857_epoch169.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2170 - acc: 0.6825
+Validation loss: 0.22987071377453128
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793861_epoch170.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2172 - acc: 0.6825
+Validation loss: 0.23017934932629508
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793866_epoch171.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2168 - acc: 0.6825
+Validation loss: 0.22954077464936362
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793870_epoch172.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2170 - acc: 0.6825
+Validation loss: 0.23033311692969677
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793875_epoch173.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2174 - acc: 0.6825
+Validation loss: 0.22994993964710986
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793880_epoch174.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2168 - acc: 0.6825
+Validation loss: 0.2306710099435645
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793884_epoch175.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2164 - acc: 0.6825
+Validation loss: 0.22989444547189328
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793889_epoch176.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2176 - acc: 0.6825
+Validation loss: 0.2297816695223402
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793893_epoch177.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2176 - acc: 0.6825
+Validation loss: 0.2300949448275062
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793898_epoch178.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2169 - acc: 0.6825
+Validation loss: 0.23045650957394223
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793903_epoch179.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2169 - acc: 0.6825
+Validation loss: 0.22978781717421426
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793907_epoch180.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2169 - acc: 0.6825
+Validation loss: 0.23005966306453024
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793912_epoch181.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2174 - acc: 0.6825
+Validation loss: 0.2300613649031907
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793916_epoch182.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2168 - acc: 0.6825
+Validation loss: 0.23041490697248465
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793921_epoch183.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2173 - acc: 0.6825
+Validation loss: 0.22974725288206718
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793926_epoch184.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2168 - acc: 0.6825
+Validation loss: 0.23013457673914123
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793931_epoch185.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2171 - acc: 0.6825
+Validation loss: 0.23040139846211113
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793935_epoch186.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2169 - acc: 0.6825
+Validation loss: 0.23026602082742306
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793940_epoch187.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2177 - acc: 0.6825
+Validation loss: 0.22993568117164773
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793945_epoch188.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2169 - acc: 0.6825
+Validation loss: 0.22990789739386913
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793949_epoch189.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2172 - acc: 0.6825
+Validation loss: 0.23001043764125906
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793954_epoch190.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2167 - acc: 0.6825
+Validation loss: 0.2296658404103939
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793958_epoch191.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2164 - acc: 0.6825
+Validation loss: 0.2297499903289213
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793963_epoch192.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2167 - acc: 0.6825
+Validation loss: 0.23003574526021847
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793968_epoch193.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2172 - acc: 0.6825
+Validation loss: 0.22977940549122963
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793972_epoch194.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2166 - acc: 0.6825
+Validation loss: 0.22994754704283804
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793977_epoch195.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2166 - acc: 0.6825
+Validation loss: 0.23009074508603605
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793981_epoch196.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2163 - acc: 0.6825
+Validation loss: 0.22988048934144195
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793986_epoch197.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2172 - acc: 0.6825
+Validation loss: 0.23053009438910874
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793991_epoch198.json
+Epoch 1/1
+1203/1203 [==============================] - 4s 3ms/step - loss: 0.2174 - acc: 0.6825
+Validation loss: 0.2297354120862448
+Validation accuracy: 0.6465256795782337
+Data saved at /home/brendonm/image_time1532793995_epoch199.json
