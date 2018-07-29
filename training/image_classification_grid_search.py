@@ -5,7 +5,7 @@
 import os
 
 # Use only the first GPU for training (GTX 1080)
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 from keras.layers import Conv2D, Flatten, Dropout, InputLayer, BatchNormalization, Dense
 from keras.models import Model, Sequential
