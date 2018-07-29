@@ -51,8 +51,7 @@ for dropout in [0, 0.25, 0.5]:
             channels = END_IMAGE_INDEX - START_IMAGE_INDEX
             # Create a network with hyperbolic tangent activations, dropout regularization on the fully connected layers, and L2 regularization everywhere
             activation = 'tanh'
-            dropout = 0.25
-            regularizer = l2(0.01)
+            regularizer = l2(l2_lambda)
             model = Sequential()
             model.add(InputLayer(input_shape=(WINDOW_SIDE_LENGTH, WINDOW_SIDE_LENGTH, channels)))
             model.add(BatchNormalization())
