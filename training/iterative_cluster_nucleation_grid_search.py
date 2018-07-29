@@ -46,7 +46,7 @@ for initial_training_examples in [128, 256]:
                             RunType.AMERICIUM_BERYLLIUM,
                             RunType.CALIFORNIUM
                         },
-                        use_wall_cuts=True
+                        use_wall_cuts=False
                     )
                     # Make a copy of the full training set to get examples from later
                     original_training_events = event_data_set.training_events.copy()
