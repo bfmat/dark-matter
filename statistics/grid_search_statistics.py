@@ -34,26 +34,36 @@ for test_index, test in enumerate(tests):
         if line.startswith('_'):
             break
         print(line)
-    # Get the training accuracy out of lines containing it
+    # Try to get the training and validation accuracy values out of lines containing them, skipping the last line because we need to add one to the index
     training_accuracy = []
-    for line in test_lines:
-        # Lines at the end of the epoch include the word 'step'
-        if 'step' in line:
+    validation_accuracy = []
+    for line_index, line in enumerate(test_lines[:-1]):
+        # Lines at the end of the epoch include the word 'step', and the line after them is either a validation loss identifier or a path to a saved validation
+        line_after = test_lines[line_index + 1]
+        if 'step' in line and ('Validation' in line_after or 'Data saved at' in line_after):
             # Split the line by whitespace
             words = line.split()
             # Get the index of the accuracy identifier
             accuracy_identifier_index = words.index('acc:')
             # The accuracy value is at the next index; convert it to a number and add it to the list
             training_accuracy.append(float(words[accuracy_identifier_index + 1]))
-    # Get the validation accuracy out of lines containing it
-    validation_accuracy = [float(line.split()[2]) for line in test_lines if 'Validation accuracy:' in line]
+            # Check if the validation accuracy identifier is in the line
+            if 'val_acc:' in words:
+                # If so, get the number out of the next index and add it to the list in the same way
+                validation_accuracy_identifier_index = words.index('val_acc:')
+                validation_accuracy.append(float(words[validation_accuracy_identifier_index + 1]))
+    # If there were no validation accuracy values in the same lines, get them out of their own specific lines
+    if not validation_accuracy:
+        # It will be at the end of the lines
+        validation_accuracy = [float(line.split()[2]) for line in test_lines if 'Validation accuracy:' in line]
     # Print the mean and maximum training and validation accuracy values
     print('Mean training accuracy:', sum(training_accuracy) / len(training_accuracy))
     print('Maximum training accuracy:', max(training_accuracy))
     print('Mean validation accuracy:', sum(validation_accuracy) / len(validation_accuracy))
     print('Maximum validation accuracy:', max(validation_accuracy))
     # Get the line index corresponding to the maximum validation accuracy
-    maximum_validation_line_index = test_lines.index(f'Validation accuracy: {max(validation_accuracy)}')
-    # The next line contains the path to the corresponding validation data; get this and print it out
-    validation_data_path = test_lines[maximum_validation_line_index + 1].split()[3]
-    print('Maximum accuracy validation set is saved at', validation_data_path)
+    # Start by finding all the paths to saved validation sets (which are at the end of their corresponding lines)
+    validation_set_paths = [line.split()[3] for line in test_lines if 'Data saved at' in line]
+    # Get the index of the maximum validation accuracy; the corresponding validation set will have the same index
+    maximum_validation_accuracy_index = validation_accuracy.index(max(validation_accuracy))
+    print('Maximum accuracy validation set is saved at', validation_set_paths[maximum_validation_accuracy_index])
