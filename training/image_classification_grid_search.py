@@ -34,7 +34,7 @@ training_inputs, training_ground_truths, validation_inputs, validation_ground_tr
 
 # Try several different values for dropout, L2 lambda, and convolutional layers per group
 for dropout in [0, 0.25, 0.5]:
-    for l2_lambda in [0.0003, 0.001, 0.003, 0.006, 0.01]:
+    for l2_lambda in [0, 0.0003, 0.001, 0.003, 0.006, 0.01]:
         for convolutional_layers_per_group in [2, 3, 4]:
             # Print a few blank lines for separation
             for _ in range(3):
