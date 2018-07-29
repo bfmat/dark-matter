@@ -34,8 +34,17 @@ for test_index, test in enumerate(tests):
         if line.startswith('_'):
             break
         print(line)
-    # Get the training accuracy out of lines containing it; lines at the end of the epoch include the word 'step'
-    training_accuracy = [float(line.split('acc:')[1].strip()) for line in test_lines if 'step' in line]
+    # Get the training accuracy out of lines containing it
+    training_accuracy = []
+    for line in test_lines:
+        # Lines at the end of the epoch include the word 'step'
+        if 'step' in line:
+            # Split the line by whitespace
+            words = line.split()
+            # Get the index of the accuracy identifier
+            accuracy_identifier_index = words.index('acc:')
+            # The accuracy value is at the next index; convert it to a number and add it to the list
+            training_accuracy.append(float(words[accuracy_identifier_index + 1]))
     # Get the validation accuracy out of lines containing it
     validation_accuracy = [float(line.split()[2]) for line in test_lines if 'Validation accuracy:' in line]
     # Print the mean and maximum training and validation accuracy values
