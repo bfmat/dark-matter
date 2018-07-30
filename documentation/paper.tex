@@ -1,7 +1,18 @@
 \documentclass[12pt]{article}
+
+% Use 1-inch margins even though the font is 12-point
+\usepackage[margin=1in]{geometry}
+\usepackage{textgreek}
+
 \begin{document}
-\title{Applying Deep Learning to Acoustic Analysis in the PICO-60 Dark Matter Detector}
-\author{Brendon Matusch}
-\date{\today}
-\maketitle
+
+% A description of the various techniques used to discriminate between neutrons and alphas
+\section{Methods}
+
+Two key techniques have been used for the task of discrimination between neutrons/WIMP candidates and alpha particles in the PICO-60 bubble chamber. The first, Acoustic Parameter (AP), is a function of the 8-band Fourier transform \textbeta \textsubscript{8}. It makes use of the increased resonant energy in certain frequency bands, relative to neutrons, present in the majority of alpha particles. The second, Deep Learning (DL) consists of a wide variety of neural networks, which are trained on either the raw waveform \textomega{}, the arbitrary-resolution Fourier transform \textbeta \textsubscript{N}, or the image \textiota.
+
+% A section about AP, how it works, and its limitations
+\subsection{Acoustic Parameter}
+Placeholder
+
 \end{document}
