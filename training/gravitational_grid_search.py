@@ -3,8 +3,13 @@
 # Created by Brendon Matusch, July 2018
 
 import copy
+import os
 
 import numpy as np
+
+# Use only the second GPU for training (GTX 1060)
+os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+
 from keras.optimizers import SGD
 
 from data_processing.bubble_data_point import RunType
