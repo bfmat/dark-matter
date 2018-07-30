@@ -16,7 +16,7 @@ from models.banded_frequency_network import create_model
 DEFINITIVE_TRAINING_EXAMPLES = 128
 
 # The value (greater than 1) to add to the gravity multiplier every epoch
-GRAVITY_MULTIPLIER_INCREMENT = 0.001
+GRAVITY_MULTIPLIER_INCREMENT = 0.003
 
 # The root to use to flatten out the middle of the gravity function of the prediction spectrum
 DISTORTION_ROOT = 9
