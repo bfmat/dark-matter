@@ -3,8 +3,26 @@
 % Use 1-inch margins even though the font is 12-point
 \usepackage[margin=1in]{geometry}
 \usepackage{textgreek}
+\usepackage{textcomp}
 
 \begin{document}
+
+% Details on the data formats used as inputs for alpha/neutron discriminators
+\section{Data Formats}
+
+Alpha/neutron discriminators used a variety of different data formats to make predictions. These are collected from the two essential sensors present in the PICO-60 apparatus: piezoelectric microphones (piezos) and cameras.
+
+\subsection{Piezo-Derived}
+
+\subsubsection{Raw Waveform}
+
+The lowest-level data derived from the piezos is the raw waveform \textomega. \textomega{} consists of a series of samples collected every 400,000\textsuperscript{th} of a second. They are each represented as an integer between \textminus65536 and 65535. Only the section of the audio between sample 90,000 (inclusive) and sample 190,000 (exclusive) was used during most experiments, because before this there is background noise, and afterwards there is a clipped signal produced by hydraulics repressurizing the vessel. (These sections contain no information and can be undesirably fit on by neural networks.)
+
+\subsubsection{Fourier Transform}
+
+The raw waveform \textomega{} is converted into the frequency domain by means of a 1-dimensional Discrete Fourier Transform for real input, which is implemented in \texttt{numpy} as \texttt{rfft}. Since DFTs produce sequences of complex numbers, the magnitude of each element is computed. The full-resolution Fourier transform \textbeta \textsubscript{50,000} consists of a sequence of complex numbers, half the length of the raw waveform \textomega.
+
+Beyond this, arbitrary-resolution banded Fourier transforms \textbeta \textsubscript{N\textless50,000} can be computed by integrating the resonant energy over all
 
 % A description of the various techniques used to discriminate between neutrons and alphas
 \section{Methods}
