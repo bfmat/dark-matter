@@ -9,7 +9,7 @@ from typing import Callable, List, Optional, Set, Tuple
 import numpy as np
 from sklearn.externals import joblib
 
-from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerCause
+from data_processing.bubble_data_point import BubbleDataPoint, RunType, TriggerCause, load_bubble_audio
 
 
 # The paths to the data files which contain processed attributes of bubble events, for each of the two PICO-60 runs
@@ -188,7 +188,7 @@ class EventDataSet:
 
     def position_from_time_zero(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Return zero time data arrays, alongside position ground truths that the network should be trained to predict"""
-        # Create flattened training arrays and binary ground truth arrays for both training and validation
+        # Create flattened training arrays and ground truth arrays for both training and validation
         (training_inputs, training_ground_truths), (validation_inputs, validation_ground_truths) = [
             (
                 # Stack together all of the zero time data, for all piezos, even the ones that were disabled in earlier analyses
@@ -207,6 +207,41 @@ class EventDataSet:
         ]
         # Return both components of both datasets
         return training_inputs, training_ground_truths, validation_inputs, validation_ground_truths
+
+    def position_from_waveform(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        """Return waveform audio arrays, alongside position ground truths that the network should be trained to predict"""
+        # Iterate over the training and validation events, with corresponding lists to add audio and position ground truths to
+        training_audio_inputs = []
+        training_ground_truths = []
+        validation_audio_inputs = []
+        validation_ground_truths = []
+        for events, audio_inputs, ground_truths in zip(
+            [self.training_events, self.validation_events],
+            [training_audio_inputs, validation_audio_inputs],
+            [training_ground_truths, validation_ground_truths]
+        ):
+            # Iterate over the events, loading audio and ground truth data
+            for event in events:
+                # Try to load the audio corresponding to this event
+                audio = load_bubble_audio(event)
+                # If an empty list is returned, continue to the next iteration
+                if not audio:
+                    continue
+                # Otherwise, add the audio waveform to the list
+                audio_inputs += audio
+                # Add the spatial position of the bubble to the list of ground truths
+                ground_truths.append([
+                    event.x_position,
+                    event.y_position,
+                    event.z_position
+                ])
+        # Next, convert the lists into NumPy arrays and return them
+        return (
+            np.array(training_audio_inputs),
+            np.array(training_ground_truths),
+            np.array(validation_audio_inputs),
+            np.array(validation_ground_truths)
+        )
 
     def audio_alpha_classification(self, loading_function: Callable[[BubbleDataPoint], List[np.ndarray]], include_positions: bool) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Return the audio data from a provided loading function, with corresponding binary classification ground truths into neutrons and alpha particles"""
