@@ -1,0 +1,1274 @@
+/usr/local/lib/python3.6/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+batch_normalization_1 (Batch (None, 19)                76
+_________________________________________________________________
+dense_1 (Dense)              (None, 12)                240
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 12)                0
+_________________________________________________________________
+dense_2 (Dense)              (None, 8)                 104
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 8)                 0
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 9
+=================================================================
+Total params: 429
+Trainable params: 391
+Non-trainable params: 38
+_________________________________________________________________
+None
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+2018-07-30 11:14:30.332671: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+496/496 [==============================] - 1s 1ms/step - loss: 0.1965 - acc: 0.1250 - val_loss: 0.3178 - val_acc: 0.5703
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch0.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch0.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 58us/step - loss: 0.1887 - acc: 0.1270 - val_loss: 0.3181 - val_acc: 0.5781
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch1.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch1.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 68us/step - loss: 0.1790 - acc: 0.1452 - val_loss: 0.3145 - val_acc: 0.5938
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch2.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch2.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 76us/step - loss: 0.1901 - acc: 0.1431 - val_loss: 0.3130 - val_acc: 0.5938
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch3.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch3.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.1835 - acc: 0.1351 - val_loss: 0.3109 - val_acc: 0.5938
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch4.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch4.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 82us/step - loss: 0.1878 - acc: 0.1391 - val_loss: 0.3079 - val_acc: 0.6094
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch5.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch5.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1801 - acc: 0.1371 - val_loss: 0.3054 - val_acc: 0.6172
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch6.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch6.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.1748 - acc: 0.1452 - val_loss: 0.3034 - val_acc: 0.6172
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch7.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch7.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 81us/step - loss: 0.1752 - acc: 0.1452 - val_loss: 0.3015 - val_acc: 0.6406
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch8.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch8.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 61us/step - loss: 0.1757 - acc: 0.1351 - val_loss: 0.2987 - val_acc: 0.6484
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch9.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch9.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 68us/step - loss: 0.1711 - acc: 0.1452 - val_loss: 0.2964 - val_acc: 0.6641
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch10.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch10.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 62us/step - loss: 0.1633 - acc: 0.1613 - val_loss: 0.2942 - val_acc: 0.6719
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch11.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch11.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 60us/step - loss: 0.1785 - acc: 0.1472 - val_loss: 0.2927 - val_acc: 0.6875
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch12.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch12.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 57us/step - loss: 0.1716 - acc: 0.1431 - val_loss: 0.2906 - val_acc: 0.6875
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch13.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch13.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 71us/step - loss: 0.1789 - acc: 0.1351 - val_loss: 0.2886 - val_acc: 0.7109
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch14.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch14.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.1727 - acc: 0.1411 - val_loss: 0.2866 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch15.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch15.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.1753 - acc: 0.1411 - val_loss: 0.2842 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963671_epoch16.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963671_epoch16.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 72us/step - loss: 0.1686 - acc: 0.1573 - val_loss: 0.2825 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch17.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch17.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 75us/step - loss: 0.1674 - acc: 0.1472 - val_loss: 0.2804 - val_acc: 0.7500
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch18.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch18.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 78us/step - loss: 0.1663 - acc: 0.1411 - val_loss: 0.2791 - val_acc: 0.7500
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch19.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch19.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 67us/step - loss: 0.1652 - acc: 0.1512 - val_loss: 0.2769 - val_acc: 0.7578
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch20.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch20.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 60us/step - loss: 0.1659 - acc: 0.1532 - val_loss: 0.2750 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch21.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch21.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 73us/step - loss: 0.1602 - acc: 0.1552 - val_loss: 0.2738 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch22.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch22.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 94us/step - loss: 0.1553 - acc: 0.1552 - val_loss: 0.2729 - val_acc: 0.7812
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch23.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch23.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 76us/step - loss: 0.1537 - acc: 0.1613 - val_loss: 0.2717 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch24.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch24.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1614 - acc: 0.1552 - val_loss: 0.2701 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch25.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch25.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 74us/step - loss: 0.1559 - acc: 0.1673 - val_loss: 0.2685 - val_acc: 0.7812
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch26.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch26.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 98us/step - loss: 0.1554 - acc: 0.1613 - val_loss: 0.2671 - val_acc: 0.7812
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch27.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch27.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 86us/step - loss: 0.1674 - acc: 0.1210 - val_loss: 0.2657 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch28.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch28.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.1569 - acc: 0.1532 - val_loss: 0.2644 - val_acc: 0.7812
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch29.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch29.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1533 - acc: 0.1734 - val_loss: 0.2631 - val_acc: 0.7812
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch30.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch30.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 72us/step - loss: 0.1493 - acc: 0.1794 - val_loss: 0.2620 - val_acc: 0.7891
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch31.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch31.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1545 - acc: 0.1774 - val_loss: 0.2606 - val_acc: 0.7891
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch32.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch32.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.1476 - acc: 0.1794 - val_loss: 0.2595 - val_acc: 0.7891
+Data saved at /Users/brendonm/gravitational_validation_time1532963672_epoch33.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963672_epoch33.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 67us/step - loss: 0.1468 - acc: 0.1815 - val_loss: 0.2582 - val_acc: 0.7969
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch34.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch34.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 64us/step - loss: 0.1507 - acc: 0.1593 - val_loss: 0.2570 - val_acc: 0.7969
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch35.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch35.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 59us/step - loss: 0.1479 - acc: 0.1714 - val_loss: 0.2559 - val_acc: 0.7969
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch36.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch36.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 62us/step - loss: 0.1490 - acc: 0.1633 - val_loss: 0.2542 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch37.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch37.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 71us/step - loss: 0.1394 - acc: 0.1815 - val_loss: 0.2534 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch38.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch38.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 76us/step - loss: 0.1401 - acc: 0.1855 - val_loss: 0.2528 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch39.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch39.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 54us/step - loss: 0.1496 - acc: 0.1613 - val_loss: 0.2517 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch40.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch40.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 73us/step - loss: 0.1470 - acc: 0.1593 - val_loss: 0.2507 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch41.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch41.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 82us/step - loss: 0.1414 - acc: 0.1794 - val_loss: 0.2499 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch42.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch42.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 73us/step - loss: 0.1359 - acc: 0.2036 - val_loss: 0.2488 - val_acc: 0.8125
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch43.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch43.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 66us/step - loss: 0.1418 - acc: 0.1875 - val_loss: 0.2481 - val_acc: 0.8125
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch44.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch44.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1452 - acc: 0.1694 - val_loss: 0.2471 - val_acc: 0.7969
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch45.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch45.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.1423 - acc: 0.1613 - val_loss: 0.2464 - val_acc: 0.7969
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch46.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch46.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 80us/step - loss: 0.1424 - acc: 0.1673 - val_loss: 0.2455 - val_acc: 0.7969
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch47.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch47.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 59us/step - loss: 0.1366 - acc: 0.1794 - val_loss: 0.2451 - val_acc: 0.7969
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch48.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch48.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 75us/step - loss: 0.1405 - acc: 0.1815 - val_loss: 0.2444 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch49.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch49.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 76us/step - loss: 0.1450 - acc: 0.1613 - val_loss: 0.2436 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch50.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch50.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 67us/step - loss: 0.1416 - acc: 0.1794 - val_loss: 0.2429 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch51.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch51.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 72us/step - loss: 0.1362 - acc: 0.1734 - val_loss: 0.2422 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963673_epoch52.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963673_epoch52.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 74us/step - loss: 0.1341 - acc: 0.1855 - val_loss: 0.2415 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch53.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch53.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 72us/step - loss: 0.1399 - acc: 0.1815 - val_loss: 0.2408 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch54.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch54.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 65us/step - loss: 0.1335 - acc: 0.1875 - val_loss: 0.2406 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch55.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch55.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1370 - acc: 0.1613 - val_loss: 0.2399 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch56.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch56.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1337 - acc: 0.1895 - val_loss: 0.2392 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch57.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch57.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 66us/step - loss: 0.1309 - acc: 0.1875 - val_loss: 0.2385 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch58.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch58.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 73us/step - loss: 0.1318 - acc: 0.1815 - val_loss: 0.2379 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch59.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch59.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 79us/step - loss: 0.1317 - acc: 0.1794 - val_loss: 0.2375 - val_acc: 0.8047
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch60.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch60.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 77us/step - loss: 0.1315 - acc: 0.1815 - val_loss: 0.2371 - val_acc: 0.7969
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch61.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch61.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 62us/step - loss: 0.1289 - acc: 0.1935 - val_loss: 0.2366 - val_acc: 0.7891
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch62.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch62.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 65us/step - loss: 0.1292 - acc: 0.1815 - val_loss: 0.2360 - val_acc: 0.7891
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch63.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch63.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 77us/step - loss: 0.1342 - acc: 0.1794 - val_loss: 0.2356 - val_acc: 0.7891
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch64.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch64.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 73us/step - loss: 0.1326 - acc: 0.1815 - val_loss: 0.2354 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch65.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch65.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 75us/step - loss: 0.1340 - acc: 0.1815 - val_loss: 0.2351 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch66.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch66.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 104us/step - loss: 0.1264 - acc: 0.1895 - val_loss: 0.2347 - val_acc: 0.7812
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch67.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch67.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 73us/step - loss: 0.1303 - acc: 0.1835 - val_loss: 0.2345 - val_acc: 0.7812
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch68.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch68.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 86us/step - loss: 0.1286 - acc: 0.1794 - val_loss: 0.2342 - val_acc: 0.7812
+Data saved at /Users/brendonm/gravitational_validation_time1532963674_epoch69.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963674_epoch69.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 61us/step - loss: 0.1309 - acc: 0.1855 - val_loss: 0.2338 - val_acc: 0.7812
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch70.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch70.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 65us/step - loss: 0.1266 - acc: 0.1835 - val_loss: 0.2333 - val_acc: 0.7812
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch71.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch71.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 63us/step - loss: 0.1264 - acc: 0.1976 - val_loss: 0.2327 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch72.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch72.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 83us/step - loss: 0.1294 - acc: 0.1734 - val_loss: 0.2323 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch73.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch73.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 72us/step - loss: 0.1247 - acc: 0.1915 - val_loss: 0.2327 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch74.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch74.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 63us/step - loss: 0.1270 - acc: 0.1976 - val_loss: 0.2324 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch75.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch75.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 62us/step - loss: 0.1265 - acc: 0.1935 - val_loss: 0.2328 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch76.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch76.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 62us/step - loss: 0.1251 - acc: 0.1996 - val_loss: 0.2324 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch77.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch77.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 58us/step - loss: 0.1236 - acc: 0.1915 - val_loss: 0.2318 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch78.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch78.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 75us/step - loss: 0.1243 - acc: 0.1956 - val_loss: 0.2314 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch79.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch79.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 76us/step - loss: 0.1252 - acc: 0.1794 - val_loss: 0.2310 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch80.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch80.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1203 - acc: 0.1996 - val_loss: 0.2308 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch81.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch81.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 73us/step - loss: 0.1162 - acc: 0.2056 - val_loss: 0.2302 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch82.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch82.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 75us/step - loss: 0.1196 - acc: 0.1895 - val_loss: 0.2300 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch83.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch83.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 75us/step - loss: 0.1198 - acc: 0.1996 - val_loss: 0.2296 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch84.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch84.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 71us/step - loss: 0.1232 - acc: 0.1935 - val_loss: 0.2295 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch85.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch85.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 61us/step - loss: 0.1221 - acc: 0.1915 - val_loss: 0.2292 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch86.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch86.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 77us/step - loss: 0.1169 - acc: 0.1976 - val_loss: 0.2289 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963675_epoch87.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963675_epoch87.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 72us/step - loss: 0.1232 - acc: 0.1915 - val_loss: 0.2285 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch88.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch88.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 74us/step - loss: 0.1178 - acc: 0.1956 - val_loss: 0.2283 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch89.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch89.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 72us/step - loss: 0.1175 - acc: 0.1935 - val_loss: 0.2288 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch90.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch90.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 79us/step - loss: 0.1172 - acc: 0.1956 - val_loss: 0.2285 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch91.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch91.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 68us/step - loss: 0.1177 - acc: 0.1915 - val_loss: 0.2281 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch92.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch92.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.1214 - acc: 0.1835 - val_loss: 0.2279 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch93.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch93.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 71us/step - loss: 0.1190 - acc: 0.1935 - val_loss: 0.2275 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch94.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch94.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 81us/step - loss: 0.1139 - acc: 0.1915 - val_loss: 0.2274 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch95.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch95.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 82us/step - loss: 0.1161 - acc: 0.1935 - val_loss: 0.2271 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch96.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch96.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 77us/step - loss: 0.1135 - acc: 0.2016 - val_loss: 0.2269 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch97.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch97.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 76us/step - loss: 0.1163 - acc: 0.1976 - val_loss: 0.2267 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch98.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch98.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 78us/step - loss: 0.1108 - acc: 0.2056 - val_loss: 0.2265 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch99.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch99.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1149 - acc: 0.1935 - val_loss: 0.2260 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch100.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch100.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 82us/step - loss: 0.1182 - acc: 0.1915 - val_loss: 0.2260 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch101.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch101.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 78us/step - loss: 0.1159 - acc: 0.1976 - val_loss: 0.2256 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch102.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch102.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 71us/step - loss: 0.1182 - acc: 0.1875 - val_loss: 0.2256 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch103.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch103.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 60us/step - loss: 0.1138 - acc: 0.1956 - val_loss: 0.2254 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963676_epoch104.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963676_epoch104.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 77us/step - loss: 0.1159 - acc: 0.1935 - val_loss: 0.2252 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch105.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch105.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.1127 - acc: 0.2056 - val_loss: 0.2249 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch106.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch106.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1093 - acc: 0.2077 - val_loss: 0.2248 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch107.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch107.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 73us/step - loss: 0.1139 - acc: 0.1976 - val_loss: 0.2245 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch108.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch108.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 72us/step - loss: 0.1145 - acc: 0.2056 - val_loss: 0.2245 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch109.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch109.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 85us/step - loss: 0.1135 - acc: 0.1855 - val_loss: 0.2243 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch110.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch110.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 77us/step - loss: 0.1103 - acc: 0.1976 - val_loss: 0.2240 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch111.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch111.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 67us/step - loss: 0.1128 - acc: 0.1935 - val_loss: 0.2238 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch112.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch112.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 61us/step - loss: 0.1135 - acc: 0.1915 - val_loss: 0.2237 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch113.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch113.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 51us/step - loss: 0.1144 - acc: 0.1915 - val_loss: 0.2236 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch114.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch114.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 77us/step - loss: 0.1121 - acc: 0.2036 - val_loss: 0.2235 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch115.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch115.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 63us/step - loss: 0.1079 - acc: 0.2016 - val_loss: 0.2233 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch116.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch116.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 66us/step - loss: 0.1122 - acc: 0.1956 - val_loss: 0.2232 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch117.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch117.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 80us/step - loss: 0.1117 - acc: 0.1915 - val_loss: 0.2230 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch118.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch118.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 82us/step - loss: 0.1139 - acc: 0.1935 - val_loss: 0.2228 - val_acc: 0.7734
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch119.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch119.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 58us/step - loss: 0.1095 - acc: 0.2016 - val_loss: 0.2228 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch120.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch120.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 83us/step - loss: 0.1056 - acc: 0.2117 - val_loss: 0.2225 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch121.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963677_epoch121.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 76us/step - loss: 0.1063 - acc: 0.1976 - val_loss: 0.2224 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963677_epoch122.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch122.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 76us/step - loss: 0.1146 - acc: 0.1956 - val_loss: 0.2224 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch123.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch123.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 74us/step - loss: 0.1072 - acc: 0.1956 - val_loss: 0.2223 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch124.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch124.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 61us/step - loss: 0.1097 - acc: 0.1915 - val_loss: 0.2223 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch125.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch125.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 63us/step - loss: 0.1142 - acc: 0.1915 - val_loss: 0.2223 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch126.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch126.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 68us/step - loss: 0.1071 - acc: 0.1956 - val_loss: 0.2220 - val_acc: 0.7656
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch127.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch127.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.1070 - acc: 0.1976 - val_loss: 0.2221 - val_acc: 0.7578
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch128.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch128.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 78us/step - loss: 0.1081 - acc: 0.2056 - val_loss: 0.2219 - val_acc: 0.7578
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch129.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch129.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 78us/step - loss: 0.1121 - acc: 0.1794 - val_loss: 0.2220 - val_acc: 0.7500
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch130.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch130.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 84us/step - loss: 0.1068 - acc: 0.1996 - val_loss: 0.2218 - val_acc: 0.7500
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch131.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch131.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 75us/step - loss: 0.1077 - acc: 0.1956 - val_loss: 0.2218 - val_acc: 0.7500
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch132.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch132.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 68us/step - loss: 0.1088 - acc: 0.1996 - val_loss: 0.2217 - val_acc: 0.7500
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch133.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch133.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 63us/step - loss: 0.1088 - acc: 0.1915 - val_loss: 0.2216 - val_acc: 0.7500
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch134.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch134.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 80us/step - loss: 0.1063 - acc: 0.1956 - val_loss: 0.2216 - val_acc: 0.7500
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch135.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch135.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 79us/step - loss: 0.1084 - acc: 0.1956 - val_loss: 0.2215 - val_acc: 0.7500
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch136.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch136.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 74us/step - loss: 0.1078 - acc: 0.1976 - val_loss: 0.2213 - val_acc: 0.7500
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch137.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch137.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 64us/step - loss: 0.1096 - acc: 0.1976 - val_loss: 0.2214 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch138.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch138.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 60us/step - loss: 0.1092 - acc: 0.1956 - val_loss: 0.2213 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963678_epoch139.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963678_epoch139.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 75us/step - loss: 0.1092 - acc: 0.1996 - val_loss: 0.2211 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch140.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch140.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1067 - acc: 0.1976 - val_loss: 0.2211 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch141.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch141.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 75us/step - loss: 0.1067 - acc: 0.1956 - val_loss: 0.2210 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch142.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch142.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 59us/step - loss: 0.1098 - acc: 0.1996 - val_loss: 0.2209 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch143.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch143.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 72us/step - loss: 0.1052 - acc: 0.2036 - val_loss: 0.2208 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch144.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch144.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 77us/step - loss: 0.1059 - acc: 0.1956 - val_loss: 0.2208 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch145.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch145.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 74us/step - loss: 0.1065 - acc: 0.1895 - val_loss: 0.2207 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch146.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch146.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 76us/step - loss: 0.1064 - acc: 0.1935 - val_loss: 0.2205 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch147.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch147.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 76us/step - loss: 0.1033 - acc: 0.1996 - val_loss: 0.2203 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch148.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch148.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 76us/step - loss: 0.1072 - acc: 0.1895 - val_loss: 0.2203 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch149.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch149.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 63us/step - loss: 0.1058 - acc: 0.1915 - val_loss: 0.2202 - val_acc: 0.7422
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch150.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch150.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 60us/step - loss: 0.1085 - acc: 0.1935 - val_loss: 0.2204 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch151.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch151.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 75us/step - loss: 0.1058 - acc: 0.1915 - val_loss: 0.2202 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch152.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch152.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 62us/step - loss: 0.0994 - acc: 0.2016 - val_loss: 0.2201 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch153.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch153.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 90us/step - loss: 0.1015 - acc: 0.2016 - val_loss: 0.2200 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch154.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch154.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 82us/step - loss: 0.1049 - acc: 0.1915 - val_loss: 0.2199 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch155.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch155.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 77us/step - loss: 0.1052 - acc: 0.1895 - val_loss: 0.2198 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963679_epoch156.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963679_epoch156.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.1013 - acc: 0.2036 - val_loss: 0.2197 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch157.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch157.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 78us/step - loss: 0.1036 - acc: 0.2036 - val_loss: 0.2196 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch158.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch158.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 64us/step - loss: 0.1021 - acc: 0.2077 - val_loss: 0.2196 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch159.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch159.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 61us/step - loss: 0.1034 - acc: 0.1956 - val_loss: 0.2197 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch160.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch160.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 61us/step - loss: 0.1015 - acc: 0.1956 - val_loss: 0.2198 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch161.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch161.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 78us/step - loss: 0.1036 - acc: 0.1895 - val_loss: 0.2197 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch162.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch162.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 73us/step - loss: 0.1037 - acc: 0.1996 - val_loss: 0.2195 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch163.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch163.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1029 - acc: 0.1915 - val_loss: 0.2200 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch164.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch164.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 65us/step - loss: 0.1043 - acc: 0.1976 - val_loss: 0.2200 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch165.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch165.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 85us/step - loss: 0.1002 - acc: 0.2036 - val_loss: 0.2197 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch166.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch166.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1019 - acc: 0.1935 - val_loss: 0.2196 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch167.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch167.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 68us/step - loss: 0.1008 - acc: 0.1915 - val_loss: 0.2193 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch168.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch168.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 67us/step - loss: 0.1004 - acc: 0.1976 - val_loss: 0.2192 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch169.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch169.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 65us/step - loss: 0.1017 - acc: 0.1976 - val_loss: 0.2191 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch170.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch170.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 73us/step - loss: 0.1027 - acc: 0.1935 - val_loss: 0.2191 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch171.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch171.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 77us/step - loss: 0.1007 - acc: 0.1996 - val_loss: 0.2190 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch172.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch172.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 73us/step - loss: 0.1014 - acc: 0.1956 - val_loss: 0.2190 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch173.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch173.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 72us/step - loss: 0.1000 - acc: 0.1956 - val_loss: 0.2189 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963680_epoch174.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963680_epoch174.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 78us/step - loss: 0.1030 - acc: 0.1996 - val_loss: 0.2188 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch175.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch175.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 62us/step - loss: 0.1011 - acc: 0.1935 - val_loss: 0.2186 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch176.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch176.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 63us/step - loss: 0.0995 - acc: 0.1956 - val_loss: 0.2186 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch177.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch177.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 60us/step - loss: 0.1026 - acc: 0.1935 - val_loss: 0.2185 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch178.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch178.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 76us/step - loss: 0.0987 - acc: 0.1956 - val_loss: 0.2185 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch179.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch179.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 67us/step - loss: 0.1008 - acc: 0.1855 - val_loss: 0.2185 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch180.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch180.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1001 - acc: 0.2036 - val_loss: 0.2185 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch181.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch181.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 86us/step - loss: 0.0992 - acc: 0.1935 - val_loss: 0.2185 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch182.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch182.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 85us/step - loss: 0.1006 - acc: 0.1895 - val_loss: 0.2184 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch183.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch183.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 82us/step - loss: 0.0990 - acc: 0.1976 - val_loss: 0.2183 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch184.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch184.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 63us/step - loss: 0.1002 - acc: 0.1935 - val_loss: 0.2183 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch185.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch185.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 80us/step - loss: 0.0981 - acc: 0.2036 - val_loss: 0.2181 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch186.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch186.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.1008 - acc: 0.1956 - val_loss: 0.2180 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch187.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch187.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 71us/step - loss: 0.0997 - acc: 0.1895 - val_loss: 0.2179 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch188.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch188.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 66us/step - loss: 0.0999 - acc: 0.1895 - val_loss: 0.2180 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch189.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch189.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.0956 - acc: 0.2097 - val_loss: 0.2179 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch190.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch190.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 67us/step - loss: 0.0971 - acc: 0.1956 - val_loss: 0.2177 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963681_epoch191.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963681_epoch191.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 67us/step - loss: 0.0991 - acc: 0.1935 - val_loss: 0.2177 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch192.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch192.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.1004 - acc: 0.1935 - val_loss: 0.2176 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch193.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch193.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 73us/step - loss: 0.0974 - acc: 0.1915 - val_loss: 0.2176 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch194.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch194.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 80us/step - loss: 0.1029 - acc: 0.1835 - val_loss: 0.2176 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch195.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch195.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 66us/step - loss: 0.0969 - acc: 0.1935 - val_loss: 0.2175 - val_acc: 0.7344
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch196.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch196.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 58us/step - loss: 0.0977 - acc: 0.1976 - val_loss: 0.2175 - val_acc: 0.7266
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch197.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch197.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 57us/step - loss: 0.0975 - acc: 0.1915 - val_loss: 0.2174 - val_acc: 0.7266
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch198.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch198.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 56us/step - loss: 0.0970 - acc: 0.1915 - val_loss: 0.2173 - val_acc: 0.7266
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch199.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch199.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 56us/step - loss: 0.0969 - acc: 0.1956 - val_loss: 0.2172 - val_acc: 0.7266
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch200.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch200.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 54us/step - loss: 0.0959 - acc: 0.1996 - val_loss: 0.2172 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch201.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch201.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 68us/step - loss: 0.0960 - acc: 0.1895 - val_loss: 0.2171 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch202.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch202.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 74us/step - loss: 0.0960 - acc: 0.1875 - val_loss: 0.2170 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch203.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch203.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 71us/step - loss: 0.0956 - acc: 0.1915 - val_loss: 0.2168 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch204.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch204.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 74us/step - loss: 0.0935 - acc: 0.1996 - val_loss: 0.2167 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch205.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch205.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 78us/step - loss: 0.0976 - acc: 0.1855 - val_loss: 0.2166 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch206.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch206.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.0982 - acc: 0.1855 - val_loss: 0.2166 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch207.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch207.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 78us/step - loss: 0.0951 - acc: 0.1996 - val_loss: 0.2166 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch208.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch208.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 62us/step - loss: 0.0955 - acc: 0.1935 - val_loss: 0.2166 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch209.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch209.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 54us/step - loss: 0.0964 - acc: 0.1895 - val_loss: 0.2165 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963682_epoch210.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963682_epoch210.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 73us/step - loss: 0.0949 - acc: 0.1935 - val_loss: 0.2164 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch211.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch211.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 74us/step - loss: 0.0933 - acc: 0.1915 - val_loss: 0.2164 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch212.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch212.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.0985 - acc: 0.1956 - val_loss: 0.2164 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch213.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch213.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 64us/step - loss: 0.0968 - acc: 0.1915 - val_loss: 0.2164 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch214.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch214.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 60us/step - loss: 0.0963 - acc: 0.1956 - val_loss: 0.2162 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch215.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch215.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 57us/step - loss: 0.0936 - acc: 0.1935 - val_loss: 0.2163 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch216.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch216.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 72us/step - loss: 0.0958 - acc: 0.1855 - val_loss: 0.2162 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch217.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch217.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 75us/step - loss: 0.0957 - acc: 0.1935 - val_loss: 0.2162 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch218.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch218.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 74us/step - loss: 0.0973 - acc: 0.1935 - val_loss: 0.2162 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch219.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch219.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 75us/step - loss: 0.0975 - acc: 0.1915 - val_loss: 0.2164 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch220.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch220.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 77us/step - loss: 0.0933 - acc: 0.1895 - val_loss: 0.2162 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch221.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch221.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.0983 - acc: 0.1875 - val_loss: 0.2163 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch222.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch222.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 62us/step - loss: 0.0937 - acc: 0.1935 - val_loss: 0.2163 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch223.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch223.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 63us/step - loss: 0.0942 - acc: 0.1915 - val_loss: 0.2164 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch224.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch224.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 63us/step - loss: 0.0916 - acc: 0.1996 - val_loss: 0.2164 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch225.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch225.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 79us/step - loss: 0.0901 - acc: 0.2036 - val_loss: 0.2164 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch226.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch226.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 69us/step - loss: 0.0958 - acc: 0.1935 - val_loss: 0.2163 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch227.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963683_epoch227.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 73us/step - loss: 0.0961 - acc: 0.1835 - val_loss: 0.2163 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963683_epoch228.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch228.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 72us/step - loss: 0.0942 - acc: 0.1875 - val_loss: 0.2162 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch229.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch229.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 84us/step - loss: 0.0931 - acc: 0.1956 - val_loss: 0.2162 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch230.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch230.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 64us/step - loss: 0.0949 - acc: 0.1895 - val_loss: 0.2161 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch231.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch231.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 82us/step - loss: 0.0899 - acc: 0.1976 - val_loss: 0.2159 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch232.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch232.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 85us/step - loss: 0.0947 - acc: 0.1915 - val_loss: 0.2158 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch233.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch233.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 80us/step - loss: 0.0965 - acc: 0.1956 - val_loss: 0.2159 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch234.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch234.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 62us/step - loss: 0.0950 - acc: 0.1935 - val_loss: 0.2159 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch235.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch235.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 60us/step - loss: 0.0943 - acc: 0.1956 - val_loss: 0.2157 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch236.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch236.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 61us/step - loss: 0.0915 - acc: 0.1915 - val_loss: 0.2157 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch237.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch237.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 61us/step - loss: 0.0900 - acc: 0.1895 - val_loss: 0.2156 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch238.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch238.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 59us/step - loss: 0.0953 - acc: 0.1935 - val_loss: 0.2156 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch239.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch239.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 64us/step - loss: 0.0909 - acc: 0.1895 - val_loss: 0.2155 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch240.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch240.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 56us/step - loss: 0.0947 - acc: 0.1855 - val_loss: 0.2154 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch241.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch241.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 65us/step - loss: 0.0937 - acc: 0.1935 - val_loss: 0.2155 - val_acc: 0.7188
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch242.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch242.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 85us/step - loss: 0.0919 - acc: 0.1976 - val_loss: 0.2155 - val_acc: 0.7109
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch243.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch243.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 67us/step - loss: 0.0949 - acc: 0.1855 - val_loss: 0.2155 - val_acc: 0.7109
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch244.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch244.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 58us/step - loss: 0.0902 - acc: 0.1935 - val_loss: 0.2155 - val_acc: 0.7109
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch245.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963684_epoch245.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 67us/step - loss: 0.0928 - acc: 0.1935 - val_loss: 0.2155 - val_acc: 0.7109
+Data saved at /Users/brendonm/gravitational_validation_time1532963684_epoch246.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963685_epoch246.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 55us/step - loss: 0.0919 - acc: 0.1875 - val_loss: 0.2155 - val_acc: 0.7109
+Data saved at /Users/brendonm/gravitational_validation_time1532963685_epoch247.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963685_epoch247.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 70us/step - loss: 0.0917 - acc: 0.1895 - val_loss: 0.2152 - val_acc: 0.7109
+Data saved at /Users/brendonm/gravitational_validation_time1532963685_epoch248.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963685_epoch248.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 67us/step - loss: 0.0915 - acc: 0.1875 - val_loss: 0.2152 - val_acc: 0.7109
+Data saved at /Users/brendonm/gravitational_validation_time1532963685_epoch249.json
+Data saved at /Users/brendonm/gravitational_ground_truths_time1532963685_epoch249.json
