@@ -15,6 +15,12 @@ from models.banded_frequency_network import create_model
 # The number of training examples for which the ground truth is actually used, and is not dynamically generated
 DEFINITIVE_TRAINING_EXAMPLES = 128
 
+# The value (greater than 1) to add to the gravity multiplier every epoch
+GRAVITY_MULTIPLIER_INCREMENT = 0.001
+
+# The root to use to flatten out the middle of the gravity function of the prediction spectrum
+DISTORTION_ROOT = 9
+
 # Create an instance of the fully connected neural network
 model = create_model()
 # Recompile the model to use a simple stochastic gradient descent optimizer without any momentum or Nesterov; the ground truth tweaking in this system should not be combined with a more complex optimizer, which will interfere with the desired effects
@@ -61,13 +67,11 @@ def gravitational_ground_truth_offsets(predictions: np.ndarray, distortion_root:
     return root_distorted * gravity_multiplier
 
 
-# Choose values for the distortion root and gravity multiplier
-# The 9th root produces a reasonable curve, and a gravity multiplier of 0.1 means that non-definitive examples can have about 8% the effect of definitive examples
-distortion_root = 9
-gravity_multiplier = 0.1
+# The gravity multiplier should start at 0 and is added to every epoch
+gravity_multiplier = 0
 
 # Iterate for a certain number of epochs
-for epoch in range(250):
+for epoch in range(1000):
     # Train the model for one epoch
     model.fit(
         x=training_input,
@@ -89,7 +93,7 @@ for epoch in range(250):
     # Convert the predictions to a NumPy array and remove the unnecessary second dimension
     predictions_array = np.array(predictions)[:, 0]
     # Calculate the new ground truths for those examples by adding the gravitational function to the current predictions
-    ground_truths = predictions_array + gravitational_ground_truth_offsets(predictions_array, distortion_root, gravity_multiplier)
+    ground_truths = predictions_array + gravitational_ground_truth_offsets(predictions_array, DISTORTION_ROOT, gravity_multiplier)
     training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:] = ground_truths
     # Expand the dimensions of the new ground truth array so the test saving function will interpret it correctly
     ground_truths_saving = np.expand_dims(ground_truths, axis=1)
@@ -101,3 +105,6 @@ for epoch in range(250):
         epoch=epoch,
         prefix='gravitational_ground_truths_'
     )
+    # Add to the gravity multiplier and notify the user of its value
+    gravity_multiplier += GRAVITY_MULTIPLIER_INCREMENT
+    print('Gravity multiplier is at', gravity_multiplier, 'for epoch', epoch)
