@@ -5,35 +5,36 @@
 import copy
 
 import numpy as np
+from keras.optimizers import SGD
 
 from data_processing.bubble_data_point import RunType
 from data_processing.event_data_set import EventDataSet
 from data_processing.experiment_serialization import save_test
 from models.banded_frequency_network import create_model
 
-# The number of epochs to train for
-EPOCHS = 250
-
 # The number of training examples for which the ground truth is actually used, and is not dynamically generated
 DEFINITIVE_TRAINING_EXAMPLES = 128
 
 # Create an instance of the fully connected neural network
 model = create_model()
+# Recompile the model to use a simple stochastic gradient descent optimizer without any momentum or Nesterov; the ground truth tweaking in this system should not be combined with a more complex optimizer, which will interfere with the desired effects
+model.compile(
+    optimizer=SGD(),
+    loss='mse',
+    metrics=['accuracy']
+)
 
 # Create a data set, running fiducial cuts for the most reasonable data
-event_data_set = EventDataSet({
-    RunType.LOW_BACKGROUND,
-    RunType.AMERICIUM_BERYLLIUM,
-    RunType.CALIFORNIUM
-})
-# Sort the list of training events down to only those that pass the validation cuts
-event_data_set.training_events = [
-    event for event in event_data_set.training_events
-    if EventDataSet.passes_validation_cuts(event)
-]
+event_data_set = EventDataSet(
+    keep_run_types={
+        RunType.LOW_BACKGROUND,
+        RunType.AMERICIUM_BERYLLIUM,
+        RunType.CALIFORNIUM
+    },
+    use_wall_cuts=True
+)
 # Get the banded frequency domain data for training and validation
 training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()
-
 # For comparison later, store the original training ground truths of the examples for which they will be changed
 original_training_ground_truths = training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:]
 # Make a copy of the event data set, replacing the validation set with the corresponding training examples for saving the training data
@@ -47,16 +48,26 @@ training_ground_truths = training_ground_truths.astype(float)
 training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:] = 0.5
 
 
-def gravitational_ground_truth_offsets(predictions: np.ndarray) -> np.ndarray:
+def gravitational_ground_truth_offsets(predictions: np.ndarray, distortion_root: float, gravity_multiplier: float) -> np.ndarray:
     """Get an array of ground truth offsets based on a gravitational model where examples classified very close to one edge will be pulled toward that edge, and examples near the middle will make little difference"""
-    # The function should pass through (0.5, 0.5), should change very little near that point, and should rapidly asymptote in the negative or positive directions as the prediction comes close to 0 or 1
-    # This can be accomplished by scaling the predictions to the range of -1 to 1, taking the 9th root of the hyperbolic tangent (so that the area around 0 is squashed), and multiplying it by a constant so the gravitational offset does not dominate the training process
+    # The function should pass through (0.5, 0), should change very little near that point, and should rapidly asymptote in the negative or positive directions as the prediction comes close to 0 or 1
+    # First, scale the predictions to the range of -1 to 1
     predictions_scaled = (predictions - 0.5) * 2
-    return np.cbrt(np.cbrt(np.tanh(predictions_scaled))) * 0.05
+    # Take the hyperbolic tangent so examples in the middle are affected minimally
+    hyperbolic_tangent = np.tanh(predictions_scaled)
+    # Take the Nth root (removing the sign and multiplying it back in after so the negative side is the same as the positive side) of the hyperbolic tangent so that the area around 0 is squashed
+    root_distorted = np.sign(hyperbolic_tangent) * np.power(np.abs(hyperbolic_tangent), distortion_root)
+    # Multiply it by a constant so the gravitational offset does not dominate the training process
+    return root_distorted * gravity_multiplier
 
 
-# Iterate over however many epochs we are training for
-for epoch in range(EPOCHS):
+# Choose values for the distortion root and gravity multiplier
+# The 9th root produces a reasonable curve, and a gravity multiplier of 0.1 means that non-definitive examples can have about 8% the effect of definitive examples
+distortion_root = 9
+gravity_multiplier = 0.1
+
+# Iterate for a certain number of epochs
+for epoch in range(250):
     # Train the model for one epoch
     model.fit(
         x=training_input,
@@ -78,8 +89,7 @@ for epoch in range(EPOCHS):
     # Convert the predictions to a NumPy array and remove the unnecessary second dimension
     predictions_array = np.array(predictions)[:, 0]
     # Calculate the new ground truths for those examples by adding the gravitational function to the current predictions
-    ground_truths = predictions_array + \
-        gravitational_ground_truth_offsets(predictions_array)
+    ground_truths = predictions_array + gravitational_ground_truth_offsets(predictions_array, distortion_root, gravity_multiplier)
     training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:] = ground_truths
     # Expand the dimensions of the new ground truth array so the test saving function will interpret it correctly
     ground_truths_saving = np.expand_dims(ground_truths, axis=1)
