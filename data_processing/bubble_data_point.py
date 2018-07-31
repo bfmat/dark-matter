@@ -16,7 +16,7 @@ from skimage.io import imread
 from data_processing.audio_domain_processing import time_to_frequency_domain
 
 # A constant that defines which run we are currently using
-USE_RUN_1 = True
+USE_RUN_1 = False
 
 # The path in which all of the raw images and audio data are stored
 RAW_DATA_PATH = os.path.expanduser('~/projects/rrg-kenclark/pico/30l-16-data')
@@ -59,7 +59,7 @@ FREQUENCY_BANDS = [
 SAMPLES_PER_SECOND = 400_000
 
 # The shape of the piezo_E banded Fourier transform array
-BANDED_FREQUENCY_DOMAIN_SHAPE = (9, 45, 3)
+BANDED_FREQUENCY_DOMAIN_SHAPE = (9, 45, 3) if USE_RUN_1 else (3, 8, 3)
 
 
 class RunType(Enum):
@@ -168,6 +168,11 @@ class BubbleDataPoint:
         self.x_position = root_event.X
         self.y_position = root_event.Y
         self.z_position = root_event.Z
+        # Get the intended numeric pressure setting
+        self.pressure_setting = int(root_event.pset)
+        # Get the temperature and pressure readings
+        self.temperature_readings = list(root_event.ts)
+        self.pressure_readings = list(root_event.pts)
         # Get the distance from the center of the jar from the perspective of a camera, replacing it with a very large value if it is negative (could not be found)
         if root_event.R2 >= 0:
             self.distance_from_center = math.sqrt(root_event.R2)

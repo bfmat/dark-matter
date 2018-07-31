@@ -5,7 +5,7 @@
 import pickle
 
 from data_processing.bubble_data_point import BubbleDataPoint
-from data_processing.event_data_set import EVENT_FILE_PATH
+from data_processing.event_data_set import RUN_2_PATH
 
 import ROOT
 
@@ -16,6 +16,6 @@ tree = event_file.Get('T')
 # Iterate over the tree with a corresponding index, and convert the bubbles to a custom data class
 bubbles = [BubbleDataPoint(event, index) for index, event in enumerate(tree)]
 # Serialize the list to a Pickle binary file and notify the user
-with open(EVENT_FILE_PATH, 'wb') as pickle_file:
+with open(RUN_2_PATH, 'wb') as pickle_file:
     pickle.dump(bubbles, pickle_file)
-print('Saved as', EVENT_FILE_PATH)
+print('Saved as', RUN_2_PATH)
