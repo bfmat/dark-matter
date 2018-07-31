@@ -12,8 +12,7 @@ verify_arguments('unique bubble identifier')
 
 # Load that one bubble from the data file
 identifier = int(sys.argv[1])
-data_set = EventDataSet.load_specific_indices([identifier])
-bubble = data_set.validation_events[0]
+bubble = EventDataSet.load_specific_indices([identifier])[0]
 
 # Print the date, run number, event number, and run type
 print('Date:', bubble.date)
