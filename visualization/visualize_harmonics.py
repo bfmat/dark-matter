@@ -26,4 +26,5 @@ frequency_domain[:3000] = 0
 # Convert the modified frequency domain back into the time domain
 time_domain = frequency_to_time_domain(frequency_domain)
 # Visualize and save the time and frequency domains
+# WARNING: AUDIO IS EXTREMELY LOUD
 visualize_and_save_audio(time_domain, frequency_domain)
