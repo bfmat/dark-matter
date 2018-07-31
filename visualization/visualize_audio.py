@@ -27,12 +27,10 @@ identifier = int(sys.argv[1])
 bubble = EventDataSet.load_specific_indices([identifier])[0]
 # Get the audio information associated with the bubble (taking the first and only element of the list)
 time_domain = load_bubble_audio(bubble)[0]
-print(time_domain.shape)
 # Also, get the flattened full-resolution Fourier transform in the same way
 frequency_domain_flat = load_bubble_frequency_domain(bubble, banded=False)[0]
 # Reshape the frequency domain into an array with 2 channels
 frequency_domain = np.reshape(frequency_domain_flat, (-1, 2))
-print(frequency_domain.shape)
 
 # Iterate over the channel indices, which correspond to the row indices in the graph
 channels = time_domain.shape[1]
