@@ -33,4 +33,29 @@ For each event that is captured, the 4 cameras within the PICO-60 apparatus each
 
 The 3-dimensional position $\chi$ of the bubble within the vessel is calculated using triangulation, based on the known positions and angles of the cameras and the position of the bubble within the field of view of each camera. This is used in the banded frequency position correction function $PosCor(\beta _{8}, \chi)$, which corrects $\beta _{8}$ for variations in amplitude which depend on the position of the bubble.
 
+\section{Data Cuts}
+
+Techniques in this study are trained and validated on a number of different data sets. The selection of these sets focused on the fundamental trade-off between quality and quantity of data; by setting a higher standard for the validity of training data, one has less data to train on.
+
+The initial data set $D$ to which these cuts are applied consists of all events recorded during PICO-60 run 2.
+
+\subsection{Basic Quality Cut}
+
+A certain number of cuts are necessarily applied to all data to ensure meaningful results. Otherwise, significant overfitting on biases in the data is likely. This basic quality cut $QualCut(D)$ consists of the following restrictions:
+\begin{itemize}
+    \item The run was not collected during engineering or testing ($\texttt{run\_type}\neq99$)
+    \item Recording was triggered by the camera ($\texttt{trigger\_main}=0$)
+    \item Acoustic Parameter is not erroneously large and negative ($log_{10}(\texttt{acoustic\_bubnum})>-100$)
+    \item Recorded more than 25 seconds after reaching target pressure ($\texttt{te}>25$)
+    \item The bubble position $\chi$ was successfully calculated ($[X, Y, Z]\neq[-100, -100, -100]$)
+\end{itemize}
+
+\subsection{Bubble Multiplicity Cut}
+
+PICO-60 events which include multiple bubbles are \textit{always} neutron events; alpha particles and WIMP candidates never scatter. Thus, no discriminator is required to handle these events, so they are removed. The bubble multiplicity cut $MultiCut(D)$ consists of the following restrictions:
+\begin{itemize}
+    \item Either 0 or 1 bubbles are detected based on images from the camera ($\texttt{nbub}<2$)
+    \item The number of bubbles approximated using the pressure transducer is close to 1 ($0.7<\texttt{dytranCZ}<1.3$)
+\end{itemize}
+
 \end{document}
