@@ -48,7 +48,9 @@ A certain number of cuts are necessarily applied to all data to ensure meaningfu
     \item Recording was triggered by the camera ($\texttt{trigger\_main}=0$)
     \item Acoustic Parameter is not erroneously large and negative ($log_{10}(\texttt{acoustic\_bubnum})>-100$)
     \item Recorded more than 25 seconds after reaching target pressure ($\texttt{te}>25$)
-    \item The bubble position $\chi$ was successfully calculated ($[X, Y, Z]\neq[-100, -100, -100]$)
+    \item The bubble position $\chi$ was successfully calculated
+
+    ($[\chi_{X}, \chi_{Y}, \chi_{Z}]\neq[-100, -100, -100]$)
 \end{itemize}
 
 \subsection{Bubble Multiplicity Cut}
@@ -74,10 +76,10 @@ The fiducial cut $FidWallCut(D)$ defines an spatial area along the walls of the 
     \item $Z \leq 523$
     \item Any of the following 4 restrictions are true:
     \begin{itemize}
-        \item $(min(\texttt{Dwall}, \texttt{Dwall\_horiz}) > 6) \land (0 < Z \leq 400)$
-        \item $(min(\texttt{Dwall}, \texttt{Dwall\_horiz}) > 6) \land (Z \leq 0) \land (R \leq 100)$
-        \item $(min(\texttt{Dwall}, \texttt{Dwall\_horiz}) > 13) \land (Z \leq 0) \land (R > 100)$
-        \item $(min(\texttt{Dwall}, \texttt{Dwall\_horiz}) > 13) \land (Z > 400)$
+        \item $(min(\texttt{Dwall}, \texttt{Dwall\_horiz}) > 6) \land (0 < \chi_{Z} \leq 400)$
+        \item $(min(\texttt{Dwall}, \texttt{Dwall\_horiz}) > 6) \land (\chi_{Z} \leq 0) \land (R \leq 100)$
+        \item $(min(\texttt{Dwall}, \texttt{Dwall\_horiz}) > 13) \land (\chi_{Z} \leq 0) \land (R > 100)$
+        \item $(min(\texttt{Dwall}, \texttt{Dwall\_horiz}) > 13) \land (\chi_{Z} > 400)$
     \end{itemize}
 \end{itemize}
 
