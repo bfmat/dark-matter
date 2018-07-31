@@ -66,7 +66,7 @@ PICO-60 events which include multiple bubbles are \textit{always} neutron events
 
 Events that occur near the walls of the vessel have acoustic properties which are notably different from events nearer the center of the vessel. It can be desirable for a discriminator to handle these events correctly; however, Acoustic Parameter does not, and neither does the neural network used in the previous PICO-60 paper. Thus, removing wall events allowed for a more meaningful direct comparison between a new neural network and existing techniques.
 
-The complete wall cut $WallCut(D)$ is a composition of the fiducial cut $FidWallCut(D)$ (which makes use of the 3D position $\chi$), the pressure cut $PresWallCut(D)$ (which uses data from the pressure transducer), and the acoustic wall cut $AcWallCut(D)$ (which uses the banded Fourier transform $\beta _{8}$).
+The complete wall cut $WallCut(D)$ is a composition of the fiducial cut $FidWallCut(D)$ (which makes use of the 3D position $\chi$), the pressure cut $PresWallCut(D)$ (which uses data from the pressure transducer), and the acoustic cut $AcWallCut(D)$ (which uses the banded Fourier transform $\beta _{8}$).
 
 \subsubsection{Fiducial Cut}
 
@@ -82,5 +82,17 @@ The fiducial cut $FidWallCut(D)$ defines an spatial area along the walls of the 
         \item $(min(\texttt{Dwall}, \texttt{Dwall\_horiz}) > 13) \land (\chi_{Z} > 400)$
     \end{itemize}
 \end{itemize}
+
+\subsubsection{Pressure Cut}
+
+The pressure cut $PresWallCut(D)$ restricts the pressure detected by the pressure transducer, without any position corrections, to be close to 1 ($0.7<\texttt{dytranC}<1.3$). In combination with the acoustic cut $AcWallCut(D)$, this acts as a backup to the fiducial cut.
+
+\subsubsection{Acoustic Cut}
+
+The acoustic cut $AcWallCut(D)$ is defined using the banded Fourier transform $\beta_{8}$ as follows:
+
+$45 < mean(\beta_{8}[(0, 2), (0, 1)]) < 300$
+
+This takes advantage of differences in the frequency distribution (specifically the first and second frequency bands of the first and third piezos) of wall events and non-wall events.
 
 \end{document}
