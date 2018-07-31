@@ -23,4 +23,13 @@ acoustic_predictions = np.array([acoustic_parameter >= 0.22 for acoustic_paramet
 disagreement_indices = np.argwhere(network_predictions != acoustic_predictions)
 # Get the events on which the two techniques disagree (indices are wrapped in single-element arrays)
 disagreement_events = [events[index[0]] for index in disagreement_indices]
-print(len(disagreement_events))
+# Iterate over the events, printing information
+for event in disagreement_events:
+    # Print several attributes of the event that make it identifiable
+    print('Unique index:', event.unique_bubble_index)
+    print('Date:', event.date)
+    print('Run number:', event.run_number)
+    print('Event number:', event.event_number)
+    print('Run type:', event.run_type)
+    # Print a blank line for separation
+    print()
