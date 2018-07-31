@@ -23,15 +23,21 @@ acoustic_predictions = np.array([acoustic_parameter >= 0.22 for acoustic_paramet
 disagreement_indices = np.argwhere(network_predictions != acoustic_predictions)
 # Get the events on which the two techniques disagree (indices are wrapped in single-element arrays)
 disagreement_events = [events[index[0]] for index in disagreement_indices]
-# Iterate over the events, printing information
-for event in disagreement_events:
+# Iterate over the events with corresponding network predictions and ground truths, printing information
+for event, network_prediction, ground_truth in zip(disagreement_events, network_predictions, ground_truths):
     # Print several attributes of the event that make it identifiable
     print('Unique index:', event.unique_bubble_index)
     print('Date:', event.date)
     print('Run number:', event.run_number)
     print('Event number:', event.event_number)
     print('Run type:', event.run_type)
-    # Print out the banded Fourier transform data originating in the ROOT file
-    print('Banded frequency domain:', event.banded_frequency_domain)
+    # Print out the raw banded Fourier transform data originating in the ROOT file, for the time bin and piezos used for training
+    print('Banded frequency domain (raw):')
+    print(event.banded_frequency_domain_raw[1:, :, 2])
+    # Print the position of the bubble (calculated using the camera)
+    print(f'Position: ({event.x_position}, {event.y_position}, {event.z_position})')
+    # Print whether the network is correct or the acoustic parameter is correct
+    correct = 'Neural network' if network_prediction == ground_truth else 'Acoustic parameter'
+    print(correct, 'is correct')
     # Print a blank line for separation
     print()
