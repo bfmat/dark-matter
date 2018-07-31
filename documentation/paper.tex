@@ -113,13 +113,13 @@ This performance metric is used rather than a simple accuracy score because it t
 
 \section{Supervised Learning}
 
-Supervised learning was used to directly replace Acoustic Parameter. It takes advantage of labeled sets of neutron and alpha events, which are used as training. Several different network configurations were applied to this task.
+Supervised learning was used to directly replace Acoustic Parameter. It takes advantage of labeled sets of neutron and alpha events, which are used as training. Several different neural network configurations were applied to this task.
 
 \subsection{Convolutional Neural Network for Raw Waveform Analysis}
 
-A convolutional neural network was used for analyzing the raw waveform directly, without any preprocessing whatsoever. This avoids any destruction of information, and should be possible, in theory, for a neural network to handle.
+A convolutional neural network was used for analyzing the raw waveform directly, without any preprocessing whatsoever. This avoids any destruction of information, and should be possible, in theory, for a neural network to handle. For this task, a very deep 1-dimensional fully convolutional neural network was applied. The architecture was inspired by the M34-res network \cite{verydeepconvnets} for analysis of raw waveforms.
 
-For this task, a very deep 1-dimensional fully convolutional neural network was applied. The architecture was inspired by the M34-res network \cite{verydeepconvnets} for analysis of raw waveforms.
+Two different configurations were tested: one that operates strictly on the waveform with no position corrections of any kind (furthermore $DeepConv(\omega)$) and one with an additional position input on a lower layer such that it can learn to incorporate position corrections into its outputs ($DeepConvWithPos(\omega, \chi)$).
 
 \printbibliography
 
