@@ -66,4 +66,19 @@ Events that occur near the walls of the vessel have acoustic properties which ar
 
 The complete wall cut $WallCut(D)$ is a composition of the fiducial cut $FidWallCut(D)$ (which makes use of the 3D position $\chi$), the pressure cut $PresWallCut(D)$ (which uses data from the pressure transducer), and the acoustic wall cut $AcWallCut(D)$ (which uses the banded Fourier transform $\beta _{8}$).
 
+\subsubsection{Fiducial Cut}
+
+The fiducial cut $FidWallCut(D)$ defines an spatial area along the walls of the vessel within which no events are accepted. It makes use of the bubble position $\chi$, the distance from the bubble to the center of the vessel $R$, and the distance from the bubble to the nearest wall, which is defined as $min(\texttt{Dwall}, \texttt{Dwall\_horiz})$. It is defined as follows:
+
+\begin{itemize}
+    \item $Z \leq 523$
+    \item Any of the following 4 restrictions are true:
+    \begin{itemize}
+        \item $(min(\texttt{Dwall}, \texttt{Dwall\_horiz}) > 6) \land (0 < Z \leq 400)$
+        \item $(min(\texttt{Dwall}, \texttt{Dwall\_horiz}) > 6) \land (Z \leq 0) \land (R \leq 100)$
+        \item $(min(\texttt{Dwall}, \texttt{Dwall\_horiz}) > 13) \land (Z \leq 0) \land (R > 100)$
+        \item $(min(\texttt{Dwall}, \texttt{Dwall\_horiz}) > 13) \land (Z > 400)$
+    \end{itemize}
+\end{itemize}
+
 \end{document}
