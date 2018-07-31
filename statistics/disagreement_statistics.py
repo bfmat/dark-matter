@@ -31,5 +31,7 @@ for event in disagreement_events:
     print('Run number:', event.run_number)
     print('Event number:', event.event_number)
     print('Run type:', event.run_type)
+    # Print out the banded Fourier transform data originating in the ROOT file
+    print('Banded frequency domain:', event.banded_frequency_domain)
     # Print a blank line for separation
     print()
