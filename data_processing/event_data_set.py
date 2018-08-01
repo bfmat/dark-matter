@@ -47,7 +47,9 @@ class EventDataSet:
         # Use wall cuts on training and validation data
         use_wall_cuts: bool,
         # Whether to use PICO-60 run 1 or 2
-        use_run_1: bool = False
+        use_run_1: bool = False,
+        # Whether or not to use the same temperature and pressure cuts done in the original analysis
+        use_temperature_and_pressure_cuts: bool = False
     ) -> None:
         """Initializer that takes parameters that determine which data is loaded; None for the set of run types represents no filtering"""
         # Load the data from the Pickle file on disk according to the run selected
@@ -70,6 +72,13 @@ class EventDataSet:
                 if self.passes_fiducial_cuts(event)
                 and self.passes_audio_wall_cuts(event)
             ]
+        # If temperature and pressure cuts are enabled, run them on all events
+        if use_temperature_and_pressure_cuts:
+            events = [
+                event for event in events
+                if self.passes_temperature_and_pressure_cuts(event)
+            ]
+            print(len(events))
         # Choose a specified number of random examples from the list with validation cuts applied
         self.validation_events = random.sample(events, VALIDATION_EXAMPLES)
         # Remove all of the validation events from the original list of events
@@ -150,6 +159,18 @@ class EventDataSet:
             # Run a cut on the AP12 variable, which is based on the frequency distribution and distinguishes wall events
             event.acoustic_parameter_12 < 300
             and event.acoustic_parameter_12 > 45
+        )
+
+    @staticmethod
+    def passes_temperature_and_pressure_cuts(event: BubbleDataPoint) -> bool:
+        """Determines whether or not an event passes the cuts that make sure it is near 16.05 degrees Celsius and that pressure is within the expected range for that temperature"""
+        return (
+            # The pressure should be set to 21
+            event.pressure_setting == 21
+            # The actual observed pressure should be within 1 of the set pressure
+            np.abs(event.pressure_readings[0] - event.pressure_setting) < 1
+            # The temperature on the thermometer that is actually used for analysis should be within half a degree of 16.05
+            and np.abs(event.temperature_readings[2] - 16.05) < 1
         )
 
     @classmethod
