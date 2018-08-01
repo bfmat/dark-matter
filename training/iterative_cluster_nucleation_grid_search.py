@@ -7,9 +7,6 @@ import os
 
 import numpy as np
 
-# Use only the first GPU for training (GTX 1080)
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-
 from keras.layers import Dense, Dropout, BatchNormalization, InputLayer
 from keras.models import Sequential
 from keras.regularizers import l2
