@@ -17,14 +17,14 @@ event_data_set = EventDataSet(
         RunType.AMERICIUM_BERYLLIUM,
         RunType.CALIFORNIUM
     },
-    use_wall_cuts=False
+    use_wall_cuts=True
 )
 # Load training and validation data as NumPy arrays, currying the loading function to disable banding
 training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = \
     event_data_set.audio_alpha_classification(
         loading_function=lambda bubble:
         load_bubble_frequency_domain(bubble, banded=False),
-        include_positions=True
+        include_positions=False
     )
 # Create an instance of the high resolution frequency network
 model = create_model()
@@ -34,17 +34,9 @@ for epoch in range(250):
     model.fit(
         x=training_inputs,
         y=training_ground_truths,
+        validation_data=(validation_inputs, validation_ground_truths),
         epochs=1
     )
-    # Evaluate the model on the validation data set
-    loss, accuracy = model.evaluate(
-        x=validation_inputs,
-        y=validation_ground_truths,
-        verbose=0
-    )
-    # Output the validation loss and accuracy to the user
-    print('Validation loss:', loss)
-    print('Validation accuracy:', accuracy)
     # Run predictions on the validation data set, and save the experimental run
     validation_network_outputs = model.predict(validation_inputs)
     save_test(
@@ -52,8 +44,5 @@ for epoch in range(250):
         validation_ground_truths,
         validation_network_outputs,
         epoch,
-        prefix='high_resolution_frequency_'
+        prefix='high_resolution_ap_simulation_'
     )
-    # Save the current model, named with the epoch number
-    model_path = os.path.expanduser(f'~/frequency_epoch{epoch}.h5')
-    model.save(model_path)

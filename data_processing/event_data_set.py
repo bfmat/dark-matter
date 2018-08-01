@@ -328,9 +328,8 @@ class EventDataSet:
                         event.y_position,
                         event.z_position
                     ])
-                # Add a corresponding ground truth, True if this is from the alpha data set and false otherwise
-                # If there are multiple input arrays returned, add that number of ground truths
-                ground_truths += [event.run_type == RunType.LOW_BACKGROUND] * len(audio)
+                # Add the Acoustic Parameter as a corresponding ground truth
+                ground_truths += [event.logarithmic_acoustic_parameter] * len(audio)
         # Next, convert the lists into NumPy arrays and return them
         # Combine the audio inputs with the position inputs if the feature is enabled
         if include_positions:
