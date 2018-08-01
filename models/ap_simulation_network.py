@@ -13,7 +13,7 @@ def create_model() -> Model:
     dropout = 0
     activation = 'tanh'
     model = Sequential([
-        InputLayer(input_shape=(19,)),
+        InputLayer(input_shape=(16,)),
         BatchNormalization(),
         Dense(12, activation=activation, kernel_regularizer=regularizer),
         Dropout(dropout),
