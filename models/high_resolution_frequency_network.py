@@ -10,13 +10,11 @@ def create_model() -> Model:
     """Create and return a new instance of the high-resolution frequency network"""
     # Create a neural network composed of dense layers with dropout and L2 regularization, using hyperbolic tangent activations
     activation = 'tanh'
-    regularizer = l2(0.06)
+    regularizer = l2(0.0003)
     dropout = 0
     # Create two inputs, one for the audio data and one for the position, and concatenate them together
     audio_input = Input((100_002,))
     x = BatchNormalization()(audio_input)
-    x = Dense(24, activation=activation, kernel_regularizer=regularizer)(x)
-    x = Dropout(dropout)(x)
     x = Dense(12, activation=activation, kernel_regularizer=regularizer)(x)
     x = Dropout(dropout)(x)
     x = Dense(8, activation=activation, kernel_regularizer=regularizer)(x)
