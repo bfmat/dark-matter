@@ -24,7 +24,7 @@ def load_and_print_disagreements(file_path: str) -> None:
     # Calculate the number of events on which AP and the network disagree
     disagreements = np.count_nonzero(network_predictions != ap_predictions)
     # If the number of disagreements is below a certain threshold, print out the path and the number of disagreements
-    if disagreements < 3:
+    if disagreements < 10:
         print(f'{file_path}: {disagreements} disagreements')
 
 
