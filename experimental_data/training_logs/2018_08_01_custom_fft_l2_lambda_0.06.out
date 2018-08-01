@@ -1,0 +1,585 @@
+Using TensorFlow backend.
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         (None, 100002)            0         
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 100002)            400008    
+_________________________________________________________________
+dense_1 (Dense)              (None, 24)                2400072   
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 24)                0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 12)                300       
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 12)                0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 8)                 104       
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 8)                 0         
+_________________________________________________________________
+dense_4 (Dense)              (None, 1)                 9         
+=================================================================
+Total params: 2,800,493
+Trainable params: 2,600,489
+Non-trainable params: 200,004
+_________________________________________________________________
+None
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+2018-08-01 15:21:53.386650: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-08-01 15:21:53.561981: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1392] Found device 0 with properties: 
+name: GeForce GTX 1060 6GB major: 6 minor: 1 memoryClockRate(GHz): 1.759
+pciBusID: 0000:03:00.0
+totalMemory: 5.93GiB freeMemory: 5.52GiB
+2018-08-01 15:21:53.562026: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1471] Adding visible gpu devices: 0
+2018-08-01 15:21:53.822424: I tensorflow/core/common_runtime/gpu/gpu_device.cc:952] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-08-01 15:21:53.822478: I tensorflow/core/common_runtime/gpu/gpu_device.cc:958]      0 
+2018-08-01 15:21:53.822503: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   N 
+2018-08-01 15:21:53.822695: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1084] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 5294 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1060 6GB, pci bus id: 0000:03:00.0, compute capability: 6.1)
+495/495 [==============================] - 2s 4ms/step - loss: 6.9944 - mean_absolute_error: 0.8377 - val_loss: 7.4854 - val_mean_absolute_error: 0.4737
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151315_epoch0.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 8.6864 - mean_absolute_error: 0.7599 - val_loss: 8.0657 - val_mean_absolute_error: 0.3519
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151316_epoch1.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 8.4412 - mean_absolute_error: 0.5796 - val_loss: 7.7609 - val_mean_absolute_error: 0.3111
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151317_epoch2.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 7.6293 - mean_absolute_error: 0.4552 - val_loss: 6.9608 - val_mean_absolute_error: 0.2881
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151317_epoch3.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 6.6560 - mean_absolute_error: 0.3655 - val_loss: 6.0483 - val_mean_absolute_error: 0.2801
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151318_epoch4.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 5.6768 - mean_absolute_error: 0.3079 - val_loss: 5.1182 - val_mean_absolute_error: 0.2487
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151319_epoch5.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 4.7755 - mean_absolute_error: 0.2575 - val_loss: 4.3087 - val_mean_absolute_error: 0.2236
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151319_epoch6.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 4.0321 - mean_absolute_error: 0.2559 - val_loss: 3.6385 - val_mean_absolute_error: 0.2061
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151320_epoch7.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 3.4431 - mean_absolute_error: 0.2181 - val_loss: 3.2094 - val_mean_absolute_error: 0.2123
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151321_epoch8.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 3.0501 - mean_absolute_error: 0.1934 - val_loss: 2.8685 - val_mean_absolute_error: 0.1955
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151321_epoch9.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 2.7022 - mean_absolute_error: 0.1920 - val_loss: 2.5133 - val_mean_absolute_error: 0.1987
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151322_epoch10.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 2.3468 - mean_absolute_error: 0.1600 - val_loss: 2.1847 - val_mean_absolute_error: 0.1831
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151323_epoch11.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 2.0370 - mean_absolute_error: 0.1567 - val_loss: 1.9073 - val_mean_absolute_error: 0.1915
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151323_epoch12.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 1.7864 - mean_absolute_error: 0.1295 - val_loss: 1.7057 - val_mean_absolute_error: 0.1725
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151324_epoch13.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 1.6172 - mean_absolute_error: 0.1342 - val_loss: 1.5695 - val_mean_absolute_error: 0.1873
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151325_epoch14.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 1.5065 - mean_absolute_error: 0.1512 - val_loss: 1.4647 - val_mean_absolute_error: 0.1696
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151326_epoch15.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 1.4047 - mean_absolute_error: 0.1451 - val_loss: 1.3590 - val_mean_absolute_error: 0.1731
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151326_epoch16.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 1.2976 - mean_absolute_error: 0.1357 - val_loss: 1.2653 - val_mean_absolute_error: 0.1705
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151327_epoch17.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 1.1975 - mean_absolute_error: 0.1282 - val_loss: 1.1623 - val_mean_absolute_error: 0.1607
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151328_epoch18.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 1.0990 - mean_absolute_error: 0.1147 - val_loss: 1.0884 - val_mean_absolute_error: 0.1916
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151328_epoch19.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 1.0206 - mean_absolute_error: 0.1107 - val_loss: 1.0143 - val_mean_absolute_error: 0.1712
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151329_epoch20.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.9594 - mean_absolute_error: 0.1109 - val_loss: 0.9455 - val_mean_absolute_error: 0.1548
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151330_epoch21.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.9059 - mean_absolute_error: 0.1090 - val_loss: 0.9010 - val_mean_absolute_error: 0.1610
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151330_epoch22.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.8547 - mean_absolute_error: 0.1111 - val_loss: 0.8501 - val_mean_absolute_error: 0.1607
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151331_epoch23.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.7997 - mean_absolute_error: 0.1002 - val_loss: 0.8071 - val_mean_absolute_error: 0.1707
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151332_epoch24.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.7619 - mean_absolute_error: 0.1056 - val_loss: 0.7708 - val_mean_absolute_error: 0.1484
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151332_epoch25.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.7393 - mean_absolute_error: 0.1122 - val_loss: 0.7376 - val_mean_absolute_error: 0.1433
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151333_epoch26.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.7036 - mean_absolute_error: 0.1034 - val_loss: 0.7070 - val_mean_absolute_error: 0.1531
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151334_epoch27.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.6640 - mean_absolute_error: 0.0990 - val_loss: 0.6670 - val_mean_absolute_error: 0.1627
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151334_epoch28.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.6256 - mean_absolute_error: 0.0969 - val_loss: 0.6268 - val_mean_absolute_error: 0.1492
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151335_epoch29.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.5922 - mean_absolute_error: 0.0939 - val_loss: 0.6013 - val_mean_absolute_error: 0.1447
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151336_epoch30.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.5682 - mean_absolute_error: 0.0919 - val_loss: 0.5780 - val_mean_absolute_error: 0.1465
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151336_epoch31.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.5526 - mean_absolute_error: 0.1046 - val_loss: 0.5611 - val_mean_absolute_error: 0.1399
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151337_epoch32.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.5350 - mean_absolute_error: 0.0972 - val_loss: 0.5483 - val_mean_absolute_error: 0.1539
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151338_epoch33.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.5024 - mean_absolute_error: 0.0898 - val_loss: 0.5018 - val_mean_absolute_error: 0.1378
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151339_epoch34.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.4652 - mean_absolute_error: 0.0903 - val_loss: 0.4707 - val_mean_absolute_error: 0.1449
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151339_epoch35.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.4338 - mean_absolute_error: 0.0803 - val_loss: 0.4463 - val_mean_absolute_error: 0.1467
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151340_epoch36.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.4143 - mean_absolute_error: 0.0911 - val_loss: 0.4320 - val_mean_absolute_error: 0.1577
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151341_epoch37.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.3988 - mean_absolute_error: 0.0898 - val_loss: 0.4113 - val_mean_absolute_error: 0.1426
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151341_epoch38.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.3798 - mean_absolute_error: 0.0877 - val_loss: 0.3978 - val_mean_absolute_error: 0.1557
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151342_epoch39.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.3671 - mean_absolute_error: 0.0952 - val_loss: 0.3812 - val_mean_absolute_error: 0.1462
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151343_epoch40.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.3541 - mean_absolute_error: 0.0935 - val_loss: 0.3669 - val_mean_absolute_error: 0.1457
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151343_epoch41.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.3439 - mean_absolute_error: 0.0998 - val_loss: 0.3648 - val_mean_absolute_error: 0.1612
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151344_epoch42.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.3397 - mean_absolute_error: 0.0985 - val_loss: 0.3553 - val_mean_absolute_error: 0.1497
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151345_epoch43.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.3323 - mean_absolute_error: 0.1040 - val_loss: 0.3337 - val_mean_absolute_error: 0.1327
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151346_epoch44.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.3253 - mean_absolute_error: 0.1146 - val_loss: 0.3382 - val_mean_absolute_error: 0.1520
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151346_epoch45.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.3105 - mean_absolute_error: 0.0952 - val_loss: 0.3250 - val_mean_absolute_error: 0.1451
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151347_epoch46.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2909 - mean_absolute_error: 0.0870 - val_loss: 0.3007 - val_mean_absolute_error: 0.1393
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151348_epoch47.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2725 - mean_absolute_error: 0.0919 - val_loss: 0.2850 - val_mean_absolute_error: 0.1405
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151348_epoch48.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2609 - mean_absolute_error: 0.0975 - val_loss: 0.2690 - val_mean_absolute_error: 0.1346
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151349_epoch49.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2597 - mean_absolute_error: 0.1075 - val_loss: 0.2753 - val_mean_absolute_error: 0.1389
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151350_epoch50.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2603 - mean_absolute_error: 0.0989 - val_loss: 0.2767 - val_mean_absolute_error: 0.1493
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151351_epoch51.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2560 - mean_absolute_error: 0.1052 - val_loss: 0.2627 - val_mean_absolute_error: 0.1375
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151351_epoch52.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2541 - mean_absolute_error: 0.1071 - val_loss: 0.2753 - val_mean_absolute_error: 0.1530
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151352_epoch53.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2501 - mean_absolute_error: 0.0973 - val_loss: 0.2552 - val_mean_absolute_error: 0.1333
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151353_epoch54.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2413 - mean_absolute_error: 0.0945 - val_loss: 0.2559 - val_mean_absolute_error: 0.1410
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151353_epoch55.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2288 - mean_absolute_error: 0.0983 - val_loss: 0.2343 - val_mean_absolute_error: 0.1436
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151354_epoch56.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2072 - mean_absolute_error: 0.0884 - val_loss: 0.2199 - val_mean_absolute_error: 0.1446
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151355_epoch57.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1995 - mean_absolute_error: 0.0971 - val_loss: 0.2112 - val_mean_absolute_error: 0.1321
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151356_epoch58.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2030 - mean_absolute_error: 0.1092 - val_loss: 0.2175 - val_mean_absolute_error: 0.1363
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151356_epoch59.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2015 - mean_absolute_error: 0.0975 - val_loss: 0.2237 - val_mean_absolute_error: 0.1494
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151357_epoch60.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1896 - mean_absolute_error: 0.0847 - val_loss: 0.2011 - val_mean_absolute_error: 0.1371
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151358_epoch61.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1764 - mean_absolute_error: 0.0929 - val_loss: 0.1924 - val_mean_absolute_error: 0.1447
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151358_epoch62.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1812 - mean_absolute_error: 0.1134 - val_loss: 0.1985 - val_mean_absolute_error: 0.1355
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151359_epoch63.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1940 - mean_absolute_error: 0.1136 - val_loss: 0.2095 - val_mean_absolute_error: 0.1474
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151360_epoch64.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1911 - mean_absolute_error: 0.1116 - val_loss: 0.1979 - val_mean_absolute_error: 0.1430
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151360_epoch65.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2048 - mean_absolute_error: 0.1183 - val_loss: 0.2323 - val_mean_absolute_error: 0.1567
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151361_epoch66.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2057 - mean_absolute_error: 0.1167 - val_loss: 0.2014 - val_mean_absolute_error: 0.1384
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151362_epoch67.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1764 - mean_absolute_error: 0.1007 - val_loss: 0.1856 - val_mean_absolute_error: 0.1488
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151362_epoch68.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1588 - mean_absolute_error: 0.0981 - val_loss: 0.1697 - val_mean_absolute_error: 0.1318
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151363_epoch69.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1656 - mean_absolute_error: 0.1177 - val_loss: 0.1817 - val_mean_absolute_error: 0.1427
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151364_epoch70.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1698 - mean_absolute_error: 0.1085 - val_loss: 0.1841 - val_mean_absolute_error: 0.1445
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151364_epoch71.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1634 - mean_absolute_error: 0.1075 - val_loss: 0.1710 - val_mean_absolute_error: 0.1438
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151365_epoch72.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1631 - mean_absolute_error: 0.1124 - val_loss: 0.1843 - val_mean_absolute_error: 0.1446
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151366_epoch73.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1974 - mean_absolute_error: 0.1376 - val_loss: 0.2152 - val_mean_absolute_error: 0.1441
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151367_epoch74.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2032 - mean_absolute_error: 0.1195 - val_loss: 0.1995 - val_mean_absolute_error: 0.1376
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151367_epoch75.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1751 - mean_absolute_error: 0.1111 - val_loss: 0.1720 - val_mean_absolute_error: 0.1334
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151368_epoch76.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1494 - mean_absolute_error: 0.1028 - val_loss: 0.1531 - val_mean_absolute_error: 0.1367
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151369_epoch77.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1408 - mean_absolute_error: 0.1009 - val_loss: 0.1529 - val_mean_absolute_error: 0.1281
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151369_epoch78.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1414 - mean_absolute_error: 0.1069 - val_loss: 0.1533 - val_mean_absolute_error: 0.1351
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151370_epoch79.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1489 - mean_absolute_error: 0.1178 - val_loss: 0.1643 - val_mean_absolute_error: 0.1371
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151371_epoch80.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1625 - mean_absolute_error: 0.1241 - val_loss: 0.1762 - val_mean_absolute_error: 0.1403
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151371_epoch81.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1677 - mean_absolute_error: 0.1217 - val_loss: 0.1703 - val_mean_absolute_error: 0.1375
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151372_epoch82.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1531 - mean_absolute_error: 0.1087 - val_loss: 0.1608 - val_mean_absolute_error: 0.1401
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151373_epoch83.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1531 - mean_absolute_error: 0.1210 - val_loss: 0.1625 - val_mean_absolute_error: 0.1449
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151373_epoch84.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1991 - mean_absolute_error: 0.1474 - val_loss: 0.2248 - val_mean_absolute_error: 0.1528
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151374_epoch85.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1998 - mean_absolute_error: 0.1275 - val_loss: 0.1806 - val_mean_absolute_error: 0.1420
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151375_epoch86.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1533 - mean_absolute_error: 0.1140 - val_loss: 0.1497 - val_mean_absolute_error: 0.1415
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151376_epoch87.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1324 - mean_absolute_error: 0.1134 - val_loss: 0.1435 - val_mean_absolute_error: 0.1466
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151376_epoch88.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1305 - mean_absolute_error: 0.1135 - val_loss: 0.1413 - val_mean_absolute_error: 0.1317
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151377_epoch89.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1365 - mean_absolute_error: 0.1181 - val_loss: 0.1489 - val_mean_absolute_error: 0.1428
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151378_epoch90.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1416 - mean_absolute_error: 0.1192 - val_loss: 0.1542 - val_mean_absolute_error: 0.1382
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151378_epoch91.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1441 - mean_absolute_error: 0.1136 - val_loss: 0.1499 - val_mean_absolute_error: 0.1402
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151379_epoch92.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1431 - mean_absolute_error: 0.1150 - val_loss: 0.1591 - val_mean_absolute_error: 0.1425
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151380_epoch93.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1481 - mean_absolute_error: 0.1178 - val_loss: 0.1636 - val_mean_absolute_error: 0.1466
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151381_epoch94.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1429 - mean_absolute_error: 0.1108 - val_loss: 0.1481 - val_mean_absolute_error: 0.1372
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151381_epoch95.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1346 - mean_absolute_error: 0.1121 - val_loss: 0.1415 - val_mean_absolute_error: 0.1380
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151382_epoch96.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1329 - mean_absolute_error: 0.1202 - val_loss: 0.1493 - val_mean_absolute_error: 0.1431
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151383_epoch97.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1511 - mean_absolute_error: 0.1258 - val_loss: 0.1630 - val_mean_absolute_error: 0.1377
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151383_epoch98.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1567 - mean_absolute_error: 0.1240 - val_loss: 0.1602 - val_mean_absolute_error: 0.1383
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151384_epoch99.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1431 - mean_absolute_error: 0.1152 - val_loss: 0.1453 - val_mean_absolute_error: 0.1344
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151385_epoch100.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1374 - mean_absolute_error: 0.1221 - val_loss: 0.1499 - val_mean_absolute_error: 0.1370
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151386_epoch101.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1505 - mean_absolute_error: 0.1285 - val_loss: 0.1624 - val_mean_absolute_error: 0.1407
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151386_epoch102.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1677 - mean_absolute_error: 0.1394 - val_loss: 0.1767 - val_mean_absolute_error: 0.1441
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151387_epoch103.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1886 - mean_absolute_error: 0.1365 - val_loss: 0.1910 - val_mean_absolute_error: 0.1332
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151388_epoch104.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1807 - mean_absolute_error: 0.1377 - val_loss: 0.1687 - val_mean_absolute_error: 0.1432
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151388_epoch105.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1613 - mean_absolute_error: 0.1353 - val_loss: 0.1542 - val_mean_absolute_error: 0.1340
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151389_epoch106.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1578 - mean_absolute_error: 0.1390 - val_loss: 0.1665 - val_mean_absolute_error: 0.1391
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151390_epoch107.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1706 - mean_absolute_error: 0.1437 - val_loss: 0.1731 - val_mean_absolute_error: 0.1451
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151390_epoch108.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1679 - mean_absolute_error: 0.1283 - val_loss: 0.1706 - val_mean_absolute_error: 0.1371
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151391_epoch109.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1463 - mean_absolute_error: 0.1244 - val_loss: 0.1413 - val_mean_absolute_error: 0.1349
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151392_epoch110.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1340 - mean_absolute_error: 0.1173 - val_loss: 0.1449 - val_mean_absolute_error: 0.1435
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151392_epoch111.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1390 - mean_absolute_error: 0.1323 - val_loss: 0.1507 - val_mean_absolute_error: 0.1395
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151393_epoch112.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1598 - mean_absolute_error: 0.1310 - val_loss: 0.1728 - val_mean_absolute_error: 0.1440
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151394_epoch113.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1648 - mean_absolute_error: 0.1301 - val_loss: 0.1640 - val_mean_absolute_error: 0.1372
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151394_epoch114.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1467 - mean_absolute_error: 0.1217 - val_loss: 0.1410 - val_mean_absolute_error: 0.1410
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151395_epoch115.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1541 - mean_absolute_error: 0.1369 - val_loss: 0.1806 - val_mean_absolute_error: 0.1418
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151396_epoch116.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1759 - mean_absolute_error: 0.1393 - val_loss: 0.1622 - val_mean_absolute_error: 0.1400
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151397_epoch117.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1533 - mean_absolute_error: 0.1305 - val_loss: 0.1544 - val_mean_absolute_error: 0.1344
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151397_epoch118.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1440 - mean_absolute_error: 0.1299 - val_loss: 0.1483 - val_mean_absolute_error: 0.1414
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151398_epoch119.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1497 - mean_absolute_error: 0.1337 - val_loss: 0.1607 - val_mean_absolute_error: 0.1406
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151399_epoch120.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1517 - mean_absolute_error: 0.1339 - val_loss: 0.1464 - val_mean_absolute_error: 0.1377
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151399_epoch121.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1615 - mean_absolute_error: 0.1432 - val_loss: 0.1744 - val_mean_absolute_error: 0.1483
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151400_epoch122.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1753 - mean_absolute_error: 0.1414 - val_loss: 0.1726 - val_mean_absolute_error: 0.1393
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151401_epoch123.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1797 - mean_absolute_error: 0.1439 - val_loss: 0.1853 - val_mean_absolute_error: 0.1410
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151401_epoch124.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1767 - mean_absolute_error: 0.1348 - val_loss: 0.1707 - val_mean_absolute_error: 0.1393
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151402_epoch125.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1605 - mean_absolute_error: 0.1246 - val_loss: 0.1716 - val_mean_absolute_error: 0.1486
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151403_epoch126.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1549 - mean_absolute_error: 0.1366 - val_loss: 0.1526 - val_mean_absolute_error: 0.1323
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151403_epoch127.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1529 - mean_absolute_error: 0.1377 - val_loss: 0.1584 - val_mean_absolute_error: 0.1373
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151404_epoch128.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1609 - mean_absolute_error: 0.1369 - val_loss: 0.1695 - val_mean_absolute_error: 0.1375
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151405_epoch129.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1933 - mean_absolute_error: 0.1506 - val_loss: 0.1940 - val_mean_absolute_error: 0.1387
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151405_epoch130.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.2071 - mean_absolute_error: 0.1533 - val_loss: 0.2030 - val_mean_absolute_error: 0.1429
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151406_epoch131.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1943 - mean_absolute_error: 0.1398 - val_loss: 0.1751 - val_mean_absolute_error: 0.1384
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151407_epoch132.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1775 - mean_absolute_error: 0.1395 - val_loss: 0.1779 - val_mean_absolute_error: 0.1398
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151408_epoch133.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1713 - mean_absolute_error: 0.1482 - val_loss: 0.1601 - val_mean_absolute_error: 0.1407
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151408_epoch134.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1614 - mean_absolute_error: 0.1371 - val_loss: 0.1677 - val_mean_absolute_error: 0.1429
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151409_epoch135.json
+Train on 495 samples, validate on 128 samples
+Epoch 1/1
+495/495 [==============================] - 1s 1ms/step - loss: 0.1745 - mean_absolute_error: 0.1495 - val_loss: 0.1844 - val_mean_absolute_error: 0.1464
+Data saved at /home/brendonm/high_resolution_ap_simulation_time1533151410_epoch136.json
