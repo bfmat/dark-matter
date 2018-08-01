@@ -9,8 +9,8 @@ from keras.regularizers import l2
 def create_model() -> Model:
     """Create and return a new instance of the fully connected network for AP simulation"""
     # Create a neural network model that includes several dense layers with hyperbolic tangent activations, L2 regularization, and batch normalization
-    regularizer = l2(0.003)
-    dropout = 0.5
+    regularizer = l2(0)
+    dropout = 0
     activation = 'tanh'
     model = Sequential([
         InputLayer(input_shape=(19,)),
