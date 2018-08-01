@@ -14,21 +14,24 @@ def create_model() -> Model:
     dropout = 0
     # Create two inputs, one for the audio data and one for the position, and concatenate them together
     audio_input = Input((100_002,))
-    x = BatchNormalization()(audio_input)
+    # Take a separate input for the position, and concatenate it with the audio input
+    position_input = Input((3,))
+    x = concatenate([audio_input, position_input])
+    x = BatchNormalization()(x)
     x = Dense(12, activation=activation, kernel_regularizer=regularizer)(x)
     x = Dropout(dropout)(x)
     x = Dense(8, activation=activation, kernel_regularizer=regularizer)(x)
     x = Dropout(dropout)(x)
     output = Dense(1, kernel_regularizer=regularizer)(x)
     # Create a model with both inputs
-    model = Model(inputs=audio_input, outputs=output)
+    model = Model(inputs=[audio_input, position_input], outputs=output)
     # Output a summary of the model's architecture
     print(model.summary())
     # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
     model.compile(
         optimizer='adam',
         loss='mse',
-        metrics=['mae']
+        metrics=['accuracy']
     )
     # Return the untrained model
     return model
