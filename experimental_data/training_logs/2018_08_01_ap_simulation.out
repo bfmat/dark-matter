@@ -1,0 +1,1031 @@
+Using TensorFlow backend.
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+batch_normalization_1 (Batch (None, 19)                76        
+_________________________________________________________________
+dense_1 (Dense)              (None, 12)                240       
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 12)                0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 8)                 104       
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 8)                 0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 9         
+=================================================================
+Total params: 429
+Trainable params: 391
+Non-trainable params: 38
+_________________________________________________________________
+None
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+2018-08-01 13:33:07.755518: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-08-01 13:33:07.934820: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1392] Found device 0 with properties: 
+name: GeForce GTX 1060 6GB major: 6 minor: 1 memoryClockRate(GHz): 1.759
+pciBusID: 0000:03:00.0
+totalMemory: 5.93GiB freeMemory: 5.53GiB
+2018-08-01 13:33:07.934867: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1471] Adding visible gpu devices: 0
+2018-08-01 13:33:08.274448: I tensorflow/core/common_runtime/gpu/gpu_device.cc:952] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-08-01 13:33:08.274505: I tensorflow/core/common_runtime/gpu/gpu_device.cc:958]      0 
+2018-08-01 13:33:08.274513: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   N 
+2018-08-01 13:33:08.274694: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1084] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 5305 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1060 6GB, pci bus id: 0000:03:00.0, compute capability: 6.1)
+496/496 [==============================] - 1s 3ms/step - loss: 2.2158 - val_loss: 0.9178
+Data saved at /home/brendonm/ap_simulation_time1533144789_epoch0.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 194us/step - loss: 1.9261 - val_loss: 0.7365
+Data saved at /home/brendonm/ap_simulation_time1533144789_epoch1.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 207us/step - loss: 1.7115 - val_loss: 0.5959
+Data saved at /home/brendonm/ap_simulation_time1533144789_epoch2.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 230us/step - loss: 1.5512 - val_loss: 0.5093
+Data saved at /home/brendonm/ap_simulation_time1533144789_epoch3.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 1.2076 - val_loss: 0.4459
+Data saved at /home/brendonm/ap_simulation_time1533144789_epoch4.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 232us/step - loss: 1.2095 - val_loss: 0.3871
+Data saved at /home/brendonm/ap_simulation_time1533144789_epoch5.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 218us/step - loss: 1.1049 - val_loss: 0.3422
+Data saved at /home/brendonm/ap_simulation_time1533144789_epoch6.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 238us/step - loss: 0.9331 - val_loss: 0.3145
+Data saved at /home/brendonm/ap_simulation_time1533144789_epoch7.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 215us/step - loss: 1.0023 - val_loss: 0.2952
+Data saved at /home/brendonm/ap_simulation_time1533144790_epoch8.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 217us/step - loss: 0.8494 - val_loss: 0.2714
+Data saved at /home/brendonm/ap_simulation_time1533144790_epoch9.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 227us/step - loss: 0.8263 - val_loss: 0.2534
+Data saved at /home/brendonm/ap_simulation_time1533144790_epoch10.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 222us/step - loss: 0.8307 - val_loss: 0.2409
+Data saved at /home/brendonm/ap_simulation_time1533144790_epoch11.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.7226 - val_loss: 0.2309
+Data saved at /home/brendonm/ap_simulation_time1533144790_epoch12.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 223us/step - loss: 0.6647 - val_loss: 0.2204
+Data saved at /home/brendonm/ap_simulation_time1533144790_epoch13.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 229us/step - loss: 0.5532 - val_loss: 0.2119
+Data saved at /home/brendonm/ap_simulation_time1533144790_epoch14.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 233us/step - loss: 0.6394 - val_loss: 0.2051
+Data saved at /home/brendonm/ap_simulation_time1533144790_epoch15.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 225us/step - loss: 0.5995 - val_loss: 0.2009
+Data saved at /home/brendonm/ap_simulation_time1533144791_epoch16.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 237us/step - loss: 0.5919 - val_loss: 0.1953
+Data saved at /home/brendonm/ap_simulation_time1533144791_epoch17.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 227us/step - loss: 0.4927 - val_loss: 0.1930
+Data saved at /home/brendonm/ap_simulation_time1533144791_epoch18.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 220us/step - loss: 0.4934 - val_loss: 0.1869
+Data saved at /home/brendonm/ap_simulation_time1533144791_epoch19.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 231us/step - loss: 0.5265 - val_loss: 0.1809
+Data saved at /home/brendonm/ap_simulation_time1533144791_epoch20.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 213us/step - loss: 0.4934 - val_loss: 0.1801
+Data saved at /home/brendonm/ap_simulation_time1533144791_epoch21.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 227us/step - loss: 0.4537 - val_loss: 0.1804
+Data saved at /home/brendonm/ap_simulation_time1533144791_epoch22.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 228us/step - loss: 0.4342 - val_loss: 0.1762
+Data saved at /home/brendonm/ap_simulation_time1533144791_epoch23.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 227us/step - loss: 0.4646 - val_loss: 0.1706
+Data saved at /home/brendonm/ap_simulation_time1533144791_epoch24.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 230us/step - loss: 0.3981 - val_loss: 0.1686
+Data saved at /home/brendonm/ap_simulation_time1533144792_epoch25.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 230us/step - loss: 0.3623 - val_loss: 0.1661
+Data saved at /home/brendonm/ap_simulation_time1533144792_epoch26.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.4145 - val_loss: 0.1642
+Data saved at /home/brendonm/ap_simulation_time1533144792_epoch27.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 227us/step - loss: 0.3637 - val_loss: 0.1598
+Data saved at /home/brendonm/ap_simulation_time1533144792_epoch28.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 226us/step - loss: 0.3862 - val_loss: 0.1584
+Data saved at /home/brendonm/ap_simulation_time1533144792_epoch29.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 233us/step - loss: 0.3490 - val_loss: 0.1570
+Data saved at /home/brendonm/ap_simulation_time1533144792_epoch30.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 232us/step - loss: 0.3325 - val_loss: 0.1559
+Data saved at /home/brendonm/ap_simulation_time1533144792_epoch31.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 228us/step - loss: 0.3249 - val_loss: 0.1554
+Data saved at /home/brendonm/ap_simulation_time1533144792_epoch32.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 231us/step - loss: 0.3686 - val_loss: 0.1558
+Data saved at /home/brendonm/ap_simulation_time1533144793_epoch33.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 237us/step - loss: 0.3337 - val_loss: 0.1544
+Data saved at /home/brendonm/ap_simulation_time1533144793_epoch34.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 232us/step - loss: 0.3291 - val_loss: 0.1506
+Data saved at /home/brendonm/ap_simulation_time1533144793_epoch35.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 230us/step - loss: 0.3155 - val_loss: 0.1482
+Data saved at /home/brendonm/ap_simulation_time1533144793_epoch36.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 245us/step - loss: 0.2852 - val_loss: 0.1459
+Data saved at /home/brendonm/ap_simulation_time1533144793_epoch37.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 233us/step - loss: 0.2856 - val_loss: 0.1464
+Data saved at /home/brendonm/ap_simulation_time1533144793_epoch38.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 228us/step - loss: 0.2677 - val_loss: 0.1466
+Data saved at /home/brendonm/ap_simulation_time1533144793_epoch39.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 213us/step - loss: 0.2908 - val_loss: 0.1462
+Data saved at /home/brendonm/ap_simulation_time1533144793_epoch40.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 224us/step - loss: 0.2886 - val_loss: 0.1450
+Data saved at /home/brendonm/ap_simulation_time1533144794_epoch41.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 226us/step - loss: 0.2699 - val_loss: 0.1440
+Data saved at /home/brendonm/ap_simulation_time1533144794_epoch42.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.2626 - val_loss: 0.1436
+Data saved at /home/brendonm/ap_simulation_time1533144794_epoch43.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 226us/step - loss: 0.2671 - val_loss: 0.1429
+Data saved at /home/brendonm/ap_simulation_time1533144794_epoch44.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 218us/step - loss: 0.2364 - val_loss: 0.1407
+Data saved at /home/brendonm/ap_simulation_time1533144794_epoch45.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 228us/step - loss: 0.2680 - val_loss: 0.1395
+Data saved at /home/brendonm/ap_simulation_time1533144794_epoch46.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 225us/step - loss: 0.2512 - val_loss: 0.1380
+Data saved at /home/brendonm/ap_simulation_time1533144794_epoch47.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 226us/step - loss: 0.2126 - val_loss: 0.1378
+Data saved at /home/brendonm/ap_simulation_time1533144794_epoch48.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 229us/step - loss: 0.2190 - val_loss: 0.1367
+Data saved at /home/brendonm/ap_simulation_time1533144795_epoch49.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 214us/step - loss: 0.2427 - val_loss: 0.1353
+Data saved at /home/brendonm/ap_simulation_time1533144795_epoch50.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.2337 - val_loss: 0.1351
+Data saved at /home/brendonm/ap_simulation_time1533144795_epoch51.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 227us/step - loss: 0.2184 - val_loss: 0.1342
+Data saved at /home/brendonm/ap_simulation_time1533144795_epoch52.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 224us/step - loss: 0.2221 - val_loss: 0.1331
+Data saved at /home/brendonm/ap_simulation_time1533144795_epoch53.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 223us/step - loss: 0.2377 - val_loss: 0.1310
+Data saved at /home/brendonm/ap_simulation_time1533144795_epoch54.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 240us/step - loss: 0.2022 - val_loss: 0.1303
+Data saved at /home/brendonm/ap_simulation_time1533144795_epoch55.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 213us/step - loss: 0.2167 - val_loss: 0.1296
+Data saved at /home/brendonm/ap_simulation_time1533144795_epoch56.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 233us/step - loss: 0.1906 - val_loss: 0.1294
+Data saved at /home/brendonm/ap_simulation_time1533144796_epoch57.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 219us/step - loss: 0.2148 - val_loss: 0.1276
+Data saved at /home/brendonm/ap_simulation_time1533144796_epoch58.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 218us/step - loss: 0.2102 - val_loss: 0.1258
+Data saved at /home/brendonm/ap_simulation_time1533144796_epoch59.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 218us/step - loss: 0.1966 - val_loss: 0.1254
+Data saved at /home/brendonm/ap_simulation_time1533144796_epoch60.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 212us/step - loss: 0.2126 - val_loss: 0.1263
+Data saved at /home/brendonm/ap_simulation_time1533144796_epoch61.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 220us/step - loss: 0.1964 - val_loss: 0.1264
+Data saved at /home/brendonm/ap_simulation_time1533144796_epoch62.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 226us/step - loss: 0.2008 - val_loss: 0.1241
+Data saved at /home/brendonm/ap_simulation_time1533144796_epoch63.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 224us/step - loss: 0.1878 - val_loss: 0.1227
+Data saved at /home/brendonm/ap_simulation_time1533144796_epoch64.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 216us/step - loss: 0.1920 - val_loss: 0.1231
+Data saved at /home/brendonm/ap_simulation_time1533144796_epoch65.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 215us/step - loss: 0.1751 - val_loss: 0.1222
+Data saved at /home/brendonm/ap_simulation_time1533144797_epoch66.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 222us/step - loss: 0.1891 - val_loss: 0.1221
+Data saved at /home/brendonm/ap_simulation_time1533144797_epoch67.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 234us/step - loss: 0.1895 - val_loss: 0.1210
+Data saved at /home/brendonm/ap_simulation_time1533144797_epoch68.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 209us/step - loss: 0.1790 - val_loss: 0.1199
+Data saved at /home/brendonm/ap_simulation_time1533144797_epoch69.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 211us/step - loss: 0.1795 - val_loss: 0.1179
+Data saved at /home/brendonm/ap_simulation_time1533144797_epoch70.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 211us/step - loss: 0.1675 - val_loss: 0.1186
+Data saved at /home/brendonm/ap_simulation_time1533144797_epoch71.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 207us/step - loss: 0.1764 - val_loss: 0.1177
+Data saved at /home/brendonm/ap_simulation_time1533144797_epoch72.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 210us/step - loss: 0.1680 - val_loss: 0.1152
+Data saved at /home/brendonm/ap_simulation_time1533144797_epoch73.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 212us/step - loss: 0.1624 - val_loss: 0.1136
+Data saved at /home/brendonm/ap_simulation_time1533144798_epoch74.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 219us/step - loss: 0.1548 - val_loss: 0.1136
+Data saved at /home/brendonm/ap_simulation_time1533144798_epoch75.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 209us/step - loss: 0.1702 - val_loss: 0.1132
+Data saved at /home/brendonm/ap_simulation_time1533144798_epoch76.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 226us/step - loss: 0.1606 - val_loss: 0.1119
+Data saved at /home/brendonm/ap_simulation_time1533144798_epoch77.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 231us/step - loss: 0.1681 - val_loss: 0.1111
+Data saved at /home/brendonm/ap_simulation_time1533144798_epoch78.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 219us/step - loss: 0.1546 - val_loss: 0.1109
+Data saved at /home/brendonm/ap_simulation_time1533144798_epoch79.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.1511 - val_loss: 0.1090
+Data saved at /home/brendonm/ap_simulation_time1533144798_epoch80.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 224us/step - loss: 0.1631 - val_loss: 0.1074
+Data saved at /home/brendonm/ap_simulation_time1533144798_epoch81.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 200us/step - loss: 0.1516 - val_loss: 0.1058
+Data saved at /home/brendonm/ap_simulation_time1533144798_epoch82.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 217us/step - loss: 0.1624 - val_loss: 0.1062
+Data saved at /home/brendonm/ap_simulation_time1533144799_epoch83.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 222us/step - loss: 0.1539 - val_loss: 0.1069
+Data saved at /home/brendonm/ap_simulation_time1533144799_epoch84.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 224us/step - loss: 0.1538 - val_loss: 0.1063
+Data saved at /home/brendonm/ap_simulation_time1533144799_epoch85.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 226us/step - loss: 0.1695 - val_loss: 0.1047
+Data saved at /home/brendonm/ap_simulation_time1533144799_epoch86.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 222us/step - loss: 0.1542 - val_loss: 0.1045
+Data saved at /home/brendonm/ap_simulation_time1533144799_epoch87.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 223us/step - loss: 0.1444 - val_loss: 0.1036
+Data saved at /home/brendonm/ap_simulation_time1533144799_epoch88.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 229us/step - loss: 0.1486 - val_loss: 0.1035
+Data saved at /home/brendonm/ap_simulation_time1533144799_epoch89.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 236us/step - loss: 0.1456 - val_loss: 0.1027
+Data saved at /home/brendonm/ap_simulation_time1533144799_epoch90.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 227us/step - loss: 0.1452 - val_loss: 0.1024
+Data saved at /home/brendonm/ap_simulation_time1533144800_epoch91.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 225us/step - loss: 0.1412 - val_loss: 0.1004
+Data saved at /home/brendonm/ap_simulation_time1533144800_epoch92.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 218us/step - loss: 0.1506 - val_loss: 0.0989
+Data saved at /home/brendonm/ap_simulation_time1533144800_epoch93.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 224us/step - loss: 0.1408 - val_loss: 0.0985
+Data saved at /home/brendonm/ap_simulation_time1533144800_epoch94.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 216us/step - loss: 0.1395 - val_loss: 0.0973
+Data saved at /home/brendonm/ap_simulation_time1533144800_epoch95.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 220us/step - loss: 0.1504 - val_loss: 0.0986
+Data saved at /home/brendonm/ap_simulation_time1533144800_epoch96.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 232us/step - loss: 0.1378 - val_loss: 0.0990
+Data saved at /home/brendonm/ap_simulation_time1533144800_epoch97.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 227us/step - loss: 0.1426 - val_loss: 0.0981
+Data saved at /home/brendonm/ap_simulation_time1533144800_epoch98.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 217us/step - loss: 0.1410 - val_loss: 0.0990
+Data saved at /home/brendonm/ap_simulation_time1533144801_epoch99.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 236us/step - loss: 0.1355 - val_loss: 0.0973
+Data saved at /home/brendonm/ap_simulation_time1533144801_epoch100.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 225us/step - loss: 0.1384 - val_loss: 0.0985
+Data saved at /home/brendonm/ap_simulation_time1533144801_epoch101.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 227us/step - loss: 0.1339 - val_loss: 0.0965
+Data saved at /home/brendonm/ap_simulation_time1533144801_epoch102.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 218us/step - loss: 0.1409 - val_loss: 0.0965
+Data saved at /home/brendonm/ap_simulation_time1533144801_epoch103.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 229us/step - loss: 0.1320 - val_loss: 0.0960
+Data saved at /home/brendonm/ap_simulation_time1533144801_epoch104.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 220us/step - loss: 0.1458 - val_loss: 0.0963
+Data saved at /home/brendonm/ap_simulation_time1533144801_epoch105.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 228us/step - loss: 0.1314 - val_loss: 0.0956
+Data saved at /home/brendonm/ap_simulation_time1533144801_epoch106.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 222us/step - loss: 0.1294 - val_loss: 0.0930
+Data saved at /home/brendonm/ap_simulation_time1533144801_epoch107.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 234us/step - loss: 0.1306 - val_loss: 0.0906
+Data saved at /home/brendonm/ap_simulation_time1533144802_epoch108.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 228us/step - loss: 0.1402 - val_loss: 0.0897
+Data saved at /home/brendonm/ap_simulation_time1533144802_epoch109.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 214us/step - loss: 0.1272 - val_loss: 0.0911
+Data saved at /home/brendonm/ap_simulation_time1533144802_epoch110.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 224us/step - loss: 0.1318 - val_loss: 0.0906
+Data saved at /home/brendonm/ap_simulation_time1533144802_epoch111.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 234us/step - loss: 0.1332 - val_loss: 0.0882
+Data saved at /home/brendonm/ap_simulation_time1533144802_epoch112.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.1240 - val_loss: 0.0872
+Data saved at /home/brendonm/ap_simulation_time1533144802_epoch113.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.1169 - val_loss: 0.0871
+Data saved at /home/brendonm/ap_simulation_time1533144802_epoch114.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 230us/step - loss: 0.1247 - val_loss: 0.0885
+Data saved at /home/brendonm/ap_simulation_time1533144802_epoch115.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 212us/step - loss: 0.1232 - val_loss: 0.0906
+Data saved at /home/brendonm/ap_simulation_time1533144803_epoch116.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 223us/step - loss: 0.1272 - val_loss: 0.0895
+Data saved at /home/brendonm/ap_simulation_time1533144803_epoch117.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.1178 - val_loss: 0.0879
+Data saved at /home/brendonm/ap_simulation_time1533144803_epoch118.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 222us/step - loss: 0.1302 - val_loss: 0.0874
+Data saved at /home/brendonm/ap_simulation_time1533144803_epoch119.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 230us/step - loss: 0.1319 - val_loss: 0.0866
+Data saved at /home/brendonm/ap_simulation_time1533144803_epoch120.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 220us/step - loss: 0.1245 - val_loss: 0.0869
+Data saved at /home/brendonm/ap_simulation_time1533144803_epoch121.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 225us/step - loss: 0.1284 - val_loss: 0.0877
+Data saved at /home/brendonm/ap_simulation_time1533144803_epoch122.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 229us/step - loss: 0.1172 - val_loss: 0.0870
+Data saved at /home/brendonm/ap_simulation_time1533144803_epoch123.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 228us/step - loss: 0.1160 - val_loss: 0.0875
+Data saved at /home/brendonm/ap_simulation_time1533144804_epoch124.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 226us/step - loss: 0.1155 - val_loss: 0.0869
+Data saved at /home/brendonm/ap_simulation_time1533144804_epoch125.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 228us/step - loss: 0.1171 - val_loss: 0.0860
+Data saved at /home/brendonm/ap_simulation_time1533144804_epoch126.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 223us/step - loss: 0.1225 - val_loss: 0.0865
+Data saved at /home/brendonm/ap_simulation_time1533144804_epoch127.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.1121 - val_loss: 0.0871
+Data saved at /home/brendonm/ap_simulation_time1533144804_epoch128.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 225us/step - loss: 0.1172 - val_loss: 0.0868
+Data saved at /home/brendonm/ap_simulation_time1533144804_epoch129.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 225us/step - loss: 0.1262 - val_loss: 0.0860
+Data saved at /home/brendonm/ap_simulation_time1533144804_epoch130.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 227us/step - loss: 0.1183 - val_loss: 0.0839
+Data saved at /home/brendonm/ap_simulation_time1533144804_epoch131.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 225us/step - loss: 0.1128 - val_loss: 0.0816
+Data saved at /home/brendonm/ap_simulation_time1533144805_epoch132.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 223us/step - loss: 0.1042 - val_loss: 0.0802
+Data saved at /home/brendonm/ap_simulation_time1533144805_epoch133.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 232us/step - loss: 0.1092 - val_loss: 0.0783
+Data saved at /home/brendonm/ap_simulation_time1533144805_epoch134.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 222us/step - loss: 0.1107 - val_loss: 0.0788
+Data saved at /home/brendonm/ap_simulation_time1533144805_epoch135.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 238us/step - loss: 0.1175 - val_loss: 0.0809
+Data saved at /home/brendonm/ap_simulation_time1533144805_epoch136.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 233us/step - loss: 0.1109 - val_loss: 0.0837
+Data saved at /home/brendonm/ap_simulation_time1533144805_epoch137.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 225us/step - loss: 0.1115 - val_loss: 0.0836
+Data saved at /home/brendonm/ap_simulation_time1533144805_epoch138.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 227us/step - loss: 0.1103 - val_loss: 0.0825
+Data saved at /home/brendonm/ap_simulation_time1533144805_epoch139.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 222us/step - loss: 0.1179 - val_loss: 0.0816
+Data saved at /home/brendonm/ap_simulation_time1533144805_epoch140.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 220us/step - loss: 0.1087 - val_loss: 0.0824
+Data saved at /home/brendonm/ap_simulation_time1533144806_epoch141.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 231us/step - loss: 0.1094 - val_loss: 0.0828
+Data saved at /home/brendonm/ap_simulation_time1533144806_epoch142.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 211us/step - loss: 0.1018 - val_loss: 0.0828
+Data saved at /home/brendonm/ap_simulation_time1533144806_epoch143.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 215us/step - loss: 0.1093 - val_loss: 0.0808
+Data saved at /home/brendonm/ap_simulation_time1533144806_epoch144.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 217us/step - loss: 0.1074 - val_loss: 0.0799
+Data saved at /home/brendonm/ap_simulation_time1533144806_epoch145.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 217us/step - loss: 0.1093 - val_loss: 0.0794
+Data saved at /home/brendonm/ap_simulation_time1533144806_epoch146.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 215us/step - loss: 0.1154 - val_loss: 0.0772
+Data saved at /home/brendonm/ap_simulation_time1533144806_epoch147.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 222us/step - loss: 0.1008 - val_loss: 0.0758
+Data saved at /home/brendonm/ap_simulation_time1533144806_epoch148.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 235us/step - loss: 0.1107 - val_loss: 0.0750
+Data saved at /home/brendonm/ap_simulation_time1533144807_epoch149.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 223us/step - loss: 0.1087 - val_loss: 0.0742
+Data saved at /home/brendonm/ap_simulation_time1533144807_epoch150.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 218us/step - loss: 0.1007 - val_loss: 0.0747
+Data saved at /home/brendonm/ap_simulation_time1533144807_epoch151.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 214us/step - loss: 0.0966 - val_loss: 0.0754
+Data saved at /home/brendonm/ap_simulation_time1533144807_epoch152.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 220us/step - loss: 0.0973 - val_loss: 0.0744
+Data saved at /home/brendonm/ap_simulation_time1533144807_epoch153.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 224us/step - loss: 0.1006 - val_loss: 0.0746
+Data saved at /home/brendonm/ap_simulation_time1533144807_epoch154.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 227us/step - loss: 0.1053 - val_loss: 0.0733
+Data saved at /home/brendonm/ap_simulation_time1533144807_epoch155.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.1005 - val_loss: 0.0719
+Data saved at /home/brendonm/ap_simulation_time1533144807_epoch156.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 229us/step - loss: 0.1098 - val_loss: 0.0726
+Data saved at /home/brendonm/ap_simulation_time1533144808_epoch157.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 228us/step - loss: 0.1074 - val_loss: 0.0745
+Data saved at /home/brendonm/ap_simulation_time1533144808_epoch158.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 226us/step - loss: 0.1028 - val_loss: 0.0733
+Data saved at /home/brendonm/ap_simulation_time1533144808_epoch159.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 223us/step - loss: 0.1025 - val_loss: 0.0716
+Data saved at /home/brendonm/ap_simulation_time1533144808_epoch160.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 232us/step - loss: 0.0995 - val_loss: 0.0716
+Data saved at /home/brendonm/ap_simulation_time1533144808_epoch161.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 223us/step - loss: 0.0996 - val_loss: 0.0716
+Data saved at /home/brendonm/ap_simulation_time1533144808_epoch162.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 226us/step - loss: 0.1041 - val_loss: 0.0719
+Data saved at /home/brendonm/ap_simulation_time1533144808_epoch163.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 224us/step - loss: 0.1063 - val_loss: 0.0735
+Data saved at /home/brendonm/ap_simulation_time1533144808_epoch164.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 211us/step - loss: 0.0984 - val_loss: 0.0727
+Data saved at /home/brendonm/ap_simulation_time1533144808_epoch165.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 223us/step - loss: 0.0989 - val_loss: 0.0694
+Data saved at /home/brendonm/ap_simulation_time1533144809_epoch166.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 216us/step - loss: 0.1049 - val_loss: 0.0672
+Data saved at /home/brendonm/ap_simulation_time1533144809_epoch167.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.0989 - val_loss: 0.0679
+Data saved at /home/brendonm/ap_simulation_time1533144809_epoch168.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 205us/step - loss: 0.1059 - val_loss: 0.0683
+Data saved at /home/brendonm/ap_simulation_time1533144809_epoch169.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 224us/step - loss: 0.0952 - val_loss: 0.0677
+Data saved at /home/brendonm/ap_simulation_time1533144809_epoch170.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 229us/step - loss: 0.0971 - val_loss: 0.0691
+Data saved at /home/brendonm/ap_simulation_time1533144809_epoch171.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 230us/step - loss: 0.1110 - val_loss: 0.0707
+Data saved at /home/brendonm/ap_simulation_time1533144809_epoch172.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 226us/step - loss: 0.0906 - val_loss: 0.0701
+Data saved at /home/brendonm/ap_simulation_time1533144809_epoch173.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 223us/step - loss: 0.0959 - val_loss: 0.0689
+Data saved at /home/brendonm/ap_simulation_time1533144810_epoch174.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 216us/step - loss: 0.1014 - val_loss: 0.0668
+Data saved at /home/brendonm/ap_simulation_time1533144810_epoch175.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 223us/step - loss: 0.0972 - val_loss: 0.0645
+Data saved at /home/brendonm/ap_simulation_time1533144810_epoch176.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 227us/step - loss: 0.1061 - val_loss: 0.0670
+Data saved at /home/brendonm/ap_simulation_time1533144810_epoch177.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.1026 - val_loss: 0.0683
+Data saved at /home/brendonm/ap_simulation_time1533144810_epoch178.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 227us/step - loss: 0.0899 - val_loss: 0.0665
+Data saved at /home/brendonm/ap_simulation_time1533144810_epoch179.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 217us/step - loss: 0.0962 - val_loss: 0.0652
+Data saved at /home/brendonm/ap_simulation_time1533144810_epoch180.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 228us/step - loss: 0.0951 - val_loss: 0.0665
+Data saved at /home/brendonm/ap_simulation_time1533144810_epoch181.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.1020 - val_loss: 0.0672
+Data saved at /home/brendonm/ap_simulation_time1533144811_epoch182.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 214us/step - loss: 0.0951 - val_loss: 0.0649
+Data saved at /home/brendonm/ap_simulation_time1533144811_epoch183.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 219us/step - loss: 0.0974 - val_loss: 0.0629
+Data saved at /home/brendonm/ap_simulation_time1533144811_epoch184.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 211us/step - loss: 0.0949 - val_loss: 0.0627
+Data saved at /home/brendonm/ap_simulation_time1533144811_epoch185.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 213us/step - loss: 0.0952 - val_loss: 0.0638
+Data saved at /home/brendonm/ap_simulation_time1533144811_epoch186.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 237us/step - loss: 0.0918 - val_loss: 0.0634
+Data saved at /home/brendonm/ap_simulation_time1533144811_epoch187.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 209us/step - loss: 0.0999 - val_loss: 0.0619
+Data saved at /home/brendonm/ap_simulation_time1533144811_epoch188.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.0896 - val_loss: 0.0618
+Data saved at /home/brendonm/ap_simulation_time1533144811_epoch189.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 220us/step - loss: 0.0904 - val_loss: 0.0621
+Data saved at /home/brendonm/ap_simulation_time1533144811_epoch190.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 213us/step - loss: 0.0961 - val_loss: 0.0647
+Data saved at /home/brendonm/ap_simulation_time1533144812_epoch191.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 216us/step - loss: 0.0850 - val_loss: 0.0652
+Data saved at /home/brendonm/ap_simulation_time1533144812_epoch192.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 217us/step - loss: 0.0915 - val_loss: 0.0648
+Data saved at /home/brendonm/ap_simulation_time1533144812_epoch193.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 222us/step - loss: 0.0972 - val_loss: 0.0671
+Data saved at /home/brendonm/ap_simulation_time1533144812_epoch194.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 222us/step - loss: 0.0948 - val_loss: 0.0649
+Data saved at /home/brendonm/ap_simulation_time1533144812_epoch195.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 208us/step - loss: 0.0926 - val_loss: 0.0630
+Data saved at /home/brendonm/ap_simulation_time1533144812_epoch196.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 205us/step - loss: 0.0852 - val_loss: 0.0610
+Data saved at /home/brendonm/ap_simulation_time1533144812_epoch197.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 213us/step - loss: 0.0883 - val_loss: 0.0595
+Data saved at /home/brendonm/ap_simulation_time1533144812_epoch198.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 211us/step - loss: 0.0895 - val_loss: 0.0595
+Data saved at /home/brendonm/ap_simulation_time1533144813_epoch199.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 220us/step - loss: 0.0876 - val_loss: 0.0597
+Data saved at /home/brendonm/ap_simulation_time1533144813_epoch200.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 208us/step - loss: 0.0848 - val_loss: 0.0596
+Data saved at /home/brendonm/ap_simulation_time1533144813_epoch201.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 225us/step - loss: 0.0868 - val_loss: 0.0577
+Data saved at /home/brendonm/ap_simulation_time1533144813_epoch202.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 215us/step - loss: 0.0842 - val_loss: 0.0603
+Data saved at /home/brendonm/ap_simulation_time1533144813_epoch203.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 208us/step - loss: 0.0949 - val_loss: 0.0649
+Data saved at /home/brendonm/ap_simulation_time1533144813_epoch204.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 224us/step - loss: 0.0887 - val_loss: 0.0630
+Data saved at /home/brendonm/ap_simulation_time1533144813_epoch205.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 234us/step - loss: 0.0920 - val_loss: 0.0616
+Data saved at /home/brendonm/ap_simulation_time1533144813_epoch206.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 223us/step - loss: 0.0825 - val_loss: 0.0590
+Data saved at /home/brendonm/ap_simulation_time1533144813_epoch207.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 215us/step - loss: 0.0898 - val_loss: 0.0596
+Data saved at /home/brendonm/ap_simulation_time1533144814_epoch208.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.0840 - val_loss: 0.0584
+Data saved at /home/brendonm/ap_simulation_time1533144814_epoch209.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 224us/step - loss: 0.0867 - val_loss: 0.0570
+Data saved at /home/brendonm/ap_simulation_time1533144814_epoch210.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 215us/step - loss: 0.0833 - val_loss: 0.0555
+Data saved at /home/brendonm/ap_simulation_time1533144814_epoch211.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 219us/step - loss: 0.0770 - val_loss: 0.0544
+Data saved at /home/brendonm/ap_simulation_time1533144814_epoch212.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 209us/step - loss: 0.0933 - val_loss: 0.0559
+Data saved at /home/brendonm/ap_simulation_time1533144814_epoch213.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 226us/step - loss: 0.0894 - val_loss: 0.0571
+Data saved at /home/brendonm/ap_simulation_time1533144814_epoch214.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 215us/step - loss: 0.0942 - val_loss: 0.0590
+Data saved at /home/brendonm/ap_simulation_time1533144814_epoch215.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 219us/step - loss: 0.0866 - val_loss: 0.0592
+Data saved at /home/brendonm/ap_simulation_time1533144815_epoch216.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 207us/step - loss: 0.0856 - val_loss: 0.0596
+Data saved at /home/brendonm/ap_simulation_time1533144815_epoch217.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 217us/step - loss: 0.0828 - val_loss: 0.0578
+Data saved at /home/brendonm/ap_simulation_time1533144815_epoch218.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 212us/step - loss: 0.0829 - val_loss: 0.0565
+Data saved at /home/brendonm/ap_simulation_time1533144815_epoch219.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 213us/step - loss: 0.0841 - val_loss: 0.0567
+Data saved at /home/brendonm/ap_simulation_time1533144815_epoch220.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 217us/step - loss: 0.0885 - val_loss: 0.0593
+Data saved at /home/brendonm/ap_simulation_time1533144815_epoch221.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 212us/step - loss: 0.0873 - val_loss: 0.0582
+Data saved at /home/brendonm/ap_simulation_time1533144815_epoch222.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 220us/step - loss: 0.0861 - val_loss: 0.0545
+Data saved at /home/brendonm/ap_simulation_time1533144815_epoch223.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 225us/step - loss: 0.0845 - val_loss: 0.0558
+Data saved at /home/brendonm/ap_simulation_time1533144815_epoch224.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 211us/step - loss: 0.0769 - val_loss: 0.0539
+Data saved at /home/brendonm/ap_simulation_time1533144816_epoch225.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 220us/step - loss: 0.0871 - val_loss: 0.0530
+Data saved at /home/brendonm/ap_simulation_time1533144816_epoch226.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 226us/step - loss: 0.0800 - val_loss: 0.0531
+Data saved at /home/brendonm/ap_simulation_time1533144816_epoch227.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 213us/step - loss: 0.0833 - val_loss: 0.0523
+Data saved at /home/brendonm/ap_simulation_time1533144816_epoch228.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 217us/step - loss: 0.0838 - val_loss: 0.0533
+Data saved at /home/brendonm/ap_simulation_time1533144816_epoch229.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 210us/step - loss: 0.0820 - val_loss: 0.0547
+Data saved at /home/brendonm/ap_simulation_time1533144816_epoch230.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 211us/step - loss: 0.0792 - val_loss: 0.0559
+Data saved at /home/brendonm/ap_simulation_time1533144816_epoch231.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 214us/step - loss: 0.0840 - val_loss: 0.0548
+Data saved at /home/brendonm/ap_simulation_time1533144816_epoch232.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 212us/step - loss: 0.0817 - val_loss: 0.0526
+Data saved at /home/brendonm/ap_simulation_time1533144816_epoch233.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 208us/step - loss: 0.0772 - val_loss: 0.0496
+Data saved at /home/brendonm/ap_simulation_time1533144817_epoch234.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 209us/step - loss: 0.0881 - val_loss: 0.0498
+Data saved at /home/brendonm/ap_simulation_time1533144817_epoch235.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 212us/step - loss: 0.0944 - val_loss: 0.0584
+Data saved at /home/brendonm/ap_simulation_time1533144817_epoch236.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 214us/step - loss: 0.0827 - val_loss: 0.0563
+Data saved at /home/brendonm/ap_simulation_time1533144817_epoch237.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 220us/step - loss: 0.0865 - val_loss: 0.0536
+Data saved at /home/brendonm/ap_simulation_time1533144817_epoch238.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 203us/step - loss: 0.0699 - val_loss: 0.0531
+Data saved at /home/brendonm/ap_simulation_time1533144817_epoch239.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 202us/step - loss: 0.0808 - val_loss: 0.0535
+Data saved at /home/brendonm/ap_simulation_time1533144817_epoch240.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 218us/step - loss: 0.0772 - val_loss: 0.0544
+Data saved at /home/brendonm/ap_simulation_time1533144817_epoch241.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 218us/step - loss: 0.0853 - val_loss: 0.0544
+Data saved at /home/brendonm/ap_simulation_time1533144818_epoch242.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 223us/step - loss: 0.0889 - val_loss: 0.0565
+Data saved at /home/brendonm/ap_simulation_time1533144818_epoch243.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 214us/step - loss: 0.0749 - val_loss: 0.0581
+Data saved at /home/brendonm/ap_simulation_time1533144818_epoch244.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 221us/step - loss: 0.0812 - val_loss: 0.0529
+Data saved at /home/brendonm/ap_simulation_time1533144818_epoch245.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 215us/step - loss: 0.0799 - val_loss: 0.0519
+Data saved at /home/brendonm/ap_simulation_time1533144818_epoch246.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 204us/step - loss: 0.0908 - val_loss: 0.0524
+Data saved at /home/brendonm/ap_simulation_time1533144818_epoch247.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 208us/step - loss: 0.0726 - val_loss: 0.0508
+Data saved at /home/brendonm/ap_simulation_time1533144818_epoch248.json
+Train on 496 samples, validate on 128 samples
+Epoch 1/1
+496/496 [==============================] - 0s 209us/step - loss: 0.0758 - val_loss: 0.0511
+Data saved at /home/brendonm/ap_simulation_time1533144818_epoch249.json
