@@ -26,7 +26,8 @@ def create_model() -> Model:
     # Use a mean squared error loss function and an Adam optimizer; do not print accuracy because this is a regression task
     model.compile(
         optimizer='adam',
-        loss='mse'
+        loss='mse',
+        metrics=['mae']
     )
     # Return the untrained model
     return model
