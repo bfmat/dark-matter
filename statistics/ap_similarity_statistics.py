@@ -5,6 +5,8 @@
 import os
 import sys
 
+import numpy as np
+
 from data_processing.experiment_serialization import load_test
 from utilities.verify_arguments import verify_arguments
 
@@ -17,3 +19,10 @@ for file_name in os.listdir(folder):
     file_path = os.path.join(folder, file_name)
     # Load the validation events and network outputs from the JSON file (ignoring the ground truths)
     events, _, network_outputs = load_test(file_path)
+    # Convert the network outputs to binary predictions
+    network_predictions = np.array([output >= 0.5 for output in network_outputs])
+    # Do the same with the Acoustic Parameter
+    ap_predictions = np.array([event.logarithmic_acoustic_parameter > 0.25 for event in events])
+    # Calculate the number of events on which AP and the network disagree
+    disagreements = np.count_nonzero(network_predictions != ap_predictions)
+    print(disagreements)
