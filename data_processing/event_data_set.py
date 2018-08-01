@@ -27,17 +27,24 @@ class EventDataSet:
     training_initial_input_indices = None
     validation_initial_input_indices = None
 
+    # A cache for a list of events loaded from the file
+    data_from_file_cache = None
+
     @staticmethod
     def load_data_from_file(use_run_1: bool = False) -> List[BubbleDataPoint]:
         """Load and return all bubbles from the Pickle file for either PICO-60 run 1 or 2"""
-
+        # If the data has already been loaded, just return that
+        if self.data_from_file_cache is not None:
+            return self.data_from_file_cache
         # Select the path to the Pickle file for either run 1 or 2, depending on which is selected
         path = RUN_1_PATH if use_run_1 else RUN_2_PATH
         # Use Pickle for run 1, but scikit-learn joblib for run 2
         loader = pickle if use_run_1 else joblib
-        # Load the list straight from the binary file and return it
+        # Load the list straight from the binary file
         with open(path, 'rb') as pickle_file:
             data_list = loader.load(pickle_file)
+        # Cache the data in case it needs to be used again, before returning it
+        self.data_from_file_cache = data_list
         return data_list
 
     def __init__(
