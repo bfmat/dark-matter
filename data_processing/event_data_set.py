@@ -222,7 +222,7 @@ class EventDataSet:
                 # Take only the last two piezos, as the first one does not work
                 np.stack([
                     np.concatenate([
-                        event.banded_frequency_domain[1:, :, 2].flatten()
+                        event.banded_frequency_domain_raw[1:, :, 2].flatten()
                     ])
                     for event in events
                 ]),
