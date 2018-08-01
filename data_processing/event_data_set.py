@@ -85,7 +85,6 @@ class EventDataSet:
                 event for event in events
                 if self.passes_temperature_and_pressure_cuts(event)
             ]
-            print(len(events))
         # Choose a specified number of random examples from the list with validation cuts applied
         self.validation_events = random.sample(events, VALIDATION_EXAMPLES)
         # Remove all of the validation events from the original list of events
