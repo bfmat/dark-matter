@@ -213,6 +213,28 @@ class EventDataSet:
         # Return both components of both datasets
         return training_inputs, training_ground_truths, validation_inputs, validation_ground_truths
 
+    def ap_simulation(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        """Return flattened training arrays and Acoustic Parameter values for ground truths"""
+        # Create flattened training arrays and binary ground truth arrays for both training and validation
+        (training_inputs, training_ground_truths), (validation_inputs, validation_ground_truths) = [
+            (
+                # Flatten the banded frequency domain information (without positional corrections) into single-dimensional arrays, and stack all of the examples into an array
+                # Take only the last two piezos, as the first one does not work
+                np.stack([
+                    np.concatenate([
+                        event.banded_frequency_domain_raw[1:, :, 2].flatten(),
+                        [event.x_position, event.y_position, event.z_position]
+                    ])
+                    for event in events
+                ]),
+                # Use the Acoustic Parameter of each event for ground truth data
+                np.array([event.logarithmic_acoustic_parameter for event in events])
+            )
+            for events in [self.training_events, self.validation_events]
+        ]
+        # Return both components of both datasets
+        return training_inputs, training_ground_truths, validation_inputs, validation_ground_truths
+
     def position_from_time_zero(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Return zero time data arrays, alongside position ground truths that the network should be trained to predict"""
         # Create flattened training arrays and ground truth arrays for both training and validation
