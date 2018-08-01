@@ -96,3 +96,4 @@
 2018_08_01_ap_simulation_no_regularization: As expected, the spread is somewhat tighter. It is still far from a perfect replication of AP.
 2018_08_01_position_corrected_input: The clustering is vastly tighter; it may not be possible to achieve much better than this using a neural network with a sane architecture.
 2018_08_01_raw_audio_no_position_input: The graph looks very similar to how it did with no position corrections but with position input. There is certainly more variance compared to the last test, but it is nevertheless mostly reasonably accurate.
+2018_08_01_custom_fft: Contradicting what appeared to be reasonable in the training log, the network's predictions were completely inane. There was a cluster around (0, 0), and then the network's predictions seemed to be almost random. It is interesting that the mean absolute error is so similar when subjectively the performance is so much worse.
