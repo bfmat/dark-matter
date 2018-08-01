@@ -6,7 +6,7 @@ import os
 
 from data_processing.event_data_set import EventDataSet, RunType
 from data_processing.experiment_serialization import save_test
-from models.banded_frequency_network import create_model
+from models.ap_simulation_network import create_model
 
 # The number of epochs to train for
 EPOCHS = 250
