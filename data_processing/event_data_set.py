@@ -30,12 +30,12 @@ class EventDataSet:
     # A cache for a list of events loaded from the file
     data_from_file_cache = None
 
-    @staticmethod
-    def load_data_from_file(use_run_1: bool = False) -> List[BubbleDataPoint]:
+    @classmethod
+    def load_data_from_file(cls, use_run_1: bool = False) -> List[BubbleDataPoint]:
         """Load and return all bubbles from the Pickle file for either PICO-60 run 1 or 2"""
         # If the data has already been loaded, just return that
-        if self.data_from_file_cache is not None:
-            return self.data_from_file_cache
+        if cls.data_from_file_cache is not None:
+            return cls.data_from_file_cache
         # Select the path to the Pickle file for either run 1 or 2, depending on which is selected
         path = RUN_1_PATH if use_run_1 else RUN_2_PATH
         # Use Pickle for run 1, but scikit-learn joblib for run 2
@@ -44,7 +44,7 @@ class EventDataSet:
         with open(path, 'rb') as pickle_file:
             data_list = loader.load(pickle_file)
         # Cache the data in case it needs to be used again, before returning it
-        self.data_from_file_cache = data_list
+        cls.data_from_file_cache = data_list
         return data_list
 
     def __init__(
@@ -175,7 +175,7 @@ class EventDataSet:
             # The pressure should be set to 21
             event.pressure_setting == 21
             # The actual observed pressure should be within 1 of the set pressure
-            np.abs(event.pressure_readings[0] - event.pressure_setting) < 1
+            and np.abs(event.pressure_readings[0] - event.pressure_setting) < 1
             # The temperature on the thermometer that is actually used for analysis should be within half a degree of 16.05
             and np.abs(event.temperature_readings[2] - 16.05) < 1
         )
