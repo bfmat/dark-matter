@@ -20,20 +20,24 @@ To resolve this, physicists must determine a discriminator function that can, ba
 \begin{enumerate}
     \item A detailed simulation of the physical environment is often used to produce an accurate discriminator. This takes a long time even for a team of experienced physicists, and will have to be updated whenever the physical variables of the experimental apparatus change.
     \item The primary intention of many dark matter experiments, which is to reduce background radiation to the lowest level possible, means that there will be a very small number of background events detected. This places a severe limit on the amount of data that is available to optimize such a discriminator.
-    \item Furthermore, what little data is available to optimize a discriminator very often contains impurities, because whatever background radiation is present during WIMP detection runs is also present during calibration runs. These are difficult to separate without already having access to a functional discriminator, creating a "chicken or the egg" problem (from which the most common way to escape is to create a time- and labor-intensive simulation).
+    \item Furthermore, what little data is available to optimize a discriminator very often contains impurities, because whatever background radiation is present during WIMP detection runs is also present during calibration runs. These are difficult to separate without already having access to a functional discriminator, creating a ``chicken or the egg'' problem (from which the most common way to escape is to create a time- and labor-intensive simulation).
 \end{enumerate}
 
 The objective of this study is to solve all 3 of these problems using machine learning. This is done with a semi-supervised algorithm that simultaneously learns an effective discriminator and improves the purity of its own training data set.
 
-% \subsection{Existing Data}
+\subsection{Existing Work}
 
-% During PICO-60 analysis, a function known as Acoustic Parameter was derived from simulations. It discriminates between alpha particles and nuclear recoils based on audio data (specifically the banded Fourier transform $\beta_{8}$, which is detailed in section \textbf{2.1.2}).
+During PICO-60 analysis, a function known as Acoustic Parameter was derived from simulations. It discriminates between alpha particles and nuclear recoils based on audio data (specifically the banded Fourier transform $\beta_{8}$, which is detailed in section \textbf{2.1.2}).
 
-% WIMP candidates in the cross-section and mass ranges that the PICO-60 detector is sensitive to are predicted to produce nuclear recoils with the same properties as those created by neutrons. The key difference is that neutrons frequently (but not always) scatter and produce multiple bubbles, where the extremely small predicted cross sections of WIMP candidates mean that they should almost invariably create just one bubble. These two properties together mean that neutron events producing one bubble can be used to calibrate a discriminator.
+WIMP candidates in the cross-section and mass ranges that the PICO-60 detector is sensitive to are predicted to produce nuclear recoils with the same properties as those created by neutrons. The key difference is that neutrons frequently (but not always) scatter and produce multiple bubbles, where the extremely small predicted cross sections of WIMP candidates mean that they should almost invariably create just one bubble. This means single-bubble neutron events can be used to optimize a discriminator to detect WIMP events.
+
+There was no explicit alpha particle calibration data collected as part of the PICO-60 experiment. However, the previous analysis revealed that there were no WIMP candidates detected. Also, based on the known ratio of multiple- to single-bubble neutron events, it is unlikely that there is more than 1 single-bubble neutron event throughout the background runs. This means they can be used as a high-purity alpha calibration set.
+
+While these two known event sets were only used for minor calibrations of Acoustic Parameter, there is no reason they cannot be used to optimize a machine learning discriminator from scratch.
 
 \section{Data Formats}
 
-Alpha/neutron discriminators used a variety of different data formats to make predictions. These are collected from the two essential sensors present in the PICO-60 apparatus: piezoelectric microphones (piezos) and cameras.
+Discriminators can use a variety of different data formats to make predictions. These are collected from the two essential sensors present in the PICO-60 apparatus: piezoelectric microphones (piezos) and cameras.
 
 \subsection{Piezo-Derived}
 
