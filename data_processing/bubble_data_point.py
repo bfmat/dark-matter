@@ -149,6 +149,8 @@ class BubbleDataPoint:
             self.run_type = RUN_TYPE_DICTIONARY[root_event.run_type]
         else:
             self.run_type = RunType.GARBAGE
+        # Get the raw numeric run type, in case distinction between different recording periods is necessary
+        self.raw_run_type = root_event.run_type
         # Likewise for the cause of the recording trigger, assuming a manual trigger or relaunch due to a problem
         raw_trigger_cause = root_event.trigger_main
         self.trigger_cause = TriggerCause(raw_trigger_cause) \
