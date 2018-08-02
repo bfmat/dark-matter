@@ -22,7 +22,7 @@ for initial_training_examples in [64, 128, 256]:
             for l2_lambda in [0, 0.001, 0.003]:
                 for dropout in [0, 0.25, 0.5]:
                     # Test each configuration multiple times so the initial set does not cause a bias
-                    for _ in range(3):
+                    for configuration_test_index in range(3):
                         # Print a few blank lines for separation
                         for _ in range(3):
                             print()
@@ -33,8 +33,9 @@ for initial_training_examples in [64, 128, 256]:
                         print('Threshold multiplier', threshold_multiplier)
                         print('L2 lambda:', l2_lambda)
                         print('Dropout:', dropout)
+                        print('Configuration test index:', configuration_test_index)
                         # Create a description string that is used when saving validation data
-                        description = f'icn_grid_search_dropout{dropout}_l2_lambda{l2_lambda}_initial_examples{initial_training_examples}_initial_threshold{initial_threshold}_threshold_multiplier{threshold_multiplier}_'
+                        description = f'icn_grid_search_dropout{dropout}_l2_lambda{l2_lambda}_initial_examples{initial_training_examples}_initial_threshold{initial_threshold}_threshold_multiplier{threshold_multiplier}_configuration_test{configuration_test_index}_'
 
                         # Make a mutable copy of the training threshold
                         training_threshold = initial_threshold
