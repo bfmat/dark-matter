@@ -5,7 +5,6 @@
 import glob
 import os
 import sys
-from multiprocessing import Pool
 
 import numpy as np
 
@@ -13,7 +12,11 @@ from data_processing.experiment_serialization import load_test
 from utilities.verify_arguments import verify_arguments
 
 
-def load_and_print_disagreements(file_path: str) -> None:
+# Create a dictionary to hold dictionaries of numbers of disagreements, arranged by a particular set of hyperparameters
+disagreements_by_hyperparameters = {}
+
+
+def load_disagreements(file_path: str) -> None:
     """Load a saved validation set and print the number of disagreements if it is below a certain threshold"""
     # Load the validation events and network outputs from the JSON file (ignoring the ground truths)
     events, _, network_outputs = load_test(file_path)
@@ -23,15 +26,33 @@ def load_and_print_disagreements(file_path: str) -> None:
     ap_predictions = np.array([event.logarithmic_acoustic_parameter > 0.25 for event in events])
     # Calculate the number of events on which AP and the network disagree
     disagreements = np.count_nonzero(network_predictions != ap_predictions)
-    # If the number of disagreements is below a certain threshold, print out the path and the number of disagreements
-    if disagreements < 10:
-        print(f'{file_path}: {disagreements} disagreements')
+    # Get the full identifier of the run except for the timestamp
+    # Do this by removing trailing slashes, getting the last component of the path, and slicing it
+    run_identifier = os.path.basename(os.path.normpath(file_path)).split('_time')[0]
+    # If the identifier is not already in the dictionary, create a sub-dictionary
+    if run_identifier not in disagreements_by_hyperparameters:
+        disagreements_by_hyperparameters[run_identifier] = {}
+    # In the sub-dictionary, add the number of disagreements, referenced by the specific path
+    disagreements_by_hyperparameters[run_identifier][file_path] = disagreements
 
 
 # An expandable list of files using a wildcard should be provided
 verify_arguments('saved validation sets using wildcard')
 # Get the files corresponding to the full path
 file_paths = glob.glob(os.path.expanduser(sys.argv[1]))
-# Load and print information on the files in parallel
-with Pool(10) as thread_pool:
-    thread_pool.map(load_and_print_disagreements, file_paths)
+# Load and print information on the files; this is not thread safe
+for file_path in file_paths:
+    load_disagreements(file_path)
+# Iterate over the run identifiers in the dictionary
+for run_identifier in disagreements_by_hyperparameters:
+    # Print the mean number of disagreements throughout the entire run
+    print(f'Mean {np.mean(list(disagreements_by_hyperparameters[run_identifier].values()))} disagreements in run {run_identifier}')
+    # Iterate over the specific file paths in this run
+    for file_path in disagreements_by_hyperparameters[run_identifier]:
+        # If there is a small number of disagreements, print out the path and number
+        disagreements = disagreements_by_hyperparameters[run_identifier][file_path]
+        if disagreements < 10:
+            print(f'{disagreements} disagreements in file {file_path}')
+    # Print a few blank lines for separation
+    for _ in range(3):
+        print()
