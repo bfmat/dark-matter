@@ -164,6 +164,16 @@ A convolutional neural network was used for analyzing the raw waveform directly,
 
 Two different configurations were tested: one that operates strictly on the waveform with no position corrections of any kind (furthermore $DeepConv(\omega)$) and one with an additional position input on a lower layer such that it should be able to learn to incorporate position corrections into its outputs ($DeepConvWithPos(\omega, \chi)$).
 
+\section{Semi-Supervised Learning}
+
+\subsection{Iterative Cluster Nucleation}
+
+Iterative cluster nucleation is a semi-supervised learning algorithm that takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator. The algorithm follows these iterative steps:
+
+\begin{enumerate}
+    \item ADD STEPS HERE.
+\end{enumerate}
+
 \printbibliography
 
 \end{document}
