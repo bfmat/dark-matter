@@ -111,13 +111,18 @@ for initial_training_examples in [64, 128, 256]:
                                 prefix=description
                             )
 
-                            # Get banded frequency data from the original list of potential training events
-                            original_training_data = np.stack([
-                                event.banded_frequency_domain_raw[1:, :, 2].flatten()
-                                for event in original_training_events
-                            ])
-                            # Run predictions on each of these examples and remove the unnecessary extra axis
-                            original_training_data_predictions = model.predict(original_training_data)[:, 0]
+                            # If there are no original unlabeled training events left, make the predictions an empty list
+                            if not original_training_events:
+                                original_training_data_predictions = []
+                            # Otherwise, load them and run predictions
+                            else:
+                                # Get banded frequency data from the original list of potential training events
+                                original_training_data = np.stack([
+                                    event.banded_frequency_domain[1:, :, 2].flatten()
+                                    for event in original_training_events
+                                ])
+                                # Run predictions on each of these examples and remove the unnecessary extra axis
+                                original_training_data_predictions = model.predict(original_training_data)[:, 0]
                             # Create a list to add to of events that have been added to the main training list
                             remove_from_original = []
                             # Create accumulators to record how many examples were added, and how many are correct
@@ -131,7 +136,7 @@ for initial_training_examples in [64, 128, 256]:
                                     remove_from_original.append(event)
                                     # Copy the event and set its run type so that it is in the corresponding ground truth
                                     bubble_copy = copy.deepcopy(event)
-                                    bubble_copy.run_type = RunType.LOW_BACKGROUND if bool(round(prediction[0, 0])) \
+                                    bubble_copy.run_type = RunType.LOW_BACKGROUND if bool(round(prediction)) \
                                         else RunType.AMERICIUM_BERYLLIUM
                                     # Add the modified bubble to the training list
                                     event_data_set.training_events.append(bubble_copy)
