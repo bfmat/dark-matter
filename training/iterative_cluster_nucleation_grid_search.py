@@ -85,6 +85,7 @@ for initial_training_examples in [64, 128, 256]:
                                   'training examples for iteration', iteration)
                             # Get the banded frequency domain data and corresponding binary ground truths
                             training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()
+                            print(training_input.shape)
 
                             # Train the model for a certain number of epochs
                             model.fit(
@@ -109,11 +110,8 @@ for initial_training_examples in [64, 128, 256]:
                             examples_correct = 0
                             # Iterate over the entire list of potential training examples, running predictions
                             for event in original_training_events:
-                                # Combine the banded frequency domain data with the position input data from the event, and add a batch axis
-                                input_data = np.concatenate([
-                                    event.banded_frequency_domain_raw[1:, :, 2].flatten(),
-                                    [event.x_position, event.y_position, event.z_position]
-                                ])
+                                # Get the banded frequency domain data from the event, and add a batch axis
+                                input_data = event.banded_frequency_domain_raw[1:, :, 2].flatten()
                                 input_data = np.expand_dims(input_data, axis=0)
                                 # Run a prediction on the audio sample using the existing neural network
                                 prediction = model.predict(input_data)
