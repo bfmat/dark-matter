@@ -47,7 +47,7 @@ for initial_training_examples in [64, 128, 256]:
                                 RunType.AMERICIUM_BERYLLIUM,
                                 RunType.CALIFORNIUM
                             },
-                            use_wall_cuts=False
+                            use_wall_cuts=True
                         )
                         # Iterate over every training and validation event and remove the images, waveforms, and full resolution Fourier transforms
                         for bubble in event_data_set.training_events + event_data_set.validation_events:
