@@ -61,7 +61,7 @@ for initial_training_examples in [64, 128, 256]:
                         regularizer = l2(l2_lambda)
                         activation = 'tanh'
                         model = Sequential([
-                            InputLayer(input_shape=(19,)),
+                            InputLayer(input_shape=(16,)),
                             BatchNormalization(),
                             Dense(12, activation=activation, kernel_regularizer=regularizer),
                             Dropout(dropout),
