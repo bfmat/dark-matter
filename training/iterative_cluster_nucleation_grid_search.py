@@ -153,5 +153,3 @@ for initial_training_examples in [64, 128, 256]:
                             # Otherwise, notify the user what it currently is at
                             else:
                                 print(f'Training threshold remains at {training_threshold}')
-                            import sys
-                            sys.exit()
