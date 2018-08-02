@@ -9,7 +9,7 @@
 
 \begin{document}
 
-\section{Background}
+\section{Introduction}
 
 \subsection{Objective}
 
@@ -23,7 +23,18 @@ To resolve this, physicists must determine a discriminator function that can, ba
     \item Furthermore, what little data is available to optimize a discriminator very often contains impurities, because whatever background radiation is present during WIMP detection runs is also present during calibration runs. These are difficult to separate without already having access to a functional discriminator, creating a ``chicken or the egg'' problem (from which the most common way to escape is to create a time- and labor-intensive simulation).
 \end{enumerate}
 
-The objective of this study is to solve all 3 of these problems using machine learning. This is done with a semi-supervised algorithm that simultaneously learns an effective discriminator and improves the purity of its own training data set.
+The objective of this study is to solve all 3 of these problems using machine learning. This is done with a semi-supervised algorithm called \textit{iterative cluster nucleation}, which simultaneously learns an effective discriminator and improves the purity of its own training data set.
+
+\subsection{Hyperparameter Optimization}
+
+Learning algorithms in this study are optimized using grid searches, in which many different combinations of hyperparameters are tested. The computational work required for a grid search increases exponentially with the number of hyperparameters $n$ and the number of options per hyperparameter $m$; to be exact, its complexity is $O(m^{n})$. Thus, it is important to minimize the number of hyperparameters that are optimized at once.
+
+Since iterative cluster nucleation incorporates a neural network model, optimization is a much simpler task if the network's hyperparameters are already optimized. Thus, the optimization task is split into two distinct phases:
+
+\begin{enumerate}
+    \item Optimize the hyperparameters of a neural network on validation accuracy, to accurately reproduce the imperfect ground truths it is trained on. While this does not produce an optimal discriminator, it does reveal architectures that are capable, in essence, of learning to accomplish the discrimination task.
+    \item Using neural network hyperparameters that were determined to be effective, optimize the hyperparameters of the iterative cluster nucleation algorithm to reproduce Acoustic Parameter as closely as possible. Since Acoustic Parameter is not used to optimize the neural network directly at any point, models that excel at this task demonstrate an ability to learn the desired discriminator while ignoring the impurities in the training set.
+\end{enumerate}
 
 \subsection{Existing Work}
 
