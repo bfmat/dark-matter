@@ -15,6 +15,7 @@ from data_processing.bubble_data_point import RunType
 from data_processing.event_data_set import EventDataSet
 from data_processing.experiment_serialization import save_test
 
+
 # Iterate over possible configurations for the number of initial training examples, the initial threshold, the threshold multiplier, the L2 lambda, and dropout regularization
 for initial_training_examples in [64, 128, 256]:
     for initial_threshold in [0.01, 0.02]:
@@ -48,6 +49,11 @@ for initial_training_examples in [64, 128, 256]:
                             },
                             use_wall_cuts=False
                         )
+                        # Iterate over every training and validation event and remove the images, waveforms, and full resolution Fourier transforms
+                        for bubble in event_data_set.training_events + event_data_set.validation_events:
+                            bubble.waveform = None
+                            bubble.full_resolution_frequency_domain = None
+                            bubble.images = None
                         # Make a copy of the full training set to get examples from later
                         original_training_events = event_data_set.training_events.copy()
                         # Truncate the list to only a certain number of initial training examples
@@ -104,18 +110,21 @@ for initial_training_examples in [64, 128, 256]:
                                 epoch=iteration,
                                 prefix=description
                             )
+
+                            # Get banded frequency data from the original list of potential training events
+                            original_training_data = np.stack([
+                                event.banded_frequency_domain_raw[1:, :, 2].flatten()
+                                for event in original_training_events
+                            ])
+                            # Run predictions on each of these examples and remove the unnecessary extra axis
+                            original_training_data_predictions = model.predict(original_training_data)[:, 0]
                             # Create a list to add to of events that have been added to the main training list
                             remove_from_original = []
                             # Create accumulators to record how many examples were added, and how many are correct
                             examples_added = 0
                             examples_correct = 0
-                            # Iterate over the entire list of potential training examples, running predictions
-                            for event in original_training_events:
-                                # Get the banded frequency domain data from the event, and add a batch axis
-                                input_data = event.banded_frequency_domain_raw[1:, :, 2].flatten()
-                                input_data = np.expand_dims(input_data, axis=0)
-                                # Run a prediction on the audio sample using the existing neural network
-                                prediction = model.predict(input_data)
+                            # Iterate over the original training events with corresponding predictions
+                            for event, prediction in zip(original_training_events, original_training_data_predictions):
                                 # If the prediction is within a certain threshold distance of either 0 or 1
                                 if min([prediction, 1 - prediction]) < training_threshold:
                                     # Mark the event for removal from the original list
@@ -144,3 +153,5 @@ for initial_training_examples in [64, 128, 256]:
                             # Otherwise, notify the user what it currently is at
                             else:
                                 print(f'Training threshold remains at {training_threshold}')
+                            import sys
+                            sys.exit()
