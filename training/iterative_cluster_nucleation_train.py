@@ -12,12 +12,12 @@ from data_processing.experiment_serialization import save_test
 from models.banded_frequency_network import create_model
 
 # The initial number of examples to put in the training set
-INITIAL_TRAINING_EXAMPLES = 128
+INITIAL_TRAINING_EXAMPLES = 256
 
 # The distance from 0 or 1 an example must be to be added to the training set
 training_threshold = 0.02
 # The number (slightly greater than 1) that the threshold is multiplied by when no new examples are added
-TRAINING_THRESHOLD_MULTIPLIER = 1.025
+TRAINING_THRESHOLD_MULTIPLIER = 1.05
 
 # Create a data set, running fiducial cuts for the most reasonable data
 event_data_set = EventDataSet(
