@@ -23,17 +23,17 @@ To resolve this, physicists must determine a discriminator function that can, ba
     \item Furthermore, what little data is available to optimize a discriminator very often contains impurities, because whatever background radiation is present during WIMP detection runs is also present during calibration runs. These are difficult to separate without already having access to a functional discriminator, creating a ``chicken or the egg'' problem (from which the most common way to escape is to create a time- and labor-intensive simulation).
 \end{enumerate}
 
-The objective of this study is to solve all 3 of these problems using machine learning. This is done with a semi-supervised algorithm called \textit{iterative cluster nucleation}, which simultaneously learns an effective discriminator and improves the purity of its own training data set.
+The objective of this study is to solve all 3 of these problems using machine learning. This is done using semi-supervised algorithms that simultaneously learn an effective discriminator and improves the purity of its own training data set.
 
 \subsection{Hyperparameter Optimization}
 
 Learning algorithms in this study are optimized using grid searches, in which many different combinations of hyperparameters are tested. The computational work required for a grid search increases exponentially with the number of hyperparameters $n$ and the number of options per hyperparameter $m$; to be exact, its complexity is $O(m^{n})$. Thus, it is important to minimize the number of hyperparameters that are optimized at once.
 
-Since iterative cluster nucleation incorporates a neural network model, optimization is a much simpler task if the network's hyperparameters are already optimized. Thus, the optimization task is split into two distinct phases:
+Since the semi-supervised learning algorithms used incorporate  neural network models, optimization is a much simpler task if the network's hyperparameters are already optimized. Thus, the optimization task is split into two distinct phases:
 
 \begin{enumerate}
     \item Optimize the hyperparameters of a neural network on validation accuracy, to accurately reproduce the imperfect ground truths it is trained on. While this does not produce an optimal discriminator, it does reveal architectures that are capable, in essence, of learning to accomplish the discrimination task.
-    \item Using neural network hyperparameters that were determined to be effective, optimize the hyperparameters of the iterative cluster nucleation algorithm to reproduce Acoustic Parameter as closely as possible. Since Acoustic Parameter is not used to optimize the neural network directly at any point, models that excel at this task demonstrate an ability to learn the desired discriminator while ignoring the impurities in the training set.
+    \item Using neural network hyperparameters that were determined to be effective, optimize the hyperparameters of the semi-supervised learning algorithm to reproduce Acoustic Parameter as closely as possible. Since Acoustic Parameter is not used to optimize the neural network directly at any point, models that excel at this task demonstrate an ability to learn the desired discriminator while ignoring the impurities in the training set.
 \end{enumerate}
 
 \subsection{Existing Work}
@@ -136,6 +136,8 @@ This takes advantage of differences in the frequency distribution (specifically 
 
 \section{Performance Analysis}
 
+\subsection{For Supervised Learning}
+
 The performance of neural networks relative to the Acoustic Parameter and the network used in the PICO-60 paper was done using the class-wise standard deviation. This is a variable defined as $C$ below, where $N$ and $A$ are the sets of outputs of the binary discriminator in question (Acoustic Parameter or a neural network), corresponding to the sets of neutrons and alpha particles respectively.
 
 $S=std(N \cup A)$
@@ -147,6 +149,10 @@ The first step is to calculate the standard deviation S of the union of the two 
 The second step is to calculate the mean of the standard deviations of the normalized sets of neutrons and alpha particles individually. This is an indication of how tightly clustered or widely dispersed the discriminator’s predictions are. Very consistent predictions of $x$ for neutrons and $y$ for alphas (for any $x$ and $y$), with minimal variance off of those specific values, will produce a low class-wise standard deviation.
 
 This performance metric is used rather than a simple accuracy score because it takes in to account not only whether the discriminator is correct or incorrect, but how confident it is. The intent is for a decisive discriminator, which produces a wide separation between the two classes, to be preferred over one that produces a nebulous cloud of outputs with a seemingly arbitrary decision boundary.
+
+\subsection{For Semi-Supervised Learning}
+
+Semi-supervised learning algorithms were scored based on how well they were able to learn to reproduce Acoustic Parameter. ADD MORE INFORMATION HERE BASED ON HOW ANALYSIS IS DONE.
 
 \section{Supervised Learning}
 
