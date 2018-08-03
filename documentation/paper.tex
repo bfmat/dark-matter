@@ -175,6 +175,12 @@ It makes use of the gravitational differentiation function $GravDiff(p, \psi, g)
 
 $GravDiff(p, \psi, g) = g \cdot sgn(p) \cdot abs(tanh(2(p - 0.5))) ^ \psi$
 
+The essential purpose of $GravDiff(p, \psi, g)$ is to allow confidently classified unlabeled examples to influence the training process, pushing them further towards the classification they are already near (like gravity), while ensuring examples with low-confidence classifications do not have a significant adverse effect.
+
+It can be considered a distortion of the hyperbolic tangent that flattens the central range and exaggerates the asymptote on either side. The network's prediction $p$ is first transformed so its range is 1 to -1 rather than 0 to 1 ($2(p - 0.5)$). Next, the sigmoidal hyperbolic tangent is applied, producing a value of 0 in the center and asymptotic slopes to -1 and 1 at the edges.
+
+However, what is really desired is a shallow slope in the center (so low-confidence network outputs in the range of, for instance, 0.2 to 0.8 will produce very shallow output gradients). Applying a relatively large exponent (on the order of 9) accomplishes this, because values less than 1 will rapidly approach 0. However, this only works with odd integer exponents (because they produce negative outputs for negative inputs), limiting the ability to fine-tune this function by changing $\psi$. To resolve this, a piecewise exponential function is used, where the absolute value is taken prior to applying the power and the sign is multiplied in afterwards. This permits use of the full range of curves produced by even and non-integer values of $\psi$.
+
 \subsection{Iterative Cluster Nucleation}
 
 Iterative cluster nucleation is a semi-supervised learning algorithm that takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator. The algorithm is initialized as follows:
