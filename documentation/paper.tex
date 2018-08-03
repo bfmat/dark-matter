@@ -167,6 +167,14 @@ Two different configurations were tested: one that operates strictly on the wave
 
 \section{Semi-Supervised Learning}
 
+\subsection{Gravitational Differentiation}
+
+Gravitational differentiation is a novel technique for gradient computation in the final layer of a neural network. It is intended for training a neural network in a semi-supervised fashion on a relatively small set of imperfectly labeled data, while simultaneously incorporating the network's changing predictions on a set of unlabeled data to encourage decisive classifications.
+
+It makes use of the gravitational differentiation function $GravDiff(p, \psi, g)$, which is parameterized by the network's existing prediction $p$ on the training example in question, the degree $\psi$ of the piecewise exponential function used to distort the response of the gradient, and the gravitational multiplier $g$. The function is defined as follows:
+
+$GravDiff(p, \psi, g) = g \cdot sgn(p) \cdot abs(tanh(2(p - 0.5))) ^ \psi$
+
 \subsection{Iterative Cluster Nucleation}
 
 Iterative cluster nucleation is a semi-supervised learning algorithm that takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator. The algorithm is initialized as follows:
