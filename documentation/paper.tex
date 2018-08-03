@@ -181,6 +181,14 @@ It can be considered a distortion of the hyperbolic tangent that flattens the ce
 
 However, what is really desired is a shallow slope in the center (so low-confidence network outputs in the range of, for instance, 0.2 to 0.8 will produce very shallow output gradients). Applying a relatively large exponent (on the order of 9) accomplishes this, because values less than 1 will rapidly approach 0. However, this only works with odd integer exponents (because they produce negative outputs for negative inputs), limiting the ability to fine-tune this function by changing $\psi$. To resolve this, a piecewise exponential function is used, where the absolute value is taken prior to applying the power and the sign is multiplied in afterwards. This permits use of the full range of curves produced by even and non-integer values of $\psi$.
 
+This function is applied in a training algorithm that is parameterized by the set of imperfectly labeled data $\varsigma$, the set of unlabeled training data $\upsilon$, a binary classification neural network $NN(x)$ (where $x$ is the input data format), and the gravitational multiplier increment $\delta_g$. The distortion power $\psi$ is assumed to be constant throughout a training run, and the gravitational multiplier $g$ is initialized at 0, gradually increasing during training. It iterates as follows:
+
+\begin{enumerate}
+    \item Train $NN(x)$ for a single epoch on the combined set $\varsigma \cup \upsilon$, using the predefined ground truths for $\varsigma$ (with a mean squared error loss function) and the most recently calculated gravitational gradients for $\upsilon$.
+    \item Calculate predictions $p$ with $NN(x)$ on the entirety of $\upsilon$. Calculate $GravDiff(p, \psi, g)$ and record the resulting gradients for the next iteration.
+    \item Increment $g$ by $\delta_g$. At the beginning, when $g = 0$, training will be entirely based on the labeled set $\varsigma$, and progressively, over the course of a run, the gravitational effect increases with $g$.
+\end{enumerate}
+
 \subsection{Iterative Cluster Nucleation}
 
 Iterative cluster nucleation is a semi-supervised learning algorithm that takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator. The algorithm is initialized as follows:
@@ -188,7 +196,7 @@ Iterative cluster nucleation is a semi-supervised learning algorithm that takes 
 \begin{enumerate}
     \item Take a subset of the training data, referred to as the seed set $\varsigma$. Use this as the beginning of the training set.
     \item Remove classifications from any other available training examples. These create the unlabeled set $\upsilon$.
-    \item Compile and randomly initialize the weights of a neural network discriminator $NN(x)$ (where $x$ is the input data format).
+    \item Compile and randomly initialize the weights of a binary classification neural network $NN(x)$.
 \end{enumerate}
 
 Parameterized by the initial seed threshold $j$ (on the order of 0.01) and the seed threshold multiplier $k$ (on the order of 1.05), the algorithm follows these iterative steps:
