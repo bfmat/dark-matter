@@ -9,8 +9,8 @@ import matplotlib.pyplot as plt
 
 from utilities.verify_arguments import verify_arguments
 
-# A path to a training output file should be provided
-verify_arguments('path to training output file')
+# A path to a training output file and the title of the plot should be provided
+verify_arguments('path to training output file', 'title of plot')
 # Get the full path and load all lines in the file, stripping whitespace off both ends
 with open(os.path.expanduser(sys.argv[1])) as file:
     lines = [line.strip() for line in file.readlines()]
@@ -35,5 +35,10 @@ plt.plot(training_accuracy_values, 'y', label='Training accuracy')
 plt.plot(validation_accuracy_values, 'g', label='Validation accuracy')
 # Draw a legend with the labels that have already been set
 plt.legend()
+# Set the title provided as an argument
+plt.title(sys.argv[2])
+# Label the accuracy and epoch axes
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
 # Display the graph on screen
 plt.show()
