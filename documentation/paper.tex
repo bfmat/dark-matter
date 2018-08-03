@@ -59,9 +59,9 @@ The lowest-level data derived from the piezos is the raw waveform $\omega$. $\om
 
 \subsubsection{Fourier Transform}
 
-The raw waveform $\omega$ is converted into the frequency domain by means of a 1-dimensional Discrete Fourier Transform for real input, which is implemented in \texttt{numpy} as \texttt{rfft}. Since DFTs produce sequences of complex numbers, the magnitude of each element is computed. The full-resolution Fourier transform $\beta _{50,000}$ consists of a sequence of complex numbers, half the length of the raw waveform $\omega$.
+The raw waveform $\omega$ is converted into the frequency domain by means of a 1-dimensional Discrete Fourier Transform for real input. Since DFTs produce sequences of complex numbers, the magnitude of each element is computed. The full-resolution Fourier transform $\beta _{50,000}$ consists of a sequence of complex numbers, half the length of the raw waveform $\omega$.
 
-Beyond this, arbitrary-resolution banded Fourier transforms $\beta _{N<50,000}$ can be computed by integrating the resonant energy over all frequencies within each of a set of bands. They can be thought of as a method of signal downscaling, compressing the signal into a smaller number of data points. Particular band resolutions used include $\beta _{8}$ (which is the input to Acoustic Parameter and initial neural network experiments), $\beta _{5}$, $\beta _{10}$, $\beta _{20}$, and $\beta _{40}$.
+Beyond this, arbitrary-resolution banded Fourier transforms $\beta _{N<50,001}$ can be computed by integrating the resonant energy over all frequencies within each of a set of bands. They can be thought of as a method of signal downscaling, compressing the signal into a smaller number of data points. Particular band resolutions used include $\beta _{8}$ (which is the input to Acoustic Parameter and initial neural network experiments), $\beta _{5}$, $\beta _{10}$, $\beta _{20}$, and $\beta _{40}$.
 
 \subsection{Camera-Derived}
 
@@ -141,7 +141,7 @@ Supervised learning was the first step in the optimization procedure. It makes u
 
 \subsection{Convolutional Neural Network for Raw Waveform Analysis}
 
-A convolutional neural network was used for analyzing the raw waveform $\omega$ directly, without any preprocessing whatsoever. This avoids any destruction of information, and should be possible, in theory, for a neural network to handle. For this task, a very deep 1-dimensional fully convolutional neural network was applied. The architecture was inspired by the M34-res network \cite{verydeepconvnets} for analysis of raw waveforms. (Its hyperparameters were modified significantly through manual empirical testing as well as grid searches.)
+A convolutional neural network was used for analyzing the raw waveform $\omega$ directly, without any preprocessing whatsoever. This avoids any destruction of information, and should be possible, in theory, for a neural network to handle. For this task, a very deep 1-dimensional fully convolutional neural network was applied. The architecture was inspired by the M34-res network \cite{verydeepconvnets} for analysis of raw waveforms. L2 regularization was used to alleviate overfitting, and batch normalization was applied to the input. (Its hyperparameters were modified significantly through manual empirical testing as well as grid searches.)
 
 Two different configurations were tested: one that operates strictly on $\omega$ with no position corrections of any kind (furthermore $DeepConv(\omega)$) and one with an additional position input on a lower layer such that it should be able to learn to incorporate position corrections into its outputs ($DeepConvWithPos(\omega, \chi)$). The second configuration was introduced because the position corrections applied to $\beta_{8}$ in previous PICO-60 research were applied only to broad frequency bands and are thus not practical to apply to a full resolution waveform.
 
@@ -152,6 +152,12 @@ Once the audio was cropped properly, $DeepConv(\omega)$ achieved a maximum of 77
 \subsection{Multi-Layer Perceptron for Fourier Transform Analysis}
 
 A multi-layer perceptron (a neural network composed of fully connected layers) was applied to analysis of audio data in the frequency domain. Preprocessing by applying a Fourier transform makes it an easier task for the neural network to accomplish in some ways. If the frequency distribution and overall volume are indeed the most important factors for discrimination, the network can gather them straight from the Fourier transform $\beta_{N}$ rather than having to analyze $\omega$ to extract this information.
+
+Once again, configurations with and without position input were tested: $FourierMLP(\beta_{N})$ and \\ $FourierMLPWithPos(\beta_{N}, \chi)$. Several different resolutions $N$ of $\beta_{N}$ were used. While there were variety of network architectures tested, most had a small number of layers (on the order of 3), applied dropout and L2 regularization, and used batch normalization once again.
+
+It became evident very quickly that a high resolution was not required to get a high accuracy relative to the ground truth data. A perceptron trained on $\beta_{8}$ managed an excellent 97\% validation accuracy by this metric. Increasing the number of bands seemed initially not to provide any improvement; the best accuracy reached with $\beta_{20}$ was 93\%, and with $\beta_{40}$ it was 94\%.
+
+That experimentation applied $WallCut(D)$ to the training and validation sets. Where the higher resolution demonstrated significant power was when $WallCut(D)$ was not applied, and only $QualCut(MultiCut(D))$ was used. The network trained on $\beta_{40}$ still managed 92\% validation accuracy. However, training on $\beta_{50,001}$, which does not incorporate any banding, improved this figure to a maximum of 97\%.
 
 \section{Semi-Supervised Learning}
 
