@@ -18,24 +18,24 @@ from data_processing.experiment_serialization import save_test
 from models.banded_frequency_network import create_model
 
 
-def gravitational_ground_truth_offsets(predictions: np.ndarray, distortion_root: float, gravity_multiplier: float) -> np.ndarray:
+def gravitational_ground_truth_offsets(predictions: np.ndarray, distortion_power: float, gravity_multiplier: float) -> np.ndarray:
     """Get an array of ground truth offsets based on a gravitational model where examples classified very close to one edge will be pulled toward that edge, and examples near the middle will make little difference"""
     # The function should pass through (0.5, 0), should change very little near that point, and should rapidly asymptote in the negative or positive directions as the prediction comes close to 0 or 1
     # First, scale the predictions to the range of -1 to 1
     predictions_scaled = (predictions - 0.5) * 2
     # Take the hyperbolic tangent so examples in the middle are affected minimally
     hyperbolic_tangent = np.tanh(predictions_scaled)
-    # Take the Nth root (removing the sign and multiplying it back in after so the negative side is the same as the positive side) of the hyperbolic tangent so that the area around 0 is squashed
-    root_distorted = np.sign(hyperbolic_tangent) * np.power(np.abs(hyperbolic_tangent), distortion_root)
+    # Take the Nth power (removing the sign and multiplying it back in after so the negative side is the same as the positive side) of the hyperbolic tangent so that the area around 0 is squashed
+    power_distorted = np.sign(hyperbolic_tangent) * np.power(np.abs(hyperbolic_tangent), distortion_power)
     # Multiply it by a constant so the gravitational offset does not dominate the training process
-    return root_distorted * gravity_multiplier
+    return power_distorted * gravity_multiplier
 
 
-# Iterate over different values for the number of definitive training examples, the gravity multiplier increment, the distortion root, and the stochastic gradient descent learning rate
+# Iterate over different values for the number of definitive training examples, the gravity multiplier increment, the distortion power, and the stochastic gradient descent learning rate
 for definitive_training_examples in [128, 256]:
     for gravity_multiplier_increment in [0.0005, 0.001, 0.003, 0.005, 0.008]:
         for learning_rate in [0.001, 0.003, 0.01, 0.03]:
-            for distortion_root in [3, 5, 7, 9, 11]:
+            for distortion_power in [3, 5, 7, 9, 11]:
                 # Print a few blank lines for separation
                 for _ in range(3):
                     print()
@@ -44,9 +44,9 @@ for definitive_training_examples in [128, 256]:
                 print('Definitive Training Examples:', definitive_training_examples)
                 print('Gravity Multiplier Increment:', gravity_multiplier_increment)
                 print('Learning Rate:', learning_rate)
-                print('Distortion Root:', distortion_root)
+                print('Distortion Power:', distortion_power)
                 # Create a description string which is used for saving validation sets
-                description = f'gravitational_grid_search_definitive_training_examples{definitive_training_examples}_gravity_multiplier_increment{gravity_multiplier_increment}_learning_rate{learning_rate}_distortion_root{distortion_root}_'
+                description = f'gravitational_grid_search_definitive_training_examples{definitive_training_examples}_gravity_multiplier_increment{gravity_multiplier_increment}_learning_rate{learning_rate}_distortion_power{distortion_power}_'
 
                 # Create an instance of the fully connected neural network
                 model = create_model()
@@ -106,7 +106,7 @@ for definitive_training_examples in [128, 256]:
                     # Convert the predictions to a NumPy array and remove the unnecessary second dimension
                     predictions_array = np.array(predictions)[:, 0]
                     # Calculate the new ground truths for those examples by adding the gravitational function to the current predictions
-                    ground_truths = predictions_array + gravitational_ground_truth_offsets(predictions_array, distortion_root, gravity_multiplier)
+                    ground_truths = predictions_array + gravitational_ground_truth_offsets(predictions_array, distortion_power, gravity_multiplier)
                     training_ground_truths[definitive_training_examples:] = ground_truths
                     # Expand the dimensions of the new ground truth array so the test saving function will interpret it correctly
                     ground_truths_saving = np.expand_dims(ground_truths, axis=1)

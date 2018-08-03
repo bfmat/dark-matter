@@ -18,8 +18,8 @@ DEFINITIVE_TRAINING_EXAMPLES = 128
 # The value (greater than 1) to add to the gravity multiplier every epoch
 GRAVITY_MULTIPLIER_INCREMENT = 0.003
 
-# The root to use to flatten out the middle of the gravity function of the prediction spectrum
-DISTORTION_ROOT = 9
+# The power to use to flatten out the middle of the gravity function of the prediction spectrum
+DISTORTION_POWER = 9
 
 # Create an instance of the fully connected neural network
 model = create_model()
@@ -54,17 +54,17 @@ training_ground_truths = training_ground_truths.astype(float)
 training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:] = 0.5
 
 
-def gravitational_ground_truth_offsets(predictions: np.ndarray, distortion_root: float, gravity_multiplier: float) -> np.ndarray:
+def gravitational_ground_truth_offsets(predictions: np.ndarray, distortion_power: float, gravity_multiplier: float) -> np.ndarray:
     """Get an array of ground truth offsets based on a gravitational model where examples classified very close to one edge will be pulled toward that edge, and examples near the middle will make little difference"""
     # The function should pass through (0.5, 0), should change very little near that point, and should rapidly asymptote in the negative or positive directions as the prediction comes close to 0 or 1
     # First, scale the predictions to the range of -1 to 1
     predictions_scaled = (predictions - 0.5) * 2
     # Take the hyperbolic tangent so examples in the middle are affected minimally
     hyperbolic_tangent = np.tanh(predictions_scaled)
-    # Take the Nth root (removing the sign and multiplying it back in after so the negative side is the same as the positive side) of the hyperbolic tangent so that the area around 0 is squashed
-    root_distorted = np.sign(hyperbolic_tangent) * np.power(np.abs(hyperbolic_tangent), distortion_root)
+    # Take the Nth power (removing the sign and multiplying it back in after so the negative side is the same as the positive side) of the hyperbolic tangent so that the area around 0 is squashed
+    power_distorted = np.sign(hyperbolic_tangent) * np.power(np.abs(hyperbolic_tangent), distortion_power)
     # Multiply it by a constant so the gravitational offset does not dominate the training process
-    return root_distorted * gravity_multiplier
+    return power_distorted * gravity_multiplier
 
 
 # The gravity multiplier should start at 0 and is added to every epoch
@@ -93,7 +93,7 @@ for epoch in range(1000):
     # Convert the predictions to a NumPy array and remove the unnecessary second dimension
     predictions_array = np.array(predictions)[:, 0]
     # Calculate the new ground truths for those examples by adding the gravitational function to the current predictions
-    ground_truths = predictions_array + gravitational_ground_truth_offsets(predictions_array, DISTORTION_ROOT, gravity_multiplier)
+    ground_truths = predictions_array + gravitational_ground_truth_offsets(predictions_array, DISTORTION_POWER, gravity_multiplier)
     training_ground_truths[DEFINITIVE_TRAINING_EXAMPLES:] = ground_truths
     # Expand the dimensions of the new ground truth array so the test saving function will interpret it correctly
     ground_truths_saving = np.expand_dims(ground_truths, axis=1)
