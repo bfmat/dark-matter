@@ -199,6 +199,8 @@ This function is applied in a training algorithm that is parameterized by the se
     \item Increment $g$ by $\delta_{g}$. At the beginning, when $g = 0$, training will be entirely based on the labeled set $\varsigma$, and progressively, over the course of a run, the gravitational effect increases with $g$.
 \end{enumerate}
 
+RESULTS PENDING
+
 \subsection{Iterative Cluster Nucleation}
 
 Iterative cluster nucleation is a semi-supervised learning algorithm that takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator. The algorithm is initialized as follows:
@@ -217,6 +219,8 @@ Parameterized by the initial seed threshold $j$ (on the order of 0.01) and the s
     \item Find predictions within $p$ that are within a distance of $j$ of either 0 or 1; as this is a binary classifier, such a prediction represents high confidence. Remove any such examples from $\upsilon$ and add them to $\varsigma$. The principle is that, when $NN(x)$ is trained on a relatively small set for short period of time, the few predictions within $p$ that are very confident are highly likely to be correct.
     \item If no examples have been removed from $\upsilon$ and added to $\varsigma$, multiply $j$ by $k$ in place. This is done to increase the acceptance rate later in the training process, when most easily classifiable examples have been added to $\varsigma$. Otherwise, gridlock would occur, where certain examples could not be confidently classified given the training set.
 \end{enumerate}
+
+RESULTS PENDING
 
 \printbibliography
 
