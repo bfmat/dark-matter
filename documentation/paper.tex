@@ -3,6 +3,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{textcomp}
 \usepackage{parskip}
+\usepackage{amsmath}
 \usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
 
 \addbibresource{paper.bib}
@@ -88,9 +89,7 @@ A certain number of cuts are necessarily applied to all data to ensure meaningfu
     \item Recording was triggered by the camera ($\texttt{trigger\_main}=0$)
     \item Acoustic Parameter is not erroneously large and negative ($log_{10}(\texttt{acoustic\_bubnum})>-100$)
     \item Recorded more than 25 seconds after reaching target pressure ($\texttt{te}>25$)
-    \item The bubble position $\chi$ was successfully calculated
-
-    ($[\chi_{X}, \chi_{Y}, \chi_{Z}]\neq[-100, -100, -100]$)
+    \item The bubble position $\chi$ was successfully calculated ($[\chi_{X}, \chi_{Y}, \chi_{Z}]\neq[-100, -100, -100]$)
 \end{itemize}
 
 \subsection{Bubble Multiplicity Cut}
