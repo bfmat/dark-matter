@@ -5,6 +5,8 @@
 import os
 import sys
 
+import matplotlib.pyplot as plt
+
 from utilities.verify_arguments import verify_arguments
 
 # A path to a training output file should be provided
@@ -23,7 +25,15 @@ if 'val_acc:' in space_separated_words[0]:
     validation_accuracy_values = [float(line_words[line_words.index('val_acc:') + 1]) for line_words in space_separated_words]
 # Otherwise, they must be located in their own lines
 else:
-    # Only take the lines that only contain the validation accuracy
-    validation_accuracy_line_words = [line_words for line_words in space_separated_words if 'Validation' in line_words and 'accuracy:' in line_words]
+    # Only take the lines that only contain the validation accuracy, and split them into words
+    validation_accuracy_line_words = [line.split() for line in lines if 'Validation accuracy:' in line]
     # The third and last word in the lines contains the validation accuracy
     validation_accuracy_values = [float(line_words[2]) for line_words in validation_accuracy_line_words]
+
+# Plot the training accuracy values in yellow and validation in green; label them accordingly
+plt.plot(training_accuracy_values, 'y', label='Training accuracy')
+plt.plot(validation_accuracy_values, 'g', label='Validation accuracy')
+# Draw a legend with the labels that have already been set
+plt.legend()
+# Display the graph on screen
+plt.show()
