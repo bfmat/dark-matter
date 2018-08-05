@@ -46,7 +46,10 @@ for file_path in file_paths:
 # Iterate over the run identifiers in the dictionary
 for run_identifier in disagreements_by_hyperparameters:
     # Print the mean number of disagreements throughout the entire run
-    print(f'Mean {np.mean(list(disagreements_by_hyperparameters[run_identifier].values()))} disagreements in run {run_identifier}')
+    disagreement_values = list(disagreements_by_hyperparameters[run_identifier].values())
+    print(f'Mean {np.mean(disagreement_values)} disagreements in run {run_identifier}')
+    # Print the maximum number of disagreements throughout the run
+    print(f'Maximum {np.amax(disagreement_values)} disagreements in run {run_identifier}')
     # Iterate over the specific file paths in this run
     for file_path in disagreements_by_hyperparameters[run_identifier]:
         # If there is a small number of disagreements, print out the path and number
