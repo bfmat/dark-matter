@@ -215,7 +215,9 @@ Semi-supervised learning is the idea of training a machine learning model on a s
 
 In both of the semi-supervised learning algorithms applied, to arrive at an effective discriminator, the network first trains on a smaller amount of imperfect data. Because the ground truth data is imperfect, training on a relatively small set for a short period of time (potentially using regularization, in addition) ensures that the network will be less likely to overfit and its learned function will be simpler. This is in line with the objective, since, assuming the training inputs are normalized correctly, it should be simpler to discriminate between classes of particles than calibration runs.
 
-The essence of this algorithm, then, is a positive feedback loop in which, by using the network's most confident predictions in the training process, the desired (simpler) function is reinforced, when a conventional supervised learning system would have learned the more complex function that is taught by the ground truths.
+The essence of these 2 algorithms, then, is a positive feedback loop in which, by using the network's most confident predictions in the training process, the desired (simpler) function is reinforced, when a conventional supervised learning system would have learned the more complex function that is taught by the ground truths.
+
+Performance of the supervised learning systems was quantified by how accurately they reproduced the labels provided to them (on a validation set). They were observed to learn to separate the calibration runs from background runs, including the percentage of alpha particles present in the calibration runs. One of the main intents of semi-supervised learning is to address the impure training data. Therefore, their performance is quantified by how well it is able to replicate Acoustic Parameter, rather than simply reproduce the labels provided.
 
 \subsection{Gravitational Differentiation}
 
@@ -239,8 +241,6 @@ This function is applied in a training algorithm that is parameterized by the se
     \item Increment $g$ by $\delta_{g}$. At the beginning, when $g = 0$, training will be entirely based on the labeled set $\varsigma$, and progressively, over the course of a run, the gravitational effect increases with $g$.
 \end{enumerate}
 
-RESULTS PENDING
-
 \subsection{Iterative Cluster Nucleation}
 
 Iterative cluster nucleation is a semi-supervised learning algorithm that takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator. The algorithm is initialized as follows:
@@ -260,7 +260,7 @@ Parameterized by the initial seed threshold $j$ (on the order of 0.01) and the s
     \item If no examples have been removed from $\upsilon$ and added to $\varsigma$, multiply $j$ by $k$ in place. This is done to increase the acceptance rate later in the training process, when most easily classifiable examples have been added to $\varsigma$. Otherwise, gridlock would occur, where certain examples could not be confidently classified given the training set.
 \end{enumerate}
 
-RESULTS PENDING
+During a grid search of these parameters (in addition to regularization parameters of the network), the best accuracy achieved for replication of Acoustic Parameter was exactly 100\%. The mean of all epochs within that training run was 98\%. Further demonstrating this is a powerful algorithm and that high performance was not a one-off, 35\% of the training runs replicated Acoustic Parameter with a mean accuracy greater than 92\%.
 
 \section{Software}
 
