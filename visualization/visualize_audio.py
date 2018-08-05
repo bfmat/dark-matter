@@ -2,16 +2,13 @@
 """A tool for saving the audio from a bubble event as a graph in the time and frequency domains, as well as an audio clip that can be listened to"""
 # Created by Brendon Matusch, June 2018
 
-import itertools
 import os
 import sys
-import time
 
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.io import wavfile
 
-from data_processing.audio_domain_processing import time_to_frequency_domain
 from data_processing.bubble_data_point import load_bubble_audio, load_bubble_frequency_domain
 from data_processing.event_data_set import EventDataSet
 from utilities.verify_arguments import verify_arguments
