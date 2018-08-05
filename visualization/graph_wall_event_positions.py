@@ -15,6 +15,11 @@ events = [
     event for event in events
     if EventDataSet.passes_standard_cuts(event)
 ]
+# Filter out extreme outlier events where the Y position's magnitude is greater than or equal to 150
+events = [
+    event for event in events
+    if abs(event.y_position) < 150
+]
 # Get the X and Y positions of the events
 x_positions = [event.x_position for event in events]
 y_positions = [event.y_position for event in events]
