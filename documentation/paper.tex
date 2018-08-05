@@ -5,6 +5,9 @@
 \usepackage{parskip}
 \usepackage{amsmath}
 \usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+\usepackage{wrapfig}
 
 \addbibresource{paper.bib}
 
@@ -64,11 +67,23 @@ The raw waveform $\omega$ is converted into the frequency domain by means of a 1
 
 Beyond this, arbitrary-resolution banded Fourier transforms $\beta _{N<50,001}$ can be computed by integrating the resonant energy over all frequencies within each of a set of bands. They can be thought of as a method of signal downscaling, compressing the signal into a smaller number of data points. Particular band resolutions used include $\beta _{8}$ (which is the input to Acoustic Parameter and initial neural network experiments), $\beta _{5}$, $\beta _{10}$, $\beta _{20}$, and $\beta _{40}$.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{audio}
+    \caption{\label{} An example of the cropped audio waveform $\omega$ and full resolution Fourier transform $\beta_{50,001}$.}
+\end{figure}
+
 \subsection{Camera-Derived}
 
 \subsubsection{Image Window Sequence}
 
 For each event that is captured, the 4 cameras within the PICO-60 apparatus each capture a sequence of 71 images before and after formation of a bubble is detected. These raw images contain a large amount of extraneous information; they encompass the entire vessel. To reduce the input information, the image window sequence $\iota$ includes 50\texttimes50 cropped windows around the position of the bubble. The 71 frames, many of which contain either no bubble or a bubble in later stages of formation, are reduced to 10 immediately around the formation of the bubble. $\iota$ includes 5 frames from before the recording trigger, because the bubble does not cause a trigger until it is already at a significant size.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{image_grid}
+    \caption{\label{} An example of the image sequence $\iota$.}
+\end{figure}
 
 \subsubsection{3D Position}
 
