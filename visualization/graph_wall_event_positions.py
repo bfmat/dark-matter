@@ -3,6 +3,8 @@
 # Created by Brendon Matusch, July 2018
 
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+from matplotlib.patches import Patch
 
 from data_processing.event_data_set import EventDataSet
 
@@ -36,6 +38,14 @@ for x, y, color, shape in zip(x_positions, y_positions, fiducial_cut_colors, aud
         c=color,
         marker=shape
     )
+# Create patches for the 2 colors used to describe the status of the fiducial cut
+passes_fiducial_patch = Patch(color='b', label='Passes fiducial cut')
+fails_fiducial_patch = Patch(color='r', label='Fails fiducial cut')
+# Create line objects to represent the 2 markers used for audio and pressure cuts
+passes_audio_line = Line2D([], [], marker='o', label='Passes audio and pressure wall cuts')
+fails_audio_line = Line2D([], [], marker='x', label='Fails audio and/or pressure wall cuts')
+# Display them in a legend
+plt.legend(handles=[passes_fiducial_patch, fails_fiducial_patch, passes_audio_line, fails_audio_line])
 # Label the X and Y axes
 plt.xlabel('X Position')
 plt.ylabel('Y Position')
