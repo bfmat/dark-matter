@@ -181,13 +181,19 @@ It is difficult to say with a high degree of confidence whether or not this is a
 
 A multi-layer perceptron (a neural network composed of dense layers) was applied to analysis of audio data in the frequency domain. Preprocessing by applying a Fourier transform makes it an easier task for the neural network to accomplish in some ways. If the frequency distribution and overall volume are indeed the most important factors for discrimination, the network can gather them straight from the Fourier transform $\beta_{N}$ rather than having to analyze $\omega$ to extract this information.
 
-Once again, configurations with and without position input were tested: $FourierMLP(\beta_{N})$ and \\ $FourierMLPWithPos(\beta_{N}, \chi)$. Several different resolutions $N$ of $\beta_{N}$ were used. While there were variety of network architectures tested, most had a small number of layers (on the order of 3), applied dropout and L2 regularization, and used batch normalization once again.
+Once again, configurations with and without position input were tested. This time, position corrections were optionally included when position input was not used. The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$, $FourierMLP(PosCor(\beta_{N}))$ and $FourierMLPWithPos(\beta_{N}, \chi)$. Several different resolutions $N$ of $\beta_{N}$ were used. While there were variety of network architectures tested, most had a small number of layers (on the order of 3), applied dropout and L2 regularization, and used batch normalization once again.
 
-It became evident very quickly that a high resolution was not required to get a high accuracy relative to the ground truth data. A perceptron trained on $\beta_{8}$ managed an excellent 98\% validation accuracy by this metric. Increasing the number of bands seemed initially not to provide any improvement; the best accuracy reached with $\beta_{20}$ was 93\%, and with $\beta_{40}$ it was 94\%.
+It became evident very quickly that a high resolution was not required to get a high accuracy relative to the ground truth data. $FourierMLP(\beta_{8})$ managed an excellent 98\% validation accuracy by this metric. Increasing the number of bands seemed initially not to provide any improvement; the best accuracy reached with $\beta_{20}$ was 93\%, and with $\beta_{40}$ it was 94\%.
 
-Unlike for the convolutional neural network trained on $\omega$, wall cuts did not improve performance at all. While $FourierMLP(\beta_{N})$ peaked at 98\% validation accuracy, $FourierMLPWithPos(\beta_{N})$ reached only 95\%. Nevertheless, they both performed better than any of the network architectures trained on $\omega$.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{fourier_mlp_no_correction}
+    \caption{\label{fourier_mlp_no_correction} Accuracy of $FourierMLP(\beta_{8})$ compared to Acoustic Parameter at discriminating between run types (98\% accuracy).}
+\end{figure}
 
-That experimentation applied $WallCut(D)$ to the training and validation sets. Where the higher resolution demonstrated significant power was when $WallCut(D)$ was not applied, and only $QualCut(MultiCut(D))$ was used. The network trained on $\beta_{40}$ still managed 92\% validation accuracy. However, training on $\beta_{50,001}$, which does not incorporate any banding, improved this figure to a maximum of 97\%.
+Unlike for the convolutional neural network trained on $\omega$, position input did not improve performance at all. In fact, $FourierMLP(\beta_{8})$, performed better than $FourierMLPWithPos(\beta_{8}, \chi)$, which reached only 95\% validation accuracy. Nevertheless, they both performed better than any of the network architectures trained on $\omega$.
+
+In all previous experimentation, $WallCut(D)$ was applied to the training and validation sets. The higher resolution demonstrated significant power when $WallCut(D)$ was not applied, and only $QualCut(MultiCut(D))$ was used. $FourierMLPWithPos(\beta_{40}, \chi)$ still managed 92\% validation accuracy. However, training on $\beta_{50,001}$, which does not incorporate any banding, improved this figure to a maximum of 97\%.
 
 \subsection{Convolutional Neural Network for Image Window Analysis}
 
