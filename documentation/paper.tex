@@ -149,6 +149,12 @@ $45 < mean(\beta_{8}[(0, 2), (0, 1)]) < 300$
 
 This takes advantage of differences in the frequency distribution (specifically the first and second frequency bands of the first and third piezos) of wall events and non-wall events.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{wall_event_positions}
+    \caption{\label{} A visualization of the fiducial cuts and how they match up with the pressure and acoustic cuts.}
+\end{figure}
+
 \section{Supervised Learning}
 
 Supervised learning was the first step in the optimization procedure. It makes use of fully labeled calibration sets, which are used for training. Performance of these supervised neural networks is judged based on its accuracy at replication of the provided labels on a validation set (which is set aside and not trained on).
