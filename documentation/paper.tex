@@ -197,11 +197,17 @@ In all previous experimentation, $WallCut(D)$ was applied to the training and va
 
 \subsection{Convolutional Neural Network for Image Window Analysis}
 
-It is an open question whether or not there is any information in the image data $\iota$ that could be used to distinguish between particle classes. Relative to the extremely short period of time in which the bubble forms (on the scale of nanoseconds), the framerate of the camera (340Hz) is extremely slow. While the very early stages of bubble formation (when the sound is produced) are known to differ dependong on whether the bubble was created by a nuclear recoil or an alpha particle, it is unknown whether any visually apparent differences persist when the bubble is visible.
+It is an open question whether or not there is any information in the image data $\iota$ that could be used to distinguish between particle classes. Relative to the extremely short period of time in which the bubble forms (on the scale of nanoseconds), the framerate of the camera (340Hz) is extremely slow. While the very early stages of bubble formation (when the sound is produced) are known to differ depending on whether the bubble was created by a nuclear recoil or an alpha particle, it is unknown whether any visually apparent differences persist when the bubble is visible.
 
 In an effort to resolve this, a 2-dimensional convolutional neural network was applied to the task of discriminating based on $\iota$. The network architecture consists of a moderate number of convolutional layers (on the scale of 9) and 3 dense layers at the end. L2 regularization was used on all layers, and dropout was additionally used on the dense layers. No position input is used (since there are no microphones that would require position correction), so the basic configuration is $ImageConv(\iota)$.
 
-Throughout a variety of different network architectures, the best validation accuracy obtained was 85\%. (The corresponding training accuracy of 100\% indicates that severe overfitting is taking place.) It is likely fitting on some form of noise within $\iota$, since the network's predictions seem almost random when represented graphically. The fact that throughout many trials (including a grid search), no good performance on validation data was observed, provides significant evidence that images provide insufficient information for effective discrimination.
+Throughout a variety of different network architectures, the best validation accuracy obtained was 85\%. (The corresponding training accuracy of 100\% indicates that severe overfitting is taking place.) It is likely fitting on some form of noise within $\iota$, since the network's predictions seem almost random when represented graphically (as seen in Figure \ref{image_window}). The fact that throughout many trials (including a grid search), no good performance on validation data was observed, provides significant evidence that images provide insufficient information for effective discrimination.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{image_window}
+    \caption{\label{image_window} Accuracy of $ImageConv(\iota)$ compared to Acoustic Parameter at discriminating between run types (85\% accuracy).}
+\end{figure}
 
 \section{Semi-Supervised Learning}
 
