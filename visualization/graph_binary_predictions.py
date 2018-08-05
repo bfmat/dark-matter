@@ -7,6 +7,7 @@ import random
 import sys
 
 import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
 import numpy as np
 
 from data_processing.experiment_serialization import load_test
@@ -64,6 +65,11 @@ plt.scatter(
     y=network_outputs,
     c=point_colors
 )
+# Create patches that describe the 2 differently colored classes
+background_patch = Patch(color='r', label='Background radiation runs')
+calibration_patch = Patch(color='b', label='Neutron calibration runs')
+# Display them in a legend
+plt.legend(handles=[background_patch, calibration_patch])
 # Label the X and Y axes
 plt.xlabel('Logarithmic Acoustic Parameter')
 plt.ylabel('Neural Network Prediction')
