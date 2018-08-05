@@ -262,6 +262,14 @@ Parameterized by the initial seed threshold $j$ (on the order of 0.01) and the s
 
 During a grid search of these parameters (in addition to regularization parameters of the network), the best accuracy achieved for replication of Acoustic Parameter was exactly 100\%. The mean of all epochs within that training run was 98\%. Further demonstrating this is a powerful algorithm and that high performance was not a one-off, 35\% of the training runs replicated Acoustic Parameter with a mean accuracy greater than 92\%.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{icn_grid_search}
+    \caption{\label{icn_grid_search} Accuracy of best iterative cluster nucleation training run compared to Acoustic Parameter and original ground truths (100\% accuracy).}
+\end{figure}
+
+As seen in Figure \ref{icn_grid_search}, the network learned to replicate Acoustic Parameter very accurately. Interestingly, the examples with Acoustic Parameter values between the neutron and alpha particle ranges were also classified as such by the network.
+
 \section{Software}
 
 All programming for this study was done in Python 3. Keras \cite{keras}, running on a TensorFlow backend, was used for all machine learning tasks. NumPy and SciPy were used for linear algebra and signal processing. ROOT, scikit-image and scikit-learn were used for data loading and storage. Matplotlib was used for data visualization.
