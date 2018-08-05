@@ -59,6 +59,8 @@ point_colors = [
     'r' if ground_truth else 'b'
     for ground_truth in ground_truths
 ]
+# Set the size of the resulting graph (it should be standard across all such graphs)
+plt.figure(figsize=(8, 6))
 # Scatter plot the acoustic parameter on the X axis and the neural network's predictions on the Y axis
 plt.scatter(
     x=acoustic_parameters,
