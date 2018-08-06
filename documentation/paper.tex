@@ -294,15 +294,23 @@ Parameterized by the initial seed threshold $j$ (on the order of 0.01) and the s
     \item If no examples have been removed from $\upsilon$ and added to $\varsigma$, multiply $j$ by $k$ in place. This is done to increase the acceptance rate later in the training process, when most easily classifiable examples have been added to $\varsigma$. Otherwise, gridlock would occur, where certain examples could not be confidently classified given the training set.
 \end{enumerate}
 
-During a grid search of these parameters (in addition to regularization parameters of the network), the best accuracy achieved for replication of Acoustic Parameter was exactly 100\%. The mean of all epochs within that training run was 98\%. Further demonstrating this is a powerful algorithm and that high performance was not a one-off, 35\% of the training runs replicated Acoustic Parameter with a mean accuracy greater than 92\%.
+During a grid search of these parameters (in addition to regularization parameters of the network), the best accuracy achieved for replication of Acoustic Parameter was exactly 100\%. The mean of all epochs within that training run was 98\%.
+
+Further demonstrating this is a powerful algorithm and that high performance was not a one-off, 35\% of the training runs replicated Acoustic Parameter with a mean accuracy greater than 92\% (shown in Figure \ref{icn_accuracy_by_run}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{icn_accuracy_by_run}
+    \caption{\label{icn_accuracy_by_run} Mean accuracy of iterative cluster nucleation configurations during grid search.}
+\end{figure}
+
+As seen in Figure \ref{icn_grid_search}, the network learned to replicate Acoustic Parameter very accurately. Interestingly, the examples with Acoustic Parameter values between the neutron and alpha particle ranges were also classified as such by the network.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{icn_grid_search}
     \caption{\label{icn_grid_search} Accuracy of best iterative cluster nucleation training run compared to Acoustic Parameter and original ground truths (100\% accuracy).}
 \end{figure}
-
-As seen in Figure \ref{icn_grid_search}, the network learned to replicate Acoustic Parameter very accurately. Interestingly, the examples with Acoustic Parameter values between the neutron and alpha particle ranges were also classified as such by the network.
 
 \section{Software}
 
