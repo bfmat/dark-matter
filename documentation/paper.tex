@@ -48,7 +48,7 @@ In this study, newly developed methodologies were compared to the following disc
 
 Acoustic Parameter is the technique used for event discrimination in the original PICO-60 analysis. It is a function that discriminates between alpha particles and nuclear recoils based on audio data. It was derived based on a physical model of the bubble chamber, and was tuned using calibration runs using neutron sources to produce events in the PICO-60 apparatus.
 
-For Acoustic Parameter to be sufficiently accurate, the audio data must first be converted into the frequency domain (specifically, with the banded Fourier transform $\beta_{8}$), and preprocessed with the position correction function $PosCor(\chi)$. In addition, a set of data cuts must be applied to remove certain classes of events. These conversion, preprocessing, and data cutting steps were re-applied during this study, and are described in section \ref{data_formats}.
+For Acoustic Parameter to be sufficiently accurate, the audio data must first be converted into the frequency domain (specifically, with the banded Fourier transform $\beta_{8}$), and preprocessed with the position correction function $PosCor(\chi)$. In addition, a set of data cuts must be applied to remove certain classes of events. These conversion, preprocessing, and data cutting steps were reapplied during this study, and are described in section \ref{data_formats}.
 
 \subsubsection{Machine Learning}
 
@@ -159,6 +159,14 @@ This takes advantage of differences in the frequency distribution (specifically 
 \end{figure}
 
 \section{Machine Learning Techniques}
+
+\subsection{Background}
+
+While machine learning has existed for many years, recent developments in artificial neural networks have opened up a wide variety of applications and fields in which it can now be used.
+
+One of the key benefits of machine learning systems is that they have the capacity to approximate arbitrary functions (such as Acoustic Parameter) without human intervention. This greatly alleviates the need for human programmers to define and optimize the exact algorithm used.
+
+This characteristic has already shown wide-ranging implications in many fields. For one, it has the potential to drastically increase the speed of iteration for the people working on a project, since retraining a machine learning system when a hardware or software variable changes is much faster than calibrating a human-designed model.
 
 \subsection{Hyperparameter Optimization}
 
