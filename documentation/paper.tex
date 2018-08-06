@@ -48,7 +48,11 @@ In this study, newly developed methodologies were compared to the following disc
 
 Acoustic Parameter is the technique used for event discrimination in the original PICO-60 analysis. It is a function that discriminates between alpha particles and nuclear recoils based on audio data. It was derived based on a physical model of the bubble chamber, and was tuned using calibration runs using neutron sources to produce events in the PICO-60 apparatus.
 
-For Acoustic Parameter to be sufficiently accurate, the audio data must first be converted into the frequency domain (specifically, with the banded Fourier transform $\beta_{8}$), and preprocessed with the position correction function $PosCor(\chi)$. In addition, a set of data cuts must be applied to remove certain classes of events. These conversion, preprocessing, and data cutting steps were reapplied during this study, and are described in section \ref{data_formats}.
+Before Acoustic Parameter can be calculated, the audio data must first be converted into the frequency domain (specifically, with the banded Fourier transform $\beta_{8}$). It must also be preprocessed with the position correction function $PosCor(\beta_{8}, \chi)$, which adjusts the overall volume of an audio recording according to its position in the vessel. This is done because the resonance characteristics differ significantly depending on the position of an event.
+
+Finally, a set of data cuts must be applied to remove certain classes of events which are not accurately classified by Acoustic Parameter. These classes include wall event and multiple-bubble events.
+
+These conversion, preprocessing, and data cutting steps were reapplied during this study, and are described in section \ref{data_formats}.
 
 \subsubsection{Machine Learning}
 
@@ -66,9 +70,9 @@ The lowest-level data derived from the piezos is the raw waveform $\omega$. $\om
 
 \textit{Fourier Transform}
 
-The raw waveform $\omega$ is converted into the frequency domain by means of a 1-dimensional Discrete Fourier Transform for real input. Since DFTs produce sequences of complex numbers, the magnitude of each element is computed. The full-resolution Fourier transform $\beta _{50,000}$ consists of a sequence of complex numbers, half the length of the raw waveform $\omega$.
+The raw waveform $\omega$ was converted into the frequency domain by means of a 1-dimensional Discrete Fourier Transform for real input. Since DFTs produce sequences of complex numbers, the magnitude of each element was computed. The full-resolution Fourier transform $\beta _{50,000}$ consists of a sequence of complex numbers, half the length of the raw waveform $\omega$.
 
-Beyond this, arbitrary-resolution banded Fourier transforms $\beta _{N<50,001}$ can be computed by integrating the resonant energy over all frequencies within each of a set of bands. They can be thought of as a method of signal downscaling, compressing the signal into a smaller number of data points. Particular band resolutions used include $\beta _{8}$ (which is the input to Acoustic Parameter and initial neural network experiments), $\beta _{5}$, $\beta _{10}$, $\beta _{20}$, and $\beta _{40}$.
+Beyond this, the banded Fourier transform $\beta_{8}$ (which is the input to Acoustic Parameter and the original neural analysis) was computed by integrating the resonant energy over all frequencies within each of a set of bands. This can be thought of as a method of signal downscaling, compressing the signal into a smaller number of data points.
 
 \begin{figure}[h]
     \centering
@@ -187,11 +191,15 @@ Supervised learning was the first step in the optimization procedure. It makes u
 
 A convolutional neural network was used for analyzing the raw waveform $\omega$ directly, without any preprocessing whatsoever, and without application of $WallCut(D)$. This avoids any destruction of information, and should be possible, in theory, for a neural network to handle. For this task, a very deep 1-dimensional fully convolutional neural network was applied. The architecture was inspired by the M34-res network \cite{verydeepconvnets} for analysis of raw waveforms. L2 regularization was used to alleviate overfitting, and batch normalization was applied to the input. (Its hyperparameters were modified significantly through manual empirical testing as well as grid searches.)
 
-Two different configurations were tested: one that operates strictly on $\omega$ with no position corrections of any kind (furthermore $DeepConv(\omega)$) and one with an additional position input on a lower layer such that it should be able to learn to incorporate position corrections into its outputs ($DeepConvWithPos(\omega, \chi)$). The second configuration was introduced because the position corrections applied to $\beta_{8}$ in previous PICO-60 research were applied only to broad frequency bands and are thus not practical to apply to a full resolution waveform.
+Two different configurations were tested:
+\begin{enumerate}
+    \item A configuration that operates strictly on $\omega$ with no position corrections of any kind (furthermore $DeepConv(\omega)$).
+    \item A configuration with an additional position input on a lower layer such that it should be able to learn to incorporate position corrections into its outputs ($DeepConvWithPos(\omega, \chi)$).
+\end{enumerate}
 
-During early tests with variations on $DeepConv(\omega)$, it was revealed to have an incredible capability to separate run types based on unwanted biases. It was able to separate the AmBe calibration run from combined background runs with 96\% accuracy, and to separate all calibration runs from background runs with 91\% accuracy. However, during these tests, the white noise at the beginning and hydraulic recompression sounds at the end were not cropped off, and the network was shown to be overfitting on this information.
+During early tests with variations on $DeepConv(\omega)$, it was revealed to have an incredible capacity to separate run types based on unwanted biases. It was able to separate the AmBe calibration run from combined background runs with 96\% accuracy, and to separate all calibration runs from background runs with 91\% accuracy. This was determined to be caused by the network detecting and fitting on biases in the white noise at the beginning and hydraulic recompression sounds at the end of the raw waveform. This extraneous information was subsequently cropped out.
 
-Once the audio was cropped properly, $DeepConv(\omega)$ achieved a maximum of 77\% accuracy on validation data. Using the same network architecture (except for the input layer), $DeepConvWithPos(\omega, \chi)$ managed 85\%. The maximum obtained on a grid search with position correction was 91\%. While this is not a drastic improvement, it is a fairly strong indication that the network is able to extract meaningful information from the position, which may be used in an internal position correction of the volume.
+Once the audio was cropped properly, $DeepConv(\omega)$ achieved a maximum of 77\% accuracy on validation data. Using the same network architecture (except for the input layer), $DeepConvWithPos(\omega, \chi)$ achieved 85\%. The maximum obtained on a grid search with position correction was 91\%. While this is not a drastic improvement, it is a fairly strong indication that the network is able to extract meaningful information from the position, which may be used in an internal position correction of the volume.
 
 It is difficult to say with a high degree of confidence whether or not this is an effective discriminator, since Acoustic Parameter is not decisive on data without $WallCut(D)$. However, the lack of decisiveness observed even when accuracy was relatively high, as seen in Figure \ref{waveform_best_validation}, implies this is a suboptimal technique.
 
@@ -203,7 +211,9 @@ It is difficult to say with a high degree of confidence whether or not this is a
 
 \subsection{Multi-Layer Perceptron for Fourier Transform Analysis}
 
-A multi-layer perceptron (a neural network composed of dense layers) was applied to analysis of audio data in the frequency domain. Preprocessing by applying a Fourier transform makes it an easier task for the neural network to accomplish in some ways. If the frequency distribution and overall volume are indeed the most important factors for discrimination, the network can gather them straight from the Fourier transform $\beta_{N}$ rather than having to analyze $\omega$ to extract this information.
+Preprocessing the audio by applying a Fourier transform may be advantageous. If the frequency distribution and overall volume are indeed the most important factors for discrimination, the network can gather them straight from the Fourier transform $\beta_{N}$ rather than having to analyze $\omega$ to extract this information.
+
+In addition to the Fourier transform used in the original PICO-60 analysis, higher resolutions were computed by similar means. These included $\beta _{5}$, $\beta _{10}$, $\beta _{20}$, and $\beta _{40}$. Also, the full-resolution $\beta _{50,001}$ was input into a neural network directly, without any downscaling.
 
 Once again, configurations with and without position input were tested. This time, position corrections were optionally included when position input was not used. The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$, $FourierMLP(PosCor(\beta_{N}))$ and $FourierMLPWithPos(\beta_{N}, \chi)$. Several different resolutions $N$ of $\beta_{N}$ were used. While there were variety of network architectures tested, most had a small number of layers (on the order of 3), applied dropout and L2 regularization, and used batch normalization once again.
 
