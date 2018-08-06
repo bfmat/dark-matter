@@ -296,6 +296,14 @@ Parameterized by the initial seed threshold $j$ (on the order of 0.01) and the s
 
 During a grid search of these parameters (in addition to regularization parameters of the network), the best accuracy achieved for replication of Acoustic Parameter was exactly 100\%. The mean of all epochs within that training run was 98\%.
 
+As seen in Figure \ref{icn_grid_search}, the network learned to replicate Acoustic Parameter very accurately. Interestingly, the examples with Acoustic Parameter values between the neutron and alpha particle ranges were also classified as such by the network. This may imply the indecisiveness on these examples is fundamental to the data rather than an implementation problem with Acoustic Parameter.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{icn_grid_search}
+    \caption{\label{icn_grid_search} Accuracy of best iterative cluster nucleation training run compared to Acoustic Parameter and original ground truths (100\% accuracy).}
+\end{figure}
+
 Further demonstrating this is a powerful algorithm and that high performance was not a one-off, 35\% of the training runs replicated Acoustic Parameter with a mean accuracy greater than 92\% (shown in Figure \ref{icn_accuracy_by_run}.
 
 \begin{figure}[h]
@@ -304,12 +312,12 @@ Further demonstrating this is a powerful algorithm and that high performance was
     \caption{\label{icn_accuracy_by_run} Mean accuracy of iterative cluster nucleation configurations during grid search.}
 \end{figure}
 
-As seen in Figure \ref{icn_grid_search}, the network learned to replicate Acoustic Parameter very accurately. Interestingly, the examples with Acoustic Parameter values between the neutron and alpha particle ranges were also classified as such by the network.
+Digging deeper into the performance throughout the runs of the grid search, Figure \ref{icn_acc_by_hyper} shows the mean accuracy as a function of each of the hyperparameters that were optimized. Dropout has a clear effect, with 25\% shown to be the optimal number of neurons to drop. L2 regularization is also significant; all $\lambda$ values greater than 0 make performance worse.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{icn_grid_search}
-    \caption{\label{icn_grid_search} Accuracy of best iterative cluster nucleation training run compared to Acoustic Parameter and original ground truths (100\% accuracy).}
+    \includegraphics[width=\textwidth]{icn_acc_by_hyper}
+    \caption{\label{icn_acc_by_hyper} Mean accuracy of iterative cluster nucleation as a function of hyperparameter values.}
 \end{figure}
 
 \section{Software}
