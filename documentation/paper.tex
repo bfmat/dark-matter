@@ -7,6 +7,7 @@
 \usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
 \usepackage{graphicx}
 \usepackage{wrapfig}
+\usepackage{svg}
 
 \graphicspath{{./images/}}
 
@@ -283,6 +284,27 @@ Figure \ref{grav_opt_validation} shows the highly accurate replication of Acoust
     \centering
     \includegraphics[width=\textwidth]{grav_opt_validation}
     \caption{\label{grav_opt_validation} Accuracy of optimal gravitational differentiation training run compared to Acoustic Parameter (98\% accuracy).}
+\end{figure}
+
+This was not the only configuration that performed well; as seen in Figure \ref{grav_acc_by_run}, 10\% of the runs during the grid search produced accuracy greater than 93\%.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{grav_acc_by_run}
+    \caption{\label{grav_acc_by_run} Accuracy of gravitational differentiation arranged by training run during the grid search.}
+\end{figure}
+
+As seen in Figure \ref{grav_acc_by_hyper}, all 3 hyperparameters that were optimized during the grid search had a significant effect on accuracy:
+\begin{itemize}
+    \item Smaller gravitational multipliers improved performance; the best value tested was 0.0005. This implies that the gravity effect on each unlabeled event should be weighted lightly compared to the labeled examples.
+    \item Higher learning rates improve performance, with the best value tested at a quite high 0.03.
+    \item Larger distortion powers (which raise the confidence threshold for a significant gravitational effect) improved performance, with the best tested at 11.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{grav_acc_by_hyper}
+    \caption{\label{grav_acc_by_hyper} Accuracy of gravitational differentiation as a function of hyperparameter values.}
 \end{figure}
 
 \subsection{Iterative Cluster Nucleation}
