@@ -37,14 +37,15 @@ for hyperparameter, human_readable in [('gravity_multiplier_increment', 'Gravity
             disagreement_by_hyperparameter_value[hyperparameter_value] = []
         # Add the corresponding disagreements to the list
         disagreement_by_hyperparameter_value[hyperparameter_value].append(disagreements)
-    # Add the dictionary to the dictionary for all hyperparameters
-    disagreement_dictionaries[human_readable] = disagreement_by_hyperparameter_value
     # Replace the lists of means by run with the overall mean for that hyperparameter value
     for hyperparameter_value in disagreement_by_hyperparameter_value:
         disagreement_by_hyperparameter_value[hyperparameter_value] = np.mean(disagreement_by_hyperparameter_value[hyperparameter_value])
+    print(disagreement_by_hyperparameter_value)
     # Find the index of the best number of disagreements, and print out the corresponding optimal hyperparameter value
     # The key and value views must be converted to lists, otherwise argmin will return an incorrect index
     print(f'Optimal {hyperparameter}: {list(disagreement_by_hyperparameter_value.keys())[np.argmin(list(disagreement_by_hyperparameter_value.values()))]}')
+    # Add the dictionary to the dictionary for all hyperparameters
+    disagreement_dictionaries[human_readable] = disagreement_by_hyperparameter_value
 
 # Create a figure with a predefined size
 plt.figure(figsize=(10, 12))
