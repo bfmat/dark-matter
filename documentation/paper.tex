@@ -347,6 +347,7 @@ This was not the only configuration that performed well; as seen in Figure \ref{
 \end{figure}
 
 As seen in Figure \ref{grav_acc_by_hyper}, all 3 hyperparameters that were optimized during the grid search had a significant effect on accuracy:
+
 \begin{itemize}
     \item Smaller gravitational multipliers improved performance; the best value tested was 0.0005. This implies that the gravity effect on each unlabeled event should be weighted lightly compared to the labeled examples.
     \item Higher learning rates improve performance, with the best value tested at a quite high 0.03.
@@ -358,6 +359,8 @@ As seen in Figure \ref{grav_acc_by_hyper}, all 3 hyperparameters that were optim
     \includegraphics[width=\textwidth]{grav_acc_by_hyper}
     \caption{\label{grav_acc_by_hyper} Accuracy of gravitational differentiation as a function of hyperparameter values.}
 \end{figure}
+
+Two different options were tested with regard to size of the labeled data set $\varsigma$. Out of a set of 496 total examples available for training, either 128 (approximately $1/4$ of the total set) or 256 (approximately $1/2$) were used as labeled data. Over the entire grid search, runs with 128 examples in $\varsigma$ produced on average 64\% more errors on validation data, compared to those with 256 examples.
 
 \subsection{Iterative Cluster Nucleation}
 
