@@ -14,6 +14,8 @@ verify_arguments('path to AP similarity log file')
 # Load all lines in the file
 with open(os.path.expanduser(sys.argv[1])) as file:
     lines = file.readlines()
+# Remove lines that contain ground truth data from the gravitational differentiation grid search
+lines = [line for line in lines if '_ground_truths' not in line]
 # Take only the lines containing the mean disagreement statistics, and extract the numeric values
 mean_disagreements = [float(line.split()[1]) for line in lines if 'Mean' in line]
 # Calculate the corresponding accuracy values, by dividing by the total validation examples and subtracting from 1
