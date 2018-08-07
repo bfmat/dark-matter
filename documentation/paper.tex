@@ -275,6 +275,16 @@ This function is applied in a training algorithm that is parameterized by the se
     \item Increment $g$ by $\delta_{g}$. At the beginning, when $g = 0$, training will be entirely based on the labeled set $\varsigma$, and progressively, over the course of a run, the gravitational effect increases with $g$.
 \end{enumerate}
 
+During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the algorithm achieved a maximum of 98\% validation accuracy. The mean over that run (also the highest overall) was 96\%.
+
+Figure \ref{grav_opt_validation} shows the highly accurate replication of Acoustic Parameter. However, the examples that are classified incorrectly seem to have no correlation with Acoustic Parameter, suggesting that the learned function cues on different properties of the audio. While the discriminator may still be accurate, this property implies it may be less predictable when trained on new data sets.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{grav_opt_validation}
+    \caption{\label{grav_opt_validation} Accuracy of optimal gravitational differentiation training run compared to Acoustic Parameter (98\% accuracy).}
+\end{figure}
+
 \subsection{Iterative Cluster Nucleation}
 
 Iterative cluster nucleation is a semi-supervised learning algorithm that takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator. The algorithm is initialized as follows:
@@ -301,7 +311,7 @@ As seen in Figure \ref{icn_grid_search}, the network learned to replicate Acoust
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{icn_grid_search}
-    \caption{\label{icn_grid_search} Accuracy of best iterative cluster nucleation training run compared to Acoustic Parameter and original ground truths (100\% accuracy).}
+    \caption{\label{icn_grid_search} Accuracy of optimal iterative cluster nucleation training run compared to Acoustic Parameter (100\% accuracy).}
 \end{figure}
 
 Further demonstrating this is a powerful algorithm and that high performance was not a one-off, 35\% of the training runs replicated Acoustic Parameter with a mean accuracy greater than 92\% (shown in Figure \ref{icn_accuracy_by_run}.
