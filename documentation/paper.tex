@@ -292,7 +292,13 @@ In both of the semi-supervised learning algorithms applied, to arrive at an effe
 
 The essence of these 2 algorithms, then, is a positive feedback loop in which, by using the network's most confident predictions in the training process, the desired (simpler) function is reinforced, when a conventional supervised learning system would have learned the more complex function that is taught by the ground truths.
 
-Performance of the supervised learning systems was quantified by how accurately they reproduced the labels provided to them (on a validation set). They were observed to learn to separate the calibration runs from background runs, including the percentage of alpha particles present in the calibration runs. One of the main intents of semi-supervised learning is to address the impure training data. Therefore, their performance is quantified by how well it is able to replicate Acoustic Parameter, rather than simply reproduce the labels provided.
+In addition to improving performance with a labeled set known to be adequate, a goal of this category of techniques is to minimize the amount of labeled data necessary. This means less time must be spent on collection of calibration data, which can be a very slow process. Regularization techniques, which permit effective training on smaller sets, are applied with this purpose.
+
+\subsection{Performance Analysis}
+
+One of the main purposes of semi-supervised learning is to handle the impure training data effectively, and learn to replicate the imperfectly represented underlying pattern (nuclear recoils versus alpha particles) rather than merely fitting to separate run types.
+
+Therefore, performance is quantified by how accurately a system is able to replicate Acoustic Parameter, rather than simply reproduce the labels provided. Accuracy of the neural network in the original PICO-60 paper is also provided as a baseline.
 
 \subsection{Gravitational Differentiation}
 
