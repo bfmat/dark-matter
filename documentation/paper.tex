@@ -310,6 +310,8 @@ The following table compares the accuracy and mean class-wise standard deviation
     \hline
     Existing NN TODO & X & X \\
     \hline
+    AP TODO & X & X \\
+    \hline
 \end{tabular}
 
 \section{Semi-Supervised Learning} \label{semi_supervised}
@@ -354,7 +356,7 @@ This function is applied in a training algorithm that is parameterized by the se
     \item Increment $g$ by $\delta_{g}$. At the beginning, when $g = 0$, training will be entirely based on the labeled set $\varsigma$, and progressively, over the course of a run, the gravitational effect increases with $g$.
 \end{enumerate}
 
-This system was trained using $FourierMLP(\beta_{8})$ for $NN(x)$, because this was the most successful configuration in supervised learning. It produced the highest accuracy as well as the lowest class-wise standard deviation.
+This system was trained using a multi-layer perceptron with an 8-band Fourier transform input for $NN(x)$, because this was one of the most successful configurations in supervised learning. It produced the highest accuracy as well as the lowest class-wise standard deviation.
 
 \subsubsection{Results}
 
@@ -435,15 +437,21 @@ Compared to gravitational differentiation, there is a larger delta between the n
 
 The following table directly compares performance of the semi-supervised learning systems, with the existing PICO-60 neural network provided as a baseline once again. Note that ``Max AP Accuracy'' refers to accuracy at replication of Acoustic Parameter, rather than replication of the ground truths.
 
-\begin{tabular}{|l|l|l|l|}
+\begin{tabular}{|l|l|l|}
     \hline
-    Technique & Max AP Accuracy & Max Mean by Run & $\varsigma$ Errors: 128 versus 256 \\
+    Technique & Max AP Accuracy & Max Mean by Run \\
     \hline
-    Gravitational Differentiation & 98\% & 96\% & 64\% Increase \\
+    Gravitational Differentiation (256 $\varsigma$) & 98\% & 96\% \\
     \hline
-    Iterative Cluster Nucleation & 100\% & 98\% & 85\% Increase \\
+    Gravitational Differentiation (128 $\varsigma$) & TODO & TODO \\
     \hline
-    Existing NN TODO & X & X & X \\
+    Iterative Cluster Nucleation (256 $\varsigma$) & 100\% & 98\% \\
+    \hline
+    Iterative Cluster Nucleation (128 $\varsigma$) & TODO & TODO \\
+    \hline
+    Existing NN TODO & X & X \\
+    \hline
+    AP TODO & X & X \\
     \hline
 \end{tabular}
 
