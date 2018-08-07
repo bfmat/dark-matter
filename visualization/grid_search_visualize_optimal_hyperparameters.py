@@ -25,7 +25,7 @@ mean_disagreements = [float(line.split()[1]) for line in mean_lines]
 disagreement_dictionaries = {}
 # Iterate over each of the hyperparameters that are used, alongside human-readable names
 # `distortion_root` is the old name for distortion power
-for hyperparameter, human_readable in [('gravity_multiplier_increment', 'Gravity Multiplier Increment'), ('learning_rate', 'Learning Rate'), ('distortion_root', 'Distortion Power'), ('definitive_training_examples', 'Definitive Training Examples')]:
+for hyperparameter, human_readable in [('dropout', 'Dropout'), ('l2_lambda', 'L2 Regularization Lambda'), ('initial_threshold', 'Initial Training Threshold'), ('threshold_multiplier', 'Training Threshold Multiplier'), ('initial_examples', 'Initial Examples')]:
     # Create a dictionary to add lists of disagreement values according to hyperparameter values
     disagreement_by_hyperparameter_value = {}
     # Iterate over each of the mean lines with corresponding disagreement values
@@ -51,7 +51,7 @@ plt.figure(figsize=(10, 12))
 # Iterate over the human readable names of the 4 hyperparameters with a corresponding index for the plot
 for plot_index, human_readable in enumerate(disagreement_dictionaries):
     # Select a subplot with the current index (plus 1, since Matplotlib is 1-indexed)
-    plt.subplot(2, 2, plot_index + 1)
+    plt.subplot(2, 3, plot_index + 1)
     # Get the hyperparameter values from the dictionary
     hyperparameter_values = list(disagreement_dictionaries[human_readable].keys())
     # Calculate the corresponding accuracy values, by dividing by the total validation examples and subtracting from 1
