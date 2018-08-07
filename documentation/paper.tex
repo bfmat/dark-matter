@@ -242,7 +242,7 @@ Two different configurations were tested:
 
 During early tests with variations on $DeepConv(\omega)$, it was revealed to have an incredible capacity to separate run types based on unwanted biases. It was able to separate the AmBe calibration run from combined background runs with 96\% accuracy, and to separate all calibration runs from background runs with 91\% accuracy. This was determined to be caused by the network detecting and fitting on biases in the white noise at the beginning and hydraulic recompression sounds at the end of the raw waveform. This extraneous information was subsequently cropped out.
 
-Once the audio was cropped properly, $DeepConv(\omega)$ achieved a maximum of 77\% accuracy on validation data. Using the same network architecture (except for the input layer), $DeepConvWithPos(\omega, \chi)$ achieved 85\%. The maximum obtained on a grid search with position correction was 91\%. While this is not a drastic improvement, it is a fairly strong indication that the network is able to extract meaningful information from the position, which may be used in an internal position correction of the volume.
+Once the audio was cropped properly, $DeepConv(\omega)$ achieved a maximum of 77\% accuracy on validation data. Using the same network architecture (except for the input layer), $DeepConvWithPos(\omega, \chi)$ achieved 85\%. The maximum obtained on a grid search with position input was 91\% (although with a high class-wise standard deviation of 0.61). While this is not a drastic improvement, it is a fairly strong indication that the network is able to extract meaningful information from the position, which may be used in an internal position correction of the volume.
 
 However, the lack of decisiveness observed even when accuracy was relatively high, as seen in Figure \ref{waveform_best_validation}, implies this is a suboptimal technique.
 
@@ -266,7 +266,7 @@ Once again, configurations with and without position input were tested. This tim
 
 \subsubsection{Results}
 
-It became evident very quickly that, without $WallCut(D)$ a high resolution was not required to get a high accuracy relative to the ground truth data. $FourierMLP(\beta_{8})$ managed an excellent 98\% validation accuracy by this metric. Increasing the number of bands, even up to $FourierMLPWithPos(beta_{20}, \chi)$, did not improve the results; accuracy only reached 94\%.
+It became evident very quickly that, without $WallCut(D)$, a high resolution was not required to get a high accuracy relative to the ground truth data. $FourierMLP(\beta_{8})$ managed an excellent 98\% validation accuracy, and also produced a mean class-wise standard deviation of 0.29. Increasing the number of bands, even up to $FourierMLPWithPos(beta_{20}, \chi)$, did not improve the results; accuracy only reached 95\%, with an increased mean standard deviation of 0.42.
 
 \begin{figure}[h]
     \centering
@@ -276,7 +276,7 @@ It became evident very quickly that, without $WallCut(D)$ a high resolution was 
 
 Unlike for the convolutional neural network trained on $\omega$, position input did not improve performance at all. In fact, $FourierMLP(\beta_{8})$, performed better than $FourierMLPWithPos(\beta_{8}, \chi)$, which reached only 95\% validation accuracy. Nevertheless, they both performed better than any of the network architectures trained on $\omega$.
 
-The higher resolution demonstrated significant power when $WallCut(D)$ was not applied, and only \\ $QualCut(MultiCut(D))$ was used. $FourierMLPWithPos(\beta_{20}, \chi)$ achieved only 92\% accuracy (2 percentage points lower than the same configuration without $WallCut(D)$). $FourierMLPWithPos(\beta_{40}, \chi)$ also managed 92\% validation accuracy. However, training on $\beta_{50,001}$, which does not incorporate any banding, improved this figure to a maximum of 97\%.
+The higher resolution demonstrated significant power when $WallCut(D)$ was not applied, and only \\ $QualCut(MultiCut(D))$ was used. $FourierMLPWithPos(\beta_{20}, \chi)$ achieved only 92\% accuracy (2 percentage points lower than the same configuration without $WallCut(D)$). $FourierMLPWithPos(\beta_{40}, \chi)$ also managed 92\% validation accuracy. However, training on $\beta_{50,001}$, which does not incorporate any banding, improved this figure to a maximum of 97\%. However, that epoch had a relatively high standard deviation, at 0.47.
 
 \subsection{Convolutional Neural Network for Image Window Analysis}
 
@@ -286,11 +286,9 @@ It is an open question whether or not there is any information in the image data
 
 In an effort to resolve this, a 2-dimensional convolutional neural network was applied to the task of discriminating based on $\iota$. The network architecture consists of a moderate number of convolutional layers (on the scale of 9) and 3 dense layers at the end. L2 regularization was used on all layers, and dropout was additionally used on the dense layers. No position input is used (since there are no microphones that would require position correction), so the basic configuration is $ImageConv(\iota)$.
 
-$WallCut(D)$ was not applied to the training set, because while the resonance in the vessel varies greatly depending on the position of the bubble, any visual differences in the bubble should not. In addition, applying it reduces the size of the training set considerably.
-
 \subsubsection{Results}
 
-Throughout a variety of different network architectures, the best validation accuracy obtained was 85\%. (The corresponding training accuracy of 100\% indicates that severe overfitting is taking place.) It is likely fitting on some form of noise within $\iota$, since the network's predictions seem almost random when represented graphically (as seen in Figure \ref{image_window}). The fact that throughout many trials (including a grid search), no good performance on validation data was observed, provides significant evidence that images provide insufficient information for effective discrimination.
+Throughout a variety of different network architectures, the best validation accuracy obtained was 85\%. The corresponding training accuracy of 100\% indicates that severe overfitting is taking place. Also, the class-wise standard deviation was a very high 0.95, which implies its decisions are nearly random (as is apparent in \ref{image_window}). It is likely fitting on some form of noise within $\iota$. The fact that throughout many trials (including a grid search), no good performance on validation data was observed, provides significant evidence that images provide insufficient information for effective discrimination.
 
 \begin{figure}[h]
     \centering
