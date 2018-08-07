@@ -296,6 +296,20 @@ Throughout a variety of different network architectures, the best validation acc
     \caption{\label{image_window} Accuracy of $ImageConv(\iota)$ compared to Acoustic Parameter at discriminating between run types (85\% accuracy).}
 \end{figure}
 
+\subsection{Performance Summary}
+
+The following table compares the accuracy and mean class-wise standard deviation values of various supervised learning configurations:
+
+\begin{tabular}{|l|l|l|}
+    \hline
+    Configuration & Optimal Accuracy & Mean Class-Wise Standard Deviation \\
+    \hline
+    $DeepConv(\omega)$ & 77\% & X \\
+    \hline
+    $DeepConvWithPos(\omega, \chi)$ & 91\% & X \\
+    \hline
+\end{tabular}
+
 \section{Semi-Supervised Learning} \label{semi_supervised}
 
 \subsection{Overview}
@@ -431,7 +445,7 @@ Compared to gravitational differentiation, there is a larger delta between the n
 
 \subsection{Performance Summary}
 
-The following table directly compares performance of the semi-supervised learning systems, and also includes the neural network used in the original PICO-60 paper as a baseline.
+The following table directly compares performance of the semi-supervised learning systems, and also includes the neural network used in the original PICO-60 paper as a baseline:
 
 \begin{tabular}{|l|l|l|l|}
     \hline
