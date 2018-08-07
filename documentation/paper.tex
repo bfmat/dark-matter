@@ -25,7 +25,7 @@ To resolve this, physicists must determine a discriminator function that can, ba
 
     \item The primary intention of many dark matter experiments, which is to reduce background radiation to the lowest level possible, means that there will be a very small number of background events detected. This places a severe limit on the amount of data that is available to optimize such a discriminator.
 
-    Furthermore, what little data is available to optimize a discriminator very often contains impurities, because whatever background radiation is present during WIMP detection runs is also present during calibration runs. These are difficult to separate without already having access to a functional discriminator, creating a ``chicken or the egg'' problem (from which one of the most common ways to escape is to create a time- and labor-intensive simulation).
+    Furthermore, what little data is available to optimize a discriminator very often contains impurities, because whatever background radiation is present during WIMP detection runs is also present during calibration runs. These are difficult to separate without already having access to a functional discriminator, creating a ``chicken or the egg'' problem (from which a common way to escape is to create a time- and labor-intensive simulation).
 \end{enumerate}
 
 The objective of this study is to explore a potential methodology that resolves both of these problems using techniques based on machine learning. These include supervised learning algorithms that learn to separate calibration data sets, and semi-supervised learning algorithms that simultaneously learn an effective discriminator and improve the purity of their own training data sets.
@@ -172,6 +172,21 @@ One of the key benefits of machine learning systems is that they have the capaci
 
 This characteristic has already shown wide-ranging implications in many fields. For one, it has the potential to drastically increase the speed of iteration for the people working on a project, since retraining a machine learning system when a hardware or software variable changes is much faster than calibrating a human-designed model.
 
+\subsection{Techniques Considered}
+
+Machine learning techniques are usually divided into two main categories:
+
+\begin{itemize}
+    \item Supervised learning, in which a system is trained on a set of labeled data to classify unseen examples according to the patterns it observes in the training set. The training set is very important; biases and errors often slow training and produce worse results.
+    \item Unsupervised learning, in which a system finds patterns or clusters in a set of unlabeled data. This can find order in almost any training set, but it is unpredictable and may not find the particular patterns it is expected to find.
+\end{itemize}
+
+A significant challenge in this application is that neither supervised nor unsupervised learning is ideal. The calibration sets available for training are not pure, so supervised learning is likely to overfit on biases and produce undesirable results. Conversely, unsupervised learning may be able to find clusters in the data, but it is impossible to guarantee it will distinguish between nuclear recoils and alpha particles as opposed to some other binary separation.
+
+For these reasons, a technique is needed that is not as sensitive to problematic training data as supervised learning, but more predictable and controllable than unsupervised learning. Semi-supervised learning is a middle ground in this regard. It makes use of a labeled set as well as an unlabeled set. It uses the labeled set for training, and uses the unlabeled set to further structure the patterns it finds in the training set (which may not be sufficiently large to apply to supervised learning).
+
+Two semi-supervised algorithms were developed and implemented for this study: gravitational differentiation and iterative cluster nucleation. Both are discussed in detail in section \ref{semi_supervised}.
+
 \subsection{Hyperparameter Optimization}
 
 Learning algorithms in this study are optimized using grid searches, in which many different combinations of hyperparameters are tested. The computational work required for a grid search increases exponentially with the number of hyperparameters $n$ and the number of options per hyperparameter $m$; to be exact, its complexity is $O(m^{n})$. Thus, it is important to minimize the number of hyperparameters that are optimized at once.
@@ -185,11 +200,11 @@ Since the semi-supervised learning algorithms used incorporate neural network mo
 
 \section{Supervised Learning}
 
-Supervised learning was the first step in the optimization procedure. It makes use of fully labeled calibration sets, which are used for training. Performance of these supervised neural networks is judged based on its accuracy at replication of the provided labels on a validation set (which is set aside and not trained on).
+Supervised learning was the first general technique that was applied and optimized. It makes use of fully (but imperfectly) labeled calibration data sets, which are used for training. Performance of these supervised neural networks is evaluated based on its accuracy at replication of the provided labels on a validation set (which is set aside and not trained on).
 
 \subsection{Convolutional Neural Network for Raw Waveform Analysis}
 
-A convolutional neural network was used for analyzing the raw waveform $\omega$ directly, without any preprocessing whatsoever, and without application of $WallCut(D)$. This avoids any destruction of information, and should be possible, in theory, for a neural network to handle. For this task, a very deep 1-dimensional fully convolutional neural network was applied. The architecture was inspired by the M34-res network \cite{verydeepconvnets} for analysis of raw waveforms. L2 regularization was used to alleviate overfitting, and batch normalization was applied to the input. (Its hyperparameters were modified significantly through manual empirical testing as well as grid searches.)
+A convolutional neural network was used for analyzing the raw waveform $\omega$ directly, without any preprocessing whatsoever, and without application of $WallCut(D)$. This avoids any destruction of information, and should be possible, in theory, for a neural network to handle. For this task, a very deep (20 layers in its shallowest configuration) 1-dimensional fully convolutional neural network was applied. The architecture was inspired by the M34-res network \cite{verydeepconvnets} for analysis of raw waveforms. L2 regularization was used to alleviate overfitting, and batch normalization was applied to the input. (Its hyperparameters were modified significantly through manual empirical testing as well as grid searches.)
 
 Two different configurations were tested:
 \begin{enumerate}
@@ -243,7 +258,7 @@ Throughout a variety of different network architectures, the best validation acc
     \caption{\label{image_window} Accuracy of $ImageConv(\iota)$ compared to Acoustic Parameter at discriminating between run types (85\% accuracy).}
 \end{figure}
 
-\section{Semi-Supervised Learning}
+\section{Semi-Supervised Learning} \label{semi_supervised}
 
 Semi-supervised learning is the idea of training a machine learning model on a set of labeled data in addition to a set of unlabeled data. This has the advantage of requiring fewer labels to be collected than conventional supervised learning. However, it also has a very powerful advantage when training data is impure and the function to be learned is relatively simple (not simple in that it can be easily calculated by a person, but simple in that it does not require a huge set of training data). It allows a neural network to reinforce its own decisions.
 
