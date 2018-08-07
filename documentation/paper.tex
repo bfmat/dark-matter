@@ -311,9 +311,7 @@ In addition to improving performance with a labeled set known to be adequate, a 
 
 \subsection{Performance Analysis}
 
-One of the main purposes of semi-supervised learning is to handle the impure training data effectively, and learn to replicate the imperfectly represented underlying pattern (nuclear recoils versus alpha particles) rather than merely fitting to separate run types.
-
-Therefore, performance is quantified by how accurately a system is able to replicate Acoustic Parameter, rather than simply reproduce the labels provided. Accuracy of the neural network in the original PICO-60 paper is also provided as a baseline.
+One of the main purposes of semi-supervised learning is to handle the impure training data effectively, and learn to replicate the imperfectly represented underlying pattern (nuclear recoils versus alpha particles) rather than merely fitting to separate run types. Therefore, performance is quantified by how accurately a system is able to replicate Acoustic Parameter, rather than simply reproduce the labels provided.
 
 \subsection{Gravitational Differentiation}
 
@@ -431,6 +429,17 @@ Digging deeper into the performance throughout the runs of the grid search, Figu
 \end{figure}
 
 Compared to gravitational differentiation, there is a larger delta between the number of errors on the validation set depending on the number of initial training examples used. Those with 128 examples in $\varsigma$ make 85\% more errors on average. However, iterative cluster nucleation with 128 examples still makes 19\% fewer errors than gravitational differentiation with 256 examples in $\varsigma$.
+
+\subsection{Performance Summary}
+
+The following table directly compares performance of the semi-supervised learning systems, and also includes the neural network used in the original PICO-60 paper as a baseline.
+
+\begin{tabular}{|l|l|l|l|}
+    Technique & Max Accuracy & Max Mean by Run & $dim(\varsigma)=128$ Errors versus 256 \\
+    Gravitational Differentiation & 98\% & 96\% & 64\% Increase \\
+    Iterative Cluster Nucleation & 100\% & 98\% & 85\% Increase \\
+    Original PICO-60 NN & X\% & N/A & N/A
+\end{tabular}
 
 \section{Software}
 
