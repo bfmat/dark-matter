@@ -15,6 +15,8 @@ verify_arguments('path to AP similarity log file')
 # Load all lines in the file
 with open(os.path.expanduser(sys.argv[1])) as file:
     lines = file.readlines()
+# Remove lines that contain ground truth data from the gravitational differentiation grid search
+lines = [line for line in lines if '_ground_truths' not in line]
 # Take only the lines containing the mean disagreement statistics, and strip whitespace
 mean_lines = [line.strip() for line in lines if 'Mean' in line]
 # Extract the numeric disagreement values
@@ -22,7 +24,8 @@ mean_disagreements = [float(line.split()[1]) for line in mean_lines]
 # Create a dictionary to add disagreement dictionaries to, based on human-readable names
 disagreement_dictionaries = {}
 # Iterate over each of the hyperparameters that are used, alongside human-readable names
-for hyperparameter, human_readable in [('dropout', 'Dropout'), ('l2_lambda', 'L2 Regularization Lambda'), ('initial_threshold', 'Initial Training Threshold'), ('threshold_multiplier', 'Training Threshold Multiplier')]:
+# `distortion_root` is the old name for distortion power
+for hyperparameter, human_readable in [('gravity_multiplier_increment', 'Gravity Multiplier Increment'), ('learning_rate', 'Learning Rate'), ('distortion_root', 'Distortion Power')]:
     # Create a dictionary to add lists of disagreement values according to hyperparameter values
     disagreement_by_hyperparameter_value = {}
     # Iterate over each of the mean lines with corresponding disagreement values
@@ -53,8 +56,8 @@ for plot_index, human_readable in enumerate(disagreement_dictionaries):
     hyperparameter_values = list(disagreement_dictionaries[human_readable].keys())
     # Calculate the corresponding accuracy values, by dividing by the total validation examples and subtracting from 1
     accuracy_values = [1 - (disagreements / 128) for disagreements in list(disagreement_dictionaries[human_readable].values())]
-    # Calculate the bar width, which should be half of the mean difference between a pair of examples
-    bar_width = (max(hyperparameter_values) - min(hyperparameter_values)) / (2 * (len(hyperparameter_values) - 1))
+    # Calculate the bar width, which should be 1/6 of the mean difference between a pair of examples
+    bar_width = (max(hyperparameter_values) - min(hyperparameter_values)) / (6 * (len(hyperparameter_values) - 1))
     # Plot the accuracy values against the hyperparameter values in a bar graph
     plt.bar(hyperparameter_values, accuracy_values, width=bar_width)
     # Set the title of the plot with the human-readable hyperparameter name
@@ -62,7 +65,7 @@ for plot_index, human_readable in enumerate(disagreement_dictionaries):
     # Set the X and Y axis titles
     plt.xlabel(human_readable)
     plt.ylabel('Mean Accuracy')
-    # Limit the Y axis between 75% and 100%, to make the differences more apparent
-    plt.ylim(0.75, 1)
+    # Limit the Y axis between 50% and 100%, to make the differences more apparent
+    plt.ylim(0.5, 1)
 # Display the graph on screen
 plt.show()
