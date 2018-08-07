@@ -13,14 +13,14 @@ from utilities.verify_arguments import verify_arguments
 verify_arguments('JSON data file')
 # Load the data set from the file
 events, ground_truths, network_outputs = load_test(sys.argv[1])
-# Get the acoustic parameter data from the events
-acoustic_parameters = [event.logarithmic_acoustic_parameter for event in events]
+# Get the original neural network scores from the events
+original_neural_network_scores = [event.original_neural_network_score for event in events]
 # Convert the network's outputs to binary predictions (as a NumPy array)
 network_predictions = np.array([output >= 0.5 for output in network_outputs])
-# Repeat with acoustic parameters, dividing at a specific threshold
-acoustic_predictions = np.array([acoustic_parameter >= 0.22 for acoustic_parameter in acoustic_parameters])
+# Repeat with original neural network scores
+original_predictions = np.array([score >= 0.5 for score in original_neural_network_scores])
 # Get the indices of the bubbles on which the network and the acoustic parameter disagree
-disagreement_indices = np.argwhere(network_predictions != acoustic_predictions)
+disagreement_indices = np.argwhere(network_predictions != original_neural_network_scores)
 # Get the events on which the two techniques disagree (indices are wrapped in single-element arrays)
 disagreement_events = [events[index[0]] for index in disagreement_indices]
 # Iterate over the events with corresponding network predictions and ground truths, printing information
@@ -41,3 +41,5 @@ for event, network_prediction, ground_truth in zip(disagreement_events, network_
     print(correct, 'is correct')
     # Print a blank line for separation
     print()
+# Print the total number of events on which the techniques disagree
+print(f'{len(disagreement_events)} disagreements in total')
