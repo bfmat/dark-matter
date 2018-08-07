@@ -298,15 +298,15 @@ Throughout a variety of different network architectures, the best validation acc
 
 \subsection{Performance Summary}
 
-The following table compares the accuracy and mean class-wise standard deviation values of various supervised learning configurations:
+The following table compares the accuracy and mean class-wise standard deviation values of various supervised learning configurations, with the original PICO-60 neural network provided as a baseline:
 
 \begin{tabular}{|l|l|l|}
     \hline
-    Configuration & Optimal Accuracy & Mean Class-Wise Standard Deviation \\
+    Configuration & Max Accuracy & Mean Class-Wise Standard Deviation \\
     \hline
-    $DeepConv(\omega)$ & 77\% & X \\
+    $DeepConv(\omega)$ & 77\% & TODO \\
     \hline
-    $DeepConvWithPos(\omega, \chi)$ & 91\% & X \\
+    $DeepConvWithPos(\omega, \chi)$ & 91\% & TODO \\
     \hline
 \end{tabular}
 
@@ -352,6 +352,8 @@ This function is applied in a training algorithm that is parameterized by the se
     \item Increment $g$ by $\delta_{g}$. At the beginning, when $g = 0$, training will be entirely based on the labeled set $\varsigma$, and progressively, over the course of a run, the gravitational effect increases with $g$.
 \end{enumerate}
 
+This system was trained using $FourierMLP(\beta_{8})$ for $NN(x)$, because this was the most successful configuration in supervised learning. It produced the highest accuracy as well as the lowest class-wise standard deviation.
+
 \subsubsection{Results}
 
 During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the algorithm achieved a maximum of 98\% validation accuracy. The mean over that run (also the highest overall) was 96\%.
@@ -362,14 +364,6 @@ Figure \ref{grav_opt_validation} shows the highly accurate replication of Acoust
     \centering
     \includegraphics[width=\textwidth]{grav_opt_validation}
     \caption{\label{grav_opt_validation} Accuracy of optimal gravitational differentiation training run compared to Acoustic Parameter (98\% accuracy).}
-\end{figure}
-
-This was not the only configuration that performed well; as seen in Figure \ref{grav_acc_by_run}, 10\% of the runs during the grid search produced accuracy greater than 93\%.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{grav_acc_by_run}
-    \caption{\label{grav_acc_by_run} Accuracy of gravitational differentiation arranged by training run during the grid search.}
 \end{figure}
 
 As seen in Figure \ref{grav_acc_by_hyper}, all 3 hyperparameters that were optimized during the grid search had a significant effect on accuracy:
@@ -425,14 +419,6 @@ As seen in Figure \ref{icn_grid_search}, the network learned to replicate Acoust
     \caption{\label{icn_grid_search} Accuracy of optimal iterative cluster nucleation training run compared to Acoustic Parameter (100\% accuracy).}
 \end{figure}
 
-Further demonstrating this is a powerful algorithm and that high performance was not a one-off, 35\% of the training runs replicated Acoustic Parameter with a mean accuracy greater than 92\% (shown in Figure \ref{icn_accuracy_by_run}.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{icn_accuracy_by_run}
-    \caption{\label{icn_accuracy_by_run} Mean accuracy of iterative cluster nucleation configurations during grid search.}
-\end{figure}
-
 Digging deeper into the performance throughout the runs of the grid search, Figure \ref{icn_acc_by_hyper} shows the mean accuracy as a function of each of the hyperparameters that were optimized. Dropout has a clear effect, with 25\% shown to be the optimal number of neurons to drop. L2 regularization is also significant; all $\lambda$ values greater than 0 make performance worse.
 
 \begin{figure}[h]
@@ -445,19 +431,25 @@ Compared to gravitational differentiation, there is a larger delta between the n
 
 \subsection{Performance Summary}
 
-The following table directly compares performance of the semi-supervised learning systems, and also includes the neural network used in the original PICO-60 paper as a baseline:
+The following table directly compares performance of the semi-supervised learning systems, with the existing PICO-60 neural network provided as a baseline once again. Note that ``Max Accuracy'' refers to accuracy at replication of Acoustic Parameter, rather than replication of the ground truths.
 
 \begin{tabular}{|l|l|l|l|}
     \hline
-    Technique & Max Accuracy & Max Mean by Run & $dim(\varsigma)=128$ Errors versus 256 \\
+    Technique & Max AP Accuracy & Max Mean by Run & $\varsigma$ Errors: 128 versus 256 \\
     \hline
     Gravitational Differentiation & 98\% & 96\% & 64\% Increase \\
     \hline
     Iterative Cluster Nucleation & 100\% & 98\% & 85\% Increase \\
     \hline
-    Original PICO-60 NN & TODO\% & N/A & N/A \\
-    \hline
 \end{tabular}
+
+\section{Conclusions}
+
+This study has demonstrated that it is possible, using semi-supervised learning, to automatically optimize a discriminator with performance comparable to one developed and tuned by humans like Acoustic Parameter. This conclusion has been achieved through 2 rounds of optimization, the first to explore and evaluate various network structures and input formats using supervised learning, and the second to incorporate the most successful configuration into semi-supervised learning systems and replicate Acoustic Parameter as accurately as possible.
+
+In the realm of supervised learning, it was made clear that the banded Fourier transform is the most effective input format. It produced significantly higher accuracy and tighter prediction distributions than neural networks trained on either the raw audio waveform or image window data. There is strong evidence that image data in particular does not contain sufficient information to be used for discrimination.
+
+2 semi-supervised learning algorithms were developed, applying the best configuration found for supervised learning. While both techniques produced some very effective discriminators, iterative cluster nucleation was found to be the more effective of the 2. It replicated Acoustic Parameter with a mean of 98\% accuracy on the best configuration. This indicates that the technique shows significant promise, and may be worth consideration as a discrimination technique for future experiments.
 
 \section{Software}
 
