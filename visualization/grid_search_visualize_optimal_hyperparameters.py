@@ -25,7 +25,7 @@ mean_disagreements = [float(line.split()[1]) for line in mean_lines]
 disagreement_dictionaries = {}
 # Iterate over each of the hyperparameters that are used, alongside human-readable names
 # `distortion_root` is the old name for distortion power
-for hyperparameter, human_readable in [('gravity_multiplier_increment', 'Gravity Multiplier Increment'), ('learning_rate', 'Learning Rate'), ('distortion_root', 'Distortion Power')]:
+for hyperparameter, human_readable in [('gravity_multiplier_increment', 'Gravity Multiplier Increment'), ('learning_rate', 'Learning Rate'), ('distortion_root', 'Distortion Power'), ('definitive_training_examples', 'Definitive Training Examples')]:
     # Create a dictionary to add lists of disagreement values according to hyperparameter values
     disagreement_by_hyperparameter_value = {}
     # Iterate over each of the mean lines with corresponding disagreement values
@@ -40,7 +40,6 @@ for hyperparameter, human_readable in [('gravity_multiplier_increment', 'Gravity
     # Replace the lists of means by run with the overall mean for that hyperparameter value
     for hyperparameter_value in disagreement_by_hyperparameter_value:
         disagreement_by_hyperparameter_value[hyperparameter_value] = np.mean(disagreement_by_hyperparameter_value[hyperparameter_value])
-    print(disagreement_by_hyperparameter_value)
     # Find the index of the best number of disagreements, and print out the corresponding optimal hyperparameter value
     # The key and value views must be converted to lists, otherwise argmin will return an incorrect index
     print(f'Optimal {hyperparameter}: {list(disagreement_by_hyperparameter_value.keys())[np.argmin(list(disagreement_by_hyperparameter_value.values()))]}')
