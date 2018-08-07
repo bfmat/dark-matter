@@ -415,6 +415,8 @@ Digging deeper into the performance throughout the runs of the grid search, Figu
     \caption{\label{icn_acc_by_hyper} Mean accuracy of iterative cluster nucleation as a function of hyperparameter values.}
 \end{figure}
 
+Compared to gravitational differentiation, there is a larger delta between the number of errors on the validation set depending on the number of initial training examples used. Those with 128 examples in $\varsigma$ make 85\% more errors on average. However, iterative cluster nucleation with 128 examples still makes 19\% fewer errors than gravitational differentiation with 256 examples in $\varsigma$.
+
 \section{Software}
 
 All programming for this study was done in Python 3. Keras \cite{keras}, running on a TensorFlow backend, was used for all machine learning tasks. NumPy and SciPy were used for linear algebra and signal processing. ROOT, scikit-image and scikit-learn were used for data loading and storage. Matplotlib was used for data visualization.
