@@ -72,7 +72,7 @@ The lowest-level data derived from the piezos is the raw waveform $\omega$. $\om
 
 \textit{Fourier Transform}
 
-The raw waveform $\omega$ was converted into the frequency domain by means of a 1-dimensional Discrete Fourier Transform for real input. Since DFTs produce sequences of complex numbers, the magnitude of each element was computed. The full-resolution Fourier transform $\beta _{50,000}$ consists of a sequence of complex numbers, half the length of the raw waveform $\omega$.
+The raw waveform $\omega$ was converted into the frequency domain by means of a 1-dimensional Discrete Fourier Transform for real input. Since DFTs produce sequences of complex numbers, the magnitude of each element was computed. The full-resolution Fourier transform $\beta _{50,001}$ consists of a sequence of complex numbers, half the length of the raw waveform $\omega$.
 
 Beyond this, the banded Fourier transform $\beta_{8}$ (which is the input to Acoustic Parameter and the original neural analysis) was computed by integrating the resonant energy over all frequencies within each of a set of bands. This can be thought of as a method of signal downscaling, compressing the signal into a smaller number of data points.
 
@@ -211,6 +211,21 @@ Important unknowns to be determined through experimentation with supervised lear
 \end{enumerate}
 
 In addition, configurations with and without application of $WallCut(D)$ were tested. While $WallCut(D)$ was used throughout the original PICO-60 analysis because it is necessary for Acoustic Parameter, it was unknown whether or not it was required for neural networks.
+
+\subsection{Performance Analysis}
+
+The performance of supervised learning neural networks was evaluated using 2 metrics. One is a simple classification accuracy value, which corresponds to the number of validation examples the network classifies incorrectly. This effectively summarizes how often the network is outright correct or incorrect, but fails to capture how decisive it is.
+
+A metric that captures this property is the class-wise standard deviation. This is a variable defined as $C$ below, where $N$ and $A$ are the sets of outputs of the supervised learning discriminator in question, corresponding to the sets of neutrons and alpha particles respectively. It calculates the spread of the network's predictions for each ground truth class. This means that a decisive discriminator, which produces a wide separation between the two classes, is preferred over one that produces a nebulous cloud of outputs with a seemingly arbitrary decision boundary.
+
+$S=std(N \cup A)$
+
+$C=(std(N \div S) + std(A \div S)) \div 2$
+
+The first step is to calculate the standard deviation S of the union of the two sets. This gives an indication of the scale of the overall distribution. When $N$ and $A$ are divided by $S$, they are normalized so that the standard deviation of their union is equal to 1. While the neural network’s outputs are bounded in the range of 0 to 1 with a sigmoid activation, Acoustic Parameter has a significantly wider range. Normalization of the union prevents this from creating a bias where Acoustic Parameter would produce a higher standard deviation with a similarly proportioned error.
+
+The second step is to calculate the mean of the standard deviations of the normalized sets of neutrons and alpha particles individually. This is an indication of how tightly clustered or widely dispersed the discriminator’s predictions are. Very consistent predictions of $x$ for neutrons and $y$ for alphas (for any $x$ and $y$), with minimal variance off of those specific values, will produce a low class-wise standard deviation.
+
 
 \subsection{Convolutional Neural Network for Raw Waveform Analysis}
 
