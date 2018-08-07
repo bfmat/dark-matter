@@ -42,7 +42,9 @@ The approximate expected ratio between single-bubble and multiple-bubble events 
 
 \subsection{Discrimination Techniques}
 
-In this study, newly developed methodologies were compared to the following discrimination techniques developed previously for the PICO-60 experiment.
+\subsubsection{Overview}
+
+In this study, newly developed methodologies were compared to the 2 discrimination techniques developed previously for the PICO-60 experiment: Acoustic Parameter and machine learning.
 
 \subsubsection{Acoustic Parameter}
 
@@ -185,24 +187,34 @@ A significant challenge in this application is that neither supervised nor unsup
 
 For these reasons, a technique is needed that is not as sensitive to problematic training data as supervised learning, but more predictable and controllable than unsupervised learning. Semi-supervised learning is a middle ground in this regard. It makes use of a labeled set as well as an unlabeled set. It uses the labeled set for training, and uses the unlabeled set to further structure the patterns it finds in the training set (which may not be sufficiently large to apply to supervised learning).
 
-Two semi-supervised algorithms were developed and implemented for this study: gravitational differentiation and iterative cluster nucleation. Both are discussed in detail in section \ref{semi_supervised}.
+2 semi-supervised algorithms were developed and implemented for this study: gravitational differentiation and iterative cluster nucleation. Both are discussed in detail in section \ref{semi_supervised}.
 
-\subsection{Hyperparameter Optimization}
+\subsection{Optimization Process}
 
-Learning algorithms in this study are optimized using grid searches, in which many different combinations of hyperparameters are tested. The computational work required for a grid search increases exponentially with the number of hyperparameters $n$ and the number of options per hyperparameter $m$; to be exact, its complexity is $O(m^{n})$. Thus, it is important to minimize the number of hyperparameters that are optimized at once.
-
-Since the semi-supervised learning algorithms used incorporate neural network models, optimization is a much simpler task if the network's hyperparameters are already optimized. Thus, the optimization task is split into two distinct phases:
+Learning algorithms in this study are optimized systematically, with a variety of neural network configurations and input formats. To obtain meaningful results, it is important to minimize the number of variables during each individual run. Thus, since the 2 semi-supervised algorithms incorporate neural network models, it is important that the input formats and other hyperparameters of these networks are optimized first to some degree. This means the task is split into 2 distinct phases:
 
 \begin{enumerate}
-    \item Optimize the hyperparameters of a neural network on validation accuracy, to accurately reproduce the imperfect ground truths it is trained on. While this does not produce an optimal discriminator, it does reveal architectures that are capable, in essence, of learning to accomplish the discrimination task.
-    \item Using neural network hyperparameters that were determined to be effective, optimize the hyperparameters of the semi-supervised learning algorithm to reproduce Acoustic Parameter as closely as possible. Since Acoustic Parameter is not used to optimize the neural network directly at any point, models that excel at this task demonstrate an ability to learn the desired discriminator while ignoring the impurities in the training set.
+    \item Develop and verify several different supervised learning systems. Their performance is evaluated based on their ability to replicate the ground truths they are trained on. While this does not produce an optimal discriminator, it does reveal architectures that are capable, in essence, of learning to accomplish the discrimination task.
+    \item Using general supervised learning systems and input formats that were determined to be effective, optimize the hyperparameters of the semi-supervised learning algorithm to reproduce Acoustic Parameter as closely as possible. Since Acoustic Parameter is not used to optimize the neural network directly at any point, models that excel at this task demonstrate an ability to learn the desired discriminator while ignoring the impurities in the training set.
 \end{enumerate}
 
 \section{Supervised Learning}
 
-Supervised learning was the first general technique that was applied and optimized. It makes use of fully (but imperfectly) labeled calibration data sets, which are used for training. Performance of these supervised neural networks is evaluated based on its accuracy at replication of the provided labels on a validation set (which is set aside and not trained on).
+\subsection{Overview}
+
+Important unknowns to be determined through experimentation with supervised learning included the most effective input format for the network, and the associated general network structure. Three major such configurations were applied:
+
+\begin{enumerate}
+    \item A convolutional neural network trained on the raw waveform $\omega$.
+    \item A dense neural network trained on banded Fourier transforms $\beta_{N}$.
+    \item A convolutional neural network trained on the image window data $\iota$.
+\end{enumerate}
+
+In addition, configurations with and without application of $WallCut(D)$ were tested. While $WallCut(D)$ was used throughout the original PICO-60 analysis because it is necessary for Acoustic Parameter, it was unknown whether or not it was required for neural networks.
 
 \subsection{Convolutional Neural Network for Raw Waveform Analysis}
+
+\subsubsection{Structure}
 
 A convolutional neural network was used for analyzing the raw waveform $\omega$ directly, without any preprocessing whatsoever. This avoids any destruction of information, and should be possible, in theory, for a neural network to handle. For this task, a very deep (20 layers in its shallowest configuration) 1-dimensional fully convolutional neural network was applied. The architecture was inspired by the M34-res network \cite{verydeepconvnets} for analysis of raw waveforms. L2 regularization was used to alleviate overfitting, and batch normalization was applied to the input. (Its hyperparameters were modified significantly through manual empirical testing as well as grid searches.)
 
@@ -211,6 +223,8 @@ Two different configurations were tested:
     \item A configuration that operates strictly on $\omega$ with no position corrections of any kind (furthermore $DeepConv(\omega)$).
     \item A configuration with an additional position input on a lower layer such that it should be able to learn to incorporate position corrections into its outputs ($DeepConvWithPos(\omega, \chi)$).
 \end{enumerate}
+
+\subsubsection{Results}
 
 During early tests with variations on $DeepConv(\omega)$, it was revealed to have an incredible capacity to separate run types based on unwanted biases. It was able to separate the AmBe calibration run from combined background runs with 96\% accuracy, and to separate all calibration runs from background runs with 91\% accuracy. This was determined to be caused by the network detecting and fitting on biases in the white noise at the beginning and hydraulic recompression sounds at the end of the raw waveform. This extraneous information was subsequently cropped out.
 
@@ -226,11 +240,15 @@ It is difficult to say with a high degree of confidence whether or not this is a
 
 \subsection{Multi-Layer Perceptron for Fourier Transform Analysis}
 
+\subsubsection{Structure}
+
 Preprocessing the audio by applying a Fourier transform may be advantageous. If the frequency distribution and overall volume are indeed the most important factors for discrimination, the network can gather them straight from the Fourier transform $\beta_{N}$ rather than having to analyze $\omega$ to extract this information.
 
 In addition to the Fourier transform used in the original PICO-60 analysis, higher resolutions were computed by similar means. These included $\beta _{5}$, $\beta _{10}$, $\beta _{20}$, and $\beta _{40}$. Also, the full-resolution $\beta _{50,001}$ was input into a neural network directly, without any downscaling.
 
 Once again, configurations with and without position input were tested. This time, position corrections were optionally included when position input was not used. The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$, $FourierMLP(PosCor(\beta_{N}))$ and $FourierMLPWithPos(\beta_{N}, \chi)$. Several different resolutions $N$ of $\beta_{N}$ were used. While there were variety of network architectures tested, most had a small number of layers (on the order of 3), applied dropout and L2 regularization, and used batch normalization once again.
+
+\subsubsection{Results}
 
 It became evident very quickly that a high resolution was not required to get a high accuracy relative to the ground truth data. $FourierMLP(\beta_{8})$ managed an excellent 98\% validation accuracy by this metric. Increasing the number of bands seemed initially not to provide any improvement; the best accuracy reached with $\beta_{20}$ was 93\%, and with $\beta_{40}$ it was 94\%.
 
@@ -246,11 +264,15 @@ In all previous experimentation, $WallCut(D)$ was applied to the training and va
 
 \subsection{Convolutional Neural Network for Image Window Analysis}
 
+\subsubsection{Structure}
+
 It is an open question whether or not there is any information in the image data $\iota$ that could be used to distinguish between particle classes. Relative to the extremely short period of time in which the bubble forms (on the scale of nanoseconds), the framerate of the camera (340Hz) is extremely slow. While the very early stages of bubble formation (when the sound is produced) are known to differ depending on whether the bubble was created by a nuclear recoil or an alpha particle, it is unknown whether any visually apparent differences persist when the bubble is visible.
 
 In an effort to resolve this, a 2-dimensional convolutional neural network was applied to the task of discriminating based on $\iota$. The network architecture consists of a moderate number of convolutional layers (on the scale of 9) and 3 dense layers at the end. L2 regularization was used on all layers, and dropout was additionally used on the dense layers. No position input is used (since there are no microphones that would require position correction), so the basic configuration is $ImageConv(\iota)$.
 
 $WallCut(D)$ was not applied to the training set, because while the resonance in the vessel varies greatly depending on the position of the bubble, any visual differences in the bubble should not. In addition, applying it reduces the size of the training set considerably.
+
+\subsubsection{Results}
 
 Throughout a variety of different network architectures, the best validation accuracy obtained was 85\%. (The corresponding training accuracy of 100\% indicates that severe overfitting is taking place.) It is likely fitting on some form of noise within $\iota$, since the network's predictions seem almost random when represented graphically (as seen in Figure \ref{image_window}). The fact that throughout many trials (including a grid search), no good performance on validation data was observed, provides significant evidence that images provide insufficient information for effective discrimination.
 
@@ -262,6 +284,8 @@ Throughout a variety of different network architectures, the best validation acc
 
 \section{Semi-Supervised Learning} \label{semi_supervised}
 
+\subsection{Overview}
+
 Semi-supervised learning is the idea of training a machine learning model on a set of labeled data in addition to a set of unlabeled data. This has the advantage of requiring fewer labels to be collected than conventional supervised learning. However, it also has a very powerful advantage when training data is impure and the function to be learned is relatively simple (not simple in that it can be easily calculated by a person, but simple in that it does not require a huge set of training data). It allows a neural network to reinforce its own decisions.
 
 In both of the semi-supervised learning algorithms applied, to arrive at an effective discriminator, the network first trains on a smaller amount of imperfect data. Because the ground truth data is imperfect, training on a relatively small set for a short period of time (potentially using regularization, in addition) ensures that the network will be less likely to overfit and its learned function will be simpler. This is in line with the objective, since, assuming the training inputs are normalized correctly, it should be simpler to discriminate between classes of particles than calibration runs.
@@ -272,7 +296,11 @@ Performance of the supervised learning systems was quantified by how accurately 
 
 \subsection{Gravitational Differentiation}
 
+\subsubsection{Concept}
+
 Gravitational differentiation is a novel technique for gradient computation in the final layer of a neural network. It is intended for training a neural network in a semi-supervised fashion on a relatively small set of imperfectly labeled data, while simultaneously incorporating the network's changing predictions on a set of unlabeled data to encourage decisive classifications.
+
+\subsubsection{Structure}
 
 It makes use of the gravitational differentiation function $GravDiff(p, \psi, g)$, which is parameterized by the network's existing prediction $p$ on the training example in question, the degree $\psi$ of the piecewise exponential function used to distort the response of the gradient, and the gravitational multiplier $g$. The function is defined as follows:
 
@@ -291,6 +319,8 @@ This function is applied in a training algorithm that is parameterized by the se
     \item Calculate predictions $p$ with $NN(x)$ on the entirety of $\upsilon$. Calculate $GravDiff(p, \psi, g)$ and record the resulting gradients for the next iteration.
     \item Increment $g$ by $\delta_{g}$. At the beginning, when $g = 0$, training will be entirely based on the labeled set $\varsigma$, and progressively, over the course of a run, the gravitational effect increases with $g$.
 \end{enumerate}
+
+\subsubsection{Results}
 
 During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the algorithm achieved a maximum of 98\% validation accuracy. The mean over that run (also the highest overall) was 96\%.
 
@@ -325,7 +355,13 @@ As seen in Figure \ref{grav_acc_by_hyper}, all 3 hyperparameters that were optim
 
 \subsection{Iterative Cluster Nucleation}
 
-Iterative cluster nucleation is a semi-supervised learning algorithm that takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator. The algorithm is initialized as follows:
+\subsubsection{Concept}
+
+Iterative cluster nucleation is a semi-supervised learning algorithm that takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator.
+
+\subsubsection{Structure}
+
+The algorithm is initialized as follows:
 
 \begin{enumerate}
     \item Take a subset of the training data, referred to as the seed set $\varsigma$. Use this as the beginning of the training set.
@@ -341,6 +377,8 @@ Parameterized by the initial seed threshold $j$ (on the order of 0.01) and the s
     \item Find predictions within $p$ that are within a distance of $j$ of either 0 or 1; as this is a binary classifier, such a prediction represents high confidence. Remove any such examples from $\upsilon$ and add them to $\varsigma$. The principle is that, when $NN(x)$ is trained on a relatively small set for short period of time, the few predictions within $p$ that are very confident are highly likely to be correct.
     \item If no examples have been removed from $\upsilon$ and added to $\varsigma$, multiply $j$ by $k$ in place. This is done to increase the acceptance rate later in the training process, when most easily classifiable examples have been added to $\varsigma$. Otherwise, gridlock would occur, where certain examples could not be confidently classified given the training set.
 \end{enumerate}
+
+\subsubsection{Results}
 
 During a grid search of these parameters (in addition to regularization parameters of the network), the best accuracy achieved for replication of Acoustic Parameter was exactly 100\%. The mean of all epochs within that training run was 98\%.
 
