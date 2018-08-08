@@ -2,9 +2,7 @@
 # Created by Brendon Matusch, August 2018
 
 import datetime
-from typing import Tuple
-
-import numpy as np
+from typing import List, Tuple
 
 from data_processing.bubble_data_point import BubbleDataPoint
 from data_processing.event_data_set import EventDataSet
@@ -43,8 +41,8 @@ _33_TRIPLETS = [
     'Triplet Rn-222 20170119_0/39 A: 4.09 | Po-218 20170119_0/40 A: 4.87 | Po-214 20170119_1/3 A: 17.07',
 ]
 
-def load_triplet_classification_data() -> Tuple[np.ndarray, np.ndarray]:
-    """Load classification data for triplets as NumPy arrays"""
+def load_triplet_classification_data() -> Tuple[List[BubbleDataPoint], List[BubbleDataPoint]]:
+    """Load classification events for triplets in (loud, quiet) order"""
     # Combine the lists of triplets into one
     all_triplets = _24_TRIPLETS + _33_TRIPLETS
     # Create lists for (date, run number, event number) tuples of loud and quiet events, which are the classification categories
@@ -79,7 +77,6 @@ def load_triplet_classification_data() -> Tuple[np.ndarray, np.ndarray]:
     # Take only events that are in the tuple lists
     loud_events = [event for event in all_events if (event.date, event.run_number, event.event_number) in loud_event_tuples]
     quiet_events = [event for event in all_events if (event.date, event.run_number, event.event_number) in quiet_event_tuples]
-    print(len(quiet_events))
-    print(len(quiet_event_tuples))
+    # Return the 2 event lists
+    return loud_events, quiet_events
 
-load_triplet_classification_data()
