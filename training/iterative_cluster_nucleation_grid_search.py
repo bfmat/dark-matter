@@ -7,6 +7,9 @@ import os
 
 import numpy as np
 
+# Use only the CPU; it is faster
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+
 from keras.layers import Dense, Dropout, BatchNormalization, InputLayer
 from keras.models import Sequential
 from keras.regularizers import l2
@@ -17,7 +20,7 @@ from data_processing.experiment_serialization import save_test
 
 
 # Iterate over possible configurations for the number of initial training examples, the initial threshold, the threshold multiplier, the L2 lambda, and dropout regularization
-for initial_training_examples in [64, 128, 256]:
+for initial_training_examples in [32, 64, 128, 256]:
     for initial_threshold in [0.01, 0.02]:
         for threshold_multiplier in [1.025, 1.05]:
             for l2_lambda in [0, 0.001, 0.003]:
