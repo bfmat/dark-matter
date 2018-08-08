@@ -69,9 +69,10 @@ def load_triplet_classification_data() -> Tuple[List[BubbleDataPoint], List[Bubb
             # Add the three values together to the list for this triplet
             triplet_events.append((date, run_number, event_number))
         # Add the triplet events to their corresponding event lists
-        loud_event_tuples.append(triplet_events[0])
+        quiet_event_tuples.append(triplet_events[0])
         quiet_event_tuples.append(triplet_events[1])
-        quiet_event_tuples.append(triplet_events[2])
+        loud_event_tuples.append(triplet_events[2])
+
     # Load all events from disk
     all_events = EventDataSet.load_data_from_file()
     # Take only events that are in the tuple lists
