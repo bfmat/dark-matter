@@ -28,20 +28,21 @@ outputs = outputs[order]
 # Create a neural network model that includes several dense layers with hyperbolic tangent activations, L2 regularization, and batch normalization
 regularizer = l2(0.02)
 dropout = 0.15
+activation = 'tanh'
 model = Sequential([
     InputLayer(input_shape=(16,)),
     BatchNormalization(),
-    Dense(12, activation='tanh', kernel_regularizer=regularizer),
+    Dense(12, activation=activation, kernel_regularizer=regularizer),
     Dropout(dropout),
-    Dense(9, activation='tanh', kernel_regularizer=regularizer),
+    Dense(9, activation=activation, kernel_regularizer=regularizer),
     Dropout(dropout),
-    Dense(6, activation='tanh', kernel_regularizer=regularizer),
+    Dense(6, activation=activation, kernel_regularizer=regularizer),
     Dropout(dropout),
-    Dense(3, activation='tanh', kernel_regularizer=regularizer),
+    Dense(3, activation=activation, kernel_regularizer=regularizer),
     Dropout(dropout),
-    Dense(2, activation='tanh', kernel_regularizer=regularizer),
+    Dense(2, activation=activation, kernel_regularizer=regularizer),
     Dropout(dropout),
-    Dense(1, activation='sigmoid', kernel_regularizer=regularizer)
+    Dense(1, activation=activation, kernel_regularizer=regularizer)
 ])
 # Output a summary of the model's architecture
 print(model.summary())
