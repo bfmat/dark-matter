@@ -7,7 +7,7 @@ import random
 import numpy as np
 from keras.layers import Dense, Dropout, BatchNormalization, InputLayer
 from keras.models import Model, Sequential
-from keras.regularizers import l2
+from keras.regularizers import l1_l2
 
 from data_processing.load_triplet_classification_data import load_triplet_classification_data
 
@@ -26,8 +26,8 @@ inputs = inputs[order]
 outputs = outputs[order]
 
 # Create a neural network model that includes several dense layers with hyperbolic tangent activations, L2 regularization, and batch normalization
-regularizer = l2(0.02)
-dropout = 0.15
+regularizer = l1_l2(l1=0.005, l2=0.02)
+dropout = 0.25
 activation = 'tanh'
 model = Sequential([
     InputLayer(input_shape=(16,)),
