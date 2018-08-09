@@ -391,7 +391,7 @@ It is a distortion of the hyperbolic tangent that flattens the central range and
 
 However, what is really desired is a shallow slope in the center (so low-confidence network outputs near 0.5 will produce very shallow output gradients). Applying a relatively large exponent (in the range of 3 to 11) accomplishes this; it squashes values close to 0 closer to 0.
 
-However, this only works with odd integer exponents (because they produce negative outputs for negative inputs), limiting the ability to fine-tune this function by changing $\psi$. To resolve this, a piecewise exponential function is used, where the absolute value is taken prior to applying the power and the sign is multiplied back in afterwards. This permits use of the full range of curves produced by even and non-integer values of $\psi$.
+However, this only works if $p$ is an odd integer (because odd integer exponents preserve the sign), limiting the ability to fine-tune this function by changing $\psi$. To resolve this, a piecewise exponential function is used, where the absolute value is taken prior to applying the power and the sign is multiplied back in afterwards. This permits use of the full range of curves produced by even and non-integer values of $\psi$.
 
 \begin{figure}[H]
     \centering
