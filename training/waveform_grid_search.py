@@ -131,7 +131,7 @@ for l2_lambda in [0.003, 0.001, 0.0003]:
                     )
 
                     # Iterate over training and validation for several epochs
-                    for epoch in range(100):
+                    for epoch in range(50):
                         # Train the model on the input and ground truth arrays
                         model.fit(
                             x=training_inputs,
