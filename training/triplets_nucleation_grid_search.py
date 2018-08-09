@@ -103,7 +103,7 @@ for initial_threshold in [0.01, 0.02]:
                     )
 
                     # Run several training iterations, each containing a number of epochs
-                    for iteration in range(600):
+                    for iteration in range(200):
                         # Output the number of examples there are in the training set for this epoch
                         print(len(training_events), 'training examples for iteration', iteration)
                         # Generate banded Fourier transform inputs from the training and validation events
