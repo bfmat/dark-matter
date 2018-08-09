@@ -26,14 +26,16 @@ inputs = inputs[order]
 outputs = outputs[order]
 
 # Create a neural network model that includes several dense layers with hyperbolic tangent activations, L2 regularization, and batch normalization
-regularizer = l2(0.04)
-dropout = 0.25
+regularizer = l2(0)
+dropout = 0
 model = Sequential([
     InputLayer(input_shape=(16,)),
     BatchNormalization(),
-    Dense(8, activation='tanh', kernel_regularizer=regularizer),
+    Dense(10, activation='tanh', kernel_regularizer=regularizer),
     Dropout(dropout),
-    Dense(4, activation='tanh', kernel_regularizer=regularizer),
+    Dense(6, activation='tanh', kernel_regularizer=regularizer),
+    Dropout(dropout),
+    Dense(3, activation='tanh', kernel_regularizer=regularizer),
     Dropout(dropout),
     Dense(1, activation='sigmoid', kernel_regularizer=regularizer)
 ])
