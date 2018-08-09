@@ -13,13 +13,17 @@ from data_processing.load_triplet_classification_data import load_triplet_classi
 
 # Load the triplet events
 loud_events, quiet_events = load_triplet_classification_data()
-# Combine them into one list and shuffle it
+# Combine them into one list
 all_events = loud_events + quiet_events
-random.shuffle(all_events)
 # Stack an input array of flattened position-corrected 8-band Fourier transforms for all of the events together
 inputs = np.stack([event.banded_frequency_domain[1:, :, 2].flatten() for event in all_events])
 # Make a binary output list, where 1 is loud and 0 is quiet
 outputs = np.concatenate([np.ones(len(loud_events)), np.zeros(len(quiet_events))])
+# Generate a random permutation to use to order the inputs and outputs
+order = np.random.permutation(len(all_events))
+# Index the input and output arrays accordingly
+inputs = inputs[order]
+outputs = outputs[order]
 
 # Create a neural network model that includes several dense layers with hyperbolic tangent activations, L2 regularization, and batch normalization
 regularizer = l2(0)
@@ -40,4 +44,4 @@ model.compile(
     metrics=['accuracy']
 )
 # Train the model, setting aside 15% of the data for validation
-model.fit(inputs, outputs, epochs=200, validation_split=0.25)
+model.fit(inputs, outputs, epochs=600, validation_split=0.15)
