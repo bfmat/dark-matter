@@ -26,8 +26,8 @@ VALIDATION_SET_SIZE = 8
 # Iterate over possible configurations for the number of initial training examples, the initial threshold, the threshold multiplier, the L2 lambda, and dropout regularization
 for initial_threshold in [0.01, 0.02]:
     for threshold_multiplier in [1.025, 1.05]:
-        for l2_lambda in [0, 0.001, 0.003]:
-            for dropout in [0, 0.25, 0.5]:
+        for l2_lambda in [0, 0.001, 0.003, 0.01, 0.03]:
+            for dropout in [0, 0.15, 0.3]:
                 # Test each configuration multiple times so the initial set does not cause a bias
                 for configuration_test_index in range(3):
                     # Print a few blank lines for separation
