@@ -449,7 +449,11 @@ Two different options were tested with regard to size of the labeled data set $\
 
 Iterative cluster nucleation is a semi-supervised learning algorithm that takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator.
 
-\subsubsection{Structure}
+The basic concept is to start with a relatively small amount of labeled data from 2 classes (nuclear recoils and alpha particles, in this case). They can be visualized as clusters. A neural network is trained on the clusters, and used to run predictions on unlabeled data.
+
+Those examples that, based on the network's predictions, fall firmly into one cluster or the other, are added to that cluster, and are used for training. By repeating this process, the clusters are nucleated (expanded) to gradually include more and more of the data set.
+
+\subsubsection{Algorithm}
 
 The algorithm is initialized as follows:
 
