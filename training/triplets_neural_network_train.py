@@ -19,11 +19,10 @@ outputs = np.concatenate([np.ones(len(loud_events)), np.zeros(len(quiet_events))
 # Create a neural network model that includes several dense layers with hyperbolic tangent activations, L2 regularization, and batch normalization
 regularizer = l2(0)
 dropout = 0
-activation = 'tanh'
 model = Sequential([
     InputLayer(input_shape=(16,)),
     BatchNormalization(),
-    Dense(8, activation=activation, kernel_regularizer=regularizer),
+    Dense(8, activation='tanh', kernel_regularizer=regularizer),
     Dropout(dropout),
     Dense(1, activation='sigmoid', kernel_regularizer=regularizer)
 ])
@@ -36,4 +35,4 @@ model.compile(
     metrics=['accuracy']
 )
 # Train the model, setting aside 15% of the data for validation
-model.fit(inputs, outputs, epochs=50, validation_split=0.2)
+model.fit(inputs, outputs, epochs=200, validation_split=0.2)
