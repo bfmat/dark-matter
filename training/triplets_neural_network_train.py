@@ -18,7 +18,7 @@ outputs = np.concatenate([np.ones(len(loud_events)), np.zeros(len(quiet_events))
 
 # Create a neural network model that includes several dense layers with hyperbolic tangent activations, L2 regularization, and batch normalization
 regularizer = l2(0)
-dropout = 0
+dropout = 0.25
 model = Sequential([
     InputLayer(input_shape=(16,)),
     BatchNormalization(),
