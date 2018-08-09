@@ -211,7 +211,12 @@ Important unknowns to be determined through experimentation with supervised lear
     \item A convolutional neural network trained on the image window data $\iota$.
 \end{enumerate}
 
-Except where specifically mentioned, $WallCut(D)$ was not applied. This was done to test the network's ability to handle complex acoustic characteristics including resonance. There is a relatively clear-cut discrimination boundary in PICO-60, but this may not be the case in other applications.
+Except where specifically mentioned, $WallCut(D)$ was not applied. This was done for 2 reasons:
+
+\begin{enumerate}
+    \item As an exploratory effort, to determine whether or not it was possible to produce an effective discriminator without wall cuts. No such thing was attempted during the original PICO-60 analysis.
+    \item To test the network's ability to handle complex acoustic characteristics including resonance. There is a relatively clear-cut discrimination boundary in PICO-60, but this may not be the case in other applications.
+\end{enumerate}
 
 \subsection{Performance Analysis}
 
