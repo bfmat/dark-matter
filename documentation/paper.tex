@@ -387,15 +387,19 @@ Gradients are calculated using the gravitational differentiation function $GravD
 
 $GravDiff(p, \psi, g) = g \cdot sgn(p) \cdot abs(tanh(2(p - 0.5))) ^ \psi$
 
-It is a distortion of the hyperbolic tangent that flattens the central range and comparatively exaggerates the asymptote on either side. The network's prediction $p$ is first transformed so its range is 1 to -1 rather than 0 to 1 ($2(p - 0.5)$). Next, the sigmoidal hyperbolic tangent is applied, producing a value of 0 in the center and asymptotic slopes to -1 and 1 at the edges.
+It is a distortion of the hyperbolic tangent that flattens the central range and comparatively exaggerates the asymptote on either side. The equation above can be described in the following steps:
 
-However, what is really desired is a shallow slope in the center (so low-confidence network outputs near 0.5 will produce very shallow output gradients). Applying a relatively large exponent (in the range of 3 to 11) accomplishes this; it squashes values close to 0 closer to 0.
+\begin{enumerate}
+    \item Transform the network's prediction $p$, so its range is 1 to -1 rather than 0 to 1.
+    \item Apply the sigmoidal hyperbolic tangent, producing a value of 0 in the center and asymptotic slopes to -1 and 1 at the edges.
+    \item \label{exponent} What is really desired is a shallow slope in the center (so low-confidence network outputs near 0.5 will produce very shallow output gradients). Apply a relatively large exponent which is $\psi$ (in the range of 3 to 11) to squash values close to 0 closer to 0.
+\end{enumerate}
 
-However, this only works if $p$ is an odd integer (because odd integer exponents preserve the sign), limiting the ability to fine-tune this function by changing $\psi$. To resolve this, a piecewise exponential function is used, where the absolute value is taken prior to applying the power and the sign is multiplied back in afterwards. This permits use of the full range of curves produced by even and non-integer values of $\psi$.
+(Note that step \ref{exponent} only works if $p$ is an odd integer (because odd integer exponents preserve the sign), limiting the ability to fine-tune this function by changing $\psi$. To resolve this, a piecewise exponential function is used instead, where the absolute value is taken prior to applying the power and the sign is multiplied back in afterwards. This permits use of the full range of curves produced by even and non-integer values of $\psi$.)
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{grav_diff}
+    \includegraphics[width=0.8\textwidth]{grav_diff}
     \caption{\label{grav_diff} A visualization of $GravDiff(p, \psi, g)$ with respect to $p$ and $\psi$.}
 \end{figure}
 
