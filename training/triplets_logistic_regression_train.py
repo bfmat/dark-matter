@@ -13,6 +13,7 @@ from data_processing.load_triplet_classification_data import load_triplet_classi
 loud_events, quiet_events = load_triplet_classification_data()
 # Stack an input array of flattened position-corrected 8-band Fourier transforms for all of the events together
 inputs = np.stack([event.banded_frequency_domain[1:, :, 2].flatten() for event in loud_events + quiet_events])
+# Normalize the inputs with L2 norm so the weights are within a reasonable range
 inputs = normalize(inputs)
 # Make a binary output list, where 1 is loud and 0 is quiet
 outputs = np.concatenate([np.ones(len(loud_events)), np.zeros(len(quiet_events))])
