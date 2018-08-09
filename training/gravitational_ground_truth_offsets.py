@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """A function used to distort a neural network's predictions and produce ground truth offsets that push unlabeled examples further to the side they are already nearest"""
 # Created by Brendon Matusch, July 2018
 
