@@ -306,12 +306,6 @@ It became evident very quickly that, without $WallCut(D)$, a high resolution was
 
 Very interestingly, $FourierMLP(\beta_{8})$ performed better than either $FourierMLP(PosCor(\beta_{8}), \chi)$ or \\ $FourierMLPWithPos(\beta{8}, \chi)$, which produced accuracy values of 97\% and 95\%, respectively.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{fourier_mlp_no_correction}
-    \caption{\label{fourier_mlp_no_correction} Accuracy of $FourierMLP(\beta_{8})$ compared to Acoustic Parameter at discriminating between run types (98\% accuracy).}
-\end{figure}
-
 Unlike for the convolutional neural network trained on $\omega$, position input did not improve performance at all. In fact, $FourierMLP(\beta_{8})$, performed better than $FourierMLPWithPos(\beta_{8}, \chi)$, which reached only 95\% validation accuracy. Nevertheless, they both performed better than any of the network architectures trained on $\omega$.
 
 The higher resolution demonstrated significant power when $WallCut(D)$ was not applied, and only \\ $QualCut(MultiCut(D))$ was used. $FourierMLPWithPos(\beta_{20}, \chi)$ achieved only 92\% accuracy (2 percentage points lower than the same configuration without $WallCut(D)$). However, training on $\beta_{50,001}$, which does not incorporate any banding, improved this figure to a maximum of 97\%. However, that epoch had a relatively high standard deviation, at 0.47.
