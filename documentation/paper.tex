@@ -304,7 +304,7 @@ Once again, configurations with and without position input were tested. This tim
 
 It became evident very quickly that, without $WallCut(D)$, a high resolution was not required to get a high accuracy relative to the ground truth data. $FourierMLP(\beta_{8})$ managed an excellent 98\% validation accuracy, and also produced a mean class-wise standard deviation of 0.29. Increasing the number of bands to $FourierMLPWithPos(beta_{20}, \chi)$, did not improve the results; accuracy only reached 95\%, with an increased mean standard deviation of 0.42. 40 bands reduced the accuracy once again, to 91\%.
 
-Very interestingly, $FourierMLP(\beta_{8})$ performed better than either $FourierMLP(PosCor(\beta{8}), \chi)$ or \\ $FourierMLPWithPos(\beta{8}, \chi)$, which produced accuracy values of 97\% and 95\%, respectively.
+Very interestingly, $FourierMLP(\beta_{8})$ performed better than either $FourierMLP(PosCor(\beta_{8}), \chi)$ or \\ $FourierMLPWithPos(\beta{8}, \chi)$, which produced accuracy values of 97\% and 95\%, respectively.
 
 \begin{figure}[h]
     \centering
@@ -315,6 +315,30 @@ Very interestingly, $FourierMLP(\beta_{8})$ performed better than either $Fourie
 Unlike for the convolutional neural network trained on $\omega$, position input did not improve performance at all. In fact, $FourierMLP(\beta_{8})$, performed better than $FourierMLPWithPos(\beta_{8}, \chi)$, which reached only 95\% validation accuracy. Nevertheless, they both performed better than any of the network architectures trained on $\omega$.
 
 The higher resolution demonstrated significant power when $WallCut(D)$ was not applied, and only \\ $QualCut(MultiCut(D))$ was used. $FourierMLPWithPos(\beta_{20}, \chi)$ achieved only 92\% accuracy (2 percentage points lower than the same configuration without $WallCut(D)$). However, training on $\beta_{50,001}$, which does not incorporate any banding, improved this figure to a maximum of 97\%. However, that epoch had a relatively high standard deviation, at 0.47.
+
+The following tables compare various multi-layer perceptron discriminators, with and without wall cuts.
+
+With $WallCut(D)$:
+
+\begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+    Configuration & L2 $\lambda$ & Dropout & Layers & Max Accuracy & Class-Wise Std Dev \\
+    \hline
+    $FourierMLP(PosCor(\beta_{8}))$ & 0 & 0.5 & 2 & 95\% & 0.56 \\
+    \hline
+    $FourierMLP(\beta_{8})$ & 0 & 0.5 & 2 & 98\% & 0.29 \\
+    \hline
+    $FourierMLPWithPos(\beta_{8}, \chi)$ & 0 & 0.5 & 3 & 95\% & 0.44 \\
+    \hline
+    $FourierMLPWithPos(\beta_{8}, \chi)$ & 0 & 0.25 & 3 & 97\% & 0.43 \\
+    \hline
+    $FourierMLPWithPos(\beta_{20}, \chi)$ & 0.003 & 0.25 & 3 & 93\% & 0.54 \\
+    \hline
+    $FourierMLPWithPos(\beta_{20}, \chi)$ & 0 & 0 & 3 & 94\% & 0.52 \\
+    \hline
+\end{tabular}
+
+Without $WallCut(D)$:
 
 \subsection{Convolutional Neural Network for Image Window Analysis}
 
@@ -330,7 +354,7 @@ Throughout a variety of different network architectures, the best validation acc
 
 \subsection{Performance Summary}
 
-The following tables compare the accuracy and mean class-wise standard deviation values of various supervised learning configurations, with Acoustic Parameter and the original PICO-60 neural network provided as baselines.
+The following tables compare the accuracy and mean class-wise standard deviation values of various supervised learning configurations with multiple input formats, with Acoustic Parameter and the original PICO-60 neural network provided as baselines.
 
 With $WallCut(D)$:
 
