@@ -429,9 +429,7 @@ This system was trained using a multi-layer perceptron with an 8-band Fourier tr
 
 \subsubsection{Results}
 
-During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the algorithm achieved a maximum of 98\% validation accuracy. The mean over that run (also the highest overall) was 96\%.
-
-Figure \ref{grav_opt_validation} shows the highly accurate replication of Acoustic Parameter. However, the examples that are classified incorrectly seem to have no correlation with Acoustic Parameter, suggesting that the learned function cues on different properties of the audio. While the discriminator may still be accurate, this property implies it may be less predictable when trained on new data sets.
+During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the algorithm achieved a maximum of 98\% validation accuracy. The mean over that run (also the highest overall) was 96\%. Figure \ref{grav_opt_validation} shows the highly accurate replication of Acoustic Parameter.
 
 As seen in Figure \ref{grav_acc_by_hyper}, all 3 hyperparameters that were optimized during the grid search had a significant effect on accuracy:
 
