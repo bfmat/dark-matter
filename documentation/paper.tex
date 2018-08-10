@@ -348,6 +348,8 @@ With $WallCut(D)$:
     \hline
 \end{tabular}
 
+It is very clear here that higher resolutions do not improve accuracy. Regularization, both dropout and L2, appears to have relatively little effect.
+
 Without $WallCut(D)$:
 
 \begin{tabular}{|l|l|l|l|l|l|}
@@ -367,6 +369,8 @@ Without $WallCut(D)$:
     $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.01 & 0.5 & 2 & 94\% & 0.53 \\
     \hline
 \end{tabular}
+
+Without wall cuts, the full-resolution Fourier transform produces much more effective discriminators. Here, L2 regularization is beneficial, possibly because there is more noise that can be overfit on.
 
 \subsection{Convolutional Neural Network for Image Window Analysis}
 
