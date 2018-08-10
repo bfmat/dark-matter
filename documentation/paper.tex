@@ -241,22 +241,50 @@ A convolutional neural network was used for analyzing the raw waveform $\omega$ 
 Two different configurations were tested:
 \begin{enumerate}
     \item A configuration that operates strictly on $\omega$ with no position corrections of any kind (furthermore $DeepConv(\omega)$).
-    \item A configuration with an additional position input on a lower layer such that it should be able to learn to incorporate position corrections into its outputs ($DeepConvWithPos(\omega, \chi)$).
+    \item A configuration with an additional position input on a lower layer such that it should be able to learn to incorporate position corrections into its outputs ($DeepConvWithPos(\omega, \chi)$). This configuration was tested both with and without $WallCut(D)$.
 \end{enumerate}
 
 \subsubsection{Results}
 
 During early tests with variations on $DeepConv(\omega)$, it was revealed to have an incredible capacity to separate run types based on unwanted biases. It was able to separate the AmBe calibration run from combined background runs with 96\% accuracy, and to separate all calibration runs from background runs with 91\% accuracy. This was determined to be caused by the network detecting and fitting on biases in the white noise at the beginning and hydraulic recompression sounds at the end of the raw waveform. This extraneous information was subsequently cropped out.
 
-Once the audio was cropped properly, $DeepConv(\omega)$ achieved a maximum of 77\% accuracy on validation data. Using the same network architecture (except for the input layer), $DeepConvWithPos(\omega, \chi)$ achieved 85\%. The maximum obtained on a grid search with position input was 91\% (although with a high class-wise standard deviation of 0.61). While this is not a drastic improvement, it is a fairly strong indication that the network is able to extract meaningful information from the position, which may be used in an internal position correction of the volume.
+Once the audio was cropped properly, $DeepConv(\omega)$ achieved a maximum of 77\% accuracy on validation data. Using the same network architecture (except for the input layer), and still without $WallCut(D)$, $DeepConvWithPos(\omega, \chi)$ achieved 85\%. The maximum obtained on a grid search with this configuration was 91\% (although with a high class-wise standard deviation of 0.61). While this is not a drastic improvement, it is a fairly strong indication that the network is able to extract meaningful information from the position, which may be used in an internal position correction of the volume.
 
-However, the lack of decisiveness observed even when accuracy was relatively high, as seen in Figure \ref{waveform_best_validation}, implies this is a suboptimal technique.
+However, the lack of decisiveness observed even when accuracy was relatively high, as seen in Figure \ref{waveform_best_validation}, implies that without $WallCut(D)$, this is a suboptimal technique.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{waveform_best_validation}
     \caption{\label{waveform_best_validation} Accuracy of $DeepConvWithPos(\omega, \chi)$ compared to Acoustic Parameter at discriminating between run types without $WallCut(D)$ (91\% accuracy).}
 \end{figure}
+
+!!!Include results with wall cuts!!!
+
+The following tables show the results of several $DeepConvWithPos(\omega, \chi)$ discriminators produced throughout testing, with corresponding network hyperparameters.
+
+With $WallCut(D)$:
+
+!!!TODO!!!
+
+Without $WallCut(D)$:
+
+\begin{tabular}{|l|l|l|l|l|l|l|}
+    \hline
+    L2 $\lambda$ & Dropout & Filters & Kernel Size & \# Layers Multiplier & Max Accuracy & Class-Wise Std Dev \\
+    \hline
+    0.003 & 0 & 24 & 3 & 3 & 91\% & 0.61 \\
+    \hline
+    0.003 & 0.5 & 24 & 5 & 3 & 91\% & 0.65 \\
+    \hline
+    0.001 & 0.25 & 24 & 3 & 3 & 91\% & 0.66 \\
+    \hline
+    0.001 & 0.5 & 48 & 5 & 3 & 88\% & 0.73 \\
+    \hline
+    0.0003 & 0 & 48 & 5 & 6 & 78\% & 0.95 \\
+    \hline
+    0.0003 & 0.5 & 48 & 5 & 6 & 74\% & 0.92 \\
+    \hline
+\end{tabular}
 
 \subsection{Multi-Layer Perceptron for Fourier Transform Analysis}
 
