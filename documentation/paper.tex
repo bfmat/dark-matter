@@ -424,6 +424,8 @@ With $WallCut(D)$:
     \hline
     $FourierMLPWithPos(\beta_{40}, \chi)$ & 91\% & 0.54 \\
     \hline
+    $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 91\% & 0.53 \\
+    \hline
     Original PICO-60 Neural Network & 94\% & 0.99 \\
     \hline
     Acoustic Parameter & N/A & 0.56 \\
@@ -449,6 +451,13 @@ Without $WallCut(D)$:
     Acoustic Parameter & N/A & 0.73 \\
     \hline
 \end{tabular}
+
+There are 2 key conclusions to be drawn from the above tables:
+
+\begin{enumerate}
+    \item With $WallCut(D)$, the low-resolution Fourier transform $\beta_{8}$ is by far the most effective input format. Higher resolutions seem to make performance worse, likely due to overfitting. It is significantly better than the original PICO-60 neural network, and is more decisive (as measured by the class-wise standard deviation)
+    \item Without $WallCut(D)$, full-resolution $\beta_{50,001}$ is the most effective, nearing the best performance with wall cuts at separating run types. All models are notably less decisive, given that the lowest standard deviation without wall cuts is 0.47, compared to 0.29 with wall cuts.
+\end{enumerate}
 
 \begin{figure}[H]
     \centering
