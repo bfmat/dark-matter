@@ -382,11 +382,31 @@ In an effort to resolve this, a 2-dimensional convolutional neural network was a
 
 \subsubsection{Results}
 
-Throughout a variety of different network architectures, the best validation accuracy obtained was 85\%. The corresponding training accuracy of 100\% indicates that severe overfitting is taking place. Also, the class-wise standard deviation was a very high 0.95, which implies its decisions are nearly random (as is apparent in \ref{image_window}). It is likely fitting on some form of noise within $\iota$. The fact that throughout many trials (including a grid search), no good performance on validation data was observed, provides significant evidence that images provide insufficient information for effective discrimination.
+Throughout a variety of different network architectures, the best validation accuracy obtained was a deceptively high 85\%. The corresponding training accuracy of 100\% indicates that severe overfitting is taking place. Also, the class-wise standard deviation was a very high 0.95, which implies its decisions are nearly random (as is visually apparent in \ref{image_window}). It is likely fitting on some form of noise within $\iota$. The fact that throughout many trials (including a grid search), no good performance on validation data was observed, provides significant evidence that images provide insufficient information for effective discrimination.
+
+The following table shows performance of various configurations of $ImageConv(\iota)$:
+
+\begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+    L2 $\lambda$ & Dropout & Convolutional Layers & Dense Layers & Max Accuracy & Class-Wise Std Dev \\
+    \hline
+    0 & 0.5 & 4 & 3 & 77\% & 1.01 \\
+    \hline
+    0 & 0.25 & 4 & 3 & 85\% & 0.95 \\
+    \hline
+    0.01 & 0.25 & 4 & 3 & 66\% & 0.97 \\
+    \hline
+    0.003 & 0.25 & 4 & 3 & 69\% & 0.97 \\
+    \hline
+    0.01 & 0.25 & 12 & 3 & 66\% & 0.98 \\
+    \hline
+    0.01 & 0.5 & 12 & 3 & 68\% & 0.99 \\
+    \hline
+\end{tabular}
 
 \subsection{Performance Summary}
 
-The following tables compare the accuracy and mean class-wise standard deviation values of various supervised learning configurations with multiple input formats, with Acoustic Parameter and the original PICO-60 neural network provided as baselines.
+The following tables compare the accuracy and mean class-wise standard deviation values of certain highlight supervised learning configurations with multiple input formats, with Acoustic Parameter and the original PICO-60 neural network provided as baselines.
 
 With $WallCut(D)$:
 
