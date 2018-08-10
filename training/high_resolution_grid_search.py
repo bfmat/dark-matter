@@ -2,8 +2,6 @@
 """Training script that trains the banded frequency neural network on several different hyperparameter combinations"""
 # Created by Brendon Matusch, July 2018
 
-import os
-
 from keras.layers import Input, BatchNormalization, Dense, Dropout, concatenate
 from keras.models import Model
 from keras.regularizers import l2
@@ -11,7 +9,6 @@ from keras.regularizers import l2
 from data_processing.event_data_set import EventDataSet
 from data_processing.bubble_data_point import RunType, load_bubble_frequency_domain
 from data_processing.experiment_serialization import save_test
-from models.banded_frequency_network import create_model
 
 # Load the event data set from the file, removing multiple-bubble events, disabling acoustic parameter cuts, and keeping background radiation and calibration runs
 event_data_set = EventDataSet(
@@ -20,7 +17,7 @@ event_data_set = EventDataSet(
         RunType.AMERICIUM_BERYLLIUM,
         RunType.CALIFORNIUM
     },
-    use_wall_cuts=False
+    use_wall_cuts=True
 )
 # Load training and validation data as NumPy arrays, currying the loading function to disable banding
 training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = \
