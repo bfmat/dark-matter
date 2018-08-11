@@ -21,7 +21,7 @@ network_outputs_true = [output for output, ground_truth in zip(network_outputs, 
 # Set the size of the resulting graph (it should be standard across all such graphs)
 plt.figure(figsize=(8, 6))
 # Plot the network's outputs by ground truth in a histogram, labeling the 2 classes
-plt.hist([network_outputs_false, network_outputs_true], label=['Neutron Calibration Data', 'Alpha Background Data'])
+plt.hist([network_outputs_false, network_outputs_true], bins=20, label=['Neutron Calibration Data', 'Alpha Background Data'])
 # Label the axes of the graph
 plt.xlabel('Network Prediction')
 plt.ylabel('Count')
