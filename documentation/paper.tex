@@ -269,13 +269,7 @@ During early tests with variations on $DeepConv(\omega)$, it was revealed to hav
 
 Once the audio was cropped properly, $DeepConv(\omega)$ achieved a maximum of 77\% accuracy on validation data. Using the same network architecture (except for the input layer), and still without $WallCut(D)$, $DeepConvWithPos(\omega, \chi)$ achieved 85\%. The maximum obtained on a grid search with this configuration was 91\% (although with a relatively high class-wise standard deviation of 0.61). While this is not a drastic improvement, it is a fairly strong indication that the network is able to extract meaningful information from the position, which may be used in an internal position correction of the volume.
 
-However, the lack of decisiveness observed even when accuracy was relatively high, as seen in Figure \ref{waveform_best_validation}, implies that without $WallCut(D)$, this is a suboptimal technique.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{waveform_best_validation}
-    \caption{\label{waveform_best_validation} Accuracy of $DeepConvWithPos(\omega, \chi)$ compared to Acoustic Parameter at discriminating between run types without $WallCut(D)$ (91\% accuracy).}
-\end{figure}
+However, the lack of decisiveness observed even when accuracy was relatively high implies that, without $WallCut(D)$, this is a suboptimal technique.
 
 !!!Include results with wall cuts!!!
 
@@ -494,9 +488,13 @@ Since a goal of these techniques is for the network to reinforce the pattern of 
 
 \subsubsection{Concept}
 
-Gravitational differentiation is a novel technique for training a neural network in a semi-supervised fashion on a relatively small set of imperfectly labeled data, while simultaneously incorporating the network's changing predictions on a set of unlabeled data to encourage decisive classifications.
+Gravitational differentiation is a novel technique, developed during this study, for training a neural network in a semi-supervised fashion on a relatively small set of imperfectly labeled data, while simultaneously incorporating the network's changing predictions on a set of unlabeled data to encourage decisive classifications.
 
-It accomplishes this using a new method for calculating gradients for the last layer of the neural network. Based on the current predictions of a trained network on a certain unlabeled training example, a gradient is calculated for the last layer with the following purposes:
+In general terms, it amplifies the training effect associated with high-confidence predictions (those that most clearly show characteristics of either an alpha particle or a neutron) on unlabeled examples. Meanwhile, it minimizes the training impact of low-confidence predictions, such that the network will not be trained to make incorrect predictions.
+
+Analogous to a gravitational effect, events with high-confidence predictions are attracted closer to their corresponding classifications. They are then used as training data, allowing the patterns they represent to be used more generally to make predictions on other events.
+
+The system accomplishes this using a new method for calculating gradients for the last layer of the neural network. Based on the current predictions of a trained network on a certain unlabeled training example, a gradient is calculated for the last layer with the following purposes:
 
 \begin{itemize}
     \item For examples with confident predictions close to 0 or 1: Create a large gradient that pulls the prediction closer to 0 or 1 through gradient descent (like gravity).
@@ -532,7 +530,7 @@ It is a distortion of the hyperbolic tangent that flattens the central range and
 This function is applied in a training algorithm that is parameterized by the set of imperfectly labeled data $\varsigma$, the set of unlabeled training data $\upsilon$, a binary classification neural network $NN(x)$ (where $x$ is the input data format), and the gravitational multiplier increment $\delta_g$. The distortion power $\psi$ is assumed to be constant throughout a training run, and the gravitational multiplier $g$ is initialized at 0, gradually increasing during training. It iterates as follows:
 
 \begin{enumerate}
-    \item Train $NN(x)$ for a single epoch on the combined set $\varsigma \cup \upsilon$, using the predefined ground truths for $\varsigma$ (with a mean squared error loss function) and the most recently calculated gravitational gradients for $\upsilon$.
+    \item Train $NN(x)$ for a single epoch on the combined set $\varsigma \cup \upsilon$, using the predefined ground truths for $\varsigma$ (with a mean squared error loss function) and the most recently calculated gravitational gradients for each of the examples in $\upsilon$.
     \item Calculate predictions $p$ with $NN(x)$ on the entirety of $\upsilon$. Calculate $GravDiff(p, \psi, g)$ and record the resulting gradients for the next iteration.
     \item Increment $g$ by $\delta_{g}$. At the beginning, when $g = 0$, training will be entirely based on the labeled set $\varsigma$, and progressively, over the course of a run, the gravitational effect increases with $g$.
 \end{enumerate}
@@ -565,15 +563,21 @@ As seen in Figure \ref{grav_acc_by_hyper}, all 3 hyperparameters that were optim
 
 Two different options were tested with regard to size of the labeled data set $\varsigma$. Out of a set of 496 total examples available for training, either 128 (approximately $1/4$ of the total set) or 256 (approximately $1/2$) were used as labeled data. Over the entire grid search, runs with 128 examples in $\varsigma$ produced on average 64\% more errors on validation data, compared to those with 256 examples.
 
+!!!Include table on grid search!!!
+
 \subsection{Iterative Cluster Nucleation}
 
 \subsubsection{Concept}
 
-Iterative cluster nucleation is a semi-supervised learning algorithm that takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator.
+Iterative cluster nucleation is a second semi-supervised learning algorithm developed as part of this study. It takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator.
 
-The basic concept is to start with a relatively small amount of labeled data from 2 classes (nuclear recoils and alpha particles, in this case). They can be visualized as clusters. A neural network is trained on the clusters, and used to run predictions on unlabeled data.
+The basic concept is similar to that of gravitational differentiation. Starting with a relatively small amount of labeled data from 2 classes (nuclear recoils and alpha particles, in this case), predictions are run on a set of unlabeled data, and those predictions are used to produce further training data. However, there are 2 key differences:
 
-Those examples that, based on the network's predictions, fall firmly into one cluster or the other, are added to that cluster, and are used for training. By repeating this process, the clusters are nucleated (expanded) to gradually include more and more of the data set.
+\begin{enumerate}
+    \item In iterative cluster nucleation, an unlabeled example is not included in the training process at all, until a very confident prediction is made on it. Once that occurs, it is added to the training set, expanding 1 of the 2 ``clusters'' of training data.
+    \item Once an example is added to the active training set, it is never removed. This ensures that the highly confident predictions made at the very beginning continue to influence the training process.
+    \item The unlabeled examples, once added to the active training set, are weighted just as strongly as examples from the original labeled data set. This ensures imperfect labels in the labeled data do not outweigh the confident and more likely correct predictions from later in the training process.
+\end{enumerate}
 
 \subsubsection{Algorithm}
 
