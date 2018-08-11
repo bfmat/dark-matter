@@ -269,7 +269,13 @@ During early tests with variations on $DeepConv(\omega)$, it was revealed to hav
 
 Once the audio was cropped properly, $DeepConv(\omega)$ achieved a maximum of 77\% accuracy on validation data. Using the same network architecture (except for the input layer), and still without $WallCut(D)$, $DeepConvWithPos(\omega, \chi)$ achieved 85\%. The maximum obtained on a grid search with this configuration was 91\% (although with a relatively high class-wise standard deviation of 0.61). While this is not a drastic improvement, it is a fairly strong indication that the network is able to extract meaningful information from the position, which may be used in an internal position correction of the volume.
 
-However, the lack of decisiveness observed even when accuracy was relatively high implies that, without $WallCut(D)$, this is a suboptimal technique.
+However, there is a lack of decisiveness observed even when accuracy was relatively high, in Figure \ref{waveform_hist}. This implies that, without $WallCut(D)$, this is a suboptimal technique.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{waveform_hist}
+    \caption{\label{waveform_hist} Prediction distribution of the best $DeepConvWithPos(\omega, \chi)$ discriminator.}
+\end{figure}
 
 !!!Include results with wall cuts!!!
 
@@ -315,13 +321,25 @@ Once again, configurations with and without position input were tested. This tim
 
 \subsubsection{Results}
 
-It became evident very quickly that, without $WallCut(D)$, a high resolution was not required to get a high accuracy relative to the ground truth data. $FourierMLP(\beta_{8})$ managed an excellent 98\% validation accuracy, and also produced a mean class-wise standard deviation of 0.29. Increasing the number of bands to $FourierMLPWithPos(beta_{20}, \chi)$, did not improve the results; accuracy only reached 95\%, with an increased mean standard deviation of 0.42. 40 bands reduced the accuracy once again, to 91\%.
+It became evident very quickly that, without $WallCut(D)$, a high resolution was not required to get a high accuracy relative to the ground truth data. $FourierMLP(\beta_{8})$ managed an excellent 98\% validation accuracy, and also produced a mean class-wise standard deviation of 0.29. Its very decisive prediction distribution can be observed in Figure \ref{banded_no_pos_input_hist}. Increasing the number of bands to $FourierMLPWithPos(beta_{20}, \chi)$, did not improve the results; accuracy only reached 95\%, with an increased mean standard deviation of 0.42. 40 bands reduced the accuracy once again, to 91\%.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{banded_no_pos_input_hist}
+    \caption{\label{banded_no_pos_input_hist} Prediction distribution of the best $FourierMLP(\beta_{8})$ discriminator, with $WallCut(D)$.}
+\end{figure}
 
 Very interestingly, $FourierMLP(\beta_{8})$ performed better than either $FourierMLP(PosCor(\beta_{8}), \chi)$ or \\ $FourierMLPWithPos(\beta{8}, \chi)$, which produced accuracy values of 97\% and 95\%, respectively.
 
 Unlike for the convolutional neural network trained on $\omega$, position input did not improve performance at all. In fact, $FourierMLP(\beta_{8})$, performed better than $FourierMLPWithPos(\beta_{8}, \chi)$, which reached only 95\% validation accuracy. Nevertheless, they both performed better than any of the network architectures trained on $\omega$.
 
-The higher resolution demonstrated significant power when $WallCut(D)$ was not applied, and only \\ $QualCut(MultiCut(D))$ was used. $FourierMLPWithPos(\beta_{20}, \chi)$ achieved only 92\% accuracy (2 percentage points lower than the same configuration without $WallCut(D)$). However, training on $\beta_{50,001}$, which does not incorporate any banding, improved this figure to a maximum of 97\%. However, that epoch had a relatively high standard deviation, at 0.47.
+The higher resolution demonstrated significant power when $WallCut(D)$ was not applied, and only \\ $QualCut(MultiCut(D))$ was used. $FourierMLPWithPos(\beta_{20}, \chi)$ achieved only 92\% accuracy (2 percentage points lower than the same configuration without $WallCut(D)$). However, training on $\beta_{50,001}$, which does not incorporate any banding, improved this figure to a maximum of 97\%. However, that epoch had a relatively high class-wise standard deviation, at 0.47, as seen in Figure \ref{high_freq_no_wall_hist}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{high_freq_no_wall_hist}
+    \caption{\label{high_freq_no_wall_hist} Prediction distribution of the best $FourierMLPWithPos(\beta_{50,001}, \chi)$ discriminator, without $WallCut(D)$.}
+\end{figure}
 
 The following tables compare various multi-layer perceptron discriminators, with and without wall cuts.
 
@@ -389,7 +407,13 @@ In an effort to resolve this, a 2-dimensional convolutional neural network was a
 
 \subsubsection{Results}
 
-Throughout a variety of different network architectures, the best validation accuracy obtained was a deceptively high 85\%. The corresponding training accuracy of 100\% indicates that severe overfitting is taking place. Also, the class-wise standard deviation was a very high 0.95, which implies its decisions are nearly random. It is likely fitting on some form of noise within $\iota$. The fact that throughout many trials (including a grid search), no good performance on validation data was observed, provides significant evidence that images provide insufficient information for effective discrimination.
+Throughout a variety of different network architectures, the best validation accuracy obtained was a deceptively high 85\%. The corresponding training accuracy of 100\% indicates that severe overfitting is taking place. Also, the class-wise standard deviation was a very high 0.95, which implies its decisions are nearly random (as seen in Figure \ref{image_hist}). It is likely fitting on some form of noise within $\iota$. The fact that throughout many trials (including a grid search), no good performance on validation data was observed, provides significant evidence that images provide insufficient information for effective discrimination.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{image_hist}
+    \caption{\label{image_hist} Prediction distribution of the best $ImageConv(\iota)$ discriminator.}
+\end{figure}
 
 The following table shows performance of various configurations of $ImageConv(\iota)$:
 
@@ -413,7 +437,7 @@ The following table shows performance of various configurations of $ImageConv(\i
 
 \subsection{Performance Summary}
 
-The following tables compare the accuracy and mean class-wise standard deviation values of certain highlight supervised learning configurations with multiple input formats, with Acoustic Parameter and the original PICO-60 neural network provided as baselines.
+The following tables compare the accuracy and mean class-wise standard deviation values of certain highlight supervised learning configurations with multiple input formats, with the original PICO-60 neural network provided as a baseline.
 
 With $WallCut(D)$:
 
@@ -435,8 +459,6 @@ With $WallCut(D)$:
     \hline
     Original PICO-60 Neural Network & 94\% & 0.99 \\
     \hline
-    Acoustic Parameter & N/A & 0.56 \\
-    \hline
 \end{tabular}
 
 Without $WallCut(D)$:
@@ -454,8 +476,6 @@ Without $WallCut(D)$:
     $DeepConvWithPos(\omega, \chi)$ & 91\% & 0.61 \\
     \hline
     $ImageConv(\iota)$ & 85\% & 0.95 \\
-    \hline
-    Acoustic Parameter & N/A & 0.73 \\
     \hline
 \end{tabular}
 
