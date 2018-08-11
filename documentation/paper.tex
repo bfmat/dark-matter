@@ -557,21 +557,9 @@ This function is applied in a training algorithm that is parameterized by the se
 
 This system was trained using a multi-layer perceptron with an 8-band Fourier transform input for $NN(x)$, because this was one of the most successful configurations in supervised learning. It produced the highest accuracy as well as the lowest class-wise standard deviation.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{grav_opt_validation}
-    \caption{\label{grav_opt_validation} Accuracy of best gravitational differentiation training run compared to Acoustic Parameter (98\% accuracy).}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{grav_acc_by_hyper}
-    \caption{\label{grav_acc_by_hyper} Accuracy of gravitational differentiation as a function of hyperparameter values.}
-\end{figure}
-
 \subsubsection{Results}
 
-During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the algorithm achieved a maximum of 98\% validation accuracy. The mean over that run (also the highest overall) was 96\%. Figure \ref{grav_opt_validation} shows the highly accurate replication of Acoustic Parameter.
+During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the algorithm achieved a maximum of 98\% validation accuracy. The mean over that run (also the highest overall) was 96\%. Figure \ref{grav_grid_search} shows the highly accurate replication of Acoustic Parameter.
 
 As seen in Figure \ref{grav_acc_by_hyper}, all 3 hyperparameters that were optimized during the grid search had a significant effect on accuracy:
 
@@ -584,6 +572,18 @@ As seen in Figure \ref{grav_acc_by_hyper}, all 3 hyperparameters that were optim
 Two different options were tested with regard to size of the labeled data set $\varsigma$. Out of a set of 496 total examples available for training, either 128 (approximately $1/4$ of the total set) or 256 (approximately $1/2$) were used as labeled data. Over the entire grid search, runs with 128 examples in $\varsigma$ produced on average 64\% more errors on validation data, compared to those with 256 examples.
 
 !!!Include table on grid search!!!
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{grav_grid_search}
+    \caption{\label{grav_grid_search} Accuracy of best gravitational differentiation training run compared to Acoustic Parameter (98\% accuracy).}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{grav_acc_by_hyper}
+    \caption{\label{grav_acc_by_hyper} Accuracy of gravitational differentiation as a function of hyperparameter values.}
+\end{figure}
 
 \subsection{Iterative Cluster Nucleation}
 
@@ -632,13 +632,13 @@ As seen in Figure \ref{icn_grid_search}, the network learned to replicate Acoust
 
 Digging deeper into the performance throughout the runs of the grid search, Figure \ref{icn_acc_by_hyper} shows the mean accuracy as a function of each of the hyperparameters that were optimized. Dropout has a clear effect, with 25\% shown to be the optimal number of neurons to drop. L2 regularization is also significant; all $\lambda$ values greater than 0 make performance worse.
 
+Compared to gravitational differentiation, there is a larger delta between the number of errors on the validation set depending on the number of initial training examples used. Those with 128 examples in $\varsigma$ make 85\% more errors on average. However, iterative cluster nucleation with 128 examples still makes 19\% fewer errors than gravitational differentiation with 256 examples in $\varsigma$.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{icn_acc_by_hyper}
     \caption{\label{icn_acc_by_hyper} Mean accuracy of iterative cluster nucleation as a function of hyperparameter values.}
 \end{figure}
-
-Compared to gravitational differentiation, there is a larger delta between the number of errors on the validation set depending on the number of initial training examples used. Those with 128 examples in $\varsigma$ make 85\% more errors on average. However, iterative cluster nucleation with 128 examples still makes 19\% fewer errors than gravitational differentiation with 256 examples in $\varsigma$.
 
 \subsection{Performance Summary}
 
