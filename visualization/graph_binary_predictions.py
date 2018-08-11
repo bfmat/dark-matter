@@ -16,8 +16,8 @@ from utilities.verify_arguments import verify_arguments
 # Verify that a path to the JSON data file is passed
 verify_arguments('JSON data file')
 
-# Load the data set from the file
-events, ground_truths, network_outputs = load_test(sys.argv[1])
+# Load the data set from the file, ignoring the run type ground truths
+events, _, network_outputs = load_test(sys.argv[1])
 # Get the acoustic parameter and neural network score data from the events, if they are present (if one is, both will be)
 if hasattr(events[0], 'logarithmic_acoustic_parameter'):
     acoustic_parameters, original_neural_network_scores = zip(
@@ -29,8 +29,10 @@ else:
     random_values = [random.uniform(0, 1) for _ in range(len(network_outputs))]
     acoustic_parameters = random_values
     original_neural_network_scores = random_values
+# Calculate actual neutron/alpha ground truths based on AP
+ground_truths = np.array(acoustic_parameters) > 0.25
 
-    # Iterate over the three criteria standard deviations will be calculated for, with corresponding names and classification thresholds
+# Iterate over the three criteria standard deviations will be calculated for, with corresponding names and classification thresholds
 for criterion_data, criterion_name, classification_threshold in zip(
     copy.deepcopy([network_outputs, acoustic_parameters, original_neural_network_scores]),
     ['network outputs', 'acoustic parameters', 'original neural network scores'],
@@ -74,8 +76,8 @@ plt.scatter(
     c=point_colors
 )
 # Create patches that describe the 2 differently colored classes
-background_patch = Patch(color='r', label='Background radiation runs')
-calibration_patch = Patch(color='b', label='Neutron calibration runs')
+background_patch = Patch(color='r', label='Alpha Particles')
+calibration_patch = Patch(color='b', label='Neutrons')
 # Display them in a legend
 plt.legend(handles=[background_patch, calibration_patch])
 # Label the X and Y axes
