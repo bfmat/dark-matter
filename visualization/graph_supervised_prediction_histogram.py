@@ -25,5 +25,7 @@ plt.hist([network_outputs_false, network_outputs_true], bins=20, label=['Neutron
 # Label the axes of the graph
 plt.xlabel('Network Prediction')
 plt.ylabel('Count')
+# Include a legend in the graph, explaining the colors
+plt.legend()
 # Display the graph on screen
 plt.show()
