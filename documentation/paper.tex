@@ -70,7 +70,7 @@ Before Acoustic Parameter can be calculated, the audio data must first be conver
 
 Finally, a set of data cuts must be applied to remove certain classes of events which are not accurately classified by Acoustic Parameter. These classes include wall event and multiple-bubble events.
 
-These conversion, preprocessing, and data cutting steps were reapplied during this study, and are described in section \ref{data_formats}.
+These conversion, preprocessing, and data cutting steps were reapplied during this study, and are described in Section \ref{data_formats}.
 
 \subsubsection{Machine Learning}
 
@@ -203,7 +203,7 @@ A significant challenge in this application is that neither supervised nor unsup
 
 For these reasons, a technique is needed that is not as sensitive to problematic training data as supervised learning, but more predictable and controllable than unsupervised learning. Semi-supervised learning is a middle ground in this regard. It makes use of a labeled set as well as an unlabeled set. It uses the labeled set for training, and uses the unlabeled set to further structure the patterns it finds in the training set (which may not be sufficiently large to apply to supervised learning).
 
-2 semi-supervised algorithms were developed and implemented for this study: gravitational differentiation and iterative cluster nucleation. Both are discussed in detail in section \ref{semi_supervised}.
+2 semi-supervised algorithms were developed and implemented for this study: gravitational differentiation and iterative cluster nucleation. Both are discussed in detail in Section \ref{semi_supervised}.
 
 \subsection{Performance Analysis}
 
@@ -232,7 +232,9 @@ Learning algorithms in this study are optimized systematically, with a variety o
 
 \subsection{Overview}
 
-Important unknowns to be determined through experimentation with supervised learning included the most effective input format for the network, and the associated general network structure. Three major such configurations were applied:
+Supervised learning is the most common machine learning paradigm, in which a system is trained on a training set of predefined inputs and ground truths.
+
+As overviewed in Section \ref{data_formats}, there are many possible formats for the input. In addition, different network architectures are necessitated to process these inputs. Three major such configurations were tested:
 
 \begin{enumerate}
     \item A convolutional neural network trained on the raw waveform $\omega$.
