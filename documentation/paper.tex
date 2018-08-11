@@ -32,9 +32,9 @@ To resolve this, physicists must determine a discriminator function that can, ba
 The objective of this study is to investigate the potential for machine learning techniques to address both of these issues. More specifically, in the context of the PICO-60 experiment, there are 2 objectives:
 
 \begin{enumerate}
-    \item Determine whether machine learning techniques can function comparably to a conventionally derived discriminator. Furthermore, develop several neural network architectures and apply them to different input formats, in order to find which are the most effective.
+    \item Determine the most effective machine learning architecture to use in development of a discriminator. Furthermore, develop several neural network architectures and apply them to different input formats, in order to find which are the most effective.
 
-    \item Determine whether these techniques can be extended to develop an effective discriminator function based on incomplete and inaccurate initial information.
+    \item Determine whether these techniques can be extended, applying novel algorithms based on semi-supervised learning, to develop an effective discriminator function based on incomplete and inaccurate initial information.
     
     For clarity, and with specific reference to the PICO-60 experiment, the intent is to accurately separate particle types using only calibration data for training. While calibration runs are known to be mostly correlated with particle types, the relatively large percentage of impurities has the potential to hinder conventional learning techniques.
 \end{enumerate}
@@ -247,6 +247,10 @@ Except where specifically mentioned, $WallCut(D)$ was not applied. This was done
     \item To test the network's ability to handle complex acoustic characteristics including resonance. There is a relatively clear-cut discrimination boundary in PICO-60, but this may not be the case in other applications.
 \end{enumerate}
 
+For all supervised learning configurations, accuracy and class-wise standard deviation statistics were computed using the calibration run type as a base line, as opposed to Acoustic Parameter.
+
+Because supervised learning systems are trained strictly to replicate ground truth data provided to them (the run type), their predictions will tend to incorporate biases similar to those found in the training set. Thus, comparison to Acoustic Parameter is not particularly meaningful.
+
 \subsection{Convolutional Neural Network for Raw Waveform Analysis}
 
 \subsubsection{Structure}
@@ -261,7 +265,7 @@ Two different configurations were tested:
 
 \subsubsection{Results}
 
-During early tests with variations on $DeepConv(\omega)$, it was revealed to have an incredible capacity to separate run types based on unwanted biases. It was able to separate the AmBe calibration run from combined background runs with 96\% accuracy, and to separate all calibration runs from background runs with 91\% accuracy. This was determined to be caused by the network detecting and fitting on biases in the white noise at the beginning and hydraulic recompression sounds at the end of the raw waveform. This extraneous information was subsequently cropped out.
+During early tests with variations on $DeepConv(\omega)$, it was revealed to have a surprising and undesirable capacity to separate run types based on meaningless information. It was able to separate the AmBe calibration run from combined background runs with 96\% accuracy, and to separate all calibration runs from background runs with 91\% accuracy. This was determined to be caused by the network detecting and fitting on biases in the white noise at the beginning and hydraulic recompression sounds at the end of the raw waveform. This extraneous information was subsequently cropped out.
 
 Once the audio was cropped properly, $DeepConv(\omega)$ achieved a maximum of 77\% accuracy on validation data. Using the same network architecture (except for the input layer), and still without $WallCut(D)$, $DeepConvWithPos(\omega, \chi)$ achieved 85\%. The maximum obtained on a grid search with this configuration was 91\% (although with a relatively high class-wise standard deviation of 0.61). While this is not a drastic improvement, it is a fairly strong indication that the network is able to extract meaningful information from the position, which may be used in an internal position correction of the volume.
 
@@ -391,7 +395,7 @@ In an effort to resolve this, a 2-dimensional convolutional neural network was a
 
 \subsubsection{Results}
 
-Throughout a variety of different network architectures, the best validation accuracy obtained was a deceptively high 85\%. The corresponding training accuracy of 100\% indicates that severe overfitting is taking place. Also, the class-wise standard deviation was a very high 0.95, which implies its decisions are nearly random (as is visually apparent in \ref{image_window}). It is likely fitting on some form of noise within $\iota$. The fact that throughout many trials (including a grid search), no good performance on validation data was observed, provides significant evidence that images provide insufficient information for effective discrimination.
+Throughout a variety of different network architectures, the best validation accuracy obtained was a deceptively high 85\%. The corresponding training accuracy of 100\% indicates that severe overfitting is taking place. Also, the class-wise standard deviation was a very high 0.95, which implies its decisions are nearly random. It is likely fitting on some form of noise within $\iota$. The fact that throughout many trials (including a grid search), no good performance on validation data was observed, provides significant evidence that images provide insufficient information for effective discrimination.
 
 The following table shows performance of various configurations of $ImageConv(\iota)$:
 
@@ -468,23 +472,23 @@ There are 2 key conclusions to be drawn from the above tables:
     \item Without $WallCut(D)$, full-resolution $\beta_{50,001}$ is the most effective, nearing the best performance with wall cuts at separating run types. All models are notably less decisive, given that the lowest standard deviation without wall cuts is 0.47, compared to 0.29 with wall cuts.
 \end{enumerate}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{image_window}
-    \caption{\label{image_window} Accuracy of $ImageConv(\iota)$ compared to Acoustic Parameter at discriminating between run types (85\% accuracy).}
-\end{figure}
-
 \section{Semi-Supervised Learning} \label{semi_supervised}
 
 \subsection{Overview}
 
-Semi-supervised learning is the idea of training a machine learning model on a set of labeled data in addition to a set of unlabeled data. This has the advantage of requiring fewer labels to be collected than conventional supervised learning. However, it also has a very powerful advantage when training data is impure and the function to be learned is relatively simple (not simple in that it can be easily calculated by a person, but simple in that it does not require a huge set of training data). It allows a neural network to reinforce its own decisions.
+Semi-supervised learning is an uncommon machine learning technique, relative to widely-used supervised and unsupervised learning. The concept is to train a machine learning model on a set of labeled data in addition to a set of unlabeled data.
+
+In the context of PICO-60, the labeled sets consist of single-bubble events from the calibration sets, which are known to contain approximately 90\% neutrons, and the background radiation data sets, which contain approximately 99\% alpha particles. In general, these labeled sets should have a strong but not perfect correlation with particle types. The unlabeled data can consist of any mixture of particle types, as long as they are all represented in the labeled data.
+
+The primary advantage of this technique is clear: it requires fewer labels to be collected than conventional supervised learning. However, it also has a very powerful advantage when training data is impure and the function to be learned is relatively simple (not simple in that it can be easily calculated by a person, but simple in that it does not require a huge set of training data): It allows a neural network to reinforce its own decisions.
 
 In both of the semi-supervised learning algorithms applied, to arrive at an effective discriminator, the network first trains on a smaller amount of imperfect data. Because the ground truth data is imperfect, training on a relatively small set for a short period of time (potentially using regularization, in addition) ensures that the network will be less likely to overfit and its learned function will be simpler. This is in line with the objective, since, assuming the training inputs are normalized correctly, it should be simpler to discriminate between classes of particles than calibration runs.
 
 The essence of these 2 algorithms, then, is a positive feedback loop in which, by using the network's most confident predictions in the training process, the desired (simpler) function is reinforced, when a conventional supervised learning system would have learned the more complex function that is taught by the ground truths.
 
 In addition to improving performance with a labeled set known to be adequate, a goal of this category of techniques is to minimize the amount of labeled data necessary. This means less time must be spent on collection of calibration data, which can be a very slow process. Regularization techniques, which permit effective training on smaller sets, are applied with this purpose.
+
+Since a goal of these techniques is for the network to reinforce the pattern of particle types which is represented imperfectly in the run types, it is reasonable to compare them to Acoustic Parameter. Thus, the accuracy and class-wise standard deviation use Acoustic Parameter as a baseline.
 
 \subsection{Gravitational Differentiation}
 
