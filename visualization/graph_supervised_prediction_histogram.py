@@ -23,8 +23,8 @@ plt.figure(figsize=(8, 6))
 # Plot the network's outputs by ground truth in a histogram, labeling the 2 classes
 plt.hist([network_outputs_false, network_outputs_true], bins=20, label=['Neutron Calibration Data', 'Alpha Background Data'])
 # Label the axes of the graph
-plt.xlabel('Network Prediction')
-plt.ylabel('Count')
+plt.xlabel('Network Prediction (0 $\Rightarrow$ Neutron Calibration, 1 $\Rightarrow$ Alpha Background)')
+plt.ylabel('Validation Event Count')
 # Include a legend in the graph, explaining the colors
 plt.legend()
 # Display the graph on screen
