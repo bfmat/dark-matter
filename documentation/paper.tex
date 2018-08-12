@@ -15,6 +15,15 @@
 
 \begin{document}
 
+\title{Developing a Bubble Chamber Particle Discriminator Using Semi-Supervised Learning}
+\author{Brendon Matusch, X, Y, and Z}
+\date{August 2018}
+\maketitle
+
+\begin{abstract}
+    TODO, once content is affirmed.
+\end{abstract}
+
 \section{Objective}
 
 In the PICO-60 experiment, and in most other experiments for dark matter detection, one of the most important and challenging hurdles to overcome is that of background radiation. Unwanted particles from a variety of sources can produce event signatures that appear very similar to those of dark matter candidates.
@@ -192,7 +201,7 @@ Classification accuracy is the ability of the network to separate the events int
 
 Class-wise standard deviation captures how decisive the network is: whether its prediction is confidently high or low, or is only slightly closer to one edge of the spectrum.
 
-Numerically, This is a variable defined as $C$ below, where $N$ and $A$ are the sets of outputs of the supervised learning discriminator in question, corresponding to the sets of neutrons and alpha particles respectively. It calculates the spread of the network's predictions for each ground truth class. This means that a decisive discriminator, which produces a wide separation between the two classes, is preferred over one that produces a nebulous cloud of outputs with a seemingly arbitrary decision boundary.
+Numerically, this is a variable defined as $C$ below, where $N$ and $A$ are the sets of outputs of the supervised learning discriminator in question, corresponding to the sets of neutrons and alpha particles respectively. It calculates the spread of the network's predictions for each ground truth class. This means that a decisive discriminator, which produces a wide separation between the two classes, is preferred over one that produces a nebulous cloud of outputs with a seemingly arbitrary decision boundary.
 
 $S=std(N \cup A)$
 
@@ -504,7 +513,7 @@ In general, these labeled sets should have a strong but not perfect correlation 
 
 The primary advantage of semi-supervised learning is clear: it requires fewer labels to be collected than conventional supervised learning. A less obvious but powerful secondary advantage is that, since the learning process allows the network to reinforce its own decisions, the negative effect of impure training data is minimized, potentially allowing the resulting network to perform better than a network trained with supervised learning.
 
-Two techniques for semi-supervised learning have been developed for this study: gravitational differentiation and iterative cluster nucleation. The essence of both algorithms is a positive feedback loop. First, the network is trained on a smaller amount of imperfect data. Throughout the training process, the network runs predictions on unlabeled data. By using its most confident predictions are used in the training process, the desired function (separating particle types) is continuously reinforced, while less confident predictions are de-emphasized. This effectively draws new, unlabeled data into the training set.
+Two techniques for semi-supervised learning have been developed for this study: gravitational differentiation and iterative cluster nucleation. The essence of both algorithms is a positive feedback loop. First, the network is trained on a smaller amount of imperfect data. Throughout the training process, the network runs predictions on unlabeled data. By using its most confident predictions in the training process, the desired function (separating particle types) is continuously reinforced, while less confident predictions are de-emphasized. This effectively draws new, unlabeled data into the training set.
 
 Since the intent of these techniques is to separate particle types (the same as Acoustic Parameter), performance evaluations (accuracy and class-wise standard deviation) use Acoustic Parameter as a baseline.
 
