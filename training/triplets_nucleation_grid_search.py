@@ -152,6 +152,8 @@ for initial_threshold in [0.01, 0.02]:
                                 training_events.append(event)
                                 # Add the classification for this event to the ground truths
                                 training_ground_truths.append(bool(round(prediction)))
+                                # Add to the accumulator for every event added
+                                examples_added += 1
                         # Remove the events newly added to the training list from the list of original events
                         original_training_events = [
                             event for event in original_training_events
