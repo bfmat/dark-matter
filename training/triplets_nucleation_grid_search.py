@@ -3,8 +3,10 @@
 # Created by Brendon Matusch, August 2018
 
 import copy
+import json
 import os
 import random
+import time
 
 import numpy as np
 
@@ -125,6 +127,27 @@ for initial_threshold in [0.01, 0.02]:
                             validation_data=(validation_inputs, validation_ground_truths),
                             epochs=30
                         )
+                        # Run predictions on the validation set
+                        validation_network_outputs = model.predict(validation_inputs)
+                        # Iterate over tuples of validation events alongside ground truths and network outputs, processing them and adding them to a list
+                        output_list = []
+                        for event, ground_truth, network_output in zip(triplet_events, validation_ground_truths, validation_network_outputs.tolist()):
+                            # Combine the date with the unique index, ground truth value, and network output for this bubble in a dictionary
+                            bubble_information = {
+                                # A unique index for this bubble that is constant each time the data set is loaded
+                                'unique_bubble_index': event.unique_bubble_index,
+                                # The ground truth for the validation set; may be binary or numeric
+                                'ground_truth': ground_truth,
+                                # The network's actual prediction; this is a single-element list
+                                'network_output': network_output[0]
+                            }
+                            # Add the processed dictionary to the list
+                            output_list.append(bubble_information)
+                        # Create a JSON file in the temporary folder, named with the prefix, current Unix time, and epoch number, save the data in it, and notify the user
+                        json_file_path = os.path.expanduser(f'~/{description}time{int(time.time())}_epoch{iteration}.json')
+                        with open(json_file_path, 'w') as output_file:
+                            json.dump(output_list, output_file)
+                        print('Data saved at', json_file_path)
 
                         # If there are no original unlabeled training events left, make the predictions an empty list
                         if not original_training_events:
