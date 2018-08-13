@@ -40,7 +40,7 @@ for test_index, test in enumerate(tests):
     for line_index, line in enumerate(test_lines[:-1]):
         # Lines at the end of the epoch include the word 'step', and the line after them is either a validation loss identifier or a path to a saved validation
         line_after = test_lines[line_index + 1]
-        if 'step' in line and ('Validation' in line_after or 'Data saved at' in line_after):
+        if 'step' in line:
             # Split the line by whitespace
             words = line.split()
             # Get the index of the accuracy identifier
@@ -64,19 +64,28 @@ for test_index, test in enumerate(tests):
     # Get the line index corresponding to the maximum validation accuracy
     # Start by finding all the paths to saved validation sets (which are at the end of their corresponding lines)
     validation_set_paths = [line.split()[3] for line in test_lines if 'Data saved at' in line]
-    # Get the index of the maximum validation accuracy; the corresponding validation set will have the same index
-    maximum_validation_accuracy_index = validation_accuracy.index(max(validation_accuracy))
-    print('Maximum accuracy validation set is saved at', validation_set_paths[maximum_validation_accuracy_index])
+    # If there are validation sets saved at all
+    if validation_set_paths:
+        # Get the index of the maximum validation accuracy; the corresponding validation set will have the same index
+        maximum_validation_accuracy_index = validation_accuracy.index(max(validation_accuracy))
+        print('Maximum accuracy validation set is saved at', validation_set_paths[maximum_validation_accuracy_index])
     # If this is an iterative cluster nucleation grid search, print out some additional data
     if 'examples added' in test:
         # Take only the lines that describe how many examples were added to the training set and how many were correct
         addition_lines = [line for line in test_lines if 'examples added' in line]
-        # Extract the numbers of examples that were added on each iteration, and the numbers that were corrected
+        # Extract the numbers of examples that were added on each iteration
         examples_added = [int(line.split()[0]) for line in addition_lines]
-        examples_correct = [int(line.split()[3]) for line in addition_lines]
-        # Add up the numbers and calculate the percentage that were corrected
-        total_added = sum(examples_added)
-        total_correct = sum(examples_correct)
-        percentage_correct = (total_correct / total_added) * 100
-        # Output this information to the user
-        print(f'Out of {total_added} examples added, {total_correct} were correct, a percentage of {percentage_correct}%')
+        # If there are no values saying how many are correct, just print out the total added
+        if 'correct' not in addition_lines[0]:
+            # Add up all of the examples added over all epochs
+            print(f'A total of {sum(examples_added)} were added')
+        # Otherwise, calculate how many are correct and print a percentage
+        else:
+            # Get the number for how many correct, which is in the same line
+            examples_correct = [int(line.split()[3]) for line in addition_lines]
+            # Add up the numbers and calculate the percentage that were corrected
+            total_added = sum(examples_added)
+            total_correct = sum(examples_correct)
+            percentage_correct = (total_correct / total_added) * 100
+            # Output this information to the user
+            print(f'Out of {total_added} examples added, {total_correct} were correct, a percentage of {percentage_correct}%')
