@@ -46,12 +46,15 @@ for initial_threshold in [0.01, 0.02]:
                     # Make a mutable copy of the training threshold
                     training_threshold = initial_threshold
 
-                    # Load all of the events and run standard and wall cuts
+                    # Load all of the remaining (unlabeled) training events
                     events = [
                         event for event in EventDataSet.load_data_from_file()
+                        # Run standard and wall cuts
                         if EventDataSet.passes_standard_cuts(event)
                         and EventDataSet.passes_fiducial_cuts(event)
                         and EventDataSet.passes_audio_wall_cuts(event)
+                        # Take only events that are alphas according to AP
+                        and event.logarithmic_acoustic_parameter > 0.25
                     ]
                     # Iterate over every event and remove the images, waveforms, and full resolution Fourier transforms
                     for bubble in events:
