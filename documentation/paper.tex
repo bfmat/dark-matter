@@ -272,13 +272,19 @@ Once the audio was cropped properly, $DeepConv(\omega)$ achieved a maximum of 77
 
 However, there is a lack of decisiveness observed even when accuracy was relatively high, in Figure \ref{waveform_hist}. This implies that, without $WallCut(D)$, this is a suboptimal technique.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{waveform_hist}
-    \caption{\label{waveform_hist} Prediction distribution of the best $DeepConvWithPos(\omega, \chi)$ discriminator.}
+    \caption{\label{waveform_hist} Prediction distribution of the best $DeepConvWithPos(\omega, \chi)$ discriminator without $WallCut(D)$.}
 \end{figure}
 
-When $WallCut(D)$ was included, both accuracy and class-wise standard deviation improved drastically. The best configuration during a grid search was 96\% accurate and had a standard deviation of 0.41. This is better by both metrics than the multi-layer perceptron used in the original PICO-60 analysis.
+When $WallCut(D)$ was included, both accuracy and class-wise standard deviation improved drastically. The best configuration during a grid search was 96\% accurate and had a standard deviation of 0.41 (seen in Figure \ref{waveform_wall_cut_hist}). This is better by both metrics than the multi-layer perceptron used in the original PICO-60 analysis.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{waveform_wall_cut_hist}
+    \caption{\label{waveform_wall_cut_hist} Prediction distribution of the best $DeepConvWithPos(\omega, \chi)$ discriminator with $WallCut(D)$.}
+\end{figure}
 
 The following tables show the results of several $DeepConvWithPos(\omega, \chi)$ discriminators produced throughout testing, with corresponding network hyperparameters.
 
