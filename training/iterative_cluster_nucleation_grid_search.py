@@ -95,7 +95,6 @@ for initial_training_examples in [32, 64, 128, 256]:
                                   'training examples for iteration', iteration)
                             # Get the banded frequency domain data and corresponding binary ground truths
                             training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()
-                            print(training_input.shape)
 
                             # Train the model for a certain number of epochs
                             model.fit(
