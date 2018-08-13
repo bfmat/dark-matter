@@ -266,7 +266,7 @@ Two different configurations were tested:
 
 \subsubsection{Results}
 
-During early tests with variations on $DeepConv(\omega)$, it was revealed to have a surprising and undesirable capacity to separate run types based on meaningless information. It was able to separate the AmBe calibration run from combined background runs with 96\% accuracy, and to separate all calibration runs from background runs with 91\% accuracy. This was determined to be caused by the network detecting and fitting on biases in the white noise at the beginning and hydraulic recompression sounds at the end of the raw waveform. This extraneous information was subsequently cropped out.
+During early tests with variations on $DeepConv(\omega)$ without $WallCut(D)$, it was revealed to have a surprising and undesirable capacity to separate run types based on meaningless information. It was able to separate the AmBe calibration run from combined background runs with 96\% accuracy, and to separate all calibration runs from background runs with 91\% accuracy. This was determined to be caused by the network detecting and fitting on biases in the white noise at the beginning and hydraulic recompression sounds at the end of the raw waveform. This extraneous information was subsequently cropped out.
 
 Once the audio was cropped properly, $DeepConv(\omega)$ achieved a maximum of 77\% accuracy on validation data. Using the same network architecture (except for the input layer), and still without $WallCut(D)$, $DeepConvWithPos(\omega, \chi)$ achieved 85\%. The maximum obtained on a grid search with this configuration was 91\% (although with a relatively high class-wise standard deviation of 0.61). While this is not a drastic improvement, it is a fairly strong indication that the network is able to extract meaningful information from the position, which may be used in an internal position correction of the volume.
 
@@ -278,7 +278,7 @@ However, there is a lack of decisiveness observed even when accuracy was relativ
     \caption{\label{waveform_hist} Prediction distribution of the best $DeepConvWithPos(\omega, \chi)$ discriminator.}
 \end{figure}
 
-!!!Include results with wall cuts!!!
+When $WallCut(D)$ was included, both accuracy and class-wise standard deviation improved drastically. The best configuration during a grid search was 96\% accurate and had a standard deviation of 0.41. This is better by both metrics than the multi-layer perceptron used in the original PICO-60 analysis.
 
 The following tables show the results of several $DeepConvWithPos(\omega, \chi)$ discriminators produced throughout testing, with corresponding network hyperparameters.
 
@@ -322,7 +322,7 @@ Without $WallCut(D)$:
     \hline
 \end{tabular}
 
-This table shows that simple network architectures seem to produce better accuracy, likely due to reduced overfitting. Larger kernel sizes, more filters, and more layers make performance generally worse, while higher L2 regularization does the opposite. Dropout seems to have a weak correlation, possibly reducing accuracy slightly.
+These tables show that, both with and without $WallCut(D)$, simple network architectures seem to produce better accuracy, likely due to reduced overfitting. Larger kernel sizes, more filters, and more layers make performance generally worse, while higher L2 regularization does the opposite. Dropout seems to have a weak correlation, possibly reducing accuracy slightly.
 
 \subsection{Multi-Layer Perceptron for Fourier Transform Analysis}
 
