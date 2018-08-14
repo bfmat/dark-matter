@@ -64,8 +64,8 @@ for test_index, test in enumerate(tests):
     # Get the line index corresponding to the maximum validation accuracy
     # Start by finding all the paths to saved validation sets (which are at the end of their corresponding lines)
     validation_set_paths = [line.split()[3] for line in test_lines if 'Data saved at' in line]
-    # If there are validation sets saved at all
-    if validation_set_paths:
+    # If there are validation sets saved at all, and if there are the same number as there are validation accuracy values
+    if validation_set_paths and len(validation_set_paths) == len(validation_accuracy):
         # Get the index of the maximum validation accuracy; the corresponding validation set will have the same index
         maximum_validation_accuracy_index = validation_accuracy.index(max(validation_accuracy))
         print('Maximum accuracy validation set is saved at', validation_set_paths[maximum_validation_accuracy_index])
