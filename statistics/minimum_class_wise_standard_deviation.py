@@ -45,3 +45,5 @@ for file_path in file_paths:
 # Print the lowest standard deviation (ignoring NaNs) and the corresponding file path
 minimum_standard_deviation = np.nanmin(mean_standard_deviations)
 print(f'Lowest standard deviation is {minimum_standard_deviation}, found in file {file_paths[mean_standard_deviations.index(minimum_standard_deviation)]}')
+# Print the mean standard deviation over all files
+print(f'Mean standard deviation is {np.nanmean(mean_standard_deviations)}')
