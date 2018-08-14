@@ -18,8 +18,18 @@ input_lines = sys.stdin.readlines()
 num_runs = len(input_lines) // LINES_PER_RUN
 # Iterate over each of the configurations, based on the number of runs and runs per configuration
 for configuration_index in range(num_runs // RUNS_PER_CONFIGURATION):
+    # Create mean and maximum accuracy accumulators for the configuration
+    mean_accuracy_accumulator = 0
+    max_accuracy_accumulator = 0
     # Iterate over the runs within that configuration
     for run_index in range(RUNS_PER_CONFIGURATION):
         # Calculate the starting index of this run
         run_starting_index = ((configuration_index * RUNS_PER_CONFIGURATION) + run_index) * LINES_PER_RUN
-        print(run_starting_index)
+        # Get the lines containing mean and maximum accuracy values, and split them accordingly
+        mean_accuracy, max_accuracy = [float(input_lines[run_starting_index + line_offset].split()[-1]) for line_offset in [MEAN_ACCURACY_LINE, MAX_ACCURACY_LINE]]
+        # Add the accuracy values to the corresponding accumulators for the configuration
+        mean_accuracy_accumulator += mean_accuracy
+        max_accuracy_accumulator += max_accuracy
+    # Calculate the average accuracy statistics for this configuration, and output them to the user
+    print(f'Average mean accuracy for configuration {configuration_index}: {mean_accuracy_accumulator / 3}')
+    print(f'Average maximum accuracy for configuration {configuration_index}: {max_accuracy_accumulator / 3}')
