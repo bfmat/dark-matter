@@ -10,6 +10,7 @@ import numpy as np
 # Use only the CPU; it is faster
 os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
+import keras.backend as K
 from keras.layers import Dense, Dropout, BatchNormalization, InputLayer
 from keras.models import Sequential
 from keras.regularizers import l2
@@ -17,7 +18,6 @@ from keras.regularizers import l2
 from data_processing.bubble_data_point import RunType
 from data_processing.event_data_set import EventDataSet
 from data_processing.experiment_serialization import save_test
-
 
 # Iterate over possible configurations for the number of initial training examples, the initial threshold, the threshold multiplier, the L2 lambda, and dropout regularization
 for initial_training_examples in [32, 64, 128, 256]:
@@ -38,8 +38,8 @@ for initial_training_examples in [32, 64, 128, 256]:
                         print('L2 lambda:', l2_lambda)
                         print('Dropout:', dropout)
                         print('Configuration test index:', configuration_test_index)
-                        # Create a description string that is used when saving validation data
-                        description = f'icn_grid_search_dropout{dropout}_l2_lambda{l2_lambda}_initial_examples{initial_training_examples}_initial_threshold{initial_threshold}_threshold_multiplier{threshold_multiplier}_configuration_test{configuration_test_index}_'
+                        # Create a description folder path that is used when saving validation data
+                        description = f'icn_grid_search/dropout{dropout}/l2_lambda{l2_lambda}/initial_examples{initial_training_examples}/initial_threshold{initial_threshold}/threshold_multiplier{threshold_multiplier}/configuration_test{configuration_test_index}'
 
                         # Make a mutable copy of the training threshold
                         training_threshold = initial_threshold
