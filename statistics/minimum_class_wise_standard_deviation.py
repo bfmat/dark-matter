@@ -18,12 +18,14 @@ mean_standard_deviations = []
 # Iterate over the files corresponding to the full path
 file_paths = glob.glob(os.path.expanduser(sys.argv[1]))
 for file_path in file_paths:
-    # Load the data set from the file, ignoring the events themselves
-    _, ground_truths, network_outputs = load_test(file_path)
+    # Load the data set from the file
+    events, ground_truths, network_outputs = load_test(file_path)
     # If there are any absolutely equal network outputs, add NaN to the list and skip this example because it will possibly mess with the standard deviations (producing zero values)
     if len(network_outputs) != len(np.unique(network_outputs)):
         mean_standard_deviations.append(np.nan)
         continue
+    # Get AP values from the events, and substitute those for the network outputs (temporary hack)
+    network_outputs = [event.logarithmic_acoustic_parameter for event in events]
     # Divide all of the network outputs by their overall standard deviation, to normalize their range
     overall_standard_deviation = np.std(network_outputs)
     # Otherwise, go ahead and divide it in place
