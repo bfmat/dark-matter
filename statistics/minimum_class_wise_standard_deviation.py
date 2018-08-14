@@ -16,7 +16,7 @@ verify_arguments('saved validation sets using wildcard')
 # Create a list for mean class-wise standard deviations
 mean_standard_deviations = []
 # Iterate over the files corresponding to the full path
-file_paths = glob.glob(os.path.expanduser(sys.argv[1]))
+file_paths = sorted(glob.glob(os.path.expanduser(sys.argv[1])))
 for file_path in file_paths:
     # Load the data set from the file, ignoring the events themselves
     _, ground_truths, network_outputs = load_test(file_path)
@@ -40,8 +40,12 @@ for file_path in file_paths:
         ])
         # Calculate the standard deviation of these values and append it to the list
         standard_deviations_by_class.append(np.std(data))
-    # Calculate the mean of the 2 class-wise standard deviations to the list
-    mean_standard_deviations.append(np.mean(standard_deviations_by_class))
+    # Calculate the mean of the 2 class-wise standard deviations
+    mean_standard_deviation = np.mean(standard_deviations_by_class)
+    # Output it to the user
+    print(f'Mean standard deviation for file {file_path} is {mean_standard_deviation}')
+    # Add it to the list for all files
+    mean_standard_deviations.append(mean_standard_deviation)
 # Print the lowest standard deviation (ignoring NaNs) and the corresponding file path
 minimum_standard_deviation = np.nanmin(mean_standard_deviations)
 print(f'Lowest standard deviation is {minimum_standard_deviation}, found in file {file_paths[mean_standard_deviations.index(minimum_standard_deviation)]}')
