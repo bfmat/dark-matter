@@ -6,13 +6,18 @@ import os
 
 
 class SurfaceTopologyNode:
-    """A single topology node, which should reference the nodes above, right and left (triangular directions)"""
+    """A single topology node, which contains information loaded from one dictionary in the JSON file"""
+
+    # Placeholders for references to the nodes above, right and left (triangular directions)
+    node_above = None
+    node_right = None
+    node_left = None
 
     def __init__(self, json_dictionary):
         """Load the relevant components from a JSON dictionary corresponding to a node"""
         # Get the unique identifier that defines this node
         self.identifier = json_dictionary['id']
-        # Get the 3 values in the position individually
+        # Get the 3 values in the position individually (Y is vertical)
         self.x_position, self.y_position, self.z_position = json_dictionary['position']
         # Take the raw list of connections for now; up, right, and left will be calculated later
         # They are defined to be in clockwise order, starting with any of the 3
@@ -31,6 +36,14 @@ class SurfaceTopologySet:
             json_data = json.load(json_file)
         # Load a node object corresponding to each JSON dictionary
         self.nodes = [SurfaceTopologyNode(json_dictionary) for json_dictionary in json_data]
+        # Iterate over the nodes, calculating their relationships to other nodes
+        for node in self.nodes:
+            # Get the nodes this one is connected to, leaving None as it is
+            connected_nodes_clockwise = [self.nodes[node_index] if node_index is not None else None for node_index in node.raw_connections_clockwise]
+            # Get the Y (vertical) positions of these connected nodes
+            # TODO
+            print(connected_nodes_clockwise)
+
 
 
 # Temporary: load the example JSON file
