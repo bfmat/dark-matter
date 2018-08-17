@@ -39,6 +39,11 @@ class TopologicalCNN:
         model.compile(optimizer=optimizer, loss=loss)
         # Print out a summary of the architecture
         print(model.summary())
+        # Train the model, using the list of values for each node as input data, and the list of ground truths included in the original data set
+        model.fit(
+            x=[node.values for node in surface_topology_set.nodes],
+            y=surface_topology_set.ground_truths
+        )
 
     @classmethod
     def convolve_surface_topology(cls, surface_topology_set: SurfaceTopologySet, kernel_radius: int, filters: int, activation: str) -> SurfaceTopologySet:
