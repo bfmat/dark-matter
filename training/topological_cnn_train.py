@@ -13,7 +13,19 @@ topology = SurfaceTopologySet('../data_processing/example_surface_topology_set.j
 # Train a network with 2 convolutional layers and 1 dense layer on it (discarding the trained model)
 TopologicalCNN(
     surface_topology_set=topology,
-    convolutional_layers=[{'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'}],
+    convolutional_layers=[
+        {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'},
+        {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'},
+        {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'},
+        {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'},
+        {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'},
+        {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'},
+        {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'},
+        {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'},
+        {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'},
+        {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'},
+        {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'}
+    ],
     remaining_model=Sequential([Dense(1)]),
     optimizer='adam',
     loss='mse',
