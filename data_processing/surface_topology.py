@@ -25,7 +25,7 @@ class SurfaceTopologyNode:
         # Take the raw list of connections for now; up, right, and left will be calculated later
         # They are defined to be in anticlockwise order, starting with any of the 3
         self.raw_connections_anticlockwise = json_dictionary['connections']
-        # Take the list of values directly; the topology set class will handle processing when the data is loaded
+        # Take the list of values directly; this class is not responsible for any processing
         self.values = json_dictionary['values']
 
 
