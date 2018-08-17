@@ -13,7 +13,7 @@ from data_processing.surface_topology import SurfaceTopologyNode, SurfaceTopolog
 class TopologicalCNN:
     """A convolutional neural network that can convolve over an arbitrary surface topology; it contains the training data and can fit without any further information"""
 
-    def __init__(self, surface_topology_set: SurfaceTopologySet, convolutional_layers: Dict[str, Union[int, str]], remaining_model: Model, optimizer: str, loss: str) -> None:
+    def __init__(self, surface_topology_set: SurfaceTopologySet, convolutional_layers: Dict[str, Union[int, str]], remaining_model: Model, optimizer: str, loss: str, epochs: int) -> None:
         """Create and train a CNN corresponding to a specified set, with layers and training arguments provided"""
         # Create a full copy of the surface topology set so the original is not modified
         set_copy = copy.deepcopy(surface_topology_set)
@@ -39,10 +39,11 @@ class TopologicalCNN:
         model.compile(optimizer=optimizer, loss=loss)
         # Print out a summary of the architecture
         print(model.summary())
-        # Train the model, using the list of values for each node as input data, and the list of ground truths included in the original data set
+        # Train the model, using the list of values for each node as input data, the list of ground truths included in the original data set, and the provided number of epochs
         model.fit(
             x=[node.values for node in surface_topology_set.nodes],
-            y=surface_topology_set.ground_truths
+            y=surface_topology_set.ground_truths,
+            epochs=epochs
         )
 
     @classmethod
