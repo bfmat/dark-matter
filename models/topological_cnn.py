@@ -2,7 +2,7 @@
 # Created by Brendon Matusch, August 2018
 
 import copy
-from typing import List, Optional
+from typing import Dict, List, Optional, Union
 
 from keras.layers import concatenate, Dense, Input
 from keras.models import Model
@@ -13,8 +13,8 @@ from data_processing.surface_topology import SurfaceTopologyNode, SurfaceTopolog
 class TopologicalCNN:
     """A convolutional neural network that can convolve over an arbitrary surface topology; it contains the training data and can fit without any further information"""
 
-    def __init__(self, surface_topology_set: SurfaceTopologySet) -> None:
-        """Create a CNN corresponding to a specified set"""
+    def __init__(self, surface_topology_set: SurfaceTopologySet, convolutional_layers: Dict[str, Union[int, str]], remaining_model: Model, optimizer: str, loss: str) -> None:
+        """Create and train a CNN corresponding to a specified set, with layers and training arguments provided"""
         # Create a full copy of the surface topology set so the original is not modified
         set_copy = copy.deepcopy(surface_topology_set)
         # Add single-element input tensor placeholders to each of the nodes, so graph construction can begin
@@ -22,14 +22,22 @@ class TopologicalCNN:
             node.tensor = Input(shape=(1,))
         # Get references to all of the input layers for model creation
         inputs = [node.tensor for node in set_copy.nodes]
-        # TEMPORARY
-        next_layer = self.convolve_surface_topology(set_copy, kernel_radius=1, filters=8, activation='tanh')
-        # Concatenate all the tensors in the last convolutional layer together
-        combined_tensor = concatenate([node.tensor for node in next_layer.nodes])
-        output = Dense(1)(combined_tensor)
-        # Create a model, leading from all of the input layers to the output layer
+        # Make a changing variable to hold the set produced by each layer
+        layer_set = set_copy
+        # Create a convolutional layer for each of the layer parameter dictionaries provided
+        for convolutional_layer in convolutional_layers:
+            # Use the set from the last layer
+            # Also, apply the contents of the dictionary as keyword arguments
+            layer_set = self.convolve_surface_topology(set_copy, **convolutional_layer)
+        # Concatenate all the tensors from the last convolutional layer together
+        combined_tensor = concatenate([node.tensor for node in layer_set.nodes])
+        # Apply the provided Keras model to the combined tensor to get a final output
+        output = remaining_model(combined_tensor)
+        # Create a model that encompasses the convolutional layers and the remaining model, leading from all of the input layers to the output layer
         model = Model(inputs=inputs, outputs=output)
-        model.compile(optimizer='adam', loss='mse')
+        # Compile the model with the provided optimizer and loss
+        model.compile(optimizer=optimizer, loss=loss)
+        # Print out a summary of the architecture
         print(model.summary())
 
     @classmethod
@@ -108,7 +116,3 @@ class TopologicalCNN:
             return None
         # Otherwise, return the resulting list of nodes
         return nodes
-
-
-# Temporary: create an instance of the CNN with the example topology
-cnn = TopologicalCNN(SurfaceTopologySet('../data_processing/example_surface_topology_set.json'))
