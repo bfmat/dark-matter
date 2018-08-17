@@ -4,6 +4,8 @@
 import json
 import os
 
+from typing import Optional
+
 import numpy as np
 
 
@@ -14,7 +16,7 @@ class SurfaceTopologyNode:
     # The first node (above) is guaranteed to be defined (even if it is physically below this node); the other 2 are defined if possible
     connected_nodes = None
 
-    def __init__(self, json_dictionary):
+    def __init__(self, json_dictionary) -> None:
         """Load the relevant components from a JSON dictionary corresponding to a node"""
         # Get the unique identifier that defines this node
         self.identifier = json_dictionary['id']
@@ -30,8 +32,12 @@ class SurfaceTopologyNode:
 class SurfaceTopologySet:
     """A data structure containing the triangulated surface of a 2-dimensional object, with a set of numeric neural network input values corresponding to each triangle"""
 
-    def __init__(self, json_path: str):
-        """Create a surface topology set, given a path to a JSON file containing the relevant data"""
+    def __init__(self, json_path: Optional[str] = None) -> None:
+        """Create a surface topology set, given a path to a JSON file containing the relevant data; alternatively, make it empty"""
+        # If no JSON file is provided, make the list of nodes empty and return immediately
+        if json_path is None:
+            self.nodes = []
+            return
         # Open the JSON file and load all data out of it
         with open(os.path.expanduser(json_path)) as json_file:
             json_data = json.load(json_file)

@@ -1,7 +1,10 @@
 """Code related to a convolutional neural network that can convolve over an arbitrary surface topology"""
 # Created by Brendon Matusch, August 2018
 
+import copy
 from typing import List, Optional
+
+from keras.layers import concatenate, Dense, Input
 
 from data_processing.surface_topology import SurfaceTopologyNode, SurfaceTopologySet
 
@@ -9,10 +12,42 @@ from data_processing.surface_topology import SurfaceTopologyNode, SurfaceTopolog
 class TopologicalCNN:
     """A convolutional neural network that can convolve over an arbitrary surface topology; it contains the training data and can fit without any further information"""
 
-    def __init__(self, surface_topology_set: SurfaceTopologySet):
+    def __init__(self, surface_topology_set: SurfaceTopologySet) -> None:
         """Create a CNN corresponding to a specified set"""
-        # Temporary: form a kernel at the center node and print out the identifiers of the kernel nodes
-        print([node.identifier for node in self.form_kernel(surface_topology_set.nodes[0], radius=2)])
+        # Create a full copy of the surface topology set so the original is not modified
+        set_copy = copy.deepcopy(surface_topology_set)
+        # Add single-element input tensor placeholders to each of the nodes, so graph construction can begin
+        for node in set_copy.nodes:
+            node.tensor = Input(shape=(1,))
+        # Temporary: create a single convolutional layer
+        self.convolve_surface_topology(set_copy, kernel_radius=1, filters=8, activation='tanh')
+
+    @classmethod
+    def convolve_surface_topology(cls, surface_topology_set: SurfaceTopologySet, kernel_radius: int, filters: int, activation: str) -> SurfaceTopologySet:
+        """Create a partial convolutional neural network graph, defining the operations for a single layer, and producing a new topology with the resulting graph"""
+        # Create a single shared dense layer that outputs the number of filters
+        filters_layer = Dense(filters, activation=activation)
+        # Create an empty surface topology set to add modified nodes to
+        modified_set = SurfaceTopologySet()
+        # Iterate over each of the original nodes, creating graphs with them
+        for node in surface_topology_set.nodes:
+            # Attempt to form a kernel with this node and the provided radius
+            kernel = cls.form_kernel(node, kernel_radius)
+            # If the kernel is None, this node is near an edge; skip to the next iteration
+            if kernel is None:
+                continue
+            # Otherwise, get the tensors corresponding to each of the nodes in this kernel
+            tensors = [node.tensor for node in kernel]
+            # Concatenate them together so they can be put into a dense layer (equivalent to a CNN filter)
+            combined_tensor = concatenate(tensors)
+            # Create a shallow copy of the node that can have the dense layer assigned as its tensor
+            node_copy = copy.copy(node)
+            # Run the dense layer on the combined tensors, placing it in the new node
+            node_copy.tensor = filters_layer(combined_tensor)
+            # Add the node to the new surface topology set
+            modified_set.nodes.append(node_copy)
+        # Return the set with newly defined tensors
+        return modified_set
 
     @staticmethod
     def form_kernel(node: SurfaceTopologyNode, radius: int) -> Optional[List[int]]:
