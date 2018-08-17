@@ -14,7 +14,8 @@ class TopologicalCNN:
         # Temporary: form a kernel at the center node and print out the identifiers of the kernel nodes
         print([node.identifier for node in self.form_kernel(surface_topology_set.nodes[0], radius=2)])
 
-    def form_kernel(self, node: SurfaceTopologyNode, radius: int) -> Optional[List[int]]:
+    @staticmethod
+    def form_kernel(node: SurfaceTopologyNode, radius: int) -> Optional[List[int]]:
         """Given the identifier of a specific node and a kernel radius, return a list of identifiers corresponding to the nodes contained within a kernel around that node (or None if an edge was hit and a kernel could not be formed)"""
         # Create a list to add the nodes to
         nodes = []
@@ -38,7 +39,7 @@ class TopologicalCNN:
             if previous_node is not None:
                 # Get the index of the previous node in the anticlockwise list of connections
                 previous_node_index = connected_nodes.index(previous_node)
-                # If it at the beginning or the end of the list of connections, the anticlockwise order will be preserved, so it can simply be removed
+                # If it is at the beginning or the end of the list of connections, the anticlockwise order will be preserved, so it can simply be removed
                 if previous_node_index in [0, len(connected_nodes) - 1]:
                     connected_nodes.remove(previous_node)
                 # Otherwise, it is in the middle, and removing it will flip the order of the list, so take the last followed by the first
