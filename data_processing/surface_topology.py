@@ -41,8 +41,11 @@ class SurfaceTopologySet:
         # Open the JSON file and load all data out of it
         with open(os.path.expanduser(json_path)) as json_file:
             json_data = json.load(json_file)
-        # Load a node object corresponding to each JSON dictionary
-        self.nodes = [SurfaceTopologyNode(json_dictionary) for json_dictionary in json_data]
+        # The nodes and ground truths are stored separately
+        # First, get the ground truths and record them in a global list
+        self.ground_truths = json_data['outputs']
+        # Load a node object corresponding to each JSON dictionary from the list of nodes
+        self.nodes = [SurfaceTopologyNode(json_dictionary) for json_dictionary in json_data['nodes']]
         # Iterate over the nodes, calculating their relationships to other nodes
         for node in self.nodes:
             # Get the nodes this one is connected to
