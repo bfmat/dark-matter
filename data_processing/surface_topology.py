@@ -10,11 +10,9 @@ import numpy as np
 class SurfaceTopologyNode:
     """A single topology node, which contains information loaded from one dictionary in the JSON file"""
 
-    # A placeholder for references to the nodes above, right and left (triangular directions), in anticlockwise order, starting with any of the 3; any 0, 1 or 2 of these may be undefined
+    # A placeholder for references to the nodes above, right and left (triangular directions), in clockwise order
+    # The first node (above) is guaranteed to be defined (even if it is physically below this node); the other 2 are defined if possible
     connected_nodes = None
-
-    # A placeholder for the index, in the list of references to the nodes, to the vertically highest connected node
-    highest_node_index = None
 
     def __init__(self, json_dictionary):
         """Load the relevant components from a JSON dictionary corresponding to a node"""
@@ -42,7 +40,7 @@ class SurfaceTopologySet:
         # Iterate over the nodes, calculating their relationships to other nodes
         for node in self.nodes:
             # Get the nodes this one is connected to
-            node.connected_nodes = [
+            connected_nodes_anticlockwise = [
                 # Get the node corresponding to the connected identifier
                 self.get_node(node_identifier)
                 # Let None pass through; don't try to load anything in that case
@@ -51,11 +49,15 @@ class SurfaceTopologySet:
                 for node_identifier in node.raw_connections_anticlockwise
             ]
             # Get the Y (vertical) positions of these connected nodes, replacing None with negative infinity (so empty connections will never be considered the farthest up)
-            y_positions = [connected_node.y_position if connected_node is not None else float('-inf') for connected_node in node.connected_nodes]
-            # Find the index of the node with the greatest vertical position
+            y_positions = [connected_node.y_position if connected_node is not None else float('-inf') for connected_node in connected_nodes_anticlockwise]
+            # Get the index of the node with the greatest vertical position
             # That may be below this node if it is at the top of a convex surface
             # This specific edge case will have to be handled when calculating kernels
-            node.highest_node_index = np.argmax(y_positions)
+            highest_node_index = np.argmax(y_positions)
+            # Define the properly ordered list of connections (where the first is vertically the highest) by offsetting each of the node indices
+            # The goal is to rotate the list of connections to the top node comes first
+            node.connected_nodes = [connected_nodes_anticlockwise[(highest_node_index + index_offset) % len(connected_nodes_anticlockwise)]
+                                    for index_offset in range(len(connected_nodes_anticlockwise))]
 
     def get_node(self, identifier: int) -> SurfaceTopologyNode:
         """Return a reference to a node given its identifier"""

@@ -9,7 +9,7 @@ import numpy as np
 from data_processing.surface_topology import SurfaceTopologySet
 
 # Load the example JSON data set
-topology = SurfaceTopologySet('example_surface_topology_set.json')
+topology = SurfaceTopologySet('../data_processing/example_surface_topology_set.json')
 # Create a list of lines to add to, and another list for corresponding colors
 lines = []
 colors = []
