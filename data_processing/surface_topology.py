@@ -43,8 +43,8 @@ class SurfaceTopologySet:
         for node in self.nodes:
             # Get the nodes this one is connected to
             node.connected_nodes = [
-                # Find the node with this ID rather than just using the index; they may be out of order
-                [other_node for other_node in self.nodes if other_node.identifier == node_identifier][0]
+                # Get the node corresponding to the connected identifier
+                self.get_node(node_identifier)
                 # Let None pass through; don't try to load anything in that case
                 if node_identifier is not None else None
                 # The identifiers are in the original order
@@ -56,3 +56,9 @@ class SurfaceTopologySet:
             # That may be below this node if it is at the top of a convex surface
             # This specific edge case will have to be handled when calculating kernels
             node.highest_node_index = np.argmax(y_positions)
+
+    def get_node(self, identifier: int) -> SurfaceTopologyNode:
+        """Return a reference to a node given its identifier"""
+        # Search for the node with this ID rather than just using the index; they may be out of order
+        # There should only be one, so taking the first element is fine
+        return [node for node in self.nodes if node.identifier == identifier][0]
