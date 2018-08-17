@@ -5,6 +5,7 @@ import copy
 from typing import List, Optional
 
 from keras.layers import concatenate, Dense, Input
+from keras.models import Model
 
 from data_processing.surface_topology import SurfaceTopologyNode, SurfaceTopologySet
 
@@ -19,8 +20,17 @@ class TopologicalCNN:
         # Add single-element input tensor placeholders to each of the nodes, so graph construction can begin
         for node in set_copy.nodes:
             node.tensor = Input(shape=(1,))
-        # Temporary: create a single convolutional layer
-        self.convolve_surface_topology(set_copy, kernel_radius=1, filters=8, activation='tanh')
+        # Get references to all of the input layers for model creation
+        inputs = [node.tensor for node in set_copy.nodes]
+        # TEMPORARY
+        next_layer = self.convolve_surface_topology(set_copy, kernel_radius=1, filters=8, activation='tanh')
+        # Concatenate all the tensors in the last convolutional layer together
+        combined_tensor = concatenate([node.tensor for node in next_layer.nodes])
+        output = Dense(1)(combined_tensor)
+        # Create a model, leading from all of the input layers to the output layer
+        model = Model(inputs=inputs, outputs=output)
+        model.compile(optimizer='adam', loss='mse')
+        print(model.summary())
 
     @classmethod
     def convolve_surface_topology(cls, surface_topology_set: SurfaceTopologySet, kernel_radius: int, filters: int, activation: str) -> SurfaceTopologySet:
