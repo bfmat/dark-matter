@@ -28,7 +28,7 @@ class TopologicalCNN:
         for convolutional_layer in convolutional_layers:
             # Use the set from the last layer
             # Also, apply the contents of the dictionary as keyword arguments
-            layer_set = self.convolve_surface_topology(set_copy, **convolutional_layer)
+            layer_set = self.convolve_surface_topology(layer_set, **convolutional_layer)
         # Concatenate all the tensors from the last convolutional layer together
         combined_tensor = concatenate([node.tensor for node in layer_set.nodes])
         # Apply the provided Keras model to the combined tensor to get a final output
