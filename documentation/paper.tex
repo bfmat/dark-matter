@@ -74,11 +74,11 @@ In this study, newly developed methodologies were compared to the two discrimina
 
 \subsubsection{Acoustic Parameter}
 
-The Acoustic Parameter method (abbreviated AP) is the technique that was used for event discrimination in the original PICO-60 analysis. A function was defined that discriminates between alpha particles and nuclear recoils based on audio data. It was derived based on a physical model of the bubble chamber, and was tuned using neutron calibration sources to produce events in the PICO-60 apparatus.
+The Acoustic Parameter method (furthermore AP) is the technique that was used for event discrimination in the original PICO-60 analysis. A function was defined that discriminates between alpha particles and nuclear recoils based on audio data. It was derived based on a physical model of the bubble chamber, and was tuned using neutron calibration sources to produce events in the PICO-60 apparatus.
 
-Before the Acoustic Parameter can be calculated, the audio data must first be converted into the frequency domain (specifically, with the banded Fourier transform $\beta_{8}$). It must also be preprocessed with the position correction function $PosCor(\beta_{8}, \chi)$, which adjusts the overall volume of an audio recording according to its position in the vessel. This is done because the acoustic characteristics differ significantly depending on the position of an event in the vessel.
+Before AP can be calculated, the audio data must first be converted into the frequency domain (specifically, with the banded Fourier transform $\beta_{8}$). It must also be preprocessed with the position correction function $PosCor(\beta_{8}, \chi)$, which adjusts the overall volume of an audio recording according to its position in the vessel. This is done because the acoustic characteristics differ significantly depending on the position of an event in the vessel.
 
-Finally, a set of data cuts must be applied to remove certain classes of events which are not accurately classified by Acoustic Parameter. These classes include wall event and multiple-bubble events.
+Finally, a set of data cuts must be applied to remove certain classes of events which are not accurately classified using AP. These classes include wall event and multiple-bubble events.
 
 These conversion, preprocessing, and data cutting steps were reapplied during this study, and are described in Section \ref{data_formats}.
 
@@ -100,7 +100,7 @@ The lowest-level data derived from the piezos is the raw waveform $\omega$. This
 
 The raw waveform $\omega$ was converted into the frequency domain by means of a one-dimensional Discrete Fourier Transform (DFT) for real input. Since DFTs produce sequences of complex numbers, the magnitude of each element was computed. The direct output from such a DFT is the full-resolution Fourier transform $\beta _{50,001}$, which consists of a sequence of numbers half the length of the raw waveform $\omega$. (It is half the length because the output of a DFT of real inputs is Hermitian, meaning there is no new information contained in the second half of the output.)
 
-Beyond this, the banded Fourier transform $\beta_{8}$ (which is the input to Acoustic Parameter and the original neural analysis) was computed by integrating the resonant energy over all frequencies within each of a set of bands. This can be thought of as a method of signal downscaling, compressing the information into a smaller number of data points.
+Beyond this, the banded Fourier transform $\beta_{8}$ (which is the input to the AP function and the original neural analysis) was computed by integrating the resonant energy over all frequencies within each of a set of bands. This can be thought of as a method of signal downscaling, compressing the information into a smaller number of data points.
 
 This process was generalized to several other banding resolutions. Higher-resolution counterparts of $\beta_{8}$ included $\beta_{20}$ and $\beta_{40}$.
 
@@ -139,7 +139,7 @@ A certain number of cuts are necessarily applied to all data to ensure meaningfu
 \begin{itemize}
     \item The run was not collected during engineering or testing
     \item Recording was triggered by the camera
-    \item Acoustic Parameter is not erroneously large and negative ($log_{10}(AP)>-100$)
+    \item AP is not erroneously large and negative ($log_{10}(AP)>-100$)
     \item Recorded more than 25 seconds after reaching target pressure
     \item The bubble position $\chi$ was successfully calculated ($[\chi_{X}, \chi_{Y}, \chi_{Z}]\neq[-100, -100, -100]$)
 \end{itemize}
@@ -155,7 +155,7 @@ PICO-60 events which include multiple bubbles are \textit{always} neutron events
 
 \subsubsection{Wall Cut}
 
-Events that occur near the walls of the vessel have acoustic properties which are notably different from events nearer the center of the vessel. It can be desirable for a discriminator to handle these events correctly; however, Acoustic Parameter does not, and neither does the neural network used in the previous PICO-60 paper. Thus, removing wall events allowed for a more meaningful direct comparison between a new neural network and existing techniques.
+Events that occur near the walls of the vessel have acoustic properties which are notably different from events nearer the center of the vessel. It can be desirable for a discriminator to handle these events correctly; however, AP does not, and neither does the neural network used in the previous PICO-60 paper. Thus, removing wall events allowed for a more meaningful direct comparison between a new neural network and existing techniques.
 
 \begin{figure}[h!]
     \centering
@@ -177,7 +177,7 @@ The complete wall cut $WallCut(D)$ is a composition of the fiducial cut $FidWall
 
 While machine learning has existed for many years, recent developments in artificial neural networks have opened up a wide variety of applications and fields in which it can now be used.
 
-One of the key benefits of machine learning systems is that they have the capacity to approximate arbitrary functions (such as Acoustic Parameter) without human intervention. This greatly alleviates the need for human programmers to define and optimize the exact algorithm used.
+One of the key benefits of machine learning systems is that they have the capacity to approximate arbitrary functions (such as AP) without human intervention. This greatly alleviates the need for human programmers to define and optimize the exact algorithm used.
 
 This characteristic has already shown wide-ranging implications in many fields. For one, it has the potential to drastically increase the speed of iteration for the people working on a project, since retraining a machine learning system when a hardware or software variable changes is much faster than calibrating a human-designed model.
 
@@ -210,7 +210,7 @@ $S=std(N \cup A)$
 
 $C=(std(N \div S) + std(A \div S)) \div 2$
 
-The first step is to calculate the standard deviation S of the union of the two sets. This gives an indication of the scale of the overall distribution. When $N$ and $A$ are divided by $S$, they are normalized so that the standard deviation of their union is equal to 1. While the neural network’s outputs are bounded in the range of 0 to 1 with a sigmoid activation, Acoustic Parameter has a significantly wider range. Normalization of the union prevents this from creating a bias where Acoustic Parameter would produce a higher standard deviation with a similarly proportioned error.
+The first step is to calculate the standard deviation S of the union of the two sets. This gives an indication of the scale of the overall distribution. When $N$ and $A$ are divided by $S$, they are normalized so that the standard deviation of their union is equal to 1. While the neural network’s outputs are bounded in the range of 0 to 1 with a sigmoid activation, AP has a significantly wider range. Normalization of the union prevents this from creating a bias where AP would produce a higher standard deviation with a similarly proportioned error.
 
 The second step is to calculate the mean of the standard deviations of the normalized sets of neutrons and alpha particles individually. This is an indication of how tightly clustered or widely dispersed the discriminator’s predictions are. Very consistent predictions of $x$ for neutrons and $y$ for alphas (for any $x$ and $y$), with minimal variance off those specific values, will produce a low class-wise standard deviation.
 
@@ -249,11 +249,11 @@ For some experimental runs, $WallCut(D)$ was not applied. This was done for 2 re
     \item To test the network's ability to handle complex acoustic characteristics including resonance. There is a relatively clear-cut discrimination boundary in PICO-60, but this may not be the case in other applications.
 \end{enumerate}
 
-All supervised learning configurations were trained and evaluated based on their ability to determine the origin of events: whether they are from calibration runs (predominantly neutrons) or background runs (predominantly alpha particles). This metric was used for training and testing instead of Acoustic Parameter for two reasons:
+All supervised learning configurations were trained and evaluated based on their ability to determine the origin of events: whether they are from calibration runs (predominantly neutrons) or background runs (predominantly alpha particles). This metric was used for training and testing instead of AP for two reasons:
 
 \begin{enumerate}
-    \item In future experiments, when no Acoustic Parameter is available, impure data is the only information available for training. The network structure should be selected to accommodate this.
-    \item In general, supervised learning systems learn to replicate biases present in the training data set. Thus, to evaluate the network's effectiveness at processing the input data, the run type (which is used for training) must be used as a baseline instead of Acoustic Parameter.
+    \item In future experiments, when no AP equivalent is available, impure data is the only information available for training. The network structure should be selected to accommodate this.
+    \item In general, supervised learning systems learn to replicate biases present in the training data set. Thus, to evaluate the network's effectiveness at processing the input data, the run type (which is used for training) must be used as a baseline instead of AP.
 \end{enumerate}
 
 \subsection{Convolutional Neural Network for Raw Waveform Analysis}
@@ -344,7 +344,7 @@ Preprocessing the audio by applying a Fourier transform may be advantageous. If 
 
 In addition to the Fourier transform used in the original PICO-60 analysis, higher resolutions were computed by similar means. These included $\beta _{20}$ and $\beta _{40}$. Also, the full-resolution $\beta _{50,001}$ was input into a neural network directly, without any downscaling.
 
-$WallCut(D)$ was applied to the low-resolution Fourier transforms during early experiments (since they were used for Acoustic Parameter) to minimize the number of variables between initial neural networks and a proven discriminator.
+$WallCut(D)$ was applied to the low-resolution Fourier transforms during early experiments (since they were used for AP) to minimize the number of variables between initial neural networks and a proven discriminator.
 
 Once again, configurations with and without position input were tested. This time, position corrections were optionally included when position input was not used. The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$, $FourierMLP(PosCor(\beta_{N}, \chi))$ and $FourierMLPWithPos(\beta_{N}, \chi)$. Several different resolutions $N$ of $\beta_{N}$ were used. While a variety of network architectures were tested, most had a small number of layers (on the order of three), applied dropout and L2 regularization, and used batch normalization once again.
 
@@ -534,14 +534,14 @@ Based on these results, experimentation with semi-supervised learning proceeded 
 
 \begin{enumerate}
     \item This was a highly effective configuration with wall cuts, producing 97\% accuracy and a class-wise standard deviation dramatically better than the original PICO-60 neural network on that data set.
-    \item The use of the exact same input format as Acoustic Parameter makes the algorithms more directly comparable.
+    \item The use of the exact same input format as AP makes the algorithms more directly comparable.
 \end{enumerate}
 
 \section{Semi-Supervised Learning} \label{semi_supervised}
 
 \subsection{Overview}
 
-Semi-supervised learning is an uncommon machine learning technique, relative to widely-used supervised and unsupervised learning. The concept is to train a machine learning model on a set of labeled (classified) data in addition to a set of unlabeled (unclasified) data.
+Semi-supervised learning is an uncommon machine learning technique, relative to widely-used supervised and unsupervised learning. The concept is to train a machine learning model on a set of labeled (classified) data in addition to a set of unlabeled (unclassified) data.
 
 In the context of PICO-60, the labeled sets consist of:
 
@@ -556,7 +556,7 @@ The primary advantage of semi-supervised learning is clear: it requires fewer la
 
 Two techniques for semi-supervised learning have been developed for this study: gravitational differentiation and iterative cluster nucleation. The essence of both algorithms is a positive feedback loop. First, the network is trained on a smaller amount of imperfect data. Throughout the training process, the network runs predictions on unlabeled data. By using its most confident predictions in the training process, the desired function (separating particle types) is continuously reinforced, while less confident predictions are de-emphasized. This effectively draws new, unlabeled data into the training set.
 
-Since the intent of these techniques is to separate particle types (the same as Acoustic Parameter), performance evaluations (accuracy and class-wise standard deviation) use Acoustic Parameter as a baseline.
+Since the intent of these techniques is to separate particle types (the same as AP), performance evaluations (accuracy and class-wise standard deviation) use AP as a baseline. Note that $WallCut(D)$ was once again applied for semi-supervised learning, because $FourierMLP(PosCor(\beta_{8}))$ was used for a neural network configuration, and because AP requires application of $WallCut(D)$ to be meaningfully comparable to any neural network.
 
 \subsection{Gravitational Differentiation}
 
@@ -613,7 +613,7 @@ This system was trained using a multi-layer perceptron with an 8-band Fourier tr
 
 \subsubsection{Results}
 
-During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the algorithm achieved a maximum of 98\% validation accuracy. The mean over that run (also the highest overall) was 96\%. Figure \ref{grav_grid_search} shows the highly accurate replication of Acoustic Parameter.
+During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the algorithm achieved a maximum of 98\% validation accuracy. The mean over that run (also the highest overall) was 96\%. Figure \ref{grav_grid_search} shows the highly accurate replication of AP.
 
 As seen in Figure \ref{grav_acc_by_hyper}, all three hyperparameters that were optimized during the grid search had a significant effect on accuracy:
 
@@ -630,7 +630,7 @@ Two different options were tested with regard to size of the labeled data set $\
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{grav_grid_search}
-    \caption{\label{grav_grid_search} Accuracy of best gravitational differentiation training run compared to Acoustic Parameter (98\% accuracy).}
+    \caption{\label{grav_grid_search} Accuracy of best gravitational differentiation training run compared to AP (98\% accuracy).}
 \end{figure}
 
 \begin{figure}[H]
@@ -674,14 +674,14 @@ Parameterized by the initial seed threshold $j$ (on the order of 0.01) and the s
 
 \subsubsection{Results}
 
-During a grid search of these parameters (in addition to regularization parameters of the network), the best accuracy achieved for replication of Acoustic Parameter was exactly 100\%. The mean of all epochs within that training run was 98\%.
+During a grid search of these parameters (in addition to regularization parameters of the network), the best accuracy achieved for replication of AP was exactly 100\%. The mean of all epochs within that training run was 98\%.
 
-As seen in Figure \ref{icn_grid_search}, the network learned to replicate Acoustic Parameter very accurately. Interestingly, the examples with Acoustic Parameter values between the neutron and alpha particle ranges were also classified as such by the network. This may imply the indecisiveness on these examples is fundamental to the data rather than an implementation problem with Acoustic Parameter.
+As seen in Figure \ref{icn_grid_search}, the network learned to replicate AP very accurately. Interestingly, the examples with AP values between the neutron and alpha particle ranges were also classified as such by the network. This may imply the indecisiveness on these examples is fundamental to the data rather than an implementation problem with AP.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{icn_grid_search}
-    \caption{\label{icn_grid_search} Accuracy of optimal iterative cluster nucleation training run compared to Acoustic Parameter (100\% accuracy).}
+    \caption{\label{icn_grid_search} Accuracy of optimal iterative cluster nucleation training run compared to AP (100\% accuracy).}
 \end{figure}
 
 Digging deeper into the performance throughout the runs of the grid search, Figure \ref{icn_acc_by_hyper} shows the mean accuracy as a function of each of the hyperparameters that were optimized. Dropout has a clear effect, with 25\% shown to be the optimal number of neurons to drop. L2 regularization is also significant; all $\lambda$ values greater than 0 make performance worse.
@@ -696,7 +696,7 @@ Compared to gravitational differentiation, there is a larger delta between the n
 
 \subsection{Performance Summary}
 
-The following table directly compares performance of the semi-supervised learning systems, with the existing PICO-60 neural network provided as a baseline once again. Note that ``Max AP Accuracy'' refers to accuracy at replication of Acoustic Parameter, rather than replication of the ground truths.
+The following table directly compares performance of the semi-supervised learning systems, with the existing PICO-60 neural network provided as a baseline once again. Note that ``Max AP Accuracy'' refers to accuracy at replication of AP, rather than replication of the ground truths.
 
 \begin{tabular}{|l|l|l|l|}
     \hline
@@ -718,11 +718,11 @@ The following table directly compares performance of the semi-supervised learnin
 
 \section{Conclusions}
 
-This study has demonstrated that it is possible, using semi-supervised learning, to automatically optimize a discriminator with performance comparable to one developed and tuned by humans like Acoustic Parameter. This conclusion has been achieved through two rounds of optimization, the first to explore and evaluate various network structures and input formats using supervised learning, and the second to incorporate the most successful configuration into semi-supervised learning systems and replicate Acoustic Parameter as accurately as possible.
+This study has demonstrated that it is possible, using semi-supervised learning, to automatically optimize a discriminator with performance comparable to one developed and tuned by humans like the Acoustic Parameter technique. This conclusion has been achieved through two rounds of optimization, the first to explore and evaluate various network structures and input formats using supervised learning, and the second to incorporate the most successful configuration into semi-supervised learning systems and replicate AP as accurately as possible.
 
 In the realm of supervised learning, it was made clear that the banded Fourier transform is the most effective input format. It produced significantly higher accuracy and tighter prediction distributions than neural networks trained on either the raw audio waveform or image window data. There is strong evidence that image data in particular does not contain sufficient information to be used for discrimination.
 
-Two semi-supervised learning algorithms were developed, applying the best configuration found for supervised learning. While both techniques produced some very effective discriminators, iterative cluster nucleation was found to be the more effective of the two. It replicated Acoustic Parameter with a mean of 98\% accuracy on the best configuration. This indicates that the technique shows significant promise, and may be worth consideration as a discrimination technique for future experiments.
+Two semi-supervised learning algorithms were developed, applying the best configuration found for supervised learning. While both techniques produced some very effective discriminators, iterative cluster nucleation was found to be the more effective of the two. It replicated AP with a mean of 98\% accuracy on the best configuration. This indicates that the technique shows significant promise, and may be worth consideration as a discrimination technique for future experiments.
 
 \section{Software}
 
