@@ -21,7 +21,7 @@ from data_processing.experiment_serialization import save_test
 from training.gravitational_ground_truth_offsets import gravitational_ground_truth_offsets
 
 # Iterate over different values for the number of definitive training examples, the gravity multiplier increment, the distortion power, and the stochastic gradient descent learning rate
-for definitive_training_examples in [32, 64, 128, 256]:
+for definitive_training_examples in [128, 256]:
     for gravity_multiplier_increment in [0.0005, 0.001, 0.003, 0.005, 0.008]:
         for learning_rate in [0.001, 0.003, 0.01, 0.03]:
             for distortion_power in [3, 5, 7, 9, 11]:
