@@ -20,7 +20,7 @@ from data_processing.event_data_set import EventDataSet
 from data_processing.experiment_serialization import save_test
 
 # Iterate over possible configurations for the number of initial training examples, the initial threshold, the threshold multiplier, the L2 lambda, and dropout regularization
-for initial_training_examples in [32, 64, 128, 256]:
+for initial_training_examples in [256]:
     for initial_threshold in [0.01, 0.02]:
         for threshold_multiplier in [1.025, 1.05]:
             for l2_lambda in [0, 0.001, 0.003]:
