@@ -55,20 +55,18 @@ def load_data_from_file(file_path):
     return pmt_data_arrays
 
 
-# Store the data only if this is run as a script
-if __name__ == '__main__':
-    # Create 2 lists: 1 for neck events, and the other for non-neck events
-    # Load all data out of the relevant paths, chaining all of the lists together
-    neck_events = list(itertools.chain.from_iterable(
-        load_data_from_file(path)
-        for path in ['~/PB_000000_analyzed_0100.root']
-    ))
-    non_neck_events = list(itertools.chain.from_iterable(
-        load_data_from_file(path)
-        for path in []
-    ))
-    # Combine the neck and non-neck events in a tuple, and save them in a Joblib binary file
-    with open(DATA_FILE_PATH, 'wb') as joblib_file:
-        joblib.dump((neck_events, non_neck_events), joblib_file)
-    # Notify the user that it has been saved
-    print('Data file saved at', DATA_FILE_PATH)
+# Create 2 lists: 1 for neck events, and the other for non-neck events
+# Load all data out of the relevant paths, chaining all of the lists together
+neck_events = list(itertools.chain.from_iterable(
+    load_data_from_file(path)
+    for path in ['~/PB_000000_analyzed_0100.root']
+))
+non_neck_events = list(itertools.chain.from_iterable(
+    load_data_from_file(path)
+    for path in []
+))
+# Combine the neck and non-neck events in a tuple, and save them in a Joblib binary file
+with open(DATA_FILE_PATH, 'wb') as joblib_file:
+    joblib.dump((neck_events, non_neck_events), joblib_file)
+# Notify the user that it has been saved
+print('Data file saved at', DATA_FILE_PATH)
