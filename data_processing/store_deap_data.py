@@ -5,6 +5,7 @@
 
 from __future__ import print_function
 
+import glob
 import itertools
 import os
 
@@ -24,7 +25,7 @@ PMT_COUNT = 255
 def load_data_from_file(file_path):
     """Given a path to a ROOT file, load all of the relevant data from it and return it as a list of tuples"""
     # Load the data file from the full path, and get the main tree
-    data_file = ROOT.TFile(os.path.expanduser(file_path))
+    data_file = ROOT.TFile(file_path)
     tree = data_file.Get('T')
     # Create a list to add all PMT photon count and timing arrays to
     pmt_data_arrays = []
@@ -49,22 +50,29 @@ def load_data_from_file(file_path):
             for pulse in pmt_data.pulse:
                 # Add the start time of this pulse to the list corresponding to this PMT
                 pulse_timings[pmt_identifier].append(pulse.GetStartTime())
-        # Get the calibration sub-tree of this event, which contains more detailed information about the PMTs
-        # It is a vector with only a single element
-        calibration = event.ds.cal[0]
-        # Create a list to hold the times of photons observed at each PMT
-        photon_timings = []
-        # Initialize it with an empty list for each PMT
-        for _ in range(PMT_COUNT):
-            photon_timings.append([])
-        # Iterate over the PMT data objects (which are not the same as the ones in the last loop)
-        for pmt_data in calibration.pmt:
-            # Get the identifier of this PMT, which is used as an index because they are not in order
-            pmt_identifier = pmt_data.GetID()
-            # Replace the empty list corresponding to this PMT with the list of photon timings
-            photon_timings[pmt_identifier] = list(pmt_data.PEtime)
+        # There may not be a calibration sub-tree
+        try:
+            # Get the calibration sub-tree of this event, which contains more detailed information about the PMTs
+            # It is a vector with only a single element
+            calibration = event.ds.cal[0]
+            # Create a list to hold the times of photons observed at each PMT
+            photon_timings = []
+            # Initialize it with an empty list for each PMT
+            for _ in range(PMT_COUNT):
+                photon_timings.append([])
+            # Iterate over the PMT data objects (which are not the same as the ones in the last loop)
+            for pmt_data in calibration.pmt:
+                # Get the identifier of this PMT, which is used as an index because they are not in order
+                pmt_identifier = pmt_data.GetID()
+                # Replace the empty list corresponding to this PMT with the list of photon timings
+                photon_timings[pmt_identifier] = list(pmt_data.PEtime)
+        # If the tree is missing, use None for the photon timings
+        except IndexError:
+            photon_timings = None
         # Add the photon and pulse counts and timings to the list for all events
         pmt_data_arrays.append((photon_counts, pulse_counts, photon_timings, pulse_timings))
+    # Notify the user that this file has been loaded
+    print('Data loaded from file', file_path)
     # Return the list of tuples containing all of the data
     return pmt_data_arrays
 
@@ -73,11 +81,15 @@ def load_data_from_file(file_path):
 # Load all data out of the relevant paths, chaining all of the lists together
 neck_events = list(itertools.chain.from_iterable(
     load_data_from_file(path)
-    for path in ['~/MC_forBrendon/NuclearRecoil/ar40_nominal_cal_0101.root']
+    # There are 2 folders that contain all neck events; chain them together
+    for path in itertools.chain(
+        glob.iglob(os.path.expanduser('~/MC_forBrendon/AlphaPo210_InnerFlowGuide/*')),
+        glob.iglob(os.path.expanduser('~/MC_forBrendon/AlphaPo210_OuterFlowGuide/*'))
+    )
 ))
 non_neck_events = list(itertools.chain.from_iterable(
     load_data_from_file(path)
-    for path in []
+    for path in glob.iglob(os.path.expanduser('~/MC_forBrendon/NuclearRecoil/*'))
 ))
 # Combine the neck and non-neck events in a tuple, and save them in a Joblib binary file
 with open(DATA_FILE_PATH, 'wb') as joblib_file:
