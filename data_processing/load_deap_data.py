@@ -8,7 +8,7 @@ import numpy as np
 from sklearn.externals import joblib
 
 
-def load_deap_data() -> Tuple[List[Tuple[np.ndarray, np.ndarray, List[List[float]]]], List[Tuple[np.ndarray, np.ndarray, List[List[float]]]]]:
+def load_deap_data():
     """Load and return the DEAP Monte Carlo simulation data"""
     # Use Joblib to load the binary file, and return it directly
     with open(os.path.expanduser('~/deap_data.pkl'), 'rb') as joblib_file:
