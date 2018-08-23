@@ -1,0 +1,729 @@
+Using TensorFlow backend.
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+batch_normalization_1 (Batch (None, 255)               1020      
+_________________________________________________________________
+dense_1 (Dense)              (None, 100)               25600     
+_________________________________________________________________
+dense_2 (Dense)              (None, 40)                4040      
+_________________________________________________________________
+dense_3 (Dense)              (None, 10)                410       
+_________________________________________________________________
+dense_4 (Dense)              (None, 1)                 11        
+=================================================================
+Total params: 31,081
+Trainable params: 30,571
+Non-trainable params: 510
+_________________________________________________________________
+None
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+2018-08-23 12:01:36.463414: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-08-23 12:01:36.657134: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1392] Found device 0 with properties: 
+name: GeForce GTX 1060 6GB major: 6 minor: 1 memoryClockRate(GHz): 1.759
+pciBusID: 0000:03:00.0
+totalMemory: 5.93GiB freeMemory: 5.62GiB
+2018-08-23 12:01:36.657181: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1471] Adding visible gpu devices: 0
+2018-08-23 12:01:36.977415: I tensorflow/core/common_runtime/gpu/gpu_device.cc:952] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-08-23 12:01:36.977473: I tensorflow/core/common_runtime/gpu/gpu_device.cc:958]      0 
+2018-08-23 12:01:36.977486: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   N 
+2018-08-23 12:01:36.977724: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1084] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 5398 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1060 6GB, pci bus id: 0000:03:00.0, compute capability: 6.1)
+11372/11372 [==============================] - 3s 291us/step - loss: 0.0961 - acc: 0.8830 - val_loss: 0.0743 - val_acc: 0.9115
+Number of true positives: 61
+Number of true negatives: 1762
+Number of false positives: 5
+Number of false negatives: 172
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 190us/step - loss: 0.0685 - acc: 0.9180 - val_loss: 0.0610 - val_acc: 0.9235
+Number of true positives: 81
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 152
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 195us/step - loss: 0.0630 - acc: 0.9232 - val_loss: 0.0522 - val_acc: 0.9310
+Number of true positives: 97
+Number of true negatives: 1765
+Number of false positives: 2
+Number of false negatives: 136
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0572 - acc: 0.9288 - val_loss: 0.0549 - val_acc: 0.9300
+Number of true positives: 93
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 140
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0527 - acc: 0.9326 - val_loss: 0.0444 - val_acc: 0.9385
+Number of true positives: 112
+Number of true negatives: 1765
+Number of false positives: 2
+Number of false negatives: 121
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 196us/step - loss: 0.0484 - acc: 0.9386 - val_loss: 0.0455 - val_acc: 0.9455
+Number of true positives: 125
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 108
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 190us/step - loss: 0.0426 - acc: 0.9448 - val_loss: 0.0318 - val_acc: 0.9635
+Number of true positives: 185
+Number of true negatives: 1742
+Number of false positives: 25
+Number of false negatives: 48
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0395 - acc: 0.9508 - val_loss: 0.0250 - val_acc: 0.9725
+Number of true positives: 197
+Number of true negatives: 1748
+Number of false positives: 19
+Number of false negatives: 36
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0339 - acc: 0.9585 - val_loss: 0.0215 - val_acc: 0.9740
+Number of true positives: 192
+Number of true negatives: 1756
+Number of false positives: 11
+Number of false negatives: 41
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 194us/step - loss: 0.0312 - acc: 0.9611 - val_loss: 0.0242 - val_acc: 0.9665
+Number of true positives: 208
+Number of true negatives: 1725
+Number of false positives: 42
+Number of false negatives: 25
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0289 - acc: 0.9644 - val_loss: 0.0166 - val_acc: 0.9815
+Number of true positives: 202
+Number of true negatives: 1761
+Number of false positives: 6
+Number of false negatives: 31
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 203us/step - loss: 0.0276 - acc: 0.9654 - val_loss: 0.0136 - val_acc: 0.9850
+Number of true positives: 216
+Number of true negatives: 1754
+Number of false positives: 13
+Number of false negatives: 17
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 197us/step - loss: 0.0245 - acc: 0.9700 - val_loss: 0.0120 - val_acc: 0.9890
+Number of true positives: 221
+Number of true negatives: 1757
+Number of false positives: 10
+Number of false negatives: 12
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 191us/step - loss: 0.0236 - acc: 0.9702 - val_loss: 0.0193 - val_acc: 0.9745
+Number of true positives: 182
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 51
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 201us/step - loss: 0.0199 - acc: 0.9757 - val_loss: 0.0091 - val_acc: 0.9885
+Number of true positives: 214
+Number of true negatives: 1763
+Number of false positives: 4
+Number of false negatives: 19
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0197 - acc: 0.9752 - val_loss: 0.0154 - val_acc: 0.9795
+Number of true positives: 227
+Number of true negatives: 1732
+Number of false positives: 35
+Number of false negatives: 6
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 198us/step - loss: 0.0175 - acc: 0.9785 - val_loss: 0.0065 - val_acc: 0.9945
+Number of true positives: 229
+Number of true negatives: 1760
+Number of false positives: 7
+Number of false negatives: 4
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 201us/step - loss: 0.0193 - acc: 0.9756 - val_loss: 0.0087 - val_acc: 0.9925
+Number of true positives: 225
+Number of true negatives: 1760
+Number of false positives: 7
+Number of false negatives: 8
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 203us/step - loss: 0.0168 - acc: 0.9798 - val_loss: 0.0066 - val_acc: 0.9925
+Number of true positives: 219
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 14
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 198us/step - loss: 0.0168 - acc: 0.9788 - val_loss: 0.0072 - val_acc: 0.9925
+Number of true positives: 224
+Number of true negatives: 1761
+Number of false positives: 6
+Number of false negatives: 9
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 198us/step - loss: 0.0139 - acc: 0.9832 - val_loss: 0.0047 - val_acc: 0.9965
+Number of true positives: 229
+Number of true negatives: 1764
+Number of false positives: 3
+Number of false negatives: 4
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 197us/step - loss: 0.0139 - acc: 0.9835 - val_loss: 0.0084 - val_acc: 0.9900
+Number of true positives: 219
+Number of true negatives: 1761
+Number of false positives: 6
+Number of false negatives: 14
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 197us/step - loss: 0.0141 - acc: 0.9831 - val_loss: 0.0049 - val_acc: 0.9945
+Number of true positives: 228
+Number of true negatives: 1761
+Number of false positives: 6
+Number of false negatives: 5
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 195us/step - loss: 0.0121 - acc: 0.9855 - val_loss: 0.0037 - val_acc: 0.9965
+Number of true positives: 228
+Number of true negatives: 1765
+Number of false positives: 2
+Number of false negatives: 5
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0151 - acc: 0.9812 - val_loss: 0.0054 - val_acc: 0.9955
+Number of true positives: 228
+Number of true negatives: 1763
+Number of false positives: 4
+Number of false negatives: 5
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0122 - acc: 0.9861 - val_loss: 0.0037 - val_acc: 0.9970
+Number of true positives: 229
+Number of true negatives: 1765
+Number of false positives: 2
+Number of false negatives: 4
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0119 - acc: 0.9859 - val_loss: 0.0033 - val_acc: 0.9965
+Number of true positives: 227
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 6
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 198us/step - loss: 0.0112 - acc: 0.9862 - val_loss: 0.0037 - val_acc: 0.9965
+Number of true positives: 228
+Number of true negatives: 1765
+Number of false positives: 2
+Number of false negatives: 5
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 203us/step - loss: 0.0115 - acc: 0.9850 - val_loss: 0.0036 - val_acc: 0.9950
+Number of true positives: 227
+Number of true negatives: 1763
+Number of false positives: 4
+Number of false negatives: 6
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0121 - acc: 0.9847 - val_loss: 0.0119 - val_acc: 0.9840
+Number of true positives: 223
+Number of true negatives: 1745
+Number of false positives: 22
+Number of false negatives: 10
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 201us/step - loss: 0.0099 - acc: 0.9880 - val_loss: 0.0033 - val_acc: 0.9970
+Number of true positives: 227
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 6
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 202us/step - loss: 0.0110 - acc: 0.9865 - val_loss: 0.0051 - val_acc: 0.9945
+Number of true positives: 223
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 10
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 202us/step - loss: 0.0115 - acc: 0.9860 - val_loss: 0.0040 - val_acc: 0.9965
+Number of true positives: 227
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 6
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 192us/step - loss: 0.0087 - acc: 0.9894 - val_loss: 0.0027 - val_acc: 0.9980
+Number of true positives: 229
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 4
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 195us/step - loss: 0.0106 - acc: 0.9877 - val_loss: 0.0033 - val_acc: 0.9965
+Number of true positives: 228
+Number of true negatives: 1765
+Number of false positives: 2
+Number of false negatives: 5
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 195us/step - loss: 0.0102 - acc: 0.9865 - val_loss: 0.0037 - val_acc: 0.9960
+Number of true positives: 228
+Number of true negatives: 1764
+Number of false positives: 3
+Number of false negatives: 5
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0094 - acc: 0.9890 - val_loss: 0.0047 - val_acc: 0.9950
+Number of true positives: 230
+Number of true negatives: 1760
+Number of false positives: 7
+Number of false negatives: 3
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0084 - acc: 0.9898 - val_loss: 0.0104 - val_acc: 0.9840
+Number of true positives: 230
+Number of true negatives: 1738
+Number of false positives: 29
+Number of false negatives: 3
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0099 - acc: 0.9883 - val_loss: 0.0019 - val_acc: 0.9985
+Number of true positives: 230
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 3
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 193us/step - loss: 0.0077 - acc: 0.9910 - val_loss: 0.0029 - val_acc: 0.9970
+Number of true positives: 228
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 5
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0087 - acc: 0.9896 - val_loss: 0.0027 - val_acc: 0.9980
+Number of true positives: 229
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 4
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 195us/step - loss: 0.0090 - acc: 0.9892 - val_loss: 0.0045 - val_acc: 0.9945
+Number of true positives: 230
+Number of true negatives: 1759
+Number of false positives: 8
+Number of false negatives: 3
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 189us/step - loss: 0.0083 - acc: 0.9904 - val_loss: 0.0028 - val_acc: 0.9970
+Number of true positives: 230
+Number of true negatives: 1764
+Number of false positives: 3
+Number of false negatives: 3
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 186us/step - loss: 0.0089 - acc: 0.9887 - val_loss: 0.0020 - val_acc: 0.9985
+Number of true positives: 230
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 3
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 192us/step - loss: 0.0080 - acc: 0.9901 - val_loss: 0.0029 - val_acc: 0.9970
+Number of true positives: 229
+Number of true negatives: 1765
+Number of false positives: 2
+Number of false negatives: 4
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0085 - acc: 0.9893 - val_loss: 0.0053 - val_acc: 0.9935
+Number of true positives: 228
+Number of true negatives: 1759
+Number of false positives: 8
+Number of false negatives: 5
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0087 - acc: 0.9896 - val_loss: 0.0043 - val_acc: 0.9945
+Number of true positives: 231
+Number of true negatives: 1758
+Number of false positives: 9
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0098 - acc: 0.9872 - val_loss: 0.0026 - val_acc: 0.9975
+Number of true positives: 231
+Number of true negatives: 1764
+Number of false positives: 3
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 197us/step - loss: 0.0093 - acc: 0.9890 - val_loss: 0.0014 - val_acc: 0.9990
+Number of true positives: 231
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0084 - acc: 0.9892 - val_loss: 0.0019 - val_acc: 0.9985
+Number of true positives: 230
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 3
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 196us/step - loss: 0.0072 - acc: 0.9904 - val_loss: 0.0027 - val_acc: 0.9970
+Number of true positives: 227
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 6
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 197us/step - loss: 0.0091 - acc: 0.9884 - val_loss: 0.0018 - val_acc: 0.9985
+Number of true positives: 231
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 198us/step - loss: 0.0073 - acc: 0.9912 - val_loss: 0.0022 - val_acc: 0.9980
+Number of true positives: 231
+Number of true negatives: 1765
+Number of false positives: 2
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 193us/step - loss: 0.0078 - acc: 0.9905 - val_loss: 0.0014 - val_acc: 0.9985
+Number of true positives: 230
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 3
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 189us/step - loss: 0.0089 - acc: 0.9889 - val_loss: 0.0035 - val_acc: 0.9955
+Number of true positives: 229
+Number of true negatives: 1762
+Number of false positives: 5
+Number of false negatives: 4
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 195us/step - loss: 0.0074 - acc: 0.9907 - val_loss: 0.0023 - val_acc: 0.9980
+Number of true positives: 230
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 3
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0070 - acc: 0.9912 - val_loss: 0.0022 - val_acc: 0.9975
+Number of true positives: 231
+Number of true negatives: 1764
+Number of false positives: 3
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 195us/step - loss: 0.0073 - acc: 0.9903 - val_loss: 0.0030 - val_acc: 0.9970
+Number of true positives: 231
+Number of true negatives: 1763
+Number of false positives: 4
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 202us/step - loss: 0.0055 - acc: 0.9934 - val_loss: 0.0017 - val_acc: 0.9985
+Number of true positives: 231
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 198us/step - loss: 0.0078 - acc: 0.9910 - val_loss: 0.0032 - val_acc: 0.9965
+Number of true positives: 226
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 7
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0086 - acc: 0.9890 - val_loss: 0.0052 - val_acc: 0.9930
+Number of true positives: 231
+Number of true negatives: 1755
+Number of false positives: 12
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 205us/step - loss: 0.0065 - acc: 0.9916 - val_loss: 0.0013 - val_acc: 0.9990
+Number of true positives: 231
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 202us/step - loss: 0.0071 - acc: 0.9909 - val_loss: 0.0020 - val_acc: 0.9980
+Number of true positives: 231
+Number of true negatives: 1765
+Number of false positives: 2
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 198us/step - loss: 0.0088 - acc: 0.9888 - val_loss: 0.0015 - val_acc: 0.9980
+Number of true positives: 230
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 3
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 196us/step - loss: 0.0079 - acc: 0.9910 - val_loss: 0.0028 - val_acc: 0.9970
+Number of true positives: 229
+Number of true negatives: 1765
+Number of false positives: 2
+Number of false negatives: 4
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 198us/step - loss: 0.0063 - acc: 0.9926 - val_loss: 0.0024 - val_acc: 0.9980
+Number of true positives: 230
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 3
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 203us/step - loss: 0.0067 - acc: 0.9916 - val_loss: 0.0016 - val_acc: 0.9980
+Number of true positives: 231
+Number of true negatives: 1765
+Number of false positives: 2
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0074 - acc: 0.9909 - val_loss: 0.0014 - val_acc: 0.9985
+Number of true positives: 231
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 191us/step - loss: 0.0073 - acc: 0.9911 - val_loss: 0.0016 - val_acc: 0.9985
+Number of true positives: 230
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 3
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0068 - acc: 0.9918 - val_loss: 0.0018 - val_acc: 0.9975
+Number of true positives: 229
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 4
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0072 - acc: 0.9910 - val_loss: 0.0032 - val_acc: 0.9965
+Number of true positives: 231
+Number of true negatives: 1762
+Number of false positives: 5
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0067 - acc: 0.9916 - val_loss: 0.0025 - val_acc: 0.9970
+Number of true positives: 227
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 6
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0066 - acc: 0.9920 - val_loss: 0.0016 - val_acc: 0.9985
+Number of true positives: 230
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 3
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0070 - acc: 0.9910 - val_loss: 0.0013 - val_acc: 0.9990
+Number of true positives: 231
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0068 - acc: 0.9913 - val_loss: 0.0010 - val_acc: 0.9985
+Number of true positives: 232
+Number of true negatives: 1765
+Number of false positives: 2
+Number of false negatives: 1
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0063 - acc: 0.9921 - val_loss: 7.1087e-04 - val_acc: 0.9995
+Number of true positives: 232
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 1
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 198us/step - loss: 0.0059 - acc: 0.9930 - val_loss: 7.1724e-04 - val_acc: 0.9995
+Number of true positives: 232
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 1
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 198us/step - loss: 0.0063 - acc: 0.9925 - val_loss: 8.2892e-04 - val_acc: 0.9990
+Number of true positives: 232
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 1
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 202us/step - loss: 0.0070 - acc: 0.9914 - val_loss: 0.0011 - val_acc: 0.9990
+Number of true positives: 231
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0065 - acc: 0.9919 - val_loss: 0.0018 - val_acc: 0.9980
+Number of true positives: 232
+Number of true negatives: 1764
+Number of false positives: 3
+Number of false negatives: 1
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0065 - acc: 0.9923 - val_loss: 0.0015 - val_acc: 0.9985
+Number of true positives: 230
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 3
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 197us/step - loss: 0.0060 - acc: 0.9925 - val_loss: 0.0037 - val_acc: 0.9955
+Number of true positives: 224
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 9
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0060 - acc: 0.9927 - val_loss: 0.0011 - val_acc: 0.9995
+Number of true positives: 232
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 1
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0066 - acc: 0.9917 - val_loss: 6.1810e-04 - val_acc: 0.9995
+Number of true positives: 232
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 1
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 200us/step - loss: 0.0060 - acc: 0.9928 - val_loss: 0.0010 - val_acc: 0.9990
+Number of true positives: 232
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 1
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 193us/step - loss: 0.0065 - acc: 0.9922 - val_loss: 7.6186e-04 - val_acc: 0.9995
+Number of true positives: 232
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 1
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 198us/step - loss: 0.0067 - acc: 0.9916 - val_loss: 8.6849e-04 - val_acc: 0.9990
+Number of true positives: 231
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0064 - acc: 0.9919 - val_loss: 6.3681e-04 - val_acc: 0.9995
+Number of true positives: 232
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 1
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 197us/step - loss: 0.0057 - acc: 0.9934 - val_loss: 7.6312e-04 - val_acc: 0.9995
+Number of true positives: 232
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 1
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 193us/step - loss: 0.0061 - acc: 0.9922 - val_loss: 6.6319e-04 - val_acc: 0.9995
+Number of true positives: 232
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 1
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 198us/step - loss: 0.0074 - acc: 0.9906 - val_loss: 0.0012 - val_acc: 0.9990
+Number of true positives: 231
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 192us/step - loss: 0.0055 - acc: 0.9934 - val_loss: 0.0012 - val_acc: 0.9985
+Number of true positives: 231
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0060 - acc: 0.9924 - val_loss: 0.0016 - val_acc: 0.9975
+Number of true positives: 232
+Number of true negatives: 1763
+Number of false positives: 4
+Number of false negatives: 1
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 198us/step - loss: 0.0054 - acc: 0.9933 - val_loss: 0.0022 - val_acc: 0.9975
+Number of true positives: 228
+Number of true negatives: 1767
+Number of false positives: 0
+Number of false negatives: 5
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 197us/step - loss: 0.0052 - acc: 0.9937 - val_loss: 0.0032 - val_acc: 0.9960
+Number of true positives: 231
+Number of true negatives: 1761
+Number of false positives: 6
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0080 - acc: 0.9900 - val_loss: 0.0022 - val_acc: 0.9975
+Number of true positives: 231
+Number of true negatives: 1764
+Number of false positives: 3
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 199us/step - loss: 0.0061 - acc: 0.9924 - val_loss: 0.0019 - val_acc: 0.9975
+Number of true positives: 229
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 4
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 187us/step - loss: 0.0056 - acc: 0.9934 - val_loss: 0.0010 - val_acc: 0.9985
+Number of true positives: 231
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 2
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 197us/step - loss: 0.0057 - acc: 0.9925 - val_loss: 0.0023 - val_acc: 0.9965
+Number of true positives: 232
+Number of true negatives: 1761
+Number of false positives: 6
+Number of false negatives: 1
+Train on 11372 samples, validate on 2000 samples
+Epoch 1/1
+11372/11372 [==============================] - 2s 198us/step - loss: 0.0057 - acc: 0.9929 - val_loss: 0.0014 - val_acc: 0.9985
+Number of true positives: 231
+Number of true negatives: 1766
+Number of false positives: 1
+Number of false negatives: 2
