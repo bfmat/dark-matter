@@ -31,46 +31,30 @@ def load_data_from_file(file_path):
     pmt_data_arrays = []
     # Iterate over all events within the tree
     for event in tree:
-        # Create arrays to hold the integer counts of photons and pulses for each PMT, defaulting to 0 for PMTs that are not included
-        photon_counts = np.zeros(PMT_COUNT, dtype=int)
+        # Try to get the calibration sub-tree, which is the only data available for real-world events
+        # It is a vector with either 0 or 1 elements
+        try:
+            calibration = event.ds.cal[0]
+        # If it is not present, this event was not detected, so it can be skipped
+        except IndexError:
+            continue
+        # Create arrays to hold the integer count of pulses for each PMT, defaulting to 0 for PMTs that are not included
         pulse_counts = np.zeros(PMT_COUNT, dtype=int)
-        # Create a list to hold lists of pulse start times
-        pulse_timings = []
+        # Create a list to hold the times of photons observed at each PMT
+        photon_timings = []
         # Initialize it with an empty list for each PMT
         for _ in range(PMT_COUNT):
-            pulse_timings.append([])
-        # Iterate over the simulated data objects corresponding to each of the PMTs that were affected by this event
-        for pmt_data in event.ds.mc.pmt:
+            photon_timings.append([])
+        # Iterate over the data objects corresponding to each of the PMTs that were affected by this event
+        for pmt_data in calibration.pmt:
             # Get the identifier of this PMT, which is used as an index because they are not in order
             pmt_identifier = pmt_data.GetID()
-            # Set the counts of photons and pulses in the arrays
-            photon_counts[pmt_identifier] = pmt_data.GetMCPhotonCount()
-            pulse_counts[pmt_identifier] = pmt_data.GetMCPulseCount()
-            # Iterate over each of the pulses received by this PMT
-            for pulse in pmt_data.pulse:
-                # Add the start time of this pulse to the list corresponding to this PMT
-                pulse_timings[pmt_identifier].append(pulse.GetStartTime())
-        # There may not be a calibration sub-tree
-        try:
-            # Get the calibration sub-tree of this event, which contains more detailed information about the PMTs
-            # It is a vector with only a single element
-            calibration = event.ds.cal[0]
-            # Create a list to hold the times of photons observed at each PMT
-            photon_timings = []
-            # Initialize it with an empty list for each PMT
-            for _ in range(PMT_COUNT):
-                photon_timings.append([])
-            # Iterate over the PMT data objects (which are not the same as the ones in the last loop)
-            for pmt_data in calibration.pmt:
-                # Get the identifier of this PMT, which is used as an index because they are not in order
-                pmt_identifier = pmt_data.GetID()
-                # Replace the empty list corresponding to this PMT with the list of photon timings
-                photon_timings[pmt_identifier] = list(pmt_data.PEtime)
-        # If the tree is missing, use None for the photon timings
-        except IndexError:
-            photon_timings = None
-        # Add the photon and pulse counts and timings to the list for all events
-        pmt_data_arrays.append((photon_counts, pulse_counts, photon_timings, pulse_timings))
+            # Set the count of pulses in the arrays
+            pulse_counts[pmt_identifier] = pmt_data.GetPulseCount()
+            # Replace the empty list corresponding to this PMT with the list of photon timings
+            photon_timings[pmt_identifier] = list(pmt_data.PEtime)
+        # Add the pulse counts and photon timings to the list for all events
+        pmt_data_arrays.append((pulse_counts, photon_timings))
     # Notify the user that this file has been loaded
     print('Data loaded from file', file_path)
     # Return the list of tuples containing all of the data
