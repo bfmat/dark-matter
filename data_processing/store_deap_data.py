@@ -33,7 +33,7 @@ def load_data_from_file(file_path):
         # Create arrays to hold the integer counts of photons and pulses for each PMT, defaulting to 0 for PMTs that are not included
         photon_counts = np.zeros(PMT_COUNT, dtype=int)
         pulse_counts = np.zeros(PMT_COUNT, dtype=int)
-        # Create a list to hold lists of pulse start and end times
+        # Create a list to hold lists of pulse start times
         pulse_timings = []
         # Initialize it with an empty list for each PMT
         for _ in range(PMT_COUNT):
@@ -49,8 +49,22 @@ def load_data_from_file(file_path):
             for pulse in pmt_data.pulse:
                 # Add the start time of this pulse to the list corresponding to this PMT
                 pulse_timings[pmt_identifier].append(pulse.GetStartTime())
-        # Add the photon and pulse counts, together with the pulse timings, to the list for all events
-        pmt_data_arrays.append((photon_counts, pulse_counts, pulse_timings))
+        # Get the calibration sub-tree of this event, which contains more detailed information about the PMTs
+        # It is a vector with only a single element
+        calibration = event.ds.cal[0]
+        # Create a list to hold the times of photons observed at each PMT
+        photon_timings = []
+        # Initialize it with an empty list for each PMT
+        for _ in range(PMT_COUNT):
+            photon_timings.append([])
+        # Iterate over the PMT data objects (which are not the same as the ones in the last loop)
+        for pmt_data in calibration.pmt:
+            # Get the identifier of this PMT, which is used as an index because they are not in order
+            pmt_identifier = pmt_data.GetID()
+            # Replace the empty list corresponding to this PMT with the list of photon timings
+            photon_timings[pmt_identifier] = list(pmt_data.PEtime)
+        # Add the photon and pulse counts and timings to the list for all events
+        pmt_data_arrays.append((photon_counts, pulse_counts, photon_timings, pulse_timings))
     # Return the list of tuples containing all of the data
     return pmt_data_arrays
 
@@ -59,7 +73,7 @@ def load_data_from_file(file_path):
 # Load all data out of the relevant paths, chaining all of the lists together
 neck_events = list(itertools.chain.from_iterable(
     load_data_from_file(path)
-    for path in ['~/PB_000000_analyzed_0100.root']
+    for path in ['~/MC_forBrendon/NuclearRecoil/ar40_nominal_cal_0101.root']
 ))
 non_neck_events = list(itertools.chain.from_iterable(
     load_data_from_file(path)
