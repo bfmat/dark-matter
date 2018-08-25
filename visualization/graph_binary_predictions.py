@@ -55,6 +55,8 @@ for criterion_data, criterion_name, classification_threshold in zip(
     print(f'Recall of {(predicted_alphas - erroneous_alphas) / predicted_alphas} for {criterion_name}')
     # Divide all of these data points by their overall standard deviation, to normalize their range
     criterion_data /= np.std(criterion_data)
+    # Create a list for the 2 standard deviations
+    standard_deviations = []
     # Iterate over both possible values of the ground truth, and corresponding names
     for ground_truth_value, ground_truth_name in zip([True, False], ['alpha particles', 'neutrons']):
         # Sort out only the data points for this criterion which correspond to ground truths of this value
@@ -70,6 +72,11 @@ for criterion_data, criterion_name, classification_threshold in zip(
             f'for {ground_truth_name}',
             f'is {standard_deviation}'
         )
+        # Add it to the list so the mean can be calculated
+        standard_deviations.append(standard_deviation)
+    # Calculate and print the mean class-wise standard deviation
+    print(f'Mean class-wise standard deviation for {criterion_name} is {np.mean(standard_deviations)}')
+
 
 # Convert the binary ground truth values to colors (red and blue) for graphing
 point_colors = [
