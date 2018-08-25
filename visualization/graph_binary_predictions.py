@@ -50,7 +50,7 @@ for criterion_data, criterion_name, classification_threshold in zip(
     erroneous_recoils = np.count_nonzero(np.logical_and(classifications == 0, ground_truths == 1))
     print(f'Precision of {(predicted_recoils - erroneous_recoils) / predicted_recoils} for {criterion_name}')
     # Repeat for the proportion of neutron calibration events that are correctly predicted as recoils; this represents not the purity, but the number missed
-    actual_recoils = np.count_nonzero(classifications == 1)
+    actual_recoils = np.count_nonzero(ground_truths == 0)
     erroneous_alphas = np.count_nonzero(np.logical_and(classifications == 1, ground_truths == 0))
     print(f'Recall of {(actual_recoils - erroneous_alphas) / actual_recoils} for {criterion_name}')
     # Divide all of these data points by their overall standard deviation, to normalize their range
