@@ -208,13 +208,15 @@ Performance of machine learning systems was evaluated using two metrics: classif
 
 Classification accuracy is the ability of the network to separate the events into the two desired classes. Numerically, this corresponds to the number of validation examples the network classifies correctly. The baseline for correctness is the run type during supervised learning experiments, and the AP prediction for semi-supervised experiments.
 
-Class-wise standard deviation captures how decisive the network is: whether its prediction is confidently high or low, or is only slightly closer to one edge of the spectrum.
+The correctness of the network's predictions is further detailed in the precision and recall statistics. Precision represents the proportion, of those that the network predicts to be nuclear recoils, that are actually nuclear recoils (or part of the corresponding calibration set). It is an indicator of how pure the network's predictions are for the recoil class. Recall represents the proportion, of those that are actually nuclear recoils, that the network predicts to be nuclear recoils. It indicates how many examples the network misses (i.e., those that would erroneously be removed as background radiation).
 
-Numerically, this is a variable defined as $C$ below, where $N$ and $A$ are the sets of outputs of the supervised learning discriminator in question, corresponding to the sets of neutrons and alpha particles respectively (or calibration and background sets respectively, depending on which is used as ground truth data). It calculates the spread of the network's predictions for each ground truth class. This means that a decisive discriminator, which produces a wide separation between the two classes, is preferred over one that produces a nebulous cloud of outputs with a seemingly arbitrary decision boundary.
+Class-wise standard deviation, abbreviated CWSD, captures how decisive the network is: whether its prediction is confidently high or low, or is only slightly closer to one edge of the spectrum.
+
+Numerically, this is a variable defined below, where $N$ and $A$ are the sets of outputs of the supervised learning discriminator in question, corresponding to the sets of neutrons and alpha particles respectively (or calibration and background sets respectively, depending on which is used as ground truth data). It calculates the spread of the network's predictions for each ground truth class. This means that a decisive discriminator, which produces a wide separation between the two classes, is preferred over one that produces a nebulous cloud of outputs with a seemingly arbitrary decision boundary.
 
 $S=std(N \cup A)$
 
-$C=(std(N \div S) + std(A \div S)) \div 2$
+$CWSD=(std(N \div S) + std(A \div S)) \div 2$
 
 The first step is to calculate the standard deviation $S$ of the union of $N$ and $A$. This gives an indication of the scale of the overall distribution. When $N$ and $A$ are divided by $S$, they are normalized so that the standard deviation of their union is equal to 1. While the neural network’s outputs are bounded in the range of 0 to 1 with a sigmoid activation, AP has a significantly wider range. Normalization of the union prevents this from creating a bias where AP would produce a higher standard deviation with a similarly proportioned error.
 
@@ -302,21 +304,27 @@ The following tables show the results of several $DeepConvWithPos(\omega, \chi)$
 
 \begin{center}
     \captionof{table}{$DeepConvWithPos(\omega, \chi)$ with $WallCut(D)$.}
-    \begin{tabular}{|l|l|l|l|l|l|l|}
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
         \hline
-        L2 $\lambda$ & Dropout & Filters & Kernel Size & \# Layers Multiplier & Max Accuracy & Class-Wise Std Dev \\
+        L2 $\lambda$ & Dropout & Filters & Kernel & Layers $\times$ & Max Accuracy & Precision & Recall & CWSD \\
         \hline
-        0.003 & 0 & 24 & 3 & 3 & 95\% & 0.44 \\
+        0.003 & 0 & 24 & 3 & 3 & 95\% & 99\% & 85\% & 0.44 \\
+        % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.003_dense_dropout0_first_layer_filters24_kernel_size3_convolutional_layers_per_group3time1533824431_epoch30.json
         \hline
-        0.003 & 0 & 48 & 5 & 3 & 96\% & 0.41 \\
+        0.003 & 0 & 48 & 5 & 3 & 96\% & 99\% & 89\% & 0.41 \\
+        % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.003_dense_dropout0_first_layer_filters48_kernel_size5_convolutional_layers_per_group3time1533825716_epoch43.json
         \hline
-        0.003 & 0.5 & 24 & 5 & 3 & 93\% & 0.50 \\
+        0.003 & 0.5 & 24 & 5 & 3 & 93\% & 98\% & 83\% & 0.50 \\
+        % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.003_dense_dropout0.5_first_layer_filters24_kernel_size5_convolutional_layers_per_group3time1533828588_epoch27.json
         \hline
-        0.001 & 0 & 48 & 5 & 3 & 95\% & 0.48 \\
+        0.001 & 0 & 48 & 5 & 3 & 95\% & 98\% & 87\% & 0.48 \\
+        % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.001_dense_dropout0_first_layer_filters48_kernel_size5_convolutional_layers_per_group3time1533832229_epoch16.json
         \hline
-        0.001 & 0.25 & 48 & 3 & 6 & 93\% & 0.62 \\
+        0.001 & 0.25 & 48 & 3 & 6 & 93\% & 94\% & 91\% & 0.62 \\
+        % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.001_dense_dropout0.25_first_layer_filters48_kernel_size3_convolutional_layers_per_group6time1533834812_epoch30.json
         \hline
-        0.0003 & 0.5 & 24 & 5 & 6 & 95\% & 0.49 \\
+        0.0003 & 0.5 & 24 & 5 & 6 & 95\% & 97\% & 91\% & 0.49 \\
+        % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.0003_dense_dropout0.5_first_layer_filters24_kernel_size5_convolutional_layers_per_group6time1533849077_epoch45.json
         \hline
     \end{tabular}
 
