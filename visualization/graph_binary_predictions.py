@@ -39,11 +39,20 @@ for criterion_data, criterion_name, classification_threshold in zip(
     [0.5, 0.25, 0.5]
 ):
     # Convert the raw outputs to binary classifications, based on whether they are greater than or equal to the threshold
-    classifications = [data_point >= classification_threshold for data_point in criterion_data]
+    classifications = np.array([data_point >= classification_threshold for data_point in criterion_data])
     # Get the number of these classifications that agree with the ground truths
-    agreements = np.count_nonzero(np.array(classifications) == ground_truths)
+    agreements = np.count_nonzero(classifications == ground_truths)
     # Print out the resulting accuracy statistic to the user
     print(f'Accuracy of {agreements / 128} for {criterion_name}')
+    # Repeat this process for precision (erroneous recoil predictions) and recall (erroneous alpha predictions) individually
+    # First, count the number of events predicted as recoils, and then divide the number that are incorrectly predicted to be recoils by that
+    predicted_recoils = np.count_nonzero(classifications == 0)
+    erroneous_recoils = np.count_nonzero(np.logical_and(classifications == 0, ground_truths == 1))
+    print(f'Precision of {(predicted_recoils - erroneous_recoils) / predicted_recoils} for {criterion_name}')
+    # Repeat for the number of events falsely predicted as alphas, which are actually nuclear recoils (possibly representing WIMP candidates in real data)
+    predicted_alphas = np.count_nonzero(classifications == 1)
+    erroneous_alphas = np.count_nonzero(np.logical_and(classifications == 1, ground_truths == 0))
+    print(f'Recall of {(predicted_alphas - erroneous_alphas) / predicted_alphas} for {criterion_name}')
     # Divide all of these data points by their overall standard deviation, to normalize their range
     criterion_data /= np.std(criterion_data)
     # Iterate over both possible values of the ground truth, and corresponding names
