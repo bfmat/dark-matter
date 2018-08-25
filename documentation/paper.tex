@@ -302,53 +302,67 @@ When $WallCut(D)$ was included, both accuracy and class-wise standard deviation 
 
 The following tables show the results of several $DeepConvWithPos(\omega, \chi)$ discriminators produced throughout testing, with corresponding network hyperparameters.
 
-\begin{center}
-    \captionof{table}{$DeepConvWithPos(\omega, \chi)$ with $WallCut(D)$.}
-    \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
-        \hline
-        L2 $\lambda$ & Dropout & Filters & Kernel & Layers $\times$ & Max Accuracy & Precision & Recall & CWSD \\
-        \hline
-        0.003 & 0 & 24 & 3 & 3 & 95\% & 99\% & 85\% & 0.44 \\
-        % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.003_dense_dropout0_first_layer_filters24_kernel_size3_convolutional_layers_per_group3time1533824431_epoch30.json
-        \hline
-        0.003 & 0 & 48 & 5 & 3 & 96\% & 99\% & 89\% & 0.41 \\
-        % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.003_dense_dropout0_first_layer_filters48_kernel_size5_convolutional_layers_per_group3time1533825716_epoch43.json
-        \hline
-        0.003 & 0.5 & 24 & 5 & 3 & 93\% & 98\% & 83\% & 0.50 \\
-        % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.003_dense_dropout0.5_first_layer_filters24_kernel_size5_convolutional_layers_per_group3time1533828588_epoch27.json
-        \hline
-        0.001 & 0 & 48 & 5 & 3 & 95\% & 98\% & 87\% & 0.48 \\
-        % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.001_dense_dropout0_first_layer_filters48_kernel_size5_convolutional_layers_per_group3time1533832229_epoch16.json
-        \hline
-        0.001 & 0.25 & 48 & 3 & 6 & 93\% & 94\% & 91\% & 0.62 \\
-        % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.001_dense_dropout0.25_first_layer_filters48_kernel_size3_convolutional_layers_per_group6time1533834812_epoch30.json
-        \hline
-        0.0003 & 0.5 & 24 & 5 & 6 & 95\% & 97\% & 91\% & 0.49 \\
-        % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.0003_dense_dropout0.5_first_layer_filters24_kernel_size5_convolutional_layers_per_group6time1533849077_epoch45.json
-        \hline
-    \end{tabular}
+\begin{minipage}{\textwidth}
+    \begin{center}
+        \captionof{table}{$DeepConvWithPos(\omega, \chi)$ with $WallCut(D)$.}
+        \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+            \hline
+            L2 $\lambda$ & Dropout & Filters & Kernel & Layers $\times$ & Max Accuracy & Precision & Recall & CWSD \\
+            \hline
+            0.003 & 0 & 24 & 3 & 3 & 95\% & 99\% & 94\% & 0.44 \\
+            % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.003_dense_dropout0_first_layer_filters24_kernel_size3_convolutional_layers_per_group3time1533824431_epoch30.json
+            \hline
+            0.003 & 0 & 48 & 5 & 3 & 96\% & 99\% & 96\% & 0.41 \\
+            % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.003_dense_dropout0_first_layer_filters48_kernel_size5_convolutional_layers_per_group3time1533825716_epoch43.json
+            \hline
+            0.003 & 0.5 & 24 & 5 & 3 & 93\% & 98\% & 92\% & 0.50 \\
+            % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.003_dense_dropout0.5_first_layer_filters24_kernel_size5_convolutional_layers_per_group3time1533828588_epoch27.json
+            \hline
+            0.001 & 0 & 48 & 5 & 3 & 95\% & 98\% & 95\% & 0.48 \\
+            % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.001_dense_dropout0_first_layer_filters48_kernel_size5_convolutional_layers_per_group3time1533832229_epoch16.json
+            \hline
+            0.001 & 0.25 & 48 & 3 & 6 & 93\% & 94\% & 97\% & 0.62 \\
+            % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.001_dense_dropout0.25_first_layer_filters48_kernel_size3_convolutional_layers_per_group6time1533834812_epoch30.json
+            \hline
+            0.0003 & 0.5 & 24 & 5 & 6 & 95\% & 97\% & 97\% & 0.49 \\
+            % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.0003_dense_dropout0.5_first_layer_filters24_kernel_size5_convolutional_layers_per_group6time1533849077_epoch45.json
+            \hline
+        \end{tabular}
+    \end{center}
+\end{minipage}
 
-    \captionof{table}{$DeepConvWithPos(\omega, \chi)$ without $WallCut(D)$.}
-    \begin{tabular}{|l|l|l|l|l|l|l|}
-        \hline
-        L2 $\lambda$ & Dropout & Filters & Kernel Size & \# Layers Multiplier & Max Accuracy & Class-Wise Std Dev \\
-        \hline
-        0.003 & 0 & 24 & 3 & 3 & 91\% & 0.61 \\
-        \hline
-        0.003 & 0.5 & 24 & 5 & 3 & 91\% & 0.65 \\
-        \hline
-        0.001 & 0.25 & 24 & 3 & 3 & 91\% & 0.66 \\
-        \hline
-        0.001 & 0.5 & 48 & 5 & 3 & 88\% & 0.73 \\
-        \hline
-        0.0003 & 0 & 48 & 5 & 6 & 78\% & 0.95 \\
-        \hline
-        0.0003 & 0.5 & 48 & 5 & 6 & 74\% & 0.92 \\
-        \hline
-    \end{tabular}
-\end{center}
+\begin{minipage}{\textwidth}
+    \begin{center}
+        \captionof{table}{$DeepConvWithPos(\omega, \chi)$ without $WallCut(D)$.}
+        \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+            \hline
+            L2 $\lambda$ & Dropout & Filters & Kernel & Layers $\times$ & Max Accuracy & Precision & Recall & CWSD \\
+            \hline
+            0.003 & 0 & 24 & 3 & 3 & 91\% & 95\% & 78\% & 0.61 \\
+            % ../experimental_data/validation_results/2018_07_28_waveform_grid_search/waveform_grid_search_l2_lambda0.003_dense_dropout0_first_layer_filters24_kernel_size3_convolutional_layers_per_group3time1532800009_epoch78.json
+            \hline
+            0.003 & 0.5 & 24 & 5 & 3 & 91\% & 95\% & 78\% & 0.65 \\
+            % ../experimental_data/validation_results/2018_07_28_waveform_grid_search/waveform_grid_search_l2_lambda0.003_dense_dropout0.5_first_layer_filters24_kernel_size5_convolutional_layers_per_group3time1532813246_epoch49.json
+            \hline
+            0.001 & 0.25 & 24 & 3 & 3 & 91\% & 88\% & 84\% & 0.66 \\
+            % ../experimental_data/validation_results/2018_07_28_waveform_grid_search/waveform_grid_search_l2_lambda0.001_dense_dropout0.25_first_layer_filters24_kernel_size3_convolutional_layers_per_group3time1532825383_epoch88.json
+            \hline
+            0.001 & 0.5 & 48 & 5 & 3 & 88\% & 92\% & 73\% & 0.73 \\
+            % ../experimental_data/validation_results/2018_07_28_waveform_grid_search/waveform_grid_search_l2_lambda0.001_dense_dropout0.5_first_layer_filters48_kernel_size5_convolutional_layers_per_group3time1532837124_epoch0.json
+            \hline
+            0.0003 & 0 & 48 & 5 & 6 & 78\% & 76\% & 56\% & 0.95 \\
+            % ../experimental_data/validation_results/2018_07_28_waveform_grid_search/waveform_grid_search_l2_lambda0.0003_dense_dropout0_first_layer_filters48_kernel_size5_convolutional_layers_per_group6time1532846835_epoch63.json
+            \hline
+            0.0003 & 0.5 & 48 & 5 & 6 & 74\% & 67\% & 53\% & 0.92 \\
+            % ../experimental_data/validation_results/2018_07_28_waveform_grid_search/waveform_grid_search_l2_lambda0.0003_dense_dropout0.5_first_layer_filters48_kernel_size5_convolutional_layers_per_group6time1532863869_epoch10.json
+            \hline
+        \end{tabular}
+    \end{center}
+\end{minipage}
 
 These tables show that, both with and without $WallCut(D)$, simple network architectures seem to produce better accuracy, likely due to reduced overfitting. Larger kernel sizes, more filters, and more layers make performance generally worse, while higher L2 regularization does the opposite. Dropout seems to have a weak correlation, possibly reducing accuracy slightly.
+
+It is notable that recall is much, much poorer when wall cuts are applied. It seems there are more neutron events that show alpha-like audio signatures in the events near the walls, possibly due to resonance.
 
 \subsection{Multi-Layer Perceptron for Fourier Transform Analysis}
 
@@ -372,7 +386,7 @@ It became evident very quickly that, without $WallCut(D)$, a high resolution was
     \caption{\label{banded_no_pos_input_hist} Prediction distribution of the best $FourierMLP(\beta_{8})$ discriminator, with $WallCut(D)$.}
 \end{figure}
 
-Very interestingly, $FourierMLP(\beta_{8})$ performed better than either $FourierMLP(PosCor(\beta_{8}), \chi)$ or \\ $FourierMLPWithPos(\beta{8}, \chi)$, which produced accuracy values of 97\% and 95\%, respectively.
+Very interestingly, $FourierMLP(\beta_{8})$ performed better than either $FourierMLP(PosCor(\beta_{8}), \chi)$ or \\ $FourierMLPWithPos(\beta{8}, \chi)$, which produced accuracy values of 96\% and 97\%, respectively.
 
 Unlike for the convolutional neural network trained on $\omega$, position input did not improve performance at all. In fact, $FourierMLP(\beta_{8})$, performed better than $FourierMLPWithPos(\beta_{8}, \chi)$, which reached only 95\% validation accuracy. Nevertheless, they both performed better than any of the network architectures trained on $\omega$.
 
@@ -389,31 +403,42 @@ The following tables compare various multi-layer perceptron discriminators, with
 \begin{minipage}{\textwidth}
     \begin{center}
         \captionof{table}{Neural networks trained on Fourier transforms with $WallCut(D)$.} \label{fft_wall_cuts}
-        \begin{tabular}{|l|l|l|l|l|l|}
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
-            Configuration & L2 $\lambda$ & Dropout & Layers & Max Accuracy & Class-Wise Std Dev \\
+            Configuration & L2 $\lambda$ & Dropout & Layers & Max Acc & Prec & Recall & CWSD \\
             \hline
-            $FourierMLP(PosCor(\beta_{8}))$ & 0 & 0.5 & 2 & 95\% & 0.56 \\
+            $FourierMLP(PosCor(\beta_{8}))$ & 0 & 0.5 & 2 & 96\% & 98\% & 97\% & 0.42 \\
+            % ../experimental_data/validation_results/2018_07_16_banded_frequency_validation_passing_weighted_3_times.json
             \hline
-            $FourierMLP(\beta_{8})$ & 0 & 0.5 & 2 & 98\% & 0.29 \\
+            $FourierMLP(\beta_{8})$ & 0 & 0.5 & 2 & 98\% & 100\% & 98\% & 0.29 \\
+            % ../experimental_data/validation_results/2018_07_17_banded_frequency_not_position_corrected/banded_low_resolution_time1531831056_epoch249.json
             \hline
-            $FourierMLPWithPos(\beta_{8}, \chi)$ & 0 & 0.5 & 3 & 95\% & 0.44 \\
+            $FourierMLPWithPos(\beta_{8}, \chi)$ & 0 & 0.5 & 3 & 95\% & 100\% & 92\% & 0.44 \\
+            % ../experimental_data/validation_results/2018_07_17_banded_frequency_not_position_corrected_with_position_input/banded_low_resolution_time1531837503_epoch18.json
             \hline
-            $FourierMLPWithPos(\beta_{8}, \chi)$ & 0 & 0.25 & 3 & 97\% & 0.43 \\
+            $FourierMLPWithPos(\beta_{8}, \chi)$ & 0 & 0.25 & 3 & 97\% & 98\% & 98\% & 0.43 \\
+            % ../experimental_data/validation_results/2018_07_18_banded_frequency_25\%_dropout/banded_low_resolution_time1531922044_epoch154.json
             \hline
-            $FourierMLPWithPos(\beta_{20}, \chi)$ & 0.003 & 0.25 & 3 & 93\% & 0.54 \\
+            $FourierMLPWithPos(\beta_{20}, \chi)$ & 0.003 & 0.25 & 3 & 93\% & 99\% & 92\% & 0.54 \\
+            % ../experimental_data/validation_results/2018_07_20_20_bands/high_resolution_frequency_time1532105605_epoch90.json
             \hline
-            $FourierMLPWithPos(\beta_{20}, \chi)$ & 0 & 0 & 3 & 94\% & 0.52 \\
+            $FourierMLPWithPos(\beta_{20}, \chi)$ & 0 & 0 & 3 & 94\% & 99\% & 93\% & 0.52 \\
+            % ../experimental_data/validation_results/2018_07_20_20_bands_no_regularization/high_resolution_frequency_time1532113464_epoch172.json
             \hline
-            $FourierMLPWithPos(\beta_{40}, \chi)$ & 0 & 0 & 3 & 91\% & 0.57 \\
+            $FourierMLPWithPos(\beta_{40}, \chi)$ & 0 & 0 & 3 & 91\% & 98\% & 90\% & 0.57 \\
+            % ../experimental_data/validation_results/2018_07_20_40_bands/high_resolution_frequency_time1532107386_epoch101.json
             \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.0003 & 0 & 4 & 91\% & 0.53 \\
+            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.0003 & 0 & 4 & 91\% & 94\% & 93\% & 0.53 \\
+            % ../experimental_data/validation_results/2018_08_10_high_resolution_grid_search_with_wall_cuts/high_res_grid_search_dropout0_l2_lambda0.0003_hidden_layers3_time1533922958_epoch133.json
             \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.001 & 0.25 & 4 & 91\% & 0.56 \\
+            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.001 & 0.25 & 4 & 91\% & 96\% & 89\% & 0.56 \\
+            % ../experimental_data/validation_results/2018_08_10_high_resolution_grid_search_with_wall_cuts/high_res_grid_search_dropout0.25_l2_lambda0.001_hidden_layers3_time1533924257_epoch115.json
             \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.001 & 0.5 & 3 & 89\% & 0.64 \\
+            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.001 & 0.5 & 3 & 89\% & 91\% & 91\% & 0.64 \\
+            % ../experimental_data/validation_results/2018_08_10_high_resolution_grid_search_with_wall_cuts/high_res_grid_search_dropout0.5_l2_lambda0.001_hidden_layers2_time1533925299_epoch169.json
             \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.01 & 0.5 & 4 & 89\% & 0.65 \\
+            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.01 & 0.5 & 4 & 89\% & 90\% & 93\% & 0.65 \\
+            % ../experimental_data/validation_results/2018_08_10_high_resolution_grid_search_with_wall_cuts/high_res_grid_search_dropout0.5_l2_lambda0.01_hidden_layers3_time1533925799_epoch91.json
             \hline
         \end{tabular}
     \end{center}
@@ -422,21 +447,27 @@ The following tables compare various multi-layer perceptron discriminators, with
 \begin{minipage}{\textwidth}
     \begin{center}
         \captionof{table}{$FourierMLPWithPos(\beta{N})$ trained without $WallCut(D)$.}
-        \begin{tabular}{|l|l|l|l|l|l|}
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
-            Configuration & L2 $\lambda$ & Dropout & Layers & Max Accuracy & Class-Wise Std Dev \\
+            Configuration & L2 $\lambda$ & Dropout & Layers & Max Acc & Prec & Recall & CWSD \\
             \hline
-            $FourierMLPWithPos(\beta_{20}, \chi)$ & 0 & 0 & 3 & 92\% & 0.63 \\
+            $FourierMLPWithPos(\beta_{20}, \chi)$ & 0 & 0 & 3 & 92\% & 93\% & 77\% & 0.63 \\
+            % ../experimental_data/validation_results/2018_07_20_no_wall_cuts/high_resolution_frequency_time1532116206_epoch111.json
             \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0 & 0 & 3 & 95\% & 0.49 \\
+            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0 & 0 & 3 & 95\% & 89\% & 95\% & 0.49 \\
+            % ../experimental_data/validation_results/2018_07_24_high_resolution_frequency_grid_search/high_res_grid_search_dropout0_l2_lambda0_hidden_layers2_time1532446602_epoch210.json
             \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.001 & 0 & 2 & 96\% & 0.47 \\
+            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.001 & 0 & 2 & 96\% & 95\% & 93\% & 0.47 \\
+            % ../experimental_data/validation_results/2018_07_24_high_resolution_frequency_grid_search/high_res_grid_search_dropout0_l2_lambda0.001_hidden_layers1_time1532448014_epoch149.json
             \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.01 & 0 & 2 & 97\% & 0.47 \\
+            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.01 & 0 & 2 & 97\% & 93\% & 98\% & 0.47 \\
+            % ../experimental_data/validation_results/2018_07_24_high_resolution_frequency_grid_search/high_res_grid_search_dropout0_l2_lambda0.01_hidden_layers1_time1532449765_epoch108.json
             \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.01 & 0.25 & 2 & 95\% & 0.54 \\
+            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.01 & 0.25 & 2 & 95\% & 97\% & 86\% & 0.54 \\
+            % ../experimental_data/validation_results/2018_07_24_high_resolution_frequency_grid_search/high_res_grid_search_dropout0.25_l2_lambda0.01_hidden_layers1_time1532454347_epoch122.json
             \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.01 & 0.5 & 2 & 94\% & 0.53 \\
+            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.01 & 0.5 & 2 & 94\% & 95\% & 86\% & 0.53 \\
+            % ../experimental_data/validation_results/2018_07_24_high_resolution_frequency_grid_search//high_res_grid_search_dropout0.5_l2_lambda0.01_hidden_layers1_time1532459365_epoch243.json
             \hline
         \end{tabular}
     \end{center}
@@ -445,6 +476,8 @@ The following tables compare various multi-layer perceptron discriminators, with
 It is very clear in Table \ref{fft_wall_cuts} that higher resolutions do not improve accuracy. Regularization, both dropout and L2, appears to have relatively little effect.
 
 Without wall cuts, the full-resolution Fourier transform produces much more effective discriminators. Here, L2 regularization is beneficial, possibly because there is more noise that can be overfit on.
+
+Unlike with the raw waveform, recall varies relatively little when wall cuts are applied.
 
 \subsection{Convolutional Neural Network for Image Window Analysis}
 
@@ -464,28 +497,38 @@ Throughout a variety of different network architectures, the best validation acc
     \caption{\label{image_hist} Prediction distribution of the best $ImageConv(\iota)$ discriminator.}
 \end{figure}
 
-\begin{center}
-    \captionof{table}{Performance of $ImageConv(\iota)$ configurations, trained without $WallCut(D)$.}
-    \begin{tabular}{|l|l|l|l|l|l|}
-        \hline
-        L2 $\lambda$ & Dropout & Convolutional Layers & Dense Layers & Max Accuracy & Class-Wise Std Dev \\
-        \hline
-        0 & 0.5 & 4 & 3 & 77\% & 1.01 \\
-        \hline
-        0 & 0.25 & 4 & 3 & 85\% & 0.95 \\
-        \hline
-        0.01 & 0.25 & 4 & 3 & 66\% & 0.97 \\
-        \hline
-        0.003 & 0.25 & 4 & 3 & 69\% & 0.97 \\
-        \hline
-        0.01 & 0.25 & 12 & 3 & 66\% & 0.98 \\
-        \hline
-        0.01 & 0.5 & 12 & 3 & 68\% & 0.99 \\
-        \hline
-    \end{tabular}
-\end{center}
+\begin{minipage}{\textwidth}
+    \begin{center}
+        \captionof{table}{Performance of $ImageConv(\iota)$ configurations, trained without $WallCut(D)$.}
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+            \hline
+            L2 $\lambda$ & Dropout & Convolutional Layers & Dense Layers & Max Accuracy & Precision & Recall & CWSD \\
+            \hline
+            0 & 0.5 & 4 & 3 & 77\% & 52\% & 31\% & 1.01 \\
+            % ../experimental_data/validation_results/2018_07_26_image_classification_fixed_loading/image_time1532640532_epoch8.json
+            \hline
+            0 & 0.25 & 4 & 3 & 85\% & 40\% & 38\% & 0.95 \\
+            % ../experimental_data/validation_results/2018_07_26_image_classification_less_dropout_more_epochs/image_time1532615758_epoch164.json
+            \hline
+            0.01 & 0.25 & 6 & 3 & 68\% & 68\% & 100\% & 0.98 \\
+            % ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.25_convolutional_layers_per_group2time1532895825_epoch2.json
+            \hline
+            0.003 & 0.25 & 9 & 3 & 68\% & 68\% & 100\% & 0.98 \\
+            % ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.003_dropout0.25_convolutional_layers_per_group3time1532895118_epoch3.json
+            \hline
+            0.01 & 0.25 & 12 & 3 & 68\% & 68\% & 100\% & 0.97 \\
+            % ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.25_convolutional_layers_per_group4time1532896126_epoch0.json
+            \hline
+            0.01 & 0.5 & 12 & 3 & 68\% & 68\% & 100\% & 0.99 \\
+            % ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.5_convolutional_layers_per_group4time1532898944_epoch1.json
+            \hline
+        \end{tabular}
+    \end{center}
+\end{minipage}
 
 The high standard deviations across the board are further evidence for the hypothesis that there is insufficient information in the image data.
+
+The 100\% recall statistics are not due to high classification accuracy, but rather due to the network making predictions less than 0.5 for all examples of both classes.
 
 \subsection{Performance Summary}
 
