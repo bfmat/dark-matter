@@ -32,11 +32,12 @@ for epoch in range(100):
     # Train the model for a single epoch
     model.fit(inputs, ground_truths, validation_data=(validation_inputs, validation_ground_truths))
     # Run predictions on the validation set with the trained model, removing the single-element second axis and rounding to integers
-    validation_predictions = np.rint(model.predict(validation_inputs)[:, 0])
+    validation_predictions = model.predict(validation_inputs)[:, 0]
+    validation_predictions_integer = np.rint(validation_predictions)
     # Calculate and print the numbers of (false and true) (positives and negatives) individually
     print('Number of true positives:', np.sum(np.logical_and(validation_predictions == 1, validation_ground_truths == 1)))
     print('Number of true negatives:', np.sum(np.logical_and(validation_predictions == 0, validation_ground_truths == 0)))
     print('Number of false positives:', np.sum(np.logical_and(validation_predictions == 1, validation_ground_truths == 0)))
     print('Number of false negatives:', np.sum(np.logical_and(validation_predictions == 0, validation_ground_truths == 1)))
-    # Save the validation ground truths and predictions in a JSON file
-    save_test(validation_ground_truths, validation_inputs, epoch, 'pulse_count_')
+    # Save the validation ground truths and floating-point predictions in a JSON file
+    save_test(validation_ground_truths, validation_predictions, epoch, 'pulse_count_')
