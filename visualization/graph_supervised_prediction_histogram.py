@@ -12,8 +12,8 @@ from utilities.verify_arguments import verify_arguments
 # Verify that a path to the JSON data file is passed
 verify_arguments('JSON data file')
 
-# Load the data set from the file
-events, ground_truths, network_outputs = load_test(sys.argv[1])
+# Load the data set from the file, ignoring the actual events
+_, ground_truths, network_outputs = load_test(sys.argv[1])
 # Separate the network's outputs based on the value of the corresponding ground truth
 network_outputs_false = [output for output, ground_truth in zip(network_outputs, ground_truths) if not ground_truth]
 network_outputs_true = [output for output, ground_truth in zip(network_outputs, ground_truths) if ground_truth]
