@@ -4,6 +4,7 @@
 
 import numpy as np
 
+from data_processing.deap_serialization import save_test
 from data_processing.load_deap_data import load_deap_data
 from models.pulse_count_network import create_model
 
@@ -37,3 +38,5 @@ for epoch in range(100):
     print('Number of true negatives:', np.sum(np.logical_and(validation_predictions == 0, validation_ground_truths == 0)))
     print('Number of false positives:', np.sum(np.logical_and(validation_predictions == 1, validation_ground_truths == 0)))
     print('Number of false negatives:', np.sum(np.logical_and(validation_predictions == 0, validation_ground_truths == 1)))
+    # Save the validation ground truths and predictions in a JSON file
+    save_test(validation_ground_truths, validation_inputs, epoch, 'pulse_count_')
