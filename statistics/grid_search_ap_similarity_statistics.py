@@ -61,7 +61,7 @@ for file_index, (run_identifier, disagreements, class_wise_standard_deviation, f
 # Iterate over the run identifiers in the dictionary
 for run_identifier in disagreements_by_hyperparameters:
     # Get lists of disagreements and class-wise standard deviations from the dictionary
-    disagreement_values, class_wise_standard_deviations = zip(disagreements_by_hyperparameters[run_identifier].values())
+    disagreement_values, class_wise_standard_deviations = zip(*disagreements_by_hyperparameters[run_identifier].values())
     # Print the mean class-wise standard deviation throughout the entire run
     print(f'Mean class-wise standard deviation of {np.mean(class_wise_standard_deviations)} in run {run_identifier}')
     # Repeat for the mean number of disagreements between the network and AP
