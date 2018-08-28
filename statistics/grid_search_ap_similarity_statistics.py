@@ -3,8 +3,10 @@
 # Created by Brendon Matusch, August 2018
 
 import glob
+import multiprocessing
 import os
 import sys
+from typing import Tuple
 
 import numpy as np
 
@@ -12,12 +14,8 @@ from data_processing.experiment_serialization import load_test
 from utilities.verify_arguments import verify_arguments
 
 
-# Create a dictionary to hold dictionaries of numbers of disagreements, arranged by a particular set of hyperparameters
-disagreements_by_hyperparameters = {}
-
-
-def load_disagreements(file_path: str) -> None:
-    """Load a saved validation set and print the number of disagreements if it is below a certain threshold"""
+def load_disagreements(file_path: str) -> Tuple[int, str]:
+    """Load a saved validation set and return the run identifier along with the number of disagreements"""
     # Load the validation events and network outputs from the JSON file (ignoring the ground truths)
     events, _, network_outputs = load_test(file_path)
     # Convert the network outputs to binary predictions
@@ -28,11 +26,8 @@ def load_disagreements(file_path: str) -> None:
     disagreements = np.count_nonzero(network_predictions != ap_predictions)
     # Get the full identifier of the run except for the timestamp
     run_identifier = file_path.split('time')[0]
-    # If the identifier is not already in the dictionary, create a sub-dictionary
-    if run_identifier not in disagreements_by_hyperparameters:
-        disagreements_by_hyperparameters[run_identifier] = {}
-    # In the sub-dictionary, add the number of disagreements, referenced by the specific path
-    disagreements_by_hyperparameters[run_identifier][file_path] = disagreements
+    # Return the run identifier, the number of disagreements, and the path (passed directly through to make iteration easier)
+    return run_identifier, disagreements, file_path
 
 
 # An expandable list of files using a wildcard should be provided
@@ -41,13 +36,21 @@ verify_arguments('saved validation sets using wildcard')
 file_paths = glob.glob(os.path.expanduser(sys.argv[1]), recursive=True)
 # Get the length of the list of file paths once, so it does not have to be calculated again
 file_count = len(file_paths)
-# Iterate over the files one by one with corresponding indices; these operations are not thread safe
-for file_index, file_path in enumerate(file_paths):
-    # Load and store information on the file
-    load_disagreements(file_path)
-    # Regularly print the number of files that have been loaded
+# Create a dictionary to hold dictionaries of numbers of disagreements, arranged by a particular set of hyperparameters
+disagreements_by_hyperparameters = {}
+# Get the run identifiers and corresponding numbers of disagreements using the file paths and corresponding indices, loading and processing files in parallel with a process pool
+pool = multiprocessing.Pool(processes=10)
+# Get a corresponding completion index for each file we iterate over
+for file_index, (run_identifier, disagreements, file_path) in enumerate(pool.imap_unordered(load_disagreements, file_paths)):
+    # If the run identifier is not already in the dictionary, create a sub-dictionary
+    if run_identifier not in disagreements_by_hyperparameters:
+        disagreements_by_hyperparameters[run_identifier] = {}
+    # In the sub-dictionary, add the number of disagreements, referenced by the specific path
+    disagreements_by_hyperparameters[run_identifier][file_path] = disagreements
+    # Regularly print the index of the latest file that has been loaded
     if file_index % 100 == 0:
-        print(f'Loaded file {file_index} out of {file_count}')
+        print(f'Loaded file {file_index} of {file_count}')
+
 # Iterate over the run identifiers in the dictionary
 for run_identifier in disagreements_by_hyperparameters:
     # Print the mean number of disagreements throughout the entire run
