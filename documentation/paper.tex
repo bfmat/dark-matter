@@ -747,6 +747,19 @@ Compared to gravitational differentiation, there is a larger delta between the n
     \caption{\label{icn_acc_by_hyper} Mean accuracy of iterative cluster nucleation as a function of hyperparameter values.}
 \end{figure}
 
+The following table represents the performance of a variety of iterative cluster nucleation configurations tested during the grid search. As with gravitational differentiation, the accuracy statistic is the mean over three tests of the same configuration.
+
+\begin{minipage}{\textwidth}
+    \begin{center}
+        \captionof{table}{}
+        \begin{tabular}{|l|l|l|l|l|l|l|}
+            \hline
+            Initial $\varsigma$ & L2 $\lambda$ & Dropout & Initial $j$ & $k$ & Accuracy & CWSD \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{minipage}
+
 \subsection{Performance Summary}
 
 The following table directly compares performance of the semi-supervised learning systems, with the existing PICO-60 neural network provided as a baseline once again. Note that ``Max AP Accuracy'' refers to accuracy at replication of AP, rather than replication of the ground truths.
