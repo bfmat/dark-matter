@@ -38,8 +38,8 @@ def load_disagreements(file_path: str) -> None:
 
 # An expandable list of files using a wildcard should be provided
 verify_arguments('saved validation sets using wildcard')
-# Get the files corresponding to the full path
-file_paths = glob.glob(os.path.expanduser(sys.argv[1]))
+# Get the files corresponding to the full path, allowing recursive searches
+file_paths = glob.glob(os.path.expanduser(sys.argv[1]), recursive=True)
 # Load and print information on the files; this is not thread safe
 for file_path in file_paths:
     load_disagreements(file_path)
