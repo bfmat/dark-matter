@@ -28,7 +28,7 @@ def load_disagreements(file_path: str) -> None:
     disagreements = np.count_nonzero(network_predictions != ap_predictions)
     # Get the full identifier of the run except for the timestamp
     # Do this by removing trailing slashes, getting the last component of the path, and slicing it
-    run_identifier = os.path.basename(os.path.normpath(file_path)).split('_time')[0]
+    run_identifier = os.path.basename(os.path.normpath(file_path)).split('time')[0]
     # If the identifier is not already in the dictionary, create a sub-dictionary
     if run_identifier not in disagreements_by_hyperparameters:
         disagreements_by_hyperparameters[run_identifier] = {}
