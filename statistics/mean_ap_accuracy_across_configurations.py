@@ -50,3 +50,5 @@ for configuration in disagreement_counts:
     print(f'Mean accuracy for configuration {configuration} is {mean_accuracy}')
     # Calculate and output the mean class-wise standard deviation to the user
     print(f'Mean class-wise standard deviation for configuration {configuration} is {np.mean(standard_deviation_values[configuration])}')
+    # Print a blank line for separation
+    print()
