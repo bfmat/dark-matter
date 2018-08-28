@@ -53,7 +53,7 @@ for file_index, (run_identifier, disagreements, class_wise_standard_deviation, f
     if run_identifier not in disagreements_by_hyperparameters:
         disagreements_by_hyperparameters[run_identifier] = {}
     # In the sub-dictionary, add the number of disagreements and the class-wise standard deviation, referenced by the specific path
-    disagreements_by_hyperparameters[run_identifier][file_path] = (class_wise_standard_deviation, disagreements)
+    disagreements_by_hyperparameters[run_identifier][file_path] = (disagreements, class_wise_standard_deviation)
     # Regularly print the index of the latest file that has been loaded
     if file_index % 100 == 0:
         print(f'Loaded file {file_index} of {file_count}')
@@ -69,7 +69,7 @@ for run_identifier in disagreements_by_hyperparameters:
     # Iterate over the specific file paths in this run
     for file_path in disagreements_by_hyperparameters[run_identifier]:
         # If there is a small number of disagreements, print out the path and number
-        disagreements = disagreements_by_hyperparameters[run_identifier][file_path]
+        disagreements = disagreements_by_hyperparameters[run_identifier][file_path][0]
         if disagreements < 10:
             print(f'{disagreements} disagreements in file {file_path}')
     # Print a few blank lines for separation
