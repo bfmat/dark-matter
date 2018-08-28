@@ -40,9 +40,15 @@ def load_disagreements(file_path: str) -> None:
 verify_arguments('saved validation sets using wildcard')
 # Get the files corresponding to the full path, allowing recursive searches
 file_paths = glob.glob(os.path.expanduser(sys.argv[1]), recursive=True)
-# Load and print information on the files; this is not thread safe
-for file_path in file_paths:
+# Get the length of the list of file paths once, so it does not have to be calculated again
+file_count = len(file_paths)
+# Iterate over the files one by one with corresponding indices; these operations are not thread safe
+for file_index, file_path in enumerate(file_paths):
+    # Load and store information on the file
     load_disagreements(file_path)
+    # Regularly print the number of files that have been loaded
+    if file_index % 100 == 0:
+        print(f'Loaded file {file_index} out of {file_count}')
 # Iterate over the run identifiers in the dictionary
 for run_identifier in disagreements_by_hyperparameters:
     # Print the mean number of disagreements throughout the entire run
