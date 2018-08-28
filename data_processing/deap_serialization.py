@@ -18,8 +18,8 @@ def save_test(validation_ground_truths: np.ndarray, validation_network_outputs: 
         event_information = {
             # The ground truth for the validation set; may be binary or numeric
             'ground_truth': ground_truth,
-            # The network's actual prediction; this is a single-element list
-            'network_output': network_output[0]
+            # The network's floating-point prediction
+            'network_output': network_output
         }
         # Add the processed dictionary to the list
         output_list.append(event_information)
