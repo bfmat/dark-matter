@@ -12,8 +12,8 @@ def create_model() -> Model:
     model = Sequential([
         InputLayer(input_shape=(510,)),
         BatchNormalization(),
+        Dense(80, activation=activation),
         Dense(20, activation=activation),
-        Dropout(0.25),
         Dense(1, activation='sigmoid')
     ])
     # Output a summary of the model's architecture
