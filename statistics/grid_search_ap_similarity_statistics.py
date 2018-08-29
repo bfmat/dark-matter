@@ -72,7 +72,8 @@ for run_identifier in disagreements_by_hyperparameters:
     # Get lists of disagreements and class-wise standard deviations from the dictionary
     disagreement_values, precision_values, recall_values, class_wise_standard_deviations = zip(*disagreements_by_hyperparameters[run_identifier].values())
     # Print the run identifier and all 4 statistics in the same line
-    print('Run:', run_identifier, 'CWSD:', np.mean(class_wise_standard_deviations), 'Disagreements:', np.mean(disagreement_values), 'Precision:', precision, 'Recall:', np.mean(recall_values))
+    print('Run:', run_identifier, 'CWSD:', np.mean(class_wise_standard_deviations), 'Disagreements:', np.mean(
+        disagreement_values), 'Precision:', np.mean(precision_values), 'Recall:', np.mean(recall_values))
     # Iterate over the specific file paths in this run
     for file_path in disagreements_by_hyperparameters[run_identifier]:
         # If there is a small number of disagreements, print out the path and number
