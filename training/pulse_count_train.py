@@ -16,11 +16,12 @@ VALIDATION_SIZE = 2000
 
 def prepare_events(true_events, false_events) -> Tuple[np.ndarray, np.ndarray]:
     """Given 2 lists of events, 1 for each possible ground truth value, produce arrays of inputs and ground truths for training, validation, or testing; also run a cut on the number of pulses"""
-    inputs = np.array([np.concatenate([event[0], [(timings[0] if timings else 0) for timings in event[1]]]) for event in true_events + false_events])
+    # Take the first photon time for each PMT for each event, substituting 0 if the PMT does not receive any signal
+    inputs = np.array([[(timings[0] if timings else 0) for timings in event[1]] for event in true_events + false_events])
     # Create a corresponding list of ground truths
     ground_truths = np.array([True] * len(true_events) + [False] * len(false_events))
-    # Calculate the total number of pulses for each event by adding up the inputs for all PMTs
-    pulse_counts = np.sum(inputs[:, :255], axis=1)
+    # Calculate the total number of pulses for each event by adding up the pulses for each PMT
+    pulse_counts = np.array([sum(event[0]) for event in true_events + false_events])
     # Get the indices of the events in which the number of pulses is within the accepted range (the array comes in a single-element tuple)
     indices_in_pulse_range = np.where(np.logical_and((pulse_counts >= 80), (pulse_counts <= 240)))[0]
     # Take only the inputs and ground truths corresponding to these valid indices
