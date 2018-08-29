@@ -1,7 +1,7 @@
 """A fully connected neural network that is used to discriminate between neck and non-neck events based on the pulse count for each PMT"""
 # Created by Brendon Matusch, August 2018
 
-from keras.layers import Dense, BatchNormalization, InputLayer
+from keras.layers import Dense, Dropout, BatchNormalization, InputLayer
 from keras.models import Model, Sequential
 
 
@@ -12,9 +12,8 @@ def create_model() -> Model:
     model = Sequential([
         InputLayer(input_shape=(255,)),
         BatchNormalization(),
-        Dense(100, activation=activation),
-        Dense(40, activation=activation),
-        Dense(10, activation=activation),
+        Dense(20, activation=activation),
+        Dropout(0.25),
         Dense(1, activation='sigmoid')
     ])
     # Output a summary of the model's architecture
@@ -22,7 +21,7 @@ def create_model() -> Model:
     # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
     model.compile(
         optimizer='adam',
-        loss='mse',
+        loss='binary_crossentropy',
         metrics=['accuracy']
     )
     # Return the untrained model
