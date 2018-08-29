@@ -8,8 +8,15 @@ import numpy as np
 from sklearn.externals import joblib
 
 
-def load_deap_data():
+def load_simulated_deap_data():
     """Load and return the DEAP Monte Carlo simulation data"""
     # Use Joblib to load the binary file, and return it directly
     with open(os.path.expanduser('~/deap_data.pkl'), 'rb') as joblib_file:
+        return joblib.load(joblib_file)
+
+
+def load_real_world_deap_data():
+    """Load and return the DEAP real-world test data"""
+    # Use Joblib to load the binary file, and once again return it directly
+    with open(os.path.expanduser('~/real_deap_data.pkl'), 'rb') as joblib_file:
         return joblib.load(joblib_file)
