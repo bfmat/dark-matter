@@ -8,47 +8,29 @@ import numpy as np
 
 # Read all lines from standard input, and strip whitespace
 input_lines = [line.strip() for line in sys.stdin.readlines()]
-# Take the lines that contain mean disagreement statistics
-mean_disagreement_lines = [line for line in input_lines if line.startswith('Mean disagreements')]
-# Create a dictionary to hold the numbers of disagreements corresponding to each configuration (not including the run index)
-disagreement_counts = {}
-# Iterate over the mean disagreement lines, adding to the dictionary
-for line in mean_disagreement_lines:
-    # Take the number of disagreements (for this specific run index) from the line
-    disagreements = float(line.split()[3])
+# Take the lines that contain the run identifier with mean disagreement, standard deviation, precision, and recall statistics
+statistic_lines = [line for line in input_lines if line.startswith('Run:')]
+# Create a dictionary to hold the various statistics corresponding to each configuration (not including the run index)
+statistics = {}
+# Iterate over the statistic lines, adding to the dictionary
+for line in statistic_lines:
+    # Split the line into its component words
+    words = line.split()
     # Take the full path from the line, removing the run index component to get the configuration
-    configuration = line.split()[-1].split('configuration_test')[0]
+    configuration = words[1].split('configuration_test')[0]
+    # Take all of the other statistics, converting them to numbers
+    statistics_tuple = [float(words[word_index]) for word_index in [3, 5, 7, 9]]
     # If this configuration is not in the dictionary, create an empty list for it
-    if configuration not in disagreement_counts:
-        disagreement_counts[configuration] = []
-    # Add the disagreement count to the corresponding list in the dictionary
-    disagreement_counts[configuration].append(disagreements)
+    if configuration not in statistics:
+        statistics[configuration] = []
+    # Add the statistics tuple to the corresponding list in the dictionary
+    statistics[configuration].append(statistics_tuple)
 
-# Take the lines that contain mean class-wise standard deviation statistics
-mean_standard_deviation_lines = [line for line in input_lines if line.startswith('Mean class-wise')]
-# Create a dictionary to hold the standard deviations corresponding to each configuration (not including the run index)
-standard_deviation_values = {}
-# Iterate over the mean standard deviation lines, adding to the dictionary
-for line in mean_standard_deviation_lines:
-    # Take the standard deviation (for this specific run index) from the line
-    standard_deviation = float(line.split()[5])
-    # Take the full path from the line, removing the run index component to get the configuration
-    configuration = line.split()[-1].split('configuration_test')[0]
-    # If this configuration is not in the dictionary, create an empty list for it
-    if configuration not in standard_deviation_values:
-        standard_deviation_values[configuration] = []
-    # Add the standard deviation to the corresponding list in the dictionary
-    standard_deviation_values[configuration].append(standard_deviation)
-
-# Iterate over the configuration keys of both dictionaries (the keys should be the same)
-for configuration in disagreement_counts:
-    # Calculate the mean of the corresponding disagreement counts
-    mean_disagreements = np.mean(disagreement_counts[configuration])
-    # Convert that disagreement value to accuracy
+# Iterate over the configuration keys of the dictionary
+for configuration in statistics:
+    # Zip the list of statistics and calculate the mean of each individual statistic
+    mean_standard_deviation, mean_disagreements, mean_precision, mean_recall = [np.mean(statistic_list) for statistic_list in zip(*statistics[configuration])]
+    # Convert the disagreement value to accuracy
     mean_accuracy = 1 - (mean_disagreements / 128)
-    # Output the configuration name and accuracy to the user
-    print(f'Mean accuracy for configuration {configuration} is {mean_accuracy}')
-    # Calculate and output the mean class-wise standard deviation to the user
-    print(f'Mean class-wise standard deviation for configuration {configuration} is {np.mean(standard_deviation_values[configuration])}')
-    # Print a blank line for separation
-    print()
+    # Output the relevant statistics for this configuration to the user
+    print('Configuration:', configuration, 'Accuracy:', mean_accuracy, 'CWSD:', mean_standard_deviation, 'Precision:', mean_precision, 'Recall:', mean_recall)
