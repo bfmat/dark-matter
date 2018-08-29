@@ -1,0 +1,1320 @@
+Using TensorFlow backend.
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+batch_normalization_1 (Batch (None, 255)               1020      
+_________________________________________________________________
+dense_1 (Dense)              (None, 80)                20480     
+_________________________________________________________________
+dense_2 (Dense)              (None, 20)                1620      
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 21        
+=================================================================
+Total params: 23,141
+Trainable params: 22,631
+Non-trainable params: 510
+_________________________________________________________________
+None
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+2018-08-29 15:06:33.587278: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-08-29 15:06:33.629173: E tensorflow/stream_executor/cuda/cuda_driver.cc:397] failed call to cuInit: CUDA_ERROR_UNKNOWN
+2018-08-29 15:06:33.629244: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:145] kernel driver does not appear to be running on this host (Precision-Tower-7910): /proc/driver/nvidia/version does not exist
+5592/5592 [==============================] - 1s 168us/step - loss: 0.4181 - acc: 0.8373 - val_loss: 0.2682 - val_acc: 0.9275
+Number of true positives for validation data: 3
+Number of true negatives for validation data: 1852
+Number of false positives for validation data: 4
+Number of false negatives for validation data: 141
+Data saved at /home/brendonm/pulse_count_validation/time1535569594_epoch0.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569594_epoch0.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 103us/step - loss: 0.2627 - acc: 0.9253 - val_loss: 0.2360 - val_acc: 0.9265
+Number of true positives for validation data: 1
+Number of true negatives for validation data: 1852
+Number of false positives for validation data: 4
+Number of false negatives for validation data: 143
+Data saved at /home/brendonm/pulse_count_validation/time1535569595_epoch1.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569595_epoch1.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.2351 - acc: 0.9269 - val_loss: 0.2200 - val_acc: 0.9275
+Number of true positives for validation data: 1
+Number of true negatives for validation data: 1854
+Number of false positives for validation data: 2
+Number of false negatives for validation data: 143
+Data saved at /home/brendonm/pulse_count_validation/time1535569595_epoch2.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569595_epoch2.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.2209 - acc: 0.9267 - val_loss: 0.2034 - val_acc: 0.9295
+Number of true positives for validation data: 3
+Number of true negatives for validation data: 1856
+Number of false positives for validation data: 0
+Number of false negatives for validation data: 141
+Data saved at /home/brendonm/pulse_count_validation/time1535569596_epoch3.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569596_epoch3.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.2124 - acc: 0.9288 - val_loss: 0.1964 - val_acc: 0.9285
+Number of true positives for validation data: 5
+Number of true negatives for validation data: 1852
+Number of false positives for validation data: 4
+Number of false negatives for validation data: 139
+Data saved at /home/brendonm/pulse_count_validation/time1535569597_epoch4.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569597_epoch4.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.1990 - acc: 0.9297 - val_loss: 0.1831 - val_acc: 0.9285
+Number of true positives for validation data: 3
+Number of true negatives for validation data: 1854
+Number of false positives for validation data: 2
+Number of false negatives for validation data: 141
+Data saved at /home/brendonm/pulse_count_validation/time1535569597_epoch5.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569597_epoch5.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 106us/step - loss: 0.1883 - acc: 0.9301 - val_loss: 0.1726 - val_acc: 0.9345
+Number of true positives for validation data: 14
+Number of true negatives for validation data: 1855
+Number of false positives for validation data: 1
+Number of false negatives for validation data: 130
+Data saved at /home/brendonm/pulse_count_validation/time1535569598_epoch6.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569598_epoch6.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 106us/step - loss: 0.1810 - acc: 0.9324 - val_loss: 0.1606 - val_acc: 0.9330
+Number of true positives for validation data: 11
+Number of true negatives for validation data: 1855
+Number of false positives for validation data: 1
+Number of false negatives for validation data: 133
+Data saved at /home/brendonm/pulse_count_validation/time1535569599_epoch7.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569599_epoch7.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.1710 - acc: 0.9294 - val_loss: 0.1492 - val_acc: 0.9350
+Number of true positives for validation data: 16
+Number of true negatives for validation data: 1854
+Number of false positives for validation data: 2
+Number of false negatives for validation data: 128
+Data saved at /home/brendonm/pulse_count_validation/time1535569599_epoch8.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569599_epoch8.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 106us/step - loss: 0.1588 - acc: 0.9365 - val_loss: 0.1480 - val_acc: 0.9355
+Number of true positives for validation data: 16
+Number of true negatives for validation data: 1855
+Number of false positives for validation data: 1
+Number of false negatives for validation data: 128
+Data saved at /home/brendonm/pulse_count_validation/time1535569600_epoch9.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569600_epoch9.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.1457 - acc: 0.9397 - val_loss: 0.1253 - val_acc: 0.9435
+Number of true positives for validation data: 33
+Number of true negatives for validation data: 1854
+Number of false positives for validation data: 2
+Number of false negatives for validation data: 111
+Data saved at /home/brendonm/pulse_count_validation/time1535569601_epoch10.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569601_epoch10.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.1361 - acc: 0.9467 - val_loss: 0.1186 - val_acc: 0.9430
+Number of true positives for validation data: 33
+Number of true negatives for validation data: 1853
+Number of false positives for validation data: 3
+Number of false negatives for validation data: 111
+Data saved at /home/brendonm/pulse_count_validation/time1535569601_epoch11.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569601_epoch11.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.1253 - acc: 0.9490 - val_loss: 0.1179 - val_acc: 0.9505
+Number of true positives for validation data: 46
+Number of true negatives for validation data: 1855
+Number of false positives for validation data: 1
+Number of false negatives for validation data: 98
+Data saved at /home/brendonm/pulse_count_validation/time1535569602_epoch12.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569602_epoch12.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 107us/step - loss: 0.1189 - acc: 0.9528 - val_loss: 0.1031 - val_acc: 0.9480
+Number of true positives for validation data: 43
+Number of true negatives for validation data: 1853
+Number of false positives for validation data: 3
+Number of false negatives for validation data: 101
+Data saved at /home/brendonm/pulse_count_validation/time1535569603_epoch13.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569603_epoch13.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 106us/step - loss: 0.1099 - acc: 0.9580 - val_loss: 0.0925 - val_acc: 0.9695
+Number of true positives for validation data: 88
+Number of true negatives for validation data: 1851
+Number of false positives for validation data: 5
+Number of false negatives for validation data: 56
+Data saved at /home/brendonm/pulse_count_validation/time1535569603_epoch14.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569603_epoch14.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.1009 - acc: 0.9610 - val_loss: 0.0865 - val_acc: 0.9630
+Number of true positives for validation data: 72
+Number of true negatives for validation data: 1854
+Number of false positives for validation data: 2
+Number of false negatives for validation data: 72
+Data saved at /home/brendonm/pulse_count_validation/time1535569604_epoch15.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569604_epoch15.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0895 - acc: 0.9655 - val_loss: 0.0742 - val_acc: 0.9705
+Number of true positives for validation data: 89
+Number of true negatives for validation data: 1852
+Number of false positives for validation data: 4
+Number of false negatives for validation data: 55
+Data saved at /home/brendonm/pulse_count_validation/time1535569605_epoch16.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569605_epoch16.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0864 - acc: 0.9700 - val_loss: 0.0741 - val_acc: 0.9680
+Number of true positives for validation data: 84
+Number of true negatives for validation data: 1852
+Number of false positives for validation data: 4
+Number of false negatives for validation data: 60
+Data saved at /home/brendonm/pulse_count_validation/time1535569605_epoch17.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569605_epoch17.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0811 - acc: 0.9707 - val_loss: 0.0699 - val_acc: 0.9715
+Number of true positives for validation data: 89
+Number of true negatives for validation data: 1854
+Number of false positives for validation data: 2
+Number of false negatives for validation data: 55
+Data saved at /home/brendonm/pulse_count_validation/time1535569606_epoch18.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569606_epoch18.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0755 - acc: 0.9748 - val_loss: 0.0653 - val_acc: 0.9705
+Number of true positives for validation data: 87
+Number of true negatives for validation data: 1854
+Number of false positives for validation data: 2
+Number of false negatives for validation data: 57
+Data saved at /home/brendonm/pulse_count_validation/time1535569607_epoch19.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569607_epoch19.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0708 - acc: 0.9755 - val_loss: 0.0584 - val_acc: 0.9770
+Number of true positives for validation data: 105
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 39
+Data saved at /home/brendonm/pulse_count_validation/time1535569607_epoch20.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569607_epoch20.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 110us/step - loss: 0.0661 - acc: 0.9769 - val_loss: 0.0531 - val_acc: 0.9795
+Number of true positives for validation data: 107
+Number of true negatives for validation data: 1852
+Number of false positives for validation data: 4
+Number of false negatives for validation data: 37
+Data saved at /home/brendonm/pulse_count_validation/time1535569608_epoch21.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569608_epoch21.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 107us/step - loss: 0.0636 - acc: 0.9773 - val_loss: 0.0461 - val_acc: 0.9855
+Number of true positives for validation data: 122
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 22
+Data saved at /home/brendonm/pulse_count_validation/time1535569609_epoch22.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569609_epoch22.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 110us/step - loss: 0.0582 - acc: 0.9807 - val_loss: 0.0451 - val_acc: 0.9835
+Number of true positives for validation data: 115
+Number of true negatives for validation data: 1852
+Number of false positives for validation data: 4
+Number of false negatives for validation data: 29
+Data saved at /home/brendonm/pulse_count_validation/time1535569609_epoch23.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 11
+Number of false positives for real_world_test data: 1
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569609_epoch23.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 106us/step - loss: 0.0509 - acc: 0.9818 - val_loss: 0.0463 - val_acc: 0.9795
+Number of true positives for validation data: 110
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 34
+Data saved at /home/brendonm/pulse_count_validation/time1535569610_epoch24.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569610_epoch24.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 107us/step - loss: 0.0524 - acc: 0.9839 - val_loss: 0.0384 - val_acc: 0.9880
+Number of true positives for validation data: 129
+Number of true negatives for validation data: 1847
+Number of false positives for validation data: 9
+Number of false negatives for validation data: 15
+Data saved at /home/brendonm/pulse_count_validation/time1535569611_epoch25.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569611_epoch25.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0513 - acc: 0.9834 - val_loss: 0.0543 - val_acc: 0.9800
+Number of true positives for validation data: 109
+Number of true negatives for validation data: 1851
+Number of false positives for validation data: 5
+Number of false negatives for validation data: 35
+Data saved at /home/brendonm/pulse_count_validation/time1535569611_epoch26.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569612_epoch26.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 106us/step - loss: 0.0475 - acc: 0.9868 - val_loss: 0.0423 - val_acc: 0.9835
+Number of true positives for validation data: 118
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 26
+Data saved at /home/brendonm/pulse_count_validation/time1535569612_epoch27.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569612_epoch27.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 106us/step - loss: 0.0486 - acc: 0.9825 - val_loss: 0.0349 - val_acc: 0.9885
+Number of true positives for validation data: 124
+Number of true negatives for validation data: 1853
+Number of false positives for validation data: 3
+Number of false negatives for validation data: 20
+Data saved at /home/brendonm/pulse_count_validation/time1535569613_epoch28.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569613_epoch28.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 106us/step - loss: 0.0447 - acc: 0.9869 - val_loss: 0.0352 - val_acc: 0.9895
+Number of true positives for validation data: 130
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 14
+Data saved at /home/brendonm/pulse_count_validation/time1535569614_epoch29.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569614_epoch29.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0420 - acc: 0.9862 - val_loss: 0.0368 - val_acc: 0.9880
+Number of true positives for validation data: 129
+Number of true negatives for validation data: 1847
+Number of false positives for validation data: 9
+Number of false negatives for validation data: 15
+Data saved at /home/brendonm/pulse_count_validation/time1535569614_epoch30.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569614_epoch30.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 106us/step - loss: 0.0442 - acc: 0.9852 - val_loss: 0.0311 - val_acc: 0.9880
+Number of true positives for validation data: 126
+Number of true negatives for validation data: 1850
+Number of false positives for validation data: 6
+Number of false negatives for validation data: 18
+Data saved at /home/brendonm/pulse_count_validation/time1535569615_epoch31.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569615_epoch31.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0346 - acc: 0.9882 - val_loss: 0.0311 - val_acc: 0.9865
+Number of true positives for validation data: 122
+Number of true negatives for validation data: 1851
+Number of false positives for validation data: 5
+Number of false negatives for validation data: 22
+Data saved at /home/brendonm/pulse_count_validation/time1535569616_epoch32.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569616_epoch32.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 107us/step - loss: 0.0421 - acc: 0.9853 - val_loss: 0.0336 - val_acc: 0.9915
+Number of true positives for validation data: 133
+Number of true negatives for validation data: 1850
+Number of false positives for validation data: 6
+Number of false negatives for validation data: 11
+Data saved at /home/brendonm/pulse_count_validation/time1535569616_epoch33.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569616_epoch33.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 103us/step - loss: 0.0373 - acc: 0.9877 - val_loss: 0.0312 - val_acc: 0.9855
+Number of true positives for validation data: 124
+Number of true negatives for validation data: 1847
+Number of false positives for validation data: 9
+Number of false negatives for validation data: 20
+Data saved at /home/brendonm/pulse_count_validation/time1535569617_epoch34.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569617_epoch34.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 103us/step - loss: 0.0371 - acc: 0.9889 - val_loss: 0.0289 - val_acc: 0.9900
+Number of true positives for validation data: 129
+Number of true negatives for validation data: 1851
+Number of false positives for validation data: 5
+Number of false negatives for validation data: 15
+Data saved at /home/brendonm/pulse_count_validation/time1535569618_epoch35.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569618_epoch35.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0388 - acc: 0.9864 - val_loss: 0.0315 - val_acc: 0.9885
+Number of true positives for validation data: 125
+Number of true negatives for validation data: 1852
+Number of false positives for validation data: 4
+Number of false negatives for validation data: 19
+Data saved at /home/brendonm/pulse_count_validation/time1535569618_epoch36.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569618_epoch36.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 103us/step - loss: 0.0374 - acc: 0.9871 - val_loss: 0.0343 - val_acc: 0.9885
+Number of true positives for validation data: 126
+Number of true negatives for validation data: 1851
+Number of false positives for validation data: 5
+Number of false negatives for validation data: 18
+Data saved at /home/brendonm/pulse_count_validation/time1535569619_epoch37.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569619_epoch37.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0351 - acc: 0.9894 - val_loss: 0.0363 - val_acc: 0.9870
+Number of true positives for validation data: 124
+Number of true negatives for validation data: 1850
+Number of false positives for validation data: 6
+Number of false negatives for validation data: 20
+Data saved at /home/brendonm/pulse_count_validation/time1535569620_epoch38.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569620_epoch38.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 108us/step - loss: 0.0295 - acc: 0.9912 - val_loss: 0.0350 - val_acc: 0.9875
+Number of true positives for validation data: 126
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 18
+Data saved at /home/brendonm/pulse_count_validation/time1535569620_epoch39.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569620_epoch39.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0254 - acc: 0.9930 - val_loss: 0.0235 - val_acc: 0.9900
+Number of true positives for validation data: 131
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 13
+Data saved at /home/brendonm/pulse_count_validation/time1535569621_epoch40.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569621_epoch40.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0345 - acc: 0.9875 - val_loss: 0.0356 - val_acc: 0.9860
+Number of true positives for validation data: 124
+Number of true negatives for validation data: 1848
+Number of false positives for validation data: 8
+Number of false negatives for validation data: 20
+Data saved at /home/brendonm/pulse_count_validation/time1535569622_epoch41.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569622_epoch41.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 107us/step - loss: 0.0361 - acc: 0.9869 - val_loss: 0.0357 - val_acc: 0.9875
+Number of true positives for validation data: 126
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 18
+Data saved at /home/brendonm/pulse_count_validation/time1535569622_epoch42.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569622_epoch42.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 106us/step - loss: 0.0342 - acc: 0.9893 - val_loss: 0.0281 - val_acc: 0.9920
+Number of true positives for validation data: 133
+Number of true negatives for validation data: 1851
+Number of false positives for validation data: 5
+Number of false negatives for validation data: 11
+Data saved at /home/brendonm/pulse_count_validation/time1535569623_epoch43.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569623_epoch43.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0296 - acc: 0.9894 - val_loss: 0.0348 - val_acc: 0.9880
+Number of true positives for validation data: 129
+Number of true negatives for validation data: 1847
+Number of false positives for validation data: 9
+Number of false negatives for validation data: 15
+Data saved at /home/brendonm/pulse_count_validation/time1535569624_epoch44.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569624_epoch44.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0323 - acc: 0.9898 - val_loss: 0.0304 - val_acc: 0.9925
+Number of true positives for validation data: 133
+Number of true negatives for validation data: 1852
+Number of false positives for validation data: 4
+Number of false negatives for validation data: 11
+Data saved at /home/brendonm/pulse_count_validation/time1535569624_epoch45.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569624_epoch45.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.0297 - acc: 0.9900 - val_loss: 0.0344 - val_acc: 0.9895
+Number of true positives for validation data: 131
+Number of true negatives for validation data: 1848
+Number of false positives for validation data: 8
+Number of false negatives for validation data: 13
+Data saved at /home/brendonm/pulse_count_validation/time1535569625_epoch46.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569625_epoch46.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0347 - acc: 0.9884 - val_loss: 0.0269 - val_acc: 0.9920
+Number of true positives for validation data: 133
+Number of true negatives for validation data: 1851
+Number of false positives for validation data: 5
+Number of false negatives for validation data: 11
+Data saved at /home/brendonm/pulse_count_validation/time1535569626_epoch47.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569626_epoch47.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 103us/step - loss: 0.0283 - acc: 0.9911 - val_loss: 0.0285 - val_acc: 0.9915
+Number of true positives for validation data: 134
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 10
+Data saved at /home/brendonm/pulse_count_validation/time1535569626_epoch48.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569626_epoch48.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0275 - acc: 0.9925 - val_loss: 0.0263 - val_acc: 0.9905
+Number of true positives for validation data: 134
+Number of true negatives for validation data: 1847
+Number of false positives for validation data: 9
+Number of false negatives for validation data: 10
+Data saved at /home/brendonm/pulse_count_validation/time1535569627_epoch49.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569627_epoch49.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0335 - acc: 0.9891 - val_loss: 0.0298 - val_acc: 0.9895
+Number of true positives for validation data: 129
+Number of true negatives for validation data: 1850
+Number of false positives for validation data: 6
+Number of false negatives for validation data: 15
+Data saved at /home/brendonm/pulse_count_validation/time1535569627_epoch50.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569628_epoch50.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0294 - acc: 0.9914 - val_loss: 0.0297 - val_acc: 0.9920
+Number of true positives for validation data: 135
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 9
+Data saved at /home/brendonm/pulse_count_validation/time1535569628_epoch51.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569628_epoch51.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0262 - acc: 0.9916 - val_loss: 0.0310 - val_acc: 0.9890
+Number of true positives for validation data: 128
+Number of true negatives for validation data: 1850
+Number of false positives for validation data: 6
+Number of false negatives for validation data: 16
+Data saved at /home/brendonm/pulse_count_validation/time1535569629_epoch52.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569629_epoch52.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 103us/step - loss: 0.0264 - acc: 0.9909 - val_loss: 0.0305 - val_acc: 0.9890
+Number of true positives for validation data: 134
+Number of true negatives for validation data: 1844
+Number of false positives for validation data: 12
+Number of false negatives for validation data: 10
+Data saved at /home/brendonm/pulse_count_validation/time1535569629_epoch53.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569630_epoch53.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 99us/step - loss: 0.0236 - acc: 0.9921 - val_loss: 0.0365 - val_acc: 0.9860
+Number of true positives for validation data: 128
+Number of true negatives for validation data: 1844
+Number of false positives for validation data: 12
+Number of false negatives for validation data: 16
+Data saved at /home/brendonm/pulse_count_validation/time1535569630_epoch54.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569630_epoch54.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.0221 - acc: 0.9928 - val_loss: 0.0320 - val_acc: 0.9900
+Number of true positives for validation data: 132
+Number of true negatives for validation data: 1848
+Number of false positives for validation data: 8
+Number of false negatives for validation data: 12
+Data saved at /home/brendonm/pulse_count_validation/time1535569631_epoch55.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569631_epoch55.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0311 - acc: 0.9896 - val_loss: 0.0330 - val_acc: 0.9875
+Number of true positives for validation data: 130
+Number of true negatives for validation data: 1845
+Number of false positives for validation data: 11
+Number of false negatives for validation data: 14
+Data saved at /home/brendonm/pulse_count_validation/time1535569631_epoch56.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569631_epoch56.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0220 - acc: 0.9928 - val_loss: 0.0336 - val_acc: 0.9890
+Number of true positives for validation data: 129
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 15
+Data saved at /home/brendonm/pulse_count_validation/time1535569632_epoch57.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569632_epoch57.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.0291 - acc: 0.9900 - val_loss: 0.0323 - val_acc: 0.9875
+Number of true positives for validation data: 130
+Number of true negatives for validation data: 1845
+Number of false positives for validation data: 11
+Number of false negatives for validation data: 14
+Data saved at /home/brendonm/pulse_count_validation/time1535569633_epoch58.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569633_epoch58.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0277 - acc: 0.9907 - val_loss: 0.0393 - val_acc: 0.9855
+Number of true positives for validation data: 120
+Number of true negatives for validation data: 1851
+Number of false positives for validation data: 5
+Number of false negatives for validation data: 24
+Data saved at /home/brendonm/pulse_count_validation/time1535569633_epoch59.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569633_epoch59.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 103us/step - loss: 0.0255 - acc: 0.9905 - val_loss: 0.0333 - val_acc: 0.9905
+Number of true positives for validation data: 130
+Number of true negatives for validation data: 1851
+Number of false positives for validation data: 5
+Number of false negatives for validation data: 14
+Data saved at /home/brendonm/pulse_count_validation/time1535569634_epoch60.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569634_epoch60.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 103us/step - loss: 0.0257 - acc: 0.9905 - val_loss: 0.0300 - val_acc: 0.9895
+Number of true positives for validation data: 133
+Number of true negatives for validation data: 1846
+Number of false positives for validation data: 10
+Number of false negatives for validation data: 11
+Data saved at /home/brendonm/pulse_count_validation/time1535569635_epoch61.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569635_epoch61.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0262 - acc: 0.9905 - val_loss: 0.0275 - val_acc: 0.9925
+Number of true positives for validation data: 133
+Number of true negatives for validation data: 1852
+Number of false positives for validation data: 4
+Number of false negatives for validation data: 11
+Data saved at /home/brendonm/pulse_count_validation/time1535569635_epoch62.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569635_epoch62.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 100us/step - loss: 0.0238 - acc: 0.9930 - val_loss: 0.0302 - val_acc: 0.9915
+Number of true positives for validation data: 135
+Number of true negatives for validation data: 1848
+Number of false positives for validation data: 8
+Number of false negatives for validation data: 9
+Data saved at /home/brendonm/pulse_count_validation/time1535569636_epoch63.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569636_epoch63.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 101us/step - loss: 0.0281 - acc: 0.9907 - val_loss: 0.0338 - val_acc: 0.9875
+Number of true positives for validation data: 124
+Number of true negatives for validation data: 1851
+Number of false positives for validation data: 5
+Number of false negatives for validation data: 20
+Data saved at /home/brendonm/pulse_count_validation/time1535569637_epoch64.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569637_epoch64.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.0263 - acc: 0.9909 - val_loss: 0.0319 - val_acc: 0.9885
+Number of true positives for validation data: 131
+Number of true negatives for validation data: 1846
+Number of false positives for validation data: 10
+Number of false negatives for validation data: 13
+Data saved at /home/brendonm/pulse_count_validation/time1535569637_epoch65.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569637_epoch65.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0256 - acc: 0.9912 - val_loss: 0.0373 - val_acc: 0.9870
+Number of true positives for validation data: 126
+Number of true negatives for validation data: 1848
+Number of false positives for validation data: 8
+Number of false negatives for validation data: 18
+Data saved at /home/brendonm/pulse_count_validation/time1535569638_epoch66.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569638_epoch66.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0237 - acc: 0.9916 - val_loss: 0.0190 - val_acc: 0.9930
+Number of true positives for validation data: 137
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 7
+Data saved at /home/brendonm/pulse_count_validation/time1535569639_epoch67.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569639_epoch67.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 107us/step - loss: 0.0271 - acc: 0.9891 - val_loss: 0.0251 - val_acc: 0.9885
+Number of true positives for validation data: 135
+Number of true negatives for validation data: 1842
+Number of false positives for validation data: 14
+Number of false negatives for validation data: 9
+Data saved at /home/brendonm/pulse_count_validation/time1535569639_epoch68.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569639_epoch68.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 106us/step - loss: 0.0249 - acc: 0.9921 - val_loss: 0.0347 - val_acc: 0.9875
+Number of true positives for validation data: 132
+Number of true negatives for validation data: 1843
+Number of false positives for validation data: 13
+Number of false negatives for validation data: 12
+Data saved at /home/brendonm/pulse_count_validation/time1535569640_epoch69.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569640_epoch69.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.0234 - acc: 0.9937 - val_loss: 0.0303 - val_acc: 0.9880
+Number of true positives for validation data: 132
+Number of true negatives for validation data: 1844
+Number of false positives for validation data: 12
+Number of false negatives for validation data: 12
+Data saved at /home/brendonm/pulse_count_validation/time1535569641_epoch70.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569641_epoch70.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 103us/step - loss: 0.0275 - acc: 0.9912 - val_loss: 0.0313 - val_acc: 0.9880
+Number of true positives for validation data: 132
+Number of true negatives for validation data: 1844
+Number of false positives for validation data: 12
+Number of false negatives for validation data: 12
+Data saved at /home/brendonm/pulse_count_validation/time1535569641_epoch71.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569641_epoch71.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.0208 - acc: 0.9934 - val_loss: 0.0282 - val_acc: 0.9870
+Number of true positives for validation data: 132
+Number of true negatives for validation data: 1842
+Number of false positives for validation data: 14
+Number of false negatives for validation data: 12
+Data saved at /home/brendonm/pulse_count_validation/time1535569642_epoch72.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569642_epoch72.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 107us/step - loss: 0.0234 - acc: 0.9927 - val_loss: 0.0269 - val_acc: 0.9905
+Number of true positives for validation data: 134
+Number of true negatives for validation data: 1847
+Number of false positives for validation data: 9
+Number of false negatives for validation data: 10
+Data saved at /home/brendonm/pulse_count_validation/time1535569643_epoch73.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569643_epoch73.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0227 - acc: 0.9928 - val_loss: 0.0264 - val_acc: 0.9890
+Number of true positives for validation data: 128
+Number of true negatives for validation data: 1850
+Number of false positives for validation data: 6
+Number of false negatives for validation data: 16
+Data saved at /home/brendonm/pulse_count_validation/time1535569643_epoch74.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569643_epoch74.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.0211 - acc: 0.9932 - val_loss: 0.0337 - val_acc: 0.9890
+Number of true positives for validation data: 129
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 15
+Data saved at /home/brendonm/pulse_count_validation/time1535569644_epoch75.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569644_epoch75.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 100us/step - loss: 0.0237 - acc: 0.9911 - val_loss: 0.0237 - val_acc: 0.9930
+Number of true positives for validation data: 133
+Number of true negatives for validation data: 1853
+Number of false positives for validation data: 3
+Number of false negatives for validation data: 11
+Data saved at /home/brendonm/pulse_count_validation/time1535569645_epoch76.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569645_epoch76.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0198 - acc: 0.9930 - val_loss: 0.0301 - val_acc: 0.9910
+Number of true positives for validation data: 135
+Number of true negatives for validation data: 1847
+Number of false positives for validation data: 9
+Number of false negatives for validation data: 9
+Data saved at /home/brendonm/pulse_count_validation/time1535569645_epoch77.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569645_epoch77.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0232 - acc: 0.9902 - val_loss: 0.0317 - val_acc: 0.9870
+Number of true positives for validation data: 127
+Number of true negatives for validation data: 1847
+Number of false positives for validation data: 9
+Number of false negatives for validation data: 17
+Data saved at /home/brendonm/pulse_count_validation/time1535569646_epoch78.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569646_epoch78.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 106us/step - loss: 0.0246 - acc: 0.9911 - val_loss: 0.0262 - val_acc: 0.9915
+Number of true positives for validation data: 134
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 10
+Data saved at /home/brendonm/pulse_count_validation/time1535569647_epoch79.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569647_epoch79.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.0264 - acc: 0.9916 - val_loss: 0.0288 - val_acc: 0.9900
+Number of true positives for validation data: 130
+Number of true negatives for validation data: 1850
+Number of false positives for validation data: 6
+Number of false negatives for validation data: 14
+Data saved at /home/brendonm/pulse_count_validation/time1535569647_epoch80.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569647_epoch80.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 101us/step - loss: 0.0283 - acc: 0.9914 - val_loss: 0.0321 - val_acc: 0.9870
+Number of true positives for validation data: 127
+Number of true negatives for validation data: 1847
+Number of false positives for validation data: 9
+Number of false negatives for validation data: 17
+Data saved at /home/brendonm/pulse_count_validation/time1535569648_epoch81.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569648_epoch81.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 103us/step - loss: 0.0172 - acc: 0.9946 - val_loss: 0.0297 - val_acc: 0.9895
+Number of true positives for validation data: 131
+Number of true negatives for validation data: 1848
+Number of false positives for validation data: 8
+Number of false negatives for validation data: 13
+Data saved at /home/brendonm/pulse_count_validation/time1535569649_epoch82.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569649_epoch82.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 100us/step - loss: 0.0223 - acc: 0.9920 - val_loss: 0.0322 - val_acc: 0.9880
+Number of true positives for validation data: 131
+Number of true negatives for validation data: 1845
+Number of false positives for validation data: 11
+Number of false negatives for validation data: 13
+Data saved at /home/brendonm/pulse_count_validation/time1535569649_epoch83.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569649_epoch83.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.0222 - acc: 0.9930 - val_loss: 0.0284 - val_acc: 0.9885
+Number of true positives for validation data: 129
+Number of true negatives for validation data: 1848
+Number of false positives for validation data: 8
+Number of false negatives for validation data: 15
+Data saved at /home/brendonm/pulse_count_validation/time1535569650_epoch84.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569650_epoch84.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0269 - acc: 0.9925 - val_loss: 0.0283 - val_acc: 0.9910
+Number of true positives for validation data: 134
+Number of true negatives for validation data: 1848
+Number of false positives for validation data: 8
+Number of false negatives for validation data: 10
+Data saved at /home/brendonm/pulse_count_validation/time1535569650_epoch85.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569650_epoch85.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0220 - acc: 0.9937 - val_loss: 0.0238 - val_acc: 0.9920
+Number of true positives for validation data: 134
+Number of true negatives for validation data: 1850
+Number of false positives for validation data: 6
+Number of false negatives for validation data: 10
+Data saved at /home/brendonm/pulse_count_validation/time1535569651_epoch86.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569651_epoch86.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0195 - acc: 0.9941 - val_loss: 0.0262 - val_acc: 0.9925
+Number of true positives for validation data: 135
+Number of true negatives for validation data: 1850
+Number of false positives for validation data: 6
+Number of false negatives for validation data: 9
+Data saved at /home/brendonm/pulse_count_validation/time1535569652_epoch87.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569652_epoch87.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 101us/step - loss: 0.0238 - acc: 0.9909 - val_loss: 0.0293 - val_acc: 0.9875
+Number of true positives for validation data: 129
+Number of true negatives for validation data: 1846
+Number of false positives for validation data: 10
+Number of false negatives for validation data: 15
+Data saved at /home/brendonm/pulse_count_validation/time1535569652_epoch88.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569652_epoch88.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.0163 - acc: 0.9955 - val_loss: 0.0326 - val_acc: 0.9880
+Number of true positives for validation data: 126
+Number of true negatives for validation data: 1850
+Number of false positives for validation data: 6
+Number of false negatives for validation data: 18
+Data saved at /home/brendonm/pulse_count_validation/time1535569653_epoch89.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569653_epoch89.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0246 - acc: 0.9914 - val_loss: 0.0303 - val_acc: 0.9895
+Number of true positives for validation data: 129
+Number of true negatives for validation data: 1850
+Number of false positives for validation data: 6
+Number of false negatives for validation data: 15
+Data saved at /home/brendonm/pulse_count_validation/time1535569654_epoch90.json
+Number of true positives for real_world_test data: 0
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 26
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569654_epoch90.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 104us/step - loss: 0.0229 - acc: 0.9928 - val_loss: 0.0273 - val_acc: 0.9885
+Number of true positives for validation data: 128
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 16
+Data saved at /home/brendonm/pulse_count_validation/time1535569654_epoch91.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569654_epoch91.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 101us/step - loss: 0.0209 - acc: 0.9939 - val_loss: 0.0240 - val_acc: 0.9905
+Number of true positives for validation data: 131
+Number of true negatives for validation data: 1850
+Number of false positives for validation data: 6
+Number of false negatives for validation data: 13
+Data saved at /home/brendonm/pulse_count_validation/time1535569655_epoch92.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569655_epoch92.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 106us/step - loss: 0.0209 - acc: 0.9921 - val_loss: 0.0265 - val_acc: 0.9910
+Number of true positives for validation data: 138
+Number of true negatives for validation data: 1844
+Number of false positives for validation data: 12
+Number of false negatives for validation data: 6
+Data saved at /home/brendonm/pulse_count_validation/time1535569656_epoch93.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569656_epoch93.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 103us/step - loss: 0.0275 - acc: 0.9902 - val_loss: 0.0265 - val_acc: 0.9925
+Number of true positives for validation data: 135
+Number of true negatives for validation data: 1850
+Number of false positives for validation data: 6
+Number of false negatives for validation data: 9
+Data saved at /home/brendonm/pulse_count_validation/time1535569656_epoch94.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569656_epoch94.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.0180 - acc: 0.9948 - val_loss: 0.0257 - val_acc: 0.9895
+Number of true positives for validation data: 133
+Number of true negatives for validation data: 1846
+Number of false positives for validation data: 10
+Number of false negatives for validation data: 11
+Data saved at /home/brendonm/pulse_count_validation/time1535569657_epoch95.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569657_epoch95.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.0206 - acc: 0.9934 - val_loss: 0.0257 - val_acc: 0.9910
+Number of true positives for validation data: 133
+Number of true negatives for validation data: 1849
+Number of false positives for validation data: 7
+Number of false negatives for validation data: 11
+Data saved at /home/brendonm/pulse_count_validation/time1535569658_epoch96.json
+Number of true positives for real_world_test data: 1
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 25
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569658_epoch96.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 102us/step - loss: 0.0253 - acc: 0.9900 - val_loss: 0.0314 - val_acc: 0.9895
+Number of true positives for validation data: 127
+Number of true negatives for validation data: 1852
+Number of false positives for validation data: 4
+Number of false negatives for validation data: 17
+Data saved at /home/brendonm/pulse_count_validation/time1535569658_epoch97.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569658_epoch97.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 103us/step - loss: 0.0232 - acc: 0.9918 - val_loss: 0.0283 - val_acc: 0.9895
+Number of true positives for validation data: 134
+Number of true negatives for validation data: 1845
+Number of false positives for validation data: 11
+Number of false negatives for validation data: 10
+Data saved at /home/brendonm/pulse_count_validation/time1535569659_epoch98.json
+Number of true positives for real_world_test data: 3
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 23
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569659_epoch98.json
+Train on 5592 samples, validate on 2000 samples
+Epoch 1/1
+5592/5592 [==============================] - 1s 105us/step - loss: 0.0239 - acc: 0.9911 - val_loss: 0.0389 - val_acc: 0.9875
+Number of true positives for validation data: 125
+Number of true negatives for validation data: 1850
+Number of false positives for validation data: 6
+Number of false negatives for validation data: 19
+Data saved at /home/brendonm/pulse_count_validation/time1535569660_epoch99.json
+Number of true positives for real_world_test data: 2
+Number of true negatives for real_world_test data: 12
+Number of false positives for real_world_test data: 0
+Number of false negatives for real_world_test data: 24
+Data saved at /home/brendonm/pulse_count_real_world_test/time1535569660_epoch99.json
