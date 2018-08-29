@@ -21,9 +21,9 @@ network_outputs_true = [output for output, ground_truth in zip(network_outputs, 
 # Set the size of the resulting graph (it should be standard across all such graphs)
 plt.figure(figsize=(8, 6))
 # Plot the network's outputs by ground truth in a histogram, labeling the 2 classes
-plt.hist([network_outputs_false, network_outputs_true], bins=100, label=['Non-Neck Events', 'Neck Events'])
+plt.hist([network_outputs_false, network_outputs_true], bins=100, label=['AmBe', '1-Year Data Set'])
 # Label the axes of the graph
-plt.xlabel('Network Prediction (0 $\Rightarrow$ Non-Neck Events, 1 $\Rightarrow$ Neck Events)')
+plt.xlabel('Network Prediction (0 $\Rightarrow$ Recoil Events, 1 $\Rightarrow$ Neck Events)')
 plt.ylabel('Validation Event Count')
 # Include a legend in the graph, explaining the colors
 plt.legend()
