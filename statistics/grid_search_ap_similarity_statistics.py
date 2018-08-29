@@ -3,6 +3,7 @@
 # Created by Brendon Matusch, August 2018
 
 import glob
+import multiprocessing
 import os
 import sys
 from typing import Tuple
@@ -53,10 +54,10 @@ file_paths = glob.glob(os.path.expanduser(sys.argv[1]), recursive=True)
 file_count = len(file_paths)
 # Create a dictionary to hold dictionaries of numbers of disagreements, arranged by a particular set of hyperparameters
 disagreements_by_hyperparameters = {}
+# Get the run identifiers and corresponding numbers of disagreements using the file paths and corresponding indices, loading and processing files in parallel with a process pool
+pool = multiprocessing.Pool(processes=10)
 # Get a corresponding completion index for each file we iterate over
-for file_index, (run_identifier, disagreements, precision, recall, class_wise_standard_deviation, file_path) in enumerate(load_disagreements(file_path) for file_path in file_paths):
-    # Print the recall for debugging purposes
-    print(f'Recall of {recall} for file {file_path}')
+for file_index, (run_identifier, disagreements, precision, recall, class_wise_standard_deviation, file_path) in enumerate(pool.imap_unordered(load_disagreements, file_paths)):
     # If the run identifier is not already in the dictionary, create a sub-dictionary
     if run_identifier not in disagreements_by_hyperparameters:
         disagreements_by_hyperparameters[run_identifier] = {}
