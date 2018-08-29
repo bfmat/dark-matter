@@ -100,7 +100,8 @@ real_world_neck_events = list(itertools.chain.from_iterable(
 # Finally, there is a sample of relatively pure real-world neutron events
 real_world_neutron_events = list(itertools.chain.from_iterable(
     # Also cut the position here, to avoid introducing biases
-    load_data_from_file(path, cut_position=True)
+    # Do not cut the position here; events not in the center of the vessel are fine
+    load_data_from_file(path, cut_position=False)
     # The data is once again stored across several files in a folder
     for path in glob.iglob(os.path.expanduser('~/skimmedNeutronforBrendon/*'))
 ))
