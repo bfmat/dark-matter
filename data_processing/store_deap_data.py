@@ -32,6 +32,13 @@ def load_data_from_file(file_path, cut_position):
     pmt_data_arrays = []
     # Iterate over all events within the tree
     for event in tree:
+        # Skip events for which the calibrated branch is not present (it contains the number of photons)
+        if not event.ds.ExistCAL():
+            continue
+        # If the number of photons is outside the desired range, skip the event
+        photon_count = event.ds.cal[0].GetQPE()
+        if photon_count < 80 or photon_count > 240:
+            continue
         # If there are supposed to be cuts done on the position to make sure the event is either near the center or in the neck
         if cut_position:
             # If the event's approximated position is outside the vessel
