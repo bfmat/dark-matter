@@ -42,9 +42,11 @@ def load_test(json_file_path: str) -> Tuple[np.ndarray, np.ndarray]:
     # Iterate over the list of dictionaries describing the events, adding information to lists
     ground_truths = []
     network_outputs = []
+    identifiers = []
     for event_information in input_list:
-        # Get the ground truth, and network output, and add them each to the corresponding list
+        # Get the ground truth, network output, and identifier, and add them each to the corresponding list
         ground_truths.append(event_information['ground_truth'])
         network_outputs.append(event_information['network_output'])
-    # Return the list of events, and the ground truths and network outputs as NumPy arrays
-    return np.array(ground_truths), np.array(network_outputs)
+        identifiers.append(event_information['identifier'])
+    # Return the ground truths, network outputs, and identifiers as NumPy arrays
+    return np.array(ground_truths), np.array(network_outputs), np.array(identifiers)
