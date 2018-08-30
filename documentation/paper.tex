@@ -670,14 +670,6 @@ This system was trained using a multi-layer perceptron with an 8-band Fourier tr
 
 During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the algorithm achieved a maximum of 98\% validation accuracy. The mean over that run (also the highest overall) was 96\%. Figure \ref{grav_grid_search} shows the highly accurate replication of AP.
 
-As seen in Figure \ref{grav_acc_by_hyper}, all three hyperparameters that were optimized during the grid search had a significant effect on accuracy:
-
-\begin{itemize}
-    \item Smaller gravitational multipliers improved performance; the best value tested was 0.0005. This implies that the gravity effect on each unlabeled event should be weighted lightly compared to the labeled examples.
-    \item Higher learning rates improve performance, with the best value tested at a quite high 0.03.
-    \item Larger distortion powers (which raise the confidence threshold for a significant gravitational effect) improved performance, with the best tested at 11.
-\end{itemize}
-
 Two different options were tested with regard to size of the labeled data set $\varsigma$. Out of a set of 496 total examples available for training, either 128 (approximately $1/4$ of the total set) or 256 (approximately $1/2$) were used as labeled data. Over the entire grid search, runs with 128 examples in $\varsigma$ produced on average 64\% more errors on validation data, compared to those with 256 examples.
 
 !!!Include table on grid search!!!
@@ -686,12 +678,6 @@ Two different options were tested with regard to size of the labeled data set $\
     \centering
     \includegraphics[width=\textwidth]{grav_grid_search}
     \caption{\label{grav_grid_search} Accuracy of best gravitational differentiation training run compared to AP (98\% accuracy).}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{grav_acc_by_hyper}
-    \caption{\label{grav_acc_by_hyper} Accuracy of gravitational differentiation as a function of hyperparameter values.}
 \end{figure}
 
 \subsection{Iterative Cluster Nucleation}
@@ -729,7 +715,7 @@ Parameterized by the initial seed threshold $j$ (on the order of 0.01) and the s
 
 \subsubsection{Results}
 
-During a grid search of these parameters (in addition to regularization parameters of the network), the best mean accuracy over three runs of an individual configuration was 99\%, using 256 initial labeled examples in $\varsigma$. With 128 examples, the maximum was 98\%; with 64 it was 97\%, and with 32 95\%. From this, it is evident that it is possible to achieve very high accuracy using this technique. It is also clear that, in general, larger initial sets produce higher performance.
+During a grid search of these parameters (in addition to regularization parameters of the network), the best mean accuracy over three runs of an individual configuration was 99\%, using 256 initial labeled examples in $\varsigma$. With 128 examples, the maximum was 98\%; with 64 it was 97\%; and with 32, 95\%. From this, it is evident that it is possible to achieve very high accuracy using this technique. It is also clear that, in general, larger initial sets produce higher performance.
 
 The network's highly accurate and decisive predictions can be observed in Figure \ref{icn_grid_search}.
 
@@ -737,16 +723,6 @@ The network's highly accurate and decisive predictions can be observed in Figure
     \centering
     \includegraphics[width=\textwidth]{icn_grid_search}
     \caption{\label{icn_grid_search} Accuracy of optimal iterative cluster nucleation training run compared to AP (100\% accuracy).}
-\end{figure}
-
-THIS NEEDS TO BE EDITED VVVV
-
-Digging deeper into the performance throughout the runs of the grid search, Figure \ref{icn_acc_by_hyper} shows the mean accuracy as a function of each of the hyperparameters that were optimized. Dropout has a clear effect, with 25\% shown to be the optimal number of neurons to drop. L2 regularization is also significant; all $\lambda$ values greater than 0 make performance worse.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{icn_acc_by_hyper}
-    \caption{\label{icn_acc_by_hyper} Mean accuracy of iterative cluster nucleation as a function of hyperparameter values.}
 \end{figure}
 
 The following table represents the performance of a variety of iterative cluster nucleation configurations tested during the grid search. As with gravitational differentiation, the accuracy statistic is the mean over three tests of the same configuration.
