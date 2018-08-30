@@ -12,16 +12,14 @@ def create_model() -> Model:
     model = Sequential([
         InputLayer(input_shape=(255,)),
         BatchNormalization(),
-        Dense(80, activation=activation),
-        Dense(20, activation=activation),
-        Dense(1, activation='sigmoid')
+        Dense(1)
     ])
     # Output a summary of the model's architecture
     print(model.summary())
     # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
     model.compile(
         optimizer='adam',
-        loss='binary_crossentropy',
+        loss='mse',
         metrics=['accuracy']
     )
     # Return the untrained model
