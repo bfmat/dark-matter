@@ -20,15 +20,6 @@ def prepare_events(true_events, false_events):
     inputs = np.stack([event[0] for event in events])
     # Create a corresponding list of ground truths
     ground_truths = np.array([True] * len(true_events) + [False] * len(false_events))
-    # Calculate the total number of pulses for each event by adding up the inputs for all PMTs
-    pulse_counts = np.sum(inputs, axis=1)
-    # Get the indices of the events in which the number of pulses is within the accepted range (the array comes in a single-element tuple)
-    indices_in_pulse_range = np.where(np.logical_and((pulse_counts >= 80), (pulse_counts <= 240)))[0]
-    # Take only the inputs and ground truths corresponding to these valid indices
-    inputs = inputs[indices_in_pulse_range]
-    ground_truths = ground_truths[indices_in_pulse_range]
-    # Also take only the original events corresponding to these indices
-    events = [events[event_index] for event_index in indices_in_pulse_range]
     # Create a random permutation with the number of inputs and ground truths
     permutation = np.random.permutation(inputs.shape[0])
     # Randomize the inputs and ground truths with the same permutation (otherwise, the validation split would take the end of the arrays)
