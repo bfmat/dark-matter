@@ -36,7 +36,7 @@ def load_data_from_file(file_path, cut_position):
         if cut_position:
             # If the event's approximated position is outside the vessel
             if event.ds.ev[0].mblikelihood.pos.Mag() >= 630:
-                # Skip this event; it is probably not a neck alpha (and in the case of neutron data, it should be removed anyway to avoid introducing a bias)
+                # Skip this event; it is probably not a neck alpha
                 continue
         # Try to get the calibration sub-tree, which is the only data available for real-world events
         # It is a vector with either 0 or 1 elements
@@ -60,8 +60,12 @@ def load_data_from_file(file_path, cut_position):
             pulse_counts[pmt_identifier] = pmt_data.GetPulseCount()
             # Replace the empty list corresponding to this PMT with the list of photon timings
             photon_timings[pmt_identifier] = list(pmt_data.PEtime)
-        # Add the pulse counts and photon timings to the list for all events
-        pmt_data_arrays.append((pulse_counts, photon_timings))
+        # Get the 3 identifiers that, together, uniquely reference a specific event
+        run_identifier = event.ds.runID
+        sub_run_identifier = event.ds.subrunID
+        event_identifier = event.ds.ts[0].GetEventID()
+        # Add the pulse counts and photon timings to the list for all events, alongside the 3 identifiers
+        pmt_data_arrays.append((pulse_counts, photon_timings, run_identifier, sub_run_identifier, event_identifier))
     # Notify the user that this file has been loaded
     print('Data loaded from file', file_path)
     # Return the list of tuples containing all of the data
