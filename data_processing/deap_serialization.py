@@ -9,17 +9,19 @@ from typing import Tuple, Optional, List
 import numpy as np
 
 
-def save_test(validation_ground_truths: np.ndarray, validation_network_outputs: np.ndarray, epoch: Optional[int] = None, prefix: str = '') -> None:
-    """Save a validation data set, with corresponding experimental network outputs, in a file"""
-    # Iterate over tuples of ground truths and network outputs, processing them and adding them to a list
+def save_test(ground_truths: np.ndarray, network_outputs: np.ndarray, events, epoch: Optional[int] = None, prefix: str = '') -> None:
+    """Save a validation data set, with corresponding experimental network outputs and event identifiers, in a file"""
+    # Iterate over tuples of ground truths, network outputs, and events, processing them and adding them to a list
     output_list = []
-    for ground_truth, network_output in zip(validation_ground_truths.tolist(), validation_network_outputs.tolist()):
-        # Combine the date with the unique index, ground truth value, and network output for this event in a dictionary
+    for ground_truth, network_output, event in zip(ground_truths.tolist(), network_outputs.tolist(), events):
+        # Combine the date with the unique index, ground truth value, network output, and event identifier for this event in a dictionary
         event_information = {
             # The ground truth for the validation set; may be binary or numeric
             'ground_truth': ground_truth,
             # The network's floating-point prediction
-            'network_output': network_output
+            'network_output': network_output,
+            # The 3 numbers that uniquely identify this event
+            'identifier': event[2:]
         }
         # Add the processed dictionary to the list
         output_list.append(event_information)
