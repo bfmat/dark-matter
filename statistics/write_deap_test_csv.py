@@ -17,4 +17,4 @@ print('0AmBe1OneYear,0PredictedRecoil1PredictedNeckAlpha,RunID,SubRunID,EventID'
 # Iterate over the ground truths, network outputs, and identifiers in sync
 for ground_truth, network_output, identifier in zip(ground_truths, network_outputs, identifiers):
     # Print out both statistics and all 3 identifiers in one comma-separated line
-    print(f'{ground_truth},{network_output},{identifier[0]},{identifier[1]},{identifier[2]}')
+    print(f'{int(ground_truth)},{network_output},{identifier[0]},{identifier[1]},{identifier[2]}')
