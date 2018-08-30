@@ -10,7 +10,7 @@ def create_model() -> Model:
     # Create a neural network model that includes several dense layers with hyperbolic tangent activations
     activation = 'tanh'
     model = Sequential([
-        InputLayer(input_shape=(510,)),
+        InputLayer(input_shape=(255,)),
         BatchNormalization(),
         Dense(1)
     ])
