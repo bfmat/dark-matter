@@ -6,6 +6,7 @@ import sys
 
 import numpy as np
 from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
 
 # The hyperparameters that we are concerned with using to predict accuracy
 HYPERPARAMETERS = ['dropout', 'l2_lambda', 'initial_threshold', 'threshold_multiplier']
@@ -23,11 +24,13 @@ for configuration_index, configuration in enumerate(configurations):
     for hyperparameter_index, hyperparameter in enumerate(HYPERPARAMETERS):
         # Split the line by the name of the hyperparameter, and then get the hyperparameter value (as a floating-point number) up to the next slash separator
         hyperparameter_values[configuration_index, hyperparameter_index] = float(configuration.split(hyperparameter)[1].split('/')[0])
+# Add polynomial features up to degree 3 to the hyperparameter matrix
+hyperparameter_polynomials = PolynomialFeatures(degree=3).fit_transform(hyperparameter_values)
 # Extract the accuracy value from each line
 accuracy_values = [float(line.split()[3]) for line in lines]
-# Create a linear regression classifier and train it to predict the accuracy values based on the hyperparameters
+# Create a linear regression classifier and train it to predict the accuracy values based on the hyperparameters including polynomials
 linear_regression = LinearRegression()
-linear_regression.fit(hyperparameter_values, accuracy_values)
+linear_regression.fit(hyperparameter_polynomials, accuracy_values)
 # Print the classifier's score on its training set to get an idea of the correlation between the hyperparameters and accuracy
-score = linear_regression.score(hyperparameter_values, accuracy_values)
+score = linear_regression.score(hyperparameter_polynomials, accuracy_values)
 print('Score:', score)
