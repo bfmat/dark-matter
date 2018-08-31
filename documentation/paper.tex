@@ -717,6 +717,12 @@ Parameterized by the initial seed threshold $j$ (on the order of 0.01) and the s
 
 During a grid search of these parameters (in addition to regularization parameters of the network), the best mean accuracy over three runs of an individual configuration was 99\%, using 256 initial labeled examples in $\varsigma$. With 128 examples, the maximum was 98\%; with 64 it was 97\%; and with 32, 95\%. From this, it is evident that it is possible to achieve very high accuracy using this technique. It is also clear that, in general, larger initial sets produce higher performance.
 
+Interestingly, the four hyperparameters optimized during the grid search were observed to have a weak polynomial correlation with the network's accuracy. This makes the mean accuracy over all configurations a meaningful statistic, since the accuracy for an individual configuration is difficult to confidently predict.
+
+With 32 and 64 examples it was only 75\% and 84\%, respectively, implying that the high maximum accuracy statistics were subject to a high degree of randomness. However, for 128 and 256 initial examples, the mean accuracy statistics over all configurations were 95\% and 97\%, respectively, indicating that the training is much more reliable with a larger initial set.
+
+Note that there are several hyperparameters not specifically optimized in the context of iterative cluster nucleation, including the number of layers and numbers of neurons within those layers. The correlation between those hyperparameters and accuracy is subject to future research.
+
 The network's highly accurate and decisive predictions can be observed in Figure \ref{icn_grid_search}.
 
 \begin{figure}[h]
@@ -725,7 +731,7 @@ The network's highly accurate and decisive predictions can be observed in Figure
     \caption{\label{icn_grid_search} Accuracy of optimal iterative cluster nucleation training run compared to AP (100\% accuracy).}
 \end{figure}
 
-The following table represents the performance of a variety of iterative cluster nucleation configurations tested during the grid search. As with gravitational differentiation, the accuracy statistic is the mean over three tests of the same configuration.
+The following table represents the performance of a variety of high-accuracy iterative cluster nucleation configurations tested during the grid search. As with gravitational differentiation, the accuracy statistic is the mean over three tests of the same configuration.
 
 \begin{minipage}{\textwidth}
     \begin{center}
@@ -773,7 +779,7 @@ The following table directly compares performance of certain successful semi-sup
             \hline
             256 & ICN & 99\% & 99\% & 100\% & 0.15 \\
             \hline
-            $\infty$ & AP & 100\% & 100\% & 100\% & TODO \\
+            $\infty$ & AP & 100\% & 100\% & 100\% & 0.41 \\
             \hline
         \end{tabular}
     \end{center}
