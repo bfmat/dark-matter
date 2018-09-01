@@ -52,7 +52,6 @@ file_paths = glob.glob(os.path.expanduser(sys.argv[1]), recursive=True)
 run_identifiers = [file_path.split('time')[0] for file_path in file_paths]
 # Convert the identifiers to a set so that they are all unique (there are many duplicated)
 run_identifiers = set(run_identifiers)
-print(len(run_identifiers))
 # Create a process pool that will be reused for parallel processing on every iteration (it takes a long time to create it)
 pool = multiprocessing.Pool(processes=10)
 # Iterate over each of the run identifiers, calculating the results for them
