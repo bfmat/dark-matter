@@ -40,44 +40,43 @@ def load_disagreements(file_path: str) -> Tuple[str, int, float, float, float, s
     normalized_outputs = network_outputs / np.std(network_outputs)
     # Calculate the class-wise standard deviation, using the alphas and neutrons individually
     class_wise_standard_deviation = np.mean([np.std(normalized_outputs[indices]) for indices in [alpha_indices, neutron_indices]])
-    # Get the full identifier of the run except for the timestamp
-    run_identifier = file_path.split('time')[0]
     # Return the relevant outputs alongside the file path (passed directly through to make iteration easier)
-    return run_identifier, disagreements, precision, recall, class_wise_standard_deviation, file_path
+    return disagreements, precision, recall, class_wise_standard_deviation, file_path
 
 
 # An expandable list of files using a wildcard should be provided
 verify_arguments('saved validation sets using wildcard')
 # Get the files corresponding to the full path, allowing recursive searches
 file_paths = glob.glob(os.path.expanduser(sys.argv[1]), recursive=True)
-# Get the length of the list of file paths once, so it does not have to be calculated again
-file_count = len(file_paths)
-# Create a dictionary to hold dictionaries of numbers of disagreements, arranged by a particular set of hyperparameters
-disagreements_by_hyperparameters = {}
-# Get the run identifiers and corresponding numbers of disagreements using the file paths and corresponding indices, loading and processing files in parallel with a process pool
+# Get the run identifier corresponding to each of the file paths (not including the specific epoch)
+run_identifiers = [file_path.split('time')[0] for file_path in file_paths]
+# Create a process pool that will be reused for parallel processing on every iteration (it takes a long time to create it)
 pool = multiprocessing.Pool(processes=10)
-# Get a corresponding completion index for each file we iterate over
-for file_index, (run_identifier, disagreements, precision, recall, class_wise_standard_deviation, file_path) in enumerate(pool.imap_unordered(load_disagreements, file_paths)):
-    # If the run identifier is not already in the dictionary, create a sub-dictionary
-    if run_identifier not in disagreements_by_hyperparameters:
-        disagreements_by_hyperparameters[run_identifier] = {}
-    # In the sub-dictionary, add the number of disagreements, the precision and recall, and the class-wise standard deviation, referenced by the specific path
-    disagreements_by_hyperparameters[run_identifier][file_path] = (disagreements, precision, recall, class_wise_standard_deviation)
-    # Regularly print the index of the latest file that has been loaded
-    if file_index % 100 == 0:
-        print(f'Loaded file {file_index} of {file_count}')
-
-# Iterate over the run identifiers in the dictionary
-for run_identifier in disagreements_by_hyperparameters:
-    # Get lists of disagreements and class-wise standard deviations from the dictionary
-    disagreement_values, precision_values, recall_values, class_wise_standard_deviations = zip(*disagreements_by_hyperparameters[run_identifier].values())
+# Iterate over each of the run identifiers, calculating the results for them
+for run_identifier in run_identifiers:
+    # Take only the file paths that are part of this run
+    run_file_paths = [file_path for file_path in file_paths if file_path.startswith(run_identifier)]
+    # Get the number of files in this run so we only have to calculate it once
+    file_count = len(run_file_paths)
+    # Create a dictionary to hold tuples of result values for the current run (standard deviation, accuracy, et cetera) indexed by file paths
+    results = {}
+    # Get the run identifiers and corresponding numbers of disagreements using the file paths and corresponding indices, loading and processing files in parallel with a process pool
+    # Get a corresponding completion index for each file we iterate over
+    for file_index, (disagreements, precision, recall, class_wise_standard_deviation, file_path) in enumerate(pool.imap_unordered(load_disagreements, run_file_paths)):
+        # In the dictionary, add the number of disagreements, the precision and recall, and the class-wise standard deviation, referenced by the specific path
+        results[file_path] = (disagreements, precision, recall, class_wise_standard_deviation)
+        # Regularly print the index of the latest file that has been loaded
+        if file_index % 100 == 0:
+            print(f'Loaded file {file_index} of {file_count}')
+    # Get lists of individual results from the combined dictionary
+    disagreement_values, precision_values, recall_values, class_wise_standard_deviations = zip(*results.values())
     # Print the run identifier and all 4 statistics in the same line
     print('Run:', run_identifier, 'CWSD:', np.mean(class_wise_standard_deviations), 'Disagreements:', np.mean(
         disagreement_values), 'Precision:', np.mean(precision_values), 'Recall:', np.mean(recall_values))
     # Iterate over the specific file paths in this run
-    for file_path in disagreements_by_hyperparameters[run_identifier]:
+    for file_path in results:
         # If there is a small number of disagreements, print out the path and number
-        disagreements = disagreements_by_hyperparameters[run_identifier][file_path][0]
+        disagreements = results[file_path][0]
         if disagreements < 10:
             print(f'{disagreements} disagreements in file {file_path}')
     # Print a few blank lines for separation
