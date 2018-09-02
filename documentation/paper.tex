@@ -22,7 +22,7 @@
 \maketitle
 
 \begin{abstract}
-    The identification of non-signal events is a major hurdle to overcome for bubble chamber dark matter experiments such as PICO-60. The current practice of manually developing a discriminator function to eliminate background events is difficult when available calibration data is frequently impure and present only in small quantities. In this study, several different input formats and neural network architectures are applied to the task. First, they are optimized in a supervised learning context. Next, two novel semi-supervised learning algorithms are trained, and found to replicate the Acoustic Parameter discriminator previously used in PICO-60 with up to 100\% accuracy.
+    The identification of non-signal events is a major hurdle to overcome for bubble chamber dark matter experiments such as PICO-60. The current practice of manually developing a discriminator function to eliminate background events is difficult when available calibration data is frequently impure and present only in small quantities. In this study, several different input formats and neural network architectures are applied to the task. First, they are optimized in a supervised learning context. Next, two novel semi-supervised learning algorithms are trained, and found to replicate the Acoustic Parameter discriminator previously used in PICO-60 with a mean of 97\% accuracy.
 \end{abstract}
 
 \section{Objective}
@@ -648,7 +648,7 @@ It is a distortion of the hyperbolic tangent that flattens the central range and
 
 (Note that step \ref{exponent} only works if $p$ is an odd integer (because odd integer exponents preserve the sign), limiting the ability to fine-tune this function by changing $\psi$. To resolve this, a piecewise exponential function is used instead, where the absolute value is taken prior to applying the power and the sign is multiplied back in afterwards. This permits use of the full range of curves produced by even and non-integer values of $\psi$.)
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{grav_diff}
     \caption{\label{grav_diff} A visualization of $GravDiff(p, \psi, g)$ with respect to $p$ and $\psi$.}
@@ -668,16 +668,64 @@ This system was trained using a multi-layer perceptron with an 8-band Fourier tr
 
 \subsubsection{Results}
 
-During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the algorithm achieved a maximum of 98\% validation accuracy. The mean over that run (also the highest overall) was 96\%. Figure \ref{grav_grid_search} shows the highly accurate replication of AP.
+During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the highest mean accuracy over three runs of an individual configuration was 99\%. The highest accuracy was obtained with 256 labeled examples in the set $\varsigma$ (out of 496 total training examples). High accuracy statistics in this range were also obtained using 128 examples (99\% accuracy, once again) and 64 examples (97\% accuracy). 32 examples produced a much lower maximum accuracy, at only 83\%. From this, it is evident that it is possible to achieve very high accuracy using this technique. It is also clear that, in general, larger initial sets produce higher performance.
 
-Two different options were tested with regard to size of the labeled data set $\varsigma$. Out of a set of 496 total examples available for training, either 128 (approximately $1/4$ of the total set) or 256 (approximately $1/2$) were used as labeled data. Over the entire grid search, runs with 128 examples in $\varsigma$ produced on average 64\% more errors on validation data, compared to those with 256 examples.
+However, the four hyperparameters optimized during the grid search were observed to have a weak polynomial correlation with the network's accuracy. This implies that the training process is generally insensitive to variations in those particular network parameters.
 
-!!!Include table on grid search!!!
+This lack of correlation also means that the mean accuracy over all configurations with a given $\varsigma$ size is a meaningful statistic, since the validation accuracy for an individual configuration is difficult to confidently predict. These statistics, shown in Table \ref{grav_accuracy_by_varsigma}, show that for all four set sizes, there is a fairly wide spread between maximum and mean accuracy.
+
+\begin{minipage}{\textwidth}
+    \begin{center}
+        \captionof{table}{Gravitational differentiation accuracy statistics by size of $\varsigma$.} \label{grav_accuracy_by_varsigma}
+        \begin{tabular}{|l|l|l|}
+            \hline
+            Initial $\varsigma$ Size & Max Accuracy & Mean Accuracy \\
+            \hline
+            32 & 83\% & 69\% \\
+            \hline
+            64 & 97\% & 73\% \\
+            \hline
+            128 & 99\% & 84\% \\
+            \hline
+            256 & 99\% & 94\% \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{minipage}
+
+The following table represents the performance of several high-accuracy gravitational differentiation configurations tested during the grid search. The accuracy statistic is the mean over three tests of the same configuration.
+
+\begin{minipage}{\textwidth}
+    \begin{center}
+        \captionof{table}{Performance of gravitational differentiation configurations.}
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+            \hline
+            $\varsigma$ Size & $\delta g$ & Learning Rate & $\psi$ & Mean AP Accuracy & Precision & Recall & CWSD \\
+            \hline
+            32 & 0.0005 & 0.001 & 5 & 73\% & 72\% 90\% & 0.78 \\
+            \hline
+            32 & 0.0005 & 0.003 & 9 & 83\% & 80\% & 99\% & 0.63 \\
+            \hline
+            64 & 0.0005 & 0.003 & 9 & 77\% & 74\% & 97\% & 0.71 \\
+            \hline
+            64 & 0.003 & 0.03 & 7 & 97\% & 96\% & 100\% & 0.18 \\
+            \hline
+            128 & 0.008 & 0.001 & 9 & 74\% & 71\% & 95\% & 0.70 \\
+            \hline
+            128 & 0.0005 & 0.03 & 11 & 99\% & 99\% & 99\% & 0.17 \\
+            \hline
+            256 & 0.005 & 0.01 & 11 & 97\% & 96\% & 99\% & 0.25 \\
+            \hline
+            256 & 0.001 & 0.03 & 3 & 99\% & 99\% & 100\% & 0.10 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{minipage}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{grav_grid_search}
-    \caption{\label{grav_grid_search} Accuracy of best gravitational differentiation training run compared to AP (98\% accuracy).}
+    \caption{\label{grav_grid_search} Accuracy of best gravitational differentiation training epoch compared to AP.}
 \end{figure}
 
 \subsection{Iterative Cluster Nucleation}
@@ -715,21 +763,36 @@ Parameterized by the initial seed threshold $j$ (on the order of 0.01) and the s
 
 \subsubsection{Results}
 
-During a grid search of these parameters (in addition to regularization parameters of the network), the best mean accuracy over three runs of an individual configuration was 99\%, using 256 initial labeled examples in $\varsigma$. With 128 examples, the maximum was 98\%; with 64 it was 97\%; and with 32, 95\%. From this, it is evident that it is possible to achieve very high accuracy using this technique. It is also clear that, in general, larger initial sets produce higher performance.
-
-Interestingly, the four hyperparameters optimized during the grid search were observed to have a weak polynomial correlation with the network's accuracy. This makes the mean accuracy over all configurations a meaningful statistic, since the accuracy for an individual configuration is difficult to confidently predict.
-
-With 32 and 64 examples it was only 75\% and 84\%, respectively, implying that the high maximum accuracy statistics were subject to a high degree of randomness. However, for 128 and 256 initial examples, the mean accuracy statistics over all configurations were 95\% and 97\%, respectively, indicating that the training is much more reliable with a larger initial set.
-
-Note that there are several hyperparameters not specifically optimized in the context of iterative cluster nucleation, including the number of layers and numbers of neurons within those layers. The correlation between those hyperparameters and accuracy is subject to future research.
-
-The network's highly accurate and decisive predictions can be observed in Figure \ref{icn_grid_search}.
+During a grid search of these parameters (in addition to regularization parameters of the network), the best mean accuracy over three runs of an individual configuration was 99\%, using 256 initial labeled examples in $\varsigma$. (The network's predictions on the best performing epoch can be observed in Figure \ref{icn_grid_search}.) With 128 examples, the maximum was 98\%; with 64 it was 97\%; and with 32, 95\%. As with gravitational differentiation, larger set sizes improve accuracy significantly.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{icn_grid_search}
-    \caption{\label{icn_grid_search} Accuracy of optimal iterative cluster nucleation training run compared to AP (100\% accuracy).}
+    \caption{\label{icn_grid_search} Accuracy of best iterative cluster nucleation training epoch compared to AP.}
 \end{figure}
+
+Once again, the parameters inherent to the ICN algorithm, as well as dropout and L2 regularization, do not have a meaningful polynomial correlation with accuracy. Note that there are several hyperparameters not specifically optimized in the context of iterative cluster nucleation, including the number of layers and numbers of neurons within those layers. The correlation between those hyperparameters and accuracy is subject to future research.
+
+The mean accuracy for a given initial $\varsigma$ is again important. In Table \ref{icn_accuracy_by_varsigma}, it is clear that with small initial $\varsigma$ sets, the training process is very unreliable, much like gravitational differentiation. However, the mean accuracy is much closer to the maximum for initial $\varsigma$ sets of 128 and 256, indicating that the training process of ICN is significantly more consistent than gravitational differentiation.
+
+\begin{minipage}{\textwidth}
+    \begin{center}
+        \captionof{table}{Iterative cluster nucleation accuracy statistics by initial size of $\varsigma$.} \label{icn_accuracy_by_varsigma}
+        \begin{tabular}{|l|l|l|}
+            \hline
+            Initial $\varsigma$ Size & Max Accuracy & Mean Accuracy \\
+            \hline
+            32 & 95\% & 75\% \\
+            \hline
+            64 & 97\% & 84\% \\
+            \hline
+            128 & 98\% & 95\% \\
+            \hline
+            256 & 99\% & 97\% \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{minipage}
 
 The following table represents the performance of a variety of high-accuracy iterative cluster nucleation configurations tested during the grid search. As with gravitational differentiation, the accuracy statistic is the mean over three tests of the same configuration.
 
@@ -762,20 +825,28 @@ The following table represents the performance of a variety of high-accuracy ite
 
 \subsection{Performance Summary}
 
-The following table directly compares performance of certain successful semi-supervised learning systems, with AP provided as a baseline for comparison. Remember that ``Mean AP Accuracy'' refers to accuracy at replication of AP, rather than replication of the ground truths.
+The following table directly compares performance of the most successful semi-supervised learning configurations, with AP provided as a baseline for comparison. Remember that ``Mean AP Accuracy'' refers to accuracy at replication of AP, rather than replication of the ground truths.
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{Summary of semi-supervised learning systems.}
+        \captionof{table}{Summary of the most successful semi-supervised learning configuration.}
         \begin{tabular}{|l|l|l|l|l|l|}
             \hline
             Initial $\varsigma$ Size & Technique & Mean AP Accuracy & Mean Precision & Mean Recall & Mean CWSD \\
             \hline
+            32 & GD & 83\% & 80\% & 99\% & 0.63 \\
+            \hline
             32 & ICN & 95\% & 94\% & 99\% & 0.38 \\
+            \hline
+            64 & GD & 97\% & 96\% & 100\% & 0.18 \\
             \hline
             64 & ICN & 97\% & 96\% & 99\% & 0.28 \\
             \hline
+            128 & GD & 99\% & 99\% & 99\% & 0.17 \\
+            \hline
             128 & ICN & 98\% & 98\% & 100\% & 0.21 \\
+            \hline
+            256 & GD & 99\% & 99\% & 100\% & 0.10 \\
             \hline
             256 & ICN & 99\% & 99\% & 100\% & 0.15 \\
             \hline
@@ -785,13 +856,15 @@ The following table directly compares performance of certain successful semi-sup
     \end{center}
 \end{minipage}
 
+Note that in addition to achieving similar accuracy, configurations from both semi-supervised learning algorithms produce significantly more decisive predictions compared to AP, as measured by the class-wise standard deviation.
+
 \section{Conclusions}
 
 This study has demonstrated that it is possible, using semi-supervised learning, to automatically optimize a discriminator with performance comparable to one developed and tuned by humans like the Acoustic Parameter technique. This conclusion has been achieved through two rounds of optimization, the first to explore and evaluate various network structures and input formats using supervised learning, and the second to incorporate the most successful configuration into semi-supervised learning systems with the goal of replicating AP as accurately as possible.
 
 In the realm of supervised learning, it was made clear that the banded Fourier transform is the most effective input format. It produced significantly higher accuracy and tighter prediction distributions than neural networks trained on either the raw audio waveform or image window data. There is strong evidence that image data in particular does not contain sufficient information to be used for discrimination.
 
-Two semi-supervised learning algorithms were developed, applying the best configuration found for supervised learning. While both techniques produced some very effective discriminators, iterative cluster nucleation was found to be the more effective of the two. It replicated AP with a mean of 98\% accuracy on the best configuration. This indicates that the technique shows significant promise.
+Two semi-supervised learning algorithms were developed, applying the best configuration found for supervised learning. While both techniques produced some very effective discriminators, iterative cluster nucleation was found to be the more effective of the two. It replicated AP with a mean of 97\% accuracy, using 256 labeled training examples. This indicates that the technique shows significant promise.
 
 While there is still of course a place for conventionally developed discriminators such as AP, they are difficult to develop until a large quantity of calibration data has been collected and the physical principles of the experiment are understood well. The innovations developed in this study suggest that semi-supervised learning can facilitate very quick development of discriminators immediately after the first calibration runs are conducted on a new experimental apparatus. This has the potential to allow the teams working on these experiments to iterate more quickly and better understand intermediate results, before all data has been analyzed in depth.
 
