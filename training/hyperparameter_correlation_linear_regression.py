@@ -9,7 +9,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
 
 # The hyperparameters that we are concerned with using to predict accuracy
-HYPERPARAMETERS = ['gravity_multiplier_increment', 'learning_rate', 'distortion_power', 'definitive_training_examples']
+HYPERPARAMETERS = ['gravity_multiplier_increment', 'learning_rate', 'distortion_power']
 
 # Read all lines provided to standard input (from the script that calculates mean by configuration) and strip whitespace
 lines = [line.strip() for line in sys.stdin.readlines()]
@@ -18,22 +18,16 @@ configurations = [line.split()[1] for line in lines]
 # Create a NumPy array that will contain values of the hyperparameters
 # It is okay if not all of the configurations are unique because of disregarded hyperparameters; they can be used for training individually
 hyperparameter_values = np.empty((len(configurations), len(HYPERPARAMETERS)))
-indices = []
 # Iterate over the configurations with corresponding indices, extracting arrays of hyperparameters
 for configuration_index, configuration in enumerate(configurations):
     # Iterate over the hyperparameters with corresponding indices, extracting them one by one
     for hyperparameter_index, hyperparameter in enumerate(HYPERPARAMETERS):
-        if hyperparameter == 'definitive_training_examples' and float(configuration.split(hyperparameter)[1].split('/')[0]) == 32:
-            indices.append(configuration_index)
         # Split the line by the name of the hyperparameter, and then get the hyperparameter value (as a floating-point number) up to the next slash separator
         hyperparameter_values[configuration_index, hyperparameter_index] = float(configuration.split(hyperparameter)[1].split('/')[0])
-hyperparameter_values = hyperparameter_values[indices]
 # Add polynomial features up to degree 3 to the hyperparameter matrix
 hyperparameter_polynomials = PolynomialFeatures(degree=3).fit_transform(hyperparameter_values)
 # Extract the accuracy value from each line
-accuracy_values = np.array([float(line.split()[3]) for line in lines])
-accuracy_values = accuracy_values[indices]
-print(np.mean(accuracy_values))
+accuracy_values = [float(line.split()[3]) for line in lines]
 # Create a linear regression classifier and train it to predict the accuracy values based on the hyperparameters including polynomials
 linear_regression = LinearRegression()
 linear_regression.fit(hyperparameter_polynomials, accuracy_values)
