@@ -4,11 +4,14 @@
 \usepackage{textcomp}
 \usepackage{parskip}
 \usepackage{amsmath}
+\usepackage{authblk}
 \usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{float}
 \usepackage{caption}
+
+\renewcommand*{\Affilfont}{\footnotesize}
 
 \graphicspath{{./images/}}
 
@@ -17,7 +20,7 @@
 \begin{document}
 
 \title{Developing a Bubble Chamber Particle Discriminator Using Semi-Supervised Learning}
-\author{Brendon Matusch, X, Y, and Z}
+\input{authors.tex}
 \date{August 2018}
 \maketitle
 
