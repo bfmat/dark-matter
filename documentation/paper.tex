@@ -25,7 +25,7 @@
 \maketitle
 
 \begin{abstract}
-    The identification of non-signal events is a major hurdle to overcome for bubble chamber dark matter experiments such as PICO-60. The current practice of manually developing a discriminator function to eliminate background events is difficult when available calibration data is frequently impure and present only in small quantities. In this study, several different input formats and neural network architectures are applied to the task. First, they are optimized in a supervised learning context. Next, two novel semi-supervised learning algorithms are trained, and found to replicate the Acoustic Parameter discriminator previously used in PICO-60 with a mean of 97\% accuracy.
+    The identification of non-signal events is a major hurdle to overcome for bubble chamber dark matter experiments such as PICO-60. The current practice of manually developing a discriminator function to eliminate background events is difficult when available calibration data is frequently impure and present only in small quantities. In this study, several different discriminator input formats and neural network architectures are applied to the task. First, they are optimized in a supervised learning context. Next, two novel semi-supervised learning algorithms are trained, and found to replicate the Acoustic Parameter (AP) discriminator previously used in PICO-60 with a mean of 97\% accuracy.
 \end{abstract}
 
 \section{Objective}
@@ -37,7 +37,7 @@ To resolve this, physicists must determine a discriminator function that can, ba
 \begin{enumerate}
     \item A detailed model of the physical environment is often used to produce an accurate discriminator. This takes a long time, and will have to be updated whenever the physical variables of the experimental apparatus change.
 
-    \item The primary intention of many dark matter experiments, which is to reduce the number of background events to the lowest level possible, means that there will be a very small number detected. This places a significant constraint on the amount of data that is available to optimize such a discriminator.
+    \item A major intent of many dark matter experiments, which is to reduce the number of background events to the lowest level possible, means that there will be a very small number detected. This places a significant constraint on the amount of data that is available to optimize such a discriminator.
 
     Furthermore, what little data is available to optimize a discriminator very often contains impurities, because whatever background radiation is present during WIMP detection runs is also present during calibration runs. These are difficult to separate without already having access to a functional discriminator, creating a ``chicken or the egg'' problem (from which a common way to escape is to create a time- and labor-intensive simulation).
 \end{enumerate}
@@ -69,7 +69,7 @@ The architecture described may have wider applications to several similar cases,
 
 \subsection{Background}
 
-The PICO-60 bubble chamber experiment, created for the detection of weakly interacting massive particles (WIMPs) \cite{pico}, was completed in 2017. It provides an excellent basis on which to develop and test the efficacy of such techniques as a potential tool for event discrimination, relative to the conventional techniques used during initial analysis of the experiment.
+The PICO-60 bubble chamber experiment, created for the detection of weakly interacting massive particles (WIMPs) \cite{pico}, was completed in 2017. It provides an excellent basis on which to develop and test the efficacy of new machine learning discriminators, relative to the techniques used during initial analysis of the experiment.
 
 WIMP candidates in the cross-section and mass ranges to which the PICO-60 detector is sensitive are predicted to produce nuclear recoils with the same properties as those induced by neutrons. The key difference is that neutrons frequently (but not always) scatter several times and produce multiple bubbles, where the extremely small predicted cross-sections of WIMP candidates mean that they should almost invariably create just one bubble. This means single-bubble neutron events can be used to optimize a discriminator to detect WIMP events.
 
@@ -79,15 +79,15 @@ The approximate expected ratio between single-bubble and multiple-bubble events 
 
 \subsubsection{Overview}
 
-In this study, newly developed methodologies were compared to the two discrimination techniques developed previously for the PICO-60 experiment: Acoustic Parameter and machine learning.
+In this study, all newly developed discriminators were compared to the two discrimination techniques used previously for the PICO-60 experiment: Acoustic Parameter and machine learning.
 
 \subsubsection{Acoustic Parameter}
 
 The Acoustic Parameter method (furthermore AP) is the technique that was used for event discrimination in the original PICO-60 analysis. A function was defined that discriminates between alpha particles and nuclear recoils based on audio data. It was derived based on a physical model of the bubble chamber, and was tuned using neutron calibration sources to produce events in the PICO-60 apparatus.
 
-Before AP can be calculated, the audio data must first be converted into the frequency domain (specifically, with the banded Fourier transform $\beta_{8}$). It must also be preprocessed with the position correction function $PosCor(\beta_{8}, \chi)$, which adjusts the overall volume of an audio recording according to its position in the vessel. This is done because the acoustic characteristics differ significantly depending on the position of an event in the vessel.
+Before AP can be calculated, the audio data must first be converted into the frequency domain (specifically, with the banded Fourier transform $\beta_{8}$). It must also be preprocessed with the position correction function $PosCor(\beta_{8}, \chi)$, which adjusts the overall volume of an audio recording according to its position in the vessel. This is done because the acoustic characteristics differ significantly depending on the position of the event in the vessel.
 
-Finally, a set of data cuts must be applied to remove certain classes of events which are not accurately classified using AP. These classes include wall event and multiple-bubble events.
+Finally, a set of data cuts must be applied to remove classes of events which are not accurately classified using AP alone. These classes include wall event and multiple-bubble events.
 
 These conversion, preprocessing, and data cutting steps were reapplied during this study, and are described in Section \ref{data_formats}.
 
@@ -107,7 +107,7 @@ The lowest-level data derived from the piezos is the raw waveform $\omega$. This
 
 \textit{Fourier Transform}
 
-The raw waveform $\omega$ was converted into the frequency domain by means of a one-dimensional Discrete Fourier Transform (DFT) for real input. Since DFTs produce sequences of complex numbers, the magnitude of each element was computed. The direct output from such a DFT is the full-resolution Fourier transform $\beta _{50,001}$, which consists of a sequence of numbers half the length of the raw waveform $\omega$. (It is half the length because the output of a DFT of real inputs is Hermitian, meaning there is no new information contained in the second half of the output.)
+The raw waveform $\omega$ was converted into the frequency domain by means of a one-dimensional Discrete Fourier Transform (DFT) for real input. Since DFTs produce sequences of complex numbers, the magnitude of each element was computed. The direct output from such a DFT is the full-resolution Fourier transform $\beta _{50,001}$, which consists of a sequence of numbers half the length of the raw waveform $\omega$.
 
 Beyond this, the banded Fourier transform $\beta_{8}$ (which is the input to the AP function and the original neural analysis) was computed by integrating the resonant energy over all frequencies within each of a set of bands. This can be thought of as a method of signal downscaling, compressing the information into a smaller number of data points.
 
@@ -123,7 +123,7 @@ This process was generalized to several other banding resolutions. Higher-resolu
 
 \textit{Image Window Sequence}
 
-For each event that is captured, the four cameras within the PICO-60 apparatus each capture a sequence of 71 images before and after formation of a bubble is detected using the cameras and an entropy-based trigger. These raw images contain a large amount of extraneous information; they encompass the entire vessel. To reduce the input information, the image window sequence $\iota$ includes 50\texttimes50 cropped windows around the position of the bubble. The 71 frames, many of which contain either no bubble or a bubble in later stages of formation, are reduced to 10 immediately around the formation of the bubble. Five frames from before the recording trigger are included in $\iota$, because the bubble does not cause a trigger until it is already of a significant size.
+For each event that is captured, four cameras within the PICO-60 apparatus each capture a sequence of 71 images before and after formation of a bubble is detected using the cameras and an image-based trigger. These raw images contain a large amount of extraneous information; they encompass the entire vessel. To reduce the input information, the image window sequence $\iota$ includes 50\texttimes50 cropped windows around the position of the bubble. The 71 frames, many of which contain either no bubble or a bubble in later stages of formation, are reduced to 10 immediately around the formation of the bubble. Five frames from before the recording trigger are included in $\iota$, because the bubble does not cause a trigger until it is already of a significant size.
 
 \begin{figure}[h]
     \centering
@@ -133,7 +133,7 @@ For each event that is captured, the four cameras within the PICO-60 apparatus e
 
 \textit{3D Position}
 
-The 3-dimensional position $\chi$ of the bubble within the vessel is calculated using triangulation, based on the known positions and angles of the cameras and the position of the bubble within the field of view of each camera. This is used in the banded frequency position correction function $PosCor(\beta _{8}, \chi)$, which corrects $\beta _{8}$ for variations in amplitude which depend on the position of the bubble.
+The 3-dimensional position $\chi$ of the bubble within the vessel is calculated using triangulation, based on the known positions and angles of the cameras and the position of the bubble within the field of view of each camera. This is used in the banded frequency position correction function $PosCor(\beta _{8}, \chi)$, which corrects $\beta _{8}$ for variations in amplitude which depend on the position of the bubble. It is also used for $FidWallCut(D)$.
 
 \subsection{Data Cuts}
 
@@ -159,10 +159,10 @@ PICO-60 events which include multiple bubbles are \textit{always} neutron events
 
 \begin{itemize}
     \item Either 0 or 1 bubbles are detected based on images from the camera
-    \item The number of bubbles approximated using the pressure transducer is close to 1
+    \item The number of bubbles approximated using the fast pressure transducer is close to 1
 \end{itemize}
 
-\subsubsection{Wall Cut}
+\subsubsection{Wall Cut} \label{wall_cut}
 
 Events that occur near the walls of the vessel have acoustic properties which are notably different from events nearer the center of the vessel. It can be desirable for a discriminator to handle these events correctly; however, AP does not, and neither does the neural network used in the previous PICO-60 paper. Thus, removing wall events allowed for a more meaningful direct comparison between a new neural network and existing techniques.
 
@@ -172,11 +172,11 @@ Events that occur near the walls of the vessel have acoustic properties which ar
     \caption{\label{} A visualization of the fiducial cuts and how they match up with the pressure and acoustic cuts.}
 \end{figure}
 
-The complete wall cut $WallCut(D)$ is a composition of the fiducial cut $FidWallCut(D)$ (which makes use of the 3D position $\chi$), the pressure cut $PresWallCut(D)$ (which uses data from the pressure transducer), and the acoustic cut $AcWallCut(D)$ (which uses the banded Fourier transform $\beta _{8}$). Those cuts restrict data as follows:
+The complete wall cut $WallCut(D)$ is a composition of the fiducial cut $FidWallCut(D)$ (which makes use of the 3D position $\chi$), the pressure cut $PresWallCut(D)$ (which uses data from the fast pressure transducer), and the acoustic cut $AcWallCut(D)$ (which uses the banded Fourier transform $\beta _{8}$). Those cuts restrict data as follows:
 
 \begin{itemize}
     \item The fiducial cut $FidWallCut(D)$ defines a spatial area along the walls of the vessel within which no events are accepted. It determines whether events fall within this area based on the visually calculated position $\chi$.
-    \item The pressure cut $PresWallCut(D)$ restricts the pressure detected by the pressure transducer, without any position corrections, to be within a range of 0.3 of 1
+    \item The pressure cut $PresWallCut(D)$ restricts the pressure detected by the fast pressure transducer, without any position corrections, to be within a range of 0.3 of 1
     \item The acoustic cut $AcWallCut(D)$ is defined using the banded Fourier transform $\beta_{8}$, and takes advantage of differences in the frequency distribution (specifically the first and second frequency bands of the first and third piezos) of wall events and non-wall events.
 \end{itemize}
 
