@@ -12,8 +12,10 @@ def create_model() -> Model:
     model = Sequential([
         InputLayer(input_shape=(10, 35, 1)),
         BatchNormalization(),
-        Conv2D(filters=4, kernel_size=3, activation=activation),
+        Conv2D(filters=8, kernel_size=3, strides=2, activation=activation),
+        Conv2D(filters=8, kernel_size=2, strides=2, activation=activation),
         Flatten(),
+        Dense(8, activation=activation),
         Dense(1, activation='sigmoid')
     ])
     # Output a summary of the model's architecture
