@@ -21,6 +21,14 @@ def pmt_map_projection(pulse_counts: np.ndarray) -> np.ndarray:
         row_index = np.where(row_positions == z_position)[0][0]
         # Add this data point to the list for the corresponding row
         values_by_row[row_index].append((pulse_count, x_position, y_position))
+    # Create an empty image where the height is the number of rows and the width is the largest number of PMTs in a row (the rest will be scaled accordingly)
+    largest_row_size = max(len(row) for row in values_by_row)
+    map_image = np.zeros(shape=(largest_row_size, len(values_by_row)), dtype=int)
+    # Iterate over the rows with corresponding indices, adding them to the map projection
+    for row_index, row in enumerate(values_by_row):
+        # Get the angle around the Z axis (in radians) of each of the data points in this row (by representing the vector as a complex number)
+        angles = [np.angle(x_position + (y_position * 1j)) for _, x_position, y_position in row]
+        print(angles)
 
 
 import random
