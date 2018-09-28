@@ -39,3 +39,7 @@ def pmt_map_projection(pulse_counts: np.ndarray) -> np.ndarray:
         # Otherwise, use an image scaling algorithm to resize it to fit
         else:
             map_image[:, row_index] = zoom(sorted_pulse_counts, largest_row_size / len(sorted_pulse_counts))
+    # Add an extra batch dimension with only 1 element, so Keras convolutional layers will accept it
+    map_image = np.expand_dims(map_image, axis=-1)
+    # Return the map with all of the data projected onto it
+    return map_image
