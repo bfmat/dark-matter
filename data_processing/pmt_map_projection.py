@@ -39,12 +39,3 @@ def pmt_map_projection(pulse_counts: np.ndarray) -> np.ndarray:
         # Otherwise, use an image scaling algorithm to resize it to fit
         else:
             map_image[:, row_index] = zoom(sorted_pulse_counts, largest_row_size / len(sorted_pulse_counts))
-    print(map_image)
-
-
-import random
-from data_processing.load_deap_data import load_simulated_deap_data
-neck_events, _ = load_simulated_deap_data()
-neck_event = random.choice(neck_events)
-neck_pulses = neck_event[0]
-pmt_map_projection(neck_pulses)
