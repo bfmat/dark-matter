@@ -12,9 +12,7 @@ def create_model() -> Model:
     model = Sequential([
         InputLayer(input_shape=(10, 35, 1)),
         BatchNormalization(),
-        Conv2D(filters=16, kernel_size=3, activation=activation),
-        Conv2D(filters=16, kernel_size=3, activation=activation),
-        Conv2D(filters=16, kernel_size=3, activation=activation),
+        Conv2D(filters=4, kernel_size=3, activation=activation),
         Flatten(),
         Dense(1, activation='sigmoid')
     ])
