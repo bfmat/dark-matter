@@ -10,7 +10,7 @@ from matplotlib import cm
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 
-from data_processing.load_deap_data import load_real_world_deap_data, load_simulated_deap_data
+from data_processing.load_deap_data import load_simulated_deap_data
 from data_processing.pmt_positions import X_POSITIONS, Y_POSITIONS, Z_POSITIONS
 
 # Load all of the simulated data for plotting
@@ -21,7 +21,6 @@ neck_event, non_neck_event = (random.choice(event_list) for event_list in [neck_
 neck_pulses, non_neck_pulses = (event[0] for event in [neck_event, non_neck_event])
 # Get the overall maximum number of pulses so we can define the color spectrum
 max_pulse_count = np.amax(np.concatenate([neck_pulses, non_neck_pulses]))
-print(max_pulse_count)
 # Divide each of the pulse counts by the maximum to get numbers from 0 to 1 (representing positions on the rainbow for plotting purposes)
 neck_rainbow, non_neck_rainbow = (pulses.astype(float) / max_pulse_count for pulses in [neck_pulses, non_neck_pulses])
 # Convert those positions on the rainbow to RGB colors
