@@ -13,7 +13,7 @@ VALIDATION_SIZE = 2000
 
 
 def prepare_events(true_events, false_events):
-    """Given 2 lists of events, 1 for each possible ground truth value, produce arrays of inputs and ground truths for training, validation, or testing; also run a cut on the number of pulses"""
+    """Given 2 lists of events, 1 for each possible ground truth value, produce arrays of inputs and ground truths for training, validation, or testing"""
     # Combine the lists of events into one before converting the data
     events = true_events + false_events
     # Convert the pulse counts from both event lists into a NumPy array of training inputs
@@ -44,32 +44,34 @@ def evaluate_predictions(ground_truths: np.ndarray, predictions: np.ndarray, eve
     save_test(ground_truths, predictions, events, epoch, f'pulse_count_{set_name}')
 
 
-# Load all simulated events from the file
-neck_events, non_neck_events = load_simulated_deap_data()
-# Convert them to NumPy arrays for training (also getting the reordered list of events)
-inputs, ground_truths, events = prepare_events(neck_events, non_neck_events)
-# Split the inputs and ground truths into training and validation sets
-validation_inputs, training_inputs = np.split(inputs, [VALIDATION_SIZE])
-validation_ground_truths, training_ground_truths = np.split(ground_truths, [VALIDATION_SIZE])
-# Split the events correspondingly (NumPy cannot be used on a list)
-# Take only the validation events, which are located at the beginning of the list
-validation_events = events[:VALIDATION_SIZE]
+# Execute the script only if this is run, not imported
+if __name__ == '__main__':
+    # Load all simulated events from the file
+    neck_events, non_neck_events = load_simulated_deap_data()
+    # Convert them to NumPy arrays for training (also getting the reordered list of events)
+    inputs, ground_truths, events = prepare_events(neck_events, non_neck_events)
+    # Split the inputs and ground truths into training and validation sets
+    validation_inputs, training_inputs = np.split(inputs, [VALIDATION_SIZE])
+    validation_ground_truths, training_ground_truths = np.split(ground_truths, [VALIDATION_SIZE])
+    # Split the events correspondingly (NumPy cannot be used on a list)
+    # Take only the validation events, which are located at the beginning of the list
+    validation_events = events[:VALIDATION_SIZE]
 
-# Load all real-world test events from the file
-real_world_neck_events, real_world_neutron_events = load_real_world_deap_data()
-# Prepare the input and ground truth data for testing
-test_inputs, test_ground_truths, test_events = prepare_events(real_world_neck_events, real_world_neutron_events)
+    # Load all real-world test events from the file
+    real_world_neck_events, real_world_neutron_events = load_real_world_deap_data()
+    # Prepare the input and ground truth data for testing
+    test_inputs, test_ground_truths, test_events = prepare_events(real_world_neck_events, real_world_neutron_events)
 
-# Create an instance of the neural network model
-model = create_model()
-# Iterate for a certain number of epochs
-for epoch in range(100):
-    # Train the model for a single epoch
-    model.fit(inputs, ground_truths, validation_data=(validation_inputs, validation_ground_truths))
-    # Run predictions on the validation set with the trained model, removing the single-element second axis
-    validation_predictions = model.predict(validation_inputs)[:, 0]
-    # Evaluate the network's predictions, printing statistics and saving a JSON file
-    evaluate_predictions(validation_ground_truths, validation_predictions, validation_events, epoch, set_name='validation')
-    # Repeat this process for the dedicated test set
-    test_predictions = model.predict(test_inputs)[:, 0]
-    evaluate_predictions(test_ground_truths, test_predictions, test_events, epoch, set_name='real_world_test')
+    # Create an instance of the neural network model
+    model = create_model()
+    # Iterate for a certain number of epochs
+    for epoch in range(100):
+        # Train the model for a single epoch
+        model.fit(inputs, ground_truths, validation_data=(validation_inputs, validation_ground_truths))
+        # Run predictions on the validation set with the trained model, removing the single-element second axis
+        validation_predictions = model.predict(validation_inputs)[:, 0]
+        # Evaluate the network's predictions, printing statistics and saving a JSON file
+        evaluate_predictions(validation_ground_truths, validation_predictions, validation_events, epoch, set_name='validation')
+        # Repeat this process for the dedicated test set
+        test_predictions = model.predict(test_inputs)[:, 0]
+        evaluate_predictions(test_ground_truths, test_predictions, test_events, epoch, set_name='real_world_test')
