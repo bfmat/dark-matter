@@ -10,12 +10,17 @@ def pmt_map_projection(pulse_counts: np.ndarray) -> np.ndarray:
     """Project a list of pulse counts, at predefined positions along the sphere, onto a 2D map"""
     # Get the unique Z positions (the PMTs are arranged into circular rows)
     row_positions = np.unique(Z_POSITIONS)
-    print(row_positions)
+    # Create a list of lists which will contain tuples of the form (pulse count, X, Y) for each row individually
+    values_by_row = []
+    # Add empty lists to it, one for each of the rows
+    for _ in range(len(row_positions)):
+        values_by_row.append([])
     # Iterate over the pulse counts alongside positions in 3D space
     for pulse_count, x_position, y_position, z_position in zip(pulse_counts, X_POSITIONS, Y_POSITIONS, Z_POSITIONS):
         # Get the index of the row that this position belongs to (which corresponds to the Y position in the resulting map)
         row_index = np.where(row_positions == z_position)[0][0]
-        print(row_index)
+        # Add this data point to the list for the corresponding row
+        values_by_row[row_index].append((pulse_count, x_position, y_position))
 
 
 import random
