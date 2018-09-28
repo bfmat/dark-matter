@@ -2,6 +2,7 @@
 # Created by Brendon Matusch, September 2018
 
 import numpy as np
+from scipy.ndimage import zoom
 
 from data_processing.pmt_positions import X_POSITIONS, Y_POSITIONS, Z_POSITIONS
 
@@ -28,7 +29,17 @@ def pmt_map_projection(pulse_counts: np.ndarray) -> np.ndarray:
     for row_index, row in enumerate(values_by_row):
         # Get the angle around the Z axis (in radians) of each of the data points in this row (by representing the vector as a complex number)
         angles = [np.angle(x_position + (y_position * 1j)) for _, x_position, y_position in row]
-        print(angles)
+        # Get the indices to sort the list of angles (and correspondingly, the data points)
+        sorted_indices = np.argsort(angles)
+        # Get the pulse counts and sort them according to the angles
+        sorted_pulse_counts = np.array([pulse_count for pulse_count, _, _ in row])[sorted_indices]
+        # If the number of pulse counts in this row is equal to the maximum, go ahead and set the row in the image
+        if len(sorted_pulse_counts) == largest_row_size:
+            map_image[:, row_index] = sorted_pulse_counts
+        # Otherwise, use an image scaling algorithm to resize it to fit
+        else:
+            map_image[:, row_index] = zoom(sorted_pulse_counts, largest_row_size / len(sorted_pulse_counts))
+    print(map_image)
 
 
 import random
