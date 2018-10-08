@@ -13,7 +13,7 @@ axes = plt.subplot(111, projection='3d')
 # Iterate over the 3D points with corresponding numeric indices for labels
 for point_index, point_3d in enumerate(zip(X_POSITIONS, Y_POSITIONS, Z_POSITIONS)):
     # If the point is above or below the center line (this will change), remove it so that it is easier to see the points on one side
-    if point_3d[2] < 0:
+    if point_3d[2] < -0.3 or point_3d[2] > 0.3:
         # Just skip this point, not plotting the point or the label
         continue
     # Scatter plot the point in the 3D graph
