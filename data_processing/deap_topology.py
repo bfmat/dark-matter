@@ -14,6 +14,7 @@ def create_deap_topology() -> SurfaceTopologySet:
     neck_events, non_neck_events = load_simulated_deap_data()
     # Create a list of ground truths, using the numbers of events (they will not be shuffled here)
     ground_truths = ([1] * len(neck_events)) + ([0] * len(non_neck_events))
+    # os.path.join(os.path.dirname(os.path.realpath(__file__)), 'deap_connections.csv')
 
 
 # Temporary: run the function for debugging purposes
