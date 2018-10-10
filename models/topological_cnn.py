@@ -94,11 +94,11 @@ class TopologicalCNN:
                 return True
             # Otherwise, make a copy of the list of nodes connected to the current node
             connected_nodes = search_node.connected_nodes.copy()
-            # The previous node is one of them; if it is provided, some extra steps must be taken to make sure the anticlockwise order is preserved
+            # The previous node is one of them; if it is provided, some extra steps must be taken to make sure the clockwise order is preserved
             if previous_node is not None:
-                # Get the index of the previous node in the anticlockwise list of connections
+                # Get the index of the previous node in the clockwise list of connections
                 previous_node_index = connected_nodes.index(previous_node)
-                # If it is at the beginning or the end of the list of connections, the anticlockwise order will be preserved, so it can simply be removed
+                # If it is at the beginning or the end of the list of connections, the clockwise order will be preserved, so it can simply be removed
                 if previous_node_index in [0, len(connected_nodes) - 1]:
                     connected_nodes.remove(previous_node)
                 # Otherwise, it is in the middle, and removing it will flip the order of the list, so take the last followed by the first
