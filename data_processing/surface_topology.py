@@ -2,7 +2,6 @@
 # Created by Brendon Matusch, August 2018
 
 import csv
-import os
 
 from typing import List, Optional, Tuple
 
@@ -34,8 +33,8 @@ class SurfaceTopologySet:
     # The list of nodes belonging to this set, starting as an empty list
     nodes = []
 
-    def __init__(self, csv_path: str, values: List[List[float]], positions: List[Tuple[float]]) -> None:
-        """Create a surface topology set, given a path to a CSV file containing the relevant data, a nested list of values for each of the nodes, and  a 3D position for each of the nodes"""
+    def __init__(self, csv_path: str, values: List[List[float]], positions: List[Tuple[float]], ground_truths: List[bool]) -> None:
+        """Create a surface topology set, given a path to a CSV file containing the relevant data, a nested list of values for each of the nodes, a 3D position for each of the nodes, and the corresponding ground truths"""
         # Open the CSV file containing all of the connections between nodes
         with open(csv_path) as connection_file:
             # Create a CSV reader to load the file
@@ -73,6 +72,8 @@ class SurfaceTopologySet:
             # The goal is to rotate the list of connections to the top node comes first
             node.connected_nodes = [connected_nodes_clockwise[(highest_node_index + index_offset) % len(connected_nodes_clockwise)]
                                     for index_offset in range(len(connected_nodes_clockwise))]
+        # Set a global list containing the binary ground truths provided
+        self.ground_truths = ground_truths
 
     def get_node(self, identifier: int) -> SurfaceTopologyNode:
         """Return a reference to a node given its identifier"""
