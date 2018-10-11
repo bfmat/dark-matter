@@ -11,7 +11,7 @@ import numpy as np
 class SurfaceTopologyNode:
     """A single topology node, which contains information loaded from one line in the CSV file"""
 
-    # A placeholder for references to the connected nodes, in clockwise order, possibly including None if there are missing connections
+    # A placeholder for references to the connected nodes, in clockwise order, possibly including -1 if there are missing connections
     connected_nodes = None
 
     def __init__(self, identifier, position, connections, values) -> None:
@@ -57,8 +57,8 @@ class SurfaceTopologySet:
             connected_nodes_clockwise = [
                 # Get the node corresponding to the connected identifier
                 self.get_node(node_identifier)
-                # Let None pass through; don't try to load anything in that case
-                if node_identifier is not None else None
+                # Let -1 pass through; don't try to load anything in that case
+                if node_identifier != -1 else None
                 # The identifiers are in the original order
                 for node_identifier in node.raw_connections_clockwise
             ]
