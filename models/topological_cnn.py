@@ -15,46 +15,44 @@ class TopologicalCNN:
 
     def __init__(self, surface_topology_set: SurfaceTopologySet, convolutional_layers: Dict[str, Union[int, str]], remaining_model: Model, optimizer: str, loss: str, epochs: int) -> None:
         """Create and train a CNN corresponding to a specified set, with layers and training arguments provided"""
-        # Create a full copy of the surface topology set so the original is not modified
-        set_copy = copy.deepcopy(surface_topology_set)
         # Add single-element input tensor placeholders to each of the nodes, so graph construction can begin
-        for node in set_copy.nodes:
+        for node in surface_topology_set.nodes:
             node.tensor = Input(shape=(1,))
         # Get references to all of the input layers for model creation
-        inputs = [node.tensor for node in set_copy.nodes]
-        # Make a changing variable to hold the set produced by each layer
-        layer_set = set_copy
+        inputs = [node.tensor for node in surface_topology_set.nodes]
+        # Make a changing variable to hold the nodes produced by each layer
+        layer_nodes = surface_topology_set.nodes
         # Create a convolutional layer for each of the layer parameter dictionaries provided
         for convolutional_layer in convolutional_layers:
-            # Use the set from the last layer
+            # Use the nodes from the last layer
             # Also, apply the contents of the dictionary as keyword arguments
-            layer_set = self.convolve_surface_topology(layer_set, **convolutional_layer)
+            layer_nodes = self.convolve_surface_topology(layer_nodes, **convolutional_layer)
         # Concatenate all the tensors from the last convolutional layer together
-        combined_tensor = concatenate([node.tensor for node in layer_set.nodes])
+        combined_tensor = concatenate([node.tensor for node in layer_nodes])
         # Apply the provided Keras model to the combined tensor to get a final output
         output = remaining_model(combined_tensor)
         # Create a model that encompasses the convolutional layers and the remaining model, leading from all of the input layers to the output layer
         model = Model(inputs=inputs, outputs=output)
-        # Compile the model with the provided optimizer and loss
-        model.compile(optimizer=optimizer, loss=loss)
+        # Compile the model with the provided optimizer and loss, printing accuracy
+        model.compile(optimizer=optimizer, loss=loss, metrics=['accuracy'])
         # Print out a summary of the architecture
         print(model.summary())
         # Train the model, using the list of values for each node as input data, the list of ground truths included in the original data set, and the provided number of epochs
         model.fit(
-            x=[node.values for node in surface_topology_set.nodes],
+            x=[list(node.values) for node in surface_topology_set.nodes],
             y=surface_topology_set.ground_truths,
             epochs=epochs
         )
 
     @classmethod
-    def convolve_surface_topology(cls, surface_topology_set: SurfaceTopologySet, kernel_radius: int, filters: int, activation: str) -> SurfaceTopologySet:
+    def convolve_surface_topology(cls, surface_topology_nodes: List[SurfaceTopologyNode], kernel_radius: int, filters: int, activation: str) -> List[SurfaceTopologyNode]:
         """Create a partial convolutional neural network graph, defining the operations for a single layer, and producing a new topology with the resulting graph"""
         # Create a single shared dense layer that outputs the number of filters
         filters_layer = Dense(filters, activation=activation)
-        # Create an empty surface topology set to add modified nodes to
-        modified_set = SurfaceTopologySet()
+        # Create an empty list to add modified nodes to
+        modified_nodes = []
         # Iterate over each of the original nodes, creating graphs with them
-        for node in surface_topology_set.nodes:
+        for node in surface_topology_nodes:
             # Attempt to form a kernel with this node and the provided radius
             kernel = cls.form_kernel(node, kernel_radius)
             # If the kernel is None, this node is near an edge; skip to the next iteration
@@ -69,9 +67,9 @@ class TopologicalCNN:
             # Run the dense layer on the combined tensors, placing it in the new node
             node_copy.tensor = filters_layer(combined_tensor)
             # Add the node to the new surface topology set
-            modified_set.nodes.append(node_copy)
-        # Return the set with newly defined tensors
-        return modified_set
+            modified_nodes.append(node_copy)
+        # Return the list with newly defined tensors
+        return modified_nodes
 
     @staticmethod
     def form_kernel(node: SurfaceTopologyNode, radius: int) -> Optional[List[SurfaceTopologyNode]]:
@@ -79,14 +77,11 @@ class TopologicalCNN:
         # Create a list to add the nodes to
         nodes = []
 
-        def traverse_node_tree(search_node: SurfaceTopologyNode, previous_node: Optional[SurfaceTopologyNode], depth: int) -> bool:
+        def traverse_node_tree(search_node: SurfaceTopologyNode, depth: int) -> bool:
             """A recursive function to search outward from a specific node, adding more nodes to the list; return whether or not the search succeeded"""
             # If the search node is None, the search has hit an edge and needs to fail immediately
             if search_node is None:
                 return False
-            # If the node has already been added to the list, return without stopping the search (this is a normal endpoint)
-            if search_node in nodes:
-                return True
             # Add the node to the list
             nodes.append(search_node)
             # If the depth is 0, also return with success (but the node should still be added to the list)
@@ -94,29 +89,18 @@ class TopologicalCNN:
                 return True
             # Otherwise, make a copy of the list of nodes connected to the current node
             connected_nodes = search_node.connected_nodes.copy()
-            # The previous node is one of them; if it is provided, some extra steps must be taken to make sure the clockwise order is preserved
-            if previous_node is not None:
-                # Get the index of the previous node in the clockwise list of connections
-                previous_node_index = connected_nodes.index(previous_node)
-                # If it is at the beginning or the end of the list of connections, the clockwise order will be preserved, so it can simply be removed
-                if previous_node_index in [0, len(connected_nodes) - 1]:
-                    connected_nodes.remove(previous_node)
-                # Otherwise, it is in the middle, and removing it will flip the order of the list, so take the last followed by the first
-                # This is under the valid assumption that the nodes have up to 3 connections
-                else:
-                    connected_nodes = [connected_nodes[2], connected_nodes[0]]
             # Iterate over the possibly modified list of connected nodes and traverse the trees corresponding to them as well
             for connected_node in connected_nodes:
-                # Use the current node as the next previous node, and reduce the depth by 1 so the search is not endless
-                success = traverse_node_tree(connected_node, search_node, depth - 1)
+                # Reduce the depth by 1 so the search is not endless
+                success = traverse_node_tree(connected_node, depth - 1)
                 # If any traversal of a connected node fails, so does this one
                 if not success:
                     return False
             # If everything has succeeded, return with success
             return True
 
-        # Traverse the tree with the provided radius; do not provide a previous node to remove
-        success = traverse_node_tree(node, None, radius)
+        # Traverse the tree with the provided radius
+        success = traverse_node_tree(node, radius)
         # If the search failed, return nothing
         if not success:
             return None
