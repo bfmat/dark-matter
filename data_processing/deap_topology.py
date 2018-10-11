@@ -26,7 +26,3 @@ def create_deap_topology() -> SurfaceTopologySet:
     csv_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'deap_connections.csv')
     # Create and return a surface topology using this information
     return SurfaceTopologySet(csv_path, pulse_counts_by_node, positions, ground_truths)
-
-
-# Temporary: run the function for debugging purposes
-create_deap_topology()
