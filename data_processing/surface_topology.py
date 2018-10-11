@@ -33,8 +33,11 @@ class SurfaceTopologySet:
     # The list of nodes belonging to this set, starting as an empty list
     nodes = []
 
-    def __init__(self, csv_path: str, values: List[List[float]], positions: List[Tuple[float]], ground_truths: List[bool]) -> None:
+    def __init__(self, csv_path: Optional[str] = None, values: Optional[List[List[float]]] = None, positions: Optional[List[Tuple[float]]] = None, ground_truths: Optional[List[bool]] = None) -> None:
         """Create a surface topology set, given a path to a CSV file containing the relevant data, a nested list of values for each of the nodes, a 3D position for each of the nodes, and the corresponding ground truths"""
+        # If the arguments are not provided, stop right here and leave the set empty
+        if csv_path is None:
+            return
         # Open the CSV file containing all of the connections between nodes
         with open(csv_path) as connection_file:
             # Create a CSV reader to load the file

@@ -74,8 +74,8 @@ class TopologicalCNN:
         return modified_set
 
     @staticmethod
-    def form_kernel(node: SurfaceTopologyNode, radius: int) -> Optional[List[int]]:
-        """Given the identifier of a specific node and a kernel radius, return a list of identifiers corresponding to the nodes contained within a kernel around that node (or None if an edge was hit and a kernel could not be formed)"""
+    def form_kernel(node: SurfaceTopologyNode, radius: int) -> Optional[List[SurfaceTopologyNode]]:
+        """Given the identifier of a specific node and a kernel radius, return a list of nodes contained within a kernel around that node (or None if an edge was hit and a kernel could not be formed)"""
         # Create a list to add the nodes to
         nodes = []
 
