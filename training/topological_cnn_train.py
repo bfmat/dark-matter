@@ -20,5 +20,5 @@ TopologicalCNN(
     remaining_model=Sequential([Dense(1, activation='sigmoid')]),
     optimizer='adam',
     loss='mse',
-    epochs=500
+    epochs=200
 )
