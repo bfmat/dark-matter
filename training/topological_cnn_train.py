@@ -15,7 +15,7 @@ TopologicalCNN(
     surface_topology_set=topology,
     convolutional_layers=[
         {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'},
-        {'kernel_radius': 1, 'filters': 8, 'activation': 'tanh'}
+        {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'}
     ],
     remaining_model=Sequential([Dense(1, activation='sigmoid')]),
     optimizer='adam',
