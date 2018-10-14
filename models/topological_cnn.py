@@ -54,7 +54,7 @@ class TopologicalCNN:
         # Iterate over each of the original nodes, creating graphs with them
         for node in surface_topology_nodes:
             # Attempt to form a kernel with this node and the provided radius
-            kernel = cls.form_kernel(node, kernel_radius)
+            kernel = cls.form_kernel(node, surface_topology_nodes, kernel_radius)
             # If the kernel is None, this node is near an edge; skip to the next iteration
             if kernel is None:
                 continue
@@ -72,8 +72,8 @@ class TopologicalCNN:
         return modified_nodes
 
     @staticmethod
-    def form_kernel(node: SurfaceTopologyNode, radius: int) -> Optional[List[SurfaceTopologyNode]]:
-        """Given the identifier of a specific node and a kernel radius, return a list of nodes contained within a kernel around that node (or None if an edge was hit and a kernel could not be formed)"""
+    def form_kernel(node: SurfaceTopologyNode, searchable_nodes: List[SurfaceTopologyNode], radius: int) -> Optional[List[SurfaceTopologyNode]]:
+        """Given a specific node and a kernel radius, return a list of nodes contained within a kernel around that node (or None if an edge was hit and a kernel could not be formed)"""
         # Create a list to add the nodes to
         nodes = []
 
@@ -87,8 +87,19 @@ class TopologicalCNN:
             # If the depth is 0, also return with success (but the node should still be added to the list)
             if depth == 0:
                 return True
-            # Otherwise, make a copy of the list of nodes connected to the current node
-            connected_nodes = search_node.connected_nodes.copy()
+            # Otherwise, get a list of nodes connected to the current node
+            # Get the identifiers present in the list of searchable nodes, which is required for the search
+            searchable_identifiers = [searchable_node.identifier for searchable_node in searchable_nodes]
+            # Create a list to add the connected nodes to
+            connected_nodes = []
+            # Iterate over the list of connected node identifiers
+            for connection in search_node.connections:
+                # If the connection is not present in the list of searchable nodes, add None to the list of nodes
+                if connection not in searchable_identifiers:
+                    connected_nodes.append(None)
+                # Otherwise, search for the relevant node in the list of search nodes and add it
+                else:
+                    connected_nodes.append([possible_node for possible_node in searchable_nodes if possible_node.identifier == connection][0])
             # Iterate over the possibly modified list of connected nodes and traverse the trees corresponding to them as well
             for connected_node in connected_nodes:
                 # Reduce the depth by 1 so the search is not endless
