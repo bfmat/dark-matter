@@ -6,6 +6,7 @@ from typing import Dict, List, Optional, Union
 
 from keras.layers import concatenate, Dense, Input
 from keras.models import Model
+import numpy as np
 
 from data_processing.surface_topology import SurfaceTopologyNode, SurfaceTopologySet
 
@@ -37,11 +38,19 @@ class TopologicalCNN:
         model.compile(optimizer=optimizer, loss=loss, metrics=['accuracy'])
         # Print out a summary of the architecture
         print(model.summary())
+        # Convert the inputs to the network to lists
+        training_inputs = [list(node.values) for node in surface_topology_set.nodes]
+        # Generate a permutation for the number of inputs to the network, and scramble them
+        input_permutation = np.random.permutation(len(training_inputs[0]))
+        training_inputs = [[input_list[index] for index in input_permutation] for input_list in training_inputs]
+        # Also scramble the ground truths accordingly
+        ground_truths = [surface_topology_set.ground_truths[index] for index in input_permutation]
         # Train the model, using the list of values for each node as input data, the list of ground truths included in the original data set, and the provided number of epochs
         model.fit(
-            x=[list(node.values) for node in surface_topology_set.nodes],
-            y=surface_topology_set.ground_truths,
-            epochs=epochs
+            x=training_inputs,
+            y=ground_truths,
+            epochs=epochs,
+            validation_split=0.2
         )
 
     @classmethod
