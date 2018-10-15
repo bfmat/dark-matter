@@ -140,3 +140,4 @@
 2018_10_10_topological_cnn_works.out: Although it has a comparatively huge number of parameters, this is a very significant result because the topological CNN architecture works, with ~99.9% accuracy. This is a 2-layer model with 16 filters per layer.
 2018_10_14_fixed_input_bug.out: In previous tests, there was a very serious bug that meant that input layers were concatenated throughout the entire network. This has been fixed, and the network performs acceptably but not as well as a comparable dense network or conventional CNN.
 2018_10_14_validation_results.out: Unfortunately, this test reveals that in its current state, the network does not generalize to validation data. It is worse than a linear regression.
+2018_10_14_ap_triplets_accuracy.out: I have determined that using AP to run predictions on the triplet events is ~84% accurate.
