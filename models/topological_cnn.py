@@ -36,8 +36,6 @@ class TopologicalCNN:
         model = Model(inputs=inputs, outputs=output)
         # Compile the model with the provided optimizer and loss, printing accuracy
         model.compile(optimizer=optimizer, loss=loss, metrics=['accuracy'])
-        # Print out a summary of the architecture
-        print(model.summary())
         # Convert the inputs to the network to lists
         training_inputs = [list(node.values) for node in surface_topology_set.nodes]
         # Generate a permutation for the number of inputs to the network, and scramble them
