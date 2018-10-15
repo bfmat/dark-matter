@@ -142,3 +142,4 @@
 2018_10_14_validation_results.out: Unfortunately, this test reveals that in its current state, the network does not generalize to validation data. It is worse than a linear regression.
 2018_10_14_ap_triplets_accuracy.out: I have determined that using AP to run predictions on the triplet events is ~84% accurate.
 2018_10_14_more_layers_smaller_final_conv.out: This was a re-test using a deeper architecture with a smaller output (so the final linear regression unit is not unduly large). Training accuracy is high (~93%) while validation accuracy is still much lower. This shows it was not fundamental to the specific architecture tried previously.
+2018_10_14_with_l2_regularization.out: With a high L2 regularization lambda of 0.01, both the training accuracy and validation accuracy are limited to around 93% (which is equivalent to outputting the same value for every example).
