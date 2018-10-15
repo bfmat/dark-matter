@@ -54,10 +54,10 @@ class TopologicalCNN:
         )
 
     @classmethod
-    def convolve_surface_topology(cls, surface_topology_nodes: List[SurfaceTopologyNode], kernel_radius: int, filters: int, activation: str) -> List[SurfaceTopologyNode]:
+    def convolve_surface_topology(cls, surface_topology_nodes: List[SurfaceTopologyNode], kernel_radius: int, filters: int, activation: str, regularizer) -> List[SurfaceTopologyNode]:
         """Create a partial convolutional neural network graph, defining the operations for a single layer, and producing a new topology with the resulting graph"""
         # Create a single shared dense layer that outputs the number of filters
-        filters_layer = Dense(filters, activation=activation)
+        filters_layer = Dense(filters, activation=activation, kernel_regularizer=regularizer)
         # Create an empty list to add modified nodes to
         modified_nodes = []
         # Iterate over each of the original nodes, creating graphs with them

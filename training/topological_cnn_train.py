@@ -4,20 +4,23 @@
 
 from keras.layers import Dense
 from keras.models import Sequential
+from keras.regularizers import l2
 
 from data_processing.deap_topology import create_deap_topology
 from models.topological_cnn import TopologicalCNN
 
 # Load the DEAP data as a topology
 topology = create_deap_topology()
+# Create an L2 regularizer to use for all layers
+regularizer = l2(0.01)
 # Train a network with 1 convolutional layer and 1 dense layer on it (discarding the trained model)
 TopologicalCNN(
     surface_topology_set=topology,
     convolutional_layers=[
-        {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh'},
-        {'kernel_radius': 1, 'filters': 8, 'activation': 'tanh'},
-        {'kernel_radius': 1, 'filters': 8, 'activation': 'tanh'},
-        {'kernel_radius': 1, 'filters': 4, 'activation': 'tanh'}
+        {'kernel_radius': 1, 'filters': 16, 'activation': 'tanh', 'regularizer': regularizer},
+        {'kernel_radius': 1, 'filters': 8, 'activation': 'tanh', 'regularizer': regularizer},
+        {'kernel_radius': 1, 'filters': 8, 'activation': 'tanh', 'regularizer': regularizer},
+        {'kernel_radius': 1, 'filters': 4, 'activation': 'tanh', 'regularizer': regularizer}
     ],
     remaining_model=Sequential([Dense(1, activation='sigmoid')]),
     optimizer='adam',
