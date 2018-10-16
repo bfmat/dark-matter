@@ -46,8 +46,8 @@ def load_disagreements(file_path: str) -> Tuple[str, int, float, float, float, s
 
 # An expandable list of files using a wildcard should be provided
 verify_arguments('saved validation sets using wildcard')
-# Get the files corresponding to the full path, allowing recursive searches
-file_paths = glob.glob(os.path.expanduser(sys.argv[1]), recursive=True)
+# Get the files corresponding to the full path, allowing recursive searches (ignoring folders)
+file_paths = [path for path in glob.glob(os.path.expanduser(sys.argv[1]), recursive=True) if os.path.isfile(path)]
 # Get the run identifier corresponding to each of the file paths (not including the specific epoch)
 run_identifiers = [file_path.split('time')[0] for file_path in file_paths]
 # Convert the identifiers to a set so that they are all unique (there are many duplicated)
