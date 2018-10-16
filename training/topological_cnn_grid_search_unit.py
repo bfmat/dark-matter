@@ -32,21 +32,21 @@ for layer_index in range(num_convolutional_layers):
     kernel_radius = 2 if (kernel_radius_2_first_layer and layer_index == 0) else 1
     # Create such a layer and add it to the list
     convolutional_layers.append({'kernel_radius': kernel_radius, 'filters': filters, 'activation': 'tanh', 'regularizer': regularizer})
-    # Print a few blank lines for separation
-    for _ in range(3):
-        print()
-    # Document the current hyperparameter combination
-    print('HYPERPARAMETERS')
-    print('Convolutional Layers', num_convolutional_layers)
-    print('L2 Lambda:', l2_regularization)
-    print('Final Convolutional Layer Filters:', final_convolutional_layer_filters)
-    print('Kernel Radius of 2 on First Layer:', kernel_radius_2_first_layer)
-    # Train a neural network with this list of convolutional layers
-    TopologicalCNN(
-        surface_topology_set=topology,
-        convolutional_layers=convolutional_layers,
-        remaining_model=Sequential([Dense(1, activation='sigmoid')]),
-        optimizer='adam',
-        loss='mse',
-        epochs=200
-    )
+# Print a few blank lines for separation
+for _ in range(3):
+    print()
+# Document the current hyperparameter combination
+print('HYPERPARAMETERS')
+print('Convolutional Layers', num_convolutional_layers)
+print('L2 Lambda:', l2_regularization)
+print('Final Convolutional Layer Filters:', final_convolutional_layer_filters)
+print('Kernel Radius of 2 on First Layer:', kernel_radius_2_first_layer)
+# Train a neural network with this list of convolutional layers
+TopologicalCNN(
+    surface_topology_set=topology,
+    convolutional_layers=convolutional_layers,
+    remaining_model=Sequential([Dense(1, activation='sigmoid')]),
+    optimizer='adam',
+    loss='mse',
+    epochs=200
+)
