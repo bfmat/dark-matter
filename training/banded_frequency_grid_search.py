@@ -26,6 +26,9 @@ for training_examples in [32, 64, 128, 256]:
                 )
                 # Get the banded frequency domain data and corresponding binary ground truths
                 training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()
+                # Cut the training set to the defined number of examples
+                training_input = training_input[:training_examples]
+                training_ground_truths = training_ground_truths[:training_examples]
 
                 # Print a few blank lines for separation
                 for _ in range(3):
@@ -61,7 +64,7 @@ for training_examples in [32, 64, 128, 256]:
                 )
 
                 # Iterate over a certain number of epochs
-                for epoch in range(250):
+                for epoch in range(6000):
                     # Train the model on the loaded data set
                     model.fit(
                         x=training_input,
