@@ -22,6 +22,9 @@ event_data_set = EventDataSet(
 )
 # Get the banded frequency domain data and corresponding binary ground truths
 training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()
+# Get the Acoustic Parameter event predictions so they can be compared to the ground truths
+training_ap_predictions, validation_ap_predictions = [[event.logarithmic_acoustic_parameter > 0.25 for event in event_list]
+                                                      for event_list in [event_data_set.training_events, event_data_set.validation_events]]
 # Add polynomial features up to degree 3 to the input matrices
 polynomial_features = PolynomialFeatures(degree=3)
 training_input = polynomial_features.fit_transform(training_input)
