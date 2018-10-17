@@ -33,14 +33,22 @@ logistic_regression.fit(training_input, training_ground_truths)
 # Print accuracy on the training and validation sets
 print('Training accuracy:', logistic_regression.score(training_input, training_ground_truths))
 print('Validation accuracy:', logistic_regression.score(validation_input, validation_ground_truths))
-# Run floating-point predictions on the validation set
+# Run floating-point predictions on the training and validation sets
+training_predictions = logistic_regression.decision_function(training_input)
 validation_predictions = logistic_regression.decision_function(validation_input)
-# Expand the array, adding a second axis because it's expected by the saving function
+# Expand the arrays, adding a second axis because it's expected by the saving function
+training_predictions = np.expand_dims(training_predictions, axis=1)
 validation_predictions = np.expand_dims(validation_predictions, axis=1)
-# Save the resulting validation set to disk
+# Save the resulting training and validation sets to disk
+save_test(
+    event_data_set,
+    training_ground_truths,
+    training_predictions,
+    prefix='logistic_training'
+)
 save_test(
     event_data_set,
     validation_ground_truths,
     validation_predictions,
-    prefix='banded_logistic_'
+    prefix='logistic_validation'
 )
