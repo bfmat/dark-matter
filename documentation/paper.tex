@@ -45,7 +45,7 @@ To resolve this, physicists must determine a discriminator function that can, ba
 The objective of this study is to investigate the potential for machine learning techniques to address both of these issues. More specifically, in the context of the PICO-60 experiment, there are two objectives:
 
 \begin{enumerate}
-    \item Determine the most effective machine learning architecture to use in development of a discriminator. Furthermore, develop several neural network architectures and apply them to different input formats, in order to find which are the most effective.
+    \item Determine the most effective machine learning architecture to use in development of a discriminator. Furthermore, develop several neural network architectures and apply them to different input formats (such as audio Fourier transforms, raw waveforms, and images), in order to find which are the most effective.
 
     \item Determine whether these techniques can be extended, applying two original algorithms based on semi-supervised learning, to develop an effective discriminator function based on incomplete and inaccurate initial information.
     
@@ -79,7 +79,7 @@ The approximate expected ratio between single-bubble and multiple-bubble events 
 
 \subsubsection{Overview}
 
-In this study, all newly developed discriminators were compared to the two discrimination techniques used previously for the PICO-60 experiment: Acoustic Parameter and machine learning.
+In this study, all newly developed machine learning-based discriminators were compared to the two discrimination techniques used previously for the PICO-60 experiment: Acoustic Parameter and machine learning.
 
 \subsubsection{Acoustic Parameter}
 
@@ -91,7 +91,7 @@ Finally, a set of data cuts must be applied to remove classes of events which ar
 
 These conversion, preprocessing, and data cutting steps were reapplied during this study, and are described in Section \ref{data_formats}.
 
-\subsubsection{Machine Learning}
+\subsubsection{Original Machine Learning Analysis}
 
 As part of the PICO-60 experiment, some testing was conducted to determine whether machine learning (in the form of a multi-layer perceptron) could be a viable technique to consider for a discrimination function. The results, while not definitive, indicated that the general technique warranted further investigation.
 
@@ -109,7 +109,7 @@ The lowest-level data derived from the piezos is the raw waveform $\omega$. This
 
 The raw waveform $\omega$ was converted into the frequency domain by means of a one-dimensional Discrete Fourier Transform (DFT) for real input. Since DFTs produce sequences of complex numbers, the magnitude of each element was computed. The direct output from such a DFT is the full-resolution Fourier transform $\beta _{50,001}$, which consists of a sequence of numbers half the length of the raw waveform $\omega$.
 
-Beyond this, the banded Fourier transform $\beta_{8}$ (which is the input to the AP function and the original neural analysis) was computed by integrating the resonant energy over all frequencies within each of a set of bands. This can be thought of as a method of signal downscaling, compressing the information into a smaller number of data points.
+Beyond this, the banded Fourier transform $\beta_{8}$ (which is the input to the AP function and the original machine learning analysis) was computed by integrating the resonant energy over all frequencies within each of a set of bands. This can be thought of as a method of signal downscaling, compressing the information into a smaller number of data points.
 
 This process was generalized to several other banding resolutions. Higher-resolution counterparts of $\beta_{8}$ included $\beta_{20}$ and $\beta_{40}$.
 
@@ -143,7 +143,7 @@ The initial data set $D$ to which these cuts are applied consists of all events 
 
 \subsubsection{Basic Quality Cut}
 
-A certain number of cuts are necessarily applied to all data to ensure meaningful results. Otherwise, significant overfitting on biases in the data is likely. This basic quality cut $QualCut(D)$ consists of the following restrictions:
+A number of cuts are necessarily applied to all data to ensure meaningful results. Otherwise, significant overfitting on biases in the data is likely. This basic quality cut $QualCut(D)$ consists of the following restrictions:
 
 \begin{itemize}
     \item The run was not collected during engineering or testing
@@ -164,7 +164,7 @@ PICO-60 events which include multiple bubbles are \textit{always} neutron events
 
 \subsubsection{Wall Cut} \label{wall_cut}
 
-Events that occur near the walls of the vessel have acoustic properties which are notably different from events nearer the center of the vessel. It can be desirable for a discriminator to handle these events correctly; however, AP does not, and neither does the neural network used in the previous PICO-60 paper. Thus, removing wall events allowed for a more meaningful direct comparison between a new neural network and existing techniques.
+Events that occur near the walls of the vessel have acoustic properties which are notably different from events nearer the center of the vessel. It can be desirable for a discriminator to handle these events correctly; however, AP alone does not, and neither does the neural network used in the previous PICO-60 paper. Thus, removing wall events allowed for a more meaningful direct comparison between a new neural network and existing techniques.
 
 \begin{figure}[h!]
     \centering
@@ -649,7 +649,7 @@ It is a distortion of the hyperbolic tangent that flattens the central range and
     \item \label{exponent} What is really desired is a shallow slope in the center (so low-confidence network outputs near 0.5 will produce very shallow output gradients). Apply a relatively large exponent which is $\psi$ (in the range of 3 to 11) to squash values close to 0 closer to 0.
 \end{enumerate}
 
-(Note that step \ref{exponent} only works if $p$ is an odd integer (because odd integer exponents preserve the sign), limiting the ability to fine-tune this function by changing $\psi$. To resolve this, a piecewise exponential function is used instead, where the absolute value is taken prior to applying the power and the sign is multiplied back in afterwards. This permits use of the full range of curves produced by even and non-integer values of $\psi$.)
+(Note that step \ref{exponent} only works if $\phi$ is an odd integer (because odd integer exponents preserve the sign), limiting the ability to fine-tune this function by changing $\psi$. To resolve this, a piecewise exponential function is used instead, where the absolute value is taken prior to applying the power and the sign is multiplied back in afterwards. This permits use of the full range of curves produced by even and non-integer values of $\psi$.)
 
 \begin{figure}[h]
     \centering
@@ -705,7 +705,7 @@ The following table represents the performance of several high-accuracy gravitat
             \hline
             $\varsigma$ Size & $\delta g$ & Learning Rate & $\psi$ & Mean AP Accuracy & Precision & Recall & CWSD \\
             \hline
-            32 & 0.0005 & 0.001 & 5 & 73\% & 72\% 90\% & 0.78 \\
+            32 & 0.0005 & 0.001 & 5 & 73\% & 72\% & 90\% & 0.78 \\
             \hline
             32 & 0.0005 & 0.003 & 9 & 83\% & 80\% & 99\% & 0.63 \\
             \hline
@@ -735,7 +735,7 @@ The following table represents the performance of several high-accuracy gravitat
 
 \subsubsection{Concept}
 
-Iterative cluster nucleation (ICN) is a second original semi-supervised learning algorithm developed as part of this study. It takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator.
+Iterative cluster nucleation (ICN) is a second semi-supervised learning algorithm developed as part of this study. It takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator.
 
 The basic concept is similar to that of gravitational differentiation. Starting with a relatively small amount of labeled data from two classes (nuclear recoils and alpha particles, in this case), predictions are run on a set of unlabeled data, and those predictions are used to produce further training data. However, there are two key differences:
 
