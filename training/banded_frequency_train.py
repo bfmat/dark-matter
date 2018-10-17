@@ -36,7 +36,7 @@ for epoch in range(EPOCHS):
     # Train the model on the loaded data set
     model.fit(
         x=training_input,
-        y=training_ap_predictions,
+        y=training_ground_truths,
         validation_data=(validation_input, validation_ground_truths),
         epochs=1
     )
