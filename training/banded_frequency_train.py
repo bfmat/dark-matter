@@ -4,6 +4,8 @@
 
 import os
 
+import numpy as np
+
 from data_processing.event_data_set import EventDataSet, RunType
 from data_processing.experiment_serialization import save_test
 from models.banded_frequency_network import create_model
@@ -25,13 +27,16 @@ event_data_set = EventDataSet(
 )
 # Get the banded frequency domain data and corresponding binary ground truths
 training_input, training_ground_truths, validation_input, validation_ground_truths = event_data_set.banded_frequency_alpha_classification()
+# Get the Acoustic Parameter event predictions so they can be compared to the ground truths
+training_ap_predictions, validation_ap_predictions = [[event.logarithmic_acoustic_parameter > 0.5 for event in event_list]
+                                                      for event_list in [event_data_set.training_events, event_data_set.validation_events]]
 
 # Iterate over the defined number of epochs
 for epoch in range(EPOCHS):
     # Train the model on the loaded data set
     model.fit(
         x=training_input,
-        y=training_ground_truths,
+        y=training_ap_predictions,
         validation_data=(validation_input, validation_ground_truths),
         epochs=1
     )
