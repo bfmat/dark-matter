@@ -303,37 +303,25 @@ Preprocessing the audio by applying a Fourier transform may be advantageous. If 
 
 In addition to the Fourier transform used in the original PICO-60 analysis, higher resolutions were computed by similar means. These included $\beta _{20}$ and $\beta _{40}$. Also, the full-resolution $\beta _{50,001}$ was input into a neural network directly, without any downscaling.
 
-$WallCut(D)$ was applied to the low-resolution Fourier transforms during early experiments (since they were used for AP) to minimize the number of variables between initial neural networks and a proven discriminator.
-
-This time, position corrections were optionally applied to the input data, as they were the input to Acoustic Parameter. The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$, $FourierMLP(PosCor(\beta_{N}, \chi))$ and $FourierMLPWithPos(\beta_{N}, \chi)$. Several different resolutions $N$ of $\beta_{N}$ were used. While a variety of network architectures were tested, most had a small number of layers (on the order of three), applied dropout and L2 regularization, and used batch normalization once again.
+This time, position corrections were optionally applied to the input data, as they were the input to Acoustic Parameter. The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$ and \\ $FourierMLP(PosCor(\beta_{N}, \chi))$. Several different resolutions $N$ of $\beta_{N}$ were used. While a variety of network architectures were tested, most had a small number of layers (on the order of three), applied dropout and L2 regularization, and used batch normalization once again.
 
 \subsubsection{Results}
 
-It became evident very quickly that, without $WallCut(D)$, a high resolution was not required to get a high accuracy relative to the ground truth data. $FourierMLP(\beta_{8})$ managed an excellent 98\% validation accuracy, and also produced a mean class-wise standard deviation of 0.29. Its very decisive prediction distribution can be observed in Figure \ref{banded_no_pos_input_hist}. Increasing the number of bands to $FourierMLPWithPos(beta_{20}, \chi)$, did not improve the results; accuracy only reached 95\%, with an increased mean standard deviation of 0.42. Using 40 bands reduced the accuracy once again, to 91\%.
+It became evident very quickly that a high resolution was not required to get a high accuracy relative to the ground truth data. $FourierMLP(\beta_{8})$ managed an excellent 98\% validation accuracy, and also produced a mean class-wise standard deviation of 0.29. Its very decisive prediction distribution can be observed in Figure \ref{banded_no_pos_input_hist}. Increasing the number of bands to $FourierMLPWithPos(beta_{20}, \chi)$, did not improve the results; accuracy only reached 95\%, with an increased mean standard deviation of 0.42. Using 40 bands reduced the accuracy once again, to 91\%.
+
+Very interestingly, $FourierMLP(\beta_{8})$ performed better than $FourierMLP(PosCor(\beta_{8}), \chi))$, which produced an accuracy value of 96\%. Both of these results were better than any of the network architectures trained on $\omega$.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{banded_no_pos_input_hist}
-    \caption{\label{banded_no_pos_input_hist} Prediction distribution of the best $FourierMLP(\beta_{8})$ discriminator, with $WallCut(D)$.}
-\end{figure}
-
-Very interestingly, $FourierMLP(\beta_{8})$ performed better than either $FourierMLP(PosCor(\beta_{8}), \chi)$ or \\ $FourierMLPWithPos(\beta{8}, \chi)$, which produced accuracy values of 96\% and 97\%, respectively.
-
-Unlike for the convolutional neural network trained on $\omega$, position input did not improve performance at all. In fact, $FourierMLP(\beta_{8})$, performed better than $FourierMLPWithPos(\beta_{8}, \chi)$, which reached only 95\% validation accuracy. Nevertheless, they both performed better than any of the network architectures trained on $\omega$.
-
-The higher resolution demonstrated significant power when $WallCut(D)$ was not applied, and only \\ $QualCut(MultiCut(D))$ was used. $FourierMLPWithPos(\beta_{20}, \chi)$ achieved only 92\% accuracy (2 percentage points lower than the same configuration without $WallCut(D)$). However, training on $\beta_{50,001}$, which does not incorporate any banding, improved this figure to a maximum of 97\%. However, that epoch had a relatively high class-wise standard deviation, at 0.47, as seen in Figure \ref{high_freq_no_wall_hist}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{high_freq_no_wall_hist}
-    \caption{\label{high_freq_no_wall_hist} Prediction distribution of the best $FourierMLPWithPos(\beta_{50,001}, \chi)$ discriminator, without $WallCut(D)$.}
+    \caption{\label{banded_no_pos_input_hist} Prediction distribution of the best $FourierMLP(\beta_{8})$ discriminator.}
 \end{figure}
 
 The following tables compare various multi-layer perceptron discriminators, with and without wall cuts.
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{Neural networks trained on Fourier transforms with $WallCut(D)$.} \label{fft_wall_cuts}
+        \captionof{table}{Neural networks trained on Fourier transforms.} \label{fft_wall_cuts}
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
             Configuration & L2 $\lambda$ & Dropout & Layers & Max Acc & Prec & Recall & CWSD \\
@@ -377,15 +365,11 @@ The following tables compare various multi-layer perceptron discriminators, with
 
 It is very clear in Table \ref{fft_wall_cuts} that higher resolutions do not improve accuracy. Regularization, both dropout and L2, appears to have relatively little effect.
 
-Without wall cuts, the full-resolution Fourier transform produces much more effective discriminators. Here, L2 regularization is beneficial, possibly because there is more noise that can be overfit on.
-
-Unlike with the raw waveform, recall varies relatively little when wall cuts are applied.
-
 \subsection{Convolutional Neural Network for Image Window Analysis}
 
 \subsubsection{Structure}
 
-It is an open question whether or not there is any information in the image data $\iota$ that could be used to distinguish between particle classes. Relative to the extremely short period of time in which the bubble forms (on the scale of nanoseconds), the framerate of the camera (340Hz) is extremely slow. While the very early stages of bubble formation (when the sound is produced) are known to differ depending on whether the bubble was created by a nuclear recoil or an alpha particle, it is unknown whether any visually apparent differences persist when the bubble is visible.
+It is an open question whether or not there is any information in the image data $\iota$ that could be used to distinguish between particle classes. Relative to the extremely short period of time in which the bubble forms (on the scale of nanoseconds), the framerate of the camera (340Hz) is extremely slow. While the very early stages of bubble formation (when the sound is produced) are known to differ depending on whether the bubble was created by a nuclear recoil or an alpha particle, it is not experimentally known whether any visually apparent differences persist when the bubble is visible.
 
 In an effort to resolve this, a two-dimensional convolutional neural network was applied to the task of discriminating based on $\iota$, referred to as $ImageConv(\iota)$. The network architecture consists of a moderate number of convolutional layers (on the scale of nine) and three dense layers at the end. L2 regularization was used on all layers, and dropout was additionally used on the dense layers.
 
@@ -395,7 +379,7 @@ Throughout a variety of different network architectures, the best validation acc
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{image_hist}
+    % includegraphics[width=\textwidth]{image_hist}
     \caption{\label{image_hist} Prediction distribution of the best $ImageConv(\iota)$ discriminator.}
 \end{figure}
 
@@ -420,7 +404,7 @@ The following tables compare the accuracy and mean class-wise standard deviation
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{Summary of supervised learning configurations, trained with $WallCut(D)$.}
+        \captionof{table}{Summary of supervised learning configurations.}
         \begin{tabular}{|l|l|l|l|l|}
             \hline
             Configuration & Max Accuracy & Precision & Recall & CWSD \\
@@ -430,8 +414,6 @@ The following tables compare the accuracy and mean class-wise standard deviation
             $FourierMLP(PosCor(\beta_{8}))$ & 96\% & 98\% & 97\% & 0.42 \\
             \hline
             $FourierMLP(\beta_{8})$ & 98\% & 100\% & 98\% & 0.29 \\
-            \hline
-            $FourierMLPWithPos(\beta_{8}, \chi)$ & 97\% & 98\% & 98\% & 0.43 \\
             \hline
             $FourierMLPWithPos(\beta_{20}, \chi)$ & 94\% & 99\% & 93\% & 0.52 \\
             \hline
@@ -445,39 +427,12 @@ The following tables compare the accuracy and mean class-wise standard deviation
     \end{center}
 \end{minipage}
 
-\begin{minipage}{\textwidth}
-    \begin{center}
-        \captionof{table}{Summary of supervised learning configurations, trained without $WallCut(D)$.}
-        \begin{tabular}{|l|l|l|l|l|}
-            \hline
-            Configuration & Max Accuracy & Precision & Recall & CWSD \\
-            \hline
-            $FourierMLPWithPos(\beta_{20}, \chi)$ & 92\% & 93\% & 77\% & 0.63 \\
-            \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 97\% & 93\% & 98\% & 0.47 \\
-            \hline
-            $DeepConv(\omega)$ & 77\% & 76\% & 94\% & 0.86 \\
-            % ../experimental_data/validation_results/2018_07_16_waveform_with_new_cuts/waveform_time1531762243_epoch14.json
-            \hline
-            $DeepConvWithPos(\omega, \chi)$ & 91\% & 95\% & 78\% & 0.61 \\
-            \hline
-            $ImageConv(\iota)$ & 85\% & 40\% & 38\% & 0.95 \\
-            \hline
-        \end{tabular}
-    \end{center}
-\end{minipage}
+The key conclusion to be drawn from the above tables is that the low-resolution Fourier transform $\beta_{8}$ is by far the most effective input format. Higher resolutions seem to make performance worse, likely due to overfitting. It is significantly better than the original PICO-60 neural network, and is more decisive (as measured by the class-wise standard deviation).
 
-There are 2 key conclusions to be drawn from the above tables:
+Based on this result, experimentation with semi-supervised learning proceeded using \\ $FourierMLP(PosCor(\beta_{8}, \chi))$, applying a three-layer perceptron architecture. There were two main reasons for this:
 
 \begin{enumerate}
-    \item With $WallCut(D)$, the low-resolution Fourier transform $\beta_{8}$ is by far the most effective input format. Higher resolutions seem to make performance worse, likely due to overfitting. It is significantly better than the original PICO-60 neural network, and is more decisive (as measured by the class-wise standard deviation)
-    \item Without $WallCut(D)$, full-resolution $\beta_{50,001}$ is the most effective, nearing the best performance with wall cuts at separating run types. All models are notably less decisive, given that the lowest standard deviation without wall cuts is 0.47, compared to 0.29 with wall cuts.
-\end{enumerate}
-
-Based on these results, experimentation with semi-supervised learning proceeded using \\ $FourierMLP(PosCor(\beta_{8}))$, applying a 3-layer perceptron architecture, and using $WallCut(D)$. There were three main reasons for this:
-
-\begin{enumerate}
-    \item This was a highly effective configuration with wall cuts, producing 97\% accuracy and a class-wise standard deviation dramatically better than the original PICO-60 neural network on that data set.
+    \item This was a highly effective configuration, producing 97\% accuracy and a class-wise standard deviation dramatically better than the original PICO-60 neural network on that data set.
     \item The use of the exact same input format as AP makes the algorithms more directly comparable.
 \end{enumerate}
 
@@ -493,9 +448,7 @@ The primary advantage of semi-supervised learning is clear: it requires fewer la
 
 Two techniques for semi-supervised learning have been developed for this study: gravitational differentiation and iterative cluster nucleation. The essence of both algorithms is a positive feedback loop. First, the network is trained on a smaller amount of imperfect data. Throughout the training process, the network runs predictions on unlabeled data. By using its most confident predictions in the training process, the desired function (separating particle types) is continuously reinforced, while less confident predictions are de-emphasized. This effectively draws new, unlabeled data into the training set.
 
-Since the intent of these techniques is to separate particle types (the same as AP), performance evaluations (accuracy and class-wise standard deviation) use AP as a baseline. Note that $WallCut(D)$ was once again applied for semi-supervised learning, because $FourierMLP(PosCor(\beta_{8}))$ was used for a neural network configuration, and because AP requires application of $WallCut(D)$ to be meaningfully comparable to any neural network.
-
-To ensure that accuracy statistics are as consistent and reliable as possible, every configuration was trained three times, with a different randomly selected validation set each time. Accuracy, precision, recall, and class-wise standard deviation statistics are the mean over those 3 tests.
+Since the intent of these techniques is to separate particle types (the same as AP), performance evaluations (accuracy and class-wise standard deviation) use AP as a baseline. To ensure that accuracy statistics are as consistent and reliable as possible, every configuration was trained three times, with a different randomly selected validation set each time. Accuracy, precision, recall, and class-wise standard deviation statistics are the mean over those three tests.
 
 \subsection{Gravitational Differentiation}
 
