@@ -25,7 +25,7 @@
 \maketitle
 
 \begin{abstract}
-    The identification of non-signal events is a major hurdle to overcome for bubble chamber dark matter experiments such as PICO-60. The current practice of manually developing a discriminator function to eliminate background events is difficult when available calibration data is frequently impure and present only in small quantities. In this study, several different discriminator input formats and neural network architectures are applied to the task. First, they are optimized in a supervised learning context. Next, two novel semi-supervised learning algorithms are trained, and found to replicate the Acoustic Parameter (AP) discriminator previously used in PICO-60 with a mean of 97\% accuracy.
+    The identification of non-signal events is a major hurdle to overcome for bubble chamber dark matter experiments such as PICO-60. The current practice of manually developing a discriminator function to eliminate background events is difficult when available calibration data is frequently impure and present only in small quantities. In this study, several different discriminator input/preprocessing formats and neural network architectures are applied to the task. First, they are optimized in a supervised learning context. Next, two novel semi-supervised learning algorithms are trained, and found to replicate the Acoustic Parameter (AP) discriminator previously used in PICO-60 with a mean of 97\% accuracy.
 \end{abstract}
 
 \section{Objective}
@@ -45,7 +45,7 @@ To resolve this, physicists must determine a discriminator function that can, ba
 The objective of this study is to investigate the potential for machine learning techniques to address both of these issues. More specifically, in the context of the PICO-60 experiment, there are two objectives:
 
 \begin{enumerate}
-    \item Determine the most effective machine learning architecture to use in development of a discriminator. Furthermore, develop several neural network architectures and apply them to different input formats (such as audio Fourier transforms, raw waveforms, and images), in order to find which are the most effective.
+    \item Determine the most effective machine learning architecture to use in development of a discriminator. Furthermore, develop several neural network architectures and apply them to different input/preprocessing formats (such as audio Fourier transforms, raw waveforms, and images), in order to find which are the most effective.
 
     \item Determine whether these techniques can be extended, applying two original algorithms based on semi-supervised learning, to develop an effective discriminator function based on incomplete and inaccurate initial information.
     
