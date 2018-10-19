@@ -5,9 +5,6 @@
 import os
 import sys
 
-# Use only the first GPU (GTX 1080)
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-
 from keras.layers import Conv1D, MaxPooling1D, Flatten, Dropout, Input, BatchNormalization, Dense, concatenate
 from keras.models import Model, Sequential
 from keras.regularizers import l2
@@ -29,7 +26,7 @@ event_data_set = EventDataSet(
 training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = \
     event_data_set.audio_alpha_classification(
         loading_function=load_bubble_audio,
-        include_positions=True
+        include_positions=False
     )
 
 # Iterate over possible configurations for L2 and dropout regularization, number of filters for the first layer (which is scaled up for following layers), kernel size, and number of convolutional layers in most groups
@@ -49,15 +46,15 @@ for l2_lambda in [0.003, 0.001, 0.0003]:
                     print('Kernel Size', kernel_size)
                     print('Convolutional Layers in Most Groups:', convolutional_layers_per_group)
                     # Create a description string which is used for saving validation sets
-                    description = f'waveform_grid_search_l2_lambda{l2_lambda}_dense_dropout{dense_dropout}_first_layer_filters{first_layer_filters}_kernel_size{kernel_size}_convolutional_layers_per_group{convolutional_layers_per_group}'
+                    description = f'waveform_grid_search/l2_lambda{l2_lambda}/dense_dropout{dense_dropout}/first_layer_filters{first_layer_filters}/kernel_size{kernel_size}/convolutional_layers_per_group{convolutional_layers_per_group}'
 
                     # Create a one-dimensional convolutional neural network model with rectified linear activations, using the Keras functional API
                     # It should take both microphone channels and an entire clip of audio, and take the position of the bubble on all 3 axes as a secondary input
                     activation = 'tanh'
                     padding = 'same'
                     regularizer = l2(l2_lambda)
-                    audio_inputs = Input((100_000, 2))
-                    x = BatchNormalization()(audio_inputs)
+                    inputs = Input((100_000, 2))
+                    x = BatchNormalization()(inputs)
                     x = Conv1D(
                         filters=first_layer_filters,
                         kernel_size=80,
@@ -111,16 +108,12 @@ for l2_lambda in [0.003, 0.001, 0.0003]:
                         )(x)
                         x = BatchNormalization()(x)
                     x = Flatten()(x)
-                    # Create a secondary input for the 3 axes and concatenate it to the outputs of the convolutional layers
-                    axes_inputs = Input((3,))
-                    x = concatenate([x, axes_inputs])
-                    x = BatchNormalization()(x)
                     x = Dense(64, activation=activation, kernel_regularizer=regularizer)(x)
                     x = Dropout(dense_dropout)(x)
                     x = Dense(16, activation=activation, kernel_regularizer=regularizer)(x)
                     x = Dropout(dense_dropout)(x)
                     outputs = Dense(1, activation='sigmoid', kernel_regularizer=regularizer)(x)
-                    model = Model(inputs=[audio_inputs, axes_inputs], outputs=outputs)
+                    model = Model(inputs, outputs)
                     # Output a summary of the model's architecture
                     print(model.summary())
                     # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
@@ -131,7 +124,7 @@ for l2_lambda in [0.003, 0.001, 0.0003]:
                     )
 
                     # Iterate over training and validation for several epochs
-                    for epoch in range(50):
+                    for epoch in range(100):
                         # Train the model on the input and ground truth arrays
                         model.fit(
                             x=training_inputs,
