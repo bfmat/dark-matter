@@ -253,13 +253,6 @@ The primary objective, in experimentation with supervised learning, is to determ
     \item A convolutional neural network trained on the image window data $\iota$.
 \end{enumerate}
 
-For some experimental runs, $WallCut(D)$ was not applied. This was done for 2 reasons:
-
-\begin{enumerate}
-    \item As an exploratory effort, to determine whether or not it was possible to produce an effective discriminator without wall cuts. No such attempt was made during the original PICO-60 analysis.
-    \item To test the network's ability to handle complex acoustic characteristics including resonance. There is a relatively clear-cut discrimination boundary in PICO-60, but this may not be the case in other applications.
-\end{enumerate}
-
 All supervised learning configurations were trained and evaluated based on their ability to determine the origin of events: whether they are from neutron calibration source runs (predominantly neutrons) or background radiation runs (predominantly alpha particles). This metric was used for training and testing instead of AP for two reasons:
 
 \begin{enumerate}
@@ -271,101 +264,36 @@ All supervised learning configurations were trained and evaluated based on their
 
 \subsubsection{Structure}
 
-A convolutional neural network was used for analyzing the raw waveform $\omega$ directly, without any preprocessing whatsoever. This avoids any destruction of information; theoretically, a sufficiently complex neural network should be capable of deriving any characteristics needed.
+A convolutional neural network was used for analyzing the raw waveform $\omega$ directly, without any preprocessing whatsoever. It is furthermore referred to as $DeepConv(\omega)$. Direct processing of the waveform avoids any destruction of information; theoretically, a sufficiently complex neural network should be capable of deriving any characteristics needed.
 
 For this task, a very deep (20 layers in its shallowest configuration) one-dimensional fully convolutional neural network was applied. The architecture was inspired by the M34-res network \cite{verydeepconvnets} for analysis of raw waveforms. L2 regularization was used to alleviate overfitting, and batch normalization was applied to the input to stabilize training. The network's hyperparameters were modified significantly through manual empirical testing as well as grid searches.
 
-Two different configurations were tested:
-\begin{enumerate}
-    \item A configuration that operates strictly on $\omega$ with no position corrections of any kind (furthermore $DeepConv(\omega)$).
-    \item A configuration with an additional position input on a lower layer such that it should be able to learn to incorporate position corrections into its outputs ($DeepConvWithPos(\omega, \chi)$). This configuration was tested both with and without $WallCut(D)$.
-\end{enumerate}
-
 \subsubsection{Results}
 
-During early tests with variations on $DeepConv(\omega)$ without $WallCut(D)$, it was revealed to have a surprising and undesirable capacity to separate run types based on meaningless information. It was able to discriminate between events from the AmBe neutron calibration runs and events from alpha background runs with 96\% accuracy, and to separate all combined neutron calibration runs from alpha background runs with 91\% accuracy. This was determined to be caused by the network detecting and fitting on biases in the white noise at the beginning and hydraulic recompression sounds at the end of the raw waveform. This extraneous information was subsequently cropped out.
+During early experiments with shallower network architectures, it was revealed to have a surprising and undesirable capacity to separate run types based on meaningless information. It was able to discriminate between events from the AmBe neutron calibration runs and events from alpha background runs with 96\% accuracy, and to separate all combined neutron calibration runs from alpha background runs with 91\% accuracy. This was determined to be caused by the network detecting and fitting on biases in the white noise at the beginning and hydraulic recompression sounds at the end of the raw waveform. This extraneous information was subsequently cropped out.
 
-Once the audio was cropped properly, $DeepConv(\omega)$ achieved a maximum of 77\% accuracy on validation data. Errors were not balanced at all; precision was 76\% and recall was 94\%, indicating that the network was overzealous to classify particles as neutrons. Using the same network architecture (except for the input layer), and still without $WallCut(D)$, $DeepConvWithPos(\omega, \chi)$ achieved 85\%. The maximum obtained on a grid search with this configuration was 91\%, although with a relatively high class-wise standard deviation of 0.61. Precision improved greatly, reaching 95\%, while recall was reduced, at a maximum of 84\%. While this is not a drastic improvement, it is a fairly strong indication that the network is able to extract meaningful information from the position, which may be used in an internal position correction of the volume.
-
-However, there is a lack of decisiveness observed even when accuracy was relatively high, in Figure \ref{waveform_hist}. This implies that, without $WallCut(D)$, this is a suboptimal technique.
+When this extraneous information was cropped out and the architecture was modified, both accuracy and class-wise standard deviation remained quite high. The best configuration during a grid search was 96\% accurate and had a standard deviation of 0.41 (seen in Figure \ref{waveform_hist}). This is better by both metrics than the multi-layer perceptron used in the original PICO-60 analysis.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{waveform_hist}
-    \caption{\label{waveform_hist} Prediction distribution of the best $DeepConvWithPos(\omega, \chi)$ discriminator without $WallCut(D)$. (Validation Event Count is the number of events in the validation set that fall within a certain network prediction band.)}
+    % \includegraphics[width=\textwidth]{waveform_hist}
+    \caption{\label{waveform_hist} Prediction distribution of the best $DeepConv(\omega)$ discriminator. (Validation Event Count is the number of events in the validation set that fall within a certain network prediction band.)}
 \end{figure}
 
-When $WallCut(D)$ was included, both accuracy and class-wise standard deviation improved drastically. The best configuration during a grid search was 96\% accurate and had a standard deviation of 0.41 (seen in Figure \ref{waveform_wall_cut_hist}). This is better by both metrics than the multi-layer perceptron used in the original PICO-60 analysis.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{waveform_wall_cut_hist}
-    \caption{\label{waveform_wall_cut_hist} Prediction distribution of the best $DeepConvWithPos(\omega, \chi)$ discriminator with $WallCut(D)$.}
-\end{figure}
-
-The following tables show the results of several $DeepConvWithPos(\omega, \chi)$ discriminators produced throughout testing, with corresponding network hyperparameters.
+The following tables show the results of several $DeepConv(\omega)$ discriminators produced throughout testing, with corresponding network hyperparameters.
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{$DeepConvWithPos(\omega, \chi)$ with $WallCut(D)$.}
+        \captionof{table}{$DeepConv(\omega)$ configurations.}
         \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
             \hline
             L2 $\lambda$ & Dropout & Filters & Kernel & Conv Layers & Max Accuracy & Precision & Recall & CWSD \\
-            \hline
-            0.003 & 0 & 24 & 3 & 17 & 95\% & 99\% & 94\% & 0.44 \\
-            % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.003_dense_dropout0_first_layer_filters24_kernel_size3_convolutional_layers_per_group3time1533824431_epoch30.json
-            \hline
-            0.003 & 0 & 48 & 5 & 17 & 96\% & 99\% & 96\% & 0.41 \\
-            % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.003_dense_dropout0_first_layer_filters48_kernel_size5_convolutional_layers_per_group3time1533825716_epoch43.json
-            \hline
-            0.003 & 0.5 & 24 & 5 & 17 & 93\% & 98\% & 92\% & 0.50 \\
-            % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.003_dense_dropout0.5_first_layer_filters24_kernel_size5_convolutional_layers_per_group3time1533828588_epoch27.json
-            \hline
-            0.001 & 0 & 48 & 5 & 17 & 95\% & 98\% & 95\% & 0.48 \\
-            % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.001_dense_dropout0_first_layer_filters48_kernel_size5_convolutional_layers_per_group3time1533832229_epoch16.json
-            \hline
-            0.001 & 0.25 & 48 & 3 & 32 & 93\% & 94\% & 97\% & 0.62 \\
-            % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.001_dense_dropout0.25_first_layer_filters48_kernel_size3_convolutional_layers_per_group6time1533834812_epoch30.json
-            \hline
-            0.0003 & 0.5 & 24 & 5 & 32 & 95\% & 97\% & 97\% & 0.49 \\
-            % ../experimental_data/validation_results/2018_08_09_waveform_grid_search_with_wall_cuts/waveform_grid_search_l2_lambda0.0003_dense_dropout0.5_first_layer_filters24_kernel_size5_convolutional_layers_per_group6time1533849077_epoch45.json
             \hline
         \end{tabular}
     \end{center}
 \end{minipage}
 
-\begin{minipage}{\textwidth}
-    \begin{center}
-        \captionof{table}{$DeepConvWithPos(\omega, \chi)$ without $WallCut(D)$.}
-        \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
-            \hline
-            L2 $\lambda$ & Dropout & Filters & Kernel & Conv Layers & Max Accuracy & Precision & Recall & CWSD \\
-            \hline
-            0.003 & 0 & 24 & 3 & 17 & 91\% & 95\% & 78\% & 0.61 \\
-            % ../experimental_data/validation_results/2018_07_28_waveform_grid_search/waveform_grid_search_l2_lambda0.003_dense_dropout0_first_layer_filters24_kernel_size3_convolutional_layers_per_group3time1532800009_epoch78.json
-            \hline
-            0.003 & 0.5 & 24 & 5 & 17 & 91\% & 95\% & 78\% & 0.65 \\
-            % ../experimental_data/validation_results/2018_07_28_waveform_grid_search/waveform_grid_search_l2_lambda0.003_dense_dropout0.5_first_layer_filters24_kernel_size5_convolutional_layers_per_group3time1532813246_epoch49.json
-            \hline
-            0.001 & 0.25 & 24 & 3 & 17 & 91\% & 88\% & 84\% & 0.66 \\
-            % ../experimental_data/validation_results/2018_07_28_waveform_grid_search/waveform_grid_search_l2_lambda0.001_dense_dropout0.25_first_layer_filters24_kernel_size3_convolutional_layers_per_group3time1532825383_epoch88.json
-            \hline
-            0.001 & 0.5 & 48 & 5 & 17 & 88\% & 92\% & 73\% & 0.73 \\
-            % ../experimental_data/validation_results/2018_07_28_waveform_grid_search/waveform_grid_search_l2_lambda0.001_dense_dropout0.5_first_layer_filters48_kernel_size5_convolutional_layers_per_group3time1532837124_epoch0.json
-            \hline
-            0.0003 & 0 & 48 & 5 & 32 & 78\% & 76\% & 56\% & 0.95 \\
-            % ../experimental_data/validation_results/2018_07_28_waveform_grid_search/waveform_grid_search_l2_lambda0.0003_dense_dropout0_first_layer_filters48_kernel_size5_convolutional_layers_per_group6time1532846835_epoch63.json
-            \hline
-            0.0003 & 0.5 & 48 & 5 & 32 & 74\% & 67\% & 53\% & 0.92 \\
-            % ../experimental_data/validation_results/2018_07_28_waveform_grid_search/waveform_grid_search_l2_lambda0.0003_dense_dropout0.5_first_layer_filters48_kernel_size5_convolutional_layers_per_group6time1532863869_epoch10.json
-            \hline
-        \end{tabular}
-    \end{center}
-\end{minipage}
-
-These tables show that, both with and without $WallCut(D)$, simple network architectures seem to produce better accuracy, likely due to reduced overfitting. Larger kernel sizes, more filters, and more layers make performance generally worse, while higher L2 regularization does the opposite. Dropout seems to have a weak correlation, possibly reducing accuracy slightly.
-
-It is notable that recall is much, much poorer when wall cuts are applied. It seems there are more neutron events that show alpha-like audio signatures in the events near the walls, possibly due to resonance.
+This table shows that simple network architectures seem to produce better accuracy, likely due to reduced overfitting. Larger kernel sizes, more filters, and more layers make performance generally worse, while higher L2 regularization does the opposite. Dropout seems to have a weak correlation, possibly reducing accuracy slightly.
 
 \subsection{Multi-Layer Perceptron for Fourier Transform Analysis}
 
@@ -377,7 +305,7 @@ In addition to the Fourier transform used in the original PICO-60 analysis, high
 
 $WallCut(D)$ was applied to the low-resolution Fourier transforms during early experiments (since they were used for AP) to minimize the number of variables between initial neural networks and a proven discriminator.
 
-Once again, configurations with and without position input were tested. This time, position corrections were optionally included when position input was not used. The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$, $FourierMLP(PosCor(\beta_{N}, \chi))$ and $FourierMLPWithPos(\beta_{N}, \chi)$. Several different resolutions $N$ of $\beta_{N}$ were used. While a variety of network architectures were tested, most had a small number of layers (on the order of three), applied dropout and L2 regularization, and used batch normalization once again.
+This time, position corrections were optionally applied to the input data, as they were the input to Acoustic Parameter. The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$, $FourierMLP(PosCor(\beta_{N}, \chi))$ and $FourierMLPWithPos(\beta_{N}, \chi)$. Several different resolutions $N$ of $\beta_{N}$ were used. While a variety of network architectures were tested, most had a small number of layers (on the order of three), applied dropout and L2 regularization, and used batch normalization once again.
 
 \subsubsection{Results}
 
@@ -447,35 +375,6 @@ The following tables compare various multi-layer perceptron discriminators, with
     \end{center}
 \end{minipage}
 
-\begin{minipage}{\textwidth}
-    \begin{center}
-        \captionof{table}{$FourierMLPWithPos(\beta{N})$ trained without $WallCut(D)$.}
-        \begin{tabular}{|l|l|l|l|l|l|l|l|}
-            \hline
-            Configuration & L2 $\lambda$ & Dropout & Layers & Max Acc & Prec & Recall & CWSD \\
-            \hline
-            $FourierMLPWithPos(\beta_{20}, \chi)$ & 0 & 0 & 3 & 92\% & 93\% & 77\% & 0.63 \\
-            % ../experimental_data/validation_results/2018_07_20_no_wall_cuts/high_resolution_frequency_time1532116206_epoch111.json
-            \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0 & 0 & 3 & 95\% & 89\% & 95\% & 0.49 \\
-            % ../experimental_data/validation_results/2018_07_24_high_resolution_frequency_grid_search/high_res_grid_search_dropout0_l2_lambda0_hidden_layers2_time1532446602_epoch210.json
-            \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.001 & 0 & 2 & 96\% & 95\% & 93\% & 0.47 \\
-            % ../experimental_data/validation_results/2018_07_24_high_resolution_frequency_grid_search/high_res_grid_search_dropout0_l2_lambda0.001_hidden_layers1_time1532448014_epoch149.json
-            \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.01 & 0 & 2 & 97\% & 93\% & 98\% & 0.47 \\
-            % ../experimental_data/validation_results/2018_07_24_high_resolution_frequency_grid_search/high_res_grid_search_dropout0_l2_lambda0.01_hidden_layers1_time1532449765_epoch108.json
-            \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.01 & 0.25 & 2 & 95\% & 97\% & 86\% & 0.54 \\
-            % ../experimental_data/validation_results/2018_07_24_high_resolution_frequency_grid_search/high_res_grid_search_dropout0.25_l2_lambda0.01_hidden_layers1_time1532454347_epoch122.json
-            \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.01 & 0.5 & 2 & 94\% & 95\% & 86\% & 0.53 \\
-            % ../experimental_data/validation_results/2018_07_24_high_resolution_frequency_grid_search//high_res_grid_search_dropout0.5_l2_lambda0.01_hidden_layers1_time1532459365_epoch243.json
-            \hline
-        \end{tabular}
-    \end{center}
-\end{minipage}
-
 It is very clear in Table \ref{fft_wall_cuts} that higher resolutions do not improve accuracy. Regularization, both dropout and L2, appears to have relatively little effect.
 
 Without wall cuts, the full-resolution Fourier transform produces much more effective discriminators. Here, L2 regularization is beneficial, possibly because there is more noise that can be overfit on.
@@ -488,7 +387,7 @@ Unlike with the raw waveform, recall varies relatively little when wall cuts are
 
 It is an open question whether or not there is any information in the image data $\iota$ that could be used to distinguish between particle classes. Relative to the extremely short period of time in which the bubble forms (on the scale of nanoseconds), the framerate of the camera (340Hz) is extremely slow. While the very early stages of bubble formation (when the sound is produced) are known to differ depending on whether the bubble was created by a nuclear recoil or an alpha particle, it is unknown whether any visually apparent differences persist when the bubble is visible.
 
-In an effort to resolve this, a two-dimensional convolutional neural network was applied to the task of discriminating based on $\iota$. The network architecture consists of a moderate number of convolutional layers (on the scale of nine) and three dense layers at the end. L2 regularization was used on all layers, and dropout was additionally used on the dense layers. No position input is used (since there are no microphones that would require position correction), so the basic configuration is $ImageConv(\iota)$.
+In an effort to resolve this, a two-dimensional convolutional neural network was applied to the task of discriminating based on $\iota$, referred to as $ImageConv(\iota)$. The network architecture consists of a moderate number of convolutional layers (on the scale of nine) and three dense layers at the end. L2 regularization was used on all layers, and dropout was additionally used on the dense layers.
 
 \subsubsection{Results}
 
@@ -502,28 +401,10 @@ Throughout a variety of different network architectures, the best validation acc
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{Performance of $ImageConv(\iota)$ configurations, trained without $WallCut(D)$.}
+        \captionof{table}{Performance of $ImageConv(\iota)$ configurations.}
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
             L2 $\lambda$ & Dropout & Convolutional Layers & Dense Layers & Max Accuracy & Precision & Recall & CWSD \\
-            \hline
-            0 & 0.5 & 4 & 3 & 77\% & 52\% & 31\% & 1.01 \\
-            % ../experimental_data/validation_results/2018_07_26_image_classification_fixed_loading/image_time1532640532_epoch8.json
-            \hline
-            0 & 0.25 & 4 & 3 & 85\% & 40\% & 38\% & 0.95 \\
-            % ../experimental_data/validation_results/2018_07_26_image_classification_less_dropout_more_epochs/image_time1532615758_epoch164.json
-            \hline
-            0.01 & 0.25 & 6 & 3 & 68\% & 68\% & 100\% & 0.98 \\
-            % ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.25_convolutional_layers_per_group2time1532895825_epoch2.json
-            \hline
-            0.003 & 0.25 & 9 & 3 & 68\% & 68\% & 100\% & 0.98 \\
-            % ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.003_dropout0.25_convolutional_layers_per_group3time1532895118_epoch3.json
-            \hline
-            0.01 & 0.25 & 12 & 3 & 68\% & 68\% & 100\% & 0.97 \\
-            % ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.25_convolutional_layers_per_group4time1532896126_epoch0.json
-            \hline
-            0.01 & 0.5 & 12 & 3 & 68\% & 68\% & 100\% & 0.99 \\
-            % ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.5_convolutional_layers_per_group4time1532898944_epoch1.json
             \hline
         \end{tabular}
     \end{center}
