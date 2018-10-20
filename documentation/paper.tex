@@ -342,7 +342,7 @@ The following tables compare various multi-layer perceptron discriminators, with
             \hline
             Configuration & L2 $\lambda$ & Dropout & Layers & Max Acc & Prec & Recall & CWSD \\
             \hline
-            $FourierMLP(PosCor(\beta_{8}))$ & 0 & 0.5 & 2 & 96\% & 98\% & 97\% & 0.42 \\
+            $FourierMLP(PosCor(\beta_{8}, \chi))$ & 0 & 0.5 & 2 & 96\% & 98\% & 97\% & 0.42 \\
             % ../experimental_data/validation_results/2018_07_16_banded_frequency_validation_passing_weighted_3_times.json
             \hline
             $FourierMLP(\beta_{8})$ & 0 & 0.5 & 2 & 98\% & 100\% & 98\% & 0.29 \\
@@ -350,9 +350,6 @@ The following tables compare various multi-layer perceptron discriminators, with
             \hline
             $FourierMLPWithPos(\beta_{8}, \chi)$ & 0 & 0.5 & 3 & 95\% & 100\% & 92\% & 0.44 \\
             % ../experimental_data/validation_results/2018_07_17_banded_frequency_not_position_corrected_with_position_input/banded_low_resolution_time1531837503_epoch18.json
-            \hline
-            $FourierMLPWithPos(\beta_{8}, \chi)$ & 0 & 0.25 & 3 & 97\% & 98\% & 98\% & 0.43 \\
-            % ../experimental_data/validation_results/2018_07_18_banded_frequency_25\%_dropout/banded_low_resolution_time1531922044_epoch154.json
             \hline
             $FourierMLPWithPos(\beta_{20}, \chi)$ & 0.003 & 0.25 & 3 & 93\% & 99\% & 92\% & 0.54 \\
             % ../experimental_data/validation_results/2018_07_20_20_bands/high_resolution_frequency_time1532105605_epoch90.json
@@ -363,17 +360,17 @@ The following tables compare various multi-layer perceptron discriminators, with
             $FourierMLPWithPos(\beta_{40}, \chi)$ & 0 & 0 & 3 & 91\% & 98\% & 90\% & 0.57 \\
             % ../experimental_data/validation_results/2018_07_20_40_bands/high_resolution_frequency_time1532107386_epoch101.json
             \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.0003 & 0 & 4 & 91\% & 94\% & 93\% & 0.53 \\
-            % ../experimental_data/validation_results/2018_08_10_high_resolution_grid_search_with_wall_cuts/high_res_grid_search_dropout0_l2_lambda0.0003_hidden_layers3_time1533922958_epoch133.json
+            $FourierMLP(\beta_{50,001})$ & 0 & 0 & 2 & 95\% & 94\% & 98\% & 0.47 \\
+            % ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input//dropout0/l2_lambda0/hidden_layers1/time1540053737_epoch170.json
             \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.001 & 0.25 & 4 & 91\% & 96\% & 89\% & 0.56 \\
-            % ../experimental_data/validation_results/2018_08_10_high_resolution_grid_search_with_wall_cuts/high_res_grid_search_dropout0.25_l2_lambda0.001_hidden_layers3_time1533924257_epoch115.json
+            $FourierMLP(\beta_{50,001})$ & 0.001 & 0 & 4 & 95\% & 95\% & 98\% & 0.46 \\
+            % ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/time1540054370_epoch174.json
             \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.001 & 0.5 & 3 & 89\% & 91\% & 91\% & 0.64 \\
-            % ../experimental_data/validation_results/2018_08_10_high_resolution_grid_search_with_wall_cuts/high_res_grid_search_dropout0.5_l2_lambda0.001_hidden_layers2_time1533925299_epoch169.json
+            $FourierMLP(\beta_{50,001})$ & 0.001 & 0.5 & 4 & 94\% & 93\% & 98\% & 0.54 \\
+            % ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers3/time1540056735_epoch50.json
             \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 0.01 & 0.5 & 4 & 89\% & 90\% & 93\% & 0.65 \\
-            % ../experimental_data/validation_results/2018_08_10_high_resolution_grid_search_with_wall_cuts/high_res_grid_search_dropout0.5_l2_lambda0.01_hidden_layers3_time1533925799_epoch91.json
+            $FourierMLP(\beta_{50,001})$ & 0.003 & 0.25 & 3 & 93\% & 92\% & 98\% & 0.57 \\
+            % ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers2/time1540055639_epoch113.json
             \hline
         \end{tabular}
     \end{center}
