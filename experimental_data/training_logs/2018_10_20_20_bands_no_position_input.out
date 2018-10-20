@@ -1,0 +1,2051 @@
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         (None, 40)                0         
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 40)                160       
+_________________________________________________________________
+dense_1 (Dense)              (None, 12)                492       
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 12)                0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 8)                 104       
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 8)                 0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 9         
+=================================================================
+Total params: 765
+Trainable params: 685
+Non-trainable params: 80
+_________________________________________________________________
+None
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 36s - loss: 0.7149 - acc: 0.4688
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.5868 - acc: 0.4820 
+2049/2049 [==============================] - 1s 330us/step - loss: 0.4528 - acc: 0.5520
+Validation loss: 0.19542625173926353
+Validation accuracy: 0.734375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066149_epoch0.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1668 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.2054 - acc: 0.7339
+2049/2049 [==============================] - 0s 50us/step - loss: 0.2003 - acc: 0.7433
+Validation loss: 0.17565163224935532
+Validation accuracy: 0.78125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066149_epoch1.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1554 - acc: 0.7812
+1024/2049 [=============>................] - ETA: 0s - loss: 0.1698 - acc: 0.7783
+2048/2049 [============================>.] - ETA: 0s - loss: 0.1636 - acc: 0.7920
+2049/2049 [==============================] - 0s 51us/step - loss: 0.1636 - acc: 0.7921
+Validation loss: 0.17330557852983475
+Validation accuracy: 0.765625
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066149_epoch2.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0872 - acc: 0.9375
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.1533 - acc: 0.8116
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1448 - acc: 0.8219
+Validation loss: 0.16153641790151596
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066149_epoch3.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1574 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1351 - acc: 0.8210
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1359 - acc: 0.8253
+Validation loss: 0.16031930223107338
+Validation accuracy: 0.78125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066150_epoch4.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1354 - acc: 0.8438
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.1276 - acc: 0.8456
+2049/2049 [==============================] - 0s 49us/step - loss: 0.1285 - acc: 0.8433
+Validation loss: 0.16748220846056938
+Validation accuracy: 0.78125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066150_epoch5.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1225 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1277 - acc: 0.8314
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1277 - acc: 0.8321
+Validation loss: 0.15136758238077164
+Validation accuracy: 0.78125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066150_epoch6.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0902 - acc: 0.9062
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.1264 - acc: 0.8401
+2049/2049 [==============================] - 0s 49us/step - loss: 0.1260 - acc: 0.8414
+Validation loss: 0.15224412828683853
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066150_epoch7.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0984 - acc: 0.9062
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.1218 - acc: 0.8447
+2049/2049 [==============================] - 0s 49us/step - loss: 0.1218 - acc: 0.8419
+Validation loss: 0.14849254861474037
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066150_epoch8.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1758 - acc: 0.8125
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.1211 - acc: 0.8392
+2049/2049 [==============================] - 0s 49us/step - loss: 0.1192 - acc: 0.8443
+Validation loss: 0.14788921177387238
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066150_epoch9.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1039 - acc: 0.8750
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.1174 - acc: 0.8548
+2049/2049 [==============================] - 0s 49us/step - loss: 0.1169 - acc: 0.8531
+Validation loss: 0.1454845741391182
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066150_epoch10.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0623 - acc: 0.9375
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.1158 - acc: 0.8539
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1158 - acc: 0.8565
+Validation loss: 0.14356955140829086
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066150_epoch11.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1285 - acc: 0.8125
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.1147 - acc: 0.8594
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1131 - acc: 0.8643
+Validation loss: 0.15040847286581993
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066150_epoch12.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0973 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1156 - acc: 0.8561
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1120 - acc: 0.8570
+Validation loss: 0.14416727051138878
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066151_epoch13.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1341 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1187 - acc: 0.8400
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1161 - acc: 0.8497
+Validation loss: 0.1463361270725727
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066151_epoch14.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0706 - acc: 0.9062
+1024/2049 [=============>................] - ETA: 0s - loss: 0.1067 - acc: 0.8545
+2048/2049 [============================>.] - ETA: 0s - loss: 0.1097 - acc: 0.8584
+2049/2049 [==============================] - 0s 51us/step - loss: 0.1097 - acc: 0.8585
+Validation loss: 0.1416482888162136
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066151_epoch15.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1388 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1108 - acc: 0.8693
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1168 - acc: 0.8551
+Validation loss: 0.133609501644969
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066151_epoch16.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1083 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1131 - acc: 0.8589
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1149 - acc: 0.8551
+Validation loss: 0.13963372074067593
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066151_epoch17.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0874 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1094 - acc: 0.8627
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1098 - acc: 0.8555
+Validation loss: 0.14651942998170853
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066151_epoch18.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1486 - acc: 0.7812
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1093 - acc: 0.8627
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1085 - acc: 0.8643
+Validation loss: 0.1415094919502735
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066151_epoch19.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1518 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1088 - acc: 0.8665
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1107 - acc: 0.8614
+Validation loss: 0.14377565309405327
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066151_epoch20.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1767 - acc: 0.7188
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.1119 - acc: 0.8612
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1064 - acc: 0.8682
+Validation loss: 0.1462094821035862
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066151_epoch21.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1177 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1005 - acc: 0.8769
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1062 - acc: 0.8653
+Validation loss: 0.1347507294267416
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066152_epoch22.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0802 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0953 - acc: 0.8807
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1010 - acc: 0.8716
+Validation loss: 0.134137200191617
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066152_epoch23.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1297 - acc: 0.7812
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1064 - acc: 0.8608
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1072 - acc: 0.8575
+Validation loss: 0.13738958723843098
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066152_epoch24.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1267 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1122 - acc: 0.8589
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1114 - acc: 0.8585
+Validation loss: 0.14269978925585747
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066152_epoch25.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0699 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1080 - acc: 0.8617
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1014 - acc: 0.8702
+Validation loss: 0.14461451023817062
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066152_epoch26.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0794 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1030 - acc: 0.8807
+2016/2049 [============================>.] - ETA: 0s - loss: 0.0999 - acc: 0.8814
+2049/2049 [==============================] - 0s 52us/step - loss: 0.1002 - acc: 0.8809
+Validation loss: 0.13512819819152355
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066152_epoch27.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1246 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1061 - acc: 0.8627
+2048/2049 [============================>.] - ETA: 0s - loss: 0.1057 - acc: 0.8687
+2049/2049 [==============================] - 0s 51us/step - loss: 0.1057 - acc: 0.8687
+Validation loss: 0.14332879707217216
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066152_epoch28.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0836 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1073 - acc: 0.8636
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1044 - acc: 0.8697
+Validation loss: 0.13964337296783924
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066152_epoch29.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0826 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0985 - acc: 0.8731
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1006 - acc: 0.8731
+Validation loss: 0.1353918109089136
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066152_epoch30.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1181 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1041 - acc: 0.8636
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1038 - acc: 0.8682
+Validation loss: 0.1400071531534195
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066152_epoch31.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0658 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1032 - acc: 0.8693
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1052 - acc: 0.8643
+Validation loss: 0.13858452625572681
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066153_epoch32.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1014 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1085 - acc: 0.8665
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1015 - acc: 0.8746
+Validation loss: 0.14052877947688103
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066153_epoch33.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0279 - acc: 1.0000
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0959 - acc: 0.8864
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0993 - acc: 0.8765
+Validation loss: 0.12706409767270088
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066153_epoch34.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0641 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1053 - acc: 0.8627
+2016/2049 [============================>.] - ETA: 0s - loss: 0.1040 - acc: 0.8611
+2049/2049 [==============================] - 0s 52us/step - loss: 0.1032 - acc: 0.8629
+Validation loss: 0.1458480805158615
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066153_epoch35.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0952 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1066 - acc: 0.8665
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1036 - acc: 0.8731
+Validation loss: 0.13384666480123997
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066153_epoch36.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0827 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0999 - acc: 0.8835
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0990 - acc: 0.8795
+Validation loss: 0.13290869258344173
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066153_epoch37.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1250 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0988 - acc: 0.8759
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0983 - acc: 0.8716
+Validation loss: 0.13623026944696903
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066153_epoch38.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0851 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1012 - acc: 0.8655
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0977 - acc: 0.8721
+Validation loss: 0.13161330670118332
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066153_epoch39.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0757 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0953 - acc: 0.8807
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0977 - acc: 0.8785
+Validation loss: 0.1392381750047207
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066153_epoch40.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0738 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0976 - acc: 0.8826
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0993 - acc: 0.8809
+Validation loss: 0.13809202425181866
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066154_epoch41.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0702 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0960 - acc: 0.8750
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0972 - acc: 0.8746
+Validation loss: 0.13880206644535065
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066154_epoch42.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0837 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0960 - acc: 0.8750
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0946 - acc: 0.8804
+Validation loss: 0.13444571197032928
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066154_epoch43.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1016 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0964 - acc: 0.8835
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0959 - acc: 0.8819
+Validation loss: 0.12885701656341553
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066154_epoch44.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0746 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1012 - acc: 0.8722
+2049/2049 [==============================] - 0s 50us/step - loss: 0.1002 - acc: 0.8668
+Validation loss: 0.1339198276400566
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066154_epoch45.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0779 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1006 - acc: 0.8684
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0998 - acc: 0.8726
+Validation loss: 0.1282134149223566
+Validation accuracy: 0.8359375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066154_epoch46.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1225 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0867 - acc: 0.8911
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0970 - acc: 0.8765
+Validation loss: 0.13211773708462715
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066154_epoch47.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0950 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0960 - acc: 0.8722
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0964 - acc: 0.8780
+Validation loss: 0.12970663979649544
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066154_epoch48.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0964 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0971 - acc: 0.8864
+2048/2049 [============================>.] - ETA: 0s - loss: 0.1015 - acc: 0.8760
+2049/2049 [==============================] - 0s 51us/step - loss: 0.1014 - acc: 0.8760
+Validation loss: 0.13655712455511093
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066154_epoch49.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0592 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0960 - acc: 0.8835
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0934 - acc: 0.8858
+Validation loss: 0.13546159490942955
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066155_epoch50.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0610 - acc: 0.9688
+ 992/2049 [=============>................] - ETA: 0s - loss: 0.0929 - acc: 0.8800
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0929 - acc: 0.8823
+2049/2049 [==============================] - 0s 52us/step - loss: 0.0932 - acc: 0.8819
+Validation loss: 0.1257097665220499
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066155_epoch51.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1042 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1025 - acc: 0.8693
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0974 - acc: 0.8736
+Validation loss: 0.13564439862966537
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066155_epoch52.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1165 - acc: 0.7812
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0964 - acc: 0.8778
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0921 - acc: 0.8878
+Validation loss: 0.12440495379269123
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066155_epoch53.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1238 - acc: 0.7812
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0951 - acc: 0.8759
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0946 - acc: 0.8746
+Validation loss: 0.13588679395616055
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066155_epoch54.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0862 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0909 - acc: 0.8845
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0969 - acc: 0.8760
+Validation loss: 0.1290079727768898
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066155_epoch55.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1047 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0913 - acc: 0.8864
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0927 - acc: 0.8873
+Validation loss: 0.1315745785832405
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066155_epoch56.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0564 - acc: 0.9688
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0933 - acc: 0.8835
+2016/2049 [============================>.] - ETA: 0s - loss: 0.0906 - acc: 0.8864
+2049/2049 [==============================] - 0s 52us/step - loss: 0.0914 - acc: 0.8848
+Validation loss: 0.1369276624172926
+Validation accuracy: 0.8359375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066155_epoch57.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0877 - acc: 0.8750
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0921 - acc: 0.8805
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0919 - acc: 0.8804
+Validation loss: 0.14276092685759068
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066155_epoch58.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0393 - acc: 0.9688
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0836 - acc: 0.8902
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0877 - acc: 0.8892
+Validation loss: 0.13697348907589912
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066156_epoch59.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1351 - acc: 0.7812
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1040 - acc: 0.8523
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0952 - acc: 0.8741
+Validation loss: 0.1416408196091652
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066156_epoch60.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1028 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0878 - acc: 0.8873
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0916 - acc: 0.8814
+Validation loss: 0.13227592408657074
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066156_epoch61.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0990 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0901 - acc: 0.8826
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0922 - acc: 0.8760
+Validation loss: 0.13038942962884903
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066156_epoch62.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0656 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0882 - acc: 0.8883
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0918 - acc: 0.8848
+Validation loss: 0.13169901818037033
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066156_epoch63.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1513 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0929 - acc: 0.8778
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0937 - acc: 0.8799
+Validation loss: 0.1374482773244381
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066156_epoch64.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1128 - acc: 0.8438
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0958 - acc: 0.8704
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0957 - acc: 0.8707
+Validation loss: 0.13940247520804405
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066156_epoch65.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1139 - acc: 0.8438
+ 960/2049 [=============>................] - ETA: 0s - loss: 0.0936 - acc: 0.8781
+1984/2049 [============================>.] - ETA: 0s - loss: 0.0932 - acc: 0.8810
+2049/2049 [==============================] - 0s 53us/step - loss: 0.0930 - acc: 0.8814
+Validation loss: 0.13446784391999245
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066156_epoch66.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0860 - acc: 0.9062
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0946 - acc: 0.8818
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0887 - acc: 0.8926
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0886 - acc: 0.8926
+Validation loss: 0.12903737649321556
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066156_epoch67.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1152 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0891 - acc: 0.8873
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0930 - acc: 0.8809
+Validation loss: 0.1278040912002325
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066156_epoch68.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0980 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0877 - acc: 0.8835
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0910 - acc: 0.8824
+Validation loss: 0.12736188992857933
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066157_epoch69.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1057 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0926 - acc: 0.8759
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0861 - acc: 0.8917
+Validation loss: 0.13479164242744446
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066157_epoch70.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0792 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0995 - acc: 0.8788
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0917 - acc: 0.8878
+Validation loss: 0.1294470652937889
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066157_epoch71.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1004 - acc: 0.8750
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0897 - acc: 0.8897
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0902 - acc: 0.8853
+Validation loss: 0.14068399742245674
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066157_epoch72.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1231 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0916 - acc: 0.8816
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0924 - acc: 0.8809
+Validation loss: 0.14161399751901627
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066157_epoch73.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0826 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0819 - acc: 0.8939
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0919 - acc: 0.8804
+Validation loss: 0.13155408576130867
+Validation accuracy: 0.8359375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066157_epoch74.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0777 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.1018 - acc: 0.8627
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0948 - acc: 0.8751
+Validation loss: 0.1406384352594614
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066157_epoch75.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0804 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0924 - acc: 0.8930
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0885 - acc: 0.8917
+Validation loss: 0.13612008839845657
+Validation accuracy: 0.8359375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066157_epoch76.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1151 - acc: 0.8750
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0947 - acc: 0.8740
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0929 - acc: 0.8760
+Validation loss: 0.1301212329417467
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066157_epoch77.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1269 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0923 - acc: 0.8920
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0923 - acc: 0.8882
+Validation loss: 0.13063056021928787
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066158_epoch78.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1090 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0906 - acc: 0.8958
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0902 - acc: 0.8882
+Validation loss: 0.1292700655758381
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066158_epoch79.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0488 - acc: 0.9688
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0820 - acc: 0.9015
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0880 - acc: 0.8878
+Validation loss: 0.13681784830987453
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066158_epoch80.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0847 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0958 - acc: 0.8759
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0916 - acc: 0.8780
+Validation loss: 0.13458207622170448
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066158_epoch81.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1506 - acc: 0.8125
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0954 - acc: 0.8778
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0942 - acc: 0.8799
+Validation loss: 0.12867658957839012
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066158_epoch82.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1605 - acc: 0.7812
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0899 - acc: 0.8835
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0899 - acc: 0.8858
+Validation loss: 0.13335957750678062
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066158_epoch83.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1754 - acc: 0.7812
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0885 - acc: 0.8883
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0885 - acc: 0.8829
+Validation loss: 0.13598583452403545
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066158_epoch84.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1333 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0891 - acc: 0.8797
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0885 - acc: 0.8838
+Validation loss: 0.13287861086428165
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066158_epoch85.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0860 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0862 - acc: 0.8968
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0849 - acc: 0.8945
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0853 - acc: 0.8941
+Validation loss: 0.1317387968301773
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066158_epoch86.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0665 - acc: 0.9375
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0878 - acc: 0.9004
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0903 - acc: 0.8892
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0903 - acc: 0.8892
+Validation loss: 0.13646500557661057
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066159_epoch87.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1048 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0824 - acc: 0.8968
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0875 - acc: 0.8912
+Validation loss: 0.13339724764227867
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066159_epoch88.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1147 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0872 - acc: 0.8892
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0846 - acc: 0.8946
+Validation loss: 0.143769521266222
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066159_epoch89.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1016 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0932 - acc: 0.8712
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0896 - acc: 0.8799
+Validation loss: 0.1307569220662117
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066159_epoch90.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0689 - acc: 0.8750
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0838 - acc: 0.8943
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0864 - acc: 0.8887
+Validation loss: 0.13570524007081985
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066159_epoch91.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0551 - acc: 0.9688
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0850 - acc: 0.8920
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0876 - acc: 0.8853
+Validation loss: 0.13291233591735363
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066159_epoch92.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0600 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0867 - acc: 0.8939
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0893 - acc: 0.8863
+Validation loss: 0.1403418891131878
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066159_epoch93.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0628 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0932 - acc: 0.8778
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0880 - acc: 0.8887
+Validation loss: 0.14056885614991188
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066159_epoch94.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0867 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0777 - acc: 0.8939
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0879 - acc: 0.8829
+Validation loss: 0.12754072435200214
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066159_epoch95.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0708 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0908 - acc: 0.8864
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0933 - acc: 0.8799
+Validation loss: 0.1453927904367447
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066160_epoch96.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0771 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0836 - acc: 0.8911
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0883 - acc: 0.8868
+Validation loss: 0.13088180497288704
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066160_epoch97.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1552 - acc: 0.8125
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0856 - acc: 0.9014
+1984/2049 [============================>.] - ETA: 0s - loss: 0.0879 - acc: 0.8936
+2049/2049 [==============================] - 0s 53us/step - loss: 0.0868 - acc: 0.8956
+Validation loss: 0.12990611791610718
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066160_epoch98.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0546 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0809 - acc: 0.9006
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0816 - acc: 0.9009
+Validation loss: 0.13956161215901375
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066160_epoch99.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0674 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0923 - acc: 0.8788
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0872 - acc: 0.8878
+Validation loss: 0.1405140720307827
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066160_epoch100.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0562 - acc: 0.9375
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0887 - acc: 0.8842
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0889 - acc: 0.8829
+Validation loss: 0.13652590289711952
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066160_epoch101.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0596 - acc: 0.9688
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0829 - acc: 0.8980
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0863 - acc: 0.8878
+Validation loss: 0.13023589178919792
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066160_epoch102.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1350 - acc: 0.7812
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0918 - acc: 0.8897
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0892 - acc: 0.8907
+Validation loss: 0.1353050023317337
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066160_epoch103.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0737 - acc: 0.9062
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0892 - acc: 0.8824
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0860 - acc: 0.8887
+Validation loss: 0.13825002871453762
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066160_epoch104.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0713 - acc: 0.9375
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0888 - acc: 0.8925
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0853 - acc: 0.8970
+Validation loss: 0.1469479314982891
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066160_epoch105.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1385 - acc: 0.7500
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0839 - acc: 0.8952
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0858 - acc: 0.8917
+Validation loss: 0.1366353090852499
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066161_epoch106.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1146 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0863 - acc: 0.8845
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0852 - acc: 0.8912
+Validation loss: 0.13460895419120789
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066161_epoch107.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0720 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0784 - acc: 0.9110
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0840 - acc: 0.8956
+Validation loss: 0.13271968439221382
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066161_epoch108.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0551 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0836 - acc: 0.8949
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0827 - acc: 0.8970
+Validation loss: 0.12625323049724102
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066161_epoch109.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0781 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0866 - acc: 0.8873
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0834 - acc: 0.8931
+Validation loss: 0.1303133387118578
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066161_epoch110.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0524 - acc: 0.9375
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0837 - acc: 0.8897
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0878 - acc: 0.8858
+Validation loss: 0.13510974496603012
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066161_epoch111.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0595 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0859 - acc: 0.8892
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0852 - acc: 0.8936
+Validation loss: 0.14038098230957985
+Validation accuracy: 0.7890625
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066161_epoch112.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1040 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0757 - acc: 0.9034
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0862 - acc: 0.8863
+Validation loss: 0.13002363592386246
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066161_epoch113.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1166 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0750 - acc: 0.9110
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0797 - acc: 0.9058
+Validation loss: 0.13863741233944893
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066161_epoch114.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0753 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0821 - acc: 0.9044
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0821 - acc: 0.9034
+Validation loss: 0.13399969413876534
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066162_epoch115.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0754 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0857 - acc: 0.8864
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0856 - acc: 0.8882
+Validation loss: 0.129549453034997
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066162_epoch116.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1137 - acc: 0.7812
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0887 - acc: 0.8816
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0843 - acc: 0.8926
+Validation loss: 0.13534176349639893
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066162_epoch117.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1124 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0878 - acc: 0.8883
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0841 - acc: 0.8946
+Validation loss: 0.13896416872739792
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066162_epoch118.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1956 - acc: 0.7500
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0806 - acc: 0.9007
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0807 - acc: 0.9033
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0810 - acc: 0.9029
+Validation loss: 0.13758588954806328
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066162_epoch119.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0703 - acc: 0.9375
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0858 - acc: 0.8869
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0866 - acc: 0.8878
+Validation loss: 0.13765226118266582
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066162_epoch120.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0690 - acc: 1.0000
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0791 - acc: 0.9034
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0872 - acc: 0.8912
+Validation loss: 0.12661869265139103
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066162_epoch121.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0991 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0811 - acc: 0.8958
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0857 - acc: 0.8878
+Validation loss: 0.12751466780900955
+Validation accuracy: 0.8359375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066162_epoch122.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0953 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0825 - acc: 0.9015
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0875 - acc: 0.8907
+Validation loss: 0.1411248743534088
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066162_epoch123.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0658 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0860 - acc: 0.8854
+1984/2049 [============================>.] - ETA: 0s - loss: 0.0855 - acc: 0.8911
+2049/2049 [==============================] - 0s 53us/step - loss: 0.0853 - acc: 0.8912
+Validation loss: 0.13654110580682755
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066163_epoch124.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0632 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0827 - acc: 0.8892
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0805 - acc: 0.8980
+Validation loss: 0.14038911275565624
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066163_epoch125.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0744 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0928 - acc: 0.8816
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0892 - acc: 0.8843
+Validation loss: 0.13126405142247677
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066163_epoch126.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0707 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0943 - acc: 0.8741
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0845 - acc: 0.8912
+Validation loss: 0.13518217206001282
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066163_epoch127.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0307 - acc: 0.9688
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0778 - acc: 0.8987
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0834 - acc: 0.8907
+Validation loss: 0.1300794966518879
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066163_epoch128.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1563 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0813 - acc: 0.9006
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0834 - acc: 0.8975
+Validation loss: 0.13510855101048946
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066163_epoch129.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1667 - acc: 0.7812
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0927 - acc: 0.8826
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0836 - acc: 0.8956
+Validation loss: 0.13182885572314262
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066163_epoch130.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0702 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0849 - acc: 0.8930
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0856 - acc: 0.8946
+Validation loss: 0.13464851304888725
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066163_epoch131.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0985 - acc: 0.9062
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0826 - acc: 0.8926
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0814 - acc: 0.8990
+Validation loss: 0.12839848548173904
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066163_epoch132.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1155 - acc: 0.8125
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0798 - acc: 0.8994
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0856 - acc: 0.8902
+Validation loss: 0.13158270344138145
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066164_epoch133.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0988 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0804 - acc: 0.9044
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0787 - acc: 0.9078
+Validation loss: 0.1330917663872242
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066164_epoch134.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0523 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0891 - acc: 0.8930
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0859 - acc: 0.8931
+Validation loss: 0.12939617037773132
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066164_epoch135.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0571 - acc: 0.9688
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0845 - acc: 0.8949
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0854 - acc: 0.8912
+Validation loss: 0.13580291718244553
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066164_epoch136.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0834 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0853 - acc: 0.8883
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0837 - acc: 0.8985
+Validation loss: 0.1329912357032299
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066164_epoch137.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0394 - acc: 0.9375
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0834 - acc: 0.8867
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0814 - acc: 0.8950
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0816 - acc: 0.8946
+Validation loss: 0.1410901229828596
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066164_epoch138.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0916 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0835 - acc: 0.8902
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0844 - acc: 0.8921
+Validation loss: 0.13473649695515633
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066164_epoch139.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0829 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0754 - acc: 0.9119
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0829 - acc: 0.8970
+Validation loss: 0.13506691716611385
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066164_epoch140.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1001 - acc: 0.7812
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0835 - acc: 0.8864
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0855 - acc: 0.8868
+Validation loss: 0.13345033302903175
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066164_epoch141.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0648 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0798 - acc: 0.9062
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0847 - acc: 0.8975
+Validation loss: 0.13605933263897896
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066164_epoch142.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1137 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0832 - acc: 0.8939
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0842 - acc: 0.8956
+Validation loss: 0.1337745077908039
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066165_epoch143.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0826 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0798 - acc: 0.8920
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0824 - acc: 0.8936
+Validation loss: 0.12452375143766403
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066165_epoch144.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0474 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0838 - acc: 0.8902
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0810 - acc: 0.8936
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0813 - acc: 0.8931
+Validation loss: 0.13023360073566437
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066165_epoch145.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0323 - acc: 1.0000
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0778 - acc: 0.9072
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0806 - acc: 0.9019
+Validation loss: 0.13144175335764885
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066165_epoch146.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0785 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0776 - acc: 0.8968
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0786 - acc: 0.8995
+Validation loss: 0.12534533441066742
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066165_epoch147.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0769 - acc: 0.9062
+ 928/2049 [============>.................] - ETA: 0s - loss: 0.0841 - acc: 0.8922
+1888/2049 [==========================>...] - ETA: 0s - loss: 0.0840 - acc: 0.8882
+2049/2049 [==============================] - 0s 55us/step - loss: 0.0825 - acc: 0.8907
+Validation loss: 0.12804751470685005
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066165_epoch148.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1080 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0800 - acc: 0.9044
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0832 - acc: 0.8975
+Validation loss: 0.12586033530533314
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066165_epoch149.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0538 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0883 - acc: 0.8854
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0887 - acc: 0.8824
+Validation loss: 0.13296113535761833
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066165_epoch150.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0762 - acc: 0.8750
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0802 - acc: 0.9004
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0822 - acc: 0.8965
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0822 - acc: 0.8965
+Validation loss: 0.12223658710718155
+Validation accuracy: 0.84375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066165_epoch151.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0735 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0771 - acc: 0.9100
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0773 - acc: 0.9053
+Validation loss: 0.12426813691854477
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066166_epoch152.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0992 - acc: 0.9062
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0816 - acc: 0.9007
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0811 - acc: 0.8980
+Validation loss: 0.12692493945360184
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066166_epoch153.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1397 - acc: 0.8438
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0845 - acc: 0.8925
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0821 - acc: 0.8960
+Validation loss: 0.13912252895534039
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066166_epoch154.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0352 - acc: 0.9688
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0937 - acc: 0.8826
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0863 - acc: 0.8941
+Validation loss: 0.12370309419929981
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066166_epoch155.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1193 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0756 - acc: 0.9025
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0804 - acc: 0.8975
+Validation loss: 0.12445547804236412
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066166_epoch156.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0979 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0814 - acc: 0.8949
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0762 - acc: 0.9039
+Validation loss: 0.1314266100525856
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066166_epoch157.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0656 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0772 - acc: 0.9034
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0791 - acc: 0.9004
+Validation loss: 0.12685907818377018
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066166_epoch158.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0362 - acc: 0.9688
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0750 - acc: 0.9034
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0794 - acc: 0.8946
+Validation loss: 0.12328250333666801
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066166_epoch159.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0513 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0777 - acc: 0.8987
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0803 - acc: 0.8965
+Validation loss: 0.12147869355976582
+Validation accuracy: 0.8359375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066166_epoch160.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0400 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0832 - acc: 0.8892
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0803 - acc: 0.8956
+Validation loss: 0.13358930498361588
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066167_epoch161.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0886 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0817 - acc: 0.8987
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0779 - acc: 0.9029
+Validation loss: 0.12861486338078976
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066167_epoch162.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0717 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0874 - acc: 0.8902
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0823 - acc: 0.8950
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0823 - acc: 0.8951
+Validation loss: 0.13759145140647888
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066167_epoch163.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0281 - acc: 0.9688
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0820 - acc: 0.8892
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0804 - acc: 0.8946
+Validation loss: 0.14358567632734776
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066167_epoch164.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0533 - acc: 1.0000
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0784 - acc: 0.9100
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0815 - acc: 0.9087
+Validation loss: 0.13459034450352192
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066167_epoch165.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1229 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0782 - acc: 0.8958
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0788 - acc: 0.9019
+Validation loss: 0.12551135383546352
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066167_epoch166.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0316 - acc: 0.9688
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0799 - acc: 0.8975
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0838 - acc: 0.8916
+2049/2049 [==============================] - 0s 52us/step - loss: 0.0838 - acc: 0.8917
+Validation loss: 0.13311047852039337
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066167_epoch167.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1614 - acc: 0.7500
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0872 - acc: 0.8864
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0818 - acc: 0.8956
+Validation loss: 0.1319724153727293
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066167_epoch168.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0717 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0848 - acc: 0.8826
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0798 - acc: 0.8931
+Validation loss: 0.13115428015589714
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066167_epoch169.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0797 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0872 - acc: 0.8854
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0836 - acc: 0.8926
+Validation loss: 0.12836298160254955
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066168_epoch170.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0784 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0760 - acc: 0.9044
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0789 - acc: 0.8995
+Validation loss: 0.13321455009281635
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066168_epoch171.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0705 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0861 - acc: 0.8883
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0813 - acc: 0.8926
+Validation loss: 0.12533481046557426
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066168_epoch172.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0908 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0748 - acc: 0.9129
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0734 - acc: 0.9141
+Validation loss: 0.140240840613842
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066168_epoch173.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0549 - acc: 0.9375
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0773 - acc: 0.9007
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0802 - acc: 0.8931
+Validation loss: 0.13409331999719143
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066168_epoch174.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0524 - acc: 0.9062
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0790 - acc: 0.9035
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0782 - acc: 0.9043
+Validation loss: 0.1314398255199194
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066168_epoch175.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0468 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0779 - acc: 0.9025
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0776 - acc: 0.8995
+Validation loss: 0.1350228302180767
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066168_epoch176.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0642 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0795 - acc: 0.9034
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0789 - acc: 0.9024
+Validation loss: 0.12877819314599037
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066168_epoch177.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0791 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0715 - acc: 0.9138
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0766 - acc: 0.9014
+Validation loss: 0.12597668915987015
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066168_epoch178.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0365 - acc: 0.9688
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0764 - acc: 0.9034
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0778 - acc: 0.9014
+Validation loss: 0.12922665663063526
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066168_epoch179.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1050 - acc: 0.8438
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0779 - acc: 0.9007
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0774 - acc: 0.9043
+Validation loss: 0.12502332404255867
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066169_epoch180.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0701 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0776 - acc: 0.9062
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0776 - acc: 0.9034
+Validation loss: 0.13049442321062088
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066169_epoch181.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0464 - acc: 0.9688
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0822 - acc: 0.8915
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0788 - acc: 0.9029
+Validation loss: 0.13341055810451508
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066169_epoch182.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0630 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0751 - acc: 0.9081
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0782 - acc: 0.9063
+Validation loss: 0.1363444123417139
+Validation accuracy: 0.796875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066169_epoch183.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1341 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0729 - acc: 0.9214
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0765 - acc: 0.9097
+Validation loss: 0.13245566189289093
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066169_epoch184.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0435 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0761 - acc: 0.9006
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0771 - acc: 0.9024
+Validation loss: 0.13003497384488583
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066169_epoch185.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0439 - acc: 0.9688
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0778 - acc: 0.9034
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0770 - acc: 0.9043
+Validation loss: 0.13166300393640995
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066169_epoch186.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0723 - acc: 0.9375
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0684 - acc: 0.9228
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0769 - acc: 0.9024
+Validation loss: 0.13310886174440384
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066169_epoch187.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0792 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0817 - acc: 0.8968
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0796 - acc: 0.9004
+Validation loss: 0.12995182536542416
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066169_epoch188.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1182 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0819 - acc: 0.8911
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0806 - acc: 0.8941
+Validation loss: 0.12760392390191555
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066170_epoch189.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0559 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0803 - acc: 0.9015
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0770 - acc: 0.9063
+Validation loss: 0.12889184057712555
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066170_epoch190.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0528 - acc: 1.0000
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0735 - acc: 0.9100
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0773 - acc: 0.8990
+Validation loss: 0.13090335950255394
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066170_epoch191.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0738 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0747 - acc: 0.8977
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0765 - acc: 0.8970
+Validation loss: 0.12898652255535126
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066170_epoch192.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0738 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0737 - acc: 0.9006
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0734 - acc: 0.9053
+Validation loss: 0.131535479798913
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066170_epoch193.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0838 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0718 - acc: 0.9119
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0750 - acc: 0.9073
+Validation loss: 0.13108209148049355
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066170_epoch194.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0678 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0676 - acc: 0.9138
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0766 - acc: 0.9014
+Validation loss: 0.1300586760044098
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066170_epoch195.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0573 - acc: 0.9688
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0669 - acc: 0.9150
+1952/2049 [===========================>..] - ETA: 0s - loss: 0.0746 - acc: 0.8981
+2049/2049 [==============================] - 0s 53us/step - loss: 0.0751 - acc: 0.8985
+Validation loss: 0.12581627257168293
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066170_epoch196.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0783 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0793 - acc: 0.9034
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0759 - acc: 0.9053
+Validation loss: 0.13225750625133514
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066170_epoch197.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0321 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0808 - acc: 0.8930
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0751 - acc: 0.9073
+Validation loss: 0.12613053247332573
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066171_epoch198.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0632 - acc: 0.9688
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0766 - acc: 0.9082
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0753 - acc: 0.9067
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0755 - acc: 0.9063
+Validation loss: 0.13613532483577728
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066171_epoch199.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0868 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0810 - acc: 0.8977
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0801 - acc: 0.8985
+Validation loss: 0.1266220137476921
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066171_epoch200.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0868 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0821 - acc: 0.8968
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0788 - acc: 0.8980
+Validation loss: 0.131024319678545
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066171_epoch201.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0538 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0771 - acc: 0.8996
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0796 - acc: 0.9000
+Validation loss: 0.12704088166356087
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066171_epoch202.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1234 - acc: 0.8125
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0784 - acc: 0.9062
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0758 - acc: 0.9024
+Validation loss: 0.1275074053555727
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066171_epoch203.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0447 - acc: 0.9688
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0728 - acc: 0.9026
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0800 - acc: 0.8921
+Validation loss: 0.13137740455567837
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066171_epoch204.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0638 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0833 - acc: 0.8864
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0776 - acc: 0.8990
+Validation loss: 0.1328408159315586
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066171_epoch205.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0760 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0832 - acc: 0.8930
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0792 - acc: 0.8995
+Validation loss: 0.12128126807510853
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066171_epoch206.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0550 - acc: 0.9688
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0742 - acc: 0.9110
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0751 - acc: 0.9068
+Validation loss: 0.12547364458441734
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066171_epoch207.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0696 - acc: 0.9375
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0750 - acc: 0.9007
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0764 - acc: 0.9034
+Validation loss: 0.12420858442783356
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066172_epoch208.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0563 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0767 - acc: 0.9034
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0770 - acc: 0.9034
+Validation loss: 0.12748709693551064
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066172_epoch209.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0667 - acc: 0.9062
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0801 - acc: 0.8998
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0781 - acc: 0.9014
+Validation loss: 0.12882590107619762
+Validation accuracy: 0.8359375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066172_epoch210.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0720 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0738 - acc: 0.9129
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0776 - acc: 0.9034
+Validation loss: 0.12112575210630894
+Validation accuracy: 0.84375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066172_epoch211.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0856 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0842 - acc: 0.8939
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0767 - acc: 0.9068
+Validation loss: 0.12863168120384216
+Validation accuracy: 0.8359375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066172_epoch212.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0908 - acc: 0.8750
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0769 - acc: 0.9004
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0758 - acc: 0.9038
+2049/2049 [==============================] - 0s 52us/step - loss: 0.0758 - acc: 0.9039
+Validation loss: 0.12473050318658352
+Validation accuracy: 0.8359375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066172_epoch213.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1098 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0749 - acc: 0.9044
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0762 - acc: 0.9039
+Validation loss: 0.1273904535919428
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066172_epoch214.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0710 - acc: 0.9375
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0792 - acc: 0.9043
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0771 - acc: 0.9043
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0771 - acc: 0.9043
+Validation loss: 0.12880806252360344
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066172_epoch215.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1388 - acc: 0.8125
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0859 - acc: 0.8769
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0846 - acc: 0.8819
+Validation loss: 0.12176719680428505
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066172_epoch216.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0740 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0794 - acc: 0.8987
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0800 - acc: 0.8975
+Validation loss: 0.12231839261949062
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066173_epoch217.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0510 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0771 - acc: 0.9044
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0785 - acc: 0.9004
+Validation loss: 0.12819485738873482
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066173_epoch218.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0699 - acc: 0.9062
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0754 - acc: 0.9062
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0773 - acc: 0.9024
+Validation loss: 0.1267462559044361
+Validation accuracy: 0.8046875
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066173_epoch219.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0748 - acc: 0.9062
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0653 - acc: 0.9189
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0733 - acc: 0.9106
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0733 - acc: 0.9107
+Validation loss: 0.1209504809230566
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066173_epoch220.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0491 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0747 - acc: 0.9044
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0821 - acc: 0.8926
+Validation loss: 0.13083165884017944
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066173_epoch221.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0927 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0836 - acc: 0.8873
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0782 - acc: 0.8970
+Validation loss: 0.1258018109947443
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066173_epoch222.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0536 - acc: 0.9062
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0834 - acc: 0.8915
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0800 - acc: 0.9004
+Validation loss: 0.11999696120619774
+Validation accuracy: 0.8359375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066173_epoch223.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1057 - acc: 0.8438
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0734 - acc: 0.9072
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0756 - acc: 0.9048
+Validation loss: 0.12503458559513092
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066173_epoch224.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0643 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0745 - acc: 0.9025
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0784 - acc: 0.8956
+Validation loss: 0.12002570554614067
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066173_epoch225.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1050 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0767 - acc: 0.9025
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0761 - acc: 0.9029
+Validation loss: 0.12229361198842525
+Validation accuracy: 0.8359375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066174_epoch226.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0744 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0715 - acc: 0.9148
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0757 - acc: 0.9082
+Validation loss: 0.1211886890232563
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066174_epoch227.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0378 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0714 - acc: 0.9119
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0745 - acc: 0.9082
+Validation loss: 0.12555580772459507
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066174_epoch228.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0959 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0737 - acc: 0.9119
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0736 - acc: 0.9087
+Validation loss: 0.12560496851801872
+Validation accuracy: 0.8359375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066174_epoch229.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0820 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0720 - acc: 0.9119
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0748 - acc: 0.9073
+Validation loss: 0.1224661860615015
+Validation accuracy: 0.8359375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066174_epoch230.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0740 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0717 - acc: 0.9157
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0762 - acc: 0.9092
+Validation loss: 0.12473726645112038
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066174_epoch231.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0503 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0743 - acc: 0.8968
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0734 - acc: 0.9039
+Validation loss: 0.12648436427116394
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066174_epoch232.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0423 - acc: 1.0000
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0714 - acc: 0.9119
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0739 - acc: 0.9078
+Validation loss: 0.12205581925809383
+Validation accuracy: 0.8359375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066174_epoch233.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0780 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0791 - acc: 0.9053
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0793 - acc: 0.9024
+Validation loss: 0.13385334610939026
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066174_epoch234.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0778 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0711 - acc: 0.9110
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0748 - acc: 0.9058
+Validation loss: 0.1240554079413414
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066175_epoch235.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0785 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0791 - acc: 0.9015
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0781 - acc: 0.9014
+Validation loss: 0.11926881223917007
+Validation accuracy: 0.84375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066175_epoch236.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1263 - acc: 0.8438
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0799 - acc: 0.9006
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0770 - acc: 0.9039
+Validation loss: 0.13004927895963192
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066175_epoch237.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1252 - acc: 0.7812
+1024/2049 [=============>................] - ETA: 0s - loss: 0.0721 - acc: 0.9082
+2016/2049 [============================>.] - ETA: 0s - loss: 0.0706 - acc: 0.9107
+2049/2049 [==============================] - 0s 52us/step - loss: 0.0702 - acc: 0.9117
+Validation loss: 0.1270961370319128
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066175_epoch238.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0552 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0764 - acc: 0.9025
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0733 - acc: 0.9062
+2049/2049 [==============================] - 0s 51us/step - loss: 0.0733 - acc: 0.9063
+Validation loss: 0.1216159276664257
+Validation accuracy: 0.84375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066175_epoch239.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0700 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0793 - acc: 0.9034
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0768 - acc: 0.9102
+Validation loss: 0.12474584206938744
+Validation accuracy: 0.8203125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066175_epoch240.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1256 - acc: 0.7812
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0791 - acc: 0.8996
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0784 - acc: 0.9024
+Validation loss: 0.118515869602561
+Validation accuracy: 0.828125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066175_epoch241.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0777 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0806 - acc: 0.8902
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0764 - acc: 0.8951
+Validation loss: 0.12066554091870785
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066175_epoch242.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0813 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0759 - acc: 0.8987
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0730 - acc: 0.9097
+Validation loss: 0.13577024266123772
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066175_epoch243.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0720 - acc: 0.8750
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0765 - acc: 0.9034
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0763 - acc: 0.9039
+Validation loss: 0.13289761543273926
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066175_epoch244.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0594 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0780 - acc: 0.9015
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0792 - acc: 0.8931
+Validation loss: 0.12309751100838184
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066176_epoch245.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0611 - acc: 0.9375
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0741 - acc: 0.9025
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0733 - acc: 0.9078
+Validation loss: 0.12945808097720146
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066176_epoch246.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1110 - acc: 0.9062
+1088/2049 [==============>...............] - ETA: 0s - loss: 0.0746 - acc: 0.9072
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0786 - acc: 0.9029
+Validation loss: 0.12322923168540001
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066176_epoch247.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.1374 - acc: 0.7812
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0761 - acc: 0.9025
+2048/2049 [============================>.] - ETA: 0s - loss: 0.0785 - acc: 0.9009
+2049/2049 [==============================] - 0s 52us/step - loss: 0.0788 - acc: 0.9004
+Validation loss: 0.12482643872499466
+Validation accuracy: 0.8125
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066176_epoch248.json
+Epoch 1/1
+
+  32/2049 [..............................] - ETA: 0s - loss: 0.0670 - acc: 0.9062
+1056/2049 [==============>...............] - ETA: 0s - loss: 0.0768 - acc: 0.9091
+2049/2049 [==============================] - 0s 50us/step - loss: 0.0731 - acc: 0.9126
+Validation loss: 0.12223965674638748
+Validation accuracy: 0.84375
+Data saved at /home/brendonm/high_resolution_frequency_/time1540066176_epoch249.json
