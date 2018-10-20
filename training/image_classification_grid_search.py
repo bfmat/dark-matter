@@ -4,9 +4,6 @@
 
 import os
 
-# Use only the second GPU for training (GTX 1060)
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
-
 from keras.layers import Conv2D, Flatten, Dropout, InputLayer, BatchNormalization, Dense
 from keras.models import Model, Sequential
 from keras.regularizers import l2
