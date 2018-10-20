@@ -27,14 +27,23 @@ def visualize_and_save_audio(time_domain: np.ndarray, frequency_domain: np.ndarr
         time_domain_channel = time_domain[:, channel_index]
         plt.subplot(channels, 2, time_domain_plot_index)
         plt.plot(time_domain_channel)
-        plt.title(f'Time Domain, Channel {channel_index}')
+        plt.xlabel('Sample Time ($\mu$s)')
+        plt.ylabel(f'Piezo Sample Value (Channel {channel_index})')
         # Graph the audio in frequency domain in the plot to the right
         frequency_domain_plot_index = time_domain_plot_index + 1
         frequency_domain_channel = frequency_domain[:, channel_index]
+        # Get the frequencies corresponding to the FFT values, so they can be plotted on the X axis
+        frequencies = np.fft.rfftfreq(len(time_domain_channel))
+        # Multiply them by one million to get the values in Hz
+        frequencies_hz = frequencies * 1_000_000
         plt.subplot(channels, 2, frequency_domain_plot_index)
-        plt.plot(frequency_domain_channel)
-        plt.title(f'Frequency Domain, Channel {channel_index}')
-
+        plt.plot(frequencies_hz, frequency_domain_channel)
+        plt.xlabel('Frequency (Hz)')
+        plt.ylabel(f'Fourier Transform (Magnitude) [Channel {channel_index}]')
+        # Use a logarithmic scale for the X axis (because it corresponds to frequency)
+        plt.xscale('log')
+        # Set the Y scale manually (for some reason, the automatic one behaves strangely)
+        plt.ylim(-50_000, 250_000)
         # Take the time domain for this channel, save it as a WAV file, and notify the user
         file_path = os.path.expanduser(f'~/channel_{channel_index}.wav')
         wavfile.write(file_path, SAMPLE_RATE, time_domain_channel)
