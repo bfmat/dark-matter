@@ -239,7 +239,10 @@ Each of the learning algorithms used in this study applies a neural network. For
     \item L2 regularization $\lambda$ (multiplier for squared weights before adding to loss function)
 \end{itemize}
 
+
 Several of these hyperparameters are optimized at a time, using a grid search. Given $n$ different hyperparameters to optimize and $m$ different possible values for each, $m^n$ different networks are trained (using every possible combination of hyperparameters) and tested on a validation set.
+
+For stochastic optimization of the loss function while training, the Adam \cite{adam} optimizer was used where not otherwise specified.
 
 \section{Supervised Learning}
 
@@ -480,7 +483,7 @@ The system accomplishes this using a new method for calculating gradients for th
     \item For examples with low-confidence predictions close to 0.5: Create a gradient near 0 that does not affect training significantly.
 \end{itemize}
 
-The gradients produced by this technique are used for training in the same way as gradients calculated with a loss function. Backpropagation is used to calculate gradients for previous layers, and a stochastic gradient descent optimizer is used for weight updates.
+The gradients produced by this technique are used for training in the same way as gradients calculated with a loss function. Backpropagation is used to calculate gradients for previous layers, and a stochastic gradient descent optimizer \cite{sgd} is used for weight updates.
 
 \subsubsection{Algorithm}
 
@@ -518,7 +521,7 @@ This system was trained using a multi-layer perceptron with an 8-band Fourier tr
 
 \subsubsection{Results}
 
-During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the highest mean accuracy over three runs of an individual configuration was 99\%. The highest accuracy was obtained with 256 labeled examples in the set $\varsigma$ (out of 496 total training examples). High accuracy statistics in this range were also obtained using 128 examples (99\% accuracy, once again) and 64 examples (97\% accuracy). 32 examples produced a much lower maximum accuracy, at only 83\%. From this, it is evident that it is possible to achieve very high accuracy using this technique. It is also clear that, in general, larger initial sets produce higher performance.
+During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the highest mean accuracy over three runs of an individual configuration was 99\%. The highest accuracy was obtained with 256 labeled examples in the set $\varsigma$ (out of 496 total training examples), which equates to 52\% of the data being labeled. High accuracy statistics in this range were also obtained using 128 examples (99\% accuracy, once again) and 64 examples (97\% accuracy). 32 examples produced a much lower maximum accuracy, at only 83\%. From this, it is evident that it is possible to achieve very high accuracy using this technique. It is also clear that, in general, larger initial sets produce higher performance.
 
 However, the four hyperparameters optimized during the grid search were observed to have a weak polynomial correlation with the network's accuracy. This implies that the training process is generally insensitive to variations in those particular network parameters.
 
@@ -527,17 +530,17 @@ This lack of correlation also means that the mean accuracy over all configuratio
 \begin{minipage}{\textwidth}
     \begin{center}
         \captionof{table}{Gravitational differentiation accuracy statistics by size of $\varsigma$.} \label{grav_accuracy_by_varsigma}
-        \begin{tabular}{|l|l|l|}
+        \begin{tabular}{|l|l|l|l|}
             \hline
-            Initial $\varsigma$ Size & Max Accuracy & Mean Accuracy \\
+            Initial $\varsigma$ Size & Proportion of Data Labeled & Max Accuracy & Mean Accuracy \\
             \hline
-            32 & 83\% & 69\% \\
+            32 & 6\% & 83\% & 69\% \\
             \hline
-            64 & 97\% & 73\% \\
+            64 & 13\% & 97\% & 73\% \\
             \hline
-            128 & 99\% & 84\% \\
+            128 & 26\% & 99\% & 84\% \\
             \hline
-            256 & 99\% & 94\% \\
+            256 & 52\% & 99\% & 94\% \\
             \hline
         \end{tabular}
     \end{center}
@@ -628,17 +631,17 @@ The mean accuracy for a given initial $\varsigma$ is again important. In Table \
 \begin{minipage}{\textwidth}
     \begin{center}
         \captionof{table}{Iterative cluster nucleation accuracy statistics by initial size of $\varsigma$.} \label{icn_accuracy_by_varsigma}
-        \begin{tabular}{|l|l|l|}
+        \begin{tabular}{|l|l|l|l|}
             \hline
-            Initial $\varsigma$ Size & Max Accuracy & Mean Accuracy \\
+            Initial $\varsigma$ Size & Proportion of Data Labeled & Max Accuracy & Mean Accuracy \\
             \hline
-            32 & 95\% & 75\% \\
+            32 & 6\% & 95\% & 75\% \\
             \hline
-            64 & 97\% & 84\% \\
+            64 & 13\% & 97\% & 84\% \\
             \hline
-            128 & 98\% & 95\% \\
+            128 & 26\% & 98\% & 95\% \\
             \hline
-            256 & 99\% & 97\% \\
+            256 & 52\% & 99\% & 97\% \\
             \hline
         \end{tabular}
     \end{center}
@@ -720,7 +723,7 @@ While there is still of course a place for conventionally developed discriminato
 
 \section{Technologies}
 
-All programming for this study was done in Python 3. Keras \cite{keras}, running on a TensorFlow backend, was used for all machine learning tasks. NumPy and SciPy were used for linear algebra and signal processing. ROOT, scikit-image and scikit-learn were used for data loading and storage. Matplotlib was used for data visualization.
+All programming for this study was done in Python 3. Keras \cite{keras}, running on a TensorFlow backend, was used for all machine learning tasks. NumPy \cite{numpy} and SciPy \cite{scipy} were used for linear algebra and signal processing. ROOT \cite{root}, scikit-image \cite{scikit-image}, and scikit-learn \cite{scikit-learn} were used for data loading and storage. Matplotlib was used for data visualization.
 
 \printbibliography
 
