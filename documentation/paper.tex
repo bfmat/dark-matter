@@ -272,11 +272,11 @@ For this task, a very deep (20 layers in its shallowest configuration) one-dimen
 
 During early experiments with shallower network architectures, it was revealed to have a surprising and undesirable capacity to separate run types based on meaningless information. It was able to discriminate between events from the AmBe neutron calibration runs and events from alpha background runs with 96\% accuracy, and to separate all combined neutron calibration runs from alpha background runs with 91\% accuracy. This was determined to be caused by the network detecting and fitting on biases in the white noise at the beginning and hydraulic recompression sounds at the end of the raw waveform. This extraneous information was subsequently cropped out.
 
-When this extraneous information was cropped out and the architecture was modified, both accuracy and class-wise standard deviation remained quite high. The best configuration during a grid search was 96\% accurate and had a standard deviation of 0.41 (seen in Figure \ref{waveform_hist}). This is better by both metrics than the multi-layer perceptron used in the original PICO-60 analysis.
+When this extraneous information was cropped out and the architecture was modified, both accuracy and class-wise standard deviation remained quite high. The most accurate configuration during a grid search was 95\% accurate and had a standard deviation of 0.52 (seen in Figure \ref{waveform_hist}). This is better by both metrics than the multi-layer perceptron used in the original PICO-60 analysis.
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{waveform_hist}
+    \includegraphics[width=\textwidth]{waveform_hist}
     \caption{\label{waveform_hist} Prediction distribution of the best $DeepConv(\omega)$ discriminator. (Validation Event Count is the number of events in the validation set that fall within a certain network prediction band.)}
 \end{figure}
 
@@ -288,6 +288,19 @@ The following tables show the results of several $DeepConv(\omega)$ discriminato
         \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
             \hline
             L2 $\lambda$ & Dropout & Filters & Kernel & Conv Layers & Max Accuracy & Precision & Recall & CWSD \\
+            \hline
+            0.003 & 0 & 24 & 3 & 17 & 95\% & 97\% & 97\% & 0.52 \\
+            % ../experimental_data/validation_results/waveform_grid_search/l2_lambda0.003/dense_dropout0/first_layer_filters24/kernel_size3/convolutional_layers_per_group3/time1539990193_epoch57.json
+            \hline
+            0.003 & 0.25 & 48 & 3 & 17 & 94\% & 100\% & 91\% & 0.44 \\
+            \hline
+            0.001 & 0.25 & 24 & 5 & 17 & 95\% & 99\% & 94\% & 0.46 \\
+            \hline
+            0.001 & 0.25 & 24 & 5 & 32 & 91\% & 94\% & 94\% & 0.66 \\
+            \hline
+            0.0003 & 0 & 48 & 5 & 32 & 88\% & 94\% & 89\% & 0.61 \\
+            \hline
+            0.0003 & 0 & 24 & 3 & 17 & 93\% & 96\% & 95\% & 0.59 \\
             \hline
         \end{tabular}
     \end{center}
