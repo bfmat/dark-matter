@@ -42,7 +42,7 @@ for dropout in [0, 0.25, 0.5]:
             print('Dense Dropout:', dropout)
             print('Convolutional Layers Per Group:', convolutional_layers_per_group)
             # Create a description string which is used for saving validation sets
-            description = f'image_grid_search_l2_lambda{l2_lambda}_dropout{dropout}_convolutional_layers_per_group{convolutional_layers_per_group}'
+            description = f'image_grid_search/l2_lambda{l2_lambda}/dropout{dropout}/convolutional_layers_per_group{convolutional_layers_per_group}'
 
             # Calculate the number of images there are stacked along the channels axis
             channels = END_IMAGE_INDEX - START_IMAGE_INDEX
