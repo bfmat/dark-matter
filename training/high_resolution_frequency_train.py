@@ -23,8 +23,8 @@ event_data_set = EventDataSet(
 training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = \
     event_data_set.audio_alpha_classification(
         loading_function=lambda bubble:
-        load_bubble_frequency_domain(bubble, banded=False),
-        include_positions=True
+        load_bubble_frequency_domain(bubble, banded=True),
+        include_positions=False
     )
 # Create an instance of the high resolution frequency network
 model = create_model()
@@ -54,6 +54,3 @@ for epoch in range(250):
         epoch,
         prefix='high_resolution_frequency_'
     )
-    # Save the current model, named with the epoch number
-    model_path = os.path.expanduser(f'~/frequency_epoch{epoch}.h5')
-    model.save(model_path)
