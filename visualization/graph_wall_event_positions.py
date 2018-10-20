@@ -52,7 +52,7 @@ fails_audio_line = Line2D([], [], marker='x', label='Fails audio and/or pressure
 # Display them in a legend
 plt.legend(handles=[passes_fiducial_patch, fails_fiducial_patch, passes_audio_line, fails_audio_line])
 # Label the X and Y axes
-plt.xlabel('X Position')
-plt.ylabel('Y Position')
+plt.xlabel('X Position (mm)')
+plt.ylabel('Y Position (mm)')
 # Display the graph on screen
 plt.show()
