@@ -13,6 +13,9 @@ RUNS_PER_CONFIGURATION = 3
 # The indices corresponding to the lines containing (mean and maximum) (training and validation) validation accuracy values within a run
 LINE_INDICES = range(7, 11)
 
+# The index containing the path to the saved validation set (including the hyperparameters)
+HYPERPARAMETER_LINE_INDEX = 11
+
 # Read all lines from standard input
 input_lines = sys.stdin.readlines()
 # Calculate the total number of runs, based on the known number of lines per run
@@ -27,6 +30,10 @@ for configuration_index in range(num_runs // RUNS_PER_CONFIGURATION):
     max_training_accumulator = 0
     mean_validation_accumulator = 0
     max_validation_accumulator = 0
+    # Create a variable to store the hyperparameter path in
+    hyperparameter_path = None
+    # Store a corresponding value for the maximum validation accuracy
+    max_validation_accuracy_for_hyperparameter_path = 0
     # Iterate over the runs within that configuration
     for run_index in range(RUNS_PER_CONFIGURATION):
         # Calculate the starting index of this run
@@ -38,11 +45,17 @@ for configuration_index in range(num_runs // RUNS_PER_CONFIGURATION):
         max_training_accumulator += max_training
         mean_validation_accumulator += mean_validation
         max_validation_accumulator += max_validation
-    # Calculate the average accuracy statistics for this configuration, and output them to the user
-    print(f'Average mean training accuracy for configuration {configuration_index}: {mean_training_accumulator / RUNS_PER_CONFIGURATION}')
-    print(f'Average maximum training accuracy for configuration {configuration_index}: {max_training_accumulator / RUNS_PER_CONFIGURATION}')
-    print(f'Average mean validation accuracy for configuration {configuration_index}: {mean_validation_accumulator / RUNS_PER_CONFIGURATION}')
-    print(f'Average maximum validation accuracy for configuration {configuration_index}: {max_validation_accumulator / RUNS_PER_CONFIGURATION}')
+        # If the maximum validation accuracy on this run is better than the previous best
+        if max_validation > max_validation_accuracy_for_hyperparameter_path:
+            # Get the path containing the hyperparameters from the defined line and store it in the variable
+            hyperparameter_path = input_lines[run_starting_index + HYPERPARAMETER_LINE_INDEX].split()[-1]
+            # Also update the maximum validation accuracy, so if future runs are less accurate they will not overwrite the path
+            max_validation_accuracy_for_hyperparameter_path = max_validation
+    # Calculate the average accuracy statistics for this configuration, and output them to the user alongside the last hyperparameter path
+    print(f'Average mean training accuracy for configuration {configuration_index} with hyperparameters {hyperparameter_path}: {mean_training_accumulator / RUNS_PER_CONFIGURATION}')
+    print(f'Average maximum training accuracy for configuration {configuration_index} with hyperparameters {hyperparameter_path}: {max_training_accumulator / RUNS_PER_CONFIGURATION}')
+    print(f'Average mean validation accuracy for configuration {configuration_index} with hyperparameters {hyperparameter_path}: {mean_validation_accumulator / RUNS_PER_CONFIGURATION}')
+    print(f'Average maximum validation accuracy for configuration {configuration_index} with hyperparameters {hyperparameter_path}: {max_validation_accumulator / RUNS_PER_CONFIGURATION}')
     # Add the average mean values to their corresponding lists
     training_averages.append(mean_training_accumulator / RUNS_PER_CONFIGURATION)
     validation_averages.append(mean_validation_accumulator / RUNS_PER_CONFIGURATION)
