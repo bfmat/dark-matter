@@ -11,9 +11,9 @@ def create_model() -> Model:
     # Create a neural network composed of dense layers with dropout and L2 regularization, using hyperbolic tangent activations
     activation = 'tanh'
     regularizer = l2(0)
-    dropout = 0
+    dropout = 0.001
     # Create two inputs, one for the audio data and one for the position, and concatenate them together
-    inputs = Input((40,))
+    inputs = Input((80,))
     x = BatchNormalization()(inputs)
     x = Dense(12, activation=activation, kernel_regularizer=regularizer)(x)
     x = Dropout(dropout)(x)
