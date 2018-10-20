@@ -111,8 +111,6 @@ The raw waveform $\omega$ was converted into the frequency domain by means of a 
 
 Beyond this, the banded Fourier transform $\beta_{8}$ (which is the input to the AP function and the original machine learning analysis) was computed by integrating the resonant energy over all frequencies within each of a set of bands. This can be thought of as a method of signal downscaling, compressing the information into a smaller number of data points.
 
-This process was generalized to several other banding resolutions. Higher-resolution counterparts of $\beta_{8}$ included $\beta_{20}$ and $\beta_{40}$.
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{audio}
@@ -317,13 +315,13 @@ This table shows that simple network architectures seem to produce better accura
 
 Preprocessing the audio by applying a Fourier transform may be advantageous. If the frequency distribution and overall volume are indeed the most important factors for discrimination, the network can gather them straight from the Fourier transform $\beta_{N}$ rather than having to analyze $\omega$ to extract this information.
 
-In addition to the Fourier transform used in the original PICO-60 analysis, higher resolutions were computed by similar means. These included $\beta _{20}$ and $\beta _{40}$. Also, the full-resolution $\beta _{50,001}$ was input into a neural network directly, without any downscaling.
+In addition to the banded Fourier transform $\beta_{8}$ used in the original PICO-60 analysis, the full-resolution $\beta _{50,001}$ was input into a neural network directly, without any downscaling.
 
-This time, position corrections were optionally applied to the input data, as they were the input to Acoustic Parameter. The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$ and \\ $FourierMLP(PosCor(\beta_{N}, \chi))$. Several different resolutions $N$ of $\beta_{N}$ were used. While a variety of network architectures were tested, most had a small number of layers (on the order of three), applied dropout and L2 regularization, and used batch normalization once again.
+When $\beta_{8}$ was used as input, position corrections were optionally applied to the input data, as they were the input to Acoustic Parameter. The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$ and \\ $FourierMLP(PosCor(\beta_{N}, \chi))$. While a variety of network architectures were tested, most had a small number of layers (on the order of three), applied dropout and L2 regularization, and used batch normalization once again.
 
 \subsubsection{Results}
 
-It became evident very quickly that a high resolution was not required to get a high accuracy relative to the ground truth data. $FourierMLP(\beta_{8})$ managed an excellent 98\% validation accuracy, and also produced a mean class-wise standard deviation of 0.29. Its very decisive prediction distribution can be observed in Figure \ref{banded_no_pos_input_hist}. Increasing the number of bands to 20 did not improve the results; accuracy only reached 95\%, with an increased mean standard deviation of 0.42. Using 40 bands reduced the accuracy once again, to 91\%.
+It became evident very quickly that a high resolution was not required to get a high accuracy relative to the ground truth data. $FourierMLP(\beta_{8})$ managed an excellent 98\% validation accuracy, and also produced a mean class-wise standard deviation of 0.29. Its very decisive prediction distribution can be observed in Figure \ref{banded_no_pos_input_hist}.
 
 Very interestingly, $FourierMLP(\beta_{8})$ performed better than $FourierMLP(PosCor(\beta_{8}), \chi))$, which produced an accuracy value of 96\%. Both of these results were better than any of the network architectures trained on $\omega$.
 
@@ -348,18 +346,6 @@ The following tables compare various multi-layer perceptron discriminators, with
             $FourierMLP(\beta_{8})$ & 0 & 0.5 & 2 & 98\% & 100\% & 98\% & 0.29 \\
             % ../experimental_data/validation_results/2018_07_17_banded_frequency_not_position_corrected/banded_low_resolution_time1531831056_epoch249.json
             \hline
-            $FourierMLPWithPos(\beta_{8}, \chi)$ & 0 & 0.5 & 3 & 95\% & 100\% & 92\% & 0.44 \\
-            % ../experimental_data/validation_results/2018_07_17_banded_frequency_not_position_corrected_with_position_input/banded_low_resolution_time1531837503_epoch18.json
-            \hline
-            $FourierMLPWithPos(\beta_{20}, \chi)$ & 0.003 & 0.25 & 3 & 93\% & 99\% & 92\% & 0.54 \\
-            % ../experimental_data/validation_results/2018_07_20_20_bands/high_resolution_frequency_time1532105605_epoch90.json
-            \hline
-            $FourierMLPWithPos(\beta_{20}, \chi)$ & 0 & 0 & 3 & 94\% & 99\% & 93\% & 0.52 \\
-            % ../experimental_data/validation_results/2018_07_20_20_bands_no_regularization/high_resolution_frequency_time1532113464_epoch172.json
-            \hline
-            $FourierMLPWithPos(\beta_{40}, \chi)$ & 0 & 0 & 3 & 91\% & 98\% & 90\% & 0.57 \\
-            % ../experimental_data/validation_results/2018_07_20_40_bands/high_resolution_frequency_time1532107386_epoch101.json
-            \hline
             $FourierMLP(\beta_{50,001})$ & 0 & 0 & 2 & 95\% & 94\% & 98\% & 0.47 \\
             % ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input//dropout0/l2_lambda0/hidden_layers1/time1540053737_epoch170.json
             \hline
@@ -376,7 +362,7 @@ The following tables compare various multi-layer perceptron discriminators, with
     \end{center}
 \end{minipage}
 
-It is very clear in Table \ref{fft_wall_cuts} that higher resolutions do not improve accuracy. Regularization, both dropout and L2, appears to have relatively little effect.
+It is very clear in Table \ref{fft_wall_cuts} that higher resolution data does not improve accuracy. Regularization, both dropout and L2, appears to have relatively little effect.
 
 \subsection{Convolutional Neural Network for Image Window Analysis}
 
