@@ -23,7 +23,7 @@ event_data_set = EventDataSet(
 training_inputs, training_ground_truths, validation_inputs, validation_ground_truths = \
     event_data_set.audio_alpha_classification(
         loading_function=lambda bubble: load_bubble_frequency_domain(bubble, banded=False),
-        include_positions=True
+        include_positions=False
     )
 
 # Iterate over the valid configurations for dropout, L2 lambda, and number of hidden layers
@@ -39,17 +39,13 @@ for dropout in [0, 0.25, 0.5]:
             print('L2 Lambda:', l2_lambda)
             print('Number of Hidden Layers:', hidden_layers)
             # Create a description string containing the hyperparameters, which is used when saving test data
-            description = f'high_res_grid_search_dropout{dropout}_l2_lambda{l2_lambda}_hidden_layers{hidden_layers}_'
+            description = f'high_res_grid_search/dropout{dropout}/l2_lambda{l2_lambda}/hidden_layers{hidden_layers}'
 
             # Create a neural network model that includes several dense layers with hyperbolic tangent activations, L2 regularization, and batch normalization
             regularizer = l2(l2_lambda)
             activation = 'tanh'
-            # Create two inputs, one for the audio data and one for the position, and concatenate them together
-            audio_input = Input((100_002,))
-            # Take a separate input for the position, and concatenate it with the audio input
-            position_input = Input((3,))
-            x = concatenate([audio_input, position_input])
-            x = BatchNormalization()(x)
+            inputs = Input((100_002,))
+            x = BatchNormalization()(inputs)
             # If there are 3 hidden layers, include an earlier one with 16 neurons
             if hidden_layers == 3:
                 x = Dense(16, activation=activation, kernel_regularizer=regularizer)(x)
@@ -62,8 +58,7 @@ for dropout in [0, 0.25, 0.5]:
                 x = Dense(8, activation=activation, kernel_regularizer=regularizer)(x)
                 x = Dropout(dropout)(x)
             output = Dense(1, activation='sigmoid', kernel_regularizer=regularizer)(x)
-            # Create a model with both inputs
-            model = Model(inputs=[audio_input, position_input], outputs=output)
+            model = Model(inputs=inputs, outputs=output)
             # Output a summary of the model's architecture
             print(model.summary())
             # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
