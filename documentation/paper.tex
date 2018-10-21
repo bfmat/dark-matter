@@ -131,7 +131,7 @@ For each event that is captured, four cameras within the PICO-60 apparatus each 
 
 \textit{3D Position}
 
-The 3-dimensional position $\chi$ of the bubble within the vessel is calculated using triangulation, based on the known positions and angles of the cameras and the position of the bubble within the field of view of each camera. This is used in the banded frequency position correction function $PosCor(\beta _{8}, \chi)$, which corrects $\beta _{8}$ for variations in amplitude which depend on the position of the bubble. It is also used for $FidWallCut(D)$.
+The 3-dimensional position $\chi$ of the bubble within the vessel is calculated using triangulation, based on the known positions and angles of the cameras and the position of the bubble within the field of view of each camera. This is used in the banded frequency position correction function $PosCor(\beta _{8}, \chi)$, which corrects $\beta _{8}$ for variations in amplitude which depend on the position of the bubble. It is also used for {\it FidWallCut}$(D)$.
 
 \subsection{Data Cuts}
 
@@ -141,7 +141,7 @@ The initial data set $D$ to which these cuts are applied consists of all events 
 
 \subsubsection{Basic Quality Cut}
 
-A number of cuts are necessarily applied to all data to ensure meaningful results. Otherwise, significant overfitting on biases in the data is likely. This basic quality cut $QualCut(D)$ consists of the following restrictions:
+A number of cuts are necessarily applied to all data to ensure meaningful results. Otherwise, significant overfitting on biases in the data is likely. This basic quality cut {\it QualCut}$(D)$ consists of the following restrictions:
 
 \begin{itemize}
     \item The run was not collected during engineering or testing
@@ -170,12 +170,12 @@ Events that occur near the walls of the vessel have acoustic properties which ar
     \caption{\label{} A visualization of the fiducial cuts and how they match up with the pressure and acoustic cuts.}
 \end{figure}
 
-The complete wall cut $WallCut(D)$ is a composition of the fiducial cut $FidWallCut(D)$ (which makes use of the 3D position $\chi$), the pressure cut $PresWallCut(D)$ (which uses data from the fast pressure transducer), and the acoustic cut $AcWallCut(D)$ (which uses the banded Fourier transform $\beta _{8}$). Those cuts restrict data as follows:
+The complete wall cut {\it WallCut}$(D)$ is a composition of the fiducial cut {\it FidWallCut}$(D)$ (which makes use of the 3D position $\chi$), the pressure cut {\it PresWallCut}$(D)$ (which uses data from the fast pressure transducer), and the acoustic cut {\it AcWallCut}$(D)$ (which uses the banded Fourier transform $\beta _{8}$). Those cuts restrict data as follows:
 
 \begin{itemize}
-    \item The fiducial cut $FidWallCut(D)$ defines a spatial area along the walls of the vessel within which no events are accepted. It determines whether events fall within this area based on the visually calculated position $\chi$.
-    \item The pressure cut $PresWallCut(D)$ restricts the pressure detected by the fast pressure transducer, without any position corrections, to be within a range of 0.3 of 1
-    \item The acoustic cut $AcWallCut(D)$ is defined using the banded Fourier transform $\beta_{8}$, and takes advantage of differences in the frequency distribution (specifically the first and second frequency bands of the first and third piezos) of wall events and non-wall events.
+    \item The fiducial cut {\it FidWallCut}$(D)$ defines a spatial area along the walls of the vessel within which no events are accepted. It determines whether events fall within this area based on the visually calculated position $\chi$.
+    \item The pressure cut {\it PresWallCut}$(D)$ restricts the pressure detected by the fast pressure transducer, without any position corrections, to be within a range of 0.3 of 1
+    \item The acoustic cut {\it AcWallCut}$(D)$ is defined using the banded Fourier transform $\beta_{8}$, and takes advantage of differences in the frequency distribution (specifically the first and second frequency bands of the first and third piezos) of wall events and non-wall events.
 \end{itemize}
 
 \section{Machine Learning Techniques}
@@ -238,7 +238,9 @@ Each of the learning algorithms used in this study applies a neural network. For
 \end{itemize}
 
 
-Several of these hyperparameters are optimized at a time, using a grid search. Given $n$ different hyperparameters to optimize and $m$ different possible values for each, $m^n$ different networks are trained (using every possible combination of hyperparameters) and tested on a validation set.
+Several of these hyperparameters are optimized at a time, using a grid search. Given $n$ different hyperparameters to optimize and $m$ different possible values for each, $m^n$ different networks are trained (using every possible combination of hyperparameters) and tested on a validation set. For space reasons, only a small subset of the tested configurations are displayed in tables throughout this paper.
+
+In general, the parameters for each grid search were chosen based on some initial empirical experimentation to determine the general range within the entire parameter space that work reasonably well. There was a limit to how many parameters could be tested, especially in the case of semi-supervised learning, as some of the grid searches took several days to run.
 
 For stochastic optimization of the loss function while training, the Adam \cite{adam} optimizer was used where not otherwise specified.
 
@@ -258,7 +260,7 @@ All supervised learning configurations were trained and evaluated based on their
 
 \begin{enumerate}
     \item In future experiments, when no AP equivalent is available, impure data is the only information available for training. The network structure should be selected to accommodate this.
-    \item In general, supervised learning systems learn to replicate biases present in the training data set. Thus, to evaluate the network's effectiveness at processing the input data, the run type (which is used for training) must be used as a baseline instead of AP.
+    \item In general, supervised learning systems learn to replicate biases present in the training data set. Thus, to evaluate the network's effectiveness at processing the input data, the run type (which is used for training) must be used as a baseline instead of AP (which is never provided to the network during the training process).
 \end{enumerate}
 
 \subsection{Convolutional Neural Network for Raw Waveform Analysis}
@@ -267,7 +269,16 @@ All supervised learning configurations were trained and evaluated based on their
 
 A convolutional neural network was used for analyzing the raw waveform $\omega$ directly, without any preprocessing whatsoever. It is furthermore referred to as $DeepConv(\omega)$. Direct processing of the waveform avoids any destruction of information; theoretically, a sufficiently complex neural network should be capable of deriving any characteristics needed.
 
-For this task, a very deep (20 layers in its shallowest configuration) one-dimensional fully convolutional neural network was applied. The architecture was inspired by the M34-res network \cite{verydeepconvnets} for analysis of raw waveforms. L2 regularization was used to alleviate overfitting, and batch normalization was applied to the input to stabilize training. The network's hyperparameters were modified significantly through manual empirical testing as well as grid searches.
+For this task, a very deep (20 layers in its shallowest configuration) one-dimensional fully convolutional neural network was applied. The architecture was inspired by the M34-res network \cite{verydeepconvnets} for analysis of raw waveforms. L2 regularization was used to alleviate overfitting, and batch normalization was applied to the input to stabilize training.
+
+The following hyperparameters were tested during a grid search:
+\begin{itemize}
+    \item L2 Regularization $\lambda \in \{0.0003, 0.001, 0.003\}$
+    \item Dense Layer Dropout $\in \{0, 0.25, 0.5\}$
+    \item Convolutional Filters $\in \{24, 48\}$
+    \item Convolutional Kernel Size $\in \{3, 5\}$
+    \item Number of Convolutional Layers $\in \{17, 32\}$
+\end{itemize}
 
 \subsubsection{Results}
 
@@ -275,17 +286,17 @@ During early experiments with shallower network architectures, it was revealed t
 
 When this extraneous information was cropped out and the architecture was modified, both accuracy and class-wise standard deviation remained quite high. The most accurate configuration during a grid search was 95\% accurate and had a standard deviation of 0.52 (seen in Figure \ref{waveform_hist}). This is better by both metrics than the multi-layer perceptron used in the original PICO-60 analysis.
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{waveform_hist}
-    \caption{\label{waveform_hist} Prediction distribution of the best $DeepConv(\omega)$ discriminator. (Validation Event Count is the number of events in the validation set that fall within a certain network prediction band.)}
+    \caption{\label{waveform_hist} Prediction distribution of the best {\it DeepConv}$(\omega)$ discriminator. (Validation Event Count is the number of events in the validation set that fall within a certain network prediction band.)}
 \end{figure}
 
-The following tables show the results of several $DeepConv(\omega)$ discriminators produced throughout testing, with corresponding network hyperparameters.
+The following tables show the results of several {\it DeepConv}$(\omega)$ discriminators produced throughout testing, with corresponding network hyperparameters.
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{$DeepConv(\omega)$ configurations.}
+        \captionof{table}{Performance of {\it DeepConv}$(\omega)$ configurations.}
         \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
             \hline
             L2 $\lambda$ & Dropout & Filters & Kernel & Conv Layers & Max Accuracy & Precision & Recall & CWSD \\
@@ -319,43 +330,50 @@ In addition to the banded Fourier transform $\beta_{8}$ used in the original PIC
 
 When $\beta_{8}$ was used as input, position corrections were optionally applied to the input data, as they were the input to Acoustic Parameter. The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$ and \\ $FourierMLP(PosCor(\beta_{N}, \chi))$. While a variety of network architectures were tested, most had a small number of layers (on the order of three), applied dropout and L2 regularization, and used batch normalization once again.
 
+The following hyperparameters were tested during a grid search:
+\begin{itemize}
+    \item Dropout $\in \{0, 0.25, 0.5\}$
+    \item L2 Regularization $\lambda \in \{0, 0.0003, 0.001, 0.003, 0.01\}$
+    \item Number of Layers $\in \{2, 3, 4\}$
+\end{itemize}
+
 \subsubsection{Results}
 
-It became evident very quickly that a high resolution was not required to get a high accuracy relative to the ground truth data. $FourierMLP(\beta_{8})$ managed an excellent 98\% validation accuracy, and also produced a mean class-wise standard deviation of 0.29. Its very decisive prediction distribution can be observed in Figure \ref{banded_no_pos_input_hist}.
+It became evident very quickly that a high resolution was not required to get a high accuracy relative to the ground truth data. {\it FourierMLP}$(\beta_{8})$ managed an excellent 98\% validation accuracy, and also produced a mean class-wise standard deviation of 0.29. Its very decisive prediction distribution can be observed in Figure \ref{banded_no_pos_input_hist}.
 
-Very interestingly, $FourierMLP(\beta_{8})$ performed better than $FourierMLP(PosCor(\beta_{8}), \chi))$, which produced an accuracy value of 96\%. Both of these results were better than any of the network architectures trained on $\omega$.
+Very interestingly, {\it FourierMLP}$(\beta_{8})$ performed better than {\it FourierMLP}$(${\it PosCor}$(\beta_{8}), \chi))$, which produced an accuracy value of 96\%. Both of these results were better than any of the network architectures trained on $\omega$.
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{banded_no_pos_input_hist}
-    \caption{\label{banded_no_pos_input_hist} Prediction distribution of the best $FourierMLP(\beta_{8})$ discriminator.}
+    \caption{\label{banded_no_pos_input_hist} Prediction distribution of the best {\it FourierMLP}$(\beta_{8})$ discriminator.}
 \end{figure}
 
 The following tables compare various multi-layer perceptron discriminators, with and without wall cuts.
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{Neural networks trained on Fourier transforms.} \label{fft_wall_cuts}
+        \captionof{table}{Performance of {\it FourierMLP}$(\beta_{N})$ configurations.} \label{fft_wall_cuts}
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
             Configuration & L2 $\lambda$ & Dropout & Layers & Max Acc & Prec & Recall & CWSD \\
             \hline
-            $FourierMLP(PosCor(\beta_{8}, \chi))$ & 0 & 0.5 & 2 & 96\% & 98\% & 97\% & 0.42 \\
+            {\it FourierMLP}$(${\it PosCor}$(\beta_{8}, \chi))$ & 0 & 0.5 & 2 & 96\% & 98\% & 97\% & 0.42 \\
             % ../experimental_data/validation_results/2018_07_16_banded_frequency_validation_passing_weighted_3_times.json
             \hline
-            $FourierMLP(\beta_{8})$ & 0 & 0.5 & 2 & 98\% & 100\% & 98\% & 0.29 \\
+            {\it FourierMLP}$(\beta_{8})$ & 0 & 0.5 & 2 & 98\% & 100\% & 98\% & 0.29 \\
             % ../experimental_data/validation_results/2018_07_17_banded_frequency_not_position_corrected/banded_low_resolution_time1531831056_epoch249.json
             \hline
-            $FourierMLP(\beta_{50,001})$ & 0 & 0 & 2 & 95\% & 94\% & 98\% & 0.47 \\
+            {\it FourierMLP}$(\beta_{50,001})$ & 0 & 0 & 2 & 95\% & 94\% & 98\% & 0.47 \\
             % ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input//dropout0/l2_lambda0/hidden_layers1/time1540053737_epoch170.json
             \hline
-            $FourierMLP(\beta_{50,001})$ & 0.001 & 0 & 4 & 95\% & 95\% & 98\% & 0.46 \\
+            {\it FourierMLP}$(\beta_{50,001})$ & 0.001 & 0 & 4 & 95\% & 95\% & 98\% & 0.46 \\
             % ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/time1540054370_epoch174.json
             \hline
-            $FourierMLP(\beta_{50,001})$ & 0.001 & 0.5 & 4 & 94\% & 93\% & 98\% & 0.54 \\
+            {\it FourierMLP}$(\beta_{50,001})$ & 0.001 & 0.5 & 4 & 94\% & 93\% & 98\% & 0.54 \\
             % ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers3/time1540056735_epoch50.json
             \hline
-            $FourierMLP(\beta_{50,001})$ & 0.003 & 0.25 & 3 & 93\% & 92\% & 98\% & 0.57 \\
+            {\it FourierMLP}$(\beta_{50,001})$ & 0.003 & 0.25 & 3 & 93\% & 92\% & 98\% & 0.57 \\
             % ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers2/time1540055639_epoch113.json
             \hline
         \end{tabular}
@@ -370,7 +388,14 @@ It is very clear in Table \ref{fft_wall_cuts} that higher resolution data does n
 
 It is an open question whether or not there is any information in the image data $\iota$ that could be used to distinguish between particle classes. Relative to the extremely short period of time in which the bubble forms (on the scale of nanoseconds), the framerate of the camera (340Hz) is extremely slow. While the very early stages of bubble formation (when the sound is produced) are known to differ depending on whether the bubble was created by a nuclear recoil or an alpha particle, it is not experimentally known whether any visually apparent differences persist when the bubble is visible.
 
-In an effort to resolve this, a two-dimensional convolutional neural network was applied to the task of discriminating based on $\iota$, referred to as $ImageConv(\iota)$. The network architecture consists of a moderate number of convolutional layers (on the scale of nine) and three dense layers at the end. L2 regularization was used on all layers, and dropout was additionally used on the dense layers.
+In an effort to resolve this, a two-dimensional convolutional neural network was applied to the task of discriminating based on $\iota$, referred to as {\it ImageConv}$(\iota)$. The network architecture consists of a moderate number of convolutional layers (on the scale of nine) and three dense layers at the end. L2 regularization was used on all layers, and dropout was additionally used on the dense layers.
+
+The following hyperparameters were tested during a grid search:
+\begin{itemize}
+    \item Dropout $\in \{0, 0.25, 0.5\}$
+    \item L2 Regularization $\lambda \in \{0, 0.0003, 0.001, 0.003, 0.006, 0.01\}$
+    \item Number of Convolutional Layers $\in \{6, 9, 12\}$
+\end{itemize}
 
 \subsubsection{Results}
 
@@ -379,12 +404,12 @@ Throughout a variety of different network architectures, the best validation acc
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{image_hist}
-    \caption{\label{image_hist} Prediction distribution of one of the best $ImageConv(\iota)$ discriminators.}
+    \caption{\label{image_hist} Prediction distribution of one of the best {\it ImageConv}$(\iota)$ discriminators.}
 \end{figure}
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{Performance of $ImageConv(\iota)$ configurations, trained without $WallCut(D)$.}
+        \captionof{table}{Performance of {\it ImageConv}$(\iota)$ configurations.}
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
             L2 $\lambda$ & Dropout & Convolutional Layers & Dense Layers & Max Accuracy & Precision & Recall & CWSD \\
@@ -412,7 +437,7 @@ The high standard deviations across the board are further evidence for the hypot
 
 \subsection{Performance Summary}
 
-The following tables compare the accuracy and mean class-wise standard deviation values of certain highlight supervised learning configurations with multiple input formats, with the original PICO-60 neural network provided as a baseline.
+The following tables compare the accuracy and mean class-wise standard deviation values of certain successful supervised learning configurations with multiple input formats.
 
 \begin{minipage}{\textwidth}
     \begin{center}
@@ -421,27 +446,23 @@ The following tables compare the accuracy and mean class-wise standard deviation
             \hline
             Configuration & Max Accuracy & Precision & Recall & CWSD \\
             \hline
-            $DeepConvWithPos(\omega, \chi)$ & 96\% & 99\% & 96\% & 0.41 \\
+            {\it DeepConv}$(\omega)$ & 95\% & 97\% & 97\% & 0.52 \\
             \hline
-            $FourierMLP(PosCor(\beta_{8}))$ & 96\% & 98\% & 97\% & 0.42 \\
+            {\it FourierMLP}$(${\it PosCor}$(\beta_{8}))$ & 96\% & 98\% & 97\% & 0.42 \\
             \hline
-            $FourierMLP(\beta_{8})$ & 98\% & 100\% & 98\% & 0.29 \\
+            {\it FourierMLP}$(\beta_{8})$ & 98\% & 100\% & 98\% & 0.29 \\
             \hline
-            $FourierMLPWithPos(\beta_{20}, \chi)$ & 94\% & 99\% & 93\% & 0.52 \\
+            {\it FourierMLP}$(\beta_{50,001})$ & 95\% & 95\% & 98\% & 0.46 \\
             \hline
-            $FourierMLPWithPos(\beta_{40}, \chi)$ & 91\% & 98\% & 90\% & 0.57 \\
-            \hline
-            $FourierMLPWithPos(\beta_{50,001}, \chi)$ & 91\% & 94\% & 93\% & 0.53 \\
-            \hline
-            Original PICO-60 Neural Network & 83\% & 83\% & 95\% & 0.83 \\
+            {\it ImageConv}$(\iota)$ & 68\% & 68\% & 100\% & 0.97 \\
             \hline
         \end{tabular}
     \end{center}
 \end{minipage}
 
-The key conclusion to be drawn from the above tables is that the low-resolution Fourier transform $\beta_{8}$ is by far the most effective input format. Higher resolutions seem to make performance worse, likely due to overfitting. It is significantly better than the original PICO-60 neural network, and is more decisive (as measured by the class-wise standard deviation).
+The key conclusion to be drawn from the above tables is that the low-resolution Fourier transform $\beta_{8}$ is by far the most effective input format. Higher resolutions seem to make performance worse, likely due to overfitting.
 
-Based on this result, experimentation with semi-supervised learning proceeded using \\ $FourierMLP(PosCor(\beta_{8}, \chi))$, applying a three-layer perceptron architecture. There were two main reasons for this:
+Based on this result, experimentation with semi-supervised learning proceeded using \\ {\it FourierMLP}$(${\it PosCor}$(\beta_{8}, \chi))$, applying a three-layer perceptron architecture. There were two main reasons for this:
 
 \begin{enumerate}
     \item This was a highly effective configuration, producing 97\% accuracy and a class-wise standard deviation dramatically better than the original PICO-60 neural network on that data set.
@@ -485,7 +506,7 @@ The gradients produced by this technique are used for training in the same way a
 
 Gradients are calculated using the gravitational differentiation function $GravDiff(p, \psi, g)$, which is parameterized by the network's existing prediction $p$ on the training example in question, the degree $\psi$ of the piecewise exponential function used to distort the response of the gradient, and the gravitational multiplier $g$. The function is defined as follows:
 
-$GravDiff(p, \psi, g) = g \cdot sgn(p) \cdot abs(tanh(2(p - 0.5))) ^ \psi$
+{\it GravDiff}$(p, \psi, g) = g \cdot sgn(p) \cdot abs(tanh(2(p - 0.5))) ^ \psi$
 
 It is a distortion of the hyperbolic tangent that flattens the central range and comparatively exaggerates the asymptote on either side. The equation above can be described in the following steps:
 
@@ -495,12 +516,12 @@ It is a distortion of the hyperbolic tangent that flattens the central range and
     \item \label{exponent} What is really desired is a shallow slope in the center (so low-confidence network outputs near 0.5 will produce very shallow output gradients). Apply a relatively large exponent which is $\psi$ (in the range of 3 to 11) to squash values close to 0 closer to 0.
 \end{enumerate}
 
-(Note that step \ref{exponent} only works if $\phi$ is an odd integer (because odd integer exponents preserve the sign), limiting the ability to fine-tune this function by changing $\psi$. To resolve this, a piecewise exponential function is used instead, where the absolute value is taken prior to applying the power and the sign is multiplied back in afterwards. This permits use of the full range of curves produced by even and non-integer values of $\psi$.)
+(Note that step \ref{exponent} only works if $\psi$ is an odd integer (because odd integer exponents preserve the sign), limiting the ability to fine-tune this function by changing $\psi$. To resolve this, a piecewise exponential function is used instead, where the absolute value is taken prior to applying the power and the sign is multiplied back in afterwards. This permits use of the full range of curves produced by even and non-integer values of $\psi$.)
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{grav_diff}
-    \caption{\label{grav_diff} A visualization of $GravDiff(p, \psi, g)$ with respect to $p$ and $\psi$.}
+    \caption{\label{grav_diff} A visualization of {\it GravDiff} $(p, \psi, g)$ with respect to $p$ and $\psi$.}
 \end{figure}
 
 \subsubsection{Application}
@@ -509,7 +530,7 @@ This function is applied in a training algorithm that is parameterized by the se
 
 \begin{enumerate}
     \item Train $NN(x)$ for a single epoch on the combined set $\varsigma \cup \upsilon$, using the predefined ground truths for $\varsigma$ (with a mean squared error loss function) and the most recently calculated gravitational gradients for each of the examples in $\upsilon$.
-    \item Calculate predictions $p$ with $NN(x)$ on the entirety of $\upsilon$. Calculate $GravDiff(p, \psi, g)$ and record the resulting gradients for the next iteration.
+    \item Calculate predictions $p$ with $NN(x)$ on the entirety of $\upsilon$. Calculate {\it GravDiff}$(p, \psi, g)$ and record the resulting gradients for the next iteration.
     \item Increment $g$ by $\delta_{g}$. At the beginning, when $g = 0$, training will be entirely based on the labeled set $\varsigma$, and progressively, over the course of a run, the gravitational effect increases with $g$.
 \end{enumerate}
 
@@ -517,7 +538,7 @@ This system was trained using a multi-layer perceptron with an 8-band Fourier tr
 
 \subsubsection{Results}
 
-During a grid search of parameters of the gravitational differentiation algorithm (in addition to the stochastic gradient descent learning rate), the highest mean accuracy over three runs of an individual configuration was 99\%. The highest accuracy was obtained with 256 labeled examples in the set $\varsigma$ (out of 496 total training examples), which equates to 52\% of the data being labeled. High accuracy statistics in this range were also obtained using 128 examples (99\% accuracy, once again) and 64 examples (97\% accuracy). 32 examples produced a much lower maximum accuracy, at only 83\%. From this, it is evident that it is possible to achieve very high accuracy using this technique. It is also clear that, in general, larger initial sets produce higher performance.
+During a grid search of parameters of the gravitational differentiation algorithm, in addition to the stochastic gradient descent learning rate (a multiplier that defines how quickly and precisely optimization occurs), the highest mean accuracy over three runs of an individual configuration was 99\%. The highest accuracy was obtained with 256 labeled examples in the set $\varsigma$ (out of 496 total training examples), which equates to 52\% of the data being labeled. High accuracy statistics in this range were also obtained using 128 examples (99\% accuracy, once again) and 64 examples (97\% accuracy). 32 examples produced a much lower maximum accuracy, at only 83\%. From this, it is evident that it is possible to achieve very high accuracy using this technique. It is also clear that, in general, larger initial sets produce higher performance.
 
 However, the four hyperparameters optimized during the grid search were observed to have a weak polynomial correlation with the network's accuracy. This implies that the training process is generally insensitive to variations in those particular network parameters.
 
@@ -699,13 +720,17 @@ The following table directly compares performance of the most successful semi-su
             \hline
             256 & ICN & 99\% & 99\% & 100\% & 0.15 \\
             \hline
+            278 & PICO-60 ML & 80\% & 76\% & 100\% & 0.64 \\
+            \hline
             $\infty$ & AP & 100\% & 100\% & 100\% & 0.41 \\
             \hline
         \end{tabular}
     \end{center}
 \end{minipage}
 
-Note that in addition to achieving similar accuracy, configurations from both semi-supervised learning algorithms produce significantly more decisive predictions compared to AP, as measured by the class-wise standard deviation.
+As observed in this table, semi-supervised learning algorithms are significantly more accurate at replicating AP than the original PICO-60 machine learning analysis.
+
+Compared to AP, in addition to achieving similar accuracy, configurations from both semi-supervised learning algorithms produce significantly more decisive predictions as measured by the class-wise standard deviation.
 
 \section{Conclusions}
 
@@ -719,7 +744,7 @@ While there is still of course a place for conventionally developed discriminato
 
 \section{Technologies}
 
-All programming for this study was done in Python 3. Keras \cite{keras}, running on a TensorFlow backend, was used for all machine learning tasks. NumPy \cite{numpy} and SciPy \cite{scipy} were used for linear algebra and signal processing. ROOT \cite{root}, scikit-image \cite{scikit-image}, and scikit-learn \cite{scikit-learn} were used for data loading and storage. Matplotlib was used for data visualization.
+All programming for this study was done in Python 3. Keras \cite{keras}, running on a TensorFlow backend, was used for all machine learning tasks. NumPy \cite{numpy} and SciPy \cite{scipy} were used for linear algebra and signal processing. ROOT \cite{root}, scikit-image \cite{scikit-image}, and scikit-learn \cite{scikit-learn} were used for data loading and storage. Matplotlib \cite{matplotlib} was used for data visualization.
 
 \printbibliography
 
