@@ -17,7 +17,7 @@ from utilities.verify_arguments import verify_arguments
 verify_arguments('JSON data file')
 
 # Load the data set from the file, ignoring the run type ground truths
-events, ground_truths, network_outputs = load_test(sys.argv[1])
+events, _, network_outputs = load_test(sys.argv[1])
 # Get the acoustic parameter and neural network score data from the events, if they are present (if one is, both will be)
 if hasattr(events[0], 'logarithmic_acoustic_parameter'):
     acoustic_parameters, original_neural_network_scores = zip(
@@ -30,7 +30,7 @@ else:
     acoustic_parameters = random_values
     original_neural_network_scores = random_values
 # Calculate actual neutron/alpha ground truths based on AP
-_ = np.array(acoustic_parameters) > 0.25
+ground_truths = np.array(acoustic_parameters) > 0.25
 
 # Iterate over the three criteria standard deviations will be calculated for, with corresponding names and classification thresholds
 for criterion_data, criterion_name, classification_threshold in zip(
