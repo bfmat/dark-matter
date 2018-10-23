@@ -39,11 +39,11 @@ def visualize_and_save_audio(time_domain: np.ndarray, frequency_domain: np.ndarr
         plt.subplot(channels, 2, frequency_domain_plot_index)
         plt.plot(frequencies_hz, frequency_domain_channel)
         plt.xlabel('Frequency (Hz)')
-        plt.ylabel(f'Fourier Transform (Magnitude) [Channel {channel_index}]')
+        plt.ylabel(f'Fourier Transform Magnitude (Channel {channel_index})')
         # Use a logarithmic scale for the X axis (because it corresponds to frequency)
         plt.xscale('log')
         # Set the Y scale manually (for some reason, the automatic one behaves strangely)
-        plt.ylim(-50_000, 250_000)
+        plt.ylim(-10_000, 220_000)
         # Take the time domain for this channel, save it as a WAV file, and notify the user
         file_path = os.path.expanduser(f'~/channel_{channel_index}.wav')
         wavfile.write(file_path, SAMPLE_RATE, time_domain_channel)
