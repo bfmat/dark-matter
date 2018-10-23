@@ -107,7 +107,7 @@ Discriminators can use a variety of different data formats to make predictions. 
 
 \textit{Raw Waveform}
 
-The lowest-level data derived from the piezos is the raw waveform $\omega$. This consists of a series of samples, collected at the rate of one per microsecond. They are each represented as a 16-bit integer. Only the section of the audio between sample 90,000 (inclusive) and sample 190,000 (exclusive) was used during most experiments, because there is only background noise prior to this window, and a clipped signal produced by hydraulics repressurizing the vessel after. (These sections contain no information and can be undesirably fit on by neural networks.)
+The lowest-level data derived from the piezos is the raw waveform $\omega$. This consists of a series of samples, collected at the rate of one per microsecond. They are each represented as a 16-bit integer. Only the section of the audio between sample 90,000 (inclusive) and sample 190,000 (exclusive) was used during most experiments, because there is only background noise prior to this window, and a clipped signal produced by hydraulics repressurizing the vessel after. These sections contain no information and can be undesirably fit on by neural networks. (For context, there are 250,000 samples in the entire waveform, and approximately half of them are recorded prior to the camera trigger.)
 
 \textit{Fourier Transform}
 
@@ -118,7 +118,7 @@ Beyond this, the banded Fourier transform $\beta_{8}$ (which is the input to the
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{audio}
-    \caption{\label{} An example of the cropped audio waveform $\omega$ (left) and full resolution Fourier transform $\beta_{50,001}$ (right) for both audio channels. Recorded on 2016-12-02, run 1, event 21.}
+    \caption{\label{} An example of the audio waveform $\omega$ with initial background and hydraulic noise cropped (left) and the resulting full resolution Fourier transform $\beta_{50,001}$ (right) for both audio channels. Recorded on 2016-12-02, run 1, event 21.}
 \end{figure}
 
 \subsubsection{Camera-Derived}
