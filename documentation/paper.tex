@@ -10,6 +10,8 @@
 \usepackage{wrapfig}
 \usepackage{float}
 \usepackage{caption}
+\usepackage{lineno}
+\linenumbers
 
 \renewcommand*{\Affilfont}{\footnotesize}
 
@@ -27,6 +29,8 @@
 \begin{abstract}
     The identification of non-signal events is a major hurdle to overcome for bubble chamber dark matter experiments such as PICO-60. The current practice of manually developing a discriminator function to eliminate background events is difficult when available calibration data is frequently impure and present only in small quantities. In this study, several different discriminator input/preprocessing formats and neural network architectures are applied to the task. First, they are optimized in a supervised learning context. Next, two novel semi-supervised learning algorithms are trained, and found to replicate the Acoustic Parameter (AP) discriminator previously used in PICO-60 with a mean of 97\% accuracy.
 \end{abstract}
+
+\pagebreak
 
 \section{Objective}
 
@@ -103,7 +107,7 @@ Discriminators can use a variety of different data formats to make predictions. 
 
 \textit{Raw Waveform}
 
-The lowest-level data derived from the piezos is the raw waveform $\omega$. This consists of a series of samples collected every $2.5 \times 10^{-6}$ seconds. They are each represented as a 16-bit integer. Only the section of the audio between sample 90,000 (inclusive) and sample 190,000 (exclusive) was used during most experiments, because there is only background noise prior to this window, and a clipped signal produced by hydraulics repressurizing the vessel after. (These sections contain no information and can be undesirably fit on by neural networks.)
+The lowest-level data derived from the piezos is the raw waveform $\omega$. This consists of a series of samples, collected at the rate of one per microsecond. They are each represented as a 16-bit integer. Only the section of the audio between sample 90,000 (inclusive) and sample 190,000 (exclusive) was used during most experiments, because there is only background noise prior to this window, and a clipped signal produced by hydraulics repressurizing the vessel after. (These sections contain no information and can be undesirably fit on by neural networks.)
 
 \textit{Fourier Transform}
 
@@ -114,14 +118,14 @@ Beyond this, the banded Fourier transform $\beta_{8}$ (which is the input to the
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{audio}
-    \caption{\label{} An example of the cropped audio waveform $\omega$ (on the left) and full resolution Fourier transform $\beta_{50,001}$ (on the right) for both audio channels. Recorded on 2016-12-02, run 1, event 21.}
+    \caption{\label{} An example of the cropped audio waveform $\omega$ (left) and full resolution Fourier transform $\beta_{50,001}$ (right) for both audio channels. Recorded on 2016-12-02, run 1, event 21.}
 \end{figure}
 
 \subsubsection{Camera-Derived}
 
 \textit{Image Window Sequence}
 
-For each event that is captured, four cameras within the PICO-60 apparatus each capture a sequence of 71 images before and after formation of a bubble is detected using the cameras and an image-based trigger. These raw images contain a large amount of extraneous information; they encompass the entire vessel. To reduce the input information, the image window sequence $\iota$ includes 50\texttimes50 cropped windows around the position of the bubble. The 71 frames, many of which contain either no bubble or a bubble in later stages of formation, are reduced to 10 immediately around the formation of the bubble. Five frames from before the recording trigger are included in $\iota$, because the bubble does not cause a trigger until it is already of a significant size.
+For each event that is captured, four cameras within the PICO-60 apparatus each capture a sequence of 41 images before and after formation of a bubble is detected using the cameras and an image-based trigger. These raw images contain a large amount of extraneous information; they encompass the entire vessel. To reduce the input information, the image window sequence $\iota$ includes 50\texttimes50 cropped windows around the position of the bubble. The 41 frames, many of which contain either no bubble or a bubble in later stages of formation, are reduced to 10 immediately around the formation of the bubble. Five frames from before the recording trigger are included in $\iota$, because the bubble does not cause a trigger until it is already of a significant size.
 
 \begin{figure}[h]
     \centering
@@ -137,7 +141,7 @@ The 3-dimensional position $\chi$ of the bubble within the vessel is calculated 
 
 Techniques in this study are trained and validated on a number of different data sets. The selection of these sets focused on the fundamental trade-off between quality and quantity of data; by setting a higher standard for the validity of training data, one has less data to train on.
 
-The initial data set $D$ to which these cuts are applied consists of all events recorded during PICO-60 run 2, between 2016-09-02 and 2017-06-20.
+The initial data set $D$ to which these cuts are applied consists of all events recorded in the PICO-60 detector between 2016-09-02 and 2017-06-20.
 
 \subsubsection{Basic Quality Cut}
 
@@ -145,15 +149,15 @@ A number of cuts are necessarily applied to all data to ensure meaningful result
 
 \begin{itemize}
     \item The run was not collected during engineering or testing
-    \item Recording was triggered by the camera
+    \item The recording process was triggered by the camera (as opposed to a manual trigger, et cetera)
     \item AP is not erroneously large and negative ($log_{10}(AP)>-100$)
-    \item Recorded more than 25 seconds after reaching target pressure
+    \item The event was recorded more than 25 seconds after reaching target pressure
     \item The bubble position $\chi$ was successfully calculated ($[\chi_{X}, \chi_{Y}, \chi_{Z}]\neq[-100, -100, -100]$)
 \end{itemize}
 
 \subsubsection{Bubble Multiplicity Cut}
 
-PICO-60 events which include multiple bubbles are \textit{always} neutron events; alpha particles and WIMP candidates never scatter. Thus, no discriminator is required to handle these events, so they are removed. The bubble multiplicity cut {\it MultiCut}$(D)$ consists of the following restrictions:
+PICO-60 events which include multiple bubbles are \textit{always} neutron events; alpha particles and WIMP candidates never multiply scatter. Thus, no discriminator is required to handle these events, so they are removed. The bubble multiplicity cut {\it MultiCut}$(D)$ consists of the following restrictions:
 
 \begin{itemize}
     \item Either 0 or 1 bubbles are detected based on images from the camera
