@@ -84,6 +84,6 @@ if __name__ == '__main__':
     test_gradients = np.mean(np.abs(derivative([test_inputs])[0]), axis=0)
     # Calculate and the logarithms so it is more visually obvious which are the most significant
     print('Validation gradients:')
-    print(np.log10(validation_gradients))
+    print(list(np.log10(validation_gradients)))
     print('Test gradients:')
-    print(np.log10(test_gradients))
+    print(list(np.log10(test_gradients)))
