@@ -2,6 +2,7 @@
 """Train a fully connected neural network on the numbers of pulses for each PMT in the DEAP data"""
 # Created by Brendon Matusch, August 2018
 
+import keras.backend as K
 import numpy as np
 
 from data_processing.deap_serialization import save_test
@@ -65,7 +66,7 @@ if __name__ == '__main__':
     # Create an instance of the neural network model
     model = create_model()
     # Iterate for a certain number of epochs
-    for epoch in range(100):
+    for epoch in range(30):
         # Train the model for a single epoch
         model.fit(inputs, ground_truths, validation_data=(validation_inputs, validation_ground_truths))
         # Run predictions on the validation set with the trained model, removing the single-element second axis
@@ -75,3 +76,14 @@ if __name__ == '__main__':
         # Repeat this process for the dedicated test set
         test_predictions = model.predict(test_inputs)[:, 0]
         evaluate_predictions(test_ground_truths, test_predictions, test_events, epoch, set_name='real_world_test')
+    # Once training is done, calculate the derivative of the model's input with respect to the output
+    derivative = K.function([model.input], K.gradients(model.output, model.input))
+    # Run it on the validation and test data, to calculate how each input affects the output
+    # Calculate the mean over the example axis, to get a general idea of which inputs have the most effect, and use the absolute value so positive and negative derivatives don't cancel out
+    validation_gradients = np.mean(np.abs(derivative([validation_inputs])[0]), axis=0)
+    test_gradients = np.mean(np.abs(derivative([test_inputs])[0]), axis=0)
+    # Calculate and the logarithms so it is more visually obvious which are the most significant
+    print('Validation gradients:')
+    print(np.log10(validation_gradients))
+    print('Test gradients:')
+    print(np.log10(test_gradients))
