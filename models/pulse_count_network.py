@@ -9,9 +9,9 @@ from keras.regularizers import l2
 def create_model() -> Model:
     """Create and return a fully connected neural network for pulse count information"""
     # Create a neural network model that includes several dense layers with hyperbolic tangent activations
-    activation = 'tanh'
+    activation = 'relu'
     regularizer = l2(0.001)
-    dropout = 0.25
+    dropout = 0.15
     model = Sequential([
         InputLayer(input_shape=(255,)),
         BatchNormalization(),
