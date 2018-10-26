@@ -3,24 +3,32 @@
 
 from keras.layers import Dense, Dropout, BatchNormalization, InputLayer
 from keras.models import Model, Sequential
+from keras.regularizers import l2
 
 
 def create_model() -> Model:
     """Create and return a fully connected neural network for pulse count information"""
     # Create a neural network model that includes several dense layers with hyperbolic tangent activations
     activation = 'tanh'
+    regularizer = l2(0.001)
+    dropout = 0.25
     model = Sequential([
         InputLayer(input_shape=(255,)),
         BatchNormalization(),
-        Dense(12, activation=activation),
-        Dense(1, activation='sigmoid')
+        Dense(24, activation=activation, kernel_regularizer=regularizer),
+        Dropout(dropout),
+        Dense(12, activation=activation, kernel_regularizer=regularizer),
+        Dropout(dropout),
+        Dense(6, activation=activation, kernel_regularizer=regularizer),
+        Dropout(dropout),
+        Dense(1, activation='sigmoid', kernel_regularizer=regularizer)
     ])
     # Output a summary of the model's architecture
     print(model.summary())
     # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
     model.compile(
         optimizer='adam',
-        loss='binary_crossentropy',
+        loss='mse',
         metrics=['accuracy']
     )
     # Return the untrained model
