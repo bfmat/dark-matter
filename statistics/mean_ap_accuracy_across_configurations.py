@@ -26,11 +26,16 @@ for line in statistic_lines:
     # Add the statistics tuple to the corresponding list in the dictionary
     statistics[configuration].append(statistics_tuple)
 
+# Create a list to add mean accuracy values to
+mean_accuracy_values = []
 # Iterate over the configuration keys of the dictionary
 for configuration in statistics:
     # Zip the list of statistics and calculate the mean of each individual statistic
     mean_standard_deviation, mean_disagreements, mean_precision, mean_recall = [np.mean(statistic_list) for statistic_list in zip(*statistics[configuration])]
-    # Convert the disagreement value to accuracy
+    # Convert the disagreement value to accuracy, and add it to the list for mean calculation
     mean_accuracy = 1 - (mean_disagreements / 128)
+    mean_accuracy_values.append(mean_accuracy)
     # Output the relevant statistics for this configuration to the user
     print('Configuration:', configuration, 'Accuracy:', mean_accuracy, 'CWSD:', mean_standard_deviation, 'Precision:', mean_precision, 'Recall:', mean_recall)
+# Print the mean accuracy over all configurations
+print('Overall mean accuracy:', sum(mean_accuracy_values) / len(mean_accuracy_values))
