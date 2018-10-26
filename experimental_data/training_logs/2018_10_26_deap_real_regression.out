@@ -1,0 +1,15 @@
+Using TensorFlow backend.
+/usr/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  return f(*args, **kwds)
+Training score: 1.0
+Validation score: 0.4
+Number of true positives for real_regression_training data: 14
+Number of true negatives for real_regression_training data: 6
+Number of false positives for real_regression_training data: 0
+Number of false negatives for real_regression_training data: 0
+Data saved at /home/brendonm/pulse_count_real_regression_training/time1540560408_epoch0.json
+Number of true positives for real_regression_validation data: 3
+Number of true negatives for real_regression_validation data: 1
+Number of false positives for real_regression_validation data: 5
+Number of false negatives for real_regression_validation data: 1
+Data saved at /home/brendonm/pulse_count_real_regression_validation/time1540560408_epoch0.json
