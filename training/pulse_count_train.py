@@ -10,7 +10,7 @@ from data_processing.load_deap_data import load_real_world_deap_data, load_simul
 from models.pulse_count_network import create_model
 
 # The number of events to set aside for validation
-VALIDATION_SIZE = 2000
+VALIDATION_SIZE = 500
 
 
 def prepare_events(true_events, false_events):
@@ -68,7 +68,7 @@ if __name__ == '__main__':
     # Iterate for a certain number of epochs
     for epoch in range(100):
         # Train the model for a single epoch
-        model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths))
+        model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths), class_weight={0: 0.015, 1: 1.0})
         # Run predictions on the validation set with the trained model, removing the single-element second axis
         validation_predictions = model.predict(validation_inputs)[:, 0]
         # Evaluate the network's predictions, printing statistics and saving a JSON file
