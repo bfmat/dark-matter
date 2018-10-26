@@ -39,7 +39,7 @@ model = create_model()
 # Iterate for a certain number of epochs
 for epoch in range(100):
     # Train the model for a single epoch
-    model.fit(inputs, ground_truths, validation_data=(validation_inputs, validation_ground_truths))
+    model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths))
     # Run predictions on the validation set with the trained model, removing the single-element second axis
     validation_predictions = model.predict(validation_inputs)[:, 0]
     # Evaluate the network's predictions, printing statistics and saving a JSON file
