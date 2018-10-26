@@ -11,7 +11,7 @@ from models.map_projection_cnn import create_model
 from training.pulse_count_train import prepare_events, evaluate_predictions
 
 # The number of events to set aside for validation
-VALIDATION_SIZE = 2000
+VALIDATION_SIZE = 500
 
 
 # Load all simulated events from the file
@@ -39,7 +39,7 @@ model = create_model()
 # Iterate for a certain number of epochs
 for epoch in range(100):
     # Train the model for a single epoch
-    model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths))
+    model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths), class_weight={0: 0.005, 1: 1.0})
     # Run predictions on the validation set with the trained model, removing the single-element second axis
     validation_predictions = model.predict(validation_inputs)[:, 0]
     # Evaluate the network's predictions, printing statistics and saving a JSON file
