@@ -48,6 +48,10 @@ def load_disagreements(file_path: str) -> Tuple[str, int, float, float, float, s
 verify_arguments('saved validation sets using wildcard')
 # Get the files corresponding to the full path, allowing recursive searches (ignoring folders)
 file_paths = [path for path in glob.glob(os.path.expanduser(sys.argv[1]), recursive=True) if os.path.isfile(path)]
+# Filter the paths, taking only the ones that are in the last few epochs
+epochs = [int(path.split('epoch')[1].split('.json')[0]) for path in file_paths]
+max_epoch = max(epochs)
+file_paths = [path for path, epoch in zip(file_paths, epochs) if epoch > (max_epoch - 300)]
 # Get the run identifier corresponding to each of the file paths (not including the specific epoch)
 run_identifiers = [file_path.split('time')[0] for file_path in file_paths]
 # Convert the identifiers to a set so that they are all unique (there are many duplicated)
