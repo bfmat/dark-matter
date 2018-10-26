@@ -34,8 +34,8 @@ def prepare_events(true_events, false_events):
 
 def evaluate_predictions(ground_truths: np.ndarray, predictions: np.ndarray, events, epoch: int, set_name: str) -> None:
     """Given arrays of ground truths and corresponding predictions, and a list of corresponding events, print statistics about true and false positives and negatives and save a corresponding JSON file"""
-    # Round the predictions to integer (binary) values
-    predictions_integer = np.rint(predictions)
+    # Round the predictions to binary values
+    predictions_integer = predictions >= 0.5
     # Calculate and print the numbers of (false and true) (positives and negatives) individually
     print(f'Number of true positives for {set_name} data:', np.sum(np.logical_and(predictions_integer == 1, ground_truths == 1)))
     print(f'Number of true negatives for {set_name} data:', np.sum(np.logical_and(predictions_integer == 0, ground_truths == 0)))
