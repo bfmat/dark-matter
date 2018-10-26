@@ -15,9 +15,11 @@ from data_processing.pmt_positions import X_POSITIONS, Y_POSITIONS, Z_POSITIONS
 
 # Load a list of gradients from input, parsing it as JSON
 gradients = np.array(json.load(sys.stdin))
-# Divide each of the gradients by the greatest absolute value to get numbers from 0 to 1
-max_gradient = np.max(np.abs(gradients))
-rainbow = gradients / max_gradient
+# Subtract the minimum value so that the lowest number in the array is 0
+zeroed_gradients = gradients - np.min(gradients)
+# Divide each of the gradients by the maximum value to get numbers from 0 to 1
+max_gradient = np.max(zeroed_gradients)
+rainbow = zeroed_gradients / max_gradient
 # Convert those positions on the rainbow to RGB colors
 neck_colors = cm.rainbow(rainbow)
 
