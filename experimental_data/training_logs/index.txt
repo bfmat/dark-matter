@@ -156,3 +156,4 @@
 2018_10_27_more_weighting_less_l2.out: For this test, class weighting was amplified and L2 regularization was reduced (because training tends to get stuck when weights are intense and L2 is high). Performance was very similar to before.
 2018_10_27_fewer_layers_more_l2.out: The number of layers was reduced here, to reduce the likelihood the network would get stuck in a local minimum. It seemed to work; training was more efficient and the number of both classes removed increased.
 2018_10_27_no_dropout.out: With no dropout and only L2, performance seems to be more consistently good. The number of errors on the recoil class is somewhat lower.
+2018_10_27_batch_norm.out: Batch normalization was applied to the intermediate layers of the model, and the class weight was increased because it seems to behave as a kind of regularization. Interestingly, the number of recoils removed improved considerably, although the number of neck alphas got worse.
