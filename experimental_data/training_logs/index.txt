@@ -154,3 +154,4 @@
 2018_10_26_pulse_count_relu_reduced_dropout.out: After applying ReLU activation instead of tanh, performance has strangely improved. It seems to be better than the conventional discriminator statistics.
 2018_10_27_pulse_count_comprehensive_test.out: The neural network was trained 3 times and the statistics averaged over each of the runs. This gives a more representative idea of how the network performs. It is indeed very similar to the conventional discriminator.
 2018_10_27_more_weighting_less_l2.out: For this test, class weighting was amplified and L2 regularization was reduced (because training tends to get stuck when weights are intense and L2 is high). Performance was very similar to before.
+2018_10_27_fewer_layers_more_l2.out: The number of layers was reduced here, to reduce the likelihood the network would get stuck in a local minimum. It seemed to work; training was more efficient and the number of both classes removed increased.
