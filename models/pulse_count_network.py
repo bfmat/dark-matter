@@ -12,9 +12,10 @@ def create_model() -> Model:
     activation = 'relu'
     regularizer = l2(0.001)
     model = Sequential([
-        InputLayer(input_shape=(255,)),
+        InputLayer(input_shape=(510,)),
         BatchNormalization(),
         Dense(24, activation=activation, kernel_regularizer=regularizer),
+        BatchNormalization(),
         Dense(1, activation='sigmoid', kernel_regularizer=regularizer)
     ])
     # Output a summary of the model's architecture
