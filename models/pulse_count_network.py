@@ -10,12 +10,11 @@ def create_model() -> Model:
     """Create and return a fully connected neural network for pulse count information"""
     # Create a neural network model that includes several dense layers with hyperbolic tangent activations
     activation = 'relu'
-    regularizer = l2(0.001)
+    regularizer = l2(0.0005)
     model = Sequential([
         InputLayer(input_shape=(510,)),
         BatchNormalization(),
         Dense(24, activation=activation, kernel_regularizer=regularizer),
-        BatchNormalization(),
         Dense(1, activation='sigmoid', kernel_regularizer=regularizer)
     ])
     # Output a summary of the model's architecture
