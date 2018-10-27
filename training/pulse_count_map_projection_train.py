@@ -45,7 +45,7 @@ for _ in range(3):
     # Iterate for a certain number of epochs
     for epoch in range(EPOCHS):
         # Train the model for a single epoch
-        model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths), class_weight={0: 0.01, 1: 1.0})
+        model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths), class_weight={0: 0.02, 1: 1.0})
         # Run predictions on the validation set with the trained model, removing the single-element second axis
         validation_predictions = model.predict(validation_inputs)[:, 0]
         # Evaluate the network's predictions and add the statistics to the list, only if we are in the last few epochs (we don't care about the other ones, it is still learning then)
