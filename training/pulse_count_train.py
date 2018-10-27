@@ -2,10 +2,8 @@
 """Train a fully connected neural network on the numbers of pulses for each PMT in the DEAP data"""
 # Created by Brendon Matusch, August 2018
 
-import keras.backend as K
 import numpy as np
 
-from data_processing.deap_serialization import save_test
 from data_processing.load_deap_data import load_real_world_deap_data, load_simulated_deap_data
 from models.pulse_count_network import create_model
 
@@ -77,7 +75,7 @@ if __name__ == '__main__':
             # Print out the epoch number (the fit function does not)
             print('Epoch', epoch)
             # Train the model for a single epoch
-            model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths), class_weight={0: 0.015, 1: 1.0})
+            model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths), class_weight={0: 0.01, 1: 1.0})
             # Run predictions on the validation set with the trained model, removing the single-element second axis
             validation_predictions = model.predict(validation_inputs)[:, 0]
             # Evaluate the network's predictions and add the statistics to the list, only if we are in the last few epochs (we don't care about the other ones, it is still learning then)
