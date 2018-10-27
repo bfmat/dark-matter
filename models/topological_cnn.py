@@ -63,6 +63,14 @@ class TopologicalCNN:
             # Evaluate the network's predictions and add the statistics to the list, only if we are in the last few epochs (we don't care about the other ones, it is still learning then)
             if epoch >= epochs - 10:
                 performance_statistics.append(evaluate_predictions(validation_ground_truths, validation_predictions, None, epoch, set_name='validation'))
+        # Add up each of the statistics for the last few epochs and calculate the mean
+        statistics_mean = np.mean(np.stack(performance_statistics, axis=0), axis=0)
+        # Using these values, calculate and print the percentage of neck alphas removed, and the percentage of nuclear recoils incorrectly removed alongside them
+        true_positives, true_negatives, false_positives, false_negatives = statistics_mean
+        neck_alphas_removed = true_positives / (true_positives + false_negatives)
+        nuclear_recoils_removed = false_positives / (false_positives + true_negatives)
+        print('Neck alphas removed:', neck_alphas_removed)
+        print('Nuclear recoils removed:', nuclear_recoils_removed)
 
     @classmethod
     def convolve_surface_topology(cls, surface_topology_nodes: List[SurfaceTopologyNode], kernel_radius: int, filters: int, activation: str, regularizer) -> List[SurfaceTopologyNode]:
