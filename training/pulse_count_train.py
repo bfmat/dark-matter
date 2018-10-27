@@ -19,7 +19,7 @@ def prepare_events(true_events, false_events):
     # Combine the lists of events into one before converting the data
     events = true_events + false_events
     # Convert the pulse counts from both event lists into a NumPy array of training inputs
-    inputs = np.array([[min(times) if times else 2000 for times in event[1]] for event in events])
+    inputs = np.array([event[0] for event in events])
     # Create a corresponding list of ground truths
     ground_truths = np.array([True] * len(true_events) + [False] * len(false_events))
     # Create a random permutation with the number of inputs and ground truths
