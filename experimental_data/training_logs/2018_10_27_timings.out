@@ -1,0 +1,1258 @@
+Using TensorFlow backend.
+/usr/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  return f(*args, **kwds)
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+batch_normalization_1 (Batch (None, 255)               1020      
+_________________________________________________________________
+dense_1 (Dense)              (None, 24)                6144      
+_________________________________________________________________
+dense_2 (Dense)              (None, 1)                 25        
+=================================================================
+Total params: 7,189
+Trainable params: 6,679
+Non-trainable params: 510
+_________________________________________________________________
+None
+Epoch 0
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2018-10-27 12:13:07.885980: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-10-27 12:13:07.971031: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:898] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-10-27 12:13:07.971362: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1356] Found device 0 with properties: 
+name: GeForce GTX 1080 major: 6 minor: 1 memoryClockRate(GHz): 1.8475
+pciBusID: 0000:01:00.0
+totalMemory: 7.93GiB freeMemory: 7.32GiB
+2018-10-27 12:13:07.971376: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1435] Adding visible gpu devices: 0
+2018-10-27 12:13:08.128863: I tensorflow/core/common_runtime/gpu/gpu_device.cc:923] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-10-27 12:13:08.128893: I tensorflow/core/common_runtime/gpu/gpu_device.cc:929]      0 
+2018-10-27 12:13:08.128898: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 0:   N 
+2018-10-27 12:13:08.129045: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 7070 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080, pci bus id: 0000:01:00.0, compute capability: 6.1)
+2804/2804 [==============================] - 1s 254us/step - loss: 0.0498 - acc: 0.2268 - val_loss: 0.6014 - val_acc: 0.1460
+Epoch 1
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0320 - acc: 0.1630 - val_loss: 0.5848 - val_acc: 0.1400
+Epoch 2
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0237 - acc: 0.1676 - val_loss: 0.5424 - val_acc: 0.1460
+Epoch 3
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0181 - acc: 0.2022 - val_loss: 0.4991 - val_acc: 0.1840
+Epoch 4
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0146 - acc: 0.2286 - val_loss: 0.4721 - val_acc: 0.2120
+Epoch 5
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0121 - acc: 0.2668 - val_loss: 0.4491 - val_acc: 0.2540
+Epoch 6
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0105 - acc: 0.3245 - val_loss: 0.4378 - val_acc: 0.2680
+Epoch 7
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0095 - acc: 0.3516 - val_loss: 0.4328 - val_acc: 0.3040
+Epoch 8
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0088 - acc: 0.3691 - val_loss: 0.4354 - val_acc: 0.3120
+Epoch 9
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0083 - acc: 0.3816 - val_loss: 0.4264 - val_acc: 0.3280
+Epoch 10
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0081 - acc: 0.3927 - val_loss: 0.4491 - val_acc: 0.3140
+Epoch 11
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0078 - acc: 0.4026 - val_loss: 0.4164 - val_acc: 0.3540
+Epoch 12
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0076 - acc: 0.4180 - val_loss: 0.4320 - val_acc: 0.3460
+Epoch 13
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0075 - acc: 0.4105 - val_loss: 0.4203 - val_acc: 0.3760
+Epoch 14
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0072 - acc: 0.4461 - val_loss: 0.4058 - val_acc: 0.3780
+Epoch 15
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0073 - acc: 0.4354 - val_loss: 0.4176 - val_acc: 0.3880
+Epoch 16
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0073 - acc: 0.4429 - val_loss: 0.4371 - val_acc: 0.3560
+Epoch 17
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0075 - acc: 0.4244 - val_loss: 0.4296 - val_acc: 0.3660
+Epoch 18
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0073 - acc: 0.4215 - val_loss: 0.4281 - val_acc: 0.3820
+Epoch 19
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0072 - acc: 0.4297 - val_loss: 0.4233 - val_acc: 0.3720
+Epoch 20
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0072 - acc: 0.4326 - val_loss: 0.4102 - val_acc: 0.3920
+Epoch 21
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0072 - acc: 0.4294 - val_loss: 0.4380 - val_acc: 0.3700
+Epoch 22
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0072 - acc: 0.4244 - val_loss: 0.4318 - val_acc: 0.3580
+Epoch 23
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0071 - acc: 0.4330 - val_loss: 0.4331 - val_acc: 0.3680
+Epoch 24
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0071 - acc: 0.4340 - val_loss: 0.4368 - val_acc: 0.3560
+Epoch 25
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0072 - acc: 0.4297 - val_loss: 0.4359 - val_acc: 0.3660
+Epoch 26
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0071 - acc: 0.4365 - val_loss: 0.4351 - val_acc: 0.3680
+Epoch 27
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0070 - acc: 0.4319 - val_loss: 0.4304 - val_acc: 0.3660
+Epoch 28
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0070 - acc: 0.4383 - val_loss: 0.4123 - val_acc: 0.3960
+Epoch 29
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0070 - acc: 0.4337 - val_loss: 0.4243 - val_acc: 0.3860
+Epoch 30
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0071 - acc: 0.4390 - val_loss: 0.4476 - val_acc: 0.3620
+Epoch 31
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0070 - acc: 0.4454 - val_loss: 0.4306 - val_acc: 0.3760
+Epoch 32
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0068 - acc: 0.4454 - val_loss: 0.4035 - val_acc: 0.4000
+Epoch 33
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0070 - acc: 0.4568 - val_loss: 0.4308 - val_acc: 0.3880
+Epoch 34
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0066 - acc: 0.4572 - val_loss: 0.3786 - val_acc: 0.4440
+Epoch 35
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0071 - acc: 0.4629 - val_loss: 0.4547 - val_acc: 0.3420
+Epoch 36
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0070 - acc: 0.4272 - val_loss: 0.4235 - val_acc: 0.3880
+Epoch 37
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0068 - acc: 0.4486 - val_loss: 0.4048 - val_acc: 0.4060
+Epoch 38
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0070 - acc: 0.4561 - val_loss: 0.4387 - val_acc: 0.3680
+Epoch 39
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0068 - acc: 0.4568 - val_loss: 0.4179 - val_acc: 0.3900
+Epoch 40
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0067 - acc: 0.4665 - val_loss: 0.4156 - val_acc: 0.4020
+Epoch 41
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0066 - acc: 0.4790 - val_loss: 0.4127 - val_acc: 0.4080
+Epoch 42
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0067 - acc: 0.4825 - val_loss: 0.4380 - val_acc: 0.3700
+Epoch 43
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0067 - acc: 0.4661 - val_loss: 0.4196 - val_acc: 0.3880
+Epoch 44
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0068 - acc: 0.4736 - val_loss: 0.4218 - val_acc: 0.3860
+Epoch 45
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0067 - acc: 0.4718 - val_loss: 0.4279 - val_acc: 0.3700
+Epoch 46
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0067 - acc: 0.4807 - val_loss: 0.4269 - val_acc: 0.3900
+Epoch 47
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0067 - acc: 0.4736 - val_loss: 0.4158 - val_acc: 0.3920
+Epoch 48
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0066 - acc: 0.4836 - val_loss: 0.3998 - val_acc: 0.4100
+Epoch 49
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0068 - acc: 0.4654 - val_loss: 0.4070 - val_acc: 0.4080
+Epoch 50
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0066 - acc: 0.4765 - val_loss: 0.3948 - val_acc: 0.4220
+Epoch 51
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0066 - acc: 0.4690 - val_loss: 0.3962 - val_acc: 0.4220
+Epoch 52
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0066 - acc: 0.4886 - val_loss: 0.4148 - val_acc: 0.4040
+Epoch 53
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.4872 - val_loss: 0.3978 - val_acc: 0.4220
+Epoch 54
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.4857 - val_loss: 0.3807 - val_acc: 0.4420
+Epoch 55
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.5043 - val_loss: 0.3983 - val_acc: 0.4280
+Epoch 56
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.4861 - val_loss: 0.3809 - val_acc: 0.4420
+Epoch 57
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0066 - acc: 0.5107 - val_loss: 0.4310 - val_acc: 0.3800
+Epoch 58
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.4889 - val_loss: 0.4210 - val_acc: 0.4040
+Epoch 59
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0067 - acc: 0.4779 - val_loss: 0.4235 - val_acc: 0.4060
+Epoch 60
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.4800 - val_loss: 0.4003 - val_acc: 0.4180
+Epoch 61
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0066 - acc: 0.4836 - val_loss: 0.4132 - val_acc: 0.3940
+Epoch 62
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.4829 - val_loss: 0.3973 - val_acc: 0.4180
+Epoch 63
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.4943 - val_loss: 0.4236 - val_acc: 0.3880
+Epoch 64
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.4864 - val_loss: 0.3977 - val_acc: 0.4140
+Epoch 65
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.5093 - val_loss: 0.4044 - val_acc: 0.4120
+Epoch 66
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.5068 - val_loss: 0.3938 - val_acc: 0.4320
+Epoch 67
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.4857 - val_loss: 0.3933 - val_acc: 0.4260
+Epoch 68
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.5025 - val_loss: 0.3966 - val_acc: 0.4240
+Epoch 69
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0062 - acc: 0.5046 - val_loss: 0.3711 - val_acc: 0.4640
+Epoch 70
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.5128 - val_loss: 0.4047 - val_acc: 0.4280
+Epoch 71
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.5118 - val_loss: 0.3892 - val_acc: 0.4300
+Epoch 72
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0062 - acc: 0.5150 - val_loss: 0.3786 - val_acc: 0.4600
+Epoch 73
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5210 - val_loss: 0.3940 - val_acc: 0.4220
+Epoch 74
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.5218 - val_loss: 0.4066 - val_acc: 0.4180
+Epoch 75
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0063 - acc: 0.4925 - val_loss: 0.3871 - val_acc: 0.4380
+Epoch 76
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0063 - acc: 0.5218 - val_loss: 0.4053 - val_acc: 0.4120
+Epoch 77
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.4818 - val_loss: 0.3791 - val_acc: 0.4400
+Epoch 78
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.5057 - val_loss: 0.4022 - val_acc: 0.4220
+Epoch 79
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.4979 - val_loss: 0.4012 - val_acc: 0.4360
+Epoch 80
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.4947 - val_loss: 0.4102 - val_acc: 0.4160
+Epoch 81
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.4947 - val_loss: 0.4001 - val_acc: 0.4240
+Epoch 82
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0062 - acc: 0.5200 - val_loss: 0.3853 - val_acc: 0.4520
+Epoch 83
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0062 - acc: 0.5296 - val_loss: 0.4142 - val_acc: 0.4180
+Epoch 84
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.4943 - val_loss: 0.4040 - val_acc: 0.4200
+Epoch 85
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.5011 - val_loss: 0.4330 - val_acc: 0.3940
+Epoch 86
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0062 - acc: 0.5011 - val_loss: 0.3888 - val_acc: 0.4420
+Epoch 87
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0063 - acc: 0.5018 - val_loss: 0.3967 - val_acc: 0.4260
+Epoch 88
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.5000 - val_loss: 0.4011 - val_acc: 0.4240
+Epoch 89
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0063 - acc: 0.5075 - val_loss: 0.4030 - val_acc: 0.4240
+Epoch 90
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0062 - acc: 0.5075 - val_loss: 0.4075 - val_acc: 0.4200
+Epoch 91
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0063 - acc: 0.5046 - val_loss: 0.3958 - val_acc: 0.4320
+Epoch 92
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0063 - acc: 0.4950 - val_loss: 0.3745 - val_acc: 0.4600
+Epoch 93
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0061 - acc: 0.5214 - val_loss: 0.3870 - val_acc: 0.4540
+Epoch 94
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0062 - acc: 0.5143 - val_loss: 0.3657 - val_acc: 0.4800
+Epoch 95
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.5071 - val_loss: 0.3935 - val_acc: 0.4380
+Epoch 96
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0062 - acc: 0.5146 - val_loss: 0.3672 - val_acc: 0.4800
+Epoch 97
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.5207 - val_loss: 0.4120 - val_acc: 0.4220
+Epoch 98
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0062 - acc: 0.5018 - val_loss: 0.3931 - val_acc: 0.4560
+Epoch 99
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0061 - acc: 0.5171 - val_loss: 0.3759 - val_acc: 0.4700
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+batch_normalization_2 (Batch (None, 255)               1020      
+_________________________________________________________________
+dense_3 (Dense)              (None, 24)                6144      
+_________________________________________________________________
+dense_4 (Dense)              (None, 1)                 25        
+=================================================================
+Total params: 7,189
+Trainable params: 6,679
+Non-trainable params: 510
+_________________________________________________________________
+None
+Epoch 0
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 147us/step - loss: 0.0628 - acc: 0.5852 - val_loss: 0.4350 - val_acc: 0.3340
+Epoch 1
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0364 - acc: 0.3096 - val_loss: 0.5178 - val_acc: 0.2360
+Epoch 2
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0279 - acc: 0.2596 - val_loss: 0.5200 - val_acc: 0.2140
+Epoch 3
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0224 - acc: 0.2532 - val_loss: 0.5059 - val_acc: 0.2120
+Epoch 4
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0185 - acc: 0.2532 - val_loss: 0.4903 - val_acc: 0.2220
+Epoch 5
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0154 - acc: 0.2807 - val_loss: 0.4731 - val_acc: 0.2280
+Epoch 6
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0132 - acc: 0.2757 - val_loss: 0.4621 - val_acc: 0.2300
+Epoch 7
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0117 - acc: 0.2882 - val_loss: 0.4528 - val_acc: 0.2360
+Epoch 8
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0103 - acc: 0.2999 - val_loss: 0.4433 - val_acc: 0.2620
+Epoch 9
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0093 - acc: 0.3231 - val_loss: 0.4305 - val_acc: 0.3040
+Epoch 10
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0089 - acc: 0.3627 - val_loss: 0.4383 - val_acc: 0.3040
+Epoch 11
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0084 - acc: 0.3591 - val_loss: 0.4287 - val_acc: 0.3160
+Epoch 12
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0081 - acc: 0.3734 - val_loss: 0.4323 - val_acc: 0.3380
+Epoch 13
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0078 - acc: 0.3766 - val_loss: 0.4147 - val_acc: 0.3620
+Epoch 14
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0076 - acc: 0.4162 - val_loss: 0.4193 - val_acc: 0.3540
+Epoch 15
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0075 - acc: 0.4262 - val_loss: 0.4368 - val_acc: 0.3600
+Epoch 16
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0075 - acc: 0.4205 - val_loss: 0.4280 - val_acc: 0.3540
+Epoch 17
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0074 - acc: 0.4351 - val_loss: 0.4399 - val_acc: 0.3500
+Epoch 18
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0071 - acc: 0.4276 - val_loss: 0.4067 - val_acc: 0.4020
+Epoch 19
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0075 - acc: 0.4337 - val_loss: 0.4388 - val_acc: 0.3460
+Epoch 20
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0071 - acc: 0.4237 - val_loss: 0.4250 - val_acc: 0.3760
+Epoch 21
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0072 - acc: 0.4397 - val_loss: 0.4364 - val_acc: 0.3540
+Epoch 22
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0070 - acc: 0.4358 - val_loss: 0.3873 - val_acc: 0.4160
+Epoch 23
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0071 - acc: 0.4526 - val_loss: 0.4230 - val_acc: 0.3780
+Epoch 24
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0071 - acc: 0.4590 - val_loss: 0.4222 - val_acc: 0.3700
+Epoch 25
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0071 - acc: 0.4251 - val_loss: 0.4054 - val_acc: 0.3980
+Epoch 26
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0071 - acc: 0.4472 - val_loss: 0.4435 - val_acc: 0.3580
+Epoch 27
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0070 - acc: 0.4365 - val_loss: 0.4295 - val_acc: 0.3700
+Epoch 28
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0071 - acc: 0.4472 - val_loss: 0.4373 - val_acc: 0.3600
+Epoch 29
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0070 - acc: 0.4365 - val_loss: 0.4225 - val_acc: 0.3700
+Epoch 30
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0070 - acc: 0.4383 - val_loss: 0.4164 - val_acc: 0.3800
+Epoch 31
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0070 - acc: 0.4351 - val_loss: 0.4432 - val_acc: 0.3760
+Epoch 32
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0071 - acc: 0.4344 - val_loss: 0.4422 - val_acc: 0.3620
+Epoch 33
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0070 - acc: 0.4258 - val_loss: 0.4257 - val_acc: 0.3720
+Epoch 34
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0069 - acc: 0.4472 - val_loss: 0.4133 - val_acc: 0.3840
+Epoch 35
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0069 - acc: 0.4536 - val_loss: 0.4384 - val_acc: 0.3640
+Epoch 36
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0069 - acc: 0.4490 - val_loss: 0.4230 - val_acc: 0.3880
+Epoch 37
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0068 - acc: 0.4643 - val_loss: 0.4357 - val_acc: 0.3700
+Epoch 38
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0071 - acc: 0.4237 - val_loss: 0.4324 - val_acc: 0.3700
+Epoch 39
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0068 - acc: 0.4451 - val_loss: 0.4086 - val_acc: 0.3940
+Epoch 40
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0068 - acc: 0.4551 - val_loss: 0.4225 - val_acc: 0.3980
+Epoch 41
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0069 - acc: 0.4565 - val_loss: 0.4468 - val_acc: 0.3580
+Epoch 42
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0068 - acc: 0.4494 - val_loss: 0.4070 - val_acc: 0.4000
+Epoch 43
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0069 - acc: 0.4490 - val_loss: 0.4174 - val_acc: 0.3900
+Epoch 44
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0068 - acc: 0.4429 - val_loss: 0.3986 - val_acc: 0.4100
+Epoch 45
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0069 - acc: 0.4626 - val_loss: 0.4436 - val_acc: 0.3620
+Epoch 46
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0069 - acc: 0.4440 - val_loss: 0.4230 - val_acc: 0.3880
+Epoch 47
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0069 - acc: 0.4458 - val_loss: 0.4311 - val_acc: 0.3660
+Epoch 48
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0067 - acc: 0.4572 - val_loss: 0.4294 - val_acc: 0.3760
+Epoch 49
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0069 - acc: 0.4376 - val_loss: 0.4322 - val_acc: 0.3740
+Epoch 50
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0066 - acc: 0.4829 - val_loss: 0.4292 - val_acc: 0.3780
+Epoch 51
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0067 - acc: 0.4590 - val_loss: 0.3843 - val_acc: 0.4340
+Epoch 52
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0068 - acc: 0.4683 - val_loss: 0.4384 - val_acc: 0.3780
+Epoch 53
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0067 - acc: 0.4576 - val_loss: 0.4093 - val_acc: 0.4060
+Epoch 54
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.4786 - val_loss: 0.3937 - val_acc: 0.4200
+Epoch 55
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0066 - acc: 0.4772 - val_loss: 0.4157 - val_acc: 0.3880
+Epoch 56
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.4825 - val_loss: 0.4171 - val_acc: 0.3900
+Epoch 57
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.4829 - val_loss: 0.4115 - val_acc: 0.4020
+Epoch 58
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.4861 - val_loss: 0.4171 - val_acc: 0.4000
+Epoch 59
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.4765 - val_loss: 0.3876 - val_acc: 0.4260
+Epoch 60
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.4872 - val_loss: 0.4125 - val_acc: 0.4060
+Epoch 61
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.4993 - val_loss: 0.4221 - val_acc: 0.4000
+Epoch 62
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0068 - acc: 0.4554 - val_loss: 0.4057 - val_acc: 0.4100
+Epoch 63
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0066 - acc: 0.4790 - val_loss: 0.4023 - val_acc: 0.4260
+Epoch 64
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.4968 - val_loss: 0.4034 - val_acc: 0.4120
+Epoch 65
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.5093 - val_loss: 0.4345 - val_acc: 0.3820
+Epoch 66
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.4961 - val_loss: 0.3911 - val_acc: 0.4340
+Epoch 67
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.5007 - val_loss: 0.4167 - val_acc: 0.3980
+Epoch 68
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.4900 - val_loss: 0.4222 - val_acc: 0.3920
+Epoch 69
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.4861 - val_loss: 0.4007 - val_acc: 0.4160
+Epoch 70
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0066 - acc: 0.4807 - val_loss: 0.4180 - val_acc: 0.4000
+Epoch 71
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.4775 - val_loss: 0.4153 - val_acc: 0.4020
+Epoch 72
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0065 - acc: 0.4793 - val_loss: 0.3763 - val_acc: 0.4440
+Epoch 73
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.4936 - val_loss: 0.3940 - val_acc: 0.4280
+Epoch 74
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0064 - acc: 0.5061 - val_loss: 0.3988 - val_acc: 0.4200
+Epoch 75
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.4889 - val_loss: 0.3864 - val_acc: 0.4380
+Epoch 76
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5143 - val_loss: 0.3973 - val_acc: 0.4240
+Epoch 77
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5029 - val_loss: 0.3637 - val_acc: 0.4780
+Epoch 78
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.4897 - val_loss: 0.4052 - val_acc: 0.4140
+Epoch 79
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.4904 - val_loss: 0.4110 - val_acc: 0.4080
+Epoch 80
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.4857 - val_loss: 0.3925 - val_acc: 0.4180
+Epoch 81
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.4996 - val_loss: 0.3995 - val_acc: 0.4320
+Epoch 82
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.4861 - val_loss: 0.4009 - val_acc: 0.4240
+Epoch 83
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.4836 - val_loss: 0.4002 - val_acc: 0.4220
+Epoch 84
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.4968 - val_loss: 0.3835 - val_acc: 0.4400
+Epoch 85
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5171 - val_loss: 0.4089 - val_acc: 0.4180
+Epoch 86
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5050 - val_loss: 0.3638 - val_acc: 0.4720
+Epoch 87
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.5036 - val_loss: 0.4240 - val_acc: 0.3860
+Epoch 88
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0063 - acc: 0.4907 - val_loss: 0.3957 - val_acc: 0.4300
+Epoch 89
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0064 - acc: 0.5021 - val_loss: 0.4041 - val_acc: 0.4180
+Epoch 90
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0062 - acc: 0.5157 - val_loss: 0.3966 - val_acc: 0.4300
+Epoch 91
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0064 - acc: 0.4929 - val_loss: 0.3793 - val_acc: 0.4420
+Epoch 92
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.5132 - val_loss: 0.4156 - val_acc: 0.4140
+Epoch 93
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.4815 - val_loss: 0.3872 - val_acc: 0.4420
+Epoch 94
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.4957 - val_loss: 0.4046 - val_acc: 0.4140
+Epoch 95
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5175 - val_loss: 0.4225 - val_acc: 0.4020
+Epoch 96
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0063 - acc: 0.4961 - val_loss: 0.3893 - val_acc: 0.4460
+Epoch 97
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5182 - val_loss: 0.3937 - val_acc: 0.4420
+Epoch 98
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0064 - acc: 0.5100 - val_loss: 0.4155 - val_acc: 0.4040
+Epoch 99
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0063 - acc: 0.4936 - val_loss: 0.3708 - val_acc: 0.4640
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+batch_normalization_3 (Batch (None, 255)               1020      
+_________________________________________________________________
+dense_5 (Dense)              (None, 24)                6144      
+_________________________________________________________________
+dense_6 (Dense)              (None, 1)                 25        
+=================================================================
+Total params: 7,189
+Trainable params: 6,679
+Non-trainable params: 510
+_________________________________________________________________
+None
+Epoch 0
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 125us/step - loss: 0.0527 - acc: 0.2860 - val_loss: 0.5639 - val_acc: 0.1720
+Epoch 1
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0342 - acc: 0.1951 - val_loss: 0.5691 - val_acc: 0.1500
+Epoch 2
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0261 - acc: 0.2004 - val_loss: 0.5400 - val_acc: 0.1640
+Epoch 3
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0205 - acc: 0.2147 - val_loss: 0.5058 - val_acc: 0.1840
+Epoch 4
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0163 - acc: 0.2468 - val_loss: 0.4777 - val_acc: 0.2060
+Epoch 5
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0135 - acc: 0.2800 - val_loss: 0.4603 - val_acc: 0.2320
+Epoch 6
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0115 - acc: 0.3035 - val_loss: 0.4465 - val_acc: 0.2580
+Epoch 7
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0101 - acc: 0.3188 - val_loss: 0.4341 - val_acc: 0.2960
+Epoch 8
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0092 - acc: 0.3513 - val_loss: 0.4303 - val_acc: 0.3080
+Epoch 9
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0087 - acc: 0.3734 - val_loss: 0.4229 - val_acc: 0.3300
+Epoch 10
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0082 - acc: 0.3866 - val_loss: 0.4225 - val_acc: 0.3500
+Epoch 11
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0080 - acc: 0.4158 - val_loss: 0.4142 - val_acc: 0.3580
+Epoch 12
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0078 - acc: 0.4030 - val_loss: 0.4204 - val_acc: 0.3640
+Epoch 13
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0076 - acc: 0.4201 - val_loss: 0.4106 - val_acc: 0.3640
+Epoch 14
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0075 - acc: 0.4354 - val_loss: 0.4229 - val_acc: 0.3700
+Epoch 15
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0073 - acc: 0.4326 - val_loss: 0.4021 - val_acc: 0.3980
+Epoch 16
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0074 - acc: 0.4476 - val_loss: 0.4186 - val_acc: 0.3900
+Epoch 17
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0074 - acc: 0.4415 - val_loss: 0.4275 - val_acc: 0.3820
+Epoch 18
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0074 - acc: 0.4472 - val_loss: 0.4383 - val_acc: 0.3660
+Epoch 19
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0071 - acc: 0.4437 - val_loss: 0.4096 - val_acc: 0.3940
+Epoch 20
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0073 - acc: 0.4501 - val_loss: 0.4329 - val_acc: 0.3540
+Epoch 21
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0073 - acc: 0.4312 - val_loss: 0.4481 - val_acc: 0.3540
+Epoch 22
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0072 - acc: 0.4258 - val_loss: 0.4061 - val_acc: 0.3940
+Epoch 23
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0071 - acc: 0.4579 - val_loss: 0.4207 - val_acc: 0.3920
+Epoch 24
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0073 - acc: 0.4290 - val_loss: 0.4327 - val_acc: 0.3780
+Epoch 25
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0072 - acc: 0.4162 - val_loss: 0.4294 - val_acc: 0.3740
+Epoch 26
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0071 - acc: 0.4258 - val_loss: 0.4142 - val_acc: 0.3860
+Epoch 27
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0070 - acc: 0.4547 - val_loss: 0.4077 - val_acc: 0.4020
+Epoch 28
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0070 - acc: 0.4479 - val_loss: 0.4127 - val_acc: 0.3900
+Epoch 29
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0069 - acc: 0.4526 - val_loss: 0.3906 - val_acc: 0.4200
+Epoch 30
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0071 - acc: 0.4658 - val_loss: 0.4563 - val_acc: 0.3520
+Epoch 31
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0069 - acc: 0.4458 - val_loss: 0.4080 - val_acc: 0.4040
+Epoch 32
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0071 - acc: 0.4451 - val_loss: 0.4061 - val_acc: 0.4120
+Epoch 33
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0069 - acc: 0.4611 - val_loss: 0.4210 - val_acc: 0.3920
+Epoch 34
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0068 - acc: 0.4654 - val_loss: 0.4011 - val_acc: 0.4080
+Epoch 35
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0069 - acc: 0.4722 - val_loss: 0.4312 - val_acc: 0.3720
+Epoch 36
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0069 - acc: 0.4508 - val_loss: 0.3972 - val_acc: 0.4320
+Epoch 37
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0071 - acc: 0.4679 - val_loss: 0.4547 - val_acc: 0.3520
+Epoch 38
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0069 - acc: 0.4561 - val_loss: 0.4152 - val_acc: 0.3880
+Epoch 39
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0068 - acc: 0.4533 - val_loss: 0.3862 - val_acc: 0.4200
+Epoch 40
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0070 - acc: 0.4597 - val_loss: 0.4559 - val_acc: 0.3640
+Epoch 41
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0069 - acc: 0.4358 - val_loss: 0.4168 - val_acc: 0.3840
+Epoch 42
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0069 - acc: 0.4511 - val_loss: 0.4015 - val_acc: 0.4020
+Epoch 43
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0070 - acc: 0.4522 - val_loss: 0.4206 - val_acc: 0.3840
+Epoch 44
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.4747 - val_loss: 0.4077 - val_acc: 0.4160
+Epoch 45
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0069 - acc: 0.4568 - val_loss: 0.4314 - val_acc: 0.3780
+Epoch 46
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0069 - acc: 0.4579 - val_loss: 0.4311 - val_acc: 0.3720
+Epoch 47
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0067 - acc: 0.4611 - val_loss: 0.4031 - val_acc: 0.4080
+Epoch 48
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0068 - acc: 0.4740 - val_loss: 0.3901 - val_acc: 0.4400
+Epoch 49
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0067 - acc: 0.4622 - val_loss: 0.4047 - val_acc: 0.4120
+Epoch 50
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0068 - acc: 0.4736 - val_loss: 0.4150 - val_acc: 0.3960
+Epoch 51
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0067 - acc: 0.4576 - val_loss: 0.3953 - val_acc: 0.4140
+Epoch 52
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.4822 - val_loss: 0.3921 - val_acc: 0.4260
+Epoch 53
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0067 - acc: 0.4900 - val_loss: 0.4234 - val_acc: 0.3900
+Epoch 54
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0067 - acc: 0.4722 - val_loss: 0.4118 - val_acc: 0.4060
+Epoch 55
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.4936 - val_loss: 0.4148 - val_acc: 0.4020
+Epoch 56
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.4772 - val_loss: 0.4071 - val_acc: 0.4100
+Epoch 57
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.4818 - val_loss: 0.3993 - val_acc: 0.4080
+Epoch 58
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.4861 - val_loss: 0.3894 - val_acc: 0.4440
+Epoch 59
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0067 - acc: 0.4947 - val_loss: 0.4469 - val_acc: 0.3700
+Epoch 60
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0064 - acc: 0.4775 - val_loss: 0.3728 - val_acc: 0.4440
+Epoch 61
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0066 - acc: 0.4971 - val_loss: 0.3888 - val_acc: 0.4260
+Epoch 62
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.4889 - val_loss: 0.3853 - val_acc: 0.4240
+Epoch 63
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.4993 - val_loss: 0.4085 - val_acc: 0.4160
+Epoch 64
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0067 - acc: 0.5018 - val_loss: 0.4197 - val_acc: 0.3980
+Epoch 65
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0067 - acc: 0.4626 - val_loss: 0.4309 - val_acc: 0.3860
+Epoch 66
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.4857 - val_loss: 0.4043 - val_acc: 0.4100
+Epoch 67
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.5007 - val_loss: 0.4140 - val_acc: 0.4020
+Epoch 68
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.4897 - val_loss: 0.3984 - val_acc: 0.4180
+Epoch 69
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0067 - acc: 0.4715 - val_loss: 0.3908 - val_acc: 0.4280
+Epoch 70
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.4854 - val_loss: 0.4125 - val_acc: 0.4040
+Epoch 71
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.4768 - val_loss: 0.4140 - val_acc: 0.4020
+Epoch 72
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0066 - acc: 0.4708 - val_loss: 0.3968 - val_acc: 0.4340
+Epoch 73
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 49us/step - loss: 0.0063 - acc: 0.5064 - val_loss: 0.4051 - val_acc: 0.4180
+Epoch 74
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0066 - acc: 0.4914 - val_loss: 0.4126 - val_acc: 0.4160
+Epoch 75
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.4832 - val_loss: 0.4117 - val_acc: 0.4080
+Epoch 76
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.4943 - val_loss: 0.3888 - val_acc: 0.4440
+Epoch 77
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5025 - val_loss: 0.3857 - val_acc: 0.4440
+Epoch 78
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0065 - acc: 0.5078 - val_loss: 0.4030 - val_acc: 0.4220
+Epoch 79
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0064 - acc: 0.4982 - val_loss: 0.3747 - val_acc: 0.4560
+Epoch 80
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0064 - acc: 0.5128 - val_loss: 0.4026 - val_acc: 0.4340
+Epoch 81
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0064 - acc: 0.5064 - val_loss: 0.4023 - val_acc: 0.4380
+Epoch 82
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5203 - val_loss: 0.4192 - val_acc: 0.4140
+Epoch 83
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.4968 - val_loss: 0.3886 - val_acc: 0.4440
+Epoch 84
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5118 - val_loss: 0.3760 - val_acc: 0.4620
+Epoch 85
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0062 - acc: 0.5257 - val_loss: 0.3840 - val_acc: 0.4540
+Epoch 86
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0064 - acc: 0.5029 - val_loss: 0.3881 - val_acc: 0.4480
+Epoch 87
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5128 - val_loss: 0.4189 - val_acc: 0.4140
+Epoch 88
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0064 - acc: 0.5232 - val_loss: 0.4297 - val_acc: 0.3980
+Epoch 89
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0064 - acc: 0.5025 - val_loss: 0.3840 - val_acc: 0.4360
+Epoch 90
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0064 - acc: 0.5011 - val_loss: 0.3961 - val_acc: 0.4260
+Epoch 91
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0061 - acc: 0.5321 - val_loss: 0.3693 - val_acc: 0.4620
+Epoch 92
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5260 - val_loss: 0.4004 - val_acc: 0.4400
+Epoch 93
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5193 - val_loss: 0.3953 - val_acc: 0.4300
+Epoch 94
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5103 - val_loss: 0.3777 - val_acc: 0.4620
+Epoch 95
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5164 - val_loss: 0.3814 - val_acc: 0.4680
+Epoch 96
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0063 - acc: 0.5143 - val_loss: 0.3703 - val_acc: 0.4700
+Epoch 97
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0062 - acc: 0.5285 - val_loss: 0.3811 - val_acc: 0.4580
+Epoch 98
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0062 - acc: 0.5178 - val_loss: 0.4086 - val_acc: 0.4220
+Epoch 99
+Train on 2804 samples, validate on 500 samples
+Epoch 1/1
+2804/2804 [==============================] - 0s 50us/step - loss: 0.0062 - acc: 0.5189 - val_loss: 0.3794 - val_acc: 0.4580
+Neck alphas removed: 0.9656565656565657
+Nuclear recoils removed: 0.5932905067808708
