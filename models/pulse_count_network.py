@@ -12,11 +12,14 @@ def create_model() -> Model:
     activation = 'relu'
     regularizer = l2(0.0003)
     model = Sequential([
-        InputLayer(input_shape=(510,)),
+        InputLayer(input_shape=(255,)),
         BatchNormalization(),
         Dense(36, activation=activation, kernel_regularizer=regularizer),
         Dense(24, activation=activation, kernel_regularizer=regularizer),
+<<<<<<< HEAD
         Dense(12, activation=activation, kernel_regularizer=regularizer),
+=======
+>>>>>>> parent of 896b298a5... Weird experiment to use both pulse counts and timings
         Dense(1, activation='sigmoid', kernel_regularizer=regularizer)
     ])
     # Output a summary of the model's architecture

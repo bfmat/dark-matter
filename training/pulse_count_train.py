@@ -18,11 +18,8 @@ def prepare_events(true_events, false_events):
     """Given 2 lists of events, 1 for each possible ground truth value, produce arrays of inputs and ground truths for training, validation, or testing"""
     # Combine the lists of events into one before converting the data
     events = true_events + false_events
-    # Convert the pulse counts and timings from both event lists into a NumPy array of training inputs
-    pulse_count_inputs = np.array([event[0] for event in events])
-    timing_inputs = np.array([[min(times) if times else 2000 for times in event[1]] for event in events])
-    inputs = np.concatenate([pulse_count_inputs, timing_inputs], axis=1)
-    print(inputs.shape)
+    # Convert the pulse counts from both event lists into a NumPy array of training inputs
+    inputs = np.array([[min(times) if times else 2000 for times in event[1]] for event in events])
     # Create a corresponding list of ground truths
     ground_truths = np.array([True] * len(true_events) + [False] * len(false_events))
     # Create a random permutation with the number of inputs and ground truths
@@ -78,7 +75,7 @@ if __name__ == '__main__':
             # Print out the epoch number (the fit function does not)
             print('Epoch', epoch)
             # Train the model for a single epoch
-            model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths), class_weight={0: 0.003, 1: 1.0})
+            model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths), class_weight={0: 0.01, 1: 1.0})
             # Run predictions on the validation set with the trained model, removing the single-element second axis
             validation_predictions = model.predict(validation_inputs)[:, 0]
             # Evaluate the network's predictions and add the statistics to the list, only if we are in the last few epochs (we don't care about the other ones, it is still learning then)
