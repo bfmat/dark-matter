@@ -159,3 +159,4 @@
 2018_10_27_batch_norm.out: Batch normalization was applied to the intermediate layers of the model, and the class weight was increased because it seems to behave as a kind of regularization. Interestingly, the number of recoils removed improved considerably, although the number of neck alphas got worse.
 2018_10_27_timings.out: There was a surprising amount of success found in using the time of arrival of the first pulse rather than the pulse counts. On the whole, it did not work quite as well, but was reasonably close.
 2018_10_27_timings_and_pulse_counts.out: Combining the timings and pulse counts did not initially produce results any better than those from just using pulse counts.
+2018_10_27_timings_and_pulse_counts_more_weight.out: With increased class weight and less L2 regularization, the results were still comparable or worse to using only pulse counts.
