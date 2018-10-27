@@ -15,7 +15,6 @@ def create_model() -> Model:
         InputLayer(input_shape=(255,)),
         BatchNormalization(),
         Dense(24, activation=activation, kernel_regularizer=regularizer),
-        BatchNormalization(),
         Dense(1, activation='sigmoid', kernel_regularizer=regularizer)
     ])
     # Output a summary of the model's architecture
