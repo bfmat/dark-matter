@@ -12,7 +12,7 @@ def create_model() -> Model:
     activation = 'relu'
     regularizer = l2(0.0003)
     model = Sequential([
-        InputLayer(input_shape=(510,)),
+        InputLayer(input_shape=(255,)),
         BatchNormalization(),
         Dense(36, activation=activation, kernel_regularizer=regularizer),
         Dense(24, activation=activation, kernel_regularizer=regularizer),
