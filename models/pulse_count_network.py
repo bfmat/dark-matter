@@ -11,7 +11,7 @@ def create_model() -> Model:
     # Create a neural network model that includes several dense layers with hyperbolic tangent activations
     activation = 'relu'
     regularizer = l2(0.001)
-    dropout = 0.15
+    dropout = 0
     model = Sequential([
         InputLayer(input_shape=(255,)),
         BatchNormalization(),
