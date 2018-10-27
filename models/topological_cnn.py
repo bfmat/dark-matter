@@ -9,18 +9,19 @@ from keras.models import Model
 import numpy as np
 
 from data_processing.surface_topology import SurfaceTopologyNode, SurfaceTopologySet
+from training.pulse_count_train import evaluate_predictions
 
 
 class TopologicalCNN:
     """A convolutional neural network that can convolve over an arbitrary surface topology; it contains the training data and can fit without any further information"""
 
-    def __init__(self, surface_topology_set: SurfaceTopologySet, convolutional_layers: Dict[str, Union[int, str]], remaining_model: Model, optimizer: str, loss: str, epochs: int) -> None:
+    def __init__(self, surface_topology_set: SurfaceTopologySet, convolutional_layers: Dict[str, Union[int, str]], remaining_model: Model, optimizer: str, loss: str, epochs: int, validation_size: int, class_weight: Dict[int, float]) -> None:
         """Create and train a CNN corresponding to a specified set, with layers and training arguments provided"""
         # Add single-element input tensor placeholders to each of the nodes, so graph construction can begin
         for node in surface_topology_set.nodes:
             node.tensor = Input(shape=(1,))
         # Get references to all of the input layers for model creation
-        inputs = [node.tensor for node in surface_topology_set.nodes]
+        input_layers = [node.tensor for node in surface_topology_set.nodes]
         # Make a changing variable to hold the nodes produced by each layer
         layer_nodes = surface_topology_set.nodes
         # Create a convolutional layer for each of the layer parameter dictionaries provided
@@ -33,23 +34,35 @@ class TopologicalCNN:
         # Apply the provided Keras model to the combined tensor to get a final output
         output = remaining_model(combined_tensor)
         # Create a model that encompasses the convolutional layers and the remaining model, leading from all of the input layers to the output layer
-        model = Model(inputs=inputs, outputs=output)
+        model = Model(inputs=input_layers, outputs=output)
         # Compile the model with the provided optimizer and loss, printing accuracy
         model.compile(optimizer=optimizer, loss=loss, metrics=['accuracy'])
         # Convert the inputs to the network to lists
-        training_inputs = [list(node.values) for node in surface_topology_set.nodes]
+        inputs = [list(node.values) for node in surface_topology_set.nodes]
         # Generate a permutation for the number of inputs to the network, and scramble them
-        input_permutation = np.random.permutation(len(training_inputs[0]))
-        training_inputs = [[input_list[index] for index in input_permutation] for input_list in training_inputs]
+        input_permutation = np.random.permutation(len(inputs[0]))
+        inputs = np.array([[input_list[index] for index in input_permutation] for input_list in inputs])
         # Also scramble the ground truths accordingly
-        ground_truths = [surface_topology_set.ground_truths[index] for index in input_permutation]
-        # Train the model, using the list of values for each node as input data, the list of ground truths included in the original data set, and the provided number of epochs
-        model.fit(
-            x=training_inputs,
-            y=ground_truths,
-            epochs=epochs,
-            validation_split=0.2
-        )
+        ground_truths = np.array([surface_topology_set.ground_truths[index] for index in input_permutation])
+        # Split the inputs and ground truths into training and validation sets
+        validation_inputs, training_inputs = np.split(inputs, [validation_size], axis=1)
+        validation_ground_truths, training_ground_truths = np.split(ground_truths, [validation_size])
+        # Convert the inputs to lists containing a single series of data points for every example
+        validation_inputs = [array for array in validation_inputs]
+        training_inputs = [array for array in training_inputs]
+        # Create a list to hold the numbers of (false and true) (positives and negatives) for each training run
+        performance_statistics = []
+        # Iterate for a certain number of epochs
+        for epoch in range(epochs):
+            # Print out the epoch number (the fit function does not)
+            print('Epoch', epoch)
+            # Train the model for a single epoch
+            model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths), class_weight=class_weight)
+            # Run predictions on the validation set with the trained model, removing the single-element second axis
+            validation_predictions = model.predict(validation_inputs)[:, 0]
+            # Evaluate the network's predictions and add the statistics to the list, only if we are in the last few epochs (we don't care about the other ones, it is still learning then)
+            if epoch >= epochs - 10:
+                performance_statistics.append(evaluate_predictions(validation_ground_truths, validation_predictions, None, epoch, set_name='validation'))
 
     @classmethod
     def convolve_surface_topology(cls, surface_topology_nodes: List[SurfaceTopologyNode], kernel_radius: int, filters: int, activation: str, regularizer) -> List[SurfaceTopologyNode]:
