@@ -8,7 +8,7 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 
 # The hyperparameters that we are concerned with using to predict accuracy
-HYPERPARAMETERS = ['dropout', 'l2_lambda']
+HYPERPARAMETERS = ['dropout', 'l2_lambda', 'initial_threshold', 'threshold_multiplier']
 
 # Read all configuration lines provided to standard input (from the script that calculates mean by configuration) and strip whitespace
 lines = [line.strip() for line in sys.stdin.readlines() if 'Configuration:' in line]
