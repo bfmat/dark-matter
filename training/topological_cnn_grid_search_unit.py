@@ -16,6 +16,7 @@ num_convolutional_layers = int(sys.argv[1])
 l2_regularization = float(sys.argv[2])
 final_convolutional_layer_filters = int(sys.argv[3])
 kernel_radius_2_first_layer = int(sys.argv[4])
+nuclear_recoil_weight = float(sys.argv[5])
 # Load the DEAP data as a topology
 topology = create_deap_topology()
 # Create an L2 regularizer to use for all layers
@@ -48,5 +49,7 @@ TopologicalCNN(
     remaining_model=Sequential([Dense(1, activation='sigmoid')]),
     optimizer='adam',
     loss='mse',
-    epochs=200
+    epochs=50,
+    validation_size=500,
+    class_weight={0: nuclear_recoil_weight, 1: 1.0}
 )
