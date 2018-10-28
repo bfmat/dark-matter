@@ -17,8 +17,6 @@ regularizer = l2(0.003)
 TopologicalCNN(
     surface_topology_set=topology,
     convolutional_layers=[
-        {'kernel_radius': 1, 'filters': 27, 'activation': 'tanh', 'regularizer': regularizer},
-        {'kernel_radius': 1, 'filters': 18, 'activation': 'tanh', 'regularizer': regularizer},
         {'kernel_radius': 1, 'filters': 12, 'activation': 'tanh', 'regularizer': regularizer},
         {'kernel_radius': 1, 'filters': 8, 'activation': 'tanh', 'regularizer': regularizer}
     ],
@@ -27,5 +25,5 @@ TopologicalCNN(
     loss='mse',
     epochs=50,
     validation_size=500,
-    class_weight={0: 0.02, 1: 1.0}
+    class_weight={0: 0.0075, 1: 1.0}
 )
