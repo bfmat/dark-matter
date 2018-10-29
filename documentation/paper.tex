@@ -71,7 +71,19 @@ The architecture described may have wider applications to several similar cases,
 
 \subsection{Background}
 
+\subsubsection{Introduction}
+
 The PICO-60 bubble chamber experiment, created for the detection of weakly interacting massive particles (WIMPs) \cite{pico}, was completed in 2017. It provides an excellent basis on which to develop and test the efficacy of new machine learning discriminators, relative to the techniques used during initial analysis of the experiment.
+
+\subsubsection{About the Detector}
+
+The detector was filled with 52 kg of liquid C$_3$F$_8$, which was held at a constant temperature by a large chilled water bath. The pressure of the target liquid, held inside a synthetic quartz inner vessel, was very accurately controlled with propylene glycol as hydraulic fluid inside a stainless steel pressure vessel (Figure \ref{pico_cad}).
+
+The target was superheated by reducing its pressure until it entered a metastable state in which the vapor phase became energetically accessible. In the presence of a sufficiently dense energy deposition, a bubble would be nucleated and would grow to visible size. Four cameras stereoscopically monitored the chamber for these bubbles, issuing a recompression trigger upon their appearance. At this time, acoustic traces are recorded that capture the sound of bubble formation. The rising pressure caused the vapor bubble to condense as the fluid reverted to a non-superheated state. Following this, the hydraulic system prepared to return the detector to the sensitive superheated state by once again expanding to a lower pressure.
+
+Alpha decays along the U/Th chains present the dominant remaining background which must be distinguished from nuclear recoils acoustically.
+
+\subsubsection{Properties of Events}
 
 WIMP candidates in the cross-section and mass ranges to which the PICO-60 detector is sensitive are predicted to produce nuclear recoils with the same properties as those induced by neutrons. The key difference is that neutrons frequently (but not always) scatter several times and produce multiple bubbles, where the extremely small predicted cross-sections of WIMP candidates mean that they should almost invariably create just one bubble. This means single-bubble neutron events can be used to optimize a discriminator to detect WIMP events.
 
@@ -80,7 +92,7 @@ The approximate expected ratio between single-bubble and multiple-bubble events 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{pico_cad}
-    \caption{\label{} CAD rendering of the PICO-60 detector as configured for its operation with C$_3$F$_8$.}
+    \caption{\label{pico_cad} CAD rendering of the PICO-60 detector as configured for its operation with C$_3$F$_8$.}
 \end{figure}
 
 \subsection{Discrimination Techniques}
