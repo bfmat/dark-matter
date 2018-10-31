@@ -17,7 +17,8 @@ l2_regularization = float(sys.argv[2])
 final_convolutional_layer_filters = int(sys.argv[3])
 kernel_radius_2_first_layer = int(sys.argv[4])
 nuclear_recoil_weight = float(sys.argv[5])
-configuration_test = int(sys.argv[6])
+activation = sys.argv[6]
+configuration_test = int(sys.argv[7])
 # Load the DEAP data as a topology
 topology = create_deap_topology()
 # Create an L2 regularizer to use for all layers
@@ -33,17 +34,18 @@ for layer_index in range(num_convolutional_layers):
     # If it is enabled and this is the first layer, set the kernel radius to 2; otherwise make it 1
     kernel_radius = 2 if (kernel_radius_2_first_layer and layer_index == 0) else 1
     # Create such a layer and add it to the list
-    convolutional_layers.append({'kernel_radius': kernel_radius, 'filters': filters, 'activation': 'tanh', 'regularizer': regularizer})
+    convolutional_layers.append({'kernel_radius': kernel_radius, 'filters': filters, 'activation': activation, 'regularizer': regularizer})
 # Print a few blank lines for separation
 for _ in range(3):
     print()
 # Document the current hyperparameter combination
 print('HYPERPARAMETERS')
-print('Convolutional Layers', num_convolutional_layers)
+print('Convolutional Layers:', num_convolutional_layers)
 print('L2 Lambda:', l2_regularization)
 print('Final Convolutional Layer Filters:', final_convolutional_layer_filters)
 print('Kernel Radius of 2 on First Layer:', kernel_radius_2_first_layer)
 print('Nuclear Recoil Class Weight:', nuclear_recoil_weight)
+print('Activation:', activation)
 print('Configuration Test:', configuration_test)
 # Train a neural network with this list of convolutional layers
 TopologicalCNN(
