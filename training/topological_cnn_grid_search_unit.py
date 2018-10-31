@@ -17,6 +17,7 @@ l2_regularization = float(sys.argv[2])
 final_convolutional_layer_filters = int(sys.argv[3])
 kernel_radius_2_first_layer = int(sys.argv[4])
 nuclear_recoil_weight = float(sys.argv[5])
+configuration_test = int(sys.argv[6])
 # Load the DEAP data as a topology
 topology = create_deap_topology()
 # Create an L2 regularizer to use for all layers
@@ -42,6 +43,8 @@ print('Convolutional Layers', num_convolutional_layers)
 print('L2 Lambda:', l2_regularization)
 print('Final Convolutional Layer Filters:', final_convolutional_layer_filters)
 print('Kernel Radius of 2 on First Layer:', kernel_radius_2_first_layer)
+print('Nuclear Recoil Class Weight:', nuclear_recoil_weight)
+print('Configuration Test:', configuration_test)
 # Train a neural network with this list of convolutional layers
 TopologicalCNN(
     surface_topology_set=topology,
