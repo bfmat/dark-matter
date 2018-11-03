@@ -4,6 +4,7 @@
 from keras.layers import Conv1D, MaxPooling1D, Flatten, Dropout, Input, BatchNormalization, Dense, concatenate
 from keras.models import Model, Sequential
 from keras.regularizers import l2
+from keras.utils import plot_model
 
 
 def create_model() -> Model:
@@ -12,12 +13,15 @@ def create_model() -> Model:
     # It should take both microphone channels and an entire clip of audio, and take the position of the bubble on all 3 axes as a secondary input
     activation = 'tanh'
     padding = 'valid'
-    regularizer = l2(0.0003)
-    dense_dropout = 0.5
+    regularizer = l2(0.003)
+    dense_dropout = 0
     audio_inputs = Input((100_000, 2))
+    convolutional_layers_per_group = 3
+    kernel_size = 3
+    first_layer_filters = 24
     x = BatchNormalization()(audio_inputs)
     x = Conv1D(
-        filters=48,
+        filters=first_layer_filters,
         kernel_size=80,
         strides=4,
         activation=activation,
@@ -26,10 +30,10 @@ def create_model() -> Model:
     )(x)
     x = MaxPooling1D(6)(x)
     x = BatchNormalization()(x)
-    for _ in range(3):
+    for _ in range(convolutional_layers_per_group):
         x = Conv1D(
-            filters=48,
-            kernel_size=3,
+            filters=first_layer_filters,
+            kernel_size=kernel_size,
             activation=activation,
             kernel_regularizer=regularizer,
             padding=padding
@@ -37,10 +41,10 @@ def create_model() -> Model:
         x = BatchNormalization()(x)
     x = MaxPooling1D(6)(x)
     x = BatchNormalization()(x)
-    for _ in range(4):
+    for _ in range(convolutional_layers_per_group + 1):
         x = Conv1D(
-            filters=96,
-            kernel_size=3,
+            filters=first_layer_filters * 2,
+            kernel_size=kernel_size,
             activation=activation,
             kernel_regularizer=regularizer,
             padding=padding
@@ -48,10 +52,10 @@ def create_model() -> Model:
         x = BatchNormalization()(x)
     x = MaxPooling1D(6)(x)
     x = BatchNormalization()(x)
-    for _ in range(6):
+    for _ in range(convolutional_layers_per_group * 2):
         x = Conv1D(
-            filters=192,
-            kernel_size=3,
+            filters=first_layer_filters * 4,
+            kernel_size=kernel_size,
             activation=activation,
             kernel_regularizer=regularizer,
             padding=padding
@@ -59,26 +63,22 @@ def create_model() -> Model:
         x = BatchNormalization()(x)
     x = MaxPooling1D(6)(x)
     x = BatchNormalization()(x)
-    for _ in range(3):
+    for _ in range(convolutional_layers_per_group):
         x = Conv1D(
-            filters=384,
-            kernel_size=3,
+            filters=first_layer_filters * 8,
+            kernel_size=kernel_size,
             activation=activation,
             kernel_regularizer=regularizer,
             padding=padding
         )(x)
         x = BatchNormalization()(x)
     x = Flatten()(x)
-    # Create a secondary input for the 3 axes and concatenate it to the outputs of the convolutional layers
-    axes_inputs = Input((3,))
-    x = concatenate([x, axes_inputs])
-    x = BatchNormalization()(x)
     x = Dense(64, activation=activation, kernel_regularizer=regularizer)(x)
     x = Dropout(dense_dropout)(x)
     x = Dense(16, activation=activation, kernel_regularizer=regularizer)(x)
     x = Dropout(dense_dropout)(x)
     outputs = Dense(1, activation='sigmoid', kernel_regularizer=regularizer)(x)
-    model = Model(inputs=[audio_inputs, axes_inputs], outputs=outputs)
+    model = Model(inputs=audio_inputs, outputs=outputs)
     # Output a summary of the model's architecture
     print(model.summary())
     # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
@@ -89,3 +89,7 @@ def create_model() -> Model:
     )
     # Return the untrained model
     return model
+
+
+model = create_model()
+plot_model(model, to_file='/home/brendonm/model.png')
