@@ -3,6 +3,7 @@
 # Created by Brendon Matusch, August 2018
 
 import numpy as np
+from scipy.misc import imsave
 
 from data_processing.deap_serialization import save_test
 from data_processing.load_deap_data import load_real_world_deap_data, load_simulated_deap_data
@@ -20,6 +21,7 @@ EPOCHS = 100
 neck_events, non_neck_events = load_simulated_deap_data()
 # Project the pulse counts onto a map, wrapping in a single-element tuple so the preprocessing function will work
 neck_events_map, non_neck_events_map = [[(pmt_map_projection(event[0]),) for event in events] for events in [neck_events, non_neck_events]]
+imsave('/home/brendonm/map_projection.png', neck_events_map[0][0][:, :, 0])
 # Convert them to NumPy arrays for training (also getting the reordered list of events)
 inputs, ground_truths, events = prepare_events(neck_events_map, non_neck_events_map)
 # Split the inputs and ground truths into training and validation sets
