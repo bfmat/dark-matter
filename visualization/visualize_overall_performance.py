@@ -12,8 +12,9 @@ CONFIGURATIONS = ['Original NN Analysis', 'New NN Analysis', 'Iterative Cluster 
 # Color and legend the entries according to whether they are supervised or semi-supervised learning
 COLORS = ['gray', 'gray', 'green', 'green']
 
+# Create a figure with a predefined size
+_, ax = plt.subplots(figsize=(8, 6))
 # Use percentage labels for the Y axis
-ax = plt.axes()
 ax.yaxis.set_major_formatter(mtick.PercentFormatter())
 # Draw a bar graph using the performance statistics; do not use the configurations right away because they would be sorted alphabetically
 plt.bar(range(len(PERFORMANCE_VALUES)), PERFORMANCE_VALUES, color=COLORS)
@@ -21,6 +22,8 @@ plt.bar(range(len(PERFORMANCE_VALUES)), PERFORMANCE_VALUES, color=COLORS)
 plt.xticks(range(len(CONFIGURATIONS)), CONFIGURATIONS, rotation=10)
 # Start at 70% so the difference is more obvious
 plt.ylim(70, 100)
+# Label the Y axis to specify what the numbers mean
+plt.ylabel('Accuracy')
 # Draw a legend for the two learning classes
 supervised_patch = mpatches.Patch(color='gray', label='Supervised Learning')
 semi_supervised_patch = mpatches.Patch(color='green', label='Semi-Supervised Learning')
