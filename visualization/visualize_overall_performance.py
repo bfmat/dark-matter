@@ -11,7 +11,6 @@ PERFORMANCE_VALUES = [85, 96.5, 97.7, 99.2]
 CONFIGURATIONS = ['Original NN Analysis', 'New NN Analysis', 'Iterative Cluster Nucleation', 'Gravitational Differentiation']
 # Color and legend the entries according to whether they are supervised or semi-supervised learning
 COLORS = ['gray', 'gray', 'green', 'green']
-l = ['s', 's', 'm', 'm']
 
 # Use percentage labels for the Y axis
 ax = plt.axes()
