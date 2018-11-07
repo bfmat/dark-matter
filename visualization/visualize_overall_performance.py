@@ -13,13 +13,13 @@ CONFIGURATIONS = ['Original NN Analysis', 'New NN Analysis', 'Iterative Cluster 
 COLORS = ['gray', 'gray', 'green', 'green']
 l = ['s', 's', 'm', 'm']
 
+# Use percentage labels for the Y axis
+ax = plt.axes()
+ax.yaxis.set_major_formatter(mtick.PercentFormatter())
 # Draw a bar graph using the performance statistics; do not use the configurations right away because they would be sorted alphabetically
 plt.bar(range(len(PERFORMANCE_VALUES)), PERFORMANCE_VALUES, color=COLORS)
 # Now set the configuration names, with words angled so they fit
 plt.xticks(range(len(CONFIGURATIONS)), CONFIGURATIONS, rotation=10)
-# Use percentage labels for the Y axis
-ax = plt.axes()
-ax.yaxis.set_major_formatter(mtick.PercentFormatter())
 # Start at 70% so the difference is more obvious
 plt.ylim(70, 100)
 # Draw a legend for the two learning classes
