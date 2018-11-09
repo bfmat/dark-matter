@@ -14,5 +14,5 @@ data = np.array([float(line.split()[-1]) for line in lines])
 data = np.reshape(data, (len(data) // 12, 6, 2))
 # Calculate the mean for each configuration
 data = np.mean(data, axis=1)
-# Output the resulting array (it appears as a nicely formatted table)
-print(data)
+# Output the resulting array as a nested list
+print(data.tolist())
