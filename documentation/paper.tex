@@ -32,7 +32,7 @@
 
 \pagebreak
 
-\section{Objective}
+\section{Objective} \label{objective}
 
 In the PICO-60 experiment, and in most other experiments striving to directly detect dark matter, one of the most important and challenging hurdles to overcome is that of background events. Unwanted particles from a variety of sources can produce event signatures that appear very similar to those which are expected to be created by dark matter candidates.
 
@@ -264,7 +264,13 @@ Several of these hyperparameters are optimized at a time, using a grid search. G
 
 In general, the parameters for each grid search were chosen based on some initial empirical experimentation to determine the general range within the entire parameter space that work reasonably well. There was a limit to how many parameters could be tested, especially in the case of semi-supervised learning, as some of the grid searches took several days to run.
 
-For stochastic optimization of the loss function while training, the Adam \cite{adam} optimizer was used where not otherwise specified.
+Where not otherwise specified, the following hyperparameters were used universally:
+\begin{itemize}
+    \item Adam \cite{adam} stochastic optimizer
+    \item Mean squared error loss function
+    \item Batch size of 32
+    \item $tanh$ activation function
+\end{itemize}
 
 \section{Supervised Learning}
 
@@ -626,7 +632,7 @@ The following table represents the performance of several high-accuracy gravitat
 
 Iterative cluster nucleation (ICN) is a second semi-supervised learning algorithm developed as part of this study. It takes advantage of some amount of imperfectly labeled data, using it to classify the rest of an unlabeled training set while optimizing to produce an effective discriminator.
 
-The basic concept is similar to that of gravitational differentiation. Starting with a relatively small amount of labeled data from two classes (nuclear recoils and alpha particles, in this case), predictions are run on a set of unlabeled data, and those predictions are used to produce further training data. However, there are two key differences:
+The basic concept is similar to that of gravitational differentiation. Starting with a relatively small amount of labeled data from two classes (nuclear recoils and alpha particles, in this case), predictions are run on a set of unlabeled data, and those predictions are used to produce further training data. However, there are three key differences:
 
 \begin{enumerate}
     \item In iterative cluster nucleation, an unlabeled example is not included in the training process at all, until a very confident prediction is made on it. Once that occurs, it is added to the training set, expanding one of the two ``clusters'' of training data.
@@ -721,7 +727,7 @@ The following table directly compares performance of the most successful semi-su
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{Summary of the most successful semi-supervised learning configuration.}
+        \captionof{table}{Summary of the most successful semi-supervised learning configurations.}
         \begin{tabular}{|l|l|l|l|l|l|}
             \hline
             Initial $\varsigma$ Size & Technique & Mean AP Accuracy & Mean Precision & Mean Recall & Mean CWSD \\
@@ -750,19 +756,47 @@ The following table directly compares performance of the most successful semi-su
     \end{center}
 \end{minipage}
 
-As observed in this table, semi-supervised learning algorithms are significantly more accurate at replicating AP than the original PICO-60 machine learning analysis.
 
-Compared to AP, in addition to achieving similar accuracy, configurations from both semi-supervised learning algorithms produce significantly more decisive predictions as measured by the class-wise standard deviation.
+As observed in this table, semi-supervised learning algorithms are significantly more accurate at replicating AP than the original PICO-60 machine learning analysis. Compared to AP, in addition to achieving similar accuracy, configurations from both semi-supervised learning algorithms produce significantly more decisive predictions as measured by the class-wise standard deviation.
+
+The following table compares the overall average performance of each of the semi-supervised learning configurations for different labeled set sizes.
+
+\begin{minipage}{\textwidth}
+    \begin{center}
+        \captionof{table}{Summary of the average accuracy values for each semi-supervised learning technique.} \label{average_semi}
+        \begin{tabular}{|l|l|l|}
+            \hline
+            Initial $\varsigma$ Size & Technique & Mean Accuracy \\
+            \hline
+            32 & GD & 69\% \\
+            \hline
+            64 & GD & 73\% \\
+            \hline
+            128 & GD & 84\% \\
+            \hline
+            256 & GD & 94\% \\
+            \hline
+            32 & ICN & 75\% \\
+            \hline
+            64 & ICN & 84\% \\
+            \hline
+            128 & ICN & 95\% \\
+            \hline
+            256 & ICN & 97\% \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{minipage}
 
 \section{Conclusions}
 
-This study has demonstrated that it is possible, using semi-supervised learning, to automatically optimize a discriminator with performance comparable to one developed and tuned by humans like the Acoustic Parameter technique. This conclusion has been achieved through two rounds of optimization, the first to explore and evaluate various network structures and input formats using supervised learning, and the second to incorporate the most successful configuration into semi-supervised learning systems with the goal of replicating AP as accurately as possible.
+This study has demonstrated that it is possible, using semi-supervised learning, to automatically optimize a discriminator with performance comparable to one developed and tuned by humans like the Acoustic Parameter technique. This conclusion has been achieved through two rounds of optimization, the first to explore and evaluate various network structures and input formats using supervised learning, and the second to incorporate the most successful configuration into semi-supervised learning systems with the goal of producing a high-accuracy discriminator to complement AP.
 
 In the realm of supervised learning, it was made clear that the banded Fourier transform is the most effective input format. It produced significantly higher accuracy and tighter prediction distributions than neural networks trained on either the raw audio waveform or image window data. There is strong evidence that image data in particular does not contain sufficient information to be used for discrimination.
 
-Two semi-supervised learning algorithms were developed, applying the best configuration found for supervised learning. While both techniques produced some very effective discriminators, iterative cluster nucleation was found to be the more effective of the two. It replicated AP with a mean of 97\% accuracy, using 256 labeled training examples. This indicates that the technique shows significant promise.
+Two semi-supervised learning algorithms were developed, applying the best configuration found for supervised learning. While both techniques produced some very effective discriminators, iterative cluster nucleation was found to be the more effective of the two. As seen in Table \ref{average_semi}, it replicated AP with a mean of 97\% accuracy, using 256 labeled training examples. This indicates that the technique shows significant promise.
 
-While there is still of course a place for conventionally developed discriminators such as AP, they are difficult to develop until a large quantity of calibration data has been collected and the physical principles of the experiment are understood well. The innovations developed in this study suggest that semi-supervised learning can facilitate very quick development of discriminators immediately after the first calibration runs are conducted on a new experimental apparatus. This has the potential to allow the teams working on these experiments to iterate more quickly and better understand intermediate results, before all data has been analyzed in depth.
+As discussed in Section \ref{objective}, discriminators such as AP are difficult to develop until a large quantity of calibration data has been collected and the physical principles of the experiment are understood well. The innovations developed in this study suggest that semi-supervised learning can complement AP, by facilitating very quick development of discriminators immediately after the first calibration runs are conducted on a new experimental apparatus. This has the potential to allow the teams working on these experiments to iterate more quickly and better understand intermediate results, before all data has been analyzed in depth.
 
 \section{Technologies}
 
