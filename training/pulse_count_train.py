@@ -4,6 +4,7 @@
 
 import numpy as np
 
+from data_processing.deap_serialization import save_test
 from data_processing.load_deap_data import load_real_world_deap_data, load_simulated_deap_data
 from models.pulse_count_network import create_model
 
@@ -35,6 +36,8 @@ def prepare_events(true_events, false_events):
 
 def evaluate_predictions(ground_truths: np.ndarray, predictions: np.ndarray, events, epoch: int, set_name: str) -> None:
     """Given arrays of ground truths and corresponding predictions, and a list of corresponding events, print statistics about true and false positives and negatives and save a corresponding JSON file"""
+    # Save the validation ground truths and floating-point predictions in a JSON file named with the set name
+    save_test(ground_truths, predictions, events, epoch, f'pulse_count_{set_name}')
     # Round the predictions to binary values
     predictions_integer = predictions >= 0.5
     # Calculate and return the numbers of (false and true) (positives and negatives) individually
@@ -66,24 +69,22 @@ if __name__ == '__main__':
 
     # Create a list to hold the numbers of (false and true) (positives and negatives) for each training run
     performance_statistics = []
-    # Train the network multiple times to get an idea of the general accuracy
-    for _ in range(3):
-        # Create an instance of the neural network model
-        model = create_model()
-        # Iterate for a certain number of epochs
-        for epoch in range(EPOCHS):
-            # Print out the epoch number (the fit function does not)
-            print('Epoch', epoch)
-            # Train the model for a single epoch
-            model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths), class_weight={0: 0.01, 1: 1.0})
-            # Run predictions on the validation set with the trained model, removing the single-element second axis
-            validation_predictions = model.predict(validation_inputs)[:, 0]
-            # Evaluate the network's predictions and add the statistics to the list, only if we are in the last few epochs (we don't care about the other ones, it is still learning then)
-            if epoch >= EPOCHS - 10:
-                performance_statistics.append(evaluate_predictions(validation_ground_truths, validation_predictions, validation_events, epoch, set_name='validation'))
-            # Repeat this process for the dedicated test set
-            test_predictions = model.predict(test_inputs)[:, 0]
-            evaluate_predictions(test_ground_truths, test_predictions, test_events, epoch, set_name='real_world_test')
+    # Create an instance of the neural network model
+    model = create_model()
+    # Iterate for a certain number of epochs
+    for epoch in range(EPOCHS):
+        # Print out the epoch number (the fit function does not)
+        print('Epoch', epoch)
+        # Train the model for a single epoch
+        model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths), class_weight={0: 0.01, 1: 1.0})
+        # Run predictions on the validation set with the trained model, removing the single-element second axis
+        validation_predictions = model.predict(validation_inputs)[:, 0]
+        # Evaluate the network's predictions and add the statistics to the list, only if we are in the last few epochs (we don't care about the other ones, it is still learning then)
+        if epoch >= EPOCHS - 10:
+            performance_statistics.append(evaluate_predictions(validation_ground_truths, validation_predictions, validation_events, epoch, set_name='validation'))
+        # Repeat this process for the dedicated test set
+        test_predictions = model.predict(test_inputs)[:, 0]
+        evaluate_predictions(test_ground_truths, test_predictions, test_events, epoch, set_name='real_world_test')
     # Add up each of the statistics for the last few epochs and calculate the mean
     statistics_mean = np.mean(np.stack(performance_statistics, axis=0), axis=0)
     # Using these values, calculate and print the percentage of neck alphas removed, and the percentage of nuclear recoils incorrectly removed alongside them
