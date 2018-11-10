@@ -17,7 +17,6 @@ def create_model() -> Model:
         Dense(24, activation=activation, kernel_regularizer=regularizer),
         Dropout(0.5),
         Dense(12, activation=activation, kernel_regularizer=regularizer),
-        Dropout(0.5),
         Dense(1, activation='sigmoid', kernel_regularizer=regularizer)
     ])
     # Output a summary of the model's architecture
