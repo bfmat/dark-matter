@@ -23,7 +23,7 @@ plt.figure(figsize=(8, 6))
 # Plot the network's outputs by ground truth in a histogram, labeling the 2 classes
 plt.hist([network_outputs_false, network_outputs_true], bins=16, label=['Simulated Neck Alpha Events', 'Simulated WIMP Events'])
 # Label the axes of the graph
-plt.xlabel(r'Network Prediction (0 $\Rightarrow$ WIMP Events, 1 $\Rightarrow$ Neck Events)')
+plt.xlabel(r'Network Prediction (0 $\Rightarrow$ WIMP Events, 1 $\Rightarrow$ Neck Alpha Events)')
 plt.ylabel('Validation Event Count')
 # Enforce the X axis range from 0 to 1
 plt.xlim(0, 1)
