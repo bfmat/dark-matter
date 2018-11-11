@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 
 # Create lists containing the performance statistics as well as the names of the configurations
-PERFORMANCE_VALUES = [91, 100, 75.7, 92.6]
-# PERFORMANCE_VALUES = [99.6, 99.1, 100, 99.3]
+# PERFORMANCE_VALUES = [91, 100, 75.7, 92.6]
+PERFORMANCE_VALUES = [99.6, 99.1, 100, 99.3]
 CONFIGURATIONS = ['Conventional Analysis', 'Dense Neural Network', 'Map Projection CNN', 'Topological CNN']
 # Color and legend the entries according to whether they are supervised or semi-supervised learning
 COLORS = ['gray', 'green', 'green', 'green']
@@ -21,10 +21,10 @@ ax.yaxis.set_major_formatter(mtick.PercentFormatter())
 plt.bar(range(len(PERFORMANCE_VALUES)), PERFORMANCE_VALUES, color=COLORS)
 # Now set the configuration names, with words angled so they fit
 plt.xticks(range(len(CONFIGURATIONS)), CONFIGURATIONS, rotation=10)
-# # Start at 90% so the difference is more obvious; go slightly above 100 so there is space
-# plt.ylim(ymin=90, ymax=100.5)
+# Start at 90% so the difference is more obvious; go slightly above 100 so there is space
+plt.ylim(ymin=90, ymax=100.5)
 # Label the Y axis to specify what the numbers mean
-plt.ylabel('False Positives (lower is better)')
+plt.ylabel('Recall (higher is better)')
 # Draw a legend for the two learning classes
 conventional_patch = mpatches.Patch(color='gray', label='Conventional Analysis')
 machine_learning_patch = mpatches.Patch(color='green', label='Machine Learning')
