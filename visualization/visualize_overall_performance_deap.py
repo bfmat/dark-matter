@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 
 # Create lists containing the performance statistics as well as the names of the configurations
-# PERFORMANCE_VALUES = [87, 58.7, 58.8, 54.4]
-PERFORMANCE_VALUES = [97, 99.1, 100, 99.3]
+# PERFORMANCE_VALUES = [91, 100, 75.7, 92.6]
+PERFORMANCE_VALUES = [99.6, 99.1, 100, 99.3]
 CONFIGURATIONS = ['Conventional Analysis', 'Dense Neural Network', 'Map Projection CNN', 'Topological CNN']
 # Color and legend the entries according to whether they are supervised or semi-supervised learning
 COLORS = ['gray', 'green', 'green', 'green']
@@ -28,6 +28,6 @@ plt.ylabel('Recall')
 # Draw a legend for the two learning classes
 conventional_patch = mpatches.Patch(color='gray', label='Conventional Analysis')
 machine_learning_patch = mpatches.Patch(color='green', label='Machine Learning')
-plt.legend(handles=[conventional_patch, machine_learning_patch])
+plt.legend(handles=[conventional_patch, machine_learning_patch], loc='lower left')
 # Display the graph on screen
 plt.show()
