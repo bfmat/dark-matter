@@ -74,7 +74,7 @@ The objective of this study is to investigate the potential for machine learning
 
     \begin{enumerate}
         \item Neutron calibration sets, which are known to contain approximately 90\% neutrons, and
-        \item Background radiation runs, which contain approximately 99\% alpha particles
+        \item WIMP search runs, which contain approximately 99\% alpha particles
     \end{enumerate}
 \end{enumerate}
 
@@ -148,7 +148,7 @@ The lowest-level data derived from the piezos is the raw waveform $\omega$. This
 
 The raw waveform $\omega$ was converted into the frequency domain by means of a one-dimensional Discrete Fourier Transform (DFT) for real input. Since DFTs produce sequences of complex numbers, the magnitude of each element was computed. The direct output from such a DFT is the full-resolution Fourier transform $\beta _{50,001}$, which consists of a sequence of numbers half the length of the raw waveform $\omega$.
 
-Beyond this, the banded Fourier transform $\beta_{8}$ (which is the input to the AP function and the original machine learning analysis) was computed by integrating the resonant energy over all frequencies within each of a set of bands. This can be thought of as a method of signal downscaling, compressing the information into a smaller number of data points.
+Beyond this, the banded Fourier transform $\beta_{8}$ (which is the input to the AP function and the original machine learning analysis) was computed by integrating the resonant energy over all frequencies within each of a set of frequency bands ranging from 1 kHz to 300 kHz \cite{pico}. This can be thought of as a method of signal downscaling, compressing the information into a smaller number of data points.
 
 \begin{figure}[h]
     \centering
