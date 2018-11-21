@@ -76,7 +76,7 @@ The objective of this study is to investigate the potential for machine learning
 
     \begin{enumerate}
         \item Neutron calibration sets, which are known to contain approximately 90\% neutrons, and
-        \item WIMP search runs, which contain approximately 99\% alpha particles
+        \item Previously blinded WIMP search runs and diagnostic background runs, which contain approximately 99\% alpha particles.
     \end{enumerate}
 \end{enumerate}
 
@@ -98,7 +98,7 @@ The PICO-60 \cite{pico} bubble chamber experiment, created for the detection of 
 
 \subsubsection{About the Detector}
 
-The detector was filled with 52 kg of liquid C$_3$F$_8$, which was held at a constant temperature by a large chilled water bath. The pressure of the target liquid, held inside a synthetic quartz inner vessel, was precisely accurately controlled with propylene glycol as hydraulic fluid inside a stainless steel pressure vessel (Figure \ref{pico_cad}).
+The detector was filled with 52 kg of liquid C$_3$F$_8$, which was held at a constant temperature by a large chilled water bath. The pressure of the target liquid, held inside a synthetic quartz inner vessel, was precisely controlled with propylene glycol as hydraulic fluid inside a stainless steel pressure vessel (Figure \ref{pico_cad}).
 
 The target was superheated by reducing its pressure until it entered a metastable state in which the vapor phase became energetically accessible. In the presence of a sufficiently dense energy deposition, a bubble would be nucleated and would grow to visible size. Four cameras stereoscopically monitored the chamber for these bubbles, issuing a recompression trigger upon their appearance. At this time, acoustic traces were recorded that captured the sound of bubble formation, and a Dytran 2006V1 fast pressure transducer \cite{amole_thesis} monitored the rise. The rising pressure caused the vapor bubble to condense as the fluid reverted to a non-superheated state. Following this, the hydraulic system prepared to return the detector to the sensitive superheated state by once again expanding to a lower pressure.
 
@@ -654,6 +654,8 @@ Table \ref{grav_overview} represents the performance of several high-accuracy gr
     \includegraphics[width=\textwidth]{grav_grid_search}
     \caption{\label{grav_grid_search} Predictions of best gravitational differentiation model compared to AP (on randomly selected validation set).}
 \end{figure}
+
+(Note that in Figure \ref{grav_grid_search}, AP is normalized differently than in the original PICO-60 study. In this normalized spectrum, the decision boundary between neutrons and alpha particles is at 0.25.)
 
 \subsection{Iterative Cluster Nucleation}
 
