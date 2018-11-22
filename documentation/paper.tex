@@ -132,13 +132,17 @@ These conversion, preprocessing, and data cutting steps were reapplied during th
 
 \subsubsection{Original Machine Learning Analysis}
 
-As part of the PICO-60 experiment, some testing was conducted to determine whether machine learning (in the form of a multi-layer perceptron) could be a viable technique to consider for a discrimination function. The results, while not definitive, indicated that the general technique warranted further investigation.
+As part of the PICO-60 experiment, some testing was conducted to determine whether machine learning (in the form of a multi-layer perceptron) could be a viable technique to consider for a discrimination function. The results, published in the 2017 PICO-60 paper \cite{pico}, indicated that the general technique warranted further investigation.
+
+The neural network in this study used the same $\beta_{8}$ input format as was applied in this study (detailed in Section \ref{piezo_derived}), with pre-trigger noise subtracted. Position corrections (also in Section \ref{piezo_derived}) were not applied; rather, the position of the event in the vessel is additionally used as input. AP was used to restrict the data used as input to the neural network. In addition to neutrons and alpha particles, gamma events were used as training and testing data for this neural network.
+
+Software for this experiment was implemented using the MATLAB Neural Network Toolbox \cite{matlab}.
 
 \subsection{Data Sources and Formats} \label{data_formats}
 
 Discriminators can use a variety of different data formats to make predictions. These are collected from the two essential sensors present in the PICO-60 apparatus: two piezoelectric microphones (piezos) and cameras.
 
-\subsubsection{Piezo-Derived}
+\subsubsection{Piezo-Derived} \label{piezo_derived}
 
 \textit{Raw Waveform}
 
@@ -336,14 +340,12 @@ The following hyperparameters were tested during a grid search:
     \item Convolutional Filters $\in \{24, 48\}$
     \item Convolutional Kernel Size $\in \{3, 5\}$
     \item Number of Convolutional Layers $\in \{17, 32\}$
-    \item Number of Dense Layers $= 3$
+    \item Number of Dense Layers = 3 (with neuron counts 64, 16, and 1)
 \end{itemize}
 
 \subsubsection{Results}
 
-During early experiments with shallower network architectures, it was revealed to have a surprising and undesirable capacity to separate run types based on meaningless information. It was able to discriminate between events from the AmBe neutron calibration runs and events from alpha background runs with 96\% accuracy, and to separate all combined neutron calibration runs from alpha background runs with 91\% accuracy. This was determined to be caused by the network detecting and fitting on biases in the white noise at the beginning and hydraulic recompression sounds at the end of the raw waveform. This extraneous information was subsequently cropped out.
-
-When this extraneous information was cropped out and the architecture was modified, both accuracy and class-wise standard deviation remained quite high. The most accurate configuration during a grid search was 95\% accurate and had a standard deviation of 0.52 (seen in Figure \ref{waveform_hist}). This is better by both metrics than the multi-layer perceptron used in the original PICO-60 analysis.
+The most accurate configuration during a waveform CNN grid search was 95\% accurate and had a standard deviation of 0.52 (seen in Figure \ref{waveform_hist}).
 
 \begin{figure}[h]
     \centering
@@ -393,7 +395,7 @@ The following hyperparameters were tested during a grid search:
 \begin{itemize}
     \item Dropout $\in \{0, 0.25, 0.5\}$
     \item L2 Regularization $\lambda \in \{0, 0.0003, 0.001, 0.003, 0.01\}$
-    \item Number of Layers $\in \{2, 3, 4\}$
+    \item Number of Dense Layers $\in \{2, 3, 4\}$
 \end{itemize}
 
 \subsubsection{Results}
@@ -454,6 +456,7 @@ The following hyperparameters were tested during a grid search:
     \item Dropout $\in \{0, 0.25, 0.5\}$
     \item L2 Regularization $\lambda \in \{0, 0.0003, 0.001, 0.003, 0.006, 0.01\}$
     \item Number of Convolutional Layers $\in \{6, 9, 12\}$
+    \item Number of Dense Layers = 3 (with neuron counts 64, 16, and 1)
 \end{itemize}
 
 \subsubsection{Results}
@@ -463,7 +466,7 @@ Throughout a variety of different network architectures, the best validation acc
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{image_hist}
-    \caption{\label{image_hist} Prediction distribution of one of the best {\it ImageConv}$(\iota)$ discriminators.}
+    \caption{\label{image_hist} Prediction distribution of one of the best {\it ImageConv}$(\iota)$ discriminators. (Note the truncated X axis.)}
 \end{figure}
 
 \begin{minipage}{\textwidth}
@@ -524,7 +527,7 @@ The key conclusion to be drawn from the above table is that the low-resolution F
 Based on this result, experimentation with semi-supervised learning proceeded using \\ {\it FourierMLP}$(${\it PosCor}$(\beta_{8}, \chi))$, applying a three-layer perceptron architecture. There were three main reasons for this:
 
 \begin{enumerate}
-    \item This was a highly effective configuration, producing 97\% accuracy and a class-wise standard deviation dramatically better than the original PICO-60 neural network on that data set.
+    \item This was a highly effective configuration, producing 96\% accuracy and a class-wise standard deviation dramatically better than the original PICO-60 neural network on that data set.
     \item The use of the exact same input format as AP makes the algorithms more directly comparable.
     \item If position correction is not applied, there is some risk of introducing a bias to the network's training data because of the different position distributions of the two classes.
 \end{enumerate}
@@ -541,7 +544,11 @@ The primary advantage of semi-supervised learning is clear: it requires fewer la
 
 Two techniques for semi-supervised learning have been developed for this study: gravitational differentiation and iterative cluster nucleation. The essence of both algorithms is a positive feedback loop. First, the network is trained on a smaller amount of imperfect data. Throughout the training process, the network runs predictions on unlabeled data. By using its most confident predictions in the training process, the desired function (separating particle types) is continuously reinforced, while less confident predictions are de-emphasized. This effectively draws new, unlabeled data into the training set.
 
-Since the intent of these techniques is to separate particle types (the same as AP), performance evaluations (accuracy and class-wise standard deviation) use AP as a baseline. To ensure that accuracy statistics are as consistent and reliable as possible, every configuration was trained three times, with a different randomly selected validation set each time. (Using more than three training runs would have taken prohibitive amounts of time.) Accuracy, precision, recall, and class-wise standard deviation statistics are the mean over those three tests.
+Because all data in the PICO-60 experiment is labeled, unlabeled training data sets are randomly sampled from the 496 training examples remaining (after the validation set is selected).
+
+Since the intent of these techniques is to separate particle types (the same as AP), performance evaluations (accuracy and class-wise standard deviation) use AP as a baseline. All graphs in this section use AP's predictions to define the sets of neutrons and alpha particles.
+
+To ensure that accuracy statistics are as consistent and reliable as possible, every configuration was trained three times, with a different randomly selected validation set each time. (Using more than three training runs would have taken prohibitive amounts of time.) Accuracy, precision, recall, and class-wise standard deviation statistics are the mean over those three tests.
 
 \subsection{Gravitational Differentiation}
 
@@ -580,12 +587,6 @@ It is a distortion of the hyperbolic tangent that flattens the central range and
 
 (Note that step \ref{exponent} only works if $\psi$ is an odd integer (because odd integer exponents preserve the sign), limiting the ability to fine-tune this function by changing $\psi$. To resolve this, a piecewise exponential function is used instead, where the absolute value is taken prior to applying the power and the sign is multiplied back in afterwards. This permits use of the full range of curves produced by even and non-integer values of $\psi$.)
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{grav_diff}
-    \caption{\label{grav_diff} A visualization of $\mathrm{GravDiff}(p, \psi, g)$ with respect to $p$ and $\psi$.}
-\end{figure}
-
 \subsubsection{Application}
 
 This function is applied in a training algorithm that is parameterized by the set of imperfectly labeled data $\varsigma$, the set of unlabeled training data $\upsilon$, a binary classification neural network $NN(x)$ (where $x$ is the input data format), and the gravitational multiplier increment $\delta_g$. The distortion power $\psi$ is assumed to be constant throughout a training run, and the gravitational multiplier $g$ is initialized at 0, gradually increasing during training. It iterates as follows:
@@ -597,6 +598,12 @@ This function is applied in a training algorithm that is parameterized by the se
 \end{enumerate}
 
 This system was trained using a multi-layer perceptron with an 8-band Fourier transform input for $NN(x)$, because this was one of the most successful configurations in supervised learning. It produced the highest accuracy as well as the lowest class-wise standard deviation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{grav_diff}
+    \caption{\label{grav_diff} A visualization of $\mathrm{GravDiff}(p, \psi, g)$ with respect to $p$ and $\psi$.}
+\end{figure}
 
 \subsubsection{Results}
 
@@ -759,11 +766,11 @@ Table \ref{icn_overview} represents the performance of a variety of high-accurac
 
 \subsection{Performance Summary}
 
-Table \ref{semi_success_overview} directly compares performance of the most successful semi-supervised learning configurations, with AP provided as a baseline for comparison. Remember that ``Mean AP Accuracy'' refers to accuracy at replication of AP, rather than replication of the ground truths.
+Table \ref{semi_success_overview} directly compares performance of the most successful semi-supervised learning configurations, with AP provided as a baseline for comparison. Remember that ``Mean AP Accuracy'' is calculated relative to AP's predictions, rather than replication of the ground truths.
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{Summary of the most successful semi-supervised learning configurations.} \label{semi_success_overview}
+        \captionof{table}{Summary of the most successful semi-supervised learning models.} \label{semi_success_overview}
         \begin{tabular}{|l|l|l|l|l|l|}
             \hline
             Initial $\varsigma$ Size & Technique & Mean AP Accuracy & Mean Precision & Mean Recall & Mean CWSD \\
@@ -786,7 +793,7 @@ Table \ref{semi_success_overview} directly compares performance of the most succ
             \hline
             278 & PICO-60 ML & 80\% & 76\% & 100\% & 0.64 \\
             \hline
-            $\infty$ & AP & 100\% & 100\% & 100\% & 0.41 \\
+            N/A & AP & 100\% & 100\% & 100\% & 0.41 \\
             \hline
         \end{tabular}
     \end{center}
@@ -836,7 +843,7 @@ As discussed in Section \ref{objective}, discriminators such as AP are difficult
 
 \section{Technologies}
 
-All programming for this study was done in Python 3. Keras \cite{keras}, running on a TensorFlow backend, was used for all machine learning tasks. NumPy \cite{numpy} and SciPy \cite{scipy} were used for linear algebra and signal processing. ROOT \cite{root}, scikit-image \cite{scikit-image}, and scikit-learn \cite{scikit-learn} were used for data loading and storage. Matplotlib \cite{matplotlib} was used for data visualization.
+All programming for this study was done in Python 3. Keras \cite{keras}, running on a TensorFlow \cite{tensorflow} backend, was used for all machine learning tasks. NumPy \cite{numpy} and SciPy \cite{scipy} were used for linear algebra and signal processing. ROOT \cite{root}, scikit-image \cite{scikit-image}, and scikit-learn \cite{scikit-learn} were used for data loading and storage. Matplotlib \cite{matplotlib} was used for data visualization.
 
 \section{Acknowledgements}
 
