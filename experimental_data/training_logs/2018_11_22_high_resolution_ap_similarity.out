@@ -1,0 +1,492 @@
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers1/ CWSD: 0.5207447487356748 Disagreements: 16.048 Precision: 0.831984959953057 Recall: 0.999493670886076
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers1/time1540054146_epoch0.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers1/ CWSD: 0.5077622025652382 Disagreements: 15.724 Precision: 0.8348602560026427 Recall: 0.9996455696202531
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers1/time1540056057_epoch0.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers1/time1540056059_epoch7.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers1/time1540056060_epoch8.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.0003/hidden_layers2/ CWSD: 0.49865498384813295 Disagreements: 14.74 Precision: 0.8434704152012769 Recall: 0.9995443037974684
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.01/hidden_layers3/ CWSD: 0.4850982885678409 Disagreements: 14.132 Precision: 0.8492306578917831 Recall: 0.9993924050632911
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.01/hidden_layers3/time1540055963_epoch2.json
+6 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.01/hidden_layers3/time1540055973_epoch29.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers2/ CWSD: 0.49466919941341836 Disagreements: 14.488 Precision: 0.8461058641434559 Recall: 0.9991898734177215
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers2/time1540054660_epoch3.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers2/time1540054689_epoch130.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers2/time1540054661_epoch7.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers2/time1540054659_epoch0.json
+6 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers2/time1540054659_epoch1.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0/hidden_layers2/ CWSD: 0.5102059776304623 Disagreements: 16.124 Precision: 0.8315152591011828 Recall: 0.9992911392405065
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0/hidden_layers2/time1540053764_epoch6.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0/hidden_layers2/time1540053763_epoch1.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0/hidden_layers1/ CWSD: 0.5141395687246401 Disagreements: 15.232 Precision: 0.8391789990923701 Recall: 0.999240506329114
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.0003/hidden_layers3/ CWSD: 0.5049719254281475 Disagreements: 15.028 Precision: 0.8415781263860933 Recall: 0.9991898734177216
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.0003/hidden_layers3/time1540055162_epoch3.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.0003/hidden_layers3/time1540055161_epoch0.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.0003/hidden_layers3/time1540055163_epoch5.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.0003/hidden_layers3/time1540055162_epoch1.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.0003/hidden_layers3/time1540055164_epoch7.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.0003/hidden_layers3/time1540055164_epoch6.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.0003/hidden_layers3/ CWSD: 0.528275482680067 Disagreements: 15.828 Precision: 0.8349052642565886 Recall: 0.9983291139240505
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.0003/hidden_layers3/time1540056506_epoch69.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.0003/hidden_layers3/time1540056506_epoch68.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers1/ CWSD: 0.5109979854971712 Disagreements: 15.472 Precision: 0.8371007693666979 Recall: 0.999493670886076
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers1/time1540053912_epoch1.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers1/time1540053936_epoch93.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers1/time1540053912_epoch2.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers2/ CWSD: 0.5082759818038399 Disagreements: 14.896 Precision: 0.8431221270463929 Recall: 0.9981772151898733
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers2/time1540054306_epoch244.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers2/time1540054302_epoch232.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers2/time1540054307_epoch246.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers2/time1540054258_epoch96.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers2/time1540054227_epoch1.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.0003/hidden_layers1/ CWSD: 0.504865737955297 Disagreements: 16.06 Precision: 0.831659464029839 Recall: 0.999746835443038
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.01/hidden_layers1/ CWSD: 0.499083971720553 Disagreements: 15.072 Precision: 0.8403888832948886 Recall: 0.9998987341772152
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.01/hidden_layers1/time1540057095_epoch8.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.01/hidden_layers1/time1540057093_epoch0.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.01/hidden_layers1/time1540057095_epoch7.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers1/ CWSD: 0.5076922562086832 Disagreements: 14.796 Precision: 0.8429556907758315 Recall: 0.9996455696202531
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers1/time1540054588_epoch0.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers1/time1540054589_epoch2.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers1/time1540054589_epoch3.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/ CWSD: 0.49170779584946095 Disagreements: 14.352 Precision: 0.8471018362451421 Recall: 0.9996962025316457
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/time1540056211_epoch183.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/time1540056211_epoch182.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/time1540056213_epoch187.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/time1540056214_epoch190.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/time1540056211_epoch184.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/time1540056216_epoch198.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/time1540056214_epoch191.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/time1540056217_epoch199.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/time1540056212_epoch186.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/time1540056213_epoch188.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/time1540056213_epoch189.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/time1540056214_epoch192.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/time1540056212_epoch185.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/time1540056210_epoch181.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers1/ CWSD: 0.5191712311102082 Disagreements: 15.792 Precision: 0.8345728946208425 Recall: 0.9990886075949367
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers1/time1540054396_epoch0.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers1/time1540054397_epoch4.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers1/time1540054397_epoch3.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.01/hidden_layers1/ CWSD: 0.5061146561659243 Disagreements: 15.108 Precision: 0.8402346138675212 Recall: 0.9994430379746835
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers1/ CWSD: 0.4996839688153224 Disagreements: 15.064 Precision: 0.840705989356207 Recall: 0.9995949367088607
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers1/time1540055288_epoch124.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers1/time1540055253_epoch2.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers1/time1540055322_epoch242.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0/hidden_layers3/ CWSD: 0.5028315290288926 Disagreements: 14.844 Precision: 0.8424178728789327 Recall: 0.9997974683544304
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0/hidden_layers3/time1540054931_epoch16.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers2/ CWSD: 0.4901562145300051 Disagreements: 14.456 Precision: 0.8462144838798549 Recall: 0.9995443037974684
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers2/time1540055327_epoch3.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers2/time1540055328_epoch5.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers2/time1540055327_epoch4.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers2/time1540055326_epoch1.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers2/time1540055326_epoch0.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers3/ CWSD: 0.48695507695242174 Disagreements: 14.14 Precision: 0.8491469497572841 Recall: 0.999493670886076
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers3/time1540054528_epoch5.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers3/time1540054569_epoch176.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers3/time1540054583_epoch231.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers3/time1540054528_epoch6.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers3/time1540054536_epoch41.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers3/time1540054565_epoch160.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers3/time1540054539_epoch53.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers3/time1540054526_epoch0.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.01/hidden_layers3/ CWSD: 0.489728722161889 Disagreements: 14.28 Precision: 0.8476940532079327 Recall: 0.9993924050632911
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/ CWSD: 0.4936652449644649 Disagreements: 14.148 Precision: 0.8493724001015155 Recall: 0.9990886075949368
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/time1540054368_epoch168.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/time1540054390_epoch233.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/time1540054310_epoch1.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/time1540054383_epoch213.json
+7 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/time1540054370_epoch174.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/time1540054370_epoch175.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/time1540054369_epoch173.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/time1540054395_epoch249.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/time1540054371_epoch179.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0/hidden_layers1/ CWSD: 0.5258402739696738 Disagreements: 16.152 Precision: 0.8310504162892952 Recall: 1.0
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0/hidden_layers1/time1540053753_epoch220.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0/hidden_layers1/time1540053737_epoch170.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.0003/hidden_layers2/ CWSD: 0.512341367555137 Disagreements: 15.8 Precision: 0.8346229947084775 Recall: 0.9996962025316457
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.0003/hidden_layers2/time1540056473_epoch199.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.0003/hidden_layers2/time1540056473_epoch198.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.0003/hidden_layers2/time1540056473_epoch197.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.0003/hidden_layers2/time1540056472_epoch196.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers3/ CWSD: 0.4906914132459493 Disagreements: 13.816 Precision: 0.8519369063932336 Recall: 0.9994430379746835
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers3/time1540056735_epoch50.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers3/time1540056736_epoch53.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.01/hidden_layers2/ CWSD: 0.494462622033711 Disagreements: 14.508 Precision: 0.845925034175592 Recall: 0.9990886075949368
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.01/hidden_layers2/time1540057173_epoch4.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.01/hidden_layers2/time1540057230_epoch230.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.01/hidden_layers2/time1540057172_epoch3.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.01/hidden_layers2/time1540057172_epoch0.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.01/hidden_layers2/time1540057172_epoch2.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers2/ CWSD: 0.49798731980755495 Disagreements: 14.612 Precision: 0.8451537048380803 Recall: 0.9990379746835444
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers2/time1540054509_epoch195.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers2/time1540054466_epoch39.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers2/time1540054498_epoch155.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers2/time1540054509_epoch194.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers2/time1540054454_epoch0.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.003/hidden_layers2/ CWSD: 0.5052875745659959 Disagreements: 15.136 Precision: 0.8403043110067193 Recall: 0.9990886075949368
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers2/ CWSD: 0.511170040629743 Disagreements: 14.492 Precision: 0.8466782253072488 Recall: 0.9987341772151899
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers2/time1540054023_epoch134.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers2/time1540054021_epoch127.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers2/time1540054044_epoch198.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers2/time1540054059_epoch242.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers2/time1540053979_epoch0.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers2/time1540054024_epoch135.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers2/time1540054059_epoch241.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers2/time1540054012_epoch100.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers2/time1540054022_epoch131.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers2/time1540054012_epoch99.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers2/time1540054024_epoch136.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.0003/hidden_layers1/ CWSD: 0.5056688134703136 Disagreements: 15.232 Precision: 0.8388911735959087 Recall: 0.9995443037974685
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers1/ CWSD: 0.5071641856631752 Disagreements: 15.78 Precision: 0.8342352557847534 Recall: 0.9995443037974683
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers1/time1540056557_epoch1.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers1/time1540056556_epoch0.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.003/hidden_layers1/ CWSD: 0.5059103486341618 Disagreements: 15.52 Precision: 0.8365809063991887 Recall: 0.9994430379746835
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.003/hidden_layers1/time1540056873_epoch169.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.003/hidden_layers3/ CWSD: 0.4926638745399051 Disagreements: 13.784 Precision: 0.8528945632883763 Recall: 0.9981772151898735
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers2/ CWSD: 0.5027246934850667 Disagreements: 15.312 Precision: 0.8388445649125925 Recall: 0.9992911392405065
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers2/time1540056624_epoch5.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers2/time1540056623_epoch4.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers2/time1540056623_epoch3.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers3/ CWSD: 0.48369607442488555 Disagreements: 13.632 Precision: 0.8538317220677263 Recall: 0.9993417721518987
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers3/time1540055721_epoch80.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers3/time1540055722_epoch81.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers3/time1540055695_epoch4.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers3/time1540055711_epoch50.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers3/time1540055726_epoch95.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers3/time1540055770_epoch221.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers3/time1540055717_epoch67.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers3/time1540055755_epoch176.json
+7 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers3/time1540055718_epoch72.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers3/time1540055718_epoch71.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers3/time1540055694_epoch2.json
+7 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers3/time1540055721_epoch79.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0/hidden_layers3/ CWSD: 0.4986713345111879 Disagreements: 14.772 Precision: 0.8437704869165586 Recall: 0.9989873417721519
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0/hidden_layers3/time1540053851_epoch66.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0/hidden_layers3/time1540053830_epoch0.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0/hidden_layers3/time1540053849_epoch58.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0/hidden_layers3/time1540053887_epoch177.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers3/ CWSD: 0.4935673343384493 Disagreements: 13.76 Precision: 0.853313036158623 Recall: 0.9989873417721519
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers3/time1540056259_epoch58.json
+7 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers3/time1540056259_epoch59.json
+7 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers3/time1540056260_epoch60.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers3/time1540056259_epoch57.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers3/time1540056238_epoch0.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers3/time1540056260_epoch61.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers3/time1540056261_epoch65.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers3/time1540056246_epoch23.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers3/time1540056257_epoch54.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers1/ CWSD: 0.5070365182214994 Disagreements: 15.252 Precision: 0.8389264711994027 Recall: 0.9995443037974683
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers1/time1540055508_epoch1.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers2/ CWSD: 0.4961509580991499 Disagreements: 14.588 Precision: 0.8450136102800998 Recall: 0.9993924050632912
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers2/time1540055597_epoch4.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers2/time1540055596_epoch1.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers3/ CWSD: 0.4801305651027809 Disagreements: 13.364 Precision: 0.8566678273717776 Recall: 0.9990379746835443
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers3/time1540055458_epoch122.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers3/time1540055447_epoch90.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers3/time1540055417_epoch5.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers3/time1540055415_epoch2.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers3/time1540055439_epoch67.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers3/time1540055447_epoch89.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers3/time1540055450_epoch97.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers3/time1540055416_epoch4.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers3/time1540055460_epoch126.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers3/time1540055461_epoch130.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers3/time1540055449_epoch96.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers3/time1540055458_epoch120.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers3/ CWSD: 0.48749240391098936 Disagreements: 13.956 Precision: 0.8508542789374335 Recall: 0.9992911392405063
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers3/time1540054719_epoch2.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers3/time1540054764_epoch153.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers3/time1540054724_epoch20.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers3/time1540054743_epoch82.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers3/time1540054743_epoch83.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers3/time1540054743_epoch84.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers3/time1540054719_epoch1.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers3/time1540054762_epoch144.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0/hidden_layers2/ CWSD: 0.511754082748273 Disagreements: 15.72 Precision: 0.8347101359500304 Recall: 1.0
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers3/ CWSD: 0.48193673344132043 Disagreements: 13.532 Precision: 0.855081700184459 Recall: 0.9988860759493671
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers3/time1540054112_epoch151.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers3/time1540054122_epoch181.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers3/time1540054113_epoch152.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers3/time1540054122_epoch180.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers3/time1540054097_epoch105.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers3/time1540054079_epoch49.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers3/time1540054112_epoch150.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers3/time1540054113_epoch153.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers3/time1540054063_epoch2.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers3/time1540054112_epoch149.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers3/time1540054097_epoch104.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers3/time1540054098_epoch108.json
+
+
+
+Loaded file 0 of 250
+Loaded file 100 of 250
+Loaded file 200 of 250
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.01/hidden_layers2/ CWSD: 0.4916779945784027 Disagreements: 14.304 Precision: 0.8474703928379052 Recall: 0.9995949367088608
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.01/hidden_layers2/time1540055873_epoch3.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.01/hidden_layers2/time1540055873_epoch1.json
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.01/hidden_layers2/time1540055874_epoch6.json
+8 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.01/hidden_layers2/time1540055934_epoch174.json
+
+
+
