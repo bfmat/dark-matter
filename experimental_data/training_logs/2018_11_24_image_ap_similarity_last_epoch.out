@@ -1,0 +1,270 @@
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.0003_dropout0_convolutional_layers_per_group4 CWSD: 0.9972168047298678 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0_dropout0_convolutional_layers_per_group2 CWSD: 1.0015092771677854 Disagreements: 118.0 Precision: 0.6285714285714286 Recall: 0.9949748743718593
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.001_dropout0_convolutional_layers_per_group3 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.001_dropout0.5_convolutional_layers_per_group2 CWSD: 0.9944939071159249 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.006_dropout0_convolutional_layers_per_group2 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0_convolutional_layers_per_group2 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.001_dropout0.25_convolutional_layers_per_group2 CWSD: 0.9934983834117233 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.0003_dropout0_convolutional_layers_per_group2 CWSD: 1.0202034691330488 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.003_dropout0.25_convolutional_layers_per_group3 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.0003_dropout0.25_convolutional_layers_per_group4 CWSD: 0.9999284264429787 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.003_dropout0_convolutional_layers_per_group2 CWSD: 0.9889737680146068 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0_dropout0_convolutional_layers_per_group4 CWSD: 0.9908171688623653 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0_dropout0.25_convolutional_layers_per_group2 CWSD: 0.9950254908737359 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0_convolutional_layers_per_group4 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0_dropout0.5_convolutional_layers_per_group3 CWSD: 0.9962592992983769 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.0003_dropout0.5_convolutional_layers_per_group3 CWSD: 0.9945246510069288 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.25_convolutional_layers_per_group4 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.0003_dropout0.25_convolutional_layers_per_group2 CWSD: 0.9965748443810178 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.003_dropout0.25_convolutional_layers_per_group2 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0_dropout0_convolutional_layers_per_group3 CWSD: 1.0020664112867124 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.006_dropout0.5_convolutional_layers_per_group4 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.003_dropout0.25_convolutional_layers_per_group4 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.0003_dropout0_convolutional_layers_per_group3 CWSD: 0.9990956929778891 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.001_dropout0.25_convolutional_layers_per_group4 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.001_dropout0_convolutional_layers_per_group4 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.003_dropout0_convolutional_layers_per_group4 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0_dropout0.25_convolutional_layers_per_group3 CWSD: 0.9987285875570961 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0_dropout0.5_convolutional_layers_per_group4 CWSD: 0.9966373899073446 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.0003_dropout0.25_convolutional_layers_per_group3 CWSD: 0.9971467579668786 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.006_dropout0.25_convolutional_layers_per_group2 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0_dropout0.5_convolutional_layers_per_group2 CWSD: 0.9911238676375593 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0_dropout0.25_convolutional_layers_per_group4 CWSD: 0.994516388059828 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.5_convolutional_layers_per_group2 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.006_dropout0.25_convolutional_layers_per_group4 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.0003_dropout0.5_convolutional_layers_per_group2 CWSD: 0.9954326991818496 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.001_dropout0.5_convolutional_layers_per_group4 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.006_dropout0_convolutional_layers_per_group3 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.001_dropout0.5_convolutional_layers_per_group3 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.006_dropout0_convolutional_layers_per_group4 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.001_dropout0_convolutional_layers_per_group2 CWSD: 0.991820925528619 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.003_dropout0.5_convolutional_layers_per_group3 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.006_dropout0.25_convolutional_layers_per_group3 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.003_dropout0_convolutional_layers_per_group3 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.25_convolutional_layers_per_group2 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.006_dropout0.5_convolutional_layers_per_group3 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.006_dropout0.5_convolutional_layers_per_group2 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.5_convolutional_layers_per_group4 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.25_convolutional_layers_per_group3 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.0003_dropout0.5_convolutional_layers_per_group4 CWSD: 1.0004264833957224 Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.5_convolutional_layers_per_group3 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.003_dropout0.5_convolutional_layers_per_group4 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.001_dropout0.25_convolutional_layers_per_group3 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.003_dropout0.5_convolutional_layers_per_group2 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0_convolutional_layers_per_group3 CWSD: nan Disagreements: 117.0 Precision: 0.629746835443038 Recall: 1.0
+
+
+

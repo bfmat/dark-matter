@@ -6,6 +6,12 @@ import sys
 
 import numpy as np
 
+# The number of validation examples is different for the image grid search; add this special case as an argument
+if len(sys.argv > 1 and sys.argv[1] == 'img')
+    VALIDATION_EXAMPLES = 316
+else:
+    VALIDATION_EXAMPLES = 128
+
 # Read all lines from standard input, and strip whitespace
 input_lines = [line.strip() for line in sys.stdin.readlines()]
 # Take the lines that contain the run identifier with mean disagreement, standard deviation, precision, and recall statistics
@@ -32,6 +38,7 @@ mean_accuracy_values = []
 for configuration in statistics:
     # Zip the list of statistics and calculate the mean of each individual statistic
     mean_standard_deviation, mean_disagreements, mean_precision, mean_recall = [np.mean(statistic_list) for statistic_list in zip(*statistics[configuration])]
+    print(mean_disagreements)
     # Convert the disagreement value to accuracy, and add it to the list for mean calculation
     mean_accuracy = 1 - (mean_disagreements / 128)
     mean_accuracy_values.append(mean_accuracy)

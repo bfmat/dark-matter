@@ -1,0 +1,226 @@
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers2/ CWSD: 0.5067525697182101 Disagreements: 12.0 Precision: 0.8681318681318682 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.003/hidden_layers2/ CWSD: 0.45082332951265675 Disagreements: 13.0 Precision: 0.8586956521739131 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers2/ CWSD: 0.436113757162378 Disagreements: 12.0 Precision: 0.8681318681318682 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers3/ CWSD: 0.508443657528631 Disagreements: 14.0 Precision: 0.8494623655913979 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.0003/hidden_layers3/ CWSD: 0.5182466189657711 Disagreements: 15.0 Precision: 0.8404255319148937 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers3/ CWSD: 0.4568662561129353 Disagreements: 13.0 Precision: 0.8586956521739131 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers2/ CWSD: 0.49513560837326914 Disagreements: 16.0 Precision: 0.8315789473684211 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0/hidden_layers3/ CWSD: 0.4615821431167285 Disagreements: 12.0 Precision: 0.8681318681318682 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers2/ CWSD: 0.49047848810494754 Disagreements: 14.0 Precision: 0.8494623655913979 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.0003/hidden_layers2/ CWSD: 0.5398577254774028 Disagreements: 18.0 Precision: 0.8144329896907216 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers2/ CWSD: 0.5075486260679561 Disagreements: 17.0 Precision: 0.8229166666666666 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers2/ CWSD: 0.4701517276673214 Disagreements: 16.0 Precision: 0.8315789473684211 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.003/hidden_layers3/ CWSD: 0.4861419906251333 Disagreements: 15.0 Precision: 0.8404255319148937 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers1/ CWSD: 0.47271007096438467 Disagreements: 14.0 Precision: 0.8494623655913979 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.01/hidden_layers2/ CWSD: 0.4989219341019565 Disagreements: 15.0 Precision: 0.8404255319148937 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0/hidden_layers1/ CWSD: 0.5363240037796704 Disagreements: 16.0 Precision: 0.8315789473684211 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers3/ CWSD: 0.4762242708906379 Disagreements: 16.0 Precision: 0.8315789473684211 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0/hidden_layers1/ CWSD: 0.48391598659374085 Disagreements: 13.0 Precision: 0.8586956521739131 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers2/ CWSD: 0.43786097319647915 Disagreements: 10.0 Precision: 0.8876404494382022 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.0003/hidden_layers1/ CWSD: 0.4662019472606576 Disagreements: 13.0 Precision: 0.8586956521739131 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.0003/hidden_layers3/ CWSD: 0.5243947477217336 Disagreements: 16.0 Precision: 0.8315789473684211 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/ CWSD: 0.40252545678030077 Disagreements: 9.0 Precision: 0.8977272727272727 Recall: 1.0
+9 disagreements in file ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/time1540054395_epoch249.json
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0/hidden_layers3/ CWSD: 0.5583946736703781 Disagreements: 22.0 Precision: 0.7821782178217822 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.003/hidden_layers3/ CWSD: 0.44849659941433134 Disagreements: 11.0 Precision: 0.8777777777777778 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.0003/hidden_layers1/ CWSD: 0.5159595120730827 Disagreements: 16.0 Precision: 0.8315789473684211 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers1/ CWSD: 0.5011712013629712 Disagreements: 11.0 Precision: 0.8777777777777778 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers2/ CWSD: 0.5270347509072228 Disagreements: 18.0 Precision: 0.8144329896907216 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0/hidden_layers1/ CWSD: 0.45959301894613647 Disagreements: 11.0 Precision: 0.8777777777777778 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.01/hidden_layers1/ CWSD: 0.47431390866239226 Disagreements: 15.0 Precision: 0.8404255319148937 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.01/hidden_layers3/ CWSD: 0.5457030690144073 Disagreements: 15.0 Precision: 0.8404255319148937 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.01/hidden_layers1/ CWSD: 0.562811167407561 Disagreements: 17.0 Precision: 0.8229166666666666 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.0003/hidden_layers2/ CWSD: 0.5210266919680486 Disagreements: 18.0 Precision: 0.8144329896907216 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.01/hidden_layers2/ CWSD: 0.4713921959223237 Disagreements: 14.0 Precision: 0.8494623655913979 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers1/ CWSD: 0.4913993974678316 Disagreements: 15.0 Precision: 0.8404255319148937 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.003/hidden_layers1/ CWSD: 0.5141320170031723 Disagreements: 18.0 Precision: 0.8144329896907216 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0/hidden_layers2/ CWSD: 0.5030187753231716 Disagreements: 14.0 Precision: 0.8494623655913979 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.0003/hidden_layers3/ CWSD: 0.48357126159848024 Disagreements: 14.0 Precision: 0.8494623655913979 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.01/hidden_layers1/ CWSD: 0.4814204156283117 Disagreements: 12.0 Precision: 0.8681318681318682 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers1/ CWSD: 0.5311141906346525 Disagreements: 16.0 Precision: 0.8315789473684211 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers3/ CWSD: 0.4822286588050146 Disagreements: 13.0 Precision: 0.8586956521739131 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers1/ CWSD: 0.48159582945138696 Disagreements: 14.0 Precision: 0.8494623655913979 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.01/hidden_layers3/ CWSD: 0.49724518904150383 Disagreements: 17.0 Precision: 0.8229166666666666 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.001/hidden_layers3/ CWSD: 0.4717342298989677 Disagreements: 14.0 Precision: 0.8494623655913979 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers1/ CWSD: 0.5103756294031139 Disagreements: 15.0 Precision: 0.8404255319148937 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0/hidden_layers2/ CWSD: 0.5307198666206955 Disagreements: 16.0 Precision: 0.8315789473684211 Recall: 1.0
+
+
+

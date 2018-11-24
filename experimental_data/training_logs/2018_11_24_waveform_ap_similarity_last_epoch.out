@@ -1,0 +1,364 @@
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0/first_layer_filters24/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.5106684160540963 Disagreements: 14.0 Precision: 0.8541666666666666 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.25/first_layer_filters48/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.824440777530414 Disagreements: 47.0 Precision: 0.8888888888888888 Recall: 0.4878048780487805
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.5/first_layer_filters24/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.7855215879885502 Disagreements: 45.0 Precision: 0.6456692913385826 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.25/first_layer_filters48/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.5661144881921977 Disagreements: 17.0 Precision: 0.8282828282828283 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0/first_layer_filters48/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.9566740050753901 Disagreements: 46.0 Precision: 0.640625 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.25/first_layer_filters48/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.5118495961372754 Disagreements: 16.0 Precision: 0.8367346938775511 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.25/first_layer_filters24/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.6225965949259369 Disagreements: 24.0 Precision: 0.7735849056603774 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.25/first_layer_filters48/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.4946736883449471 Disagreements: 14.0 Precision: 0.8541666666666666 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.5/first_layer_filters24/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.7477042974694952 Disagreements: 41.0 Precision: 0.6666666666666666 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0/first_layer_filters48/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.9763341588096657 Disagreements: 44.0 Precision: 0.6507936507936508 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.25/first_layer_filters48/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.6435572998989024 Disagreements: 26.0 Precision: 0.7592592592592593 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.25/first_layer_filters48/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.7132899540825284 Disagreements: 36.0 Precision: 0.6949152542372882 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0/first_layer_filters24/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.6091392258958592 Disagreements: 21.0 Precision: 0.7961165048543689 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.5/first_layer_filters24/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.5009806850117995 Disagreements: 10.0 Precision: 0.9736842105263158 Recall: 0.9024390243902439
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.5/first_layer_filters24/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.526843849847826 Disagreements: 14.0 Precision: 0.8541666666666666 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0/first_layer_filters48/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.8605773983042018 Disagreements: 50.0 Precision: 0.7424242424242424 Recall: 0.5975609756097561
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0/first_layer_filters24/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.5074898502692045 Disagreements: 14.0 Precision: 0.8541666666666666 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.5/first_layer_filters24/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.7118785386506568 Disagreements: 30.0 Precision: 0.7321428571428571 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.25/first_layer_filters48/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.9704584264795528 Disagreements: 46.0 Precision: 0.640625 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.5/first_layer_filters24/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.5772440774646838 Disagreements: 22.0 Precision: 0.7884615384615384 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.25/first_layer_filters48/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.9915097348570112 Disagreements: 46.0 Precision: 0.640625 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.5/first_layer_filters24/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.377014618633049 Disagreements: 7.0 Precision: 0.9213483146067416 Recall: 1.0
+7 disagreements in file ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.5/first_layer_filters24/kernel_size5/convolutional_layers_per_group6/time1539994597_epoch99.json
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0/first_layer_filters24/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.6534684457150937 Disagreements: 14.0 Precision: 0.8777777777777778 Recall: 0.9634146341463414
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.5/first_layer_filters48/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.7107352128916935 Disagreements: 16.0 Precision: 0.8928571428571429 Recall: 0.9146341463414634
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.25/first_layer_filters24/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.778799009281388 Disagreements: 40.0 Precision: 0.92 Recall: 0.5609756097560976
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0/first_layer_filters24/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.7740200580619017 Disagreements: 30.0 Precision: 0.8823529411764706 Recall: 0.7317073170731707
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.5/first_layer_filters48/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.5574918177097492 Disagreements: 28.0 Precision: 0.7454545454545455 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.5/first_layer_filters48/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.5779262687120231 Disagreements: 67.0 Precision: 1.0 Recall: 0.18292682926829268
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.5/first_layer_filters24/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.7094787160493332 Disagreements: 32.0 Precision: 0.7192982456140351 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.25/first_layer_filters48/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.9332116412741449 Disagreements: 37.0 Precision: 0.7184466019417476 Recall: 0.9024390243902439
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0/first_layer_filters24/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.5523662134554462 Disagreements: 23.0 Precision: 0.780952380952381 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0/first_layer_filters48/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.922285530726607 Disagreements: 39.0 Precision: 0.7263157894736842 Recall: 0.8414634146341463
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.25/first_layer_filters48/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.9955907900448773 Disagreements: 46.0 Precision: 0.640625 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.25/first_layer_filters24/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.9916571293320704 Disagreements: 46.0 Precision: 0.640625 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.25/first_layer_filters24/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.5905773262889155 Disagreements: 20.0 Precision: 0.803921568627451 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.25/first_layer_filters48/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.6153855143100987 Disagreements: 25.0 Precision: 0.7663551401869159 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0/first_layer_filters24/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.504793085928061 Disagreements: 8.0 Precision: 0.9404761904761905 Recall: 0.9634146341463414
+8 disagreements in file ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0/first_layer_filters24/kernel_size3/convolutional_layers_per_group6/time1539990424_epoch99.json
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.5/first_layer_filters48/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.6966892072528971 Disagreements: 29.0 Precision: 0.7387387387387387 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0/first_layer_filters48/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.813660240071356 Disagreements: 43.0 Precision: 0.656 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.5/first_layer_filters24/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.6168006713509844 Disagreements: 21.0 Precision: 0.7961165048543689 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.5/first_layer_filters48/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.7082868828126847 Disagreements: 31.0 Precision: 0.7256637168141593 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.25/first_layer_filters24/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.6182937635292972 Disagreements: 15.0 Precision: 0.8681318681318682 Recall: 0.9634146341463414
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.5/first_layer_filters48/kernel_size5/convolutional_layers_per_group6/ CWSD: 1.002032109842734 Disagreements: 46.0 Precision: 0.640625 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.5/first_layer_filters48/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.7480329898960848 Disagreements: 39.0 Precision: 0.6776859504132231 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0/first_layer_filters48/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.9328533178524235 Disagreements: 38.0 Precision: 0.6929824561403509 Recall: 0.9634146341463414
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.5/first_layer_filters48/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.7189818182760866 Disagreements: 33.0 Precision: 0.7130434782608696 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0/first_layer_filters48/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.5763754731384012 Disagreements: 14.0 Precision: 0.8541666666666666 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0/first_layer_filters48/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.9881994224609325 Disagreements: 49.0 Precision: 0.6434782608695652 Recall: 0.9024390243902439
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.25/first_layer_filters24/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.6435335448509423 Disagreements: 25.0 Precision: 0.9523809523809523 Recall: 0.7317073170731707
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.25/first_layer_filters24/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.6254600677088322 Disagreements: 20.0 Precision: 0.81 Recall: 0.9878048780487805
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0/first_layer_filters24/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.7251692941689777 Disagreements: 31.0 Precision: 0.7256637168141593 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0/first_layer_filters24/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.6023495055123061 Disagreements: 29.0 Precision: 0.9649122807017544 Recall: 0.6707317073170732
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.5/first_layer_filters24/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.8263735584775671 Disagreements: 56.0 Precision: 0.90625 Recall: 0.35365853658536583
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.25/first_layer_filters24/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.6221883513503577 Disagreements: 20.0 Precision: 0.9428571428571428 Recall: 0.8048780487804879
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0/first_layer_filters48/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.6371472932873979 Disagreements: 26.0 Precision: 0.7592592592592593 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0/first_layer_filters24/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.5494904871702607 Disagreements: 19.0 Precision: 0.8118811881188119 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0/first_layer_filters48/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.6035607170691349 Disagreements: 14.0 Precision: 0.9047619047619048 Recall: 0.926829268292683
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0/first_layer_filters24/kernel_size5/convolutional_layers_per_group6/ CWSD: 1.0132781354361673 Disagreements: 74.0 Precision: 0.625 Recall: 0.24390243902439024
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.25/first_layer_filters48/kernel_size5/convolutional_layers_per_group6/ CWSD: 1.0323049173260568 Disagreements: 46.0 Precision: 0.640625 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.25/first_layer_filters24/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.9216701217646726 Disagreements: 38.0 Precision: 0.7682926829268293 Recall: 0.7682926829268293
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0/first_layer_filters24/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.6966197151810851 Disagreements: 29.0 Precision: 0.7387387387387387 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0/first_layer_filters48/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.41092650663840974 Disagreements: 8.0 Precision: 0.9204545454545454 Recall: 0.9878048780487805
+8 disagreements in file ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0/first_layer_filters48/kernel_size5/convolutional_layers_per_group3/time1539997740_epoch99.json
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.25/first_layer_filters24/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.42700583402457276 Disagreements: 8.0 Precision: 0.9404761904761905 Recall: 0.9634146341463414
+8 disagreements in file ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.25/first_layer_filters24/kernel_size3/convolutional_layers_per_group6/time1539992259_epoch99.json
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0.5/first_layer_filters24/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.6927693421870944 Disagreements: 25.0 Precision: 0.9384615384615385 Recall: 0.7439024390243902
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.5/first_layer_filters24/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.6973730273879426 Disagreements: 28.0 Precision: 0.7454545454545455 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.5/first_layer_filters48/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.9715155578108162 Disagreements: 46.0 Precision: 0.640625 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.003/dense_dropout0/first_layer_filters48/kernel_size3/convolutional_layers_per_group6/ CWSD: 0.9977792079816443 Disagreements: 46.0 Precision: 0.640625 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.25/first_layer_filters24/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.782086129380044 Disagreements: 49.0 Precision: 0.9024390243902439 Recall: 0.45121951219512196
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.5/first_layer_filters48/kernel_size3/convolutional_layers_per_group6/ CWSD: 1.015835990757948 Disagreements: 46.0 Precision: 0.640625 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.5/first_layer_filters48/kernel_size5/convolutional_layers_per_group6/ CWSD: 0.9921814786515445 Disagreements: 46.0 Precision: 0.640625 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.001/dense_dropout0.25/first_layer_filters24/kernel_size3/convolutional_layers_per_group3/ CWSD: 0.7439314006292381 Disagreements: 35.0 Precision: 0.7008547008547008 Recall: 1.0
+
+
+
+Loaded file 0 of 1
+Run: ../experimental_data/validation_results/2018_10_19_waveform_grid_search/l2_lambda0.0003/dense_dropout0.5/first_layer_filters48/kernel_size5/convolutional_layers_per_group3/ CWSD: 0.6281275522201188 Disagreements: 16.0 Precision: 0.9125 Recall: 0.8902439024390244
+
+
+
