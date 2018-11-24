@@ -9,7 +9,6 @@ import numpy as np
 # The number of validation examples is different for the image grid search; add this special case as an argument
 if len(sys.argv) > 1 and sys.argv[1] == 'img':
     VALIDATION_EXAMPLES = 316
-    print('jeff')
 else:
     VALIDATION_EXAMPLES = 128
 
