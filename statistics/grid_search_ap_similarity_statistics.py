@@ -3,7 +3,6 @@
 # Created by Brendon Matusch, August 2018
 
 import glob
-import multiprocessing
 import os
 import sys
 from typing import Tuple
@@ -51,15 +50,13 @@ file_paths = [path for path in glob.glob(os.path.expanduser(sys.argv[1]), recurs
 # Filter the paths, taking only the ones that are in the last few epochs
 epochs = [int(path.split('epoch')[1].split('.json')[0]) for path in file_paths]
 max_epoch = max(epochs)
-file_paths = [path for path, epoch in zip(file_paths, epochs) if epoch > (max_epoch - 300)]
+file_paths = [path for path, epoch in zip(file_paths, epochs) if epoch == max_epoch]
 # Temporary hack: only take those file paths that represent validation sets and not gravitational training sets
 file_paths = [path for path in file_paths if 'validation' in path]
 # Get the run identifier corresponding to each of the file paths (not including the specific epoch)
 run_identifiers = [file_path.split('time')[0] for file_path in file_paths]
 # Convert the identifiers to a set so that they are all unique (there are many duplicated)
 run_identifiers = set(run_identifiers)
-# Create a process pool that will be reused for parallel processing on every iteration (it takes a long time to create it)
-pool = multiprocessing.Pool(processes=10)
 # Iterate over each of the run identifiers, calculating the results for them
 for run_identifier in run_identifiers:
     # Take only the file paths that are part of this run
@@ -68,9 +65,9 @@ for run_identifier in run_identifiers:
     file_count = len(run_file_paths)
     # Create a dictionary to hold tuples of result values for the current run (standard deviation, accuracy, et cetera) indexed by file paths
     results = {}
-    # Get the run identifiers and corresponding numbers of disagreements using the file paths and corresponding indices, loading and processing files in parallel with a process pool
+    # Get the run identifiers and corresponding numbers of disagreements using the file paths and corresponding indices
     # Get a corresponding completion index for each file we iterate over
-    for file_index, (disagreements, precision, recall, class_wise_standard_deviation, file_path) in enumerate(pool.imap_unordered(load_disagreements, run_file_paths)):
+    for file_index, (disagreements, precision, recall, class_wise_standard_deviation, file_path) in enumerate([load_disagreements(path) for path in run_file_paths]):
         # In the dictionary, add the number of disagreements, the precision and recall, and the class-wise standard deviation, referenced by the specific path
         results[file_path] = (disagreements, precision, recall, class_wise_standard_deviation)
         # Regularly print the index of the latest file that has been loaded
