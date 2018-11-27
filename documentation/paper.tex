@@ -97,7 +97,7 @@ The detector was filled with 52 kg of liquid C$_3$F$_8$, which was held at a con
 
 The target was superheated by reducing its pressure until it entered a metastable state in which the vapor phase became energetically accessible. In the presence of a sufficiently dense energy deposition, a bubble would be nucleated and would grow to visible size. Four cameras stereoscopically monitored the chamber for these bubbles, issuing a recompression trigger upon their appearance. At this time, acoustic traces were recorded that captured the sound of bubble formation, and a Dytran 2006V1 fast pressure transducer \cite{amole_thesis} monitored the pressure rise. The rising pressure caused the vapor bubble to condense as the fluid reverted to a non-superheated state. Following this, the hydraulic system prepared to return the detector to the sensitive superheated state by once again expanding to a lower pressure.
 
-Superheated fluid detectors have an intrinsic insensitivity to the relatively diffuse energy depositions from electron recoils \cite{pico}, and neutron backgrounds are mitigated by shielding the detector volume in a 20 t water tank. Alpha decays along the U/Th chains present the dominant remaining background which must be distinguished from nuclear recoils acoustically \cite{isotopes}.
+Superheated fluid detectors have an intrinsic insensitivity to the relatively diffuse energy depositions from electron recoils \cite{pico}, and neutron backgrounds are mitigated by shielding the detector volume in a 20~t water tank. Alpha decays along the U/Th chains present the dominant remaining background which must be distinguished from nuclear recoils acoustically \cite{isotopes}.
 
 \begin{figure}[H]
     \centering
@@ -526,7 +526,9 @@ Based on this result, experimentation with semi-supervised learning proceeded us
 \begin{enumerate}
     \item This was a highly effective configuration, producing 96\% accuracy and a class-wise standard deviation dramatically better than the original PICO-60 neural network on that data set.
     \item The use of the exact same input format as AP makes the algorithms more directly comparable.
-    \item If position correction is not applied, there is some risk of introducing a bias to the network's training data because of the different position distributions of the two classes.
+    \item If position correction is not applied, there is some risk of introducing a bias to the network's training data because there are different position distributions of the two classes; neutron events during calibration runs occur more frequently near the wall of the detector where the calibration source is placed.
+    
+    Note that it is possible some this bias leaks through to some degree if position corrections are not perfect; acoustics may be noticeably different near the walls of the vessel in particular.
 \end{enumerate}
 
 \section{Semi-Supervised Learning} \label{semi_supervised}
@@ -841,6 +843,8 @@ As discussed in Section \ref{objective}, discriminators such as AP are difficult
 \section{Technologies}
 
 All programming for this study was done in Python 3. Keras \cite{keras}, running on a TensorFlow \cite{tensorflow} backend, was used for all machine learning tasks. NumPy \cite{numpy} and SciPy \cite{scipy} were used for linear algebra and signal processing. ROOT \cite{root}, scikit-image \cite{scikit-image}, and scikit-learn \cite{scikit-learn} were used for data loading and storage. Matplotlib \cite{matplotlib} was used for data visualization.
+
+Implementation code for all algorithms discussed in this paper can be found at \url{https://github.com/brendon-ai/dark-matter}.
 
 \section{Acknowledgements}
 
