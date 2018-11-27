@@ -133,7 +133,7 @@ As part of the PICO-60 experiment, some testing was conducted to determine wheth
 
 The neural network in this study used the same $\beta_{8}$ input format as was applied in this study (detailed in Section \ref{piezo_derived}), with pre-trigger noise subtracted. Position corrections (also in Section \ref{piezo_derived}) were not applied; rather, the position of the event in the vessel is additionally used as input. AP was used to restrict the data used as input to the neural network. In addition to neutrons and alpha particles, gamma events were used as training and testing data for this neural network.
 
-Note that it is possible there are position-related biases present in this training data, because neutron events during calibration runs occur more frequently near the wall of the detector where the calibration source is placed.
+Note that it is possible there are position-related biases present in this training data, because neutron events during calibration runs occur more frequently near the wall of the detector where the calibration source is placed. These biases are expected to be alleviated by application of position corrections which normalize the audio amplitude; these corrections are detailed in Section \ref{piezo_derived}.
 
 Software for this experiment was implemented using the MATLAB Neural Network Toolbox \cite{matlab}.
 
@@ -177,7 +177,7 @@ Bubble events are detected using the four cameras within the PICO-60 apparatus, 
 
 The 3-dimensional position $\chi$ of the bubble within the vessel is calculated using triangulation, based on the known positions and angles of the cameras and the position of the bubble within the field of view of each camera.
 
-This is used in the banded frequency position correction function $PosCor(\beta _{8}, \chi)$, which corrects $\beta _{8}$ for variations in amplitude which depend on the position of the bubble. $PosCor(\beta _{8}, \chi)$ is used for training several machine learning models throughout this study, because it is expected to alleviate the biases mentioned in Section \ref{og_analysis}. Details of its use are in Section \ref{mlp}.
+This is used in the banded frequency position correction function $PosCor(\beta _{8}, \chi)$, which corrects $\beta _{8}$ for variations in amplitude which depend on the position of the bubble. $PosCor(\beta _{8}, \chi)$ is used for training several machine learning models throughout this study. Details of its use are in Section \ref{mlp}.
 
 \subsection{Data Cuts}
 
