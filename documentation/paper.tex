@@ -127,11 +127,13 @@ Finally, a set of data cuts must be applied to remove classes of events which ar
 
 These conversion, preprocessing, and data cutting steps were reapplied during this study, and are described in Section \ref{data_formats}.
 
-\subsubsection{Original Machine Learning Analysis}
+\subsubsection{Original Machine Learning Analysis} \label{og_analysis}
 
 As part of the PICO-60 experiment, some testing was conducted to determine whether machine learning (in the form of a multi-layer perceptron) could be a viable technique to consider for a discrimination function. The results, published in the 2017 PICO-60 paper \cite{pico}, indicated that the general technique warranted further investigation.
 
 The neural network in this study used the same $\beta_{8}$ input format as was applied in this study (detailed in Section \ref{piezo_derived}), with pre-trigger noise subtracted. Position corrections (also in Section \ref{piezo_derived}) were not applied; rather, the position of the event in the vessel is additionally used as input. AP was used to restrict the data used as input to the neural network. In addition to neutrons and alpha particles, gamma events were used as training and testing data for this neural network.
+
+Note that it is possible there are position-related biases present in this training data, because neutron events during calibration runs occur more frequently near the wall of the detector where the calibration source is placed.
 
 Software for this experiment was implemented using the MATLAB Neural Network Toolbox \cite{matlab}.
 
@@ -526,9 +528,7 @@ Based on this result, experimentation with semi-supervised learning proceeded us
 \begin{enumerate}
     \item This was a highly effective configuration, producing 96\% accuracy and a class-wise standard deviation dramatically better than the original PICO-60 neural network on that data set.
     \item The use of the exact same input format as AP makes the algorithms more directly comparable.
-    \item If position correction is not applied, there is some risk of introducing a bias to the network's training data because there are different position distributions of the two classes; neutron events during calibration runs occur more frequently near the wall of the detector where the calibration source is placed.
-    
-    Note that it is possible some this bias leaks through to some degree if position corrections are not perfect; acoustics may be noticeably different near the walls of the vessel in particular.
+    \item If position correction is not applied, there is some risk of introducing a bias to the network's training data because there are different position distributions of the two classes (as described in Section \ref{og_analysis}).
 \end{enumerate}
 
 \section{Semi-Supervised Learning} \label{semi_supervised}
