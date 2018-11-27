@@ -5,7 +5,7 @@
 \usepackage{parskip}
 \usepackage{amsmath}
 \usepackage{authblk}
-\usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
+\usepackage[backend=bibtex, style=alphabetic, sorting=ynt]{biblatex}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{float}
@@ -177,7 +177,7 @@ Bubble events are detected using the four cameras within the PICO-60 apparatus, 
 
 The 3-dimensional position $\chi$ of the bubble within the vessel is calculated using triangulation, based on the known positions and angles of the cameras and the position of the bubble within the field of view of each camera.
 
-This is used in the banded frequency position correction function $PosCor(\beta _{8}, \chi)$, which corrects $\beta _{8}$ for variations in amplitude which depend on the position of the bubble. $PosCor(\beta _{8}, \chi)$ is used for training several machine learning models throughout this study. Details of its use are in Section \ref{mlp}.
+This is used in the banded frequency position correction function $PosCor(\beta _{8}, \chi)$, which corrects $\beta _{8}$ for variations in amplitude which depend on the position of the bubble. $PosCor(\beta _{8}, \chi)$ is used for training several machine learning models throughout this study, because it is expected to alleviate the biases mentioned in Section \ref{og_analysis}. Details of its use are in Section \ref{mlp}.
 
 \subsection{Data Cuts}
 
