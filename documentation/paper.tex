@@ -64,7 +64,7 @@ The objective of this study is to investigate the potential for machine learning
 
 \begin{enumerate}
     \item Determine the most effective machine learning architecture to use in development of a discriminator. Furthermore, develop several neural network architectures and apply them to different input/preprocessing formats (such as audio Fourier transforms, raw waveforms, and images), in order to find which are the most effective.
-    \item Determine whether these techniques can be extended, applying two original algorithms based on semi-supervised learning, to develop an effective discriminator function based on incomplete and inaccurate initial information.
+    \item Determine whether these techniques can be extended, applying two original algorithms based on semi-supervised learning, to develop an effective discriminator function based on incomplete and inaccurate initial information. Furthermore, determine whether semi-supervised learning is of any benefit.
 \end{enumerate}
 
 For clarity, and with specific reference to the PICO-60 experiment, the intent is to accurately separate particle types using only calibration/background data collection run types (henceforth ``run types'') as training data. While run types are known to be mostly correlated with particle types, the relatively large percentage of impurities has the potential to hinder conventional learning techniques. Specifically, the run types available for training are:
@@ -257,13 +257,13 @@ Two original semi-supervised algorithms were developed and implemented for this 
 
 Performance of the machine learning systems was evaluated using two metrics: classification accuracy and class-wise standard deviation.
 
-Classification accuracy is the ability of the network to separate the events into the two desired classes. Numerically, this corresponds to the number of validation examples the network classifies correctly. The baseline for correctness is the run type during supervised learning experiments, and the AP prediction for semi-supervised experiments.
+Classification accuracy is the ability of the network to separate the events into the two desired classes. Numerically, this corresponds to the number of validation examples the network classifies correctly. The baseline for correctness is the AP prediction.
 
 The correctness of the network's predictions is further detailed in the precision and recall statistics. Precision represents the proportion, of those that the network predicts to be nuclear recoils, that are actually nuclear recoils (or part of the corresponding calibration set). It is an indicator of how pure the network's predictions are for the recoil class. Recall represents the proportion, of those that are actually nuclear recoils, that the network predicts to be nuclear recoils. It indicates how many examples the network misses (i.e., those that would erroneously be removed as background radiation).
 
 Class-wise standard deviation, abbreviated CWSD, captures how decisive the network is: whether its prediction is confidently high or low, or is only slightly closer to one edge of the spectrum.
 
-Numerically, this is a variable defined below, where $N$ and $A$ are the sets of outputs of the supervised learning discriminator in question, corresponding to the sets of neutrons and alpha particles respectively (or calibration and background sets respectively, depending on which is used as ground truth data). It calculates the spread of the network's predictions for each ground truth class. This means that a decisive discriminator, which produces a wide separation between the two classes, is preferred over one that produces a nebulous cloud of outputs with a seemingly arbitrary decision boundary.
+Numerically, this is a variable defined below, where $N$ and $A$ are the sets of outputs of the supervised learning discriminator in question, corresponding to the sets of neutrons and alpha particles respectively. It calculates the spread of the network's predictions for each ground truth class. This means that a decisive discriminator, which produces a wide separation between the two classes, is preferred over one that produces a nebulous cloud of outputs with a seemingly arbitrary decision boundary.
 
 \begin{equation}
     S=std(N \cup A)
@@ -290,7 +290,6 @@ Each of the learning algorithms used in this study applies a neural network. For
     \item L2 regularization $\lambda$ (multiplier for squared weights before adding to loss function)
 \end{itemize}
 
-
 Several of these hyperparameters are optimized at a time, using a grid search. Given $n$ different hyperparameters to optimize and $m$ different possible values for each, $m^n$ different networks are trained (using every possible combination of hyperparameters) and tested on a validation set. For space reasons, only a small subset of the tested configurations are displayed in tables throughout this paper.
 
 In general, the parameters for each grid search were chosen based on some initial empirical experimentation to determine the general range within the entire parameter space that work reasonably well. There was a limit to how many parameters could be tested, especially in the case of semi-supervised learning, as some of the grid searches took several days to run.
@@ -303,6 +302,8 @@ Where not otherwise specified, the following hyperparameters were used universal
     \item $tanh$ activation function
 \end{itemize}
 
+Accuracy statistics cited throughout the rest of this paper are averaged over late epochs (after accuracy has reached an asymptote) of several configurations in the highest-accuracy region of the hyperparameter search space, rather than over a single configuration. This alleviates the accuracy variance caused by randomly chosen validation sets.
+
 \section{Supervised Learning}
 
 \subsection{Overview}
@@ -313,13 +314,6 @@ The primary objective, in experimentation with supervised learning, is to determ
     \item A convolutional neural network trained on the raw waveform $\omega$.
     \item A dense neural network trained on banded Fourier transforms $\beta_{N}$.
     \item A convolutional neural network trained on the image window data $\iota$.
-\end{enumerate}
-
-All supervised learning configurations were trained and evaluated based on their ability to determine the origin of events: whether they are from neutron calibration source runs (predominantly neutrons) or background radiation runs (predominantly alpha particles). This metric was used for training and testing instead of AP for two reasons:
-
-\begin{enumerate}
-    \item During early operations of future experiments, when no AP equivalent is yet available, impure data is the only information available for training. The network structure should be selected to accommodate this.
-    \item In general, supervised learning systems learn to replicate biases present in the training data set. Thus, to evaluate the network's effectiveness at processing the input data, the run type (which is used for training) must be used as a baseline instead of AP (which is never provided to the network during the training process).
 \end{enumerate}
 
 \subsection{Convolutional Neural Network for Raw Waveform Analysis}
@@ -342,41 +336,31 @@ The following hyperparameters were tested during a grid search:
 
 \subsubsection{Results}
 
-The most accurate configuration during a waveform CNN grid search was 95\% accurate and had a standard deviation of 0.52 (seen in Figure \ref{waveform_hist}).
+The most accurate configuration during a waveform CNN grid search was 93.8\% accurate and had a standard deviation of 0.43 (seen in Figure \ref{waveform_hist}). The average accuracy over 3 configurations in the best-performing region of the hyperparameter search space (with 24 filters, L2 $\lambda$ of 0.003, 32 convolutional layers, and a kernel size of 3) was 87.5\%. Performance statistics of these configurations are shown in Table \ref{deepconv_table}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{waveform_hist}
-    \caption{\label{waveform_hist} Prediction distribution of the best {\it DeepConv}$(\omega)$ discriminator. (Validation Event Count is the number of events in the validation set that fall within a certain network prediction band.)}
+    \caption{\label{waveform_hist} Prediction distribution of the best {\it DeepConv}$(\omega)$ configuration. Validation Event Count is the number of events in the validation set that fall within a certain network prediction band. The black vertical line represents the AP decision boundary.}
 \end{figure}
-
-Table \ref{deepconv_table} shows the results of several {\it DeepConv}$(\omega)$ discriminators produced throughout testing, with corresponding network hyperparameters.
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{Performance of {\it DeepConv}$(\omega)$ configurations.} \label{deepconv_table} 
+        \captionof{table}{Performance of {\it DeepConv}$(\omega)$ configurations in the best-performing region of the hyperparameter search space.} \label{deepconv_table} 
         \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
             \hline
-            L2 $\lambda$ & Dropout & Filters & Kernel & Conv Layers & Max Accuracy & Precision & Recall & CWSD \\
+            L2 $\lambda$ & Dropout & Filters & Kernel & Conv Layers & Accuracy & Precision & Recall & CWSD \\
             \hline
-            0.003 & 0 & 24 & 3 & 17 & 95\% & 97\% & 97\% & 0.52 \\
-            % ../experimental_data/validation_results/waveform_grid_search/l2_lambda0.003/dense_dropout0/first_layer_filters24/kernel_size3/convolutional_layers_per_group3/time1539990193_epoch57.json
+            0.003 & 0 & 24 & 3 & 32 & 93.8\% & 94.0\% & 96.3\% & 0.50 \\
             \hline
-            0.003 & 0.25 & 48 & 3 & 17 & 94\% & 100\% & 91\% & 0.44 \\
+            0.003 & 0.25 & 24 & 3 & 32 & 93.8\% & 94.0\% & 96.3\% & 0.43 \\
             \hline
-            0.001 & 0.25 & 24 & 5 & 17 & 95\% & 99\% & 94\% & 0.46 \\
-            \hline
-            0.001 & 0.25 & 24 & 5 & 32 & 91\% & 94\% & 94\% & 0.66 \\
-            \hline
-            0.0003 & 0 & 48 & 5 & 32 & 88\% & 94\% & 89\% & 0.61 \\
-            \hline
-            0.0003 & 0 & 24 & 3 & 17 & 93\% & 96\% & 95\% & 0.59 \\
+            0.003 & 0.5 & 24 & 3 & 32 & 75.0\% & 71.9\% & 100.0\% & 0.71 \\
             \hline
         \end{tabular}
     \end{center}
 \end{minipage}
-
-Table \ref{deepconv_table} shows that simple network architectures seem to produce better accuracy, likely due to reduced overfitting. Larger kernel sizes, more filters, and more layers make performance generally worse, while higher L2 regularization does the opposite. Dropout seems to have a weak correlation, possibly reducing accuracy slightly.
+% cat ../experimental_data/training_logs/2018_11_24_waveform_ap_similarity_last_epoch.out | grep filters24 | grep lambda0.003 | grep group6 | grep kernel_size3 | ./mean_ap_accuracy_across_configurations.py
 
 \subsection{Multi-Layer Perceptron for Fourier Transform Analysis} \label{mlp}
 

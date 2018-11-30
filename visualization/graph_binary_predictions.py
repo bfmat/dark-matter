@@ -99,5 +99,7 @@ plt.legend(handles=[background_patch, calibration_patch])
 # Label the X and Y axes
 plt.xlabel('Logarithmic Acoustic Parameter')
 plt.ylabel('Neural Network Prediction')
+# Draw a vertical line to represent the AP decision boundary
+plt.axvline(0.25, color='black')
 # Display the graph on screen
 plt.show()
