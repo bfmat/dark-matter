@@ -101,5 +101,7 @@ plt.xlabel('Logarithmic Acoustic Parameter')
 plt.ylabel('Neural Network Prediction')
 # Draw a vertical line to represent the AP decision boundary
 plt.axvline(0.25, color='black')
+# Restrict the network prediction axis to the range of 0 to 1
+plt.ylim(0, 1)
 # Display the graph on screen
 plt.show()

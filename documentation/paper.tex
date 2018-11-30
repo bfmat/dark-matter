@@ -390,10 +390,10 @@ Very interestingly, {\it FourierMLP}$(\beta_{8})$ performed better than {\it Fou
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{banded_no_pos_input_hist}
-    \caption{\label{banded_no_pos_input_hist} Prediction distribution of the best {\it FourierMLP}$(PosCor(\beta_{8}))$ discriminator.}
+    \caption{\label{banded_no_pos_input_hist} Prediction distribution of the best {\it FourierMLP}$(${\it PosCor}$(\beta_{8}))$ configuration.}
 \end{figure}
 
-Table \ref{fft_wall_cuts} compares various multi-layer perceptron discriminators from the most effective region of the hyperparameter search space (L2 $\lambda$ of 0.003 for $\beta_8$ input, and L2 $\lambda$ of 0.001 and dropout of 0 for $\beta_{50,001}$ input). It is very clear that higher resolution data does not improve accuracy in a relatively shallow network.
+Table \ref{fft_wall_cuts} compares various multi-layer perceptron discriminators from the most effective region of the hyperparameter search space (L2 $\lambda$ of 0.003 and 2 layers for $\beta_8$ input, and L2 $\lambda$ of 0.001 and dropout of 0 for $\beta_{50,001}$ input). It is very clear that higher resolution data does not improve accuracy in a relatively shallow network.
 
 \begin{minipage}{\textwidth}
     \begin{center}
