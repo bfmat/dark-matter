@@ -368,9 +368,11 @@ The most accurate configuration during a waveform CNN grid search was 93.8\% acc
 
 Preprocessing the audio by applying a Fourier transform may be advantageous. If the frequency distribution and overall amplitude are indeed the most important factors for discrimination, the network can gather them straight from the Fourier transform $\beta_{N}$ rather than having to analyze $\omega$ to extract this information.
 
-In addition to the banded Fourier transform $\beta_{8}$ used in the original PICO-60 analysis, the full-resolution $\beta _{50,001}$ was input into a neural network directly, without any downscaling.
+In addition to the banded Fourier transform $\beta_{8}$ used in the original PICO-60 analysis, the full-resolution $\beta_{50,001}$ was input into a neural network directly, without any downscaling.
 
-When $\beta_{8}$ was used as input, position corrections were optionally applied to the input data, as they were the input to Acoustic Parameter. The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$ and $FourierMLP(PosCor(\beta_{N}, \chi))$. While a variety of network architectures were tested, most had a small number of dense layers (on the order of three), applied dropout and L2 regularization, and used batch normalization once again.
+When $\beta_{8}$ was used as input, position corrections were applied to the input data, as they were used for the input to Acoustic Parameter. The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$ and $FourierMLP(PosCor(\beta_{N}, \chi))$.
+
+While a variety of network architectures were tested, most had a small number of dense layers (on the order of three), applied dropout and L2 regularization, and used batch normalization once again.
 
 The following hyperparameters were tested during a grid search:
 \begin{itemize}
@@ -388,41 +390,35 @@ Very interestingly, {\it FourierMLP}$(\beta_{8})$ performed better than {\it Fou
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{banded_no_pos_input_hist}
-    \caption{\label{banded_no_pos_input_hist} Prediction distribution of the best {\it FourierMLP}$(\beta_{8})$ discriminator.}
+    \caption{\label{banded_no_pos_input_hist} Prediction distribution of the best {\it FourierMLP}$(PosCor(\beta_{8}))$ discriminator.}
 \end{figure}
 
-Table \ref{fft_wall_cuts} compares various multi-layer perceptron discriminators, with and without wall cuts.
+Table \ref{fft_wall_cuts} compares various multi-layer perceptron discriminators from the most effective region of the hyperparameter search space (L2 $\lambda$ of 0.003 for $\beta_8$ input, and L2 $\lambda$ of 0.001 and dropout of 0 for $\beta_{50,001}$ input). It is very clear that higher resolution data does not improve accuracy in a relatively shallow network.
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{Performance of {\it FourierMLP}$(\beta_{N})$ configurations.} \label{fft_wall_cuts}
+        \captionof{table}{Performance of {\it FourierMLP}$(\beta_{N})$ configurations in the best-performing region of the hyperparameter search space.} \label{fft_wall_cuts}
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
-            Configuration & L2 $\lambda$ & Dropout & Layers & Max Acc & Prec & Recall & CWSD \\
+            Input Format & L2 $\lambda$ & Dropout & Layers & Accuracy & Precision & Recall & CWSD \\
             \hline
-            {\it FourierMLP}$(${\it PosCor}$(\beta_{8}, \chi))$ & 0 & 0.5 & 2 & 96\% & 98\% & 97\% & 0.42 \\
-            % ../experimental_data/validation_results/2018_07_16_banded_frequency_validation_passing_weighted_3_times.json
+            $\beta_8$ & 0.003 & 0 & 2 & 96.2\% & 94.1\% & 99.8\% & 0.28 \\
             \hline
-            {\it FourierMLP}$(\beta_{8})$ & 0 & 0.5 & 2 & 98\% & 100\% & 98\% & 0.29 \\
-            % ../experimental_data/validation_results/2018_07_17_banded_frequency_not_position_corrected/banded_low_resolution_time1531831056_epoch249.json
+            $\beta_8$ & 0.003 & 0.25 & 2 & 96.7\% & 94.9\% & 99.5\% & 0.27 \\
             \hline
-            {\it FourierMLP}$(\beta_{50,001})$ & 0 & 0 & 2 & 95\% & 94\% & 98\% & 0.47 \\
-            % ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input//dropout0/l2_lambda0/hidden_layers1/time1540053737_epoch170.json
+            $\beta_8$ & 0.003 & 0.5 & 2 & 96.7\% & 95.0\% & 99.9\% & 0.30 \\
             \hline
-            {\it FourierMLP}$(\beta_{50,001})$ & 0.001 & 0 & 4 & 95\% & 95\% & 98\% & 0.46 \\
-            % ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0/l2_lambda0.001/hidden_layers3/time1540054370_epoch174.json
+            $\beta_{50,001}$ & 0.001 & 0 & 2 & 89.1\% & 84.0\% & 100.0\% & 0.47 \\
             \hline
-            {\it FourierMLP}$(\beta_{50,001})$ & 0.001 & 0.5 & 4 & 94\% & 93\% & 98\% & 0.54 \\
-            % ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.5/l2_lambda0.001/hidden_layers3/time1540056735_epoch50.json
+            $\beta_{50,001}$ & 0.001 & 0 & 3 & 92.2\% & 88.8\% & 100.0\% & 0.44 \\
             \hline
-            {\it FourierMLP}$(\beta_{50,001})$ & 0.003 & 0.25 & 3 & 93\% & 92\% & 98\% & 0.57 \\
-            % ../experimental_data/validation_results/2018_10_20_high_resolution_grid_search_without_position_input/dropout0.25/l2_lambda0.003/hidden_layers2/time1540055639_epoch113.json
+            $\beta_{50,001}$ & 0.001 & 0 & 4 & 93.0\% & 89.8\% & 100.0\% & 0.40 \\
             \hline
         \end{tabular}
     \end{center}
 \end{minipage}
-
-It is very clear that higher resolution data does not improve accuracy in a relatively shallow network. Regularization, both dropout and L2, appears to have relatively little effect.
+% cat ../experimental_data/training_logs/2018_10_26_banded_ap_similarity_last_300_epochs.out | grep examples256 | grep lambda0.003 | ./mean_ap_accuracy_across_configurations.py
+% cat ../experimental_data/training_logs/2018_11_24_high_resolution_ap_similarity_last_epoch.out | grep dropout0/ | grep l2_lambda0.001 | ./mean_ap_accuracy_across_configurations.py
 
 \subsection{Convolutional Neural Network for Image Window Analysis}
 
