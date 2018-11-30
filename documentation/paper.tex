@@ -370,7 +370,9 @@ Preprocessing the audio by applying a Fourier transform may be advantageous. If 
 
 In addition to the banded Fourier transform $\beta_{8}$ used in the original PICO-60 analysis, the full-resolution $\beta_{50,001}$ was input into a neural network directly, without any downscaling.
 
-When $\beta_{8}$ was used as input, position corrections were applied to the input data, as they were used for the input to Acoustic Parameter. The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$ and $FourierMLP(PosCor(\beta_{N}, \chi))$.
+When $\beta_{8}$ was used as input, position corrections were applied to the input data, as they were used for the input to Acoustic Parameter. (With the position correction method currently used for PICO-60, it is currently not practical to apply it to other input formats.)
+
+The resulting configurations are furthermore referred to as $FourierMLP(\beta_{N})$ and \\ $FourierMLP(PosCor(\beta_{N}, \chi))$.
 
 While a variety of network architectures were tested, most had a small number of dense layers (on the order of three), applied dropout and L2 regularization, and used batch normalization once again.
 
@@ -383,9 +385,7 @@ The following hyperparameters were tested during a grid search:
 
 \subsubsection{Results}
 
-It became evident very quickly that a high resolution was not required to get a high accuracy relative to the ground truth data. {\it FourierMLP}$(\beta_{8})$ managed an excellent 98\% validation accuracy, and also produced a mean class-wise standard deviation of 0.29. Its very decisive prediction distribution can be observed in Figure \ref{banded_no_pos_input_hist}.
-
-Very interestingly, {\it FourierMLP}$(\beta_{8})$ performed better than {\it FourierMLP}$(${\it PosCor}$(\beta_{8}), \chi))$, which produced an accuracy value of 96\%. Both of these results were better than any of the network architectures trained on $\omega$.
+It became evident very quickly that a high resolution was not required to get a high accuracy relative to the ground truth data. {\it FourierMLP}$(PosCor(\beta_{8}))$ managed an excellent 98\% validation accuracy, and also produced a mean class-wise standard deviation of 0.29. Its very decisive prediction distribution can be observed in Figure \ref{banded_no_pos_input_hist}.
 
 \begin{figure}[h]
     \centering
@@ -467,24 +467,22 @@ In Table \ref{imageconv_table}, high standard deviations across the board are fu
 
 \subsection{Performance Summary}
 
-Table \ref{super_overview} compares the accuracy and mean class-wise standard deviation values of certain successful supervised learning configurations with multiple input formats.
+Table \ref{super_overview} compares the mean accuracy, precision, recall, and class-wise standard deviation values of each of the input formats.
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{Summary of supervised learning configurations.} \label{super_overview}
+        \captionof{table}{Comparison of supervised learning input formats.} \label{super_overview}
         \begin{tabular}{|l|l|l|l|l|}
             \hline
-            Configuration & Max Accuracy & Precision & Recall & CWSD \\
+            Configuration & Accuracy & Precision & Recall & CWSD \\
             \hline
-            {\it DeepConv}$(\omega)$ & 95\% & 97\% & 97\% & 0.52 \\
+            {\it DeepConv}$(\omega)$ & 87.5\% & 71.9\% & 100.0\% & 0.55 \\
             \hline
-            {\it FourierMLP}$(${\it PosCor}$(\beta_{8}))$ & 96\% & 98\% & 97\% & 0.42 \\
+            {\it FourierMLP}$(${\it PosCor}$(\beta_{8}, \chi))$ & 96.5\% & 94.6\% & 99.7\% & 0.28 \\
             \hline
-            {\it FourierMLP}$(\beta_{8})$ & 98\% & 100\% & 98\% & 0.29 \\
+            {\it FourierMLP}$(\beta_{50,001})$ & 91.4\% & 87.8\% & 100.0\% & 0.44 \\
             \hline
-            {\it FourierMLP}$(\beta_{50,001})$ & 95\% & 95\% & 98\% & 0.46 \\
-            \hline
-            {\it ImageConv}$(\iota)$ & 68\% & 68\% & 100\% & 0.97 \\
+            {\it ImageConv}$(\iota)$ & 63.0\% & 63.0\% & 100.0\% & 1.00 \\
             \hline
         \end{tabular}
     \end{center}
