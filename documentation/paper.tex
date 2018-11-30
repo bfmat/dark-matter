@@ -438,35 +438,26 @@ The following hyperparameters were tested during a grid search:
 
 \subsubsection{Results}
 
-Throughout a variety of different network architectures, the best validation accuracy obtained was 69\%. The corresponding training accuracy of 100\% indicates that severe overfitting is taking place (not unexpected, given the relatively small image data set). Also, the class-wise standard deviation was a very high 0.99, which implies its decisions are nearly random (as seen in Figure \ref{image_hist}). It is likely fitting poorly on some form of noise within $\iota$. The fact that throughout many trials during a grid search, no good performance on validation data was observed, provides significant evidence that images provide insufficient information for effective discrimination.
+Every network architecture tested produced validation accuracy between 62\% and 63\%. As seen in Figure \ref{image_hist}, all examples were given the exact same prediction. This provides strong evidence that images provide insufficient information for any kind of meaningful discrimination.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{image_hist}
-    \caption{\label{image_hist} Prediction distribution of one of the best {\it ImageConv}$(\iota)$ discriminators. (Note the truncated X axis.)}
+    \caption{\label{image_hist} Prediction distribution of an {\it ImageConv}$(\iota)$ configuration. (53 out of 54 configurations had exactly the same accuracy.)}
 \end{figure}
 
 \begin{minipage}{\textwidth}
     \begin{center}
         \captionof{table}{Performance of {\it ImageConv}$(\iota)$ configurations.} \label{imageconv_table}
-        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+        \begin{tabular}{|l|l|l|l|l|l|l|}
             \hline
-            L2 $\lambda$ & Dropout & Convolutional Layers & Dense Layers & Max Accuracy & Precision & Recall & CWSD \\
+            L2 $\lambda$ & Dropout & Convolutional Layers & Accuracy & Precision & Recall & CWSD \\
             \hline
-            0 & 0 & 6 & 3 & 69\% & 69\% & 100\% & 0.99 \\
-            % ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0_dropout0_convolutional_layers_per_group2time1532891695_epoch15.json 
+            0 & 0 & 6 & 62.7\% & 62.9\% & 99.5\% & 1.00 \\
             \hline
-            0.01 & 0.25 & 6 & 3 & 68\% & 68\% & 100\% & 0.98 \\
-            % ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.25_convolutional_layers_per_group2time1532895825_epoch2.json
+            0.0003 & 0 & 12 & 63.0\% & 63.0\% & 100.0\% & 1.00 \\
             \hline
-            0.003 & 0.25 & 9 & 3 & 68\% & 68\% & 100\% & 0.98 \\
-            % ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.003_dropout0.25_convolutional_layers_per_group3time1532895118_epoch3.json
-            \hline
-            0.01 & 0.25 & 12 & 3 & 68\% & 68\% & 100\% & 0.97 \\
-            % ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.25_convolutional_layers_per_group4time1532896126_epoch0.json
-            \hline
-            0.01 & 0.5 & 12 & 3 & 68\% & 68\% & 100\% & 0.99 \\
-            % ../experimental_data/validation_results/2018_07_29_image_grid_search/image_grid_search_l2_lambda0.01_dropout0.5_convolutional_layers_per_group4time1532898944_epoch1.json
+            0.001 & 0 & 9 & 63.0\% & 63.0\% & 100.0\% & 1.00 \\
             \hline
         \end{tabular}
     \end{center}
