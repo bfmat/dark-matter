@@ -597,7 +597,7 @@ It is evident that larger labeled sets produce better performance. However, note
         \captionof{table}{Gravitational differentiation accuracy statistics by size of $\varsigma$.} \label{grav_accuracy_by_varsigma}
         \begin{tabular}{|l|l|l|l|l|l|}
             \hline
-            Initial $\varsigma$ Size & Proportion of Data Labeled & Accuracy & Precision & Recall & CWSD \\
+            $\varsigma$ Size & Proportion of Data Labeled & Accuracy & Precision & Recall & CWSD \\
             \hline
             32 & 6\% & 71.3\% & 70.1\% & 98.0\% & 0.73 \\
             \hline
@@ -702,21 +702,25 @@ The mean accuracy for a given initial $\varsigma$ is again important. In Table \
 \begin{minipage}{\textwidth}
     \begin{center}
         \captionof{table}{Iterative cluster nucleation accuracy statistics by initial size of $\varsigma$.} \label{icn_accuracy_by_varsigma}
-        \begin{tabular}{|l|l|l|l|}
+        \begin{tabular}{|l|l|l|l|l|l|}
             \hline
-            Initial $\varsigma$ Size & Proportion of Data Labeled & Max Accuracy & Mean Accuracy \\
+            Initial $\varsigma$ Size & Proportion of Data Labeled & Accuracy & Precision & Recall & CWSD \\
             \hline
-            32 & 6\% & 95\% & 75\% \\
+            32 & 6\% & 85.2\% & 83.4\% & 98.4\% & 0.54 \\
             \hline
-            64 & 13\% & 97\% & 84\% \\
+            64 & 13\% & 94.3\% & 92.2\% & 99.8\% & 0.34 \\
             \hline
-            128 & 26\% & 98\% & 95\% \\
+            128 & 26\% & 98.2\% & 97.7\% & 99.4\% & 0.21 \\
             \hline
-            256 & 52\% & 99\% & 97\% \\
+            256 & 52\% & 98.2\% & 97.6\% & 99.5\% & 0.22 \\
             \hline
         \end{tabular}
     \end{center}
 \end{minipage}
+% cat ../experimental_data/training_logs/2018_10_26_icn_ap_similarity_last_300_epochs.out | grep examples256 | grep dropout0.5 | grep lambda0.001/ | ./mean_ap_accuracy_across_configurations.py
+% cat ../experimental_data/training_logs/2018_10_26_icn_ap_similarity_last_300_epochs.out | grep examples128 | grep threshold0.02 | grep multiplier1.05 | grep dropout0.5 | ./mean_ap_accuracy_across_configurations.py
+% cat ../experimental_data/training_logs/2018_10_26_icn_ap_similarity_last_300_epochs.out | grep examples64 | grep threshold0.02 | grep lambda0/ | grep multiplier1.05 | ./mean_ap_accuracy_across_configurations.py
+% cat ../experimental_data/training_logs/2018_10_26_icn_ap_similarity_last_300_epochs.out | grep examples32 | grep lambda0/ | grep dropout0/ | ./mean_ap_accuracy_across_configurations.py
 
 Table \ref{icn_overview} represents the performance of a variety of high-accuracy iterative cluster nucleation configurations tested during the grid search. As with gravitational differentiation, the accuracy statistic is the mean over three tests of the same configuration.
 
@@ -725,38 +729,38 @@ Table \ref{icn_overview} represents the performance of a variety of high-accurac
         \captionof{table}{Performance of iterative cluster nucleation configurations.} \label{icn_overview}
         \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
             \hline
-            Initial $\varsigma$ Size & L2 $\lambda$ & Dropout & Initial $j$ & $k$ & Mean AP Accuracy & Precision & Recall & CWSD \\
+            Initial $\varsigma$ Size & L2 $\lambda$ & Dropout & Initial $j$ & $k$ & Accuracy & Precision & Recall & CWSD \\
             \hline
-            32 & 0 & 0.25 & 0.01 & 1.025 & 80\% & 79\% & 99\% & 0.60 \\
+            32 & 0 & 0 & 0.01 & 1.025 & 94.9\% & 94.2\% & 98.3\% & 0.40 \\
             \hline
-            32 & 0 & 0 & 0.01 & 1.025 & 95\% & 94\% & 99\% & 0.38 \\
+            32 & 0 & 0 & 0.02 & 1.05 & 79.7\% & 79.0\% & 96.1\% & 0.66 \\
             \hline
-            64 & 0.001 & 0 & 0.01 & 1.05 & 97\% & 96\% & 99\% & 0.28 \\
+            64 & 0 & 0 & 0.02 & 1.05 & 95.4\% & 93.0\% & 99.9\% & 0.34 \\
             \hline
-            64 & 0 & 0.25 & 0.02 & 1.025 & 97\% & 95\% & 100\% & 0.27 \\
+            64 & 0 & 0.5 & 0.02 & 1.05 & 93.5\% & 91.2\% & 100.0\% & 0.31 \\
             \hline
-            128 & 0 & 0.5 & 0.01 & 1.05 & 92\% & 90\% & 100\% & 0.35 \\
+            128 & 0.001 & 0.5 & 0.02 & 1.05 & 97.7\% & 97.4\% & 99.2\% & 0.21 \\
             \hline
-            128 & 0 & 0.5 & 0.02 & 1.05 & 98\% & 98\% & 100\% & 0.21 \\
+            128 & 0 & 0.5 & 0.02 & 1.05 & 98.5\% & 98.0\% & 99.6\% & 0.21 \\
             \hline
-            256 & 0 & 0.5 & 0.01 & 1.05 & 99\% & 99\% & 100\% & 0.15 \\
+            256 & 0.001 & 0.5 & 0.01 & 1.025 & 97.5\% & 96.7\% & 99.3\% & 0.28 \\
             \hline
-            256 & 0.003 & 0.5 & 0.01 & 1.05 & 98\% & 98\% & 98\% & 0.26 \\
+            256 & 0.001 & 0.5 & 0.02 & 1.05 & 98.4\% & 97.6\% & 100.0\% & 0.20 \\
             \hline
         \end{tabular}
     \end{center}
 \end{minipage}
 
-\subsection{Performance Summary}
+\subsection{Performance Comparison}
 
-Table \ref{semi_success_overview} directly compares performance of the most successful semi-supervised learning configurations, with AP provided as a baseline for comparison. Remember that ``Mean AP Accuracy'' is calculated relative to AP's predictions, rather than replication of the ground truths.
+Table \ref{semi_success_overview} directly compares performance of the most successful semi-supervised learning configurations, with AP provided as a baseline for comparison.
 
 \begin{minipage}{\textwidth}
     \begin{center}
         \captionof{table}{Summary of the most successful semi-supervised learning models.} \label{semi_success_overview}
         \begin{tabular}{|l|l|l|l|l|l|}
             \hline
-            Initial $\varsigma$ Size & Technique & Mean AP Accuracy & Mean Precision & Mean Recall & Mean CWSD \\
+            Initial $\varsigma$ Size & Technique & Accuracy & Precision & Recall & CWSD \\
             \hline
             32 & GD & 83\% & 80\% & 99\% & 0.63 \\
             \hline
