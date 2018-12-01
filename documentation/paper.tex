@@ -438,7 +438,7 @@ The following hyperparameters were tested during a grid search:
     \item Number of Dense Layers = 3 (with neuron counts 64, 16, and 1)
 \end{itemize}
 
-\subsubsection{Results}
+\subsubsection{Results} \label{super_results}
 
 Every network architecture tested produced validation accuracy between 62\% and 63\%. As seen in Figure \ref{image_hist}, all examples were given the exact same prediction. This provides strong evidence that images provide insufficient information for any kind of meaningful discrimination.
 
@@ -473,7 +473,7 @@ Table \ref{super_overview} compares the mean accuracy, precision, recall, and cl
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{Comparison of supervised learning input formats.} \label{super_overview}
+        \captionof{table}{Comparison of supervised learning input formats, alongside the original PICO-60 ML analysis and AP.} \label{super_overview}
         \begin{tabular}{|l|l|l|l|l|}
             \hline
             Configuration & Accuracy & Precision & Recall & CWSD \\
@@ -485,6 +485,10 @@ Table \ref{super_overview} compares the mean accuracy, precision, recall, and cl
             {\it FourierMLP}$(\beta_{50,001})$ & 91.4\% & 87.8\% & 100.0\% & 0.44 \\
             \hline
             {\it ImageConv}$(\iota)$ & 63.0\% & 63.0\% & 100.0\% & 1.00 \\
+            \hline
+            PICO-60 ML & 80.7\% & 76.9\% & 100.0\% & 0.65 \\
+            \hline
+            AP & 100\% & 100\% & 100\% & 0.43 \\
             \hline
         \end{tabular}
     \end{center}
@@ -692,12 +696,10 @@ During a grid search of these parameters (in addition to regularization paramete
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{icn_grid_search}
-    \caption{\label{icn_grid_search} Predictions of best iterative cluster nucleation model compared to AP (on randomly selected validation set).}
+    \caption{\label{icn_grid_search} Prediction distribution of the best iterative cluster nucleation configuration.}
 \end{figure}
 
-Once again, the parameters inherent to the ICN algorithm, as well as dropout and L2 regularization, do not have a meaningful polynomial correlation with accuracy. Note that there are several hyperparameters not specifically optimized in the context of iterative cluster nucleation, including the number of layers and numbers of neurons within those layers. The correlation between those hyperparameters and accuracy is subject to future research.
-
-The mean accuracy for a given initial $\varsigma$ is again important. In Table \ref{icn_accuracy_by_varsigma}, it is clear that with small initial $\varsigma$ sets, the training process is very unreliable, much like gravitational differentiation. However, the mean accuracy is much closer to the maximum for initial $\varsigma$ sets of 128 and 256, indicating that the training process of ICN is significantly more consistent than gravitational differentiation.
+In Table \ref{icn_accuracy_by_varsigma}, it is clear that for a labeled set of 256, ICN performs worse than GD (which reached 99.2\%). However, the accuracy for 128 examples in $\varsigma$ is almost exactly the same as that for 256, and is still higher than the 97.0\% reached with supervised learning on 496 training examples (see Section \ref{super_results}). Moreover, for even smaller training sets of 64 and 32, ICN continues to perform better than GD.
 
 \begin{minipage}{\textwidth}
     \begin{center}
@@ -753,7 +755,11 @@ Table \ref{icn_overview} represents the performance of a variety of high-accurac
 
 \subsection{Performance Comparison}
 
-Table \ref{semi_success_overview} directly compares performance of the most successful semi-supervised learning configurations, with AP provided as a baseline for comparison.
+Table \ref{semi_success_overview} directly compares performance of all semi-supervised learning configurations, with supervised learning, the original PICO-60 ML analysis, and AP provided as baselines for comparison. For every $\varsigma$ size except 32, ICN performs better than supervised learning; for 128 and 256, GD also performs better. For 32, 64, and 128 labeled examples, ICN proves to be more effective than GD; however, when 256 examples are labeled, GD provides the best accuracy, at 99.2\%.
+
+Perhaps most notably, iterative cluster nucleation with only 128 labeled examples achieves accuracy 1.2 percentage points higher than supervised learning with all 496 training examples labeled. It also makes more confident predictions (with a class-wise standard deviation of only 0.21, as opposed to 0.26).
+
+Note that the supervised multi-layer perceptron trained on $\beta _8$ originally used labels for all 496 training examples. Here, it is re-trained with smaller training sets so that it can be more directly compared to semi-supervised learning (which does not have access to labels for the entire set).
 
 \begin{minipage}{\textwidth}
     \begin{center}
@@ -762,61 +768,43 @@ Table \ref{semi_success_overview} directly compares performance of the most succ
             \hline
             Initial $\varsigma$ Size & Technique & Accuracy & Precision & Recall & CWSD \\
             \hline
-            32 & GD & 83\% & 80\% & 99\% & 0.63 \\
+            32 & GD & 71.3\% & 70.1\% & 98.0\% & 0.73 \\
             \hline
-            32 & ICN & 95\% & 94\% & 99\% & 0.38 \\
+            32 & ICN & 85.2\% & 83.4\% & 98.4\% & 0.54 \\
             \hline
-            64 & GD & 97\% & 96\% & 100\% & 0.18 \\
+            32 & Supervised & 90.4\% & 89.0\% & 97.1\% & 0.53 \\
             \hline
-            64 & ICN & 97\% & 96\% & 99\% & 0.28 \\
+            64 & GD & 79.7\% & 75.5\% & 98.6\% & 0.63 \\
             \hline
-            128 & GD & 99\% & 99\% & 99\% & 0.17 \\
+            64 & ICN & 94.3\% & 92.2\% & 99.8\% & 0.34 \\
             \hline
-            128 & ICN & 98\% & 98\% & 100\% & 0.21 \\
+            64 & Supervised & 92.7\% & 90.4\% & 98.9\% & 0.41 \\
             \hline
-            256 & GD & 99\% & 99\% & 100\% & 0.10 \\
+            128 & GD & 97.0\% & 96.3\% & 99.6\% & 0.23 \\
             \hline
-            256 & ICN & 99\% & 99\% & 100\% & 0.15 \\
+            128 & ICN & 98.2\% & 97.7\% & 99.4\% & 0.21 \\
             \hline
-            278 & PICO-60 ML & 80\% & 76\% & 100\% & 0.64 \\
+            128 & Supervised & 94.7\% & 92.6\% & 99.5\% & 0.37 \\
             \hline
-            N/A & AP & 100\% & 100\% & 100\% & 0.41 \\
+            256 & GD & 99.2\% & 99.0\% & 99.7\% & 0.11 \\
             \hline
-        \end{tabular}
-    \end{center}
-\end{minipage}
-
-
-As observed in this table, semi-supervised learning algorithms are significantly more accurate at replicating AP than the original PICO-60 machine learning analysis. Compared to AP, in addition to achieving similar accuracy, configurations from both semi-supervised learning algorithms produce significantly more decisive predictions as measured by the class-wise standard deviation.
-
-Table \ref{average_semi} compares the overall average performance of each of the semi-supervised learning configurations for different labeled set sizes.
-
-\begin{minipage}{\textwidth}
-    \begin{center}
-        \captionof{table}{Summary of the average accuracy values for each semi-supervised learning technique.} \label{average_semi}
-        \begin{tabular}{|l|l|l|}
+            256 & ICN & 98.2\% & 97.6\% & 99.5\% & 0.22 \\
             \hline
-            Initial $\varsigma$ Size & Technique & Mean Accuracy \\
+            256 & Supervised & 96.5\% & 94.6\% & 99.7\% & 0.28 \\
             \hline
-            32 & GD & 69\% \\
+            496 & Supervised & 97.0\% & 95.4\% & 99.9\% & 0.26 \\
             \hline
-            64 & GD & 73\% \\
+            278 & PICO-60 ML & 80.7\% & 76.9\% & 100.0\% & 0.65 \\
             \hline
-            128 & GD & 84\% \\
-            \hline
-            256 & GD & 94\% \\
-            \hline
-            32 & ICN & 75\% \\
-            \hline
-            64 & ICN & 84\% \\
-            \hline
-            128 & ICN & 95\% \\
-            \hline
-            256 & ICN & 97\% \\
+            N/A & AP & 100\% & 100\% & 100\% & 0.43 \\
             \hline
         \end{tabular}
     \end{center}
 \end{minipage}
+% cat ../experimental_data/training_logs/2018_10_26_banded_ap_similarity_last_300_epochs.out | grep examples256 | grep lambda0.003 | ./mean_ap_accuracy_across_configurations.py
+% cat ../experimental_data/training_logs/2018_10_26_banded_ap_similarity_last_300_epochs.out | grep examples128 | grep lambda0.003 | ./mean_ap_accuracy_across_configurations.py
+% cat ../experimental_data/training_logs/2018_10_26_banded_ap_similarity_last_300_epochs.out | grep examples64 | grep lambda0.003 | ./mean_ap_accuracy_across_configurations.py
+% cat ../experimental_data/training_logs/2018_10_26_banded_ap_similarity_last_300_epochs.out | grep examples32 | grep dropout0.25 | ./mean_ap_accuracy_across_configurations.py
 
 \section{Conclusions}
 
@@ -824,7 +812,7 @@ This study has demonstrated that it is possible, using semi-supervised learning,
 
 In the realm of supervised learning, it was made clear that the banded Fourier transform is the most effective input format. It produced significantly higher accuracy and tighter prediction distributions than neural networks trained on either the raw audio waveform or image window data. There is strong evidence that image data in particular does not contain sufficient information to be used for discrimination.
 
-Two semi-supervised learning algorithms were developed, applying the best configuration found for supervised learning. While both techniques produced some very effective discriminators, iterative cluster nucleation was found to be the more effective of the two. As seen in Table \ref{average_semi}, it replicated AP with a mean of 97\% accuracy, using 256 labeled training examples. This indicates that the technique shows significant promise.
+Two semi-supervised learning algorithms were developed, applying the best configuration found for supervised learning. Both techniques produced very effective discriminators, performing better than supervised learning. Iterative cluster nucleation proved more data-efficient with smaller labeled training sets, while gravitational differentiation consistently produced the highest accuracy overall when 256 labeled examples were used.
 
 As discussed in Section \ref{objective}, discriminators such as AP are difficult to develop until a large quantity of calibration data has been collected and the physical principles of the experiment are understood well. The innovations developed in this study suggest that semi-supervised learning can efficiently replicate AP, thus facilitating very quick development of discriminators immediately after the first calibration runs are conducted on a new experimental apparatus. This has the potential to allow the teams working on these experiments to iterate more quickly, and to better understand intermediate results.
 
