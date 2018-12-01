@@ -341,7 +341,7 @@ The most accurate configuration during a waveform CNN grid search was 93.8\% acc
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{waveform_hist}
-    \caption{\label{waveform_hist} Prediction distribution of the best {\it DeepConv}$(\omega)$ configuration. The black vertical line represents the AP decision boundary.}
+    \caption{\label{waveform_hist} Prediction distribution of the best {\it DeepConv}$(\omega)$ configuration, relative to AP, on a randomly selected validation set. The black vertical line represents the AP decision boundary.}
 \end{figure}
 
 \begin{minipage}{\textwidth}
@@ -519,7 +519,7 @@ The primary advantage of semi-supervised learning is clear: it requires fewer la
 
 Two techniques for semi-supervised learning have been developed for this study: gravitational differentiation and iterative cluster nucleation. The essence of both algorithms is a positive feedback loop. First, the network is trained on a smaller amount of imperfect data. Throughout the training process, the network runs predictions on unlabeled data. By using its most confident predictions in the training process, the desired function (separating particle types) is continuously reinforced, while less confident predictions are de-emphasized. This effectively draws new, unlabeled data into the training set.
 
-Because all data in the PICO-60 experiment is labeled, unlabeled training data sets are randomly sampled from the 496 training examples remaining (after the validation set is selected).
+Because all data in the PICO-60 experiment is labeled, unlabeled training data sets are randomly sampled from the 496 training examples remaining (after the validation set is selected). Labeled set sizes of 32, 64, 128, and 256 were tested; the remainder of the 496 examples would be used as unlabeled data.
 
 Since the intent of these techniques is to separate particle types (the same as AP), performance evaluations (accuracy and class-wise standard deviation) use AP as a baseline. All graphs in this section use AP's predictions to define the sets of neutrons and alpha particles.
 
@@ -582,55 +582,63 @@ This system was trained using a multi-layer perceptron with an 8-band Fourier tr
 
 \subsubsection{Results}
 
-During a grid search of parameters of the gravitational differentiation algorithm, in addition to the stochastic gradient descent learning rate (a multiplier that defines how quickly and precisely optimization occurs), the highest mean accuracy over three runs of an individual configuration was 99\%. The highest accuracy was obtained with 256 labeled examples in the set $\varsigma$ (out of 496 total training examples), which equates to 52\% of the data being labeled. High accuracy statistics in this range were also obtained using 128 examples (99\% accuracy, once again) and 64 examples (97\% accuracy). 32 examples produced a much lower maximum accuracy, at only 83\%. From this, it is evident that it is possible to achieve very high accuracy using this technique. It is also clear that, in general, larger initial sets produce higher performance.
+During a grid search of parameters of the gravitational differentiation algorithm, in addition to . The highest accuracy was obtained with 256 labeled examples in the set $\varsigma$ (out of 496 total training examples), which equates to 52\% of the data being labeled. High accuracy statistics in this range were also obtained using 128 examples (99\% accuracy, once again) and 64 examples (97\% accuracy). 32 examples produced a much lower maximum accuracy, at only 83\%. From this, it is evident that it is possible to achieve very high accuracy using this technique. It is also clear that, in general, larger initial sets produce higher performance.
 
 However, the four hyperparameters optimized during the grid search were observed to have a weak polynomial correlation with the network's accuracy. This implies that the training process is generally insensitive to variations in those particular network parameters.
 
 This lack of correlation also means that the mean accuracy over all configurations with a given $\varsigma$ size is a meaningful statistic, since the validation accuracy for an individual configuration is difficult to confidently predict. These statistics, shown in Table \ref{grav_accuracy_by_varsigma}, show that for all four set sizes, there is a fairly wide spread between maximum and mean accuracy.
 
+As with supervised learning techniques, a grid search was run for various parameters of the gravitational differentiation algorithm, in addition to the stochastic gradient descent learning rate (a multiplier that defines how quickly and precisely optimization occurs). Table \ref{grav_accuracy_by_varsigma} shows the mean asymptotic accuracy over the best-performing region of the hyperparameter search space, for each size of the initial labeled set $\varsigma$. Note that optimal hyperparameters vary by set size.
+
+It is evident that larger labeled sets produce better performance. However, note that a $\varsigma$ size of 128 produces accuracy of 97.0\%, the same as the banded supervised system with all 496 labeled examples. That is, GD achieves the same accuracy with 74\% of the labels removed.
+
 \begin{minipage}{\textwidth}
     \begin{center}
         \captionof{table}{Gravitational differentiation accuracy statistics by size of $\varsigma$.} \label{grav_accuracy_by_varsigma}
-        \begin{tabular}{|l|l|l|l|}
+        \begin{tabular}{|l|l|l|l|l|l|}
             \hline
-            Initial $\varsigma$ Size & Proportion of Data Labeled & Max Accuracy & Mean Accuracy \\
+            Initial $\varsigma$ Size & Proportion of Data Labeled & Accuracy & Precision & Recall & CWSD \\
             \hline
-            32 & 6\% & 83\% & 69\% \\
+            32 & 6\% & 71.3\% & 70.1\% & 98.0\% & 0.73 \\
             \hline
-            64 & 13\% & 97\% & 73\% \\
+            64 & 13\% & 79.7\% & 75.5\% & 98.6\% & 0.63 \\
             \hline
-            128 & 26\% & 99\% & 84\% \\
+            128 & 26\% & 97.0\% & 96.3\% & 99.6\% & 0.23 \\
             \hline
-            256 & 52\% & 99\% & 94\% \\
+            256 & 52\% & 99.2\% & 99.0\% & 99.7\% & 0.11 \\
             \hline
         \end{tabular}
     \end{center}
 \end{minipage}
+% cat ../experimental_data/training_logs/2018_10_26_gravitational_ap_similarity_last_300_epochs.out | grep examples256 | grep rate0.03 | grep power3 | ./mean_ap_accuracy_across_configurations.py
+% cat ../experimental_data/training_logs/2018_10_26_gravitational_ap_similarity_last_300_epochs.out | grep examples128 | grep rate0.03 | grep increment0.0005 | ./mean_ap_accuracy_across_configurations.py
+% cat ../experimental_data/training_logs/2018_10_26_gravitational_ap_similarity_last_300_epochs.out | grep examples64 | grep power11 | grep rate0.001 | ./mean_ap_accuracy_across_configurations.py
+% cat ../experimental_data/training_logs/2018_10_26_gravitational_ap_similarity_last_300_epochs.out | grep examples32 | grep power11 | grep increment0.001 | ./mean_ap_accuracy_across_configurations.py
 
-Table \ref{grav_overview} represents the performance of several high-accuracy gravitational differentiation configurations tested during the grid search. The accuracy statistic is the mean over three tests of the same configuration.
+Table \ref{grav_overview} represents the performance of several of the individual configurations incorporated into the mean accuracy values in Table \ref{grav_accuracy_by_varsigma}. All accuracy statistics are the mean over three tests of the same configuration.
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{Performance of gravitational differentiation configurations.} \label{grav_overview}
+        \captionof{table}{Performance of gravitational differentiation configurations in the best-performing region of the hyperparameter search space.} \label{grav_overview}
         \begin{tabular}{|l|l|l|l|l|l|l|l|}
             \hline
-            $\varsigma$ Size & $\delta g$ & Learning Rate & $\psi$ & Mean AP Accuracy & Precision & Recall & CWSD \\
+            $\varsigma$ Size & $\delta g$ & Learning Rate & $\psi$ & Accuracy & Precision & Recall & CWSD \\
             \hline
-            32 & 0.0005 & 0.001 & 5 & 73\% & 72\% & 90\% & 0.78 \\
+            32 & 0.001 & 0.001 & 11 & 79.0\% & 78.2\% & 94.8\% & 0.74 \\
             \hline
-            32 & 0.0005 & 0.003 & 9 & 83\% & 80\% & 99\% & 0.63 \\
+            32 & 0.001 & 0.003 & 11 & 59.9\% & 59.9\% & 100.0\% & 0.78 \\
             \hline
-            64 & 0.0005 & 0.003 & 9 & 77\% & 74\% & 97\% & 0.71 \\
+            64 & 0.005 & 0.001 & 11 & 82.8\% & 79.0\% & 99.1\% & 0.58 \\
             \hline
-            64 & 0.003 & 0.03 & 7 & 97\% & 96\% & 100\% & 0.18 \\
+            64 & 0.008 & 0.001 & 11 & 73.9\% & 71.0\% & 99.6\% & 0.71 \\
             \hline
-            128 & 0.008 & 0.001 & 9 & 74\% & 71\% & 95\% & 0.70 \\
+            128 & 0.0005 & 0.03 & 3 & 98.3\% & 97.7\% & 99.6\% & 0.21 \\
             \hline
-            128 & 0.0005 & 0.03 & 11 & 99\% & 99\% & 99\% & 0.17 \\
+            128 & 0.0005 & 0.03 & 9 & 96.6\% & 95.1\% & 99.6\% & 0.29 \\
             \hline
-            256 & 0.005 & 0.01 & 11 & 97\% & 96\% & 99\% & 0.25 \\
+            256 & 0.008 & 0.03 & 3 & 99.1\% & 99.0\% & 99.5\% & 0.16 \\
             \hline
-            256 & 0.001 & 0.03 & 3 & 99\% & 99\% & 100\% & 0.10 \\
+            256 & 0.001 & 0.03 & 3 & 99.7\% & 99.6\% & 99.6\% & 0.05 \\
             \hline
         \end{tabular}
     \end{center}
@@ -639,7 +647,7 @@ Table \ref{grav_overview} represents the performance of several high-accuracy gr
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{grav_grid_search}
-    \caption{\label{grav_grid_search} Predictions of best gravitational differentiation model compared to AP (on randomly selected validation set).}
+    \caption{\label{grav_grid_search} Prediction distribution of the best gravitational differentiation configuration.}
 \end{figure}
 
 Note that in Figure \ref{grav_grid_search}, AP is normalized using a similar method to the original PICO-60 study \cite{pico}. In this normalized spectrum, the decision boundary between neutrons and alpha particles is at 0.25.
