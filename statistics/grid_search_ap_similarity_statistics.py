@@ -50,9 +50,7 @@ file_paths = [path for path in glob.glob(os.path.expanduser(sys.argv[1]), recurs
 # Filter the paths, taking only the ones that are in the last few epochs
 epochs = [int(path.split('epoch')[1].split('.json')[0]) for path in file_paths]
 max_epoch = max(epochs)
-file_paths = [path for path, epoch in zip(file_paths, epochs) if epoch == max_epoch]
-# Temporary hack: only take those file paths that represent validation sets and not gravitational training sets
-file_paths = [path for path in file_paths if 'validation' in path]
+file_paths = [path for path, epoch in zip(file_paths, epochs) if epoch > max_epoch - 300]
 # Get the run identifier corresponding to each of the file paths (not including the specific epoch)
 run_identifiers = [file_path.split('time')[0] for file_path in file_paths]
 # Convert the identifiers to a set so that they are all unique (there are many duplicated)
