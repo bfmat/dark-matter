@@ -387,12 +387,12 @@ The following hyperparameters were tested during a grid search:
 
 \subsubsection{Results}
 
-It became evident very quickly that a high resolution was not required to get a high accuracy relative to the ground truth data. {\it FourierMLP}$(PosCor(\beta_{8}))$ managed an excellent 98\% validation accuracy, and also produced a mean class-wise standard deviation of 0.29. Its very decisive prediction distribution can be observed in Figure \ref{banded_no_pos_input_hist}.
+It became evident very quickly that a high resolution was not required to get a high accuracy relative to the ground truth data. {\it FourierMLP}$(PosCor(\beta_{8}))$ managed a mean of 97.0\% validation accuracy over the best-performing region of the hyperparameter search space, and a mean class-wise standard deviation of 0.26. Its fairly decisive prediction distribution can be observed in Figure \ref{banded_no_pos_input_hist}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{banded_no_pos_input_hist}
-    \caption{\label{banded_no_pos_input_hist} Prediction distribution of the best {\it FourierMLP}$(${\it PosCor}$(\beta_{8}))$ configuration.}
+    \caption{\label{banded_no_pos_input_hist} Prediction distribution of the best {\it FourierMLP}$(${\it PosCor}$(\beta_{8}, \chi))$ configuration.}
 \end{figure}
 
 Table \ref{fft_wall_cuts} compares various multi-layer perceptron discriminators from the best-performing region of the hyperparameter search space.
@@ -494,7 +494,7 @@ Table \ref{super_overview} compares the mean accuracy, precision, recall, and cl
     \end{center}
 \end{minipage}
 
-The key conclusion to be drawn from the above table is that the low-resolution Fourier transform $\beta_{8}$ is by far the most effective input format. The raw waveform and high-resolution Fourier transform make performance worse. This may be caused by one of the following three reasons:
+The key conclusion to be drawn from Table \ref{super_overview} is that the low-resolution Fourier transform $\beta_{8}$ is by far the most effective input format. The raw waveform and high-resolution Fourier transform make performance worse. This may be caused by one of the following three reasons:
 
 \begin{itemize}
     \item Insufficient network depth to process higher resolutions
@@ -507,7 +507,7 @@ The last reason is very likely. At a fundamental level, $\beta _8$ does not cont
 Based on this result, experimentation with semi-supervised learning proceeded using \\ {\it FourierMLP}$(${\it PosCor}$(\beta_{8}, \chi))$, applying a three-layer perceptron architecture. There were two main reasons for this:
 
 \begin{enumerate}
-    \item This was a highly effective configuration, producing 97.0\% accuracy and a class-wise standard deviation dramatically better than the original PICO-60 neural network on that data set.
+    \item This was a highly effective general configuration, producing a mean of 97.0\% accuracy and a class-wise standard deviation of 0.26, much better than the original PICO-60 neural network on that data set.
     \item If position correction is not applied, there is some risk of introducing a bias to the network's training data because alpha and neutron events have different position distributions (as described in Section \ref{og_analysis}).
 \end{enumerate}
 
@@ -542,7 +542,7 @@ Analogous to a gravitational effect, events with high-confidence predictions are
 The system accomplishes this using a new method for calculating gradients for the last layer of the neural network. Based on the current predictions of a trained network on a certain unlabeled training example, a gradient is calculated for the last layer with the following purposes:
 
 \begin{itemize}
-    \item For examples with confident predictions close to 0 or 1: Create a large gradient that pulls the prediction closer to 0 or 1 through gradient descent (like gravity).
+    \item For examples with confident predictions close to 0 or 1: Create a large gradient that pulls the prediction closer to 0 or 1 through gradient descent (analogous to gravity).
     \item For examples with low-confidence predictions close to 0.5: Create a gradient near 0 that does not affect training significantly.
 \end{itemize}
 
@@ -556,7 +556,7 @@ Gradients are calculated using the gravitational differentiation function $\math
     \mathrm{GravDiff}(p, \psi, g) = g \cdot \mathrm{sgn}(p) \cdot \mathrm{abs}(\mathrm{tanh}(2(p - 0.5))) ^ \psi
 \end{equation}
 
-It is a distortion of the hyperbolic tangent that flattens the central range and comparatively exaggerates the asymptote on either side. The equation above can be described in the following steps:
+It is a transformation of the hyperbolic tangent that flattens the central range and comparatively exaggerates the asymptote on either side. The equation above can be described in the following steps:
 
 \begin{enumerate}
     \item Transform the network's prediction $p$, so its range is 1 to -1 rather than 0 to 1.
@@ -578,7 +578,7 @@ This function is applied in a training algorithm that is parameterized by the se
 
 This system was trained using a multi-layer perceptron with an 8-band Fourier transform input for $NN(x)$, because this was one of the most successful configurations in supervised learning. It produced the highest accuracy as well as the lowest class-wise standard deviation.
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{grav_diff}
     \caption{\label{grav_diff} A visualization of $\mathrm{GravDiff}(p, \psi, g)$ with respect to $p$ and $\psi$.}
@@ -586,15 +586,9 @@ This system was trained using a multi-layer perceptron with an 8-band Fourier tr
 
 \subsubsection{Results}
 
-During a grid search of parameters of the gravitational differentiation algorithm, in addition to . The highest accuracy was obtained with 256 labeled examples in the set $\varsigma$ (out of 496 total training examples), which equates to 52\% of the data being labeled. High accuracy statistics in this range were also obtained using 128 examples (99\% accuracy, once again) and 64 examples (97\% accuracy). 32 examples produced a much lower maximum accuracy, at only 83\%. From this, it is evident that it is possible to achieve very high accuracy using this technique. It is also clear that, in general, larger initial sets produce higher performance.
-
-However, the four hyperparameters optimized during the grid search were observed to have a weak polynomial correlation with the network's accuracy. This implies that the training process is generally insensitive to variations in those particular network parameters.
-
-This lack of correlation also means that the mean accuracy over all configurations with a given $\varsigma$ size is a meaningful statistic, since the validation accuracy for an individual configuration is difficult to confidently predict. These statistics, shown in Table \ref{grav_accuracy_by_varsigma}, show that for all four set sizes, there is a fairly wide spread between maximum and mean accuracy.
-
 As with supervised learning techniques, a grid search was run for various parameters of the gravitational differentiation algorithm, in addition to the stochastic gradient descent learning rate (a multiplier that defines how quickly and precisely optimization occurs). Table \ref{grav_accuracy_by_varsigma} shows the mean asymptotic accuracy over the best-performing region of the hyperparameter search space, for each size of the initial labeled set $\varsigma$. Note that optimal hyperparameters vary by set size.
 
-It is evident that larger labeled sets produce better performance. However, note that a $\varsigma$ size of 128 produces accuracy of 97.0\%, the same as the banded supervised system with all 496 labeled examples. That is, GD achieves the same accuracy with 74\% of the labels removed.
+It is evident that larger labeled sets produce better performance. Gravitational differentiation with 256 examples is considerably better than any supervised learning system. Additionally, note that a $\varsigma$ size of 128 produces accuracy of 97.0\%, the same as the banded supervised system with all 496 labeled examples. That is, GD achieves the same accuracy with 74\% of the labels removed.
 
 \begin{minipage}{\textwidth}
     \begin{center}
@@ -648,7 +642,7 @@ Table \ref{grav_overview} represents the performance of several of the individua
     \end{center}
 \end{minipage}
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{grav_grid_search}
     \caption{\label{grav_grid_search} Prediction distribution of the best gravitational differentiation configuration.}
@@ -690,14 +684,6 @@ Parameterized by the initial seed threshold $j$ (on the order of 0.01) and the s
 \end{enumerate}
 
 \subsubsection{Results}
-
-During a grid search of these parameters (in addition to regularization parameters of the network), the best mean accuracy over three runs of an individual configuration was 99\%, using 256 initial labeled examples in $\varsigma$. (The network's predictions on the best performing epoch can be observed in Figure \ref{icn_grid_search}.) With 128 examples, the maximum was 98\%; with 64 it was 97\%; and with 32, 95\%. As with gravitational differentiation, larger set sizes improve accuracy significantly.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{icn_grid_search}
-    \caption{\label{icn_grid_search} Prediction distribution of the best iterative cluster nucleation configuration.}
-\end{figure}
 
 In Table \ref{icn_accuracy_by_varsigma}, it is clear that for a labeled set of 256, ICN performs worse than GD (which reached 99.2\%). However, the accuracy for 128 examples in $\varsigma$ is almost exactly the same as that for 256, and is still higher than the 97.0\% reached with supervised learning on 496 training examples (see Section \ref{super_results}). Moreover, for even smaller training sets of 64 and 32, ICN continues to perform better than GD.
 
@@ -752,6 +738,12 @@ Table \ref{icn_overview} represents the performance of a variety of high-accurac
         \end{tabular}
     \end{center}
 \end{minipage}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{icn_grid_search}
+    \caption{\label{icn_grid_search} Prediction distribution of the best iterative cluster nucleation configuration.}
+\end{figure}
 
 \subsection{Performance Comparison}
 
@@ -808,9 +800,9 @@ Note that the supervised multi-layer perceptron trained on $\beta _8$ originally
 
 \section{Conclusions}
 
-This study has demonstrated that it is possible, using semi-supervised learning, to automatically optimize a discriminator with performance comparable to one developed and tuned by humans like the Acoustic Parameter technique. This conclusion has been achieved through two rounds of optimization, the first to explore and evaluate various network structures and input formats using supervised learning, and the second to incorporate the most successful configuration into semi-supervised learning systems with the goal of producing a high-accuracy discriminator to complement AP.
+This study has demonstrated that it is possible, using semi-supervised learning, to automatically optimize a discriminator with performance comparable to one developed and tuned by humans like the Acoustic Parameter technique. This conclusion has been achieved through two rounds of optimization: the first to explore and evaluate various network structures and input formats using supervised learning, and the second to incorporate the most successful configuration into semi-supervised learning systems with the goal of producing a high-accuracy discriminator to complement AP.
 
-In the realm of supervised learning, it was made clear that the banded Fourier transform is the most effective input format. It produced significantly higher accuracy and tighter prediction distributions than neural networks trained on either the raw audio waveform or image window data. There is strong evidence that image data in particular does not contain sufficient information to be used for discrimination.
+In the realm of supervised learning, it was made clear that the banded Fourier transform with position corrections applied is the most effective input format. It produced significantly higher accuracy and tighter prediction distributions than neural networks trained on the full-resolution Fourier transform, the raw audio waveform, or the image window data. There is strong evidence that image data in particular does not contain sufficient information to be used for discrimination.
 
 Two semi-supervised learning algorithms were developed, applying the best configuration found for supervised learning. Both techniques produced very effective discriminators, performing better than supervised learning. Iterative cluster nucleation proved more data-efficient with smaller labeled training sets, while gravitational differentiation consistently produced the highest accuracy overall when 256 labeled examples were used.
 
