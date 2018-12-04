@@ -43,7 +43,7 @@ test_inputs, test_ground_truths, test_events = prepare_events(real_neck_events_m
 performance_statistics = []
 test_performance_statistics = []
 # Train the network multiple times to get an idea of the general accuracy
-for _ in range(3):
+for _ in range(10):
     # Create a neural network model that includes several convolutional and dense layers with hyperbolic tangent activations
     regularizer = l2(0.0006)
     activation = 'tanh'
