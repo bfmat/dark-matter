@@ -2,6 +2,9 @@
 """Train a convolutional neural network on the numbers of pulses for each PMT in the DEAP data, projected onto a 2D map"""
 # Created by Brendon Matusch, August 2018
 
+from keras.layers import Conv2D, Dense, Flatten, Dropout, BatchNormalization, InputLayer
+from keras.models import Sequential
+from keras.regularizers import l2
 import numpy as np
 
 from data_processing.deap_serialization import save_test
@@ -40,8 +43,41 @@ test_inputs, test_ground_truths, test_events = prepare_events(real_neck_events_m
 performance_statistics = []
 # Train the network multiple times to get an idea of the general accuracy
 for _ in range(3):
-    # Create an instance of the neural network model
-    model = create_model()
+    # Create a neural network model that includes several convolutional and dense layers with hyperbolic tangent activations
+    regularizer = l2(0.0006)
+    activation = 'tanh'
+    convolutional_layers = 2
+    filters = 8
+    dense_layers = 2
+    model = Sequential()
+    model.add(InputLayer(input_shape=(10, 35, 1)))
+    model.add(BatchNormalization())
+    # The first convolutional layer is the same no matter what
+    model.add(Conv2D(filters=filters, kernel_size=3, strides=2, activation=activation, kernel_regularizer=regularizer))
+    # The constraints of the input image are tight enough that the individual numbers of layers should probably be handled individually
+    if convolutional_layers == 2:
+        model.add(Conv2D(filters=filters, kernel_size=2, strides=2, activation=activation, kernel_regularizer=regularizer))
+    elif convolutional_layers == 3:
+        model.add(Conv2D(filters=filters, kernel_size=2, strides=1, activation=activation, kernel_regularizer=regularizer))
+        model.add(Conv2D(filters=filters, kernel_size=2, strides=1, activation=activation, kernel_regularizer=regularizer))
+    elif convolutional_layers == 4:
+        model.add(Conv2D(filters=filters, kernel_size=2, strides=1, activation=activation, kernel_regularizer=regularizer))
+        model.add(Conv2D(filters=filters, kernel_size=2, strides=1, activation=activation, kernel_regularizer=regularizer))
+        model.add(Conv2D(filters=filters, kernel_size=2, strides=1, activation=activation, kernel_regularizer=regularizer))
+    model.add(Flatten())
+    if dense_layers == 2:
+        model.add(Dense(64, activation=activation, kernel_regularizer=regularizer))
+    model.add(Dense(16, activation=activation, kernel_regularizer=regularizer))
+    model.add(Dense(1, activation='sigmoid', kernel_regularizer=regularizer))
+    # Output a summary of the model's architecture
+    print(model.summary())
+    # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
+    model.compile(
+        optimizer='adam',
+        loss='mse',
+        metrics=['accuracy']
+    )
+
     # Iterate for a certain number of epochs
     for epoch in range(EPOCHS):
         # Train the model for a single epoch
