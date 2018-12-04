@@ -41,6 +41,7 @@ test_inputs, test_ground_truths, test_events = prepare_events(real_neck_events_m
 
 # Create a list to hold the numbers of (false and true) (positives and negatives) for each training run
 performance_statistics = []
+test_performance_statistics = []
 # Train the network multiple times to get an idea of the general accuracy
 for _ in range(3):
     # Create a neural network model that includes several convolutional and dense layers with hyperbolic tangent activations
@@ -87,11 +88,23 @@ for _ in range(3):
         # Evaluate the network's predictions and add the statistics to the list, only if we are in the last few epochs (we don't care about the other ones, it is still learning then)
         if epoch >= EPOCHS - 10:
             performance_statistics.append(evaluate_predictions(validation_ground_truths, validation_predictions, validation_events, epoch, set_name='validation'))
+        # Repeat for the real-world test data
+        test_predictions = model.predict(test_inputs)[:, 0]
+        if epoch >= EPOCHS - 10:
+            test_performance_statistics.append(evaluate_predictions(test_ground_truths, test_predictions, test_events, epoch, set_name='real_world_test'))
+
 # Add up each of the statistics for the last few epochs and calculate the mean
 statistics_mean = np.mean(np.stack(performance_statistics, axis=0), axis=0)
+test_statistics_mean = np.mean(np.stack(test_performance_statistics, axis=0), axis=0)
 # Using these values, calculate and print the percentage of neck alphas removed, and the percentage of nuclear recoils incorrectly removed alongside them
 true_positives, true_negatives, false_positives, false_negatives = statistics_mean
 neck_alphas_removed = true_positives / (true_positives + false_negatives)
 nuclear_recoils_removed = false_positives / (false_positives + true_negatives)
 print('Neck alphas removed:', neck_alphas_removed)
 print('Nuclear recoils removed:', nuclear_recoils_removed)
+# Repeat for the test data
+true_positives, true_negatives, false_positives, false_negatives = test_statistics_mean
+neck_alphas_removed = true_positives / (true_positives + false_negatives)
+nuclear_recoils_removed = false_positives / (false_positives + true_negatives)
+print('Neck alphas removed (test):', neck_alphas_removed)
+print('Nuclear recoils removed (test):', nuclear_recoils_removed)
