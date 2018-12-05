@@ -19,16 +19,18 @@ data = data.tolist()
 # Create a list of tuples sof all the combinations in order
 hyperparameter_combinations = []
 for l2_lambda in [0, 0.0003, 0.0006, 0.001, 0.003]:
-    for activation in ['relu', 'tanh']:
-        for convolutional_layers in [2, 3, 4]:
-            for filters in [8, 16]:
-                for dense_layers in [1, 2]:
-                    hyperparameter_combinations.append([l2_lambda, activation, convolutional_layers, filters, dense_layers])
+    for dropout in [0, 0.25, 0.5]:
+        for hidden_layers in [2, 4, 6]:
+            for activation in ['relu', 'tanh']:
+                hyperparameter_combinations.append([l2_lambda, dropout, hidden_layers, activation])
+
+# print(len(data))
+# print(len(hyperparameter_combinations))
 
 # Create a CSV writer for standard output
 writer = csv.writer(sys.stdout)
 # Write the column titles
-writer.writerow(['L2 Lambda', 'Activation', 'Conv Layers', 'Conv Filters', 'Dense Layers', 'Neck Alphas Removed', 'Simulated WIMPs Removed'])
+writer.writerow(['L2 Lambda', 'Dropout', 'Hidden Layers', 'Activation', 'Neck Alphas Removed', 'Simulated WIMPs Removed'])
 # Iterate over hyperparameters with corresponding removal statistics
 for removal_stats, hyperparameters in zip(data, hyperparameter_combinations):
     # Append them together into one list, which will be a CSV line
