@@ -32,10 +32,10 @@ for l2_lambda in [0, 0.0003, 0.0006, 0.001, 0.003]:
                         print('Filters:', filters)
                         print('Dense Layers:', dense_layers)
                         print('Zero Weight:', zero_weight)
-                        # Create a list to hold the numbers of (false and true) (positives and negatives) for each training run
-                        performance_statistics = []
                         # Train the network multiple times to get an idea of the general accuracy
                         for _ in range(12):
+                            # Create a list to hold the numbers of (false and true) (positives and negatives) for this training run
+                            performance_statistics = []
                             # Load all simulated events from the file
                             neck_events, non_neck_events = load_simulated_deap_data()
                             # Project the pulse counts onto a map, wrapping in a single-element tuple so the preprocessing function will work
@@ -87,11 +87,11 @@ for l2_lambda in [0, 0.0003, 0.0006, 0.001, 0.003]:
                                 # Evaluate the network's predictions and add the statistics to the list, only if we are in the last few epochs (we don't care about the other ones, it is still learning then)
                                 if epoch >= EPOCHS - 10:
                                     performance_statistics.append(evaluate_predictions(validation_ground_truths, validation_predictions, validation_events, epoch, set_name='validation'))
-                        # Add up each of the statistics for the last few epochs and calculate the mean
-                        statistics_mean = np.mean(np.stack(performance_statistics, axis=0), axis=0)
-                        # Using these values, calculate and print the percentage of neck alphas removed, and the percentage of nuclear recoils incorrectly removed alongside them
-                        true_positives, true_negatives, false_positives, false_negatives = statistics_mean
-                        neck_alphas_removed = true_positives / (true_positives + false_negatives)
-                        nuclear_recoils_removed = false_positives / (false_positives + true_negatives)
-                        print('Neck alphas removed:', neck_alphas_removed)
-                        print('Nuclear recoils removed:', nuclear_recoils_removed)
+                            # Add up each of the statistics for the last few epochs and calculate the mean
+                            statistics_mean = np.mean(np.stack(performance_statistics, axis=0), axis=0)
+                            # Using these values, calculate and print the percentage of neck alphas removed, and the percentage of nuclear recoils incorrectly removed alongside them
+                            true_positives, true_negatives, false_positives, false_negatives = statistics_mean
+                            neck_alphas_removed = true_positives / (true_positives + false_negatives)
+                            nuclear_recoils_removed = false_positives / (false_positives + true_negatives)
+                            print('Neck alphas removed:', neck_alphas_removed)
+                            print('Nuclear recoils removed:', nuclear_recoils_removed)
