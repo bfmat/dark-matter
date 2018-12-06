@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 
 # Create lists containing the performance statistics as well as the names of the configurations
-PERFORMANCE_VALUES = [85, 96.5, 97.7, 99.2]
+PERFORMANCE_VALUES = [80.7, 97.0, 98.2, 99.2]
 CONFIGURATIONS = ['Original NN Analysis', 'New NN Analysis', 'Iterative Cluster Nucleation', 'Gravitational Differentiation']
 # Color and legend the entries according to whether they are supervised or semi-supervised learning
 COLORS = ['gray', 'gray', 'green', 'green']
