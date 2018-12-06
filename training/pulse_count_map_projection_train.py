@@ -2,6 +2,9 @@
 """Train a convolutional neural network on the numbers of pulses for each PMT in the DEAP data, projected onto a 2D map"""
 # Created by Brendon Matusch, August 2018
 
+from keras.layers import Conv2D, Dense, Flatten, Dropout, BatchNormalization, InputLayer
+from keras.models import Sequential
+from keras.regularizers import l2
 import numpy as np
 
 from data_processing.deap_serialization import save_test
@@ -38,10 +41,44 @@ test_inputs, test_ground_truths, test_events = prepare_events(real_neck_events_m
 
 # Create a list to hold the numbers of (false and true) (positives and negatives) for each training run
 performance_statistics = []
+test_performance_statistics = []
 # Train the network multiple times to get an idea of the general accuracy
-for _ in range(3):
-    # Create an instance of the neural network model
-    model = create_model()
+for _ in range(10):
+    # Create a neural network model that includes several convolutional and dense layers with hyperbolic tangent activations
+    regularizer = l2(0.0006)
+    activation = 'tanh'
+    convolutional_layers = 2
+    filters = 8
+    dense_layers = 2
+    model = Sequential()
+    model.add(InputLayer(input_shape=(10, 35, 1)))
+    model.add(BatchNormalization())
+    # The first convolutional layer is the same no matter what
+    model.add(Conv2D(filters=filters, kernel_size=3, strides=2, activation=activation, kernel_regularizer=regularizer))
+    # The constraints of the input image are tight enough that the individual numbers of layers should probably be handled individually
+    if convolutional_layers == 2:
+        model.add(Conv2D(filters=filters, kernel_size=2, strides=2, activation=activation, kernel_regularizer=regularizer))
+    elif convolutional_layers == 3:
+        model.add(Conv2D(filters=filters, kernel_size=2, strides=1, activation=activation, kernel_regularizer=regularizer))
+        model.add(Conv2D(filters=filters, kernel_size=2, strides=1, activation=activation, kernel_regularizer=regularizer))
+    elif convolutional_layers == 4:
+        model.add(Conv2D(filters=filters, kernel_size=2, strides=1, activation=activation, kernel_regularizer=regularizer))
+        model.add(Conv2D(filters=filters, kernel_size=2, strides=1, activation=activation, kernel_regularizer=regularizer))
+        model.add(Conv2D(filters=filters, kernel_size=2, strides=1, activation=activation, kernel_regularizer=regularizer))
+    model.add(Flatten())
+    if dense_layers == 2:
+        model.add(Dense(64, activation=activation, kernel_regularizer=regularizer))
+    model.add(Dense(16, activation=activation, kernel_regularizer=regularizer))
+    model.add(Dense(1, activation='sigmoid', kernel_regularizer=regularizer))
+    # Output a summary of the model's architecture
+    print(model.summary())
+    # Use a mean squared error loss function and an Adam optimizer, and print the accuracy while training
+    model.compile(
+        optimizer='adam',
+        loss='mse',
+        metrics=['accuracy']
+    )
+
     # Iterate for a certain number of epochs
     for epoch in range(EPOCHS):
         # Train the model for a single epoch
@@ -51,11 +88,23 @@ for _ in range(3):
         # Evaluate the network's predictions and add the statistics to the list, only if we are in the last few epochs (we don't care about the other ones, it is still learning then)
         if epoch >= EPOCHS - 10:
             performance_statistics.append(evaluate_predictions(validation_ground_truths, validation_predictions, validation_events, epoch, set_name='validation'))
+        # Repeat for the real-world test data
+        test_predictions = model.predict(test_inputs)[:, 0]
+        if epoch >= EPOCHS - 10:
+            test_performance_statistics.append(evaluate_predictions(test_ground_truths, test_predictions, test_events, epoch, set_name='real_world_test'))
+
 # Add up each of the statistics for the last few epochs and calculate the mean
 statistics_mean = np.mean(np.stack(performance_statistics, axis=0), axis=0)
+test_statistics_mean = np.mean(np.stack(test_performance_statistics, axis=0), axis=0)
 # Using these values, calculate and print the percentage of neck alphas removed, and the percentage of nuclear recoils incorrectly removed alongside them
 true_positives, true_negatives, false_positives, false_negatives = statistics_mean
 neck_alphas_removed = true_positives / (true_positives + false_negatives)
 nuclear_recoils_removed = false_positives / (false_positives + true_negatives)
 print('Neck alphas removed:', neck_alphas_removed)
 print('Nuclear recoils removed:', nuclear_recoils_removed)
+# Repeat for the test data
+true_positives, true_negatives, false_positives, false_negatives = test_statistics_mean
+neck_alphas_removed = true_positives / (true_positives + false_negatives)
+nuclear_recoils_removed = false_positives / (false_positives + true_negatives)
+print('Neck alphas removed (test):', neck_alphas_removed)
+print('Nuclear recoils removed (test):', nuclear_recoils_removed)
