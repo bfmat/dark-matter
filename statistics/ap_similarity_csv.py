@@ -11,7 +11,7 @@ import numpy as np
 # Create a CSV writer to standard output
 writer = csv.writer(sys.stdout)
 # Print a line containing the hyperparameters and performance statistics
-writer.writerow(['Dropout', 'L2 Lambda', 'Init Training Set', 'Init Threshold', 'Threshold Mult', 'Accuracy', 'Std Dev', 'Precision', 'Recall'])
+writer.writerow(['L2 Lambda', 'Dropout', 'Conv Filters', 'Conv Kernel Size', 'Conv Layers Mult' 'Accuracy', 'Std Dev', 'Precision', 'Recall'])
 # Load lines from standard input; only take those that contain a configuration
 lines = [line for line in sys.stdin.readlines() if line.startswith('Configuration:')]
 # Split each line by slashes; only take those segments that contain hyperparameters
