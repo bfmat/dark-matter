@@ -5,7 +5,10 @@
 import functools
 
 import matplotlib.pyplot as plt
+from pylatex import Document, Section, Figure, NoEscape, Subsection
 
+# Create a LaTeX document to add everything to
+document = Document('manual_optimization_log')
 # Load the training log index file
 with open('../experimental_data/training_logs/index.txt') as file:
     training_log_index = file.readlines()
@@ -36,10 +39,10 @@ delete_indices = [file_names.index(delete_file_name) for delete_file_name in [
 for index in reversed(sorted(delete_indices)):
     del file_names[index]
     del descriptions[index]
-# Prepend each of the file names with the path to the log folder
-file_paths = [f'../experimental_data/training_logs/{file_name}' for file_name in file_names]
 # Iterate over the files, creating graphs with descriptions
-for file_path in file_paths:
+for file_name in file_names:
+    # Prepend the file name with the path to the log folder
+    file_path = f'../experimental_data/training_logs/{file_name}'
     # Open the file and load its full contents
     with open(file_path) as file:
         file_contents = file.readlines()
@@ -101,7 +104,13 @@ for file_path in file_paths:
         # Get the labels from the combined lines
         labels = [line.get_label() for line in combined_lines]
         first_axis.legend(combined_lines, labels)
-    figure.show()
-    while True:
-        pass
-    break
+    # Create a section in the document for this plot (using the file name)
+    with document.create(Subsection(file_name, numbering=False)):
+        # Add the plot to the document
+        with document.create(Figure(position='h!')) as plot:
+            # Make it the full width of the text
+            plot.add_plot(width=NoEscape('\\textwidth'))
+        # Add a new page before the next plot
+        document.append(NoEscape('\\newpage'))
+# Generate a PDF containing all of the plots
+document.generate_pdf()
