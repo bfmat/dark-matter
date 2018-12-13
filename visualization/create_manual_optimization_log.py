@@ -2,6 +2,7 @@
 """Create a human-readable PDF containing graphs from the experimental data logs and explanatory indices"""
 # Created by Brendon Matusch, December 2018
 
+import datetime
 import functools
 
 import matplotlib.pyplot as plt
@@ -39,8 +40,16 @@ delete_indices = [file_names.index(delete_file_name) for delete_file_name in [
 for index in reversed(sorted(delete_indices)):
     del file_names[index]
     del descriptions[index]
+# Create a date variable for comparison
+last_date = None
 # Iterate over the files, creating graphs with descriptions
-for file_name in file_names:
+for file_name, description in zip(file_names, descriptions):
+    # Get the date from the beginning of the file name (separated by underscores)
+    date = datetime.date(*[int(number) for number in file_name.split('_')[:3]])
+    # If the date is new, update it and create a section header
+    if date != last_date:
+        last_date = date
+        document.append(Section(str(date), numbering=False))
     # Prepend the file name with the path to the log folder
     file_path = f'../experimental_data/training_logs/{file_name}'
     # Open the file and load its full contents
@@ -104,12 +113,16 @@ for file_name in file_names:
         # Get the labels from the combined lines
         labels = [line.get_label() for line in combined_lines]
         first_axis.legend(combined_lines, labels)
+    # Get a name for this plot subsection, taking it from the file name after the date and before the .out file extension
+    subsection_name = file_name.split('_', 3)[-1][:-4].replace('_', ' ').title()
     # Create a section in the document for this plot (using the file name)
-    with document.create(Subsection(file_name, numbering=False)):
+    with document.create(Subsection(subsection_name, numbering=False)):
         # Add the plot to the document
         with document.create(Figure(position='h!')) as plot:
             # Make it the full width of the text
             plot.add_plot(width=NoEscape('\\textwidth'))
+            # Add the description as a caption to the plot
+            plot.add_caption(description)
         # Add a new page before the next plot
         document.append(NoEscape('\\newpage'))
 # Generate a PDF containing all of the plots
