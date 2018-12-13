@@ -54,7 +54,12 @@ for file_name, description in zip(file_names, descriptions):
     file_path = f'../experimental_data/training_logs/{file_name}'
     # Open the file and load its full contents
     with open(file_path) as file:
-        file_contents = file.readlines()
+        file_contents = file.read()
+    # If there are multiple training runs, take only the first
+    if 'Trainable params' in file_contents:
+        file_contents = file_contents.split('Trainable params')[1]
+    # Split it into individual lines
+    file_contents = file_contents.split('\n')
     # Take only the lines at the end of the epoch
     epoch_end_lines = [line for line in file_contents if 'step' in line]
     # Check for the presence of the main performance statistics (other than loss, which is always there)
@@ -105,14 +110,14 @@ for file_name, description in zip(file_names, descriptions):
         lines.append(axis.plot(data_series, label=series_label, color=color))
     # If there is only one axis, create a legend
     if (not accuracy_present) and (not abs_error_present):
-        first_axis.legend()
+        first_axis.legend(loc='center right')
     # Otherwise, we have to make a combined legend
     else:
         # Add the lines together
         combined_lines = functools.reduce(lambda x, y: x + y, lines)
         # Get the labels from the combined lines
         labels = [line.get_label() for line in combined_lines]
-        first_axis.legend(combined_lines, labels)
+        first_axis.legend(combined_lines, labels, loc='center right')
     # Get a name for this plot subsection, taking it from the file name after the date and before the .out file extension
     subsection_name = file_name.split('_', 3)[-1][:-4].replace('_', ' ').title()
     # Create a section in the document for this plot (using the file name)
