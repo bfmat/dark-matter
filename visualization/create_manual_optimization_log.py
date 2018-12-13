@@ -2,6 +2,10 @@
 """Create a human-readable PDF containing graphs from the experimental data logs and explanatory indices"""
 # Created by Brendon Matusch, December 2018
 
+import functools
+
+import matplotlib.pyplot as plt
+
 # Load the training log index file
 with open('../experimental_data/training_logs/index.txt') as file:
     training_log_index = file.readlines()
@@ -41,3 +45,63 @@ for file_path in file_paths:
         file_contents = file.readlines()
     # Take only the lines at the end of the epoch
     epoch_end_lines = [line for line in file_contents if 'step' in line]
+    # Check for the presence of the main performance statistics (other than loss, which is always there)
+    accuracy_present = 'acc' in epoch_end_lines[0]
+    abs_error_present = 'mean_absolute_error' in epoch_end_lines[0]
+    validation_present = 'val' in epoch_end_lines[0]
+    # Based on each existing combination of attributes, set the word indices for [train loss, train accuracy, train abs error, val loss, val accuracy, val abs error]
+    if accuracy_present:
+        if validation_present:
+            word_indices = [7, 10, None, 13, 16, None]
+        else:
+            word_indices = [7, 10, None, None, None, None]
+    elif abs_error_present:
+        # Validation is always present for mean absolute error runs
+        word_indices = [7, None, 10, 13, None, 16]
+    else:
+        word_indices = [7, None, None, 10, None, None]
+    # Create lists of series labels and colors to go along with the element indices
+    series_labels = ['Train loss', 'Train accuracy', 'Train absolute error', 'Validation loss', 'Validation accuracy', 'Validation absolute error']
+    colors = ['b', 'r', 'r', 'g', 'y', 'y']
+    # Create a figure and main axis to plot on
+    figure, first_axis = plt.subplots()
+    # Set the axis labels
+    first_axis.set_xlabel('Epoch')
+    first_axis.set_ylabel('Mean Squared Error Loss')
+    # Create a list for the axes to plot on
+    axes = [first_axis, None, None, first_axis, None, None]
+    # If there are more data points than just loss, create a second Y axis
+    if accuracy_present or abs_error_present:
+        second_axis = first_axis.twinx()
+        # Set its label (naming it according to the second series)
+        if accuracy_present:
+            second_axis.set_ylabel('Accuracy')
+        else:
+            second_axis.set_ylabel('Absolute Error')
+        # Include the new second axis in the list of axes
+        axes = [first_axis, second_axis, second_axis, first_axis, second_axis, second_axis]
+    # Create a list of lines to add the plots to
+    lines = []
+    # Iterate over word indices alongside the axes, series labels, and colors
+    for word_index, axis, series_label, color in zip(word_indices, axes, series_labels, colors):
+        # If there is no word index for this series (it does not exist), skip to the next
+        if word_index is None:
+            continue
+        # Take the data points for this series from the epoch ending lines
+        data_series = [float(line.strip().split()[word_index]) for line in epoch_end_lines]
+        # Plot it on the current axis using the provided series label and color, adding the result to the list of lines
+        lines.append(axis.plot(data_series, label=series_label, color=color))
+    # If there is only one axis, create a legend
+    if (not accuracy_present) and (not abs_error_present):
+        first_axis.legend()
+    # Otherwise, we have to make a combined legend
+    else:
+        # Add the lines together
+        combined_lines = functools.reduce(lambda x, y: x + y, lines)
+        # Get the labels from the combined lines
+        labels = [line.get_label() for line in combined_lines]
+        first_axis.legend(combined_lines, labels)
+    figure.show()
+    while True:
+        pass
+    break
