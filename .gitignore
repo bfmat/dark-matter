@@ -422,3 +422,6 @@ documentation/*.pdf
 
 # Include logs which end in .out but have a year at the beginning
 !2*.out
+
+# Weird temp files created by SHARCNET
+core.6386
