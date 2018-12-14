@@ -9,7 +9,14 @@ import matplotlib.pyplot as plt
 from pylatex import Document, Section, Figure, NoEscape, Subsection
 
 # Create a LaTeX document to add everything to
-document = Document('manual_optimization_log')
+document = Document('manual_optimization_log', geometry_options={'margin': '1in'})
+
+# LEARNING CURVE GRAPHING SECTION
+# Add a title and description explaining this section
+with document.create(Section('Learning Curves')):
+    document.append('This section contains learning curves documenting the training of models tested during empirical experimentation.')
+    # Skip to the next page to begin printing graphs
+    document.append(NoEscape('\\newpage'))
 # Load the training log index file
 with open('../experimental_data/training_logs/index.txt') as file:
     training_log_index = file.readlines()
