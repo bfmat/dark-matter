@@ -4,6 +4,7 @@
 
 import datetime
 import functools
+import os
 
 import matplotlib.pyplot as plt
 from pylatex import Document, Section, Figure, NoEscape, Subsection
@@ -154,7 +155,45 @@ folder_names, descriptions = zip(*[line.strip().split(': ', 1) for line in valid
 # Convert the resulting tuples to lists
 folder_names = list(folder_names)
 descriptions = list(descriptions)
-print(folder_names)
+# Create a list of indices of entries to delete based on their folder name
+delete_indices = [folder_names.index(delete_folder_name) for delete_folder_name in [
+    '2018_07_24_high_resolution_frequency_grid_search',
+    '2018_07_27_iterative_cluster_nucleation_grid_search',
+    '2018_07_28_waveform_grid_search',
+    '2018_07_29_image_grid_search',
+    '2018_08_13_triplets_nucleation_grid_search_saved_validation_sets'
+]]
+# Delete the indices of the folder names, going backwards so the indexes do not change as the deletions are done
+for index in reversed(sorted(delete_indices)):
+    del folder_names[index]
+    del descriptions[index]
+# Create a date variable for comparison
+last_date = None
+# Iterate over the folder, creating graphs with descriptions
+for folder_name, description in zip(folder_names, descriptions):
+    # Get the date from the beginning of the folder name (separated by underscores)
+    date = datetime.date(*[int(number) for number in folder_name.split('_')[:3]])
+    # If the date is new, update it and create a section header
+    if date != last_date:
+        last_date = date
+        document.append(Section(str(date), numbering=False))
+    # Prepend the folder name with the path to the log folder
+    folder_path = f'../experimental_data/validation_results/{folder_name}'
+    # If it is in fact a folder (some are just a single file)
+    if os.path.isdir(folder_path):
+        # Get an alphanumerically sorted list of all files in the folder
+        files = sorted(os.listdir(folder_path))
+        # If this is a pulse count training run, and there is a validation folder, take the files in that folder
+        if 'pulse_count_validation' in files:
+            folder_path = os.path.join(folder_path, 'pulse_count_validation')
+            files = sorted(os.listdir(folder_path))
+        # Take the last file in the folder for rendering, composing the full path
+        file_path = os.path.join(folder_path, files[-1])
+    # If it is only a single file, take its path directly
+    else:
+        file_path = folder_path
+    print(file_path)
+
 
 # Generate a PDF containing all of the plots
 document.generate_pdf()
