@@ -4,10 +4,16 @@
 
 import datetime
 import functools
+import json
 import os
 
+from matplotlib.patches import Patch
 import matplotlib.pyplot as plt
+import numpy as np
 from pylatex import Document, Section, Figure, NoEscape, Subsection
+
+# Import with different names so there is no conflict
+from data_processing.experiment_serialization import load_test as load_test
 
 # Create a LaTeX document to add everything to
 document = Document('manual_optimization_log', geometry_options={'margin': '1in'})
@@ -171,12 +177,6 @@ for index in reversed(sorted(delete_indices)):
 last_date = None
 # Iterate over the folder, creating graphs with descriptions
 for folder_name, description in zip(folder_names, descriptions):
-    # Get the date from the beginning of the folder name (separated by underscores)
-    date = datetime.date(*[int(number) for number in folder_name.split('_')[:3]])
-    # If the date is new, update it and create a section header
-    if date != last_date:
-        last_date = date
-        document.append(Section(str(date), numbering=False))
     # Prepend the folder name with the path to the log folder
     folder_path = f'../experimental_data/validation_results/{folder_name}'
     # If it is in fact a folder (some are just a single file)
@@ -192,7 +192,97 @@ for folder_name, description in zip(folder_names, descriptions):
     # If it is only a single file, take its path directly
     else:
         file_path = folder_path
-    print(file_path)
+    # Load the file's contents to check whether it is for PICO or DEAP
+    with open(file_path) as file:
+        file_contents = file.read()
+    # There is a 'unique_bubble_index' field for PICO JSON files
+    is_deap = not ('unique_bubble_index' in file_contents)
+    # If it is a PICO JSON file, create a prediction disctribution graph with comparison to AP
+    if not is_deap:
+        # Try to load the data set from the file, ignoring the run type ground truths
+        try:
+            events, _, network_outputs = load_test(file_path)
+        # If there are bubble indices not found, this uses old datasets and cannot be graphed at present
+        except StopIteration:
+            continue
+        # Get the acoustic parameter and neural network score data from the events
+        acoustic_parameters, original_neural_network_scores = zip(
+            *((event.logarithmic_acoustic_parameter, event.original_neural_network_score)
+                for event in events)
+        )
+        # Calculate actual neutron/alpha ground truths based on AP
+        ground_truths = np.array(acoustic_parameters) > 0.25
+        # Convert the binary ground truth values to colors (red and blue) for graphing
+        point_colors = [
+            'r' if ground_truth else 'b'
+            for ground_truth in ground_truths
+        ]
+        # Set the size of the resulting graph (it should be standard across all such graphs)
+        plt.figure(figsize=(8, 6))
+        # Scatter plot the acoustic parameter on the X axis and the neural network's predictions on the Y axis
+        plt.scatter(
+            x=acoustic_parameters,
+            y=network_outputs,
+            c=point_colors
+        )
+        # Create patches that describe the 2 differently colored classes
+        background_patch = Patch(color='r', label='Alpha Particles')
+        calibration_patch = Patch(color='b', label='Neutrons')
+        # Display them in a legend
+        plt.legend(handles=[background_patch, calibration_patch])
+        # Label the X and Y axes
+        plt.xlabel('Logarithmic Acoustic Parameter')
+        plt.ylabel('Neural Network Prediction')
+        # Draw a vertical line to represent the AP decision boundary
+        plt.axvline(0.25, color='black')
+    # If this is a DEAP JSON file, graph a histogram showing its prediction density
+    else:
+        # Reimplementation of the DEAP load_test function without identifiers (which are not consistently present)
+        # Load the contents of the JSON file from the provided path
+        with open(os.path.expanduser(file_path)) as input_file:
+            input_list = json.load(input_file)
+        # Iterate over the list of dictionaries describing the events, adding information to lists
+        ground_truths = []
+        network_outputs = []
+        for event_information in input_list:
+            # Get the ground truth and network output, and add them each to the corresponding list
+            ground_truths.append(event_information['ground_truth'])
+            network_outputs.append(event_information['network_output'])
+        # Separate the network's outputs based on the value of the corresponding ground truth
+        network_outputs_false = [output for output, ground_truth in zip(network_outputs, ground_truths) if not ground_truth]
+        network_outputs_true = [output for output, ground_truth in zip(network_outputs, ground_truths) if ground_truth]
+        # Set the size of the resulting graph (it should be standard across all such graphs)
+        plt.figure(figsize=(8, 6))
+        # Plot the network's outputs by ground truth in a histogram, labeling the 2 classes
+        plt.hist([network_outputs_false, network_outputs_true], bins=16, label=['Simulated WIMP Events', 'Simulated Neck Alpha Events'])
+        # Label the axes of the graph
+        plt.xlabel(r'Network Prediction (0 $\Rightarrow$ WIMP Events, 1 $\Rightarrow$ Neck Alpha Events)')
+        plt.ylabel('Validation Event Count')
+        # Enforce the X axis range from 0 to 1
+        plt.xlim(0, 1)
+        # Include a legend in the graph, explaining the colors
+        plt.legend()
+    # Get the date from the beginning of the folder name (separated by underscores)
+    date = datetime.date(*[int(number) for number in folder_name.split('_')[:3]])
+    # If the date is new, update it and create a section header
+    if date != last_date:
+        last_date = date
+        document.append(Section(str(date), numbering=False))
+    # Get a name for this plot subsection, taking it from the folder name after the date
+    subsection_name = folder_name.split('_', 3)[-1].replace('_', ' ').title()
+    # If there is a .json file extension, remove it
+    if folder_name.endswith('.json'):
+        subsection_name = subsection_name[:-5]
+    # Create a section in the document for this plot (using the file name)
+    with document.create(Subsection(subsection_name, numbering=False)):
+        # Add the plot to the document
+        with document.create(Figure(position='h!')) as plot:
+            # Make it the full width of the text
+            plot.add_plot(width=NoEscape('\\textwidth'))
+            # Add the description as a caption to the plot
+            plot.add_caption(description)
+        # Add a new page before the next plot
+        document.append(NoEscape('\\newpage'))
 
 
 # Generate a PDF containing all of the plots
