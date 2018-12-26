@@ -7,7 +7,10 @@ import sys
 import numpy as np
 
 # Read the log file from standard input, only taking the lines that include removal statistics
-lines = [line for line in sys.stdin.readlines() if 'removed' in line][:1560]
+lines = [line for line in sys.stdin.readlines() if 'removed' in line]
+# If there are 1564 such lines (this is the incomplete first half of the map projection search) cut it to its proper length
+if len(lines) == 1564:
+    lines = lines[:1536]
 # Read the numerical values into a NumPy array
 data = np.array([float(line.split()[-1]) for line in lines])
 # Reshape the array so the two values in the third dimension represents proportions of neck alphas and nuclear recoils removed, respectively, and runs are separated into groups of six that are part of the same configuration
@@ -20,7 +23,12 @@ data = np.concatenate([
     np.min(data, axis=1)
 ], axis=1)
 # Print only configurations where the mean neck alpha removal is over 99.6% (in line with the conventional discriminator)
-a = data.tolist()
-for b in a:
-    if b[0] > 0.996:
-        print(b)
+acceptable_data = [run for run in data.tolist() if run[0] > 0.996]
+# Also filter for runs where less than 100% of WIMPs are removed (the network doesn't just output 1 for every example)
+acceptable_data = [run for run in acceptable_data if run[1] < 1]
+# Print out each of the good runs in a nicely formatted list
+for configuration_index, (mean_alpha, mean_wimp, std_alpha, std_wimp, max_alpha, max_wimp, min_alpha, min_wimp) in enumerate(acceptable_data):
+    print('CONFIGURATION', configuration_index)
+    print('Mean alpha removal:', mean_alpha, 'Mean WIMP removal:', mean_wimp, 'Std dev of alpha removal:', std_alpha, 'Std dev of WIMP removal:', std_wimp)
+    print('Max alpha removal:', max_alpha, 'Max WIMP removal:', max_wimp, 'Min alpha removal:', min_alpha, 'Min WIMP removal:', min_wimp)
+    print()
