@@ -32,26 +32,17 @@ for line in statistic_lines:
     # Add the statistics tuple to the corresponding list in the dictionary
     statistics[configuration].append(statistics_tuple)
 
-# Create lists to add mean statistics to
-mean_accuracy_values = []
-mean_precision_values = []
-mean_recall_values = []
-mean_cwsd_values = []
 # Iterate over the configuration keys of the dictionary
 for configuration in statistics:
-    # Zip the list of statistics and calculate the mean of each individual statistic
-    mean_standard_deviation, mean_disagreements, mean_precision, mean_recall = [np.mean(statistic_list) for statistic_list in zip(*statistics[configuration])]
-    # Convert the disagreement value to accuracy, and add it to the list for mean calculation
-    mean_accuracy = 1 - (mean_disagreements / VALIDATION_EXAMPLES)
-    mean_accuracy_values.append(mean_accuracy)
-    # Add other statistics to their respective lists
-    mean_precision_values.append(mean_precision)
-    mean_recall_values.append(mean_recall)
-    mean_cwsd_values.append(mean_standard_deviation)
-    # Output the relevant statistics for this configuration to the user
-    print('Configuration:', configuration, 'Accuracy:', mean_accuracy, 'CWSD:', mean_standard_deviation, 'Precision:', mean_precision, 'Recall:', mean_recall)
-# Print the mean statistics over all configurations
-print('Overall mean accuracy:', sum(mean_accuracy_values) / len(mean_accuracy_values))
-print('Overall mean precision:', sum(mean_precision_values) / len(mean_precision_values))
-print('Overall mean recall:', sum(mean_recall_values) / len(mean_recall_values))
-print('Overall mean CWSD:', sum(mean_cwsd_values) / len(mean_cwsd_values))
+    # Zip the list of statistics into a NumPy array
+    data = np.array(list(zip(*statistics[configuration])))
+    # Convert the disagreement values to accuracy
+    data[1] = 1 - (data[1] / VALIDATION_EXAMPLES)
+    # Calculate the mean, standard deviation, minimum, and maximum of each statistic
+    data = np.array([[statistic(row) for row in data] for statistic in [np.mean, np.std, np.min, np.max]])
+    # Skip this if the mean accuracy is not above 99.5%
+    if data[0, 1] < 0.995:
+        continue
+    # Print the configuration followed by the data array
+    print('Configuration:', configuration)
+    print(data)

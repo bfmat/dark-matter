@@ -22,12 +22,15 @@ data = np.concatenate([
     np.max(data, axis=1),
     np.min(data, axis=1)
 ], axis=1)
-# Print only configurations where the mean neck alpha removal is over 99.6% (in line with the conventional discriminator)
-acceptable_data = [run for run in data.tolist() if run[0] > 0.996]
-# Also filter for runs where less than 100% of WIMPs are removed (the network doesn't just output 1 for every example)
-acceptable_data = [run for run in acceptable_data if run[1] < 1]
 # Print out each of the good runs in a nicely formatted list
-for configuration_index, (mean_alpha, mean_wimp, std_alpha, std_wimp, max_alpha, max_wimp, min_alpha, min_wimp) in enumerate(acceptable_data):
+for configuration_index, (mean_alpha, mean_wimp, std_alpha, std_wimp, max_alpha, max_wimp, min_alpha, min_wimp) in enumerate(data):
+    # Print only configurations where the mean neck alpha removal is over 99.6% (in line with the conventional discriminator)
+    # if mean_alpha < 0.996:
+    #     continue
+    # Also filter for runs where less than 100% of WIMPs are removed (the network doesn't just output 1 for every example)
+    if mean_wimp == 1:
+        continue
+    # Now print out all of the relevant data
     print('CONFIGURATION', configuration_index)
     print('Mean alpha removal:', mean_alpha, 'Mean WIMP removal:', mean_wimp, 'Std dev of alpha removal:', std_alpha, 'Std dev of WIMP removal:', std_wimp)
     print('Max alpha removal:', max_alpha, 'Max WIMP removal:', max_wimp, 'Min alpha removal:', min_alpha, 'Min WIMP removal:', min_wimp)
