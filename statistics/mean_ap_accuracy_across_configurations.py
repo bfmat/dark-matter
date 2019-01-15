@@ -40,9 +40,6 @@ for configuration in statistics:
     data[1] = 1 - (data[1] / VALIDATION_EXAMPLES)
     # Calculate the mean, standard deviation, minimum, and maximum of each statistic
     data = np.array([[statistic(row) for row in data] for statistic in [np.mean, np.std, np.min, np.max]])
-    # Skip this if the mean accuracy is not above 99.5%
-    if data[0, 1] < 0.995:
-        continue
     # Print the configuration followed by the data array
     print('Configuration:', configuration)
     print(data)
