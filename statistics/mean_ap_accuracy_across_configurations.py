@@ -39,7 +39,15 @@ for configuration in statistics:
     # Convert the disagreement values to accuracy
     data[1] = 1 - (data[1] / VALIDATION_EXAMPLES)
     # Calculate the mean, standard deviation, minimum, and maximum of each statistic
-    data = np.array([[statistic(row) for row in data] for statistic in [np.mean, np.std, np.min, np.max]])
-    # Print the configuration followed by the data array
+    statistic_values = np.array([[statistic(row) for row in data] for statistic in [np.mean, np.min, np.max]])
+    # Only accept runs with a sufficiently high mean accuracy
+    if statistic_values[0, 1] < 0.94:
+        continue
+    # Print the configuration followed by the data arrays (raw and statistical)
     print('Configuration:', configuration)
+    print('Raw Data:')
     print(data)
+    print('Statistics:')
+    # Print out the statistics one by one
+    for individual_stat, name in zip(np.transpose(statistic_values), ['MSE', 'Accuracy', 'Precision', 'Recall']):
+        print(name, tuple(individual_stat))

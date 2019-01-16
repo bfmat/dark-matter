@@ -34,9 +34,9 @@ ground_truths = np.array(acoustic_parameters) > 0.25
 
 # Iterate over the three criteria standard deviations will be calculated for, with corresponding names and classification thresholds
 for criterion_data, criterion_name, classification_threshold in zip(
-    copy.deepcopy([network_outputs, acoustic_parameters, original_neural_network_scores]),
-    ['network outputs', 'acoustic parameters', 'original neural network scores'],
-    [0.5, 0.25, 0.5]
+    copy.deepcopy([original_neural_network_scores]),
+    ['original neural network scores'],
+    [0.5]
 ):
     # Convert the raw outputs to binary classifications, based on whether they are greater than or equal to the threshold
     classifications = np.array([data_point >= classification_threshold for data_point in criterion_data])
