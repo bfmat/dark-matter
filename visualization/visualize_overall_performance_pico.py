@@ -25,9 +25,9 @@ MSE = [(0.5963417360249971, 0.5299834700383025, 0.6476162519709378), (0.25819182
        (0.05361385226887008, 0.004770042351295833, 0.14950281253896586), (0.17623961468143692, 0.027541887095559853, 0.24165255370205946)]
 # Zip all of these lists into separate high and low arrays
 accuracy_mean, accuracy_low, accuracy_high = np.array(list(zip(*ACCURACY)))
-precision_mean, precision_high, precision_low = np.array(list(zip(*PRECISION)))
-recall_mean, recall_high, recall_low = np.array(list(zip(*RECALL)))
-mse_mean, mse_high, mse_low = np.array(list(zip(*MSE)))
+precision_mean, precision_low, precision_high = np.array(list(zip(*PRECISION)))
+recall_mean, recall_low, recall_high = np.array(list(zip(*RECALL)))
+mse_mean, mse_low, mse_high = np.array(list(zip(*MSE)))
 # Convert the high and low lists to errors, substituting 0 for None
 for array, mean in [(accuracy_high, accuracy_mean), (accuracy_low, accuracy_mean), (precision_high, precision_mean), (precision_low, precision_mean), (recall_high, recall_mean), (recall_low, recall_mean), (mse_high, mse_mean), (mse_low, mse_mean)]:
     # Iterate over the indices of the array
@@ -59,8 +59,17 @@ plt.bar(recall_locations, recall_mean * 100, width=BAR_WIDTH, yerr=(recall_low *
 # Now set the configuration names, with words angled so they fit
 plt.xticks(precision_locations, CONFIGURATIONS, rotation=10)
 # Start at 70% so the difference is more obvious
-plt.ylim(60, 100)  # Label the Y axis to specify what the numbers mean
+plt.ylim(60, 100)
+# Label the Y axis to specify what the numbers mean
 plt.ylabel('Accuracy/Precision/Recall')
-# Display a legend with the predefined labels, and display the graph on screen
-plt.legend()
+# Twin the Y axis and plot the mean squared error
+ax_mse = ax.twinx()
+plt.bar(mse_locations, mse_mean, width=BAR_WIDTH, yerr=(mse_low, mse_high), label='Mean Squared Error Loss', color='C3')
+# Label the secondary Y axis as well
+plt.ylabel('Mean Squared Error Loss')
+# Combine all of the lines from both Y axes together, and create a legend
+main_lines, main_labels = ax.get_legend_handles_labels()
+mse_lines, mse_labels = ax_mse.get_legend_handles_labels()
+ax_mse.legend(main_lines + mse_lines, main_labels + mse_labels)
+# Display the graph on screen
 plt.show()
