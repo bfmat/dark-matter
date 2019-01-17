@@ -15,18 +15,18 @@ if len(lines) == 1564:
 data = np.array([float(line.split()[-1]) for line in lines])
 # Reshape the array so the two values in the third dimension represents proportions of neck alphas and nuclear recoils removed, respectively, and runs are separated into groups of six that are part of the same configuration
 data = np.reshape(data, (len(data) // 24, 12, 2))
-# Calculate the mean, max, min, and standard deviation for each configuration, concatenating them together and outputting it as a nested list
-data = np.concatenate([
+# Calculate the mean, max, min, and standard deviation for each configuration, concatenating them together
+statistics = np.concatenate([
     np.mean(data, axis=1),
     np.std(data, axis=1),
     np.max(data, axis=1),
     np.min(data, axis=1)
 ], axis=1)
 # Print out each of the good runs in a nicely formatted list
-for configuration_index, (mean_alpha, mean_wimp, std_alpha, std_wimp, max_alpha, max_wimp, min_alpha, min_wimp) in enumerate(data):
+for configuration_index, (mean_alpha, mean_wimp, std_alpha, std_wimp, max_alpha, max_wimp, min_alpha, min_wimp) in enumerate(statistics):
     # Print only configurations where the mean neck alpha removal is over 99.6% (in line with the conventional discriminator)
-    # if mean_alpha < 0.996:
-    #     continue
+    if mean_alpha < 0.996:
+        continue
     # Also filter for runs where less than 100% of WIMPs are removed (the network doesn't just output 1 for every example)
     if mean_wimp == 1:
         continue
@@ -34,4 +34,6 @@ for configuration_index, (mean_alpha, mean_wimp, std_alpha, std_wimp, max_alpha,
     print('CONFIGURATION', configuration_index)
     print('Mean alpha removal:', mean_alpha, 'Mean WIMP removal:', mean_wimp, 'Std dev of alpha removal:', std_alpha, 'Std dev of WIMP removal:', std_wimp)
     print('Max alpha removal:', max_alpha, 'Max WIMP removal:', max_wimp, 'Min alpha removal:', min_alpha, 'Min WIMP removal:', min_wimp)
+    print('Neck alpha raw data:', sorted(data[configuration_index, :, 0].tolist()))
+    print('WIMP raw data:', sorted(data[configuration_index, :, 1].tolist()))
     print()

@@ -6,12 +6,13 @@ import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 
-# Create lists containing the performance statistics as well as the names of the configurations
-# PERFORMANCE_VALUES = [91, 100, 75.7, 92.6]
-PERFORMANCE_VALUES = [99.6, 99.1, 100, 99.3]
-CONFIGURATIONS = ['Conventional Analysis', 'Dense Neural Network', 'Map Projection CNN', 'Topological CNN']
-# Color and legend the entries according to whether they are supervised or semi-supervised learning
-COLORS = ['gray', 'green', 'green', 'green']
+# Create lists containing the performance statistics (in the form (mean, 8th percentile, 92nd percentile))
+ALPHA = [(0.996, None, None), (0.992453871216953, 0.9843091334894615, 1.0), (0.9986762886158047, 0.996774193548387, 1.0),
+         (0.9985087719298246, 0.9921052631578948, 1.0), (0.9959030977982591, 0.9914285714285715, 1.0)]
+WIMP = [(0.91, None, None), (0.7835294571076522, 0.6601297764960347, 0.8723531004603303), (0.7672341098533079, 0.74375, 0.79915611814346),
+        (0.9301859015688803, 0.6060606060606061, 1.0), (0.75745328295003, 0.7313432835820896, 0.7927631578947368)]
+# The names of the configurations corresponding to all these lists
+CONFIGURATIONS = ['Conventional Analysis', 'Dense Neural Network', 'Map Projection CNN', 'Topological CNN', 'Map Projection CNN Final Test']
 
 # Create a figure with a predefined size
 _, ax = plt.subplots(figsize=(8, 6))
