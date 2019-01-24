@@ -39,8 +39,8 @@ for array, mean in [(accuracy_high, accuracy_mean), (accuracy_low, accuracy_mean
         else:
             array[index] = np.abs(array[index] - mean[index])
 # The names of the configurations corresponding to all these lists
-CONFIGURATIONS = ['Original NN Analysis', 'Banded DFT', 'Full-Resolution DFT', 'Raw Waveform CNN', 'Image CNN',
-                  'Iterative Cluster Nucleation', 'Gravitational Differentiation', 'Gravitational Differentiation Final Test']
+CONFIGURATIONS = ['Prev. ML Study', 'Banded FT', 'Full-Resolution FT', 'Waveform CNN', 'Image CNN',
+                  'I. Cluster Nucleation', 'Gravitational Diff.', 'Gravitational Diff. Test']
 
 # Get the locations for the bars
 BAR_WIDTH = 0.2
@@ -49,7 +49,7 @@ precision_locations = accuracy_locations + BAR_WIDTH
 recall_locations = precision_locations + BAR_WIDTH
 mse_locations = recall_locations + BAR_WIDTH
 # Create a figure with a predefined size
-_, ax = plt.subplots(figsize=(12, 8))
+_, ax = plt.subplots(figsize=(8, 6))
 # Use percentage labels for the Y axis
 ax.yaxis.set_major_formatter(mtick.PercentFormatter())
 # Draw a bar graph using the performance statistics
@@ -57,7 +57,7 @@ plt.bar(accuracy_locations, accuracy_mean * 100, width=BAR_WIDTH, yerr=(accuracy
 plt.bar(precision_locations, precision_mean * 100, width=BAR_WIDTH, yerr=(precision_low * 100, precision_low * 100), label='Precision')
 plt.bar(recall_locations, recall_mean * 100, width=BAR_WIDTH, yerr=(recall_low * 100, recall_high * 100), label='Recall')
 # Now set the configuration names, with words angled so they fit
-plt.xticks(accuracy_locations + (BAR_WIDTH * 1.5), CONFIGURATIONS, rotation=10)
+plt.xticks(accuracy_locations + (BAR_WIDTH * 1.5), CONFIGURATIONS, rotation=15)
 # Start at 60% so the difference is more obvious
 plt.ylim(60, 100)
 # Label the Y axis to specify what the numbers mean

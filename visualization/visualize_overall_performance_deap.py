@@ -27,14 +27,14 @@ for array, mean in [(alpha_high, alpha_mean), (alpha_low, alpha_mean), (wimp_hig
             array[index] = np.abs(array[index] - mean[index])
 
 # The names of the configurations corresponding to all these lists
-CONFIGURATIONS = ['Conventional Analysis', 'Dense Neural Network', 'Map Projection CNN', 'Topological CNN', 'Map Projection CNN Final Test']
+CONFIGURATIONS = ['Conventional Analysis', 'Dense Neural Network', 'Map Projection CNN', 'Topological CNN', 'Map Projection CNN Test']
 
 # Get the locations for the bars
 BAR_WIDTH = 0.4
 alpha_locations = np.arange(len(CONFIGURATIONS))
 wimp_locations = alpha_locations + BAR_WIDTH
 # Create a figure with a predefined size
-_, ax = plt.subplots(figsize=(8, 8))
+_, ax = plt.subplots(figsize=(8, 6))
 # Use percentage labels for the Y axis
 ax.yaxis.set_major_formatter(mtick.PercentFormatter())
 # Draw a bar graph using the performance statistics
