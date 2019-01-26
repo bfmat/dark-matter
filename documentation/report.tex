@@ -1,21 +1,20 @@
 \documentclass[12pt]{article}
 
 \usepackage[margin=1in]{geometry}
-\usepackage{textcomp}
 \usepackage{parskip}
 \usepackage{amsmath}
-\usepackage{authblk}
-\usepackage[backend=bibtex, style=alphabetic, sorting=ynt]{biblatex}
+\usepackage{biblatex}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{float}
-\usepackage{caption}
 \usepackage{setspace}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{subfig}
+\usepackage{hyperref}
+\usepackage{soul}
 
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
@@ -35,6 +34,12 @@
 \titlespacing{\section}{0pt}{0pt}{0pt}
 \titlespacing{\subsection}{0pt}{0pt}{0pt}
 \titlespacing{\subsubsection}{0pt}{0pt}{0pt}
+
+\setlength{\belowcaptionskip}{-12pt}
+
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+\titleformat*{\subsubsection}{\normalsize\bfseries}
 
 \doublespacing
 
@@ -56,7 +61,11 @@ Machine learning (ML) has the potential to automate this and accelerate experime
 
 I worked with two dark matter experiments: the PICO-60 bubble chamber \cite{pico}, and the DEAP-3600 liquid argon scintillator \cite{deap}. In PICO-60, impurities in calibration data pose an obstacle to effective training. In DEAP-3600, the detector format, containing 255 spherically arranged photomultiplier tubes (PMTs), makes data processing challenging.
 
-In PICO-60, supervised machine learning was used, reaching a mean of 80.2\% accuracy. In DEAP-3600, in a simulated environment, a conventional classifier removes 99.6\% of alpha background radiation, while also (undesirably) removing 91.0\% of WIMP events. My objective was to develop novel machine learning algorithms that are more accurate.
+In PICO-60, supervised machine learning was used, reaching a mean of 80.2\% accuracy. In DEAP-3600, in a simulated environment, a conventional classifier removes 99.6\% of alpha background radiation, while also (undesirably) removing 91.0\% of WIMP events.
+
+My objective was to develop novel machine learning algorithms that are more accurate, and I succeeded at this goal! I composed a 26-page research whitepaper \cite{me} about my work on PICO-60, which has been approved by the PICO collaboration and pre-published at \url{https://arxiv.org/abs/1811.11308}.
+
+\ul{Please note that the entire PICO collaboration are listed on the research whitepaper because of their contributions to the original PICO-60 dark matter experiment. They did not contribute to this study; I completed and documented it entirely independently.}
 
 \section{Procedure}
 
@@ -140,21 +149,25 @@ The three algorithms I developed were evaluated based on their reduction in the 
 
 \begin{figure}[ht]
     \centering
-    \fbox{\includegraphics[width=0.8\textwidth]{deap_final_results}}
+    \fbox{\includegraphics[width=0.6\textwidth]{deap_final_results}}
     \caption{Alpha background and WIMP removal rates for the highest-accuracy hyperparameter configuration of each technique in DEAP-3600.}
 \end{figure}
 
 \section{Conclusion}
 
-These results confirm that I achieved my goal. Indeed, semi-supervised learning for PICO-60 performed better than both the previous best result with machine learning, and my own supervised learning work. This significantly improves the accuracy that can be obtained quickly and without any manual optimization, allowing the team working on the experiment to iterate more quickly without the overhead of developing a conventional classifier.
+These results confirm that I achieved my goal. Indeed, compared to previous machine learning studies, semi-supervised learning significantly improved the accuracy that can be obtained quickly and without any manual optimization. This should allow physicists to iterate more quickly, without the overhead of developing a conventional classifier.
 
-The reduction in the false positive rate for DEAP-3600 provides evidence that machine learning is capable of improving the efficiency of this experiment. This may reduce the operation time required to collect sufficient data pointing towards the existence or non-existence of WIMP dark matter.
+The reduction in the false positive rate for DEAP-3600 provides evidence that machine learning can improve the efficiency of this experiment, possibly reducing the operation time required to collect sufficient evidence for or against the existence of WIMP dark matter.
 
-The classifiers developed during this study demonstrate great promise for machine learning in dark matter detection. Fundamentally, the problems I have solved with respect to PICO-60 and DEAP-3600 are not specific to these two experiments; they are common across many others. Thus, my algorithms are applicable in the broader field of dark matter detection.
+The problems I have solved are not specific to PICO-60 and DEAP-3600; they are common across many dark matter detection experiments. Thus, my algorithms are broadly applicable.
 
 \section{Acknowledgements}
 
 Many thanks to Dr. Nigel Smith, Dr. Ken Clark, Dr. Carsten Krauss, Dr. Scott Fallows, Dr. Eric V\'azquez-J\'auregui, and Dr. Pierre Gorel of SNOLAB for introducing me to PICO-60 and DEAP-3600, and generously providing access to data for training.
+
+\singlespacing
+\printbibliography
+\doublespacing
 
 \section*{Bibliography}
 
@@ -165,8 +178,5 @@ Many thanks to Dr. Nigel Smith, Dr. Ken Clark, Dr. Carsten Krauss, Dr. Scott Fal
     \item ROOT \cite{root}, scikit-image \cite{scikit-image}, and scikit-learn \cite{scikit-learn} were used for data loading and storage.
     \item Matplotlib \cite{matplotlib} was used for data visualization.
 \end{itemize}
-
-\singlespacing
-\printbibliography
 
 \end{document}

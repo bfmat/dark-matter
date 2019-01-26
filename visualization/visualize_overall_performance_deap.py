@@ -34,19 +34,21 @@ BAR_WIDTH = 0.4
 alpha_locations = np.arange(len(CONFIGURATIONS))
 wimp_locations = alpha_locations + BAR_WIDTH
 # Create a figure with a predefined size
-_, ax = plt.subplots(figsize=(8, 6))
+fig, ax = plt.subplots(figsize=(6, 3))
 # Use percentage labels for the Y axis
 ax.yaxis.set_major_formatter(mtick.PercentFormatter())
 # Draw a bar graph using the performance statistics
 plt.bar(alpha_locations, alpha_mean * 100, width=BAR_WIDTH, yerr=(alpha_low * 100, alpha_high * 100), label='Alpha Removal')
 plt.bar(wimp_locations, wimp_mean * 100, width=BAR_WIDTH, yerr=(wimp_low * 100, wimp_high * 100), label='WIMP Removal')
 # Now set the configuration names, with words angled so they fit
-plt.xticks(wimp_locations, CONFIGURATIONS, rotation=10)
+plt.xticks(wimp_locations, CONFIGURATIONS, rotation=15)
 # Start at 60% so the difference is more obvious
 plt.ylim(60, 100)
 # Label the Y axis to specify what the numbers mean
 plt.ylabel('Percentage Removal')
 # Create a legend using the predefined labels
 ax.legend(loc='lower left')
+# Rearrange the plot to fit the labels
+fig.tight_layout()
 # Display the graph on screen
 plt.show()

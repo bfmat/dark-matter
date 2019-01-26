@@ -49,7 +49,7 @@ precision_locations = accuracy_locations + BAR_WIDTH
 recall_locations = precision_locations + BAR_WIDTH
 mse_locations = recall_locations + BAR_WIDTH
 # Create a figure with a predefined size
-_, ax = plt.subplots(figsize=(8, 6))
+fig, ax = plt.subplots(figsize=(8, 4))
 # Use percentage labels for the Y axis
 ax.yaxis.set_major_formatter(mtick.PercentFormatter())
 # Draw a bar graph using the performance statistics
@@ -64,12 +64,14 @@ plt.ylim(60, 100)
 plt.ylabel('Accuracy/Precision/Recall')
 # Twin the Y axis and plot the mean squared error
 ax_mse = ax.twinx()
-plt.bar(mse_locations, mse_mean, width=BAR_WIDTH, yerr=(mse_low, mse_high), label='Mean Squared Error Loss', color='C3')
+plt.bar(mse_locations, mse_mean, width=BAR_WIDTH, yerr=(mse_low, mse_high), label='MSE', color='C3')
 # Label the secondary Y axis as well
-plt.ylabel('Mean Squared Error Loss')
+plt.ylabel('Mean Squared Error (MSE) Loss')
 # Combine all of the lines from both Y axes together, and create a legend
 main_lines, main_labels = ax.get_legend_handles_labels()
 mse_lines, mse_labels = ax_mse.get_legend_handles_labels()
-ax_mse.legend(main_lines + mse_lines, main_labels + mse_labels, loc='lower left')
+ax_mse.legend(main_lines + mse_lines, main_labels + mse_labels, loc='center right')
+# Rearrange the plot to fit the labels
+fig.tight_layout()
 # Display the graph on screen
 plt.show()
