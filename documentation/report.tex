@@ -1,11 +1,9 @@
 \documentclass[12pt]{article}
 
 \usepackage[margin=1in]{geometry}
-\usepackage{parskip}
 \usepackage{amsmath}
 \usepackage{biblatex}
 \usepackage{graphicx}
-\usepackage{wrapfig}
 \usepackage{float}
 \usepackage{setspace}
 \usepackage{fancyhdr}
@@ -57,11 +55,13 @@
 
 In all experiments for detection of WIMP dark matter, it is essential to develop a classifier that can distinguish WIMP events from background radiation, in particular alpha particles. Manually developing such a classifier necessitates time-consuming physical modeling.
 
-Machine learning (ML) has the potential to automate this and accelerate experimentation, in addition to detecting patterns that humans cannot. However, impure calibration data hinders training of models, and unusual detector topologies make data challenging to process.
+Machine learning (ML) has the potential to automate this and accelerate experimentation, and also to detect patterns that humans cannot. However, impure calibration data hinders training of models, and unusual detector topologies make data challenging to process.
 
-I worked with two dark matter experiments: the PICO-60 bubble chamber \cite{pico}, and the DEAP-3600 liquid argon scintillator \cite{deap}. In PICO-60, impurities in calibration data pose an obstacle to effective training. In DEAP-3600, the detector format, containing 255 spherically arranged photomultiplier tubes (PMTs), makes data processing challenging.
+I worked with two dark matter experiments: the PICO-60 bubble chamber \cite{pico}, and the DEAP-3600 liquid argon scintillator \cite{deap}. In PICO-60, background alpha and WIMP-like neutron calibration datasets are used for training; however, there is an impurity of 10\% alphas in the neutron set, hindering training. In DEAP-3600, the detector format, containing 255 spherically arranged photomultiplier tubes (PMTs), makes data processing challenging.
 
-In PICO-60, supervised machine learning was used, reaching a mean of 80.2\% accuracy. In DEAP-3600, in a simulated environment, a conventional classifier removes 99.6\% of alpha background radiation, while also (undesirably) removing 91.0\% of WIMP events.
+Previously in PICO-60, a conventional classifier was developed and is thought to be 100\% accurate. However, machine learning is also applicable because it is quicker to develop and re-calibrate. A supervised neural network was used, reaching a mean of 80.2\% accuracy.
+
+In DEAP-3600, in a simulated environment, a conventional classifier removes 99.6\% of alpha background radiation, while also (undesirably) removing 91.0\% of WIMP events.
 
 My objective was to develop novel machine learning algorithms that are more accurate, and I succeeded at this goal! I composed a 26-page research whitepaper \cite{me} about my work on PICO-60, which has been approved by the PICO collaboration and pre-published at \url{https://arxiv.org/abs/1811.11308}.
 
@@ -76,7 +76,7 @@ For PICO-60, I developed and compared two sets of classification algorithms:
 \begin{enumerate}
     \item I experimented further with supervised learning, exploring the following data formats to learn which was the best-performing solution:
     \begin{itemize}
-        \item An 8-band Fourier transform. I applied a dense neural network with dropout \cite{dropout} and L2 regularization (which allowed for less overfitting to impure data).
+        \item An 8-band Fourier transform of audio recorded in the bubble chamber. I applied a dense neural network with dropout \cite{dropout} and L2 regularization (which allowed for less overfitting to impure data).
         \item A full-resolution Fourier transform of the audio (all 50,001 data points). I once again applied a dense neural network with the Adam \cite{adam} optimizer.
         \item A raw audio waveform with a very deep 1D convolutional neural network (CNN) inspired by Dai et al \cite{verydeepconvnets}.
         \item Images captured by cameras in the detector. I trained a 2D CNN on these, to learn whether they contain any relevant information.
@@ -91,7 +91,7 @@ For PICO-60, I developed and compared two sets of classification algorithms:
     \item To even better handle impurities, I developed two novel semi-supervised learning algorithms. The impure alpha/WIMP-like labels were removed from a large portion of the training data, and my algorithms learned more accurate labels for this data.
     \begin{itemize}
         \item Iterative Cluster Nucleation is inspired by unsupervised clustering algorithms. A neural network is trained on a labeled set, and runs inference on the unlabeled set. Unlabeled examples with predictions closest to 0 or 1 are added to the labeled set; the newly synthesized labels are more accurate than the original labels.
-        \item Gravitational Differentiation uses a novel piecewise exponential function to calculate final-layer gradients. Unlabeled data ``gravitates'' to more accurate labels.
+        \item Gravitational Differentiation uses a novel piecewise exponential function to calculate final-layer gradients. Unlabeled examples ``gravitate'' toward more accurate predictions based on the confidence of the neural network's predictions.
     \end{itemize}
 \end{enumerate}
 
@@ -113,11 +113,11 @@ In DEAP-3600, the key challenge is the aforementioned unusual detector format: a
     \caption{Diagrams of the map projection (left) and topological CNN (right) systems.}
 \end{figure}
 
-\section{Results}
-
 \subsection{Statistical Practices}
 
 All models were trained on a training set, and a separate randomly selected validation set was used to select the best-performing technique and corresponding hyperparameters (with a grid search). A test set was used to verify the performance of the model ultimately chosen.
+
+\section{Results}
 
 \subsection{PICO-60}
 
@@ -133,16 +133,16 @@ All models were trained on a training set, and a separate randomly selected vali
 
 \begin{figure}[ht]
     \centering
-    \fbox{\includegraphics[width=0.8\textwidth]{pico_final_results}}
+    \fbox{\includegraphics[width=0.95\textwidth]{pico_final_results}}
     \caption{Validation accuracy, precision, recall, and loss for each technique in PICO-60. Error bars represent the 8th and 92nd percentiles.}
 \end{figure}
 
 \subsection{DEAP-3600}
 
-The three algorithms I developed were evaluated based on their reduction in the rate of false positives (simulated WIMP events misidentified as neck alphas) compared to the conventional 91.0\% result. Only models with at least 99.6\% neck alpha removal were considered.
+The three algorithms I developed were evaluated based on their reduction in the rate of false positives (simulated WIMP events misidentified as neck alphas) compared to the 91.0\% result achieved with a conventional classifier. Only models with at least 99.6\% neck alpha removal (in line with the conventional classifier) were considered.
 
 \begin{itemize}
-    \item The dense neural network always produced 100\% false positives.
+    \item The dense neural network always produced 100\% false positives (worse than 91.0\%).
     \item The topological CNN produced a false positive rate of 92.6\% (also worse than 91.0\%).
     \item The cylindrical projection method with a 2D CNN improved the false positive rate from 91.0\% to 75.7\% (a 63.0\% reduction)!
 \end{itemize}
@@ -155,19 +155,20 @@ The three algorithms I developed were evaluated based on their reduction in the 
 
 \section{Conclusion}
 
-These results confirm that I achieved my goal. Indeed, compared to previous machine learning studies, semi-supervised learning significantly improved the accuracy that can be obtained quickly and without any manual optimization. This should allow physicists to iterate more quickly, without the overhead of developing a conventional classifier.
+These results confirm that I achieved my goal. While the conventional classifier in PICO-60 is believed to be perfectly accurate, my semi-supervised learning methods have significantly improved the accuracy that can be obtained quickly and without manual optimization. This should allow physicists working on future iterations of PICO to iterate more quickly, without modifying a conventional classifier whenever some aspect of the experiment changes.
 
 The reduction in the false positive rate for DEAP-3600 provides evidence that machine learning can improve the efficiency of this experiment, possibly reducing the operation time required to collect sufficient evidence for or against the existence of WIMP dark matter.
 
-The problems I have solved are not specific to PICO-60 and DEAP-3600; they are common across many dark matter detection experiments. Thus, my algorithms are broadly applicable.
+Fundamentally, the problems I have solved are not specific to PICO-60 and DEAP-3600; they are common across many dark matter detection experiments. Thus, my algorithms are broadly applicable, and demonstrate promise in the field as a whole.
 
 \section{Acknowledgements}
 
-Many thanks to Dr. Nigel Smith, Dr. Ken Clark, Dr. Carsten Krauss, Dr. Scott Fallows, Dr. Eric V\'azquez-J\'auregui, and Dr. Pierre Gorel of SNOLAB for introducing me to PICO-60 and DEAP-3600, and generously providing access to data for training.
+Many thanks to Dr.~Nigel~Smith, Dr.~Ken~Clark, Dr.~Carsten~Krauss, Dr.~Scott~Fallows, Dr.~Eric~V\'azquez-J\'auregui, and Dr.~Pierre~Gorel for introducing me to PICO-60 and DEAP-3600, and generously providing access to data for training.
 
 \singlespacing
 \printbibliography
 \doublespacing
+\pagebreak
 
 \section*{Bibliography}
 

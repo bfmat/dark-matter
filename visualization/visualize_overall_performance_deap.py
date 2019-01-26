@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 
 # Create lists containing the performance statistics (in the form (mean, 8th percentile, 92nd percentile))
-ALPHA = [(0.996, None, None), (0.992453871216953, 0.9843091334894615, 1.0), (0.9986762886158047, 0.996774193548387, 1.0),
+ALPHA = [(0.996, None, None), (1.0, 1.0, 1.0), (0.9986762886158047, 0.996774193548387, 1.0),
          (0.9985087719298246, 0.9921052631578948, 1.0), (0.9959030977982591, 0.9914285714285715, 1.0)]
-WIMP = [(0.91, None, None), (0.7835294571076522, 0.6601297764960347, 0.8723531004603303), (0.7672341098533079, 0.74375, 0.79915611814346),
+WIMP = [(0.91, None, None), (1.0, 1.0, 1.0), (0.7672341098533079, 0.74375, 0.79915611814346),
         (0.9301859015688803, 0.6060606060606061, 1.0), (0.75745328295003, 0.7313432835820896, 0.7927631578947368)]
 # Zip all of these lists into separate high and low arrays
 alpha_mean, alpha_low, alpha_high = np.array(list(zip(*ALPHA)))
@@ -27,7 +27,7 @@ for array, mean in [(alpha_high, alpha_mean), (alpha_low, alpha_mean), (wimp_hig
             array[index] = np.abs(array[index] - mean[index])
 
 # The names of the configurations corresponding to all these lists
-CONFIGURATIONS = ['Conventional Analysis', 'Dense Neural Network', 'Map Projection CNN', 'Topological CNN', 'Map Projection CNN Test']
+CONFIGURATIONS = ['Conventional Clas.', 'Dense Neural Network', 'Map Projection CNN', 'Topological CNN', 'Map Projection CNN Test']
 
 # Get the locations for the bars
 BAR_WIDTH = 0.4
