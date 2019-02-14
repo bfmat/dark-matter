@@ -63,7 +63,7 @@ Previously in PICO-60, a conventional classifier was developed and is thought to
 
 In DEAP-3600, in a simulated environment, a conventional classifier removes 99.6\% of alpha background radiation, while also (undesirably) removing 91.0\% of WIMP events.
 
-My objective was to develop novel machine learning algorithms that are more accurate, and I succeeded at this goal! I composed a 26-page research whitepaper \cite{me} about my work on PICO-60, which has been approved by the PICO collaboration and pre-published at \url{https://arxiv.org/abs/1811.11308}.
+My objective was to develop novel machine learning algorithms that are more accurate, and I succeeded at this goal! I composed a 28-page research whitepaper \cite{me} about my work on PICO-60, which has been reviewed and approved by the PICO collaboration and pre-published at \url{https://arxiv.org/abs/1811.11308}. It is currently undergoing peer review for eventual publication in the journal \textit{Computer Physics Communications}.
 
 \ul{Please note that the entire PICO collaboration are listed on the research whitepaper because of their contributions to the original PICO-60 dark matter experiment. They did not contribute to this study; I completed and documented it entirely independently.}
 
@@ -78,7 +78,7 @@ For PICO-60, I developed and compared two sets of classification algorithms:
     \begin{itemize}
         \item An 8-band Fourier transform of audio recorded in the bubble chamber. I applied a dense neural network with dropout \cite{dropout} and L2 regularization (which allowed for less overfitting to impure data).
         \item A full-resolution Fourier transform of the audio (all 50,001 data points). I once again applied a dense neural network with the Adam \cite{adam} optimizer.
-        \item A raw audio waveform with a very deep 1D convolutional neural network (CNN) inspired by Dai et al \cite{verydeepconvnets}.
+        \item A raw audio waveform with a very deep 1D convolutional neural network (CNN) inspired by Dai et al.\ \cite{verydeepconvnets}.
         \item Images captured by cameras in the detector. I trained a 2D CNN on these, to learn whether they contain any relevant information.
     \end{itemize}
     \begin{figure}[ht]
@@ -165,12 +165,11 @@ Fundamentally, the problems I have solved are not specific to PICO-60 and DEAP-3
 
 Many thanks to Dr.~Nigel~Smith, Dr.~Ken~Clark, Dr.~Carsten~Krauss, Dr.~Scott~Fallows, Dr.~Eric~V\'azquez-J\'auregui, and Dr.~Pierre~Gorel for introducing me to PICO-60 and DEAP-3600, and generously providing access to data for training.
 
-\singlespacing
-\printbibliography
-\doublespacing
-\pagebreak
+\section{References}
 
-\section*{Bibliography}
+\printbibliography[heading=none]
+
+\section{Bibliography}
 
 \begin{itemize}
     \item All programming for this study was done in Python 3 \cite{python}.
