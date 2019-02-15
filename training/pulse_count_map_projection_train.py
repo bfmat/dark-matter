@@ -38,12 +38,15 @@ for l2_lambda in [0.0006]:
                         for _ in range(12):
                             # Create a list to hold the numbers of (false and true) (positives and negatives) for this training run
                             performance_statistics = []
-                            # Load all simulated events from the file
+                            # Load all simulated and real-world events from the file
                             neck_events, non_neck_events = load_simulated_deap_data()
+                            test_neck_events, test_non_neck_events = load_real_world_deap_data()
                             # Project the pulse counts onto a map, wrapping in a single-element tuple so the preprocessing function will work
                             neck_events_map, non_neck_events_map = [[(pmt_map_projection(event[0]),) for event in events] for events in [neck_events, non_neck_events]]
-                            # Convert them to NumPy arrays for training (also getting the reordered list of events)
+                            test_neck_events_map, test_non_neck_events_map = [[(pmt_map_projection(event[0]),) for event in events] for events in [test_neck_events, test_non_neck_events]]
+                            # Convert them to NumPy arrays for training and testing (also getting the reordered list of events)
                             inputs, ground_truths, events = prepare_events(neck_events_map, non_neck_events_map)
+                            test_inputs, test_ground_truths, test_events = prepare_events(test_neck_events_map, test_non_neck_events_map)
                             # Split the inputs and ground truths into training and validation sets
                             validation_inputs, training_inputs = np.split(inputs, [VALIDATION_SIZE])
                             validation_ground_truths, training_ground_truths = np.split(ground_truths, [VALIDATION_SIZE])
@@ -84,11 +87,11 @@ for l2_lambda in [0.0006]:
                             for epoch in range(EPOCHS):
                                 # Train the model for a single epoch
                                 model.fit(training_inputs, training_ground_truths, validation_data=(validation_inputs, validation_ground_truths), class_weight={0: zero_weight, 1: 1.0})
-                                # Run predictions on the validation set with the trained model, removing the single-element second axis
-                                validation_predictions = model.predict(validation_inputs)[:, 0]
+                                # Run predictions on the test set with the trained model, removing the single-element second axis
+                                test_predictions = model.predict(test_inputs)[:, 0]
                                 # Evaluate the network's predictions and add the statistics to the list, only if we are in the last few epochs (we don't care about the other ones, it is still learning then)
                                 if epoch >= EPOCHS - 10:
-                                    performance_statistics.append(evaluate_predictions(validation_ground_truths, validation_predictions, validation_events, epoch, set_name='validation'))
+                                    performance_statistics.append(evaluate_predictions(test_ground_truths, test_predictions, test_events, epoch, set_name='test'))
                             # Add up each of the statistics for the last few epochs and calculate the mean
                             statistics_mean = np.mean(np.stack(performance_statistics, axis=0), axis=0)
                             # Using these values, calculate and print the percentage of neck alphas removed, and the percentage of nuclear recoils incorrectly removed alongside them
