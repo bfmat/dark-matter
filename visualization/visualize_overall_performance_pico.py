@@ -53,7 +53,7 @@ precision_locations = accuracy_locations + BAR_WIDTH
 recall_locations = precision_locations + BAR_WIDTH
 mse_locations = recall_locations + BAR_WIDTH
 # Create a figure with a predefined size
-fig, ax = plt.subplots(figsize=(10, 4))
+fig, ax = plt.subplots(figsize=(9, 4))
 # Use percentage labels for the Y axis
 ax.yaxis.set_major_formatter(mtick.PercentFormatter())
 # Draw a bar graph using the performance statistics

@@ -3,9 +3,9 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath}
 \usepackage{biblatex}
+\usepackage{parskip}
 \usepackage{graphicx}
 \usepackage{float}
-\usepackage{setspace}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{titlesec}
@@ -22,9 +22,6 @@
 \cfoot{\scriptsize Brendon Matusch---Improving Particle Classification in WIMP Experiments}
 \rfoot{\scriptsize Page~\thepage~of~\pageref{LastPage}}
 
-\setlist[enumerate]{noitemsep, nolistsep}
-\setlist[itemize]{noitemsep, nolistsep}
-
 \graphicspath{{./images/}}
 
 \addbibresource{paper.bib}
@@ -32,14 +29,6 @@
 \titlespacing{\section}{0pt}{0pt}{0pt}
 \titlespacing{\subsection}{0pt}{0pt}{0pt}
 \titlespacing{\subsubsection}{0pt}{0pt}{0pt}
-
-\setlength{\belowcaptionskip}{-12pt}
-
-\titleformat*{\section}{\large\bfseries}
-\titleformat*{\subsection}{\normalsize\bfseries}
-\titleformat*{\subsubsection}{\normalsize\bfseries}
-
-\doublespacing
 
 \begin{document}
 
@@ -65,34 +54,51 @@ In DEAP-3600, in a simulated environment, a conventional classifier removes 99.6
 
 My objective was to develop novel machine learning algorithms that are more accurate, and I succeeded at this goal! I composed a 28-page research whitepaper \cite{me} about my work on PICO-60, which has been reviewed and approved by the PICO collaboration and pre-published at \url{https://arxiv.org/abs/1811.11308}. It is currently undergoing peer review for eventual publication in the journal \textit{Computer Physics Communications}.
 
-\ul{Please note that the entire PICO collaboration are listed on the research whitepaper because of their contributions to the original PICO-60 dark matter experiment. They did not contribute to this study; I completed and documented it entirely independently.}
+\ul{Please note that the entire PICO collaboration are listed on the research whitepaper because of their contributions to the original PICO-60 dark matter experiment. They did not contribute to this study; I completed and documented it independently.}
 
 \section{Procedure}
 
 \subsection{PICO-60}
 
-For PICO-60, I developed and compared two sets of classification algorithms:
+For PICO-60, I developed and compared two sets of classification algorithms: supervised learning, and semi-supervised learning.
+
+\subsubsection{Supervised Learning}
+
+I experimented further with supervised learning, exploring the following data formats to learn which was the best-performing solution:
 
 \begin{enumerate}
-    \item I experimented further with supervised learning, exploring the following data formats to learn which was the best-performing solution:
-    \begin{itemize}
-        \item An 8-band Fourier transform of audio recorded in the bubble chamber. I applied a dense neural network with dropout \cite{dropout} and L2 regularization (which allowed for less overfitting to impure data).
-        \item A full-resolution Fourier transform of the audio (all 50,001 data points). I once again applied a dense neural network with the Adam \cite{adam} optimizer.
-        \item A raw audio waveform with a very deep 1D convolutional neural network (CNN) inspired by Dai et al.\ \cite{verydeepconvnets}.
-        \item Images captured by cameras in the detector. I trained a 2D CNN on these, to learn whether they contain any relevant information.
-    \end{itemize}
-    \begin{figure}[ht]
-        \centering
-        \subfloat{\fbox{\includegraphics[width=0.9\textwidth]{audio_cropped}}}
-        \qquad
-        \subfloat{\fbox{\includegraphics[width=0.45\textwidth]{image_grid}}}
-        \caption{Examples of the audio waveform and Fourier transform (above) and the images captured by cameras (below).}
-    \end{figure}
-    \item To even better handle impurities, I developed two novel semi-supervised learning algorithms. The impure alpha/WIMP-like labels were removed from a large portion of the training data, and my algorithms learned more accurate labels for this data.
-    \begin{itemize}
-        \item Iterative Cluster Nucleation is inspired by unsupervised clustering algorithms. A neural network is trained on a labeled set, and runs inference on the unlabeled set. Unlabeled examples with predictions closest to 0 or 1 are added to the labeled set; the newly synthesized labels are more accurate than the original labels.
-        \item Gravitational Differentiation uses a novel piecewise exponential function to calculate final-layer gradients. Unlabeled examples ``gravitate'' toward more accurate predictions based on the confidence of the neural network's predictions.
-    \end{itemize}
+    \item An 8-band Fourier transform of audio recorded in the bubble chamber. I applied a dense neural network with dropout \cite{dropout} and L2 regularization (which allowed for less overfitting to impure data).
+    \item A full-resolution Fourier transform of the audio (all 50,001 data points). I once again applied a dense neural network with the Adam \cite{adam} optimizer.
+    \item A raw audio waveform with a very deep 1D convolutional neural network (CNN) inspired by Dai et al.\ \cite{verydeepconvnets}.
+    \item Images captured by cameras in the detector. I trained a 2D CNN on these, to learn whether they contain any relevant information.
+\end{enumerate}
+
+\begin{figure}[ht]
+    \centering
+    \subfloat{\fbox{\includegraphics[width=0.95\textwidth]{audio_cropped}}}
+    \qquad
+    \subfloat{\fbox{\includegraphics[width=0.45\textwidth]{image_grid}}}
+    \caption{Examples of the audio waveform and Fourier transform (above) and the images captured by cameras (below).}
+\end{figure}
+
+\subsubsection{Semi-Supervised Learning}
+
+To even better handle impurities, I developed two novel semi-supervised learning algorithms. The impure alpha/WIMP-like labels were removed from a large portion of the training data, and my algorithms learned more accurate labels for this data.
+
+\begin{enumerate}
+    \item Iterative Cluster Nucleation is inspired by unsupervised "clustering" algorithms, and takes advantage of the ``confidence'' of the neural network's predictions (that is, how close the predictions are to 0 or 1).
+    
+    First, a neural network is trained on a labeled set. After 30 epochs, it runs predictions on the unlabeled set. As the network trains, the confidence of these predictions increases. When $p < t$ or $p > 1 - t$ for a given prediction $p$ and a (small) confidence threshold $t$, the example is labeled correspondingly and added to the labeled set.
+
+    It is hypothesized that accuracy will gradually \textit{improve} as the neural network's most confident predictions are fed back into the network as newly labeled training data.
+
+    \item Gravitational Differentiation is an analog alternative to Iterative Cluster Nucleation. Using a novel piecewise exponential function for calculating final-layer derivatives, called $\mathrm{GravDiff}(p, \psi, g)$, unlabeled examples are caused to "gravitate" toward more accurate predictions based on the confidence of the neural network's predictions.
+
+    The function is a transformation of the hyperbolic tangent that flattens the central range and comparatively exaggerates the asymptote on either side, defined as follows:
+    \begin{center}
+        $\mathrm{GravDiff}(p, \psi, g) = g \cdot \mathrm{sgn}(p) \cdot \lvert \mathrm{tanh}(2p - 1) \rvert ^ \psi$
+    \end{center}
+    where $p$ is the network's prediction, $\psi$ determines the rate at which the output approaches 0 as the confidence of the prediction decreases, and $g$ is the learning rate multiplier. The output is the final-layer gradient to be used in backpropagation.
 \end{enumerate}
 
 \subsection{DEAP-3600}
@@ -115,42 +121,38 @@ In DEAP-3600, the key challenge is the aforementioned unusual detector format: a
 
 \subsection{Statistical Practices}
 
-All models were trained on a training set, and a separate randomly selected validation set was used to select the best-performing technique and corresponding hyperparameters (with a grid search). A test set was used to verify the performance of the model ultimately chosen.
+Models were optimized using grid searches, in which every configuration within a hyperparameter space is trained and evaluated. All models were trained on a training set, and a separate randomly selected validation set was used to select the best-performing technique and corresponding hyperparameters.
+
+Finally, the best-performing model was retrained on a newly selected training set, and a test set was used to verify its performance. In DEAP-3600, two test sets were used: one consisting of simulated data, and another consisting of 30 examples collected from the real-world detector (neutron calibration data, and background radiation).
 
 \section{Results}
 
 \subsection{PICO-60}
 
-\begin{itemize}
-    \item The dense neural network, with banded Fourier transform data, increased validation accuracy to 97.3\% on validation data, up from the previous ML accuracy of 80.2\%.
-    \item The full-resolution Fourier transform produced validation accuracy of 92.2\%.
-    \item The raw waveform with a 1D very deep CNN reached 94.5\% accuracy.
-    \item There was no useful information in the image data; only 63.0\% accuracy was achieved.
-    \item Iterative cluster nucleation, using banded FT input data, improved accuracy to 99.1\%.
-    \item Gravitational differentiation was even more accurate, at 99.7\%.
-    \item The best gravitational differentiation configuration was not as accurate on final test data as on validation data, but was much better than supervised learning, at 98.3\%.
-\end{itemize}
+As seen in Figure \ref{pico_final_results}, the banded FFT input format was the most effective of all of the supervised learning models (including the previous study), reaching 97.3\% accuracy on validation data. The image data was shown to contain no meaningful information; it permitted only 63.0\% accuracy.
+
+Semi-supervised learning produced better accuracy than supervised learning. Gravitational differentation was the best overall model, reaching 99.7\% accuracy on validation data and 98.3\% on test data. This confirms my hypothesis; it is indeed beneficial to train on the neural network's most confident predictions.
 
 \begin{figure}[ht]
     \centering
-    \fbox{\includegraphics[width=0.95\textwidth]{pico_final_results}}
-    \caption{Validation accuracy, precision, recall, and loss for each technique in PICO-60. Error bars represent the 8th and 92nd percentiles.}
+    \fbox{\includegraphics[width=0.9\textwidth]{pico_final_results}}
+    \caption{\label{pico_final_results} Validation accuracy, precision, recall, and loss for each technique in PICO-60. Error bars represent the 8th and 92nd percentiles.}
 \end{figure}
 
 \subsection{DEAP-3600}
 
 The three algorithms I developed were evaluated based on their reduction in the rate of false positives (simulated WIMP events misidentified as neck alphas) compared to the 91.0\% result achieved with a conventional classifier. Only models with at least 99.6\% neck alpha removal (in line with the conventional classifier) were considered.
 
-\begin{itemize}
-    \item The dense neural network always produced 100\% false positives (worse than 91.0\%).
-    \item The topological CNN produced a false positive rate of 92.6\% (also worse than 91.0\%).
-    \item The cylindrical projection method with a 2D CNN improved the false positive rate from 91.0\% to 75.7\% (a 63.0\% reduction)!
-\end{itemize}
+Both the dense neural network and topological CNN produced a higher rate of false positives than the conventional classifier. However, as seen in Figure \ref{deap_final_results}, the cylindrical projection method improved the false positive rate from 91.0\% to 75.7\% (a 63.0\% reduction)!
+
+When tested on real-world data, the cylindrical projection method removed 73.9\% of nuclear recoil (neutron calibration) events (in line with the simulation).
+
+However, only 91.2\% of background radiation events were removed. This indicates either that the simulation is not an accurate representation of the real-world detector, or (less probably) that WIMPs are present in the background data.
 
 \begin{figure}[ht]
     \centering
-    \fbox{\includegraphics[width=0.6\textwidth]{deap_final_results}}
-    \caption{Alpha background and WIMP removal rates for the highest-accuracy hyperparameter configuration of each technique in DEAP-3600.}
+    \fbox{\includegraphics[width=0.55\textwidth]{deap_final_results}}
+    \caption{\label{deap_final_results} Background and WIMP removal rates for the highest-accuracy hyperparameter configuration of each technique in DEAP-3600.}
 \end{figure}
 
 \section{Conclusion}
@@ -158,6 +160,8 @@ The three algorithms I developed were evaluated based on their reduction in the 
 These results confirm that I achieved my goal. While the conventional classifier in PICO-60 is believed to be perfectly accurate, my semi-supervised learning methods have significantly improved the accuracy that can be obtained quickly and without manual optimization. This should allow physicists working on future iterations of PICO to iterate more quickly, without modifying a conventional classifier whenever some aspect of the experiment changes.
 
 The reduction in the false positive rate for DEAP-3600 provides evidence that machine learning can improve the efficiency of this experiment, possibly reducing the operation time required to collect sufficient evidence for or against the existence of WIMP dark matter.
+
+Additionally, the unusual predictions made on real-world data provide important diagnostic information on the DEAP-3600 simulation (assuming that WIMPs are not present).
 
 Fundamentally, the problems I have solved are not specific to PICO-60 and DEAP-3600; they are common across many dark matter detection experiments. Thus, my algorithms are broadly applicable, and demonstrate promise in the field as a whole.
 
@@ -168,6 +172,8 @@ Many thanks to Dr.~Nigel~Smith, Dr.~Ken~Clark, Dr.~Carsten~Krauss, Dr.~Scott~Fal
 \section{References}
 
 \printbibliography[heading=none]
+
+\pagebreak
 
 \section{Bibliography}
 
