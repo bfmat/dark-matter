@@ -103,12 +103,16 @@ To even better handle impurities, I developed two novel semi-supervised learning
 
 \subsection{DEAP-3600}
 
-In DEAP-3600, the key challenge is the aforementioned unusual detector format: a sphere tiled with a hexagonal lattice of PMTs. I approached this problem in three different ways:
+In DEAP-3600, the key challenge is the aforementioned unusual detector format: a sphere (with an opening on the top) tiled with a hexagonal lattice of PMTs. I approached this problem in three different ways:
 
 \begin{enumerate}
     \item I tried simply inputting photon counts from each PMT into a multi-layer perceptron.
-    \item I developed and applied a Mercator-like cylindrical projection, and used a 2D CNN.
-    \item I developed an entirely new type of CNN, called a topological CNN. Rather than a 2D image of square pixels, kernels convolve over an arbitrary topology.
+
+    \item I developed and applied a Mercator-like cylindrical projection, by mapping each row of nodes in the sphere to a row in a rectangular image. Cubic spline interpolation was used to map latitude lines on the sphere (which vary in length) to equal-length rows on the rectangular image.
+
+    \item I developed a new type of CNN, called a topological CNN. Rather than a 2D image of square pixels, kernels convolve over an arbitrary topology.
+    
+    While a conventional convolutional layer downscales a rectangular image to a smaller rectangular image by multiplying square regions by a set of corresponding weights, a topological CNN (as applied to this problem) downscales the approximately spherical hexagonal mesh to a smaller but topologically equivalent hexagonal mesh.
 \end{enumerate}
 
 \begin{figure}[ht]
