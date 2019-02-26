@@ -13,6 +13,8 @@
 \usepackage{subfig}
 \usepackage{hyperref}
 \usepackage{soul}
+\usepackage{color}
+\usepackage{colortbl}
 
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
@@ -30,64 +32,62 @@
 \titlespacing{\subsection}{0pt}{0pt}{0pt}
 \titlespacing{\subsubsection}{0pt}{0pt}{0pt}
 
-\titleformat*{\section}{\large\bfseries}
+\titleformat*{\section}{\normalsize\bfseries}
 \titleformat*{\subsection}{\normalsize\bfseries}
 \titleformat*{\subsubsection}{\normalsize\bfseries}
 
 \begin{document}
 
 \begin{center}
-    \begin{Large}
-        Improving Particle Classification in WIMP Dark Matter Detection Experiments Using Neural Networks
-    \end{Large}
-
-    Brendon Matusch
+    \begin{large}
+        Improving Particle Classification in WIMP Dark Matter Detection Experiments Using Neural Networks -- Brendon Matusch
+    \end{large}
 \end{center}
 
 \section{Introduction}
 
-In all experiments for detection of WIMP dark matter, it is essential to develop a classifier that can distinguish WIMP events from background radiation, in particular alpha particles. Manually developing such a classifier necessitates time-consuming physical modeling.
+In all experiments for detection of WIMP dark matter, it is essential to develop a classifier that can distinguish potential WIMP events from background radiation, in particular alpha particles. Manually developing a classifier necessitates time-consuming physical modeling.
 
 Machine learning (ML) has the potential to automate this and accelerate experimentation, and also to detect patterns that humans cannot. However, impure calibration data hinders training of models, and unusual detector topologies make data challenging to process.
 
 I worked with two dark matter experiments: the PICO-60 bubble chamber \cite{pico}, and the DEAP-3600 liquid argon scintillator \cite{deap}. In PICO-60, background alpha and WIMP-like neutron calibration datasets are used for training; however, there is an impurity of 10\% alphas in the neutron set, hindering training. In DEAP-3600, the detector format, containing 255 spherically arranged photomultiplier tubes (PMTs), makes data processing challenging.
 
-Previously in PICO-60, a conventional classifier was developed and is thought to be 100\% accurate. However, machine learning is also applicable because it is quicker to develop and re-calibrate. A supervised neural network was used, reaching a mean of 80.2\% accuracy.
+Previously in PICO-60, a conventional classifier was developed and is thought to be 100\% accurate. A supervised neural network (NN) was also previously developed, achieving a mean accuracy of 80.2\% -- not usable as a practical replacement for conventional methods.
 
-In DEAP-3600, a simulation was developed prior to my work, because it is impractical to collect large amounts of calibration data. A conventional classifier removes 99.6\% of alpha background radiation, while also (undesirably) removing 91.0\% of simulated WIMP events.
+In DEAP-3600, a physical simulation was developed (prior to my work) to provide calibration data; physical limitations make it impractical to collect large amounts of calibration data. In the simulation, the conventional classifier removes 99.6\% of alpha background radiation, while also (undesirably) removing 91.0\% of WIMP events.
 
-My objective was to develop novel machine learning algorithms that are more accurate, and I succeeded at this goal! I composed a 28-page research whitepaper \cite{me} about my work on PICO-60, which has been reviewed and approved by the PICO collaboration and pre-published at \url{https://arxiv.org/abs/1811.11308}. It is currently undergoing peer review for eventual publication in the journal \textit{Computer Physics Communications}.
+My objective was to develop accurate machine learning algorithms that are more accurate, and I succeeded at this goal! I composed a 28-page research whitepaper \cite{me} about my work on PICO-60, which has been reviewed and approved by the PICO collaboration and pre-published at \url{https://arxiv.org/abs/1811.11308}. It is currently undergoing peer review for eventual publication in the journal \textit{Computer Physics Communications}.
 
-\ul{Please note that the entire PICO collaboration are listed on the research whitepaper because of their contributions to the original PICO-60 dark matter experiment. They did not contribute to this study; I completed and documented it independently.}
+\ul{All PICO researchers are listed on my paper for their work on the original PICO-60 experiment. They did not contribute to this study; I completed and documented it independently.}
 
 \section{Procedure}
 
 \subsection{PICO-60}
 
-For PICO-60, I developed and compared two sets of classification algorithms: supervised learning, and semi-supervised learning.
+For PICO-60, my intent was to develop a highly accurate classification algorithm that is intolerant to substantial impurities in calibration data. I developed and compared two sets of classification algorithms: supervised learning, and semi-supervised learning.
 
 \subsubsection{Supervised Learning}
 
-I experimented further with supervised learning, exploring the following data formats to learn which was the best-performing solution:
+I experimented with supervised learning, exploring the following data formats to determine which facilitates the best-performing solution:
 
 \begin{enumerate}
-    \item An 8-band Fourier transform of audio recorded in the bubble chamber. I applied a dense neural network with dropout \cite{dropout} and L2 regularization (which allowed for less overfitting to impure data).
+    \item An 8-band Fourier transform of audio recorded in the detector. I applied a dense NN with dropout \cite{dropout} and L2 regularization (which reduce overfitting to impure data).
     \item A full-resolution Fourier transform of the audio (all 50,001 data points). I once again applied a dense neural network with the Adam \cite{adam} optimizer.
-    \item A raw audio waveform with a very deep 1D convolutional neural network (CNN) inspired by Dai et al.\ \cite{verydeepconvnets}.
-    \item Images captured by cameras in the detector. I trained a 2D CNN on these, to learn whether they contain any relevant information.
+    \item A raw audio waveform, with a very deep 1D convolutional neural network (CNN) inspired by Dai et al.\ \cite{verydeepconvnets}.
+    \item Event images, with a 2D CNN (to determine whether they contain useful information).
 \end{enumerate}
 
 \begin{figure}[ht]
     \centering
-    \subfloat{\fbox{\includegraphics[width=0.8\textwidth]{audio_cropped}}}
+    \subfloat{\fbox{\includegraphics[width=0.95\textwidth]{audio_cropped}}}
     \qquad
-    \subfloat{\fbox{\includegraphics[width=0.45\textwidth]{image_grid}}}
-    \caption{Examples of the audio waveform and Fourier transform (above) and the images captured by cameras (below).}
+    \subfloat{\fbox{\includegraphics[width=0.35\textwidth]{image_grid}}}
+    \caption{Examples of the audio and image data.}
 \end{figure}
 
 \subsubsection{Semi-Supervised Learning}
 
-To even better handle impurities, I developed two novel semi-supervised learning algorithms. The impure alpha/WIMP-like labels were removed from a large portion of the training data, and my algorithms learned more accurate labels for this data.
+To better handle impurities, I developed two novel semi-supervised learning techniques. The concept of both algorithms is to iteratively generate more accurate labels for a set of inaccurately labeled training data, permitting less overfitting and greater validation accuracy than simple regularization would allow.
 
 \begin{enumerate}
     \item Iterative Cluster Nucleation is inspired by unsupervised clustering algorithms, and takes advantage of the ``confidence'' of the neural network's predictions (that is, how close the predictions are to 0 or 1).
@@ -107,29 +107,31 @@ To even better handle impurities, I developed two novel semi-supervised learning
 
 \subsection{DEAP-3600}
 
-In DEAP-3600, the key challenge is the aforementioned unusual detector format: a sphere (with an opening on the top) tiled with a hexagonal lattice of PMTs. I approached this problem in three different ways:
+In DEAP-3600, the key challenge is the aforementioned unusual detector format: a sphere (with an opening on the top) tiled with a hexagonal lattice of PMTs. The major source of background radiation is ``neck alphas'', which strike atoms in the gas filling the neck above the spherical detector body. These must be eliminated from the experimental data set.
+
+I approached this problem in three different ways, listed below. Techniques \ref{map_entry} and \ref{topological_entry} (Figure \ref{deap_methods}) take advantage of geometric and spatial patterns in PMT activations associated with neck alpha events, by extending the CNN concept for use in spherical and arbitrary topologies.
 
 \begin{enumerate}
-    \item I tried simply inputting photon counts from each PMT into a multi-layer perceptron.
+    \item I inputted photon counts from each PMT into a multi-layer perceptron.
 
-    \item I developed and applied a Mercator-like cylindrical projection, which maps a sphere onto a rectangle. Cubic spline interpolation was used to map latitude lines on the sphere (which vary in length) to equal-length rows on the rectangular image.
+    \item I developed and applied a Mercator-like cylindrical projection, which maps a sphere onto a rectangle. Cubic spline interpolation was used to map latitude lines on the sphere (which vary in length) to equal-length rows on the rectangular image. Once again, photon counts were used as input data. \label{map_entry}
 
-    \item I developed a new type of CNN, called a topological CNN. Rather than a 2D image of square pixels, kernels convolve over an arbitrary topology.
+    \item I developed a new type of CNN, called a topological CNN. Rather than a 2D image of square pixels, kernels convolve over an arbitrary topology. \label{topological_entry}
     
     While a conventional convolutional layer downscales a rectangular image to a smaller rectangular image by multiplying square regions by a set of corresponding weights, a topological CNN (as applied to this problem) downscales the approximately spherical hexagonal mesh to a smaller but topologically equivalent hexagonal mesh.
 \end{enumerate}
 
 \begin{figure}[ht]
     \centering
-    \fbox{\includegraphics[width=0.45\textwidth]{map_projection}}
+    \fbox{\includegraphics[width=0.425\textwidth]{map_projection}}
     \qquad
-    \fbox{\includegraphics[width=0.45\textwidth]{topological}}
-    \caption{Diagrams of the cylindrical projection (left) and topological CNN (right) systems.}
+    \fbox{\includegraphics[width=0.475\textwidth]{topological}}
+    \caption{\label{deap_methods} Diagrams of the cylindrical projection (left) and topological CNN (right) systems.}
 \end{figure}
 
 \subsection{Statistical Practices}
 
-Models were optimized using grid searches, in which every configuration within a hyperparameter space is trained and evaluated. All models were trained on a training set, and a separate randomly selected validation set was used to select the best-performing technique and corresponding hyperparameters.
+Models were optimized using grid searches, in which every configuration within a hyperparameter space is trained and evaluated. The best-performing technique and hyperparameters were selected based on repeated random sub-sampling of validation sets.
 
 Finally, the best-performing model was retrained on a newly selected training set, and a test set was used to verify its performance. In DEAP-3600, two test sets were used: one consisting of simulated data, and another consisting of 30 examples collected from the real-world detector (neutron calibration data, and background radiation).
 
@@ -137,25 +139,32 @@ Finally, the best-performing model was retrained on a newly selected training se
 
 \subsection{PICO-60}
 
-As seen in Figure \ref{pico_final_results}, the banded FFT format was the most effective of the supervised learning models (including the previous study), reaching 97.3\% accuracy on validation data. The image data was shown to contain no meaningful information, permitting only 63.0\% accuracy.
+As seen in Figure \ref{pico_final_results}, the banded Fourier transform format was the most effective of the supervised learning models (including the previous study), achieving 97.3\% validation accuracy. The image data was shown to contain no useful information, reaching only 63.0\% accuracy.
 
-Semi-supervised learning produced better accuracy than supervised learning. Gravitational differentiation was the best overall model, reaching 99.7\% accuracy on validation data and 98.3\% on test data. This confirms my hypothesis; it is indeed beneficial to train on the neural network's most confident predictions.
+Semi-supervised learning produced better accuracy than supervised learning. Gravitational differentiation was the best overall model, achieving 99.7\% accuracy on validation data and 98.3\% on test data. This confirms my hypothesis; it is indeed beneficial to train on the neural network's most confident predictions.
 
 \begin{figure}[ht]
     \centering
-    \fbox{\includegraphics[width=0.85\textwidth]{pico_final_results}}
+    \fbox{\includegraphics[width=0.95\textwidth]{pico_final_results}}
     \caption{\label{pico_final_results} Validation accuracy, precision, recall, and loss for each technique in PICO-60. Error bars represent the 8th and 92nd percentiles.}
 \end{figure}
 
 \subsection{DEAP-3600}
 
-The three algorithms I developed were evaluated based on their reduction in the rate of false positives (simulated WIMP events misidentified as neck alphas) compared to the 91.0\% result achieved with a conventional classifier. Only models with at least 99.6\% neck alpha removal (in line with the conventional classifier) were considered.
+The three algorithms I developed were evaluated based on:
 
-Both the dense neural network and topological CNN produced a higher rate of false positives than the conventional classifier, meaning that they misclassified more WIMPs as alpha particles. However, as seen in Figure \ref{deap_final_results}, the cylindrical projection method \textit{reduced} the false positive rate from 91.0\% to 75.7\%.
+\begin{itemize}
+    \item Identification of neck alphas with 99.6\% precision (same as the conventional classifier).
+    \item Reduction in the rate of false positives (simulated WIMP events misidentified as neck alphas) compared to the 91.0\% result achieved with a conventional classifier.
+\end{itemize}
 
-This successful network model was tested on the limited amount of available real-world data. It removed 73.9\% of WIMP-like (neutron calibration) events, which is in line with the 75.7\% obtained on simulated data.
+All techniques were validated on simulated data. Both the dense neural network and topological CNN techniques were unsuccessful; they produced higher false positive rates than the conventional classifier, meaning that they misclassified more WIMPs as alpha particles.
 
-However, only 91.2\% of background events (expected to be neck alphas) were removed, quite far off the 99.6\% reached on simulated data. This indicates one of three possibilities:
+However, as seen in Figure \ref{deap_final_results}, the cylindrical projection method retained a 99.6\% neck alpha identification rate, and also successfully \textit{reduced} the false positive rate from 91.0\% to 75.7\%.
+
+This successful network model was further tested on the limited amount of available real-world experimental data. It removed 73.9\% of WIMP-like (neutron calibration) events, which is in line with the 75.7\% obtained on simulated data.
+
+However, only 91.2\% of background events (expected to be neck alphas) were removed, below the 99.6\% reached on simulated data. This indicates one of three possibilities:
 
 \begin{enumerate}
     \item The simulation is not an accurate representation of the real-world detector (some physical dynamic has not been simulated), and thus the network did not generalize.
@@ -165,26 +174,28 @@ However, only 91.2\% of background events (expected to be neck alphas) were remo
 
 \begin{figure}[ht]
     \centering
-    \fbox{\includegraphics[width=0.5\textwidth]{deap_final_results}}
-    \qquad
-    \begin{tabular}[b]{|l|l|l|}
+    \definecolor{lightcyan}{rgb}{0.8, 1, 1}
+    \begin{tabular}[b]{|l|l|l|l|}
         \hline
-        Method & Backgnd. & WIMP \\
+        \rowcolor{lightcyan}
+        Technique & Data Source & Background & False Positive Rate \\
+        \rowcolor{lightcyan}
+        & & Removal Rate & (WIMP Misclassifications) \\
         \hline
-        Conventional & 99.6\% & 91.0\% \\
+        Conventional Classifier & Simulation & 99.6\% & 91.0\% \\
         \hline
-        Dense NN & 100\% & 100\% \\
+        Dense Neural Network & Simulation & 100\% & 100\% \\
         \hline
-        Cylindrical & 99.9\% & 76.7\% \\
+        Cylindrical Projection & Simulation & 99.9\% & 76.7\% \\
         \hline
-        Topological & 99.9\% & 93.0\% \\
+        Topological CNN & Simulation & 99.9\% & 93.0\% \\
         \hline
-        Cyl Sim Test & 99.6\% & 75.7\% \\
+        Cylindrical Projection & Simulation (Test) & 99.6\% & 75.7\% \\
         \hline
-        Cyl Real Test & 91.2\% & 73.9\% \\
+        Cylindrical Projection & Real-World & 91.2\% & 73.9\% \\
         \hline
     \end{tabular}
-    \caption{\label{deap_final_results} Background and WIMP removal rates for the highest-accuracy hyperparameter configuration of each technique in DEAP-3600.}
+    \caption{\label{deap_final_results} Average background and WIMP/neutron removal rates for the highest-accuracy hyperparameter configuration of each technique in DEAP-3600.}
 \end{figure}
 
 \section{Conclusion}
