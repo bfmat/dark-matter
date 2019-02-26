@@ -27,7 +27,7 @@ for array, mean in [(alpha_high, alpha_mean), (alpha_low, alpha_mean), (wimp_hig
             array[index] = np.abs(array[index] - mean[index])
 
 # The names of the configurations corresponding to all these lists
-CONFIGURATIONS = ['Conventional Clas.', 'Dense Neural Network', 'Map Projection CNN', 'Topological CNN', 'Map CNN Test (Sim)', 'Map CNN Test (Real,\nBackground May\nInclude WIMPs)']
+CONFIGURATIONS = ['Conventional', 'Dense NN', 'Cylindrical Proj.', 'Topological CNN', 'Cylindrical Test (Sim)', 'Cylindrical CNN Test (Real,\nBackground May\nInclude WIMPs)']
 
 # Get the locations for the bars
 BAR_WIDTH = 0.4
