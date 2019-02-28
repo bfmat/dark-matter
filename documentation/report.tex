@@ -200,11 +200,13 @@ However, only 91.2\% of background events (expected to be neck alphas) were remo
 
 \section{Conclusion}
 
-These results confirm that I achieved my goal. While the conventional classifier in PICO-60 is believed to be perfectly accurate, my semi-supervised learning methods have significantly improved the accuracy that can be obtained quickly and without manual optimization. This should allow physicists working on future iterations of PICO to iterate more quickly, without modifying a conventional classifier whenever some aspect of the experiment changes.
+These results confirm that I met my goals on both the PICO-60 and DEAP-3600 experiments.
 
-The reduction in the false positive rate for DEAP-3600 provides evidence that machine learning can improve the efficiency of this experiment, possibly reducing the operation time required to collect sufficient evidence for or against the existence of WIMP dark matter.
+On PICO-60, the new semi-supervised learning algorithms performed extremely well, exceeding 98\% accuracy while permitting impure calibration data and requiring little manual analysis or optimization.
 
-Additionally, the unusual predictions made on real-world data provide important diagnostic information on the DEAP-3600 simulation (assuming that WIMPs are not present).
+On DEAP-3600, my cylindrical projection, combined with a 2D CNN, performed better than the conventional classifier on simulated data, reducing the WIMP misclassification rate from 91.0\% to 75.7\% while matching the conventional classifier's 99.6\% background removal rate.
+
+The predictions made on real-world data demonstrate clear potential. Differences between the simulated and real-world data provide potentially useful diagnostic information on the DEAP-3600 simulation (assuming that WIMPs are not present).
 
 Fundamentally, the problems I have solved are not specific to PICO-60 and DEAP-3600; they are common across many dark matter detection experiments. Thus, my algorithms are broadly applicable, and demonstrate promise in the field as a whole.
 
