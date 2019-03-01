@@ -44,7 +44,7 @@ for array, mean in [(accuracy_high, accuracy_mean), (accuracy_low, accuracy_mean
             array[index] = np.abs(array[index] - mean[index])
 # The names of the configurations corresponding to all these lists
 CONFIGURATIONS = ['Conventional Clas.', 'Prev. ML Study', 'Banded FT', 'Full-Resolution FT', 'Waveform CNN', 'Image CNN',
-                  'I. Cluster Nucleation', 'Gravitational Diff.', 'Gravitational Diff. Test']
+                  'Iter. Clustering', 'Gravitational Diff.', 'Grav. Diff. Test']
 
 # Get the locations for the bars
 BAR_WIDTH = 0.2

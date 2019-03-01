@@ -90,13 +90,13 @@ I experimented with supervised learning, exploring the following data formats to
 To better handle impurities, I developed two novel semi-supervised learning techniques. The concept of both algorithms is to iteratively generate more accurate labels for a set of inaccurately labeled training data, permitting less overfitting and greater validation accuracy than simple regularization would allow.
 
 \begin{enumerate}
-    \item Iterative Cluster Nucleation is inspired by unsupervised clustering algorithms, and takes advantage of the ``confidence'' of the neural network's predictions (that is, how close the predictions are to 0 or 1).
+    \item Iterative Clustering is inspired by unsupervised clustering algorithms, and takes advantage of the ``confidence'' of the neural network's predictions (that is, how close the predictions are to 0 or 1).
     
     First, a neural network is trained on a labeled set. After 30 epochs, it runs predictions on the unlabeled set. As the network trains, the confidence of these predictions increases. When $p < t$ or $p > 1 - t$ for a given prediction $p$ and a (small) confidence threshold $t$, the example is labeled correspondingly and added to the labeled set.
 
     It is hypothesized that accuracy will gradually \textit{improve} as the neural network's most confident predictions are fed back into the network as newly labeled training data.
 
-    \item Gravitational Differentiation is an analog alternative to Iterative Cluster Nucleation. Using a novel piecewise exponential function for calculating final-layer derivatives, called $\mathrm{GravDiff}(p, \psi, g)$, unlabeled examples are caused to "gravitate" toward more accurate predictions based on the confidence of the neural network's predictions.
+    \item Gravitational Differentiation is an analog alternative to Iterative Clustering. Using a novel piecewise exponential function for calculating final-layer derivatives, called $\mathrm{GravDiff}(p, \psi, g)$, unlabeled examples are caused to "gravitate" toward more accurate predictions based on the confidence of the neural network's predictions.
 
     The function is a transformation of the hyperbolic tangent that flattens the central range and comparatively exaggerates the asymptote on either side, defined as follows:
     \begin{center}
