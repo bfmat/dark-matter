@@ -56,7 +56,7 @@ Previously in PICO-60, a conventional classifier was developed and is thought to
 
 In DEAP-3600, a physical simulation was developed (prior to my work) to provide calibration data; physical limitations make it impractical to collect large amounts of calibration data. In the simulation, the conventional classifier removes 99.6\% of alpha background radiation, while also (undesirably) removing 91.0\% of WIMP events.
 
-My objective was to develop accurate machine learning algorithms that are more accurate, and I succeeded at this goal! I composed a 28-page research whitepaper \cite{me} about my work on PICO-60, which has been reviewed and approved by the PICO collaboration and pre-published at \url{https://arxiv.org/abs/1811.11308}. It is currently undergoing peer review for eventual publication in the journal \textit{Computer Physics Communications}.
+My objective was to develop machine learning algorithms that are more accurate, and I succeeded at this goal! I composed a 28-page research whitepaper \cite{me} about my work on PICO-60, which has been reviewed and approved by the PICO collaboration and pre-published at \url{https://arxiv.org/abs/1811.11308}. It is currently undergoing peer review for eventual publication in the journal \textit{Computer Physics Communications}.
 
 \ul{All PICO researchers are listed on my paper for their work on the original PICO-60 experiment. They did not contribute to this study; I completed and documented it independently.}
 
@@ -64,7 +64,7 @@ My objective was to develop accurate machine learning algorithms that are more a
 
 \subsection{PICO-60}
 
-For PICO-60, my intent was to develop a highly accurate classification algorithm that is intolerant to substantial impurities in calibration data. I developed and compared two sets of classification algorithms: supervised learning, and semi-supervised learning.
+For PICO-60, my intent was to develop a highly accurate classification algorithm that is tolerant to substantial impurities in calibration data. I developed and compared two sets of classification algorithms: supervised learning, and semi-supervised learning.
 
 \subsubsection{Supervised Learning}
 
@@ -145,7 +145,7 @@ Semi-supervised learning produced better accuracy than supervised learning. Grav
 
 \begin{figure}[ht]
     \centering
-    \fbox{\includegraphics[width=0.95\textwidth]{pico_final_results}}
+    \fbox{\includegraphics[width=0.85\textwidth]{pico_final_results}}
     \caption{\label{pico_final_results} Validation accuracy, precision, recall, and loss for each technique in PICO-60. Error bars represent the 8th and 92nd percentiles.}
 \end{figure}
 
@@ -154,7 +154,7 @@ Semi-supervised learning produced better accuracy than supervised learning. Grav
 The three algorithms I developed were evaluated based on:
 
 \begin{itemize}
-    \item Identification of neck alphas with 99.6\% precision (same as the conventional classifier).
+    \item Identification of neck alphas with a minimum of 99.6\% precision (the same as the previously developed conventional classifier).
     \item Reduction in the rate of false positives (simulated WIMP events misidentified as neck alphas) compared to the 91.0\% result achieved with a conventional classifier.
 \end{itemize}
 
@@ -182,13 +182,13 @@ However, only 91.2\% of background events (expected to be neck alphas) were remo
         \rowcolor{lightcyan}
         & & Removal Rate & (WIMP Misclassifications) \\
         \hline
-        Conventional Classifier & Simulation & 99.6\% & 91.0\% \\
+        Conventional Classifier & Simulation (Val.) & 99.6\% & 91.0\% \\
         \hline
-        Dense Neural Network & Simulation & 100\% & 100\% \\
+        Dense Neural Network & Simulation (Val.) & 100\% & 100\% \\
         \hline
-        Cylindrical Projection & Simulation & 99.9\% & 76.7\% \\
+        Cylindrical Projection & Simulation (Val.) & 99.9\% & 76.7\% \\
         \hline
-        Topological CNN & Simulation & 99.9\% & 93.0\% \\
+        Topological CNN & Simulation (Val.) & 99.9\% & 93.0\% \\
         \hline
         Cylindrical Projection & Simulation (Test) & 99.6\% & 75.7\% \\
         \hline
