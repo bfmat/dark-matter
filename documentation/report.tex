@@ -46,25 +46,27 @@
 
 \section{Introduction}
 
-In all experiments for detection of WIMP dark matter, it is essential to develop a classifier that can distinguish potential WIMP events from background radiation, in particular alpha particles. Manually developing a classifier necessitates time-consuming physical modeling.
+In all experiments for detection of WIMP dark matter, it is essential to develop a classifier that can distinguish potential WIMP events from background radiation. Most often, classifiers are developed manually, via physical modeling and empirical optimization. This is problematic for two reasons: it takes a great deal of time and effort away from developing the experiment, and the resulting classifiers often perform suboptimally (which means that a greater amount of expensive run time is required to obtain a confident experimental result).
 
-Machine learning (ML) has the potential to automate this and accelerate experimentation, and also to detect patterns that humans cannot. However, impure calibration data hinders training of models, and unusual detector topologies make data challenging to process.
+Machine learning has the potential to automate this and accelerate experimentation, and also to detect patterns that humans cannot. However, two major challenges, which are shared among several dark matter experiments, stand in the way: impure calibration data, which hinders training of models, and unpredictable physical dynamics within the detector itself.
 
-I worked with two dark matter experiments: the PICO-60 bubble chamber \cite{pico}, and the DEAP-3600 liquid argon scintillator \cite{deap}. In PICO-60, background alpha and WIMP-like neutron calibration datasets are used for training; however, there is an impurity of 10\% alphas in the neutron set, hindering training. In DEAP-3600, the detector format, containing 255 spherically arranged photomultiplier tubes (PMTs), makes data processing challenging.
+My objective was to develop a set of machine learning techniques that resolve these two problems, and thus more efficiently generate highly accurate classifiers.
 
-Previously in PICO-60, a conventional classifier was developed and is thought to be 100\% accurate. A supervised neural network (NN) was also previously developed, achieving a mean accuracy of 80.2\% -- not usable as a practical replacement for conventional methods.
+I was able to obtain raw data for two dark matter experiments which exhibit these challenges: the PICO-60 bubble chamber \cite{pico}, and the DEAP-3600 liquid argon scintillator \cite{deap}.
 
-In DEAP-3600, a physical simulation was developed (prior to my work) to provide calibration data; physical limitations make it impractical to collect large amounts of calibration data. In the simulation, the conventional classifier removes 99.6\% of alpha background radiation, while also (undesirably) removing 91.0\% of WIMP events.
+In PICO-60, background alpha and WIMP-like neutron calibration datasets are used for training; however, there is an impurity of 10\% alphas in the neutron set. While a conventional classifier was developed (and is believed to be 100\% accurate), machine learning in the form of a supervised neural network (NN) has also been previously explored, because of the benefits of automation. Unfortunately, it achieved a mean accuracy of only 80.2\% -- not usable as a practical replacement for conventional methods in future iterations of the experiment.
 
-My objective was to develop machine learning algorithms that are more accurate, and I succeeded at this goal! I composed a 28-page research whitepaper \cite{me} about my work on PICO-60, which has been reviewed and approved by the PICO collaboration and pre-published at \url{https://arxiv.org/abs/1811.11308}. It is currently undergoing peer review for eventual publication in the journal \textit{Computer Physics Communications}.
+In DEAP-3600, photons are absorbed and re-emitted by a wavelength shifting medium in an unpredictable direction, before being detected by one of 255 photomultiplier tubes (PMTs) arranged in a hexagonal lattice on the surface of the spherical detector. The unpredictability severely limits the accuracy of conventional classifiers; the best classifier so far removes 99.6\% of alpha background radiation, while also (undesirably) removing 91.0\% of WIMP events. Because of physical limitations, simulated data is used for calibration, with a limited amount of real-world experimental data available for testing.
+
+I composed a 28-page research whitepaper \cite{me} about my work on PICO-60, which has been reviewed and approved by the PICO collaboration and pre-published at \url{https://arxiv.org/abs/1811.11308}. It is currently undergoing peer review for eventual publication in the journal \textit{Computer Physics Communications}.
 
 \ul{All PICO researchers are listed on my paper for their work on the original PICO-60 experiment. They did not contribute to this study; I completed and documented it independently.}
 
 \section{Procedure}
 
-\subsection{PICO-60}
+\subsection{Resolving Impurities (PICO-60)}
 
-For PICO-60, my intent was to develop a highly accurate classification algorithm that is tolerant to substantial impurities in calibration data. I developed and compared two sets of classification algorithms: supervised learning, and semi-supervised learning.
+In the context of PICO-60, my intent was to develop a highly accurate classification algorithm that is tolerant to substantial impurities in calibration data. I developed and compared two sets of classification algorithms: supervised learning, and semi-supervised learning.
 
 \subsubsection{Supervised Learning}
 
@@ -105,16 +107,16 @@ To better handle impurities, I developed two novel semi-supervised learning tech
     where $p$ is the network's prediction, $\psi$ determines the rate at which the output approaches 0 as the confidence of the prediction decreases, and $g$ is the learning rate multiplier. The output is the final-layer gradient to be used in backpropagation.
 \end{enumerate}
 
-\subsection{DEAP-3600}
+\subsection{Resolving Unpredictable Photon Dynamics (DEAP-3600)}
 
-In DEAP-3600, the key challenge is the aforementioned unusual detector format: a sphere (with an opening on the top) tiled with a hexagonal lattice of PMTs. The major source of background radiation is ``neck alphas'', which strike atoms in the gas filling the neck above the spherical detector body. These must be eliminated from the experimental data set.
+In DEAP-3600, the key challenge is the aforementioned unpredictable photon dynamics. The major source of background radiation is ``neck alphas'', which strike atoms in the gas filling the neck above the spherical detector body; because of the unpredictable direction of photon emission, it is non-trivial to calculate the position of these events.
 
-I approached this problem in three different ways, listed below. Techniques \ref{map_entry} and \ref{topological_entry} (Figure \ref{deap_methods}) take advantage of geometric and spatial patterns in PMT activations associated with neck alpha events, by extending the CNN concept for use in spherical and arbitrary topologies.
+Because of the inherently spatial nature of this problem, I hypothesized it would be important to most effectively process the spherical arrangement of PMTs in the DEAP-3600 detector. I evaluated three approaches to this problem (two of which are original), listed below. Techniques \ref{map_entry} and \ref{topological_entry} (Figure \ref{deap_methods}) take advantage of geometric and spatial patterns in PMT activations associated with neck alpha events, by extending the CNN concept for use in spherical and arbitrary topologies.
 
 \begin{enumerate}
     \item I inputted photon counts from each PMT into a multi-layer perceptron.
 
-    \item I developed and applied a Mercator-like cylindrical projection, which maps a sphere onto a rectangle. Cubic spline interpolation was used to map latitude lines on the sphere (which vary in length) to equal-length rows on the rectangular image. Once again, photon counts were used as input data. \label{map_entry}
+    \item I developed and applied a Mercator-like cylindrical projection, which maps a sphere onto a rectangle. Cubic spline interpolation was used to map latitude lines on the hexagonal lattice (which vary in length) to equal-length rows on the rectangular image. Once again, photon counts were used as input data. \label{map_entry}
 
     \item I developed a new type of CNN, called a topological CNN. Rather than a 2D image of square pixels, kernels convolve over an arbitrary topology. \label{topological_entry}
     
@@ -151,7 +153,7 @@ Semi-supervised learning produced better accuracy than supervised learning. Grav
 
 \subsection{DEAP-3600}
 
-The three algorithms I developed were evaluated based on:
+I evaluated three algorithms for resolution of the unpredictable photon dynamics present in DEAP-3600. Two of the algorithms are original. The three algorithms I developed were evaluated based on:
 
 \begin{itemize}
     \item Identification of neck alphas with a minimum of 99.6\% precision (the same as the previously developed conventional classifier).
