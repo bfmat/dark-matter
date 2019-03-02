@@ -52,11 +52,11 @@ Machine learning has the potential to automate this and accelerate experimentati
 
 My objective was to develop a set of machine learning techniques that resolve these two problems, and thus more efficiently generate highly accurate classifiers.
 
-I was able to obtain raw data for two dark matter experiments which exhibit these challenges: the PICO-60 bubble chamber \cite{pico}, and the DEAP-3600 liquid argon scintillator \cite{deap}.
+I was able to obtain raw data for two dark matter experiments which exhibit these challenges: the PICO-60 bubble chamber \cite{pico}, and the DEAP-3600 liquid argon scintillator \cite{deap}. For each experiment, I developed and compared three general-purpose algorithms intended to resolve its inherent challenge (impurity and unpredictable dynamics, respectively).
 
 In PICO-60, background alpha and WIMP-like neutron calibration datasets are used for training; however, there is an impurity of 10\% alphas in the neutron set. While a conventional classifier was developed (and is believed to be 100\% accurate), machine learning in the form of a supervised neural network (NN) has also been previously explored, because of the benefits of automation. Unfortunately, it achieved a mean accuracy of only 80.2\% -- not usable as a practical replacement for conventional methods in future iterations of the experiment.
 
-In DEAP-3600, photons are absorbed and re-emitted by a wavelength shifting medium in an unpredictable direction, before being detected by one of 255 photomultiplier tubes (PMTs) arranged in a hexagonal lattice on the surface of the spherical detector. The unpredictability severely limits the accuracy of conventional classifiers; the best classifier so far removes 99.6\% of alpha background radiation, while also (undesirably) removing 91.0\% of WIMP events. Because of physical limitations, simulated data is used for calibration, with a limited amount of real-world experimental data available for testing.
+In DEAP-3600, photons are absorbed by a wavelength shifting medium and re-emitted in an unpredictable direction, before being detected by one of 255 photomultiplier tubes (PMTs) arranged in a hexagonal lattice on the surface of the spherical detector. The randomness severely limits the accuracy of conventional classifiers; the best classifier so far removes 99.6\% of alpha background radiation, while also (undesirably) removing 91.0\% of WIMP events. Because of physical limitations, simulated data is used for calibration, with a limited amount of real-world experimental data available for testing.
 
 I composed a 28-page research whitepaper \cite{me} about my work on PICO-60, which has been reviewed and approved by the PICO collaboration and pre-published at \url{https://arxiv.org/abs/1811.11308}. It is currently undergoing peer review for eventual publication in the journal \textit{Computer Physics Communications}.
 
@@ -78,14 +78,6 @@ I experimented with supervised learning, exploring the following data formats to
     \item A raw audio waveform, with a very deep 1D convolutional neural network (CNN) inspired by Dai et al.\ \cite{verydeepconvnets}.
     \item Event images, with a 2D CNN (to determine whether they contain useful information).
 \end{enumerate}
-
-\begin{figure}[ht]
-    \centering
-    \subfloat{\fbox{\includegraphics[width=0.95\textwidth]{audio_cropped}}}
-    \qquad
-    \subfloat{\fbox{\includegraphics[width=0.35\textwidth]{image_grid}}}
-    \caption{Examples of the audio and image data.}
-\end{figure}
 
 \subsubsection{Semi-Supervised Learning}
 
@@ -109,7 +101,7 @@ To better handle impurities, I developed two novel semi-supervised learning tech
 
 \subsection{Resolving Unpredictable Photon Dynamics (DEAP-3600)}
 
-In DEAP-3600, the key challenge is the aforementioned unpredictable photon dynamics. The major source of background radiation is ``neck alphas'', which strike atoms in the gas filling the neck above the spherical detector body; because of the unpredictable direction of photon emission, it is non-trivial to calculate the position of these events.
+In DEAP-3600, the key challenge is the aforementioned unpredictable photon dynamics. The major source of background radiation is ``neck alphas'', which strike atoms in the gas filling the neck above the spherical detector body; because of the unpredictable direction of photon emission, it is non-trivial to identify this class of events.
 
 Because of the inherently spatial nature of this problem, I hypothesized it would be important to most effectively process the spherical arrangement of PMTs in the DEAP-3600 detector. I evaluated three approaches to this problem (two of which are original), listed below. Techniques \ref{map_entry} and \ref{topological_entry} (Figure \ref{deap_methods}) take advantage of geometric and spatial patterns in PMT activations associated with neck alpha events, by extending the CNN concept for use in spherical and arbitrary topologies.
 
@@ -202,13 +194,11 @@ However, only 91.2\% of background events (expected to be neck alphas) were remo
 
 \section{Conclusion}
 
-These results confirm that I met my goals on both the PICO-60 and DEAP-3600 experiments.
+These results confirm that I met my objective: my new techniques resolved the two fundamental challenges I identified, permitting significantly improved performance, requiring little manual analysis or optimization.
 
-On PICO-60, the new semi-supervised learning algorithms performed extremely well, exceeding 98\% accuracy while permitting impure calibration data and requiring little manual analysis or optimization.
+On PICO-60, the new semi-supervised learning algorithms performed extremely well, exceeding 98\% accuracy while nonetheless permitting impure calibration data.
 
-On DEAP-3600, my cylindrical projection, combined with a 2D CNN, performed better than the conventional classifier on simulated data, reducing the WIMP misclassification rate from 91.0\% to 75.7\% while matching the conventional classifier's 99.6\% background removal rate.
-
-The predictions made on real-world data demonstrate clear potential. Differences between the simulated and real-world data provide potentially useful diagnostic information on the DEAP-3600 simulation (assuming that WIMPs are not present).
+On DEAP-3600, my cylindrical projection, combined with a 2D CNN, performed better than the conventional classifier on simulated data, reducing the WIMP misclassification rate from 91.0\% to 75.7\% while matching the conventional classifier's 99.6\% background removal rate. Additionally, the predictions made on real-world data demonstrate clear potential. Differences between the simulated and real-world data provide potentially useful diagnostic information on the DEAP-3600 simulation (assuming that WIMPs are not present).
 
 Fundamentally, the problems I have solved are not specific to PICO-60 and DEAP-3600; they are common across many dark matter detection experiments. Thus, my algorithms are broadly applicable, and demonstrate promise in the field as a whole.
 
