@@ -92,7 +92,7 @@ To better handle impurities, I developed two novel semi-supervised learning tech
 
     It is hypothesized that accuracy will gradually \textit{improve} as the neural network's most confident predictions are fed back into the network as newly labeled training data.
 
-    \item Gravitational Differentiation is an analog alternative to Iterative Clustering. Using a novel piecewise exponential function for calculating final-layer derivatives, called $\mathrm{GravDiff}(p, \psi, g)$, unlabeled examples are caused to "gravitate" toward more accurate predictions based on the confidence of the neural network's predictions.
+    \item Gravitational Differentiation is an analog alternative to Iterative Clustering. Using a novel piecewise exponential function for calculating final-layer derivatives, called $\mathrm{GravDiff}(p, \psi, g)$, unlabeled examples are caused to ``gravitate'' toward more accurate predictions based on the confidence of the neural network's predictions.
 
     The function is a transformation of the hyperbolic tangent that flattens the central range and comparatively exaggerates the asymptote on either side, defined as follows:
     \begin{center}
@@ -137,7 +137,7 @@ Finally, the best-performing model was retrained on a newly selected training se
 
 As seen in Figure \ref{pico_final_results}, the banded Fourier transform format was the most effective of the supervised learning models (including the previous study), achieving 97.3\% validation accuracy. The image data was shown to contain no useful information, reaching only 63.0\% accuracy.
 
-Semi-supervised learning produced better accuracy than supervised learning. Gravitational differentiation was the best overall model, achieving 99.7\% accuracy on validation data and 98.3\% on test data. This confirms my hypothesis; it is indeed beneficial to train on the neural network's most confident predictions.
+Semi-supervised learning produced better accuracy than supervised learning. Gravitational Differentiation was the best overall technique, achieving 99.7\% accuracy on validation data and 98.3\% on test data. This confirms my hypothesis; it is indeed beneficial to incorporate the neural network's most confident predictions into its training data.
 
 \begin{figure}[ht]
     \centering
@@ -198,11 +198,11 @@ However, only 91.2\% of background events (expected to be neck alphas) were remo
 
 \section{Conclusion}
 
-These results confirm that I met my objective: my new techniques successfully addressed the two fundamental challenges I identified, permitting significantly improved performance, requiring little manual analysis or optimization.
+These results confirm that I met my objective: my new techniques successfully addressed the two fundamental challenges I identified, permitting significantly improved performance while requiring little manual analysis or optimization.
 
 On PICO-60, the new semi-supervised learning algorithms performed extremely well, exceeding 98\% accuracy while nonetheless permitting impure calibration data.
 
-On DEAP-3600, my cylindrical projection, combined with a 2D CNN, performed better than the conventional classifier on simulated data, reducing the WIMP misclassification rate from 91.0\% to 75.7\% while matching the conventional classifier's 99.6\% background removal rate. Additionally, the predictions made on real-world data demonstrate clear potential. Differences between the simulated and real-world data provide potentially useful diagnostic information on the DEAP-3600 simulation (assuming that WIMPs are not present).
+On DEAP-3600, my cylindrical projection, combined with a 2D CNN, performed better than the conventional classifier on simulated data, reducing the WIMP misclassification rate from 91.0\% to 75.7\% while matching the conventional classifier's 99.6\% background removal rate. Additionally, the predictions made on real-world data demonstrate clear potential. Differences between the simulated and real-world data provide potentially important diagnostic information on the DEAP-3600 simulation (assuming that WIMPs are not present).
 
 Fundamentally, the problems I have solved are not specific to PICO-60 and DEAP-3600; they are common across many dark matter detection experiments. Thus, my algorithms are broadly applicable, and demonstrate promise in the field as a whole.
 
