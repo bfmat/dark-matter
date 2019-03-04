@@ -27,6 +27,8 @@ plt.xlabel(r'Network Prediction (0 $\Rightarrow$ WIMP Events, 1 $\Rightarrow$ Ne
 plt.ylabel('Validation Event Count')
 # Enforce the X axis range from 0 to 1
 plt.xlim(0, 1)
+# Draw a vertical line to represent the network's decision boundary
+plt.axvline(0.5, color='black')
 # Include a legend in the graph, explaining the colors
 plt.legend()
 # Display the graph on screen
