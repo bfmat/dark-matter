@@ -7,6 +7,7 @@ import os
 import sys
 
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mtick
 import numpy as np
 
 from data_processing.experiment_serialization import load_test
@@ -26,7 +27,7 @@ for file_path in file_paths:
     # Add up the number of validation outputs that match up with AP predictions
     correct = np.sum(np.array([bubble.logarithmic_acoustic_parameter > 0.25 for bubble in bubbles]) == np.rint(outputs))
     # Calculate the accuracy percentage based on this
-    validation_accuracy_values.append(correct / len(outputs))
+    validation_accuracy_values.append(100 * correct / len(outputs))
 
 # REPEAT ALL THIS FOR TRAINING DATA
 # Get the files corresponding to the full path, allowing recursive searches (ignoring folders)
@@ -40,11 +41,16 @@ for file_path in file_paths:
     # Add up the number of validation outputs that match up with AP predictions
     correct = np.sum(np.array([bubble.logarithmic_acoustic_parameter > 0.25 for bubble in bubbles]) == np.rint(outputs))
     # Calculate the accuracy percentage based on this
-    training_accuracy_values.append(correct / len(outputs))
+    training_accuracy_values.append(100 * correct / len(outputs))
 
+# Set the size of the graph
+plt.figure(figsize=(8, 6))
 # Plot the training accuracy values in yellow and validation in green; label them accordingly
 plt.plot(training_accuracy_values, 'C2', label='Training accuracy')
 plt.plot(validation_accuracy_values, 'C4', label='Validation accuracy')
+# Use percentage labels for the Y axis
+ax = plt.gca()
+ax.yaxis.set_major_formatter(mtick.PercentFormatter())
 # Draw a legend with the labels that have already been set
 plt.legend()
 # Label the accuracy and epoch axes
