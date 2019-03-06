@@ -22,7 +22,7 @@ for definitive_training_examples in [256]:
         for learning_rate in [0.03]:
             for distortion_power in [3]:
                 # Test each configuration multiple times so the initial set does not cause a bias
-                for configuration_test_index in range(3):
+                for configuration_test_index in [8]:
                     # Print a few blank lines for separation
                     for _ in range(3):
                         print()
@@ -85,7 +85,7 @@ for definitive_training_examples in [256]:
                     gravity_multiplier = 0
 
                     # Iterate for a certain number of epochs
-                    for epoch in range(3000):
+                    for epoch in range(500):
                         # Train the model for one epoch
                         model.fit(
                             x=training_input,

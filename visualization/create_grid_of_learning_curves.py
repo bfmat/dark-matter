@@ -20,8 +20,6 @@ with open('../experimental_data/training_logs/index.txt') as file:
     training_log_index = file.readlines()
 # Separate the log entries into log file names and descriptions
 file_names, descriptions = zip(*[line.strip().split(': ', 1) for line in training_log_index])
-for n in file_names:
-    print(n)
 # Convert the resulting tuples to lists
 file_names = list(file_names)
 descriptions = list(descriptions)
