@@ -8,13 +8,11 @@ import numpy as np
 
 # Recalculate the list of hyperparameters to add to the results sheet
 hyperparameters = []
-for l2_lambda in [0, 0.0003]:
-    for activation in ['tanh']:
-        for convolutional_layers in [2, 3]:
-            for filters in [8, 16]:
-                for dense_layers in [1, 2]:
-                    for zero_weight in [0.005, 0.01, 0.015, 0.02]:
-                        hyperparameters.append([l2_lambda, activation, convolutional_layers, filters, dense_layers, zero_weight])
+for num_convolutional_layers in [3, 6]:
+    for l2_regularization in [0, 0.0005, 0.001, 0.003]:
+        for nuclear_recoil_weight in [0.005, 0.01, 0.02]:
+            for activation in ['relu', 'tanh']:
+                hyperparameters.append([num_convolutional_layers, l2_regularization, nuclear_recoil_weight, activation])
 
 
 # Read the log file from standard input, only taking the lines that include removal statistics
@@ -25,7 +23,7 @@ if len(lines) == 1564:
 # Read the numerical values into a NumPy array
 data = np.array([float(line.split()[-1]) for line in lines])
 # Reshape the array so the two values in the third dimension represents proportions of neck alphas and nuclear recoils removed, respectively, and runs are separated into groups of six that are part of the same configuration
-data = np.reshape(data, (len(data) // 24, 12, 2))
+data = np.reshape(data, (len(data) // 12, 6, 2))
 # Calculate the mean, max, min, and standard deviation for each configuration, concatenating them together
 statistics = np.concatenate([
     np.mean(data, axis=1),
@@ -33,9 +31,8 @@ statistics = np.concatenate([
     np.max(data, axis=1),
     np.min(data, axis=1)
 ], axis=1)
-# mean_alpha, mean_wimp, std_alpha, std_wimp, max_alpha, max_wimp, min_alpha, min_wimp = statistics[configuration_index]
 # Print an initial line for the CSV
-print('L2 lambda,Activation,Conv layers,Filters,Dense layers,Alpha class weight,Mean alpha removal,Mean WIMP removal,Alpha removal std dev,WIMP removal std dev,Max alpha removal,Max WIMP removal,Min alpha removal,Min WIMP removal')
+print('Conv layers,L2 lambda,WIMP class weight,Activation,Mean alpha removal,Mean WIMP removal,Alpha removal std dev,WIMP removal std dev,Max alpha removal,Max WIMP removal,Min alpha removal,Min WIMP removal')
 # Print out each of the good runs in a nicely formatted list
 for configuration_index in range(len(statistics)):
     # Combine the hyperparameter and result table rows
