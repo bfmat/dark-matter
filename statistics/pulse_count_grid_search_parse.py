@@ -8,7 +8,7 @@ import numpy as np
 
 # Recalculate the list of hyperparameters to add to the results sheet
 hyperparameters = []
-for l2_lambda in [0.0006, 0.001, 0.003]:
+for l2_lambda in [0, 0.0003]:
     for activation in ['tanh']:
         for convolutional_layers in [2, 3]:
             for filters in [8, 16]:
