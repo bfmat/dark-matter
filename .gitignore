@@ -428,3 +428,6 @@ visualization/manual_optimization_log.pdf
 
 # Weird temp files created by SHARCNET
 core.6386
+
+# LibreOffice lock files
+.~lock.*
