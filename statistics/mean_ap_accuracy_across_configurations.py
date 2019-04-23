@@ -34,15 +34,13 @@ for line in statistic_lines:
 
 # Create a list of hyperparameters to output alongside the results
 hyperparameters = []
-for l2_lambda in [0.003, 0.001, 0.0003]:
-    for dense_dropout in [0, 0.25, 0.5]:
-        for first_layer_filters in [24, 48]:
-            for kernel_size in [3, 5]:
-                for convolutional_layers_per_group in [3, 6]:
-                    hyperparameters.append([l2_lambda, dense_dropout, first_layer_filters, kernel_size, convolutional_layers_per_group])
+for dropout in [0, 0.25, 0.5]:
+    for l2_lambda in [0, 0.0003, 0.001, 0.003, 0.01]:
+        for hidden_layers in [1, 2, 3]:
+            hyperparameters.append([dropout, l2_lambda, hidden_layers])
 
 # Output a starting line for the CSV
-print('L2 lambda,Dropout,Filters,Kernel size,Conv layers multiplier,Mean squared error,Accuracy,Precision,Recall')
+print('Dropout,L2 lambda,Hidden layers,Mean squared error,Accuracy,Precision,Recall')
 # Iterate over the configuration keys of the dictionary, and hyperparameter combinations
 for configuration, hyperparameter_list in zip(statistics, hyperparameters):
     # Zip the list of statistics into a NumPy array
