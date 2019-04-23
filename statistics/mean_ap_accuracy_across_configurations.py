@@ -34,12 +34,13 @@ for line in statistic_lines:
 
 # Create a list of hyperparameters to output alongside the results
 hyperparameters = []
-for l2_lambda in [0, 0.001, 0.003]:
-    for dropout in [0, 0.25, 0.5]:
-        hyperparameters.append([l2_lambda, dropout])
+for dropout in [0, 0.25, 0.5]:
+    for l2_lambda in [0, 0.0003, 0.001, 0.003, 0.006, 0.01]:
+        for convolutional_layers_per_group in [2, 3, 4]:
+            hyperparameters.append([dropout, l2_lambda, convolutional_layers_per_group])
 
 # Output a starting line for the CSV
-print('L2 lambda,Dropout,Mean squared error,Accuracy,Precision,Recall')
+print('Dropout,L2 lambda,Conv layers multiplier,Accuracy,Precision,Recall')
 # Iterate over the configuration keys of the dictionary, and hyperparameter combinations
 for configuration, hyperparameter_list in zip(statistics, hyperparameters):
     # Zip the list of statistics into a NumPy array
@@ -47,7 +48,8 @@ for configuration, hyperparameter_list in zip(statistics, hyperparameters):
     # Convert the disagreement values to accuracy
     data[1] = 1 - (data[1] / VALIDATION_EXAMPLES)
     # Calculate the mean, standard deviation, minimum, and maximum of each statistic
-    statistic_values = np.concatenate([[statistic(row) for row in data] for statistic in [np.mean]])
+    # Temp: remove mean squared error which is often NaN for reasons
+    statistic_values = np.concatenate([[statistic(row) for row in data[1:]] for statistic in [np.mean]])
     # Concatentate together the hyperparameters and performance statistics
     out_values = np.concatenate([hyperparameter_list, statistic_values])
     print(*out_values, sep=',')
