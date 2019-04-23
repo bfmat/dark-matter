@@ -32,22 +32,25 @@ for line in statistic_lines:
     # Add the statistics tuple to the corresponding list in the dictionary
     statistics[configuration].append(statistics_tuple)
 
-# Iterate over the configuration keys of the dictionary
-for configuration in statistics:
+# Create a list of hyperparameters to output alongside the results
+hyperparameters = []
+for l2_lambda in [0.003, 0.001, 0.0003]:
+    for dense_dropout in [0, 0.25, 0.5]:
+        for first_layer_filters in [24, 48]:
+            for kernel_size in [3, 5]:
+                for convolutional_layers_per_group in [3, 6]:
+                    hyperparameters.append([l2_lambda, dense_dropout, first_layer_filters, kernel_size, convolutional_layers_per_group])
+
+# Output a starting line for the CSV
+print('L2 lambda,Dropout,Filters,Kernel size,Conv layers multiplier,Mean squared error,Accuracy,Precision,Recall')
+# Iterate over the configuration keys of the dictionary, and hyperparameter combinations
+for configuration, hyperparameter_list in zip(statistics, hyperparameters):
     # Zip the list of statistics into a NumPy array
     data = np.array(list(zip(*statistics[configuration])))
     # Convert the disagreement values to accuracy
     data[1] = 1 - (data[1] / VALIDATION_EXAMPLES)
     # Calculate the mean, standard deviation, minimum, and maximum of each statistic
-    statistic_values = np.array([[statistic(row) for row in data] for statistic in [np.mean, np.min, np.max]])
-    # Only accept runs with a sufficiently high mean accuracy
-    if statistic_values[0, 1] < 0.94:
-        continue
-    # Print the configuration followed by the data arrays (raw and statistical)
-    print('Configuration:', configuration)
-    print('Raw Data:')
-    print(data)
-    print('Statistics:')
-    # Print out the statistics one by one
-    for individual_stat, name in zip(np.transpose(statistic_values), ['MSE', 'Accuracy', 'Precision', 'Recall']):
-        print(name, tuple(individual_stat))
+    statistic_values = np.concatenate([[statistic(row) for row in data] for statistic in [np.mean]])
+    # Concatentate together the hyperparameters and performance statistics
+    out_values = np.concatenate([hyperparameter_list, statistic_values])
+    print(*out_values, sep=',')
