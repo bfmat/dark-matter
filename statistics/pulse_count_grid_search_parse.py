@@ -8,10 +8,13 @@ import numpy as np
 
 # Recalculate the list of hyperparameters to add to the results sheet
 hyperparameters = []
-for l2_lambda in [0, 0.0003, 0.0006, 0.001, 0.003]:
-    for dropout in [0, 0.25, 0.5]:
-        for hidden_layers in [2, 4, 6]:
-            hyperparameters.append([l2_lambda, dropout, hidden_layers])
+for l2_lambda in [0.0006, 0.001, 0.003]:
+    for activation in ['tanh']:
+        for convolutional_layers in [2, 3]:
+            for filters in [8, 16]:
+                for dense_layers in [1, 2]:
+                    for zero_weight in [0.005, 0.01, 0.015, 0.02]:
+                        hyperparameters.append([l2_lambda, activation, convolutional_layers, filters, dense_layers, zero_weight])
 
 
 # Read the log file from standard input, only taking the lines that include removal statistics
@@ -32,7 +35,7 @@ statistics = np.concatenate([
 ], axis=1)
 # mean_alpha, mean_wimp, std_alpha, std_wimp, max_alpha, max_wimp, min_alpha, min_wimp = statistics[configuration_index]
 # Print an initial line for the CSV
-print('L2 lambda,Dropout,Hidden layers,Mean alpha removal,Mean WIMP removal,Alpha removal std dev,WIMP removal std dev,Max alpha removal,Max WIMP removal,Min alpha removal,Min WIMP removal')
+print('L2 lambda,Activation,Conv layers,Filters,Dense layers,Alpha class weight,Mean alpha removal,Mean WIMP removal,Alpha removal std dev,WIMP removal std dev,Max alpha removal,Max WIMP removal,Min alpha removal,Min WIMP removal')
 # Print out each of the good runs in a nicely formatted list
 for configuration_index in range(len(statistics)):
     # Combine the hyperparameter and result table rows
