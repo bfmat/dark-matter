@@ -34,14 +34,15 @@ for line in statistic_lines:
 
 # Create a list of hyperparameters to output alongside the results
 hyperparameters = []
-for l2_lambda in [0, 0.001, 0.003]:
-    for dropout in [0, 0.25, 0.5]:
-        hyperparameters.append([l2_lambda, dropout])
+for dropout in [0, 0.25, 0.5]:
+    for l2_lambda in [0, 0.0003, 0.001, 0.003, 0.01]:
+        for hidden_layers in [1, 2, 3]:
+            hyperparameters.append([dropout, l2_lambda, hidden_layers])
 # Keep a list of the names of the hyperparameters, for searching of configurations
-hyperparameter_names = ['l2_lambda', 'dropout']
+hyperparameter_names = ['dropout', 'l2_lambda', 'hidden_layers']
 
 # Output a starting line for the CSV
-print('L2 lambda,Dropout,Mean squared error,Accuracy,Precision,Recall')
+print('Dropout,L2 lambda,Hidden layers,Mean squared error,Accuracy,Precision,Recall')
 # Iterate over the hyperparameter combinations
 for hyperparameter_list in hyperparameters:
     # Get the configuration corresponding to these hyperparameters
@@ -69,3 +70,4 @@ for hyperparameter_list in hyperparameters:
     out_values = np.concatenate([hyperparameter_list, statistic_values])
     # Print them out as a line of CSV data
     print(*out_values, sep=',')
+    # print(right_configuration)
