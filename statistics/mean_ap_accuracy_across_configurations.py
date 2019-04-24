@@ -38,6 +38,7 @@ for dropout in [0, 0.25, 0.5]:
     for l2_lambda in [0, 0.0003, 0.001, 0.003, 0.006, 0.01]:
         for convolutional_layers_per_group in [2, 3, 4]:
             hyperparameters.append([dropout, l2_lambda, convolutional_layers_per_group])
+# Keep a list of the names of the hyperparameters, for searching of configurations
 hyperparameter_names = ['dropout', 'l2_lambda', 'convolutional_layers_per_group']
 
 # Output a starting line for the CSV
@@ -45,15 +46,28 @@ print('Dropout,L2 lambda,Conv layers multiplier,Accuracy,Precision,Recall')
 # Iterate over the hyperparameter combinations
 for hyperparameter_list in hyperparameters:
     # Get the configuration corresponding to these hyperparameters
-    configuration = None  # add stuff
+    right_configuration = None
+    for configuration in statistics:
+        # Iterate over each of the hyperparameter names, verifying that the right value is present
+        right = True
+        for index, hyperparameter_name in enumerate(hyperparameter_names):
+            # Get the value after the name and before the underscore, and compare it to the current value being iterated over in the outer loop
+            # If there is no underscore after the value, everything up until the end will be returned, so this is okay
+            if configuration.split(hyperparameter_name)[1].split('_')[0] != str(hyperparameter_list[index]):
+                right = False
+                break
+        # If we have the right one, set the variable outside the loop
+        if right:
+            right_configuration = configuration
+            break
     # Zip the list of statistics into a NumPy array
-    data = np.array(list(zip(*statistics[configuration])))
+    data = np.array(list(zip(*statistics[right_configuration])))
     # Convert the disagreement values to accuracy
     data[1] = 1 - (data[1] / VALIDATION_EXAMPLES)
     # Calculate the mean, standard deviation, minimum, and maximum of each statistic
     # Temp: remove mean squared error which is often NaN for reasons
     statistic_values = np.concatenate([[statistic(row) for row in data[1:]] for statistic in [np.mean]])
-    # Concatentate together the hyperparameters and performance statistics
+    # Concatenate together the hyperparameters and performance statistics
     out_values = np.concatenate([hyperparameter_list, statistic_values])
+    # Print them out as a line of CSV data
     print(*out_values, sep=',')
-    print(configuration)
