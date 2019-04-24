@@ -34,17 +34,16 @@ for line in statistic_lines:
 
 # Create a list of hyperparameters to output alongside the results
 hyperparameters = []
-for initial_training_examples in [32, 64, 128, 256]:
-    for initial_threshold in [0.01, 0.02]:
-        for threshold_multiplier in [1.025, 1.05]:
-            for l2_lambda in [0, 0.001, 0.003]:
-                for dropout in [0, 0.25, 0.5]:
-                    hyperparameters.append([initial_training_examples, initial_threshold, threshold_multiplier, l2_lambda, dropout])
+for definitive_training_examples in [128, 256]:
+    for gravity_multiplier_increment in [0.0005, 0.001, 0.003, 0.005, 0.008]:
+        for learning_rate in [0.001, 0.003, 0.01, 0.03]:
+            for distortion_power in [3, 5, 7, 9, 11]:
+                hyperparameters.append([definitive_training_examples, gravity_multiplier_increment, learning_rate, distortion_power])
 # Keep a list of the names of the hyperparameters, for searching of configurations
-hyperparameter_names = ['initial_examples', 'initial_threshold', 'threshold_multiplier', 'l2_lambda', 'dropout']
+hyperparameter_names = ['definitive_training_examples', 'gravity_multiplier_increment', 'learning_rate', 'distortion_power']
 
 # Output a starting line for the CSV
-print('Initial training examples,Initial threshold,Threshold multiplier,L2 lambda,Dropout,Mean squared error,Accuracy,Precision,Recall')
+print('Labeled training examples,Gravitational multiplier increment,Learning rate,Distortion power,Mean squared error,Accuracy,Precision,Recall')
 # Iterate over the hyperparameter combinations
 for hyperparameter_list in hyperparameters:
     # Get the configuration corresponding to these hyperparameters
@@ -72,4 +71,3 @@ for hyperparameter_list in hyperparameters:
     out_values = np.concatenate([hyperparameter_list, statistic_values])
     # Print them out as a line of CSV data
     print(*out_values, sep=',')
-    # print(right_configuration)
