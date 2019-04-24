@@ -34,17 +34,17 @@ for line in statistic_lines:
 
 # Create a list of hyperparameters to output alongside the results
 hyperparameters = []
-for l2_lambda in [0.003, 0.001, 0.0003]:
-    for dense_dropout in [0, 0.25, 0.5]:
-        for first_layer_filters in [24, 48]:
-            for kernel_size in [3, 5]:
-                for convolutional_layers_per_group in [3, 6]:
-                    hyperparameters.append([l2_lambda, dense_dropout, first_layer_filters, kernel_size, convolutional_layers_per_group])
+for initial_training_examples in [32, 64, 128, 256]:
+    for initial_threshold in [0.01, 0.02]:
+        for threshold_multiplier in [1.025, 1.05]:
+            for l2_lambda in [0, 0.001, 0.003]:
+                for dropout in [0, 0.25, 0.5]:
+                    hyperparameters.append([initial_training_examples, initial_threshold, threshold_multiplier, l2_lambda, dropout])
 # Keep a list of the names of the hyperparameters, for searching of configurations
-hyperparameter_names = ['l2_lambda', 'dense_dropout', 'first_layer_filters', 'kernel_size', 'convolutional_layers_per_group']
+hyperparameter_names = ['initial_examples', 'initial_threshold', 'threshold_multiplier', 'l2_lambda', 'dropout']
 
 # Output a starting line for the CSV
-print('L2 lambda,Dropout,Filters,Kernel size,Conv layers per group,Mean squared error,Accuracy,Precision,Recall')
+print('Initial training examples,Initial threshold,Threshold multiplier,L2 lambda,Dropout,Mean squared error,Accuracy,Precision,Recall')
 # Iterate over the hyperparameter combinations
 for hyperparameter_list in hyperparameters:
     # Get the configuration corresponding to these hyperparameters
@@ -67,7 +67,7 @@ for hyperparameter_list in hyperparameters:
     # Convert the disagreement values to accuracy
     data[1] = 1 - (data[1] / VALIDATION_EXAMPLES)
     # Calculate the mean, standard deviation, minimum, and maximum of each statistic
-    statistic_values = np.concatenate([[statistic(row) for row in data] for statistic in [np.mean]])
+    statistic_values = np.concatenate([[statistic(row) for row in data] for statistic in [np.nanmean]])
     # Concatenate together the hyperparameters and performance statistics
     out_values = np.concatenate([hyperparameter_list, statistic_values])
     # Print them out as a line of CSV data
