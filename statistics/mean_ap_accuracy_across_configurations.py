@@ -38,11 +38,14 @@ for dropout in [0, 0.25, 0.5]:
     for l2_lambda in [0, 0.0003, 0.001, 0.003, 0.006, 0.01]:
         for convolutional_layers_per_group in [2, 3, 4]:
             hyperparameters.append([dropout, l2_lambda, convolutional_layers_per_group])
+hyperparameter_names = ['dropout', 'l2_lambda', 'convolutional_layers_per_group']
 
 # Output a starting line for the CSV
 print('Dropout,L2 lambda,Conv layers multiplier,Accuracy,Precision,Recall')
-# Iterate over the configuration keys of the dictionary, and hyperparameter combinations
-for configuration, hyperparameter_list in zip(statistics, hyperparameters):
+# Iterate over the hyperparameter combinations
+for hyperparameter_list in hyperparameters:
+    # Get the configuration corresponding to these hyperparameters
+    configuration = None  # add stuff
     # Zip the list of statistics into a NumPy array
     data = np.array(list(zip(*statistics[configuration])))
     # Convert the disagreement values to accuracy
@@ -53,3 +56,4 @@ for configuration, hyperparameter_list in zip(statistics, hyperparameters):
     # Concatentate together the hyperparameters and performance statistics
     out_values = np.concatenate([hyperparameter_list, statistic_values])
     print(*out_values, sep=',')
+    print(configuration)
