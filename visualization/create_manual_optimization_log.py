@@ -10,13 +10,15 @@ import os
 from matplotlib.patches import Patch
 import matplotlib.pyplot as plt
 import numpy as np
-from pylatex import Document, Section, Figure, NoEscape, Subsection
+from pylatex import Document, Section, Figure, NoEscape, Subsection, Package
 
 # Import with different names so there is no conflict
 from data_processing.experiment_serialization import load_test as load_test
 
 # Create a LaTeX document to add everything to
 document = Document('manual_optimization_log', geometry_options={'margin': '1in'})
+# Disable page numbers
+document.packages.append(Package('nopageno'))
 
 # LEARNING CURVE GRAPHING SECTION
 # Add a title and description explaining this section
@@ -54,16 +56,12 @@ delete_indices = [file_names.index(delete_file_name) for delete_file_name in [
 for index in reversed(sorted(delete_indices)):
     del file_names[index]
     del descriptions[index]
-# Create a date variable for comparison
-last_date = None
 # Iterate over the files, creating graphs with descriptions
 for file_name, description in zip(file_names, descriptions):
     # Get the date from the beginning of the file name (separated by underscores)
     date = datetime.date(*[int(number) for number in file_name.split('_')[:3]])
-    # If the date is new, update it and create a section header
-    if date != last_date:
-        last_date = date
-        document.append(Section(str(date), numbering=False))
+    # Create a section header with the date
+    document.append(Section(str(date), numbering=False))
     # Prepend the file name with the path to the log folder
     file_path = f'../experimental_data/training_logs/{file_name}'
     # Open the file and load its full contents
@@ -172,8 +170,6 @@ delete_indices = [folder_names.index(delete_folder_name) for delete_folder_name 
 for index in reversed(sorted(delete_indices)):
     del folder_names[index]
     del descriptions[index]
-# Create a date variable for comparison
-last_date = None
 # Iterate over the folder, creating graphs with descriptions
 for folder_name, description in zip(folder_names, descriptions):
     # Prepend the folder name with the path to the log folder
@@ -263,10 +259,8 @@ for folder_name, description in zip(folder_names, descriptions):
         plt.legend()
     # Get the date from the beginning of the folder name (separated by underscores)
     date = datetime.date(*[int(number) for number in folder_name.split('_')[:3]])
-    # If the date is new, update it and create a section header
-    if date != last_date:
-        last_date = date
-        document.append(Section(str(date), numbering=False))
+    # Create a section header with the date
+    document.append(Section(str(date), numbering=False))
     # Get a name for this plot subsection, taking it from the folder name after the date
     subsection_name = folder_name.split('_', 3)[-1].replace('_', ' ').title()
     # If there is a .json file extension, remove it

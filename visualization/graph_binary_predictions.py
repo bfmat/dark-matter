@@ -17,7 +17,7 @@ from utilities.verify_arguments import verify_arguments
 verify_arguments('JSON data file')
 
 # Load the data set from the file, ignoring the run type ground truths
-events, _, network_outputs = load_test(sys.argv[1])
+events, ground_truths, network_outputs = load_test(sys.argv[1])
 # Get the acoustic parameter and neural network score data from the events, if they are present (if one is, both will be)
 if hasattr(events[0], 'logarithmic_acoustic_parameter'):
     acoustic_parameters, original_neural_network_scores = zip(
@@ -30,20 +30,20 @@ else:
     acoustic_parameters = random_values
     original_neural_network_scores = random_values
 # Calculate actual neutron/alpha ground truths based on AP
-ground_truths = np.array(acoustic_parameters) > 0.25
+#ground_truths = np.array(acoustic_parameters) > 0.25
 
 # Iterate over the three criteria standard deviations will be calculated for, with corresponding names and classification thresholds
 for criterion_data, criterion_name, classification_threshold in zip(
-    copy.deepcopy([acoustic_parameters]),
-    ['acoustic parameters'],
-    [0.25]
+    copy.deepcopy([acoustic_parameters, network_outputs]),
+    ['acoustic parameters', 'network outputs'],
+    [0.25, 0.5]
 ):
     # Convert the raw outputs to binary classifications, based on whether they are greater than or equal to the threshold
     classifications = np.array([data_point >= classification_threshold for data_point in criterion_data])
     # Get the number of these classifications that agree with the ground truths
     agreements = np.count_nonzero(classifications == ground_truths)
     # Print out the resulting accuracy statistic to the user
-    print(f'Accuracy of {agreements / 128} for {criterion_name}')
+    print(f'Accuracy of {agreements / len(classifications)} for {criterion_name}')
     # Repeat this process for precision (erroneous recoil predictions) and recall (erroneous alpha predictions) individually
     # First, count the number of events predicted as recoils, and then divide the number that are incorrectly predicted to be recoils by that
     predicted_recoils = np.count_nonzero(classifications == 0)
