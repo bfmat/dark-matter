@@ -119,7 +119,7 @@ In this study, all newly developed machine learning-based discriminators were co
 
 An Acoustic Parameter method (furthermore AP) is the technique that was used for event discrimination in the original PICO-60 analysis. A function was defined that discriminates between alpha particles and nuclear recoils based on audio data. It was derived based on a physical model of the bubble chamber, and was tuned using neutron calibration sources to produce events in the PICO-60 apparatus.
 
-Before AP can be calculated, the audio data must first be converted into the frequency domain (specifically, with the banded Fourier transform $\beta_{8}$). It must also be preprocessed with the position correction function (discussed in Section \ref{camera_derived}), which adjusts the overall amplitude of an audio recording according to its position in the vessel. This is done because the acoustic characteristics differ significantly depending on the position of the event in the vessel \cite{pico}.
+Before AP can be calculated, the audio data must first be converted into the frequency domain (specifically, with the banded Fourier transform $\beta_{8}$). It must also be preprocessed with the position correction function (discussed in Section \ref{data_format}), which adjusts the overall amplitude of an audio recording according to its position in the vessel. This is done because the acoustic characteristics differ significantly depending on the position of the event in the vessel \cite{pico}.
 
 Finally, a set of data cuts must be applied to remove classes of events which are not accurately classified using AP alone. These classes include events originating close to the walls of the detector, and multiple-bubble events.
 
@@ -176,7 +176,7 @@ PICO-60 events which include multiple bubbles are \textit{always} neutron events
 
 Events that occur near the walls of the vessel have acoustic properties which are very different from events nearer the center of the vessel. It can be desirable for a discriminator to handle these events correctly; however, AP alone does not, and neither does the neural network used in the previous PICO-60 paper. Thus, removing wall events allowed for a more meaningful direct comparison between a new neural network and existing techniques.
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=\textwidth]{wall_event_positions}
     \caption{\label{wall_cuts_visualization} A visualization of the fiducial cuts and how they match up with the pressure and acoustic cuts.}
@@ -269,10 +269,12 @@ The following hyperparameter range was selected based on manual empirical testin
     \item L2 Regularization $\lambda \in \{0, 0.0003, 0.001, 0.003, 0.01\}$
     \item Number of Dense Layers $\in \{2, 3, 4\}$
     \item Optimizer = Adam \cite{adam}
+    \item Loss = Mean Squared Error (found empirically to outperform binary cross-entropy)
+    \item Activation = tanh (found empirically to outperform ReLU)
     \item Batch Size = 32
 \end{itemize}
 
-Results from this grid search are discussed in Section \ref{results}.
+As discussed in Section \ref{optimization}, the best model was selected from this grid search based on accuracy and tested. Results from all grid searches are discussed in Section \ref{results}.
 
 \section{Semi-Supervised Learning} \label{semi_supervised}
 
@@ -309,15 +311,15 @@ The algorithm is initialized as follows:
 \begin{enumerate}
     \item Take a subset of the training data, referred to as the seed set $\varsigma$. Use this as the beginning of the training set.
     \item Remove classifications from any other available training examples. These create the unlabeled set $\upsilon$.
-    \item Compile and randomly initialize the weights of a binary classification neural network $NN(x)$.
+    \item Compile and randomly initialize the weights of a binary classification neural network $N(x)$.
 \end{enumerate}
 
 Parameterized by the initial seed threshold $j$ (on the order of 0.01) and the seed threshold multiplier $k$ (on the order of 1.05), the algorithm follows these iterative steps:
 
 \begin{enumerate}
-    \item Train $NN(x)$ for 30 epochs on $\varsigma$, using the imperfect ground truth values available.
-    \item Using the partially trained weights of $NN(x)$, run inference on the entirety of $\upsilon$, producing a set of predictions $p$.
-    \item Find predictions within $p$ that are within a distance of $j$ of either 0 or 1; as this is a binary classifier, such a prediction represents high confidence. Remove any such examples from $\upsilon$ and add them to $\varsigma$. The principle is that, when $NN(x)$ is trained on a relatively small set for short period of time, the few predictions within $p$ that are very confident are highly likely to be correct.
+    \item Train $N(x)$ for 30 epochs on $\varsigma$, using the imperfect ground truth values available.
+    \item Using the partially trained weights of $N(x)$, run inference on the entirety of $\upsilon$, producing a set of predictions $p$.
+    \item Find predictions within $p$ that are within a distance of $j$ of either 0 or 1; as this is a binary classifier, such a prediction represents high confidence. Remove any such examples from $\upsilon$ and add them to $\varsigma$. The principle is that, when $N(x)$ is trained on a relatively small set for short period of time, the few predictions within $p$ that are very confident are highly likely to be correct.
     \item If no examples have been removed from $\upsilon$ and added to $\varsigma$, multiply $j$ by $k$ in place. This is done to increase the acceptance rate later in the training process, when most easily classifiable examples have been added to $\varsigma$. Otherwise, gridlock would occur, where certain examples could not be confidently classified given the training set.
 \end{enumerate}
 
@@ -362,17 +364,17 @@ It is a transformation of the hyperbolic tangent that flattens the central range
 
 \subsubsection{Application}
 
-This function is applied in a training algorithm that is parameterized by the set of imperfectly labeled data $\varsigma$, the set of unlabeled training data $\upsilon$, a binary classification neural network $NN(x)$ (where $x$ is the input data format), and the gravitational multiplier increment $\delta_g$. The distortion power $\psi$ is assumed to be constant throughout a training run, and the gravitational multiplier $g$ is initialized at 0, gradually increasing during training. It iterates as follows:
+This function is applied in a training algorithm that is parameterized by the set of imperfectly labeled data $\varsigma$, the set of unlabeled training data $\upsilon$, a binary classification neural network $N(x)$ (where $x$ is the input data format), and the gravitational multiplier increment $\delta_g$. The distortion power $\psi$ is assumed to be constant throughout a training run, and the gravitational multiplier $g$ is initialized at 0, gradually increasing during training. It iterates as follows:
 
 \begin{enumerate}
-    \item Train $NN(x)$ for a single epoch on the combined set $\varsigma \cup \upsilon$, using the predefined ground truths for $\varsigma$ (with a mean squared error loss function) and the most recently calculated gravitational gradients for each of the examples in $\upsilon$.
-    \item Calculate predictions $p$ with $NN(x)$ on the entirety of $\upsilon$. Calculate $\mathrm{GravDiff}(p, \psi, g)$ and record the resulting gradients for the next iteration.
+    \item Train $N(x)$ for a single epoch on the combined set $\varsigma \cup \upsilon$, using the predefined ground truths for $\varsigma$ (with a mean squared error loss function) and the most recently calculated gravitational gradients for each of the examples in $\upsilon$.
+    \item Calculate predictions $p$ with $N(x)$ on the entirety of $\upsilon$. Calculate $\mathrm{GravDiff}(p, \psi, g)$ and record the resulting gradients for the next iteration.
     \item Increment $g$ by $\delta_{g}$. At the beginning, when $g = 0$, training will be entirely based on the labeled set $\varsigma$, and progressively, over the course of a run, the gravitational effect increases with $g$.
 \end{enumerate}
 
-This system was trained using a multi-layer perceptron with an 8-band Fourier transform input for $NN(x)$, because this was one of the most successful configurations in supervised learning. It produced the highest accuracy as well as the lowest class-wise standard deviation.
+This system was trained using a multi-layer perceptron with an 8-band Fourier transform input for $N(x)$, because this was one of the most successful configurations in supervised learning. It produced the highest accuracy as well as the lowest class-wise standard deviation.
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=\textwidth]{grav_diff}
     \caption{\label{grav_diff} A visualization of $\mathrm{GravDiff}(p, \psi, g)$ with respect to $p$ and $\psi$.}
@@ -445,7 +447,7 @@ As discussed in Section \ref{objective}, discriminators such as AP are difficult
 
 All programming for this study was done in Python 3. Keras \cite{keras}, running on a TensorFlow \cite{tensorflow} backend, was used for all machine learning tasks. NumPy \cite{numpy} and SciPy \cite{scipy} were used for linear algebra and signal processing. ROOT \cite{root}, scikit-image \cite{scikit-image}, and scikit-learn \cite{scikit-learn} were used for data loading and storage. Matplotlib \cite{matplotlib} was used for data visualization.
 
-Implementation code for all algorithms discussed in this paper can be found at \url{https://github.com/brendon-ai/dark-matter}.
+Implementation code for all algorithms discussed in this paper can be found at \url{https://github.com/bfmat/dark-matter}.
 
 \section{Acknowledgements}
 
