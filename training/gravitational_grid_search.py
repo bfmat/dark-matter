@@ -38,7 +38,7 @@ for definitive_training_examples in [128, 256]:
                     print('Distortion Power:', distortion_power)
                     print('Configuration test index:', configuration_test_index)
                     # Create a description folder path which is used for saving validation sets
-                    description = f'dgravitational_grid_search/definitive_training_examples{definitive_training_examples}/gravity_multiplier_increment{gravity_multiplier_increment}/learning_rate{learning_rate}/distortion_power{distortion_power}/configuration_test{configuration_test_index}'
+                    description = f'gravitational_grid_search/definitive_training_examples{definitive_training_examples}/gravity_multiplier_increment{gravity_multiplier_increment}/learning_rate{learning_rate}/distortion_power{distortion_power}/configuration_test{configuration_test_index}'
 
                     # Create a neural network model that includes several dense layers with hyperbolic tangent activations, L2 regularization, and batch normalization
                     regularizer = l2(0.001)
