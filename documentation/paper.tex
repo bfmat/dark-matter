@@ -219,7 +219,7 @@ A significant challenge in this application is that neither supervised nor unsup
 
 For these reasons, a technique is needed that is not as sensitive to problematic training data as supervised learning, but more predictable and controllable than unsupervised learning. Semi-supervised learning is a middle ground in this regard. It makes use of a labeled set as well as an unlabeled set. It uses the labeled set for training, and uses the unlabeled set to further structure the patterns it finds in the training set (which may not be sufficiently large to apply to supervised learning).
 
-Two semi-supervised algorithms were implemented for this study: the existing method pseudo-labels \cite{pseudo}, and a novel method, gravitational differentiation. Both are discussed in detail in Section \ref{semi_supervised}.
+Two semi-supervised algorithms were implemented for this study: the existing method of pseudo-labels \cite{pseudo}, and a novel method, gravitational differentiation. Both are discussed in detail in Section \ref{semi_supervised}.
 
 \subsection{Performance Analysis}
 
@@ -266,12 +266,12 @@ A variety of network architectures were tested for this task. Most had a small n
 The following hyperparameter range was selected based on manual empirical testing, and was thus exhaustively searched:
 \begin{itemize}
     \item Dropout $\in \{0, 0.25, 0.5\}$
-    \item L2 Regularization $\lambda \in \{0, 0.0003, 0.001, 0.003, 0.01\}$
-    \item Number of Dense Layers $\in \{2, 3, 4\}$
+    \item L2 regularization $\lambda \in \{0, 0.0003, 0.001, 0.003, 0.01\}$
+    \item Number of dense layers $\in \{2, 3, 4\}$
     \item Optimizer = Adam \cite{adam}
-    \item Loss = Mean Squared Error (found empirically to outperform binary cross-entropy)
+    \item Loss = mean squared error (found empirically to outperform binary cross-entropy)
     \item Activation = tanh (found empirically to outperform ReLU)
-    \item Batch Size = 32
+    \item Batch size = 32
 \end{itemize}
 
 As discussed in Section \ref{optimization}, the best model was selected from this grid search based on accuracy and tested. Results from all grid searches are discussed in Section \ref{results}.
@@ -288,7 +288,7 @@ The primary advantage of semi-supervised learning is clear: it requires fewer la
 
 Two techniques for semi-supervised learning have been used for this study: pseudo-labels (an existing method), and gravitational differentiation (a new method). The essence of both algorithms is a positive feedback loop. First, the network is trained on a smaller amount of imperfect data. Throughout the training process, the network runs predictions on unlabeled data. By using its most confident predictions in the training process, the desired function (separating particle types) is continuously reinforced, while less confident predictions are de-emphasized. This effectively draws new, unlabeled data into the training set.
 
-Because all data in the PICO-60 experiment is labeled, unlabeled training data sets are randomly sampled from the 496 training examples remaining (after the validation set is selected). Labeled set sizes of 32, 64, 128, and 256 were tested; the remainder of the 496 examples would be used as unlabeled data.
+Because all data in the PICO-60 experiment is labeled, unlabeled training data sets are randomly sampled from the 496 training examples remaining (after the validation set is selected). Labeled set sizes of 128 and 256 were tested; the remainder of the 496 examples would be used as unlabeled data.
 
 As mentioned above, all data in the PICO-60 experiment is labeled. Thus, the key application of these algorithms is not in the PICO-60, but rather in future WIMP detection experiments where not all data is labeled, or where part of the data contains a large proportion of impurities and it is thus beneficial to train without those labels.
 
@@ -352,7 +352,7 @@ Gradients are calculated using the gravitational differentiation function $\math
     \mathrm{GravDiff}(p, \psi, g) = g \cdot \mathrm{sgn}(p) \cdot \mathrm{abs}(\mathrm{tanh}(2(p - 0.5))) ^ \psi
 \end{equation}
 
-It is a transformation of the hyperbolic tangent that flattens the central range and comparatively exaggerates the asymptote on either side. The equation above can be described in the following steps:
+It is a transformation of the hyperbolic tangent that flattens the central range and comparatively exaggerates the asymptote on either side, as visualized in Figure \ref{grav_diff}. The equation above can be described in the following steps:
 
 \begin{enumerate}
     \item Transform the network's prediction $p$, so its range is 1 to -1 rather than 0 to 1.
@@ -372,70 +372,58 @@ This function is applied in a training algorithm that is parameterized by the se
     \item Increment $g$ by $\delta_{g}$. At the beginning, when $g = 0$, training will be entirely based on the labeled set $\varsigma$, and progressively, over the course of a run, the gravitational effect increases with $g$.
 \end{enumerate}
 
-This system was trained using a multi-layer perceptron with an 8-band Fourier transform input for $N(x)$, because this was one of the most successful configurations in supervised learning. It produced the highest accuracy as well as the lowest class-wise standard deviation.
-
-\begin{figure}[!ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{grav_diff}
+    \includegraphics[width=0.85\textwidth]{grav_diff}
     \caption{\label{grav_diff} A visualization of $\mathrm{GravDiff}(p, \psi, g)$ with respect to $p$ and $\psi$.}
 \end{figure}
 
 \section{Results} \label{results}
 
-Table \ref{semi_success_overview} directly compares performance of all semi-supervised learning configurations, with supervised learning, the original PICO-60 ML analysis, and AP provided as baselines for comparison. For every $\varsigma$ size except 32, ICN performs better than supervised learning; for 128 and 256, GD also performs better. For 32, 64, and 128 labeled examples, ICN proves to be more effective than GD; however, when 256 examples are labeled, GD provides the best accuracy, at 99.2\%.
-
-Perhaps most notably, iterative cluster nucleation with only 128 labeled examples achieves accuracy 1.2 percentage points higher than supervised learning with all 496 training examples labeled. It also makes more confident predictions (with a class-wise standard deviation of only 0.21, as opposed to 0.26).
-
-Note that the supervised multi-layer perceptron trained on $\beta _8$ originally used labels for all 496 training examples. Here, it is re-trained with smaller training sets so that it can be more directly compared to semi-supervised learning (which does not have access to labels for the entire set).
+Table \ref{results_table} compares performance on test data of the best-performing architectures for each algorithm and training set size. These architectures were selected based on accuracy on validation data.
 
 \begin{minipage}{\textwidth}
     \begin{center}
-        \captionof{table}{Summary of the most successful semi-supervised learning models.} \label{semi_success_overview}
         \begin{tabular}{|l|l|l|l|l|l|}
             \hline
-            Initial $\varsigma$ Size & Technique & Accuracy & Precision & Recall & CWSD \\
+            Algorithm & Initial $\varsigma$ Size & Accuracy & Precision & Recall \\
             \hline
-            32 & GD & 71.3\% & 70.1\% & 98.0\% & 0.73 \\
+            Original PICO-60 ML & 278 & 80.7\% & 76.9\% & 100.0\% \\
             \hline
-            32 & ICN & 85.2\% & 83.4\% & 98.4\% & 0.54 \\
+            Acoustic Parameter & N/A & 100\% & 100\% & 100\% \\
             \hline
-            32 & Supervised & 90.4\% & 89.0\% & 97.1\% & 0.53 \\
+            Supervised & 128 & 96.79\% & 95.85\% & 99.09\% \\
             \hline
-            64 & GD & 79.7\% & 75.5\% & 98.6\% & 0.63 \\
+            Supervised & 256 & 96.97\% & 95.99\% & 99.59\% \\
             \hline
-            64 & ICN & 94.3\% & 92.2\% & 99.8\% & 0.34 \\
+            Pseudo-Labels & 128 & 94.89\% & 93.31\% & 99.36\% \\
             \hline
-            64 & Supervised & 92.7\% & 90.4\% & 98.9\% & 0.41 \\
+            Pseudo-Labels & 256 & 97.01\% & 95.30\% & 100.00\% \\
             \hline
-            128 & GD & 97.0\% & 96.3\% & 99.6\% & 0.23 \\
+            Gravitational Differentiation & 128 & 94.78\% & 96.68\% & 99.28\% \\
             \hline
-            128 & ICN & 98.2\% & 97.7\% & 99.4\% & 0.21 \\
-            \hline
-            128 & Supervised & 94.7\% & 92.6\% & 99.5\% & 0.37 \\
-            \hline
-            256 & GD & 99.2\% & 99.0\% & 99.7\% & 0.11 \\
-            \hline
-            256 & ICN & 98.2\% & 97.6\% & 99.5\% & 0.22 \\
-            \hline
-            256 & Supervised & 96.5\% & 94.6\% & 99.7\% & 0.28 \\
-            \hline
-            496 & Supervised & 97.0\% & 95.4\% & 99.9\% & 0.26 \\
-            \hline
-            278 & PICO-60 ML & 80.7\% & 76.9\% & 100.0\% & 0.65 \\
-            \hline
-            N/A & AP & 100\% & 100\% & 100\% & 0.43 \\
+            Gravitational Differentiation & 256 & 98.29\% & 98.75\% & 99.44\% \\
             \hline
         \end{tabular}
+        \captionof{table}{Summary of the most successful semi-supervised learning models.} \label{results_table}
     \end{center}
 \end{minipage}
-% cat ../experimental_data/training_logs/2018_10_26_banded_ap_similarity_last_300_epochs.out | grep examples256 | grep lambda0.003 | ./mean_ap_accuracy_across_configurations.py
-% cat ../experimental_data/training_logs/2018_10_26_banded_ap_similarity_last_300_epochs.out | grep examples128 | grep lambda0.003 | ./mean_ap_accuracy_across_configurations.py
-% cat ../experimental_data/training_logs/2018_10_26_banded_ap_similarity_last_300_epochs.out | grep examples64 | grep lambda0.003 | ./mean_ap_accuracy_across_configurations.py
-% cat ../experimental_data/training_logs/2018_10_26_banded_ap_similarity_last_300_epochs.out | grep examples32 | grep dropout0.25 | ./mean_ap_accuracy_across_configurations.py
+
+It can be seen in Table \ref{results_table} that with 128 labeled examples and 368 unlabeled examples, supervised learning outperforms both pseudo-labels and gravitational differentiation. This is likely due to the semi-supervised learning algorithms reinforcing non-representative biases present in the small set of data.
+
+However, when 256 labeled examples and 240 unlabeled examples are used, it is observed that pseudo-labels performs almost identically to supervised learning, and that gravitational differentiation outperforms both existing algorithms. This indicates that, when the right balance between labeled and unlabeled examples is used, the confidence of predictions on unlabeled examples as used in gravitational differentiation is a meaningful metric and can be used to further optimize a neural network alongside a conventional loss function.
+
+The test set predictions of gravitational differentiation trained on 256 labeled examples can be seen in Figure \ref{grav_test_hist}, with Acoustic Parameter on the X axis for comparison. The decision boundaries of AP and the neural network are represented by black lines.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{grav_test_hist}
+    \caption{\label{grav_test_hist} Test set predictions of a gravitational differentiation model, compared against AP.}
+\end{figure}
 
 \section{Conclusions}
 
-This study has demonstrated that it is possible, using semi-supervised learning, to automatically optimize a discriminator with performance comparable to one developed and tuned by humans like the Acoustic Parameter technique. This conclusion has been achieved through two rounds of optimization: the first to explore and evaluate various network structures and input formats using supervised learning, and the second to incorporate the most successful configuration into semi-supervised learning systems with the goal of producing a high-accuracy discriminator to complement AP.
+This study has demonstrated that it is possible, using semi-supervised learning, to automatically optimize a discriminator with performance comparable to one developed and tuned by humans like the AP technique. This conclusion has been achieved through two rounds of optimization: the first to explore and evaluate various network structures and input formats using supervised learning, and the second to incorporate the most successful configuration into semi-supervised learning systems with the goal of producing a high-accuracy discriminator to complement AP.
 
 In the realm of supervised learning, it was made clear that the banded Fourier transform with position corrections applied is the most effective input format. It produced significantly higher accuracy and tighter prediction distributions than neural networks trained on the full-resolution Fourier transform, the raw audio waveform, or the image window data. There is strong evidence that image data in particular does not contain sufficient information to be used for discrimination.
 
